@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>45.0</apiVersion>
+    <description>trac_ContactSupportForm</description>
+    <isExposed>true</isExposed>
+    <masterLabel>trac_ContactSupportForm</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <!--<targetConfigs>-->
+    <!--TODO if application event can be fired from here, set this value in community builder-->
+        <!--<targetConfig targets="lightning__CommunityBuilder">-->
+            <!--<property name="defaultBusinessUnit" type="String" label="Business Unit" />-->
+            <!--<objects>-->
+                <!--<object>Case</object>-->
+            <!--</objects>-->
+        <!--</targetConfig>-->
+    <!--</targetConfigs>-->
+</LightningComponentBundle>

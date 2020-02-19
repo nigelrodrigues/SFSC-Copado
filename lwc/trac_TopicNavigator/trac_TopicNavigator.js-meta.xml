@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>45.0</apiVersion>
+    <description>array of cards to display the available topics in the community</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Topic Navigator</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="panel_01" type="String"></property>
+            <property name="panel_01_URL" type="String"></property>
+            <property name="panel_01_Image" type="String"></property>
+            <property name="panel_02" type="String"></property>
+            <property name="panel_02_URL" type="String"></property>
+            <property name="panel_02_Image" type="String"></property>
+            <property name="panel_03" type="String"></property>
+            <property name="panel_03_URL" type="String"></property>
+            <property name="panel_03_Image" type="String"></property>
+            <property name="panel_04" type="String"></property>
+            <property name="panel_04_URL" type="String"></property>
+            <property name="panel_04_Image" type="String"></property>
+            <property name="panel_05" type="String"></property>
+            <property name="panel_05_URL" type="String"></property>
+            <property name="panel_05_Image" type="String"></property>
+            <property name="panel_06" type="String"></property>
+            <property name="panel_06_URL" type="String"></property>
+            <property name="panel_06_Image" type="String"></property>
+            <property name="panel_07" type="String"></property>
+            <property name="panel_07_URL" type="String"></property>
+            <property name="panel_07_Image" type="String"></property>
+            <property name="panel_08" type="String"></property>
+            <property name="panel_08_URL" type="String"></property>
+            <property name="panel_08_Image" type="String"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

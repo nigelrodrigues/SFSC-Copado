@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Custom Settings for Web Services
+- Default Endpoints &amp; Other Parameters</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_Key__c</fullName>
+        <description>HBC Gateway API Key</description>
+        <externalId>false</externalId>
+        <label>API Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Base_Url__c</fullName>
+        <externalId>false</externalId>
+        <label>Base Url</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancel_Order_Endpoint__c</fullName>
+        <description>OMS Cancel Order relative Endpoint</description>
+        <externalId>false</externalId>
+        <label>Cancel Order Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Create_Order_Endpoint__c</fullName>
+        <description>OMS Create Order relative Endpoint</description>
+        <externalId>false</externalId>
+        <label>Create Order Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Debug__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Debug</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Get_Order_Details_Endpoint__c</fullName>
+        <description>OMS Get Order Details relative Endpoint</description>
+        <externalId>false</externalId>
+        <label>Get Order Details Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Get_Order_List_Endpoint__c</fullName>
+        <description>OMS Get Order List Service relative Endpoint</description>
+        <externalId>false</externalId>
+        <label>Get Order List Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Timeout__c</fullName>
+        <externalId>false</externalId>
+        <label>Timeout</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCID_Create_Endpoint__c</fullName>
+        <description>UCID Create Service relative Endpoint</description>
+        <externalId>false</externalId>
+        <label>UCID Create Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCID_Query_Endpoint__c</fullName>
+        <description>UCID Query Service relative endpoint</description>
+        <externalId>false</externalId>
+        <label>UCID Query Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCID_Update_Endpoint__c</fullName>
+        <description>UCID Update Service relative endpoint</description>
+        <externalId>false</externalId>
+        <label>UCID Update Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Update_Order_Endpoint__c</fullName>
+        <description>OMS Update Order relative Endpoint</description>
+        <externalId>false</externalId>
+        <label>Update Order Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Web Service Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Field Tracker Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Field Tracker Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Specify the User ID which will be set as the owner of all new Time Log records.  Leave blank to use the current running User. --></help>
+        <label><!-- Time Log Owner --></label>
+        <name>Time_Log_Owner__c</name>
+    </fields>
+    <fields>
+        <help><!-- Switch for Field Tracker triggers --></help>
+        <label><!-- Trigger Switch --></label>
+        <name>Trigger_Switch__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

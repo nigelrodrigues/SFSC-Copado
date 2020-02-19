@@ -1,0 +1,36 @@
+/**
+ * @name trac_PromoCodeSearch
+ * @author Daniel Labonte, Traction on Demand
+ * @date 2019-07-04
+ * @description css for the Promo Code Search Component
+ */
+.custom-box {
+    border: 1px solid rgb(221, 219, 218);
+    border-radius: .25rem;
+    padding: .25rem;
+}
+
+.left-align {
+    text-align: left;
+}
+.right-align {
+    text-align: right;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.custom-label-padding {
+    padding-top: 1rem;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.slds-spinner_container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}

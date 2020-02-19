@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Acknowledgement Email (LT)</name>
+    <style>none</style>
+    <subject>Thank you for contacting  {!Case.Business_Unit__c}!</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+Thanks for contacting Lord and Taylor. We&apos;ve received your message and we&apos;ll make our best effort to respond as soon as possible. If you need immediate assistance, please call us and refer to case {!Case.CaseNumber}.
+
+We&apos;re available from 8am-12am EST, seven days a week, at 1-800-223-7440.
+
+Sincerely,
+Lord and Taylor Customer Service</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

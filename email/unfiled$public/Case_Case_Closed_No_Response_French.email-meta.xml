@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to customer when a case is in Awaiting Customer Response for more than 7 days</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Case Closed No Response (French)</name>
+    <style>none</style>
+    <subject>Nous avons besoin de plus de renseignements pour pouvoir vous aider</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you for contacting {!Case.Business_Unit__c}! Unfortunately, we are unable to assist you without receiving additional information. If you would like to re-open this request, please reply click  here
+
+Your Case Number: {!Case.CaseNumber}
+
+All the best, Your {!Case.Business_Unit__c} Customer Service Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

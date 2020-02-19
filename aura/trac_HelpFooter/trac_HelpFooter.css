@@ -1,0 +1,29 @@
+/*
+- @description Still Need Help Lightining Component
+- @author      Thiago Santos, Traction on Demand
+- @date        2019-07-18
+ */
+.THIS div.hbc-help-footer{
+    background-color: #FAFAFA;
+}
+
+.THIS h3{
+    font-family: Georgia;
+    font-size: 28px;
+}
+
+.THIS div.hbc-help-footer-cloud{
+    /*background: url('/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bHLf&operationContext=CHATTER&contentId=05TS0000001t9ir') center no-repeat;*/
+    /*background: url('/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bj3H&operationContext=CHATTER&contentId=05TS00000027QpT') center no-repeat;*/
+    background: url('/resource/1566784582000/ChatBubbleIcon') center no-repeat;
+    /*https://tracbuild-hbc.cs1.force.com/hudsonbay/resource/1565642164000/Icon_Returns*/
+    margin-bottom: 1rem;
+    min-height: 52px;
+    padding-right: 86px;
+}
+
+
+.THIS ul li a{
+    text-transform: uppercase;
+    text-decoration: underline!important;
+}

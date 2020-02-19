@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows agent to send email but also update the case status.</description>
+    <fieldOverrides>
+        <field>Case_Status__c</field>
+        <literalValue>Awaiting Customer Response</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Subject</field>
+        <formula>TEXT(Case.Business_Unit__c) &amp; &quot; Case #&quot; &amp; Case.CaseNumber</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>ToAddress</field>
+        <formula>Case.ContactEmail</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>ValidatedFromAddress</field>
+        <formula>IF( ISPICKVAL(Case.Business_Unit__c, &apos;Hudson\&apos;s Bay&apos;),
+  IF( ISPICKVAL(Case.Case_Language__c, &apos;French&apos;), &apos;labaie@hbc.com&apos;, &apos;customer.service@hbc.com&apos;),
+  IF( ISPICKVAL(Case.Business_Unit__c, &apos;Lord + Taylor&apos;), &apos;customercare@lordandtaylor.com&apos;, &apos;customer.service@hbc.com&apos;))</formula>
+        <literalValue>customer.service@hbc.com</literalValue>
+    </fieldOverrides>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Case_Status__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>ToAddress</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>CcAddress</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>BccAddress</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Subject</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>HtmlBody</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <quickActionSendEmailOptions>
+        <ignoreDefaultEmailTemplateSubject>false</ignoreDefaultEmailTemplateSubject>
+    </quickActionSendEmailOptions>
+    <standardLabel>SendEmail</standardLabel>
+    <targetObject>EmailMessage</targetObject>
+    <targetParentField>Parent</targetParentField>
+    <type>SendEmail</type>
+</QuickAction>

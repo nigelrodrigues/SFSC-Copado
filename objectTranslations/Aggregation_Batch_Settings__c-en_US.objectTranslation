@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Aggregation Batch Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Aggregation Batch Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- This is the ending Date time for the batch.   NOTE:  12:00 AM  on the first day of the following month will insure you get everthing for the previous month.   e.g.  urn up to  11:59:59 PM on the last day of the month. --></help>
+        <label><!-- Batch End Date --></label>
+        <name>Batch_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the start Date Time for the Batch.  All the Time Log records after this date time and before the end time are included in the aggregation batch --></help>
+        <label><!-- Batch Start Date --></label>
+        <name>Batch_Start_Date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

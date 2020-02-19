@@ -1,0 +1,54 @@
+<!--
+ - @description Navigation Topics Component
+ - @author      Thiago Santos, Traction on Demand
+ - @date        2019-07-17
+ -->
+
+<aura:component implements="forceCommunity:availableForAllPageTypes" description="trac_NavTopic">
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS00000003ndOOAQ/orders-status" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-order-status" >
+                <h3>Order Status</h3>
+            </a>
+        </div>
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS00000003ndNOAQ/gift-cards" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-gifting" >
+                <h3>Gifting</h3>
+            </a>
+        </div>
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS00000003ndSOAQ/returns-refunds" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-returns" >
+                <h3>Returns and Refunds</h3>
+            </a>
+        </div>
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS0000000Ll6JOAS/major-home-fashions" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-major-home-fashions" >
+                <h3>Major Home Fashions</h3>
+            </a>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS0000000Ll6MOAS/hudsons-bay-rewards" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-hb-rewards" >
+                <h3>Husdons Bay Rewards</h3>
+            </a>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS00000003ndPOAQ/payment-methods" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-payment-methods" >
+                <h3>Payment Methods</h3>
+            </a>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS0000000Ll6IOAS/shipping" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-shipping" >
+                <h3>Shipping</h3>
+            </a>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+            <a href="/hudsonbay/s/topic/0TOS0000000Ll6HOAS/my-account" class="slds-m-around_large slds-var-p-around_large slds-border_top slds-border_right slds-border_bottom slds-border_left ico-my-account" >
+                <h3>My Account</h3>
+            </a>
+        </div>
+    </div>
+</aura:component>

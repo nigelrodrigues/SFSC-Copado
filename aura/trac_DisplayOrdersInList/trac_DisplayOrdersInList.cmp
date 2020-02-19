@@ -1,0 +1,46 @@
+<!--
+ - Created by ragrawal on 7/3/2019.
+ -->
+
+<aura:component description="trac_DisplayOrdersInList" controller="trac_OrderSearchController">
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="order" type="Object" />
+    <aura:attribute name="count" type="Integer" />
+    <aura:attribute name="showOrderDetails" type="Boolean" default="false" />
+    <aura:attribute name="actualOrder" type="Object" />
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="businessUnit" type="String" />
+
+    <tr>
+        <td>
+            <div class="slds-truncate">{!v.order.OrderNo}</div>
+        </td>
+        <td>
+            <div class="slds-truncate_status">{!v.order.Status}</div>
+        </td>
+        <td>
+            <lightning:formattedDateTime value="{!v.order.OrderDate}" year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                         minute="2-digit" hour12="true"/>
+        </td>
+        <td>
+            <div class="slds-truncate">{!v.order.PriceInfo.TotalAmount}</div>
+        </td>
+        <td>
+            <div class="slds-truncate"><lightning:buttonIcon iconName="utility:down" variant="border-filled" size="small" value="{!v.order.OrderNo}"
+                                                             alternativeText="More Actions" onclick="{!c.showOrderDetails}"/></div>
+        </td>
+        <td>
+            <lightning:button label="Link To Case" variant="neutral" onclick="{!c.handleImport}" disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="6">
+            <aura:if isTrue="{!v.showOrderDetails}">
+                <c:trac_Order order="{!v.actualOrder}" caseRecord="{!v.caseRecord}" showLineItem="true" callOrderDetailAPI="true" businessUnit="{!v.businessUnit}"/>
+            </aura:if>
+        </td>
+    </tr>
+
+
+</aura:component>

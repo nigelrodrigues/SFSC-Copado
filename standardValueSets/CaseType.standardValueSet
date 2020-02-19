@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Account</fullName>
+        <default>false</default>
+        <label>Account</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Delivery</fullName>
+        <default>false</default>
+        <label>Delivery</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Gift Card(s)</fullName>
+        <default>false</default>
+        <label>Gift Card(s)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Gift Registry</fullName>
+        <default>false</default>
+        <label>Gift Registry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In Store Experience</fullName>
+        <default>false</default>
+        <label>In Store Experience</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Major Home Fashion</fullName>
+        <default>false</default>
+        <label>Major Home Fashion</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Order Inquiry</fullName>
+        <default>false</default>
+        <label>Order Inquiry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Place an order</fullName>
+        <default>false</default>
+        <label>Place an order</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Product Information</fullName>
+        <default>false</default>
+        <label>Product Information</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Refunds/Credits</fullName>
+        <default>false</default>
+        <label>Refunds/Credits</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Returns</fullName>
+        <default>false</default>
+        <label>Returns</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Rewards</fullName>
+        <default>false</default>
+        <label>Rewards</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,7 @@
+<!--
+ - Created by ragrawal on 6/20/2019.
+ -->
+
+<aura:event type="COMPONENT" description="trac_CloseModalEvent">
+    <aura:attribute name="closeModal" type="Boolean" default="false" />
+</aura:event>

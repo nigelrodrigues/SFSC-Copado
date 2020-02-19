@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Case Type Validation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Case Type Validations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Case Type --></label>
+        <name>Case_Type__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BTO - Big Ticket Order (New Purchases)</masterLabel>
+            <translation><!-- BTO - Big Ticket Order (New Purchases) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery</masterLabel>
+            <translation><!-- Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery (WISMO)</masterLabel>
+            <translation><!-- Delivery (WISMO) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery Resolution</masterLabel>
+            <translation><!-- Delivery Resolution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exchange / Return / Allowance (ERA)</masterLabel>
+            <translation><!-- Exchange / Return / Allowance (ERA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Card(s)</masterLabel>
+            <translation><!-- Gift Card(s) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Registry</masterLabel>
+            <translation><!-- Gift Registry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Store Experience</masterLabel>
+            <translation><!-- In Store Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Major Home Fashion</masterLabel>
+            <translation><!-- Major Home Fashion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order Inquiry</masterLabel>
+            <translation><!-- Order Inquiry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order placed</masterLabel>
+            <translation><!-- Order placed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Place an order</masterLabel>
+            <translation><!-- Place an order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Information</masterLabel>
+            <translation><!-- Product Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refunds/Credits</masterLabel>
+            <translation><!-- Refunds/Credits --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Returns</masterLabel>
+            <translation><!-- Returns --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rewards</masterLabel>
+            <translation><!-- Rewards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Special Projects</masterLabel>
+            <translation><!-- Special Projects --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer</masterLabel>
+            <translation><!-- Transfer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIP</masterLabel>
+            <translation><!-- VIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warranty</masterLabel>
+            <translation><!-- Warranty --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Send Acknowledgement Email</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <booleanFilter>(1 OR 3 OR 4 OR 5) AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>The Bay - Main</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>MHF Rewards</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>MHF Delivery</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>MHF ERA</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@hbc.com</senderEmail>
+            <senderName>HBC Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_English</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>MHF Leadership Hotline</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@hbc.com</senderEmail>
+            <senderName>HBC Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_English_MHF_Leadership</template>
+        </ruleEntry>
+        <ruleEntry>
+            <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>La Baie</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>MHF French</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@hbc.com</senderEmail>
+            <senderName>HBC Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_French</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>MHF French Leadership Hotline</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@hbc.com</senderEmail>
+            <senderName>HBC Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_French_MHF_Leadership</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Case_Language__c</field>
+                <operation>equals</operation>
+                <value>English</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Business_Unit__c</field>
+                <operation>equals</operation>
+                <value>Hudson&apos;s Bay</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@hbc.com</senderEmail>
+            <senderName>HBC Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_English</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Business_Unit__c</field>
+                <operation>equals</operation>
+                <value>Hudson&apos;s Bay</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Language__c</field>
+                <operation>equals</operation>
+                <value>French</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@hbc.com</senderEmail>
+            <senderName>HBC Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_French</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - LT</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.repiles@lordandtaylor.com</senderEmail>
+            <senderName>Lord and Taylor Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_LT</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

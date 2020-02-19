@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Settings to Map Business Unit to appropriate Community</description>
+    <fields>
+        <fullName>Business_Unit__c</fullName>
+        <description>The Business Unit or Banner, should match the options in the Banner__c field on Urgent Message</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Business Unit or Banner, should match the options in the Banner__c field on Urgent Message</inlineHelpText>
+        <label>Business Unit</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hudson&apos;s Bay</fullName>
+                    <default>true</default>
+                    <label>Hudson&apos;s Bay</label>
+                </value>
+                <value>
+                    <fullName>Lord + Taylor</fullName>
+                    <default>false</default>
+                    <label>Lord + Taylor</label>
+                </value>
+                <value>
+                    <fullName>MHF</fullName>
+                    <default>false</default>
+                    <label>MHF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Community_Network_Name__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>The name of the Community in the &quot;Network&quot; object and in &quot;All Communities&quot;</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The name of the Community in the &quot;Network&quot; object and in &quot;All Communities&quot;</inlineHelpText>
+        <label>Community Network Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Community Business Unit Setting</label>
+    <pluralLabel>Community Business Unit Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

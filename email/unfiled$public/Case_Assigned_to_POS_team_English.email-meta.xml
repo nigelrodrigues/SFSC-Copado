@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to customers when case is assigned to POS team - English</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Assigned to POS team - English</name>
+    <style>none</style>
+    <subject>We’re working to resolve your issue</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+Thanks for contacting Hudson’s Bay. We&apos;re in the process of providing you with the resolution we spoke about on the phone. You will receive an email once this is complete. If you have any more questions regarding this issue, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
+
+CONTACT US NOW
+
+Sincerely,
+Hudson’s Bay Customer Service</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

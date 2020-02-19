@@ -1,0 +1,57 @@
+<!--
+ - @description Component to display contact details in iteration
+ - @author      Rajat Agrawal, Traction on Demand
+ - @date        2019-06-20
+ -->
+<aura:component description="trac_DisplaySearchResults" controller="trac_ContactSearchController">
+    <aura:attribute name="con" type="Contact"/>
+    <aura:attribute name="index" type="Integer"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="isCase" type="Boolean" default="false"/>
+    <aura:attribute name="caseContactExtKey" type="String"/>
+    <aura:attribute name="disableLinkToCase" type="Boolean" default="false"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:registerEvent name="closeModalEvent" type="c:trac_CloseModalEvent"/>
+
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+    <tr>
+        <td class="slds-cell-wrap slds-size_1-of-12">
+            {!v.con.Salutation + ' ' + v.con.FirstName + ' ' + v.con.MiddleName + ' ' + v.con.LastName + ' ' + v.con.Suffix}
+        </td>
+        <td class="slds-cell-wrap slds-size_1-of-12">
+            <div>{!v.con.Birthdate}</div>
+        </td>
+        <td class="slds-cell-wrap slds-size_1-of-12">
+            <div>{!v.con.Email}</div>
+        </td>
+        <td>
+            <div class="slds-truncate">{!v.con.Phone}</div>
+        </td>
+        <td class="slds-cell-wrap slds-size_4-of-12">
+            <div>{!v.con.MailingStreet + ' ' + v.con.MailingCity + ' ' + v.con.MailingStateCode + ' ' + v.con.MailingCountryCode + ' ' + v.con.MailingPostalCode}</div>
+        </td>
+        <td>
+            <div class="slds-truncate">
+                <!--<aura:if isTrue="{!not(empty(v.recordId))}">-->
+                <aura:if isTrue="{!v.isCase}">
+                    <lightning:button onclick="{!c.createOrImportCase}"
+                                      variant="brand"
+                                      label="Link to Case"
+                                      iconName="utility:record_update"
+                                      disabled="{!v.disableLinkToCase}"/>
+                    <aura:set attribute="else">
+                        <lightning:button onclick="{!c.createOrImportCase}"
+                                          variant="brand"
+                                          label="Create Case"
+                                          iconName="utility:record_create"/>
+                    </aura:set>
+                </aura:if>
+
+            </div>
+        </td>
+    </tr>
+
+</aura:component>

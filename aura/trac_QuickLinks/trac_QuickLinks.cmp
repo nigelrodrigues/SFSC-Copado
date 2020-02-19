@@ -1,0 +1,30 @@
+<!--
+ - @description Component to show quick links in the utility bar
+ - @author      Rajat Agrawal, Traction on Demand
+ - @date        2019-06-27
+ -->
+<aura:component description="trac_QuickLinks"
+                implements="force:hasRecordId,flexipage:availableForAllPageTypes"
+                controller="trac_QuickLinksController">
+
+    <aura:attribute name="externalLinks" type="External_Link_Setting__mdt[]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div>
+        <br/>
+        <aura:if isTrue="{!v.externalLinks != null}">
+            <aura:iteration items="{!v.externalLinks}" var="item">
+                <span class="slds-text-link_faux slds-p-left_small slds-p-top_x-small" data-label="{!item.URL__c}"
+                      onclick="{!c.navigateToLink}" style="font-weight: bold; color: #006dcc;">
+                    {!item.Label}
+                </span>
+                <br/>
+            </aura:iteration>
+            <aura:set attribute="else">
+                No links to display.
+            </aura:set>
+        </aura:if>
+    </div>
+
+</aura:component>

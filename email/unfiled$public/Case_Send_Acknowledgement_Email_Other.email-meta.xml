@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Acknowledgement Email (Other)</name>
+    <style>none</style>
+    <subject>Case Number: {!Case.CaseNumber} Case Subject: {!Case.Subject}</subject>
+    <textOnly>Banner:{!Case.Business_Unit__c}
+Case Number: {!Case.CaseNumber} 
+Case Subject: {!Case.Subject} 
+Content to be provided by HBC</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

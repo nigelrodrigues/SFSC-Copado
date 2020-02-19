@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>List of Case Types that require an order number on case create (used on contact form in the community)</description>
+    <fields>
+        <fullName>Case_Type__c</fullName>
+        <description>Values from the Case.Case_Type__c field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Case Type</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account</fullName>
+                    <default>true</default>
+                    <label>Account</label>
+                </value>
+                <value>
+                    <fullName>BTO - Big Ticket Order (New Purchases)</fullName>
+                    <default>false</default>
+                    <label>BTO - Big Ticket Order (New Purchases)</label>
+                </value>
+                <value>
+                    <fullName>Delivery</fullName>
+                    <default>false</default>
+                    <label>Delivery</label>
+                </value>
+                <value>
+                    <fullName>Delivery (WISMO)</fullName>
+                    <default>false</default>
+                    <label>Delivery (WISMO)</label>
+                </value>
+                <value>
+                    <fullName>Delivery Resolution</fullName>
+                    <default>false</default>
+                    <label>Delivery Resolution</label>
+                </value>
+                <value>
+                    <fullName>Exchange / Return / Allowance (ERA)</fullName>
+                    <default>false</default>
+                    <label>Exchange / Return / Allowance (ERA)</label>
+                </value>
+                <value>
+                    <fullName>Gift Card(s)</fullName>
+                    <default>false</default>
+                    <label>Gift Card(s)</label>
+                </value>
+                <value>
+                    <fullName>Gift Registry</fullName>
+                    <default>false</default>
+                    <label>Gift Registry</label>
+                </value>
+                <value>
+                    <fullName>In Store Experience</fullName>
+                    <default>false</default>
+                    <label>In Store Experience</label>
+                </value>
+                <value>
+                    <fullName>Major Home Fashion</fullName>
+                    <default>false</default>
+                    <label>Major Home Fashion</label>
+                </value>
+                <value>
+                    <fullName>Order Inquiry</fullName>
+                    <default>false</default>
+                    <label>Order Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Order placed</fullName>
+                    <default>false</default>
+                    <label>Order placed</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                    <fullName>Place an order</fullName>
+                    <default>false</default>
+                    <label>Place an order</label>
+                </value>
+                <value>
+                    <fullName>Product Information</fullName>
+                    <default>false</default>
+                    <label>Product Information</label>
+                </value>
+                <value>
+                    <fullName>Refunds/Credits</fullName>
+                    <default>false</default>
+                    <label>Refunds/Credits</label>
+                </value>
+                <value>
+                    <fullName>Returns</fullName>
+                    <default>false</default>
+                    <label>Returns</label>
+                </value>
+                <value>
+                    <fullName>Rewards</fullName>
+                    <default>false</default>
+                    <label>Rewards</label>
+                </value>
+                <value>
+                    <fullName>Special Projects</fullName>
+                    <default>false</default>
+                    <label>Special Projects</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>VIP</fullName>
+                    <default>false</default>
+                    <label>VIP</label>
+                </value>
+                <value>
+                    <fullName>Warranty</fullName>
+                    <default>false</default>
+                    <label>Warranty</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Case Type Validation</label>
+    <pluralLabel>Case Type Validations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Promo Code</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Promo Codes</value>
+    </caseValues>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Amount_List__c</name>
+        <picklistValues>
+            <masterLabel>$10.00</masterLabel>
+            <translation><!-- $10.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$100.00</masterLabel>
+            <translation><!-- $100.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$15.00</masterLabel>
+            <translation><!-- $15.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$20.00</masterLabel>
+            <translation><!-- $20.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$25.00</masterLabel>
+            <translation><!-- $25.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$30.00</masterLabel>
+            <translation><!-- $30.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$35.00</masterLabel>
+            <translation><!-- $35.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$40.00</masterLabel>
+            <translation><!-- $40.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$5.00</masterLabel>
+            <translation><!-- $5.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$50.00</masterLabel>
+            <translation><!-- $50.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$55.00</masterLabel>
+            <translation><!-- $55.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$60.00</masterLabel>
+            <translation><!-- $60.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$65.00</masterLabel>
+            <translation><!-- $65.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$70.00</masterLabel>
+            <translation><!-- $70.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$75.00</masterLabel>
+            <translation><!-- $75.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$80.00</masterLabel>
+            <translation><!-- $80.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$85.00</masterLabel>
+            <translation><!-- $85.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$90.00</masterLabel>
+            <translation><!-- $90.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$95.00</masterLabel>
+            <translation><!-- $95.00 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>100%</masterLabel>
+            <translation><!-- 100% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15%</masterLabel>
+            <translation><!-- 15% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20%</masterLabel>
+            <translation><!-- 20% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25%</masterLabel>
+            <translation><!-- 25% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30%</masterLabel>
+            <translation><!-- 30% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>35%</masterLabel>
+            <translation><!-- 35% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>40%</masterLabel>
+            <translation><!-- 40% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>45%</masterLabel>
+            <translation><!-- 45% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>45.00$</masterLabel>
+            <translation><!-- 45.00$ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5%</masterLabel>
+            <translation><!-- 5% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50%</masterLabel>
+            <translation><!-- 50% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>55%</masterLabel>
+            <translation><!-- 55% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60%</masterLabel>
+            <translation><!-- 60% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>65%</masterLabel>
+            <translation><!-- 65% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>70%</masterLabel>
+            <translation><!-- 70% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>75%</masterLabel>
+            <translation><!-- 75% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>80%</masterLabel>
+            <translation><!-- 80% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>85%</masterLabel>
+            <translation><!-- 85% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>90%</masterLabel>
+            <translation><!-- 90% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95%</masterLabel>
+            <translation><!-- 95% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Free Next Day Delivery</masterLabel>
+            <translation><!-- Free Next Day Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Free Rush Delivery</masterLabel>
+            <translation><!-- Free Rush Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Free Saturday Delivery</masterLabel>
+            <translation><!-- Free Saturday Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Free Standard Shipping</masterLabel>
+            <translation><!-- Free Standard Shipping --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+        <picklistValues>
+            <masterLabel>Hudson&apos;s Bay</masterLabel>
+            <translation><!-- Hudson&apos;s Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lord + Taylor</masterLabel>
+            <translation><!-- Lord + Taylor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MHF</masterLabel>
+            <translation><!-- MHF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Off 5th</masterLabel>
+            <translation><!-- Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks</masterLabel>
+            <translation><!-- Saks --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Promo Codes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Consumed By --></label>
+        <name>Consumed_By__c</name>
+        <relationshipLabel><!-- Promo Codes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Consumed --></label>
+        <name>Consumed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promo Code --></label>
+        <name>Promo_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Promo Codes over 20% must be given by a team lead (Error Promo Code - 01) --></errorMessage>
+        <name>Support_Agent_Cant_Give_Over_20</name>
+    </validationRules>
+</CustomObjectTranslation>

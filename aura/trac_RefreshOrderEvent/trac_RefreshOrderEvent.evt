@@ -1,0 +1,6 @@
+<!--
+ - Created by jhoran on 8/6/2019.
+ -->
+
+<aura:event type="APPLICATION" description="trac_RefreshOrderEvent">
+</aura:event>

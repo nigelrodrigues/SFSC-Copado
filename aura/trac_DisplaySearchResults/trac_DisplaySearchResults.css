@@ -1,0 +1,14 @@
+/**
+ * Created by ragrawal on 7/31/2019.
+ */
+.THIS {
+}
+
+.THIS .slds-truncate_name{
+    overflow-wrap: break-word !important;
+    width: 50% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    /* border: 1px solid #000000; */
+    white-space: normal !important;
+}

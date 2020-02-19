@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Aggregated Case Time Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Aggregated Case Time Logs</value>
+    </caseValues>
+    <fields>
+        <help><!-- The number of days in the date ranges for this record&apos;s aggregation. --></help>
+        <label><!-- Aggregation Days --></label>
+        <name>Aggregation_Days__c</name>
+    </fields>
+    <fields>
+        <help><!-- The end date for the range of days to be aggregated. --></help>
+        <label><!-- Aggregation End Date --></label>
+        <name>Aggregation_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The name of a particular aggregration made up of the Start &lt;field&gt; and End &lt;field&gt; text: Owner - Owner New,  Status - Status New,   Owner - Status. --></help>
+        <label><!-- Aggregation Name --></label>
+        <name>Aggregation_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The start date for the range of days to be aggregated. --></help>
+        <label><!-- Aggregation Start Date --></label>
+        <name>Aggregation_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The type of a particular aggregration made up of the Start and End field labels: Owner - Owner New,  Status - Status New,   Owner - Status. --></help>
+        <label><!-- Aggregation Type --></label>
+        <name>Aggregation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Owner - Owner New</masterLabel>
+            <translation><!-- Owner - Owner New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Owner - Status</masterLabel>
+            <translation><!-- Owner - Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Status - Status New</masterLabel>
+            <translation><!-- Status - Status New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Touches</masterLabel>
+            <translation><!-- Touches --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The average number of Time Logs per Case across the aggregated date range.   This is the average number of Touches. --></help>
+        <label><!-- Average Time Log Touches --></label>
+        <name>Average_Time_Log_Touches__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Duration Average in Hours --></help>
+        <label><!-- Biz Avg Hours --></label>
+        <name>Biz_Avg_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Duration Average converted from seconds to minutes. --></help>
+        <label><!-- Biz Avg Min --></label>
+        <name>Biz_Avg_Min__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Duration Maximum in Hours --></help>
+        <label><!-- Biz Max Hours --></label>
+        <name>Biz_Max_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Duration Maximum in minutes --></help>
+        <label><!-- Biz Max Min --></label>
+        <name>Biz_Max_Min__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Duration Minimum in Hours --></help>
+        <label><!-- Biz Min Hours --></label>
+        <name>Biz_Min_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Minimum in minutes --></help>
+        <label><!-- Biz Min Min --></label>
+        <name>Biz_Min_Min__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Hours Duration Sum in Hours --></help>
+        <label><!-- Biz Sum Hours --></label>
+        <name>Biz_Sum_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- The average business hours time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Business Hours Duration Average --></label>
+        <name>Business_Hours_Duration_Average__c</name>
+    </fields>
+    <fields>
+        <help><!-- The maximum business hours time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Business Hours Duration Maximum --></label>
+        <name>Business_Hours_Duration_Maximum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The minimum business hours time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Business Hours Duration Minimum --></label>
+        <name>Business_Hours_Duration_Minimum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The sum of business hours time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Business Hours Duration Sum --></label>
+        <name>Business_Hours_Duration_Sum__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Average in Days --></help>
+        <label><!-- Cal Avg Days --></label>
+        <name>Cal_Avg_Days__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Average in Hours --></help>
+        <label><!-- Cal Avg Hours --></label>
+        <name>Cal_Avg_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Average converted from seconds to minutes. --></help>
+        <label><!-- Cal Avg Min --></label>
+        <name>Cal_Avg_Min__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Maximum in Hours --></help>
+        <label><!-- Cal Max Days --></label>
+        <name>Cal_Max_Days__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Maximum in Hours --></help>
+        <label><!-- Cal Max Hours --></label>
+        <name>Cal_Max_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calender Hours Duration Maximum in minutes --></help>
+        <label><!-- Cal Max Min --></label>
+        <name>Cal_Max_Min__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Minimum in Days --></help>
+        <label><!-- Cal Min Days --></label>
+        <name>Cal_Min_Days__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Minimum in Hours --></help>
+        <label><!-- Cal Min Hours --></label>
+        <name>Cal_Min_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calender Hours Duration Minimum in minutes --></help>
+        <label><!-- Cal Min Min --></label>
+        <name>Cal_Min_Min__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Maximum in Days --></help>
+        <label><!-- Cal Sum Days --></label>
+        <name>Cal_Sum_Days__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calendar Hours Duration Sum in Hours --></help>
+        <label><!-- Cal Sum Hours --></label>
+        <name>Cal_Sum_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- The average calendar time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Calendar Hours Duration Average --></label>
+        <name>Calendar_Hours_Duration_Average__c</name>
+    </fields>
+    <fields>
+        <help><!-- The maximum calendar time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Calendar Hours Maximum --></label>
+        <name>Calendar_Hours_Maximum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The minimum calendar time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Calendar Hours Minimum --></label>
+        <name>Calendar_Hours_Minimum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The sum of calendar time, in seconds, across the Cases for this aggregation. --></help>
+        <label><!-- Calendar Hours Sum --></label>
+        <name>Calendar_Hours_Sum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Status Group that this aggregation belongs to.  Usually this is either Company or Customer. --></help>
+        <label><!-- Case Status Group --></label>
+        <name>Case_Status_Group__c</name>
+        <picklistValues>
+            <masterLabel>Company</masterLabel>
+            <translation><!-- Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The number of Cases included in the aggregation for &quot;touches&quot;.  The count of Cases across the aggregation date range. --></help>
+        <label><!-- No. of Cases Touched --></label>
+        <name>No_of_Cases_Touched__c</name>
+    </fields>
+    <fields>
+        <help><!-- The count of Time Logs used in the touches calculations.  The total number of Time Logs in the aggregation date range. --></help>
+        <label><!-- No. of Time Logs Touched --></label>
+        <name>No_of_Time_Logs_Touched__c</name>
+    </fields>
+    <fields>
+        <help><!-- The number of Cases included in an aggregation date range for a particular aggregation. --></help>
+        <label><!-- Number of Cases --></label>
+        <name>Number_of_Cases__c</name>
+    </fields>
+    <fields>
+        <help><!-- The average number of Owners of a Case for all the Cases in this aggregation date range.  Average Owner type touches. --></help>
+        <label><!-- Owner Count Average --></label>
+        <name>Owner_Count_Average__c</name>
+    </fields>
+    <fields>
+        <help><!-- The maximum number of Owners any Case had for the aggregation date range.  Used in Owner type touches. --></help>
+        <label><!-- Owner Count Maximum --></label>
+        <name>Owner_Count_Maximum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The minimum number of Owners any Case had for the aggregation date range.  Used in Owner type touches. --></help>
+        <label><!-- Owner Count Minimum --></label>
+        <name>Owner_Count_Minimum__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field indicates whether the Parent record Owner was a User or a Queue. --></help>
+        <label><!-- Owner Type --></label>
+        <name>Owner_Type__c</name>
+        <picklistValues>
+            <masterLabel>Queue</masterLabel>
+            <translation><!-- Queue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User</masterLabel>
+            <translation><!-- User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is closed or ended.   Text value,  not the Look up value. --></help>
+        <label><!-- Parent Owner New --></label>
+        <name>Parent_Owner_New_Text__c</name>
+    </fields>
+    <fields>
+        <help><!-- The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is closed or ended. --></help>
+        <label><!-- Parent Owner New --></label>
+        <name>Parent_Owner_New__c</name>
+        <relationshipLabel><!-- Aggregated Case Time Logs (Parent Owner New) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log was created.   Text value,  not the Look up value. --></help>
+        <label><!-- Parent Owner --></label>
+        <name>Parent_Owner_Text__c</name>
+    </fields>
+    <fields>
+        <help><!-- The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is created. --></help>
+        <label><!-- Parent Owner --></label>
+        <name>Parent_Owner__c</name>
+        <relationshipLabel><!-- Aggregated Case Time Logs (Parent Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The average number of Status changes per Case for the aggregation date range.  Used for Touch calculations. --></help>
+        <label><!-- Status Count Average --></label>
+        <name>Status_Count_Average__c</name>
+    </fields>
+    <fields>
+        <help><!-- The maximum number of Status changes for a Case for the aggregation date range.  Used for Touch calculations. --></help>
+        <label><!-- Status Count Maximum --></label>
+        <name>Status_Count_Maximum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The minimum number of Status changes for a Case for the aggregation date range.  Used for Touch calculations. --></help>
+        <label><!-- Status Count Minimum --></label>
+        <name>Status_Count_Minimum__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Status value of the Parent Object record (e.g. Case Status) when the time log is closed or ended. --></help>
+        <label><!-- Status New --></label>
+        <name>Status_New__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Status value of the Parent Object record (e.g. Case Status) when the time log is created or started. --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- The total number of Owner changes across the Time Logs in an aggregation date range.  Used in Touch calculations. --></help>
+        <label><!-- Time Log Owner Count --></label>
+        <name>Time_Log_Owner_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- The total number of Status changes across the Time Logs in an aggregation date range.  Used in Touch calculations. --></help>
+        <label><!-- Time Log Status Count --></label>
+        <name>Time_Log_Status_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- The average of Status plus Owner changes across the Time Logs in an aggregation date range. Used in Touch calculations. --></help>
+        <label><!-- Total Avergae --></label>
+        <name>Total_Avergae__c</name>
+    </fields>
+    <fields>
+        <help><!-- The average number of Owner changes across the Time Logs in an aggregation date range.  Used in Touch calculations. --></help>
+        <label><!-- Total Owner Average --></label>
+        <name>Total_Owner_Average__c</name>
+    </fields>
+    <fields>
+        <help><!-- The average number of Status changes across the Time Logs in an aggregation date range. Used in Touch calculations. --></help>
+        <label><!-- Total Status Average --></label>
+        <name>Total_Status_Average__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

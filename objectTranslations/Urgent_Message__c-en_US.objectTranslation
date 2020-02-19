@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Urgent Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Urgent Messages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activation Date --></label>
+        <name>Activation_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Banner --></label>
+        <name>Banner__c</name>
+        <picklistValues>
+            <masterLabel>Hudson&apos;s Bay</masterLabel>
+            <translation><!-- Hudson&apos;s Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lord + Taylor</masterLabel>
+            <translation><!-- Lord + Taylor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MHF</masterLabel>
+            <translation><!-- MHF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Body --></label>
+        <name>Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>Expiration_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- When checked, the message will also be displayed in the community for the associated business unit --></help>
+        <label><!-- Include In Community --></label>
+        <name>Include_In_Community__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

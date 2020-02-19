@@ -1,0 +1,12 @@
+<!--
+ - Created by Jeremy on 6/5/2019.
+ -->
+
+<aura:component description="trac_UrgentMessage">
+
+    <aura:attribute name="message" type="Urgent_Message__c" access="global"/>
+
+    <div class="urgent-message-name" onclick="{!c.redirectToMessage}">
+        {!v.message.Name}
+    </div>
+</aura:component>

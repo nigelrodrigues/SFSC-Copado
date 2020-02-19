@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Case Time Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Case Time Logs</value>
+    </caseValues>
+    <fields>
+        <help><!-- Number of days this Time Log record had during business hours. --></help>
+        <label><!-- Business Hours Duration - Days --></label>
+        <name>Business_Hours_Duration_Days__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of hours this Time Log record had during business hours. --></help>
+        <label><!-- Business Hours Duration - Hrs --></label>
+        <name>Business_Hours_Duration_Hrs__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of minutes this Time Log record had during business hours. --></help>
+        <label><!-- Business Hours Duration - Mins --></label>
+        <name>Business_Hours_Duration_Mins__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of seconds this Time Log record had during business hours. --></help>
+        <label><!-- Business Hours Duration --></label>
+        <name>Business_Hours_Duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of days this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time. --></help>
+        <label><!-- Calendar Duration - Days --></label>
+        <name>Calendar_Duration_Days__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of hours this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time --></help>
+        <label><!-- Calendar Duration - Hrs --></label>
+        <name>Calendar_Duration_Hrs__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of minutes this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time. --></help>
+        <label><!-- Calendar Duration - Mins --></label>
+        <name>Calendar_Duration_Mins__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of seconds this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time. --></help>
+        <label><!-- Calendar Duration --></label>
+        <name>Calendar_Duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- 1 in this field indicates that the Case Status has changed. --></help>
+        <label><!-- Case Status Change --></label>
+        <name>Case_Status_Change__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field allows categorization of the Case Status values into Customer or Company for reporting purposes. --></help>
+        <label><!-- Case Status Group --></label>
+        <name>Case_Status_Group__c</name>
+    </fields>
+    <fields>
+        <help><!-- The value of the Case Status field when the Time Log record was closed / ended. --></help>
+        <label><!-- Case Status New --></label>
+        <name>Case_Status_New__c</name>
+    </fields>
+    <fields>
+        <help><!-- The value of the Case Status field when the Time Log record was created. --></help>
+        <label><!-- Case Status --></label>
+        <name>Case_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the link up to the Case record (parent record) for this Time Log record. --></help>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Case Time Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The date time that this time log record was closed or ended. --></help>
+        <label><!-- End Time --></label>
+        <name>End_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field indicates if this record is already considered in aggregation logic --></help>
+        <label><!-- Aggregated? --></label>
+        <name>Is_Aggregated__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field indicates whether the Parent record Owner was a User or a Queue. --></help>
+        <label><!-- Owner Type --></label>
+        <name>Owner_Type__c</name>
+        <picklistValues>
+            <masterLabel>Queue</masterLabel>
+            <translation><!-- Queue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User</masterLabel>
+            <translation><!-- User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Set value to 1 if Parent Owner is not the same as Parent Owner New.   This allows the counting of how many times Case Ownship changed. --></help>
+        <label><!-- Parent Owner Change --></label>
+        <name>Parent_Owner_Change__c</name>
+    </fields>
+    <fields>
+        <help><!-- Role of the new Owner of the Parent Object. (User that was the Owner of the Case record at the time the Time Log record was CLOSED). --></help>
+        <label><!-- Case Owner New - Role --></label>
+        <name>Parent_Owner_New_Role__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the Owner of the Parent record at the time the time log record was closed.  This value is updated when the Parent record&apos;s Owner changes, otherwise it doesn&apos;t change, since the Owner hasn&apos;t actually changed on the Parent record. --></help>
+        <label><!-- Parent Owner New --></label>
+        <name>Parent_Owner_New__c</name>
+    </fields>
+    <fields>
+        <help><!-- Role of the User in the Case Owner field when the time log record is created. --></help>
+        <label><!-- Case Owner - Role --></label>
+        <name>Parent_Owner_Role__c</name>
+    </fields>
+    <fields>
+        <help><!-- User object lookup, indicating the User that was the Owner of the Case record at the time the Time Log record was CLOSED; the new &quot;Owner&quot; when the owner of the parent record changes. --></help>
+        <label><!-- Case Owner New - User --></label>
+        <name>Parent_Owner_User_New__c</name>
+        <relationshipLabel><!-- Case Time Logs (Case Owner New - User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- User object lookup, indicating the User that was the Owner of the Case record at the time the Time Log record was created. --></help>
+        <label><!-- Case Owner - User --></label>
+        <name>Parent_Owner_User__c</name>
+        <relationshipLabel><!-- Case Time Logs (Case Owner - User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This is the text value of the Case Owner field (Parent record Owner). This field can be used for reporting as it includes both the User and Queue names in the same field. --></help>
+        <label><!-- Parent Owner --></label>
+        <name>Parent_Owner__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date time that this Time Log record was started / created. --></help>
+        <label><!-- Start Time --></label>
+        <name>Start_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Since Start --></label>
+        <name>Time_Since_Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Since Log Created --></label>
+        <name>Time_Since__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Run_Aggregation --></label>
+        <name>Run_Aggregation</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- test --></label>
+        <name>test</name>
+    </webLinks>
+</CustomObjectTranslation>

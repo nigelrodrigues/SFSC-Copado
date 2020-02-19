@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <masterLabel>Contact Information Update</masterLabel>
+    <promptVersions>
+        <actionButtonLabel>View the document</actionButtonLabel>
+        <actionButtonLink>https://hudsonbaycompany.lightning.force.com/lightning/r/Knowledge__kav/ka02E000000lVMDQA2/view</actionButtonLink>
+        <body>&lt;p&gt;&lt;span style=&quot;color: rgb(23, 43, 77);&quot;&gt;Please verify the contact information before taking any action on a case. If the contact information isn&apos;t your current customer&apos;s information, you must update the information through Contact Search. The best practice is to search with an email address. You will either link the case or create a new contact.&lt;/span&gt;&lt;/p&gt;</body>
+        <customApplication>02u2E000000qL8J</customApplication>
+        <delayDays>1</delayDays>
+        <description>Prompt agent to access instructions on when to search for a contact</description>
+        <displayType>DockedComposer</displayType>
+        <header>IMPORTANT MESSAGE!</header>
+        <isPublished>true</isPublished>
+        <masterLabel>Contact Information Update</masterLabel>
+        <publishedByUser>0052E00000Jfbww</publishedByUser>
+        <publishedDate>2019-10-10</publishedDate>
+        <shouldDisplayActionButton>true</shouldDisplayActionButton>
+        <shouldIgnoreGlobalDelay>false</shouldIgnoreGlobalDelay>
+        <startDate>2019-10-10</startDate>
+        <targetAppDeveloperName xsi:nil="true"/>
+        <targetAppNamespacePrefix>standard</targetAppNamespacePrefix>
+        <targetPageKey1>Case</targetPageKey1>
+        <targetPageKey2>view</targetPageKey2>
+        <targetPageType>standard__recordPage</targetPageType>
+        <timesToDisplay>5</timesToDisplay>
+        <title>Contact Information Update</title>
+        <userAccess>Everyone</userAccess>
+        <userProfileAccess>Everyone</userProfileAccess>
+        <versionNumber>1</versionNumber>
+    </promptVersions>
+</Prompt>

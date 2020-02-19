@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Maps the actual CTI variables&apos; values to SObject field values</description>
+    <fields>
+        <fullName>CTI_Value__c</fullName>
+        <description>The value of the CTI variable</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CTI Value</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_Value__c</fullName>
+        <description>Value to set the sobject field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Value</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Mapping__c</fullName>
+        <description>The parent that provides the mapping from CTI variable to sobject field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field Value Mapping</label>
+        <referenceTo>CTI_Variable_Mapping__mdt</referenceTo>
+        <relationshipLabel>Field Value Mapping</relationshipLabel>
+        <relationshipName>CTI_Field_Value_Mappings</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <label>CTI Field Value Mapping</label>
+    <listViews>
+        <fullName>All_Useful</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Parent_Mapping__c</columns>
+        <columns>CTI_Value__c</columns>
+        <columns>Field_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Useful</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>CTI Field Value Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

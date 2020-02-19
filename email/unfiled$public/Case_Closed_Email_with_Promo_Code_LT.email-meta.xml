@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent when a case is closed and has a promo code</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Closed Email with Promo Code (LT)</name>
+    <style>none</style>
+    <subject>Your one-time promo code is waiting inside</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+We always want you to have a positive shopping experience. To show you how much we appreciate your business, please enjoy this one-time offer* using promo code {!Case.Promo_Code__c}. If you have any questions, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
+
+CONTACT US NOW
+
+Sincerely,
+Lord and Taylor Customer Service
+
+Please click  here to view the current list of exclusions for this code. Exclusions may change based on the date that you redeem it.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

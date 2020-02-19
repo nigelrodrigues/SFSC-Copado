@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The CTI offers 10 &quot;PerVar&quot; variables, and this custom metadata type maps these inputs to fields on the case record created.</description>
+    <fields>
+        <fullName>CTI_Parameter_Name__c</fullName>
+        <description>Name of the parameter, see the call center setup file</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Nodes defined by the call event JSON</inlineHelpText>
+        <label>CTI Parameter Name</label>
+        <length>36</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field__c</fullName>
+        <description>API name of the field where the cti input variable&apos;s value will be saved</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Field</label>
+        <length>24</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Indirect_Mapping__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If the CTI IVR can be placed into the sobject&apos;s field value, leave box unchecked. If the mapping for what the field should be set to based on the incoming IVR value, check this box and create a CTI Field Value Mapping record.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Check this to lookup the value in a list of possible child mappings</inlineHelpText>
+        <label>Indirect Mapping</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SObject__c</fullName>
+        <defaultValue>&quot;Case&quot;</defaultValue>
+        <description>SObject to update with the cti variable value</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>SObject</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Case</fullName>
+                    <default>true</default>
+                    <label>Case</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>CTI Variable Mapping</label>
+    <listViews>
+        <fullName>All_Useful</fullName>
+        <columns>MasterLabel</columns>
+        <columns>CTI_Parameter_Name__c</columns>
+        <columns>SObject__c</columns>
+        <columns>Field__c</columns>
+        <columns>Indirect_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Useful</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>CTI Variable Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

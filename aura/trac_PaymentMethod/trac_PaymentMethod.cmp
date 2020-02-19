@@ -1,0 +1,70 @@
+<!--
+ - Created by jhoran on 8/12/2019.
+ -->
+
+<aura:component description="trac_PaymentMethod">
+    <aura:attribute name="paymentMethod" type="Object"/>
+
+    <div>
+        <aura:if isTrue="{!not(empty(v.paymentMethod))}">
+
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12">
+                    <lightning:layout>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Payment Type</p>
+                                <p>{!v.paymentMethod.PaymentType}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Credit Card Name</p>
+                                <p>{!v.paymentMethod.CreditCardName}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Credit Card Type</p>
+                                <p>{!v.paymentMethod.CreditCardType}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Credit Card</p>
+                                <p>{!v.paymentMethod.DisplayCreditCardNo}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Gift Card</p>
+                                <p>{!v.paymentMethod.DisplaySvcNo}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Total Authorized</p>
+                                <p>{!v.paymentMethod.TotalAuthorized}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Total Charged</p>
+                                <p>{!v.paymentMethod.TotalCharged}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                    </lightning:layout>
+                </lightning:layoutItem>
+
+            </lightning:layout>
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Acknowledgement Email (English)</name>
+    <style>none</style>
+    <subject>Thanks for contacting Hudson’s Bay</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+Thanks for contacting Hudson’s Bay. We&apos;re received your message and we&apos;ll make our best effort to respond as soon as possible. If you need immediate assistance, please call us and refer to case {!Case.CaseNumber}.
+
+You can find our phone numbers and answers to our most commonly asked questions in our Help Center: https://support.thebay.com/
+
+Sincerely,
+Hudson’s Bay Customer Service</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

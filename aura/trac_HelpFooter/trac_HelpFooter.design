@@ -1,0 +1,10 @@
+<!--
+ - @description Still Need Help Lightining Component
+ - @author      Thiago Santos, Traction on Demand
+ - @date        2019-07-18
+ -->
+<design:component label="Help Footer">
+    <design:attribute name="headingLabel" label="Heading Label" />
+    <design:attribute name="linkLabel" label="Link Label" />
+    <design:attribute name="linkUrl" label="Link Url" />
+</design:component>

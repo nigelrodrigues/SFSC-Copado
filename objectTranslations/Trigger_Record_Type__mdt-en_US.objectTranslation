@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Trigger Record Type</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Trigger Record Types</value>
+    </caseValues>
+    <fields>
+        <label><!-- Enable --></label>
+        <name>Enable__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specify the Object Type (E.g. Case) --></help>
+        <label><!-- Object Name --></label>
+        <name>Object_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specify the DeveloperName of the record type (E.g. Technical_Support) --></help>
+        <label><!-- Record Type Name --></label>
+        <name>Record_Type_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

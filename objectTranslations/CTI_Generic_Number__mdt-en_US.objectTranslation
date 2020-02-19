@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CTI Generic Number</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CTI Generic Numbers</value>
+    </caseValues>
+    <fields>
+        <help><!-- Generic CTI Phone Number --></help>
+        <label><!-- Phone Number --></label>
+        <name>Phone_Number__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

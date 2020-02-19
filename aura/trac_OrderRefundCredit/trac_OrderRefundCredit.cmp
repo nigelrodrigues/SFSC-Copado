@@ -1,0 +1,31 @@
+<!--
+ - Created by jhoran on 7/3/2019.
+ -->
+
+<aura:component description="trac_OrderRefundCredit" extends="c:trac_BaseComponent"
+                controller="trac_OrderRefundCreditCtlr">
+    <aura:attribute name="order" type="Object"/>
+    <aura:attribute name="orderLineItem" type="Object"/>
+    <aura:attribute name="caseRecord" type="Case"/>
+
+    <aura:attribute name="newOrderRefundCredit" type="Object"/>
+    <aura:attribute name="simpleNewOrderRefundCredit" type="Object"/>
+    <aura:attribute name="newOrderRefundCreditError" type="String"/>
+
+    <force:recordData aura:id="orderRefundCreditCreator"
+                      layoutType="FULL"
+                      targetRecord="{!v.newOrderRefundCredit}"
+                      targetFields="{!v.simpleNewOrderRefundCredit}"
+                      targetError="{!v.newOrderRefundCreditError}"/>
+
+    <lightning:layout>
+
+        <lightning:layoutItem>
+            <lightning:button onclick="{!c.createOrderRefundCredit}"
+                              variant="brand"
+                              label="Order Refund/Credit"
+                              iconName="utility:record_create"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+</aura:component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>LT - Main</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>La_Baie_Moncton</publicGroup>
+            <publicGroup>LT_Bay_Main</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueRoutingConfig>All_Queues</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Chat French</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Chat_French</publicGroup>
+        </publicGroups>
+        <users>
+            <user>tractionadmin@hbc.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Chat_French</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>LiveAgentSession</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

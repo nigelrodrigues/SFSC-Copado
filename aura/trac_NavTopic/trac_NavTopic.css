@@ -1,0 +1,56 @@
+.THIS article{
+    cursor: pointer;
+    height: 114px;
+}
+
+.THIS h3{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 80px;
+    margin-bottom: 5px;
+    font-family: helvetica, sanes-serif;
+}
+
+.THIS a{
+    display:block;
+    height: 150px;
+}
+
+@media only screen and (max-width: 409px) {
+    .THIS .slds-size_1-of-2 a {
+        height: 165px;
+    }
+}
+
+.THIS a.ico-order-status{
+    background: url('/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRmu&operationContext=CHATTER&contentId=05TS00000026Iau') center 20px no-repeat;
+}
+
+.THIS a.ico-gifting{
+    background: url('https://hudsonbaycompany--tracbuild.livepreview.salesforce-communities.com/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRmo&operationContext=CHATTER&contentId=05TS00000026Iaa') center 20px no-repeat;
+}
+
+.THIS a.ico-returns{
+    background: url('https://hudsonbaycompany--tracbuild.livepreview.salesforce-communities.com/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRmp&operationContext=CHATTER&contentId=05TS00000026Ib4') center 20px no-repeat;
+}
+
+.THIS a.ico-major-home-fashions{
+    background: url('https://hudsonbaycompany--tracbuild.livepreview.salesforce-communities.com/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRn3&operationContext=CHATTER&contentId=05TS00000026Iap') center 20px no-repeat;
+}
+
+.THIS a.ico-hb-rewards{
+    background: url('https://hudsonbaycompany--tracbuild.livepreview.salesforce-communities.com/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRmy&operationContext=CHATTER&contentId=05TS00000026Iak') center 20px no-repeat;
+}
+
+.THIS a.ico-payment-methods{
+    background: url('https://hudsonbaycompany--tracbuild.livepreview.salesforce-communities.com/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRn8&operationContext=CHATTER&contentId=05TS00000026Iaz') center 20px no-repeat;
+}
+
+.THIS a.ico-shipping{
+    background: url('https://hudsonbaycompany--tracbuild.livepreview.salesforce-communities.com/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRmp&operationContext=CHATTER&contentId=05TS00000026Ib4') center 20px no-repeat;
+}
+
+.THIS a.ico-my-account{
+    background: url('https://hudsonbaycompany--tracbuild.livepreview.salesforce-communities.com/sfsites/c/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068S0000000bRmo&operationContext=CHATTER&contentId=05TS00000026Iaa') center 20px no-repeat;
+}

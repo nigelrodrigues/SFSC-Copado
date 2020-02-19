@@ -1,0 +1,6 @@
+<design:component>
+    <design:attribute name="language" label="Language"/>
+    <design:attribute name="businessUnit" label="Business Unit"/>
+    <design:attribute name="englishCommunityUserId" label="English Community User Id"/>
+    <design:attribute name="frenchCommunityUserId" label="French Community User Id"/>
+</design:component>

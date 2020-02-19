@@ -1,0 +1,14 @@
+<aura:component controller="trac_UrgentMessageCtlr" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+
+    <aura:attribute name="contents" type="Urgent_Message__c[]" access="global"/>
+    <aura:attribute name='recordId' type='String'/>
+    <aura:attribute name="baseUrl" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.getContents}"/>
+
+    <div class="urgent-message-container">
+        <aura:iteration items="{!v.contents}" var="message">
+            <c:trac_UrgentMessage message="{!message}"/>
+        </aura:iteration>
+    </div>
+
+</aura:component>

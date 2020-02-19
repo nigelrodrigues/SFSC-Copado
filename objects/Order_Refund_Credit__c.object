@@ -1,0 +1,2402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Adjusted_Price__c</fullName>
+        <description>Price to be used for adjustments. Used in ORC Amount to Refund</description>
+        <externalId>false</externalId>
+        <formula>if(ispickval( Reason__c , &quot;Order Not Received&quot;)=TRUE,0,if(Price_Override__c&gt;0,Price_Override__c, Amount_Charged__c ))- (Amount_Charged__c * Discount__c) -  Manual_Adjustment__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Adjusted Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_Charged_Full_Order__c</fullName>
+        <description>Full order amount charged (excludes tax and shipping fee) - Discounted Amount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total amount charged on the order</inlineHelpText>
+        <label>Amount Charged - Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_Charged_Item__c</fullName>
+        <description>Individual Item Price (Discounted Amount). Line Item Only</description>
+        <externalId>false</externalId>
+        <label>Amount Charged - Item</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_Charged_Tax__c</fullName>
+        <description>Line item or full order tax amount depending on ORC Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Line item or full order tax amount depending on ORC Type</inlineHelpText>
+        <label>Amount Charged - Tax</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_Charged__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Line item or full order amount depending on ORC Type (excludes tax and shipping fee) - Discounted Amount (ie actual amount charged)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Line item or full order amount depending on ORC Type</inlineHelpText>
+        <label>Amount Charged ORC</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_Charged_to_Credit_Card__c</fullName>
+        <description>Total order amount charged to credit card.</description>
+        <externalId>false</externalId>
+        <label>Amount Charged to Credit Card</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_Charged_to_Gift_Card__c</fullName>
+        <description>Total order amount charged to gift card</description>
+        <externalId>false</externalId>
+        <label>Amount Charged to Gift Card(s)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Amount_to_Refund__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(OR(ispickval( Reason__c , &quot;Order Not Received&quot;)=TRUE, Quantity__c = Quantity_Not_Received__c ), Amount_Charged__c,Amount_Charged__c - Adjusted_Price__c) + if( Credit_Shipping_Fee__c =TRUE, Shipping_Fee__c ,0)+Other_Refund__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ORC Amount to Refund</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Required_Flag__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Approval_Required__c , IMAGE( &quot;/img/samples/flag_red.gif&quot;, &quot;Approval Required&quot; ), &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approval Required</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approval_Required__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Amount_to_Refund__c &gt;= 100 ||  Replacement_Gift_Card_Amount__c &gt;=100 || ISPICKVAL(Gift_Card_Amount__c, &quot;100&quot;) ) 
+&amp;&amp; 
+
+NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &apos;Closed&apos;) || ISPICKVAL(ORC_Status__c, &apos;Cancelled&apos;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approval Required</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>User who approved the ORC</description>
+        <externalId>false</externalId>
+        <label>Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Order_Refunds_Credits</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CC_Amount_Refund__c</fullName>
+        <description>Final amount to refund to the credit card. Populated via Process.</description>
+        <externalId>false</externalId>
+        <label>CC Amount Refund</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Case_Owner_Profile__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case__r.Case_Owner_Profile__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Owner Profile</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Owner_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>Case__r.Case_Owner_Role__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Owner Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Case__r.Owner:Queue.QueueName),
+ Case__r.Owner:User.FirstName &amp; &quot; &quot; &amp; Case__r.Owner:User.LastName,
+ Case__r.Owner:Queue.QueueName)</formula>
+        <label>Case Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <description>Case associated to the ORC</description>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Order Refunds/Credits</relationshipLabel>
+        <relationshipName>Order_Refunds_Credits</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Competitor_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Competitor Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Competitor_Web_Site__c</fullName>
+        <externalId>false</externalId>
+        <label>Competitor Web Site</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <description>The Country from the Order&apos;s Billing Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Country from the Order&apos;s Billing Address</inlineHelpText>
+        <label>Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Credit_Card_Alias__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit Card Alias</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Credit_Shipping_Fee__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Credit Shipping Fee</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Name_on_Order_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Name on Order Received</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Package_was_Returned__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Package was Returned</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_Sale__c</fullName>
+        <externalId>false</externalId>
+        <label>Date of Sale</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Decline_Reason__c</fullName>
+        <description>Reason Why ORC was declined</description>
+        <externalId>false</externalId>
+        <label>Reason (Required for Declines)</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Discount__c</fullName>
+        <externalId>false</externalId>
+        <label>Discount (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Final_Gift_Card_Amount__c</fullName>
+        <description>Total amount of the gift card to be issues including refunds and appeasements.</description>
+        <externalId>false</externalId>
+        <formula>New_GC_Amount__c +  Replacement_Gift_Card_Amount__c + if(isblank(text(Gift_Card_Amount__c)),0, value(text(Gift_Card_Amount__c)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Final Gift Card Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Full_Credit_Card_Number_Old__c</fullName>
+        <externalId>false</externalId>
+        <label>Full Credit Card Number OLD</label>
+        <length>80</length>
+        <maskChar>asterisk</maskChar>
+        <maskType>creditCard</maskType>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>EncryptedText</type>
+    </fields>
+    <fields>
+        <fullName>Full_Credit_Card_Number__c</fullName>
+        <description>Last 4 digit of the credit card. *** added by the integration feed</description>
+        <externalId>false</externalId>
+        <label>Credit Card Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gift_Card_Amount__c</fullName>
+        <description>GC amount from the flow that is for appeasement and not to refund/credit purchase.</description>
+        <externalId>false</externalId>
+        <label>Appeasement Gift Card Amount</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>25</fullName>
+                    <default>false</default>
+                    <label>25</label>
+                </value>
+                <value>
+                    <fullName>50</fullName>
+                    <default>false</default>
+                    <label>50</label>
+                </value>
+                <value>
+                    <fullName>75</fullName>
+                    <default>false</default>
+                    <label>75</label>
+                </value>
+                <value>
+                    <fullName>100</fullName>
+                    <default>false</default>
+                    <label>100</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Initial_Form_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used in page layout display filter. Populated by the ORC flow</description>
+        <externalId>false</externalId>
+        <label>Initial Form Completed</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Item_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Item Description</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Item_Name__c</fullName>
+        <description>Will be set to Full Order when a full order ORC is initiated.</description>
+        <externalId>false</externalId>
+        <label>Item Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loyalty_Tier__c</fullName>
+        <externalId>false</externalId>
+        <label>Loyalty Tier</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Basic</fullName>
+                    <default>false</default>
+                    <label>Basic</label>
+                </value>
+                <value>
+                    <fullName>Associate/Retiree</fullName>
+                    <default>false</default>
+                    <label>Associate/Retiree</label>
+                </value>
+                <value>
+                    <fullName>Regular</fullName>
+                    <default>false</default>
+                    <label>Regular</label>
+                </value>
+                <value>
+                    <fullName>PLCC non-Premier</fullName>
+                    <default>false</default>
+                    <label>PLCC non-Premier</label>
+                </value>
+                <value>
+                    <fullName>Plus</fullName>
+                    <default>false</default>
+                    <label>Plus</label>
+                </value>
+                <value>
+                    <fullName>Premier</fullName>
+                    <default>false</default>
+                    <label>Premier</label>
+                </value>
+                <value>
+                    <fullName>VIP</fullName>
+                    <default>false</default>
+                    <label>VIP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Manual_Adjustment__c</fullName>
+        <externalId>false</externalId>
+        <label>Manual Adjustment ($)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Method_of_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Method of Payment</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HBC PLCC</fullName>
+                    <default>false</default>
+                    <label>HBC PLCC</label>
+                </value>
+                <value>
+                    <fullName>L+T PLCC</fullName>
+                    <default>false</default>
+                    <label>L+T PLCC</label>
+                </value>
+                <value>
+                    <fullName>Gift Card</fullName>
+                    <default>false</default>
+                    <label>Gift Card</label>
+                </value>
+                <value>
+                    <fullName>HBC MasterCard</fullName>
+                    <default>false</default>
+                    <label>HBC MasterCard</label>
+                </value>
+                <value>
+                    <fullName>PayPal</fullName>
+                    <default>false</default>
+                    <label>PayPal</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>New_GC_Amount__c</fullName>
+        <description>Used in gift card replacement for new GC amount</description>
+        <externalId>false</externalId>
+        <label>New GC Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>New_Gift_Card_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>New Gift Card Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Unit_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>New Unit Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OMS_Transaction_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>OMS Transaction Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ORC_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>ORC Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Requires Approval</label>
+                </value>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Declined</fullName>
+                    <default>false</default>
+                    <label>Declined</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>Cancelled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Order_Items_Table__c</fullName>
+        <description>A full table of all the order line items for an order</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A full table of all the order line items for an order</inlineHelpText>
+        <label>Order Items Table</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Order_Number_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>Order Number Received</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Order Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Original_Gift_Card_Balance__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Gift Card Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Original_Gift_Card_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Gift Card Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Original_Gift_Card_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Original Gift Card Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Value 1</fullName>
+                    <default>false</default>
+                    <label>Value 1</label>
+                </value>
+                <value>
+                    <fullName>Value 2</fullName>
+                    <default>false</default>
+                    <label>Value 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Other_Refund__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Refund</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Price_Override_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Price Override Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Item on sale</fullName>
+                    <default>false</default>
+                    <label>Item on sale</label>
+                </value>
+                <value>
+                    <fullName>Amount charged different from order confirmation</fullName>
+                    <default>false</default>
+                    <label>Amount charged different from order confirmation</label>
+                </value>
+                <value>
+                    <fullName>Price tag on item different from price charged</fullName>
+                    <default>false</default>
+                    <label>Price tag on item different from price charged</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Price_Override__c</fullName>
+        <externalId>false</externalId>
+        <label>Price Override</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Promo_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Code</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Promo_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Quantity_Not_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity Not Received</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Line item quantity</inlineHelpText>
+        <label>Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <description>Type of ORC</description>
+        <externalId>false</externalId>
+        <label>Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Defective Item</fullName>
+                    <default>false</default>
+                    <label>Defective Item</label>
+                </value>
+                <value>
+                    <fullName>Gift Card (Refund)</fullName>
+                    <default>false</default>
+                    <label>Gift Card (Refund)</label>
+                </value>
+                <value>
+                    <fullName>Gift Card to Original Tender</fullName>
+                    <default>false</default>
+                    <label>Gift Card to Original Tender</label>
+                </value>
+                <value>
+                    <fullName>Missing Items</fullName>
+                    <default>false</default>
+                    <label>Missing Items</label>
+                </value>
+                <value>
+                    <fullName>Order Not Received</fullName>
+                    <default>false</default>
+                    <label>Order Not Received</label>
+                </value>
+                <value>
+                    <fullName>Price Adjustment</fullName>
+                    <default>false</default>
+                    <label>Price Adjustment</label>
+                </value>
+                <value>
+                    <fullName>Price Match</fullName>
+                    <default>false</default>
+                    <label>Price Match</label>
+                </value>
+                <value>
+                    <fullName>Price Override</fullName>
+                    <default>false</default>
+                    <label>Price Override</label>
+                </value>
+                <value>
+                    <fullName>Promo Questions/Problem</fullName>
+                    <default>false</default>
+                    <label>Promo Questions/Problem</label>
+                </value>
+                <value>
+                    <fullName>Return Problem</fullName>
+                    <default>false</default>
+                    <label>Return Problem</label>
+                </value>
+                <value>
+                    <fullName>Shipping Fee</fullName>
+                    <default>false</default>
+                    <label>Shipping Fee</label>
+                </value>
+                <value>
+                    <fullName>Tax Exclusion</fullName>
+                    <default>false</default>
+                    <label>Tax Exclusion</label>
+                </value>
+                <value>
+                    <fullName>Wrong Item Received</fullName>
+                    <default>false</default>
+                    <label>Wrong Item Received</label>
+                </value>
+                <value>
+                    <fullName>Wrong Order Received</fullName>
+                    <default>false</default>
+                    <label>Wrong Order Received</label>
+                </value>
+                <value>
+                    <fullName>Gift Card (appeasement)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Gift Card (appeasement)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Gift_Card_Change__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason for Gift Card Change</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Adjustment to Gift Card Online Order</fullName>
+                    <default>false</default>
+                    <label>Adjustment to Gift Card Online Order</label>
+                </value>
+                <value>
+                    <fullName>Bridal Registry</fullName>
+                    <default>false</default>
+                    <label>Bridal Registry</label>
+                </value>
+                <value>
+                    <fullName>Customer Service Issue</fullName>
+                    <default>false</default>
+                    <label>Customer Service Issue</label>
+                </value>
+                <value>
+                    <fullName>Delivery Issue</fullName>
+                    <default>false</default>
+                    <label>Delivery Issue</label>
+                </value>
+                <value>
+                    <fullName>Depleted</fullName>
+                    <default>false</default>
+                    <label>Depleted</label>
+                </value>
+                <value>
+                    <fullName>Fulfillment Issue</fullName>
+                    <default>false</default>
+                    <label>Fulfillment Issue</label>
+                </value>
+                <value>
+                    <fullName>Inactive/Purged</fullName>
+                    <default>false</default>
+                    <label>Inactive/Purged</label>
+                </value>
+                <value>
+                    <fullName>Lost/Stolen</fullName>
+                    <default>false</default>
+                    <label>Lost/Stolen</label>
+                </value>
+                <value>
+                    <fullName>Product Damaged</fullName>
+                    <default>false</default>
+                    <label>Product Damaged</label>
+                </value>
+                <value>
+                    <fullName>Returns</fullName>
+                    <default>false</default>
+                    <label>Returns</label>
+                </value>
+                <value>
+                    <fullName>Social Media Issue</fullName>
+                    <default>false</default>
+                    <label>Social Media Issue</label>
+                </value>
+                <value>
+                    <fullName>Virtual or Traditional</fullName>
+                    <default>false</default>
+                    <label>Virtual or Traditional</label>
+                </value>
+                <value>
+                    <fullName>Wrong Address</fullName>
+                    <default>false</default>
+                    <label>Wrong Address</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Refund_Gift_Card_Amount__c</fullName>
+        <description>Gift card amount that is not from an appeasement.</description>
+        <externalId>false</externalId>
+        <formula>Final_Gift_Card_Amount__c - if(isblank(text(Gift_Card_Amount__c))=false,Value(text(Gift_Card_Amount__c)),0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Refund Gift Card Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Replacement_Gift_Card_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Replacement Gift Card Amount</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SKU_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>SKU# Received</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SKU__c</fullName>
+        <externalId>false</externalId>
+        <label>SKU#</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipping_Fee__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Full Order Shipping Fee</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Full order shipping fee</inlineHelpText>
+        <label>Amount Charged - Shipping Fee</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Shipping_Method__c</fullName>
+        <externalId>false</externalId>
+        <label>Shipping Method</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Canada Post</fullName>
+                    <default>false</default>
+                    <label>Canada Post</label>
+                </value>
+                <value>
+                    <fullName>Canpar</fullName>
+                    <default>false</default>
+                    <label>Canpar</label>
+                </value>
+                <value>
+                    <fullName>FedEx</fullName>
+                    <default>false</default>
+                    <label>FedEx</label>
+                </value>
+                <value>
+                    <fullName>Purolator</fullName>
+                    <default>false</default>
+                    <label>Purolator</label>
+                </value>
+                <value>
+                    <fullName>Smartpost/USPS</fullName>
+                    <default>false</default>
+                    <label>Smartpost/USPS</label>
+                </value>
+                <value>
+                    <fullName>UPS</fullName>
+                    <default>false</default>
+                    <label>UPS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>State_Province__c</fullName>
+        <description>The State/Province from the Order&apos;s Billing Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The State/Province from the Order&apos;s Billing Address</inlineHelpText>
+        <label>State/Province</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status_in_OMS__c</fullName>
+        <externalId>false</externalId>
+        <label>Status in OMS</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Store__c</fullName>
+        <externalId>false</externalId>
+        <label>Store (MHF Only)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Store_temp__c</fullName>
+        <externalId>false</externalId>
+        <label>Store(temp)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tax_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Tax Code</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tax_Exclusion_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Tax Exclusion Code</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tax_Exclusion_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Tax Exclusion Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Value 1</fullName>
+                    <default>false</default>
+                    <label>Value 1</label>
+                </value>
+                <value>
+                    <fullName>Value 2</fullName>
+                    <default>false</default>
+                    <label>Value 2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_ORC_Amount__c</fullName>
+        <description>Total ORC amount including both refund and appeasements</description>
+        <externalId>false</externalId>
+        <formula>CC_Amount_Refund__c + Final_Gift_Card_Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total ORC Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Tracking_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Tracking Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Transaction Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UPC__c</fullName>
+        <description>Universal Product Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Universal Product Code</inlineHelpText>
+        <label>UPC</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Zip_Postal_Code__c</fullName>
+        <description>The Zip/Postal Code from the Order&apos;s Billing Address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Zip/Postal Code from the Order&apos;s Billing Address</inlineHelpText>
+        <label>Zip/Postal Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Order Refund/Credit</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>ORC_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Open_ORC</fullName>
+        <columns>NAME</columns>
+        <columns>Case__c</columns>
+        <columns>Case_Owner__c</columns>
+        <columns>Case_Owner_Role__c</columns>
+        <columns>Case_Owner_Profile__c</columns>
+        <columns>Order_Number__c</columns>
+        <columns>Reason__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ORC_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <label>All Open ORC</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ORC-{0000000}</displayFormat>
+        <label>Order Refund/Credit Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Order Refunds/Credits</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Gift_Card</fullName>
+        <active>true</active>
+        <label>Gift Card</label>
+        <picklistValues>
+            <picklist>Gift_Card_Amount__c</picklist>
+            <values>
+                <fullName>100</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Loyalty_Tier__c</picklist>
+            <values>
+                <fullName>Associate%2FRetiree</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Basic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PLCC non-Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method_of_Payment__c</picklist>
+            <values>
+                <fullName>Gift Card</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC MasterCard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L%2BT PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PayPal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ORC_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requires Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Original_Gift_Card_Status__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Price_Override_Reason__c</picklist>
+            <values>
+                <fullName>Amount charged different from order confirmation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Item on sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price tag on item different from price charged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason__c</picklist>
+            <values>
+                <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Refund%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing Items</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Not Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Adjustment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Match</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Override</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Questions%2FProblem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping Fee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tax Exclusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Item Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Order Received</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Gift_Card_Change__c</picklist>
+            <values>
+                <fullName>Adjustment to Gift Card Online Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bridal Registry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Depleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfillment Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive%2FPurged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost%2FStolen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Damaged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual or Traditional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Address</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Shipping_Method__c</picklist>
+            <values>
+                <fullName>Canada Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canpar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FedEx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purolator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smartpost%2FUSPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UPS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tax_Exclusion_Reason__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Price_Adjustment</fullName>
+        <active>true</active>
+        <label>Price Adjustment</label>
+        <picklistValues>
+            <picklist>Gift_Card_Amount__c</picklist>
+            <values>
+                <fullName>100</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Loyalty_Tier__c</picklist>
+            <values>
+                <fullName>Associate%2FRetiree</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Basic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PLCC non-Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method_of_Payment__c</picklist>
+            <values>
+                <fullName>Gift Card</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC MasterCard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L%2BT PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PayPal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ORC_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requires Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Original_Gift_Card_Status__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Price_Override_Reason__c</picklist>
+            <values>
+                <fullName>Amount charged different from order confirmation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Item on sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price tag on item different from price charged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason__c</picklist>
+            <values>
+                <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Refund%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing Items</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Not Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Adjustment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Match</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Override</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Questions%2FProblem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping Fee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tax Exclusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Item Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Order Received</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Gift_Card_Change__c</picklist>
+            <values>
+                <fullName>Adjustment to Gift Card Online Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bridal Registry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Depleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfillment Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive%2FPurged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost%2FStolen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Damaged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual or Traditional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Address</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Shipping_Method__c</picklist>
+            <values>
+                <fullName>Canada Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canpar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FedEx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purolator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smartpost%2FUSPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UPS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tax_Exclusion_Reason__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Shipping</fullName>
+        <active>true</active>
+        <label>Shipping</label>
+        <picklistValues>
+            <picklist>Gift_Card_Amount__c</picklist>
+            <values>
+                <fullName>100</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Loyalty_Tier__c</picklist>
+            <values>
+                <fullName>Associate%2FRetiree</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Basic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PLCC non-Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method_of_Payment__c</picklist>
+            <values>
+                <fullName>Gift Card</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC MasterCard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L%2BT PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PayPal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ORC_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requires Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Original_Gift_Card_Status__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Price_Override_Reason__c</picklist>
+            <values>
+                <fullName>Amount charged different from order confirmation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Item on sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price tag on item different from price charged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason__c</picklist>
+            <values>
+                <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Refund%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing Items</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Not Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Adjustment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Match</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Override</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Questions%2FProblem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping Fee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tax Exclusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Item Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Order Received</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Gift_Card_Change__c</picklist>
+            <values>
+                <fullName>Adjustment to Gift Card Online Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bridal Registry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Depleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfillment Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive%2FPurged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost%2FStolen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Damaged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual or Traditional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Address</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Shipping_Method__c</picklist>
+            <values>
+                <fullName>Canada Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canpar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FedEx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purolator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smartpost%2FUSPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UPS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tax_Exclusion_Reason__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>Price_Override_Reason</fullName>
+        <active>true</active>
+        <description>Must select price override reason if a price override amount is entered.</description>
+        <errorConditionFormula>ispickval( Reason__c ,&quot;Price Override&quot;) &amp;&amp;   isblank(Text(Price_Override_Reason__c))</errorConditionFormula>
+        <errorDisplayField>Price_Override_Reason__c</errorDisplayField>
+        <errorMessage>Must select a Price Override Reason (Error ORC-01)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Support_Agent_Cant_Approve_ORCs</fullName>
+        <active>true</active>
+        <description>Validation Rule prevents ORC Status from being changed to &apos;Closed&apos; by HBC Support Agents.</description>
+        <errorConditionFormula>ISPICKVAL( ORC_Status__c , &apos;Approved&apos;) &amp;&amp;
+ISCHANGED(ORC_Status__c ) &amp;&amp;
+NOT(OR(
+(CONTAINS($Profile.Name, &apos;Service Excellence Agent&apos;)),
+(CONTAINS($Profile.Name, &apos;Executive Services&apos;)),
+(CONTAINS($Profile.Name, &apos;Support Management&apos;)),
+(CONTAINS($Profile.Name, &apos;Support Team Lead&apos;)),
+(CONTAINS($Profile.Name, &apos;Administrator&apos;))
+))</errorConditionFormula>
+        <errorDisplayField>ORC_Status__c</errorDisplayField>
+        <errorMessage>Only the Service Excellence Team is allowed to approve ORC&apos;s (Error ORC-03)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Support_Agent_Cant_Close_ORCs</fullName>
+        <active>true</active>
+        <description>Validation Rule prevents ORC Status from being changed to &apos;Closed&apos; by HBC Support Agents.</description>
+        <errorConditionFormula>( ISPICKVAL( ORC_Status__c , &apos;Closed&apos;) ) &amp;&amp;(CONTAINS($Profile.Name, &apos;Support Agent&apos;))</errorConditionFormula>
+        <errorDisplayField>ORC_Status__c</errorDisplayField>
+        <errorMessage>Only the POS Team is allowed to close ORC&apos;s once they have been processed (Error ORC-02)</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,49 @@
+/**
+ * @description array of cards to display the available topics in the community
+ * @name trac_TopicNavigator
+ * @author Daniel Labonte, Traction on Demand
+ * @date 2019-07-31
+ */
+article {
+    cursor: pointer;
+    height: 114px;
+}
+
+h3 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 80px;
+    margin-bottom: 5px;
+    font-family: helvetica, sanes-serif;
+}
+
+.widen-box {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+a {
+    border-color: #D8D8D8;
+    display:block;
+    height: 150px;
+    text-decoration: none;
+}
+
+a:hover {
+    border-color: #666666;
+}
+
+@media only screen and (max-width: 409px) {
+    .slds-size_1-of-2 a {
+        height: 165px;
+    }
+}
+
+.custom-padding-top {
+    /*margin-top: 30px;*/
+}
+
+.custom-padding-bottom {
+    margin-bottom: 26px;
+}

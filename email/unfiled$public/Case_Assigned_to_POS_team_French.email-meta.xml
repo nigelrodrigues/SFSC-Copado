@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to customers when case is assigned to POS team - French</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Assigned to POS team - French</name>
+    <style>none</style>
+    <subject>Nous travaillons à la résolution de votre problème</subject>
+    <textOnly>Bonjour {!Contact.FirstName},
+
+Merci d’avoir communiqué avec La Baie d’Hudson. Nous réglons les derniers détails de la solution dont nous avons discuté au téléphone. Vous recevrez un courriel lorsque tout sera terminé. Pour toute question à ce sujet, n’hésitez pas à communiquer de nouveau avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
+
+COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT
+
+Sincères salutations. Service à la clientèle de La Baie d’Hudson</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

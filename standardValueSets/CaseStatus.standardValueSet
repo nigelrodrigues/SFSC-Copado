@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Team Assistance Needed</fullName>
+        <default>false</default>
+        <label>Team Lead Assistance Needed</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Service Excellence Review</fullName>
+        <default>false</default>
+        <label>Awaiting Service Excellence Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>POS Team</fullName>
+        <default>false</default>
+        <label>POS Team</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending Fraud Team</fullName>
+        <default>false</default>
+        <label>Pending Fraud Team</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow Up</fullName>
+        <default>false</default>
+        <label>Follow Up</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>System Issue</fullName>
+        <default>false</default>
+        <label>System Issue</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Internal Response</fullName>
+        <default>false</default>
+        <label>Awaiting Internal Response</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Customer Response</fullName>
+        <default>false</default>
+        <label>Awaiting Customer Response</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Response Received</fullName>
+        <default>false</default>
+        <label>Response Received</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>New</fullName>
+        <default>true</default>
+        <label>New</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>MNR Review</fullName>
+        <default>false</default>
+        <label>MNR Review</label>
+        <closed>false</closed>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used to filter certain triggers by object and record type</description>
+    <fields>
+        <fullName>Enable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Object_Name__c</fullName>
+        <description>The API name of the object</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Specify the Object Type (E.g. Case)</inlineHelpText>
+        <label>Object Name</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Name__c</fullName>
+        <description>The DeveloperName of the Record Type</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Specify the DeveloperName of the record type (E.g. Technical_Support)</inlineHelpText>
+        <label>Record Type Name</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Trigger Record Type</label>
+    <listViews>
+        <fullName>ALL</fullName>
+        <columns>Object_Name__c</columns>
+        <columns>Record_Type_Name__c</columns>
+        <columns>Enable__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>ALL</label>
+    </listViews>
+    <pluralLabel>Trigger Record Types</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

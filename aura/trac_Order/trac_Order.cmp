@@ -1,0 +1,216 @@
+<!--
+ - Created by ragrawal on 6/26/2019.
+ -->
+
+<aura:component description="trac_Order" controller="trac_OrderSearchController" extends="c:trac_BaseComponent">
+
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="order" type="Object"/>
+    <aura:attribute name="showLineItem" type="Boolean" default="false"/>
+    <aura:attribute name="callOrderDetailAPI" type="Boolean" default="false"/>
+    <aura:attribute name="noOLI" type="String" default="No Order Line Items for this order." />
+    <aura:attribute name="noOrderLineItems" type="Boolean" default="false" />
+    <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="hasUnresolvedHolds" type="Boolean" default="false" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p><lightning:icon iconName="utility:user" alternativeText="customer" /> {!v.order.CustomerFirstName + ' ' + v.order.CustomerLastName}</p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p><lightning:icon iconName="utility:email" alternativeText="customer" /> {!v.order.CustomerContactID}</p>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p><lightning:icon iconName="utility:call" alternativeText="customer" /> {!v.order.PersonInfoBillTo.DayPhone}</p>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    <div>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Order Number</p>
+                    <p>{!v.order.OrderNo}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Postal Code</p>
+                    <p>{!v.order.PersonInfoBillTo.ZipCode}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Status</p>
+                    <p>{!v.order.Status} <aura:if isTrue="{!v.hasUnresolvedHolds}"><lightning:icon iconName="utility:lock" alternativeText="On Hold" size="xx-small"/></aura:if></p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Order Date</p>
+                    <p><lightning:formattedDateTime value="{!v.order.OrderDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit"/></p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Total Amount</p>
+                    <p>{!v.order.PriceInfo.TotalAmount}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Channel</p>
+                    <p>{!v.order.EntryType}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Enterprise Code</p>
+                    <p>{!v.order.EnterpriseCode}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Is ShopRunner Order</p>
+                    <p>{! empty(v.order.Extn.ExtnShopRnrAuthTok) ? 'No' : 'Yes'}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Is BorderFree Order</p>
+                    <p>{!v.order.Extn.ExtnIsFiftyOne}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">BorderFree Order No</p>
+                    <p>{!v.order.Extn.ExtnFiftyOneOrderNo}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Walmart Order Number</p>
+                    <p>{!v.order.CustCustPONo}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Is Draft Order</p>
+                    <p>{!v.order.DraftOrderFlag}</p>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <c:trac_CancelOrder order="{!v.order}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <c:trac_AddNote order="{!v.order}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <c:trac_OrderRefundCredit order="{!v.order}" caseRecord="{!v.caseRecord}"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <lightning:button label="Link to Case" variant="neutral" onclick="{!c.handleImport}" disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
+            </lightning:layoutItem>
+
+        </lightning:layout>
+
+        <lightning:tabset selectedTabId="order">
+
+            <lightning:tab label="Order Lines" id="order">
+                <aura:iteration items="{!v.order.OrderLines.OrderLine}" var="orderLine">
+                    <c:trac_OrderLineItem orderLineItem="{!orderLine}" order="{!v.order}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+                </aura:iteration>
+            </lightning:tab>
+
+            <lightning:tab label="Billing/Shipping" id="shipping">
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem size="12">
+                        <lightning:layout>
+
+                            <lightning:layoutItem size="6" padding="around-small">
+                                <div class="header-column">
+                                    <p class="field-title slds-form-element__label slds-no-flex">Ship To</p>
+                                    <aura:if isTrue="{!not(empty(v.order.OrderLines.OrderLine))}">
+                                        <p>{!v.order.OrderLines.OrderLine[0].PersonInfoShipTo.FirstName + ' ' + v.order.OrderLines.OrderLine[0].PersonInfoShipTo.LastName}</p>
+                                        <p>{!v.order.OrderLines.OrderLine[0].PersonInfoShipTo.DayPhone}</p>
+                                        <p>{!v.order.OrderLines.OrderLine[0].PersonInfoShipTo.AddressLine1}</p>
+                                        <p>{!v.order.OrderLines.OrderLine[0].PersonInfoShipTo.City + ' ' + v.order.OrderLines.OrderLine[0].PersonInfoShipTo.State + ' ' + v.order.OrderLines.OrderLine[0].PersonInfoShipTo.ZipCode}</p>
+                                        <p>{!v.order.OrderLines.OrderLine[0].PersonInfoShipTo.Country}</p>
+                                    </aura:if>
+                                </div>
+                            </lightning:layoutItem>
+
+                            <lightning:layoutItem size="6" padding="around-small">
+                                <div class="header-column">
+                                    <p class="field-title slds-form-element__label slds-no-flex">Bill To</p>
+                                    <p>{!v.order.PersonInfoBillTo.FirstName + ' ' + v.order.PersonInfoBillTo.LastName}</p>
+                                    <p>{!v.order.PersonInfoBillTo.DayPhone}</p>
+                                    <p>{!v.order.PersonInfoBillTo.AddressLine1}</p>
+                                    <p>{!v.order.PersonInfoBillTo.City + ' ' + v.order.PersonInfoBillTo.State + ' ' + v.order.PersonInfoBillTo.ZipCode}</p>
+                                    <p>{!v.order.PersonInfoBillTo.Country}</p>
+                                </div>
+                            </lightning:layoutItem>
+
+                        </lightning:layout>
+                    </lightning:layoutItem>
+                </lightning:layout>
+
+                <aura:iteration items="{!v.order.Shipments.Shipment}" var="shipment">
+                        <c:trac_OrderShippingDetails shipment="{!shipment}" order="{!v.order}" caseRecord="{!v.caseRecord}"/>
+                </aura:iteration>
+            </lightning:tab>
+            <lightning:tab label="Pricing/Payment" id="payment">
+
+                <c:trac_OverallTotals overallTotal="{!v.order.OverallTotals}"/>
+
+                <aura:iteration items="{!v.order.PaymentMethods.PaymentMethod}" var="paymentMethod">
+                    <c:trac_PaymentMethod paymentMethod="{!paymentMethod}"/>
+                </aura:iteration>
+            </lightning:tab>
+            <lightning:tab label="Notes" iconName="{!not(empty(v.order.Notes.Note)) ? 'utility:note' : ''}" id="notes">
+                <aura:iteration items="{!v.order.Notes.Note}" var="note">
+                    <c:trac_Note note="{!note}"/>
+                </aura:iteration>
+            </lightning:tab>
+            <aura:if isTrue="{!not(empty(v.order.ReturnOrders.ReturnOrder))}">
+                <lightning:tab label="Returns" id="returns">
+                    <aura:iteration items="{!v.order.ReturnOrders.ReturnOrder}" var="returnOrder">
+                        <c:trac_ReturnOrder returnOrder="{!returnOrder}"/>
+                    </aura:iteration>
+                </lightning:tab>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.order.OrderHoldTypes.OrderHoldType))}">
+                <lightning:tab label="Holds" id="holds">
+                    <aura:iteration items="{!v.order.OrderHoldTypes.OrderHoldType}" var="orderHold">
+                        <c:trac_OrderHold orderHold="{!orderHold}"/>
+                    </aura:iteration>
+                </lightning:tab>
+            </aura:if>
+        </lightning:tabset>
+
+    </div>
+</aura:component>

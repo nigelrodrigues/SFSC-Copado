@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>Hudson Bay</container>
+    <containerType>Network</containerType>
+    <label>Default Navigation</label>
+    <navigationMenuItem>
+        <label>Help Center Home</label>
+        <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Shop thebay.com</label>
+        <position>2</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>https://www.thebay.com/</target>
+        <type>ExternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Français</label>
+        <position>3</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>https://service.labaie.com</target>
+        <targetPreference>OpenExternalLinkInSameTab</targetPreference>
+        <type>ExternalLink</type>
+    </navigationMenuItem>
+</NavigationMenu>

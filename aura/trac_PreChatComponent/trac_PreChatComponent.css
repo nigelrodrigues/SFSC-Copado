@@ -1,0 +1,13 @@
+/**
+ * @description ${DESCRIPTION}
+ * @name trac_PreChatComponent.css
+ * @author Daniel Labonte, Traction on Demand
+ * @date 2019-09-04
+ */
+.THIS {
+}
+
+.THIS .custom-container {
+    position: relative;
+    text-align: left;
+}

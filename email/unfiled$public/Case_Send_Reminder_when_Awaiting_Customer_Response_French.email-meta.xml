@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Reminder when Awaiting Customer Response (French)</name>
+    <style>none</style>
+    <subject>Nous avons besoin de plus de renseignements pour pouvoir vous aider</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you for contacting {!Case.Business_Unit__c}! We&apos;re happy to assist you, but we need additional information. Please refer to the email we sent 5 days ago. If we do not receive your response in 2 days time, we will be closing this request. If you need to contact us about this issue, please reply to this email or contact us and refer to case {!Case.CaseNumber}
+
+All the best,
+
+Your {!Case.Business_Unit__c} Customer Service Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

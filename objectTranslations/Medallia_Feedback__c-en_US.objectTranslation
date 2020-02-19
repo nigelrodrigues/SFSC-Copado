@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Medallia Feedback</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Medallia Feedback</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- medalliaOutbound_updateRecord --></label>
+        <name>medalliaOutbound_updateRecord</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Account - Id --></label>
+        <name>Account_Id__c</name>
+        <relationshipLabel><!-- Medallia Feedbacks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Alert - Close Flag --></label>
+        <name>Alert_Close_Flag__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Alert - Closed date --></label>
+        <name>Alert_Closed_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Alert - Logs --></label>
+        <name>Alert_Logs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Alert - Type --></label>
+        <name>Alert_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Alert - Yn Flag --></label>
+        <name>Alert_Yn_Flag__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact - Email --></label>
+        <name>Contact_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact - Firstname --></label>
+        <name>Contact_Firstname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact - Id --></label>
+        <name>Contact_Id__c</name>
+        <relationshipLabel><!-- Medallia Feedbacks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact - Lastname --></label>
+        <name>Contact_Lastname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Reason MHF --></label>
+        <name>Contact_Reason_MHF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Reason --></label>
+        <name>Contact_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Follow-up case - Number --></label>
+        <name>Follow_up_case_Number__c</name>
+        <relationshipLabel><!-- Medallia Feedbacks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Issue Resolution --></label>
+        <name>Issue_Resolution__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- LTR Score --></label>
+        <name>LTR_Score__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- NPS --></label>
+        <name>NPS__c</name>
+        <picklistValues>
+            <masterLabel>Detractor</masterLabel>
+            <translation><!-- Detractor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passive</masterLabel>
+            <translation><!-- Passive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promoter</masterLabel>
+            <translation><!-- Promoter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Original case - Number --></label>
+        <name>Original_case_Number__c</name>
+        <relationshipLabel><!-- Medallia Feedbacks (Original case - Number) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Original case - Owner id --></label>
+        <name>Original_case_Owner_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record - Creation date --></label>
+        <name>Record_Creation_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record - Medallia Id --></label>
+        <name>Record_Medallia_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record - Reason for exclusion --></label>
+        <name>Record_Reason_for_exclusion__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record - Status --></label>
+        <name>Record_Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery Failed</masterLabel>
+            <translation><!-- Delivery Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery bounced</masterLabel>
+            <translation><!-- Delivery bounced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invited</masterLabel>
+            <translation><!-- Invited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opted Out</masterLabel>
+            <translation><!-- Opted Out --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reminded</masterLabel>
+            <translation><!-- Reminded --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Response - Date --></label>
+        <name>Response_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response - Feedback URL --></label>
+        <name>Response_Feedback_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response - Main score --></label>
+        <name>Response_Main_score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response - Main score comment --></label>
+        <name>Response_Main_score_comment__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>POS - Bay Escalations</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>POS_Bay</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueRoutingConfig>Action_Required</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

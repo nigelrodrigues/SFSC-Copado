@@ -1,0 +1,54 @@
+<!--
+ - Created by ragrawal on 6/26/2019.
+ -->
+
+<aura:component description="trac_OrderList">
+
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="orders" type="Object[]"/>
+    <aura:attribute name="businessUnit" type="String" />
+
+    <div class="slds-scrollable" >
+        <!-- TABLE CONTENT-->
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+            <tr class="slds-text-title_caps">
+                <!--<th scope="col">
+                    <div class="slds-truncate">S No.</div>
+                </th>-->
+                <th scope="col">
+                    <div class="slds-truncate">Order Number</div>
+                </th>
+                <!--<th scope="col">
+                    <div class="slds-truncate">Customer Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">Postal Code</div>
+                </th>-->
+                <th scope="col" style="width: 16%;">
+                    <div>Status</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">Order Date</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">Order Total</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">More</div>
+                </th>
+                <th scope="col">
+                </th>
+            </tr>
+            </thead>
+        <!--</table>-->
+            <tbody>
+                <aura:iteration items="{!v.orders}" var="order" indexVar="count">
+                    <c:trac_DisplayOrdersInList order="{!order}" count="{!count}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+            </aura:iteration>
+            </tbody>
+        </table>
+
+    </div>
+
+</aura:component>

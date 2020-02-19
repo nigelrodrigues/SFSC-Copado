@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Configuration for which Case statuses will handle which actions on Order Refund Credit</description>
+    <fields>
+        <fullName>Enabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Should this process run?</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Should this process run?</inlineHelpText>
+        <label>Enabled</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Object__c</fullName>
+        <defaultValue>&quot;Case&quot;</defaultValue>
+        <description>The Object the process is running on</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Object the Process is running on</inlineHelpText>
+        <label>Object</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Case</fullName>
+                    <default>true</default>
+                    <label>Case</label>
+                </value>
+                <value>
+                    <fullName>Order Refund Credit</fullName>
+                    <default>false</default>
+                    <label>Order Refund Credit</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Process__c</fullName>
+        <description>The apex process that will be run</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The apex process that will be run</inlineHelpText>
+        <label>Process</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Set ORC Approval Status</fullName>
+                    <default>true</default>
+                    <label>Set ORC Approval Status</label>
+                </value>
+                <value>
+                    <fullName>Set Case Status</fullName>
+                    <default>false</default>
+                    <label>Set Case Status</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>The Status of the Record</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The Status of the Record</inlineHelpText>
+        <label>Status</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Order Refund Credit Case Status Setting</label>
+    <listViews>
+        <fullName>All_with_Info</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Object__c</columns>
+        <columns>Status__c</columns>
+        <columns>Process__c</columns>
+        <columns>Enabled__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All with Info</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Order Refund Credit Case Status Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

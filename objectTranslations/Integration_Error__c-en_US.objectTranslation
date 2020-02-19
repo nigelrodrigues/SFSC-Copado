@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Integration Error</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Integration Errors</value>
+    </caseValues>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- The URL of the endpoint where the payload was sent --></help>
+        <label><!-- Endpoint --></label>
+        <name>Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record ID --></label>
+        <name>Record_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request ID --></label>
+        <name>Request_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Request of the callout if applicable --></help>
+        <label><!-- Request --></label>
+        <name>Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service --></label>
+        <name>Service__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

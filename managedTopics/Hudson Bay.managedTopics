@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ManagedTopics xmlns="http://soap.sforce.com/2006/04/metadata">
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:Gifts &amp; Gift Registry</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Gifts &amp; Gift Registry</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:Hudson&apos;s Bay Rewards</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Hudson&apos;s Bay Rewards</name>
+        <parentName></parentName>
+        <position>6</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:Major Home Purchases</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Major Home Purchases</name>
+        <parentName></parentName>
+        <position>3</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:My Account</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>My Account</name>
+        <parentName></parentName>
+        <position>4</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:Order Status</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Order Status</name>
+        <parentName></parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:Payment Methods</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Payment Methods</name>
+        <parentName></parentName>
+        <position>5</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:Returns</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Returns</name>
+        <parentName></parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Hudson Bay.Navigational:Shipping</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Shipping</name>
+        <parentName></parentName>
+        <position>7</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+</ManagedTopics>

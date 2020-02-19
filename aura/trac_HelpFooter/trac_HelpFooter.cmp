@@ -1,0 +1,30 @@
+<!--
+ - @description Still Need Help Lightining Component
+ - @author      Thiago Santos, Traction on Demand
+ - @date        2019-07-18
+ -->
+<aura:component implements="forceCommunity:availableForAllPageTypes" description="trac_HelpFooter">
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="headingLabel" type="String"/>
+    <aura:attribute name="linkLabel" type="String"/>
+    <aura:attribute name="linkUrl" type="String" />
+
+    <!-- MARKUP -->
+    <div class="slds-grid slds-wrap">
+        <div class="hbc-help-footer slds-size_2-of-2 slds-p-around_xx-large">
+            <div class="slds-align_absolute-center">
+                <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col hbc-help-footer-cloud"></div>
+                    <div class="slds-col">
+                        <h3 class="slds-align_absolute-center">{!v.headingLabel}</h3>
+                    </div>
+                    <div class="slds-col slds-p-top_x-small">
+                        <ul class="slds-align_absolute-center">
+                            <li><a href="{!v.linkUrl}">{!v.linkLabel}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

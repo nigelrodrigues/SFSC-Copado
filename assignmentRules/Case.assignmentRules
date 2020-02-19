@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>HBC Case Assignment Rules</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>La_Baie</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Business_Unit__c</field>
+                <operation>equals</operation>
+                <value>Hudson&apos;s Bay</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Language__c</field>
+                <operation>equals</operation>
+                <value>French</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Contact.Language__c</field>
+                <operation>equals</operation>
+                <value>French</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>MHF</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+            <criteriaItems>
+                <field>Case.Business_Unit__c</field>
+                <operation>equals</operation>
+                <value>Hudson&apos;s Bay</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Type__c</field>
+                <operation>equals</operation>
+                <value>Major Home Fashion</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Business_Unit__c</field>
+                <operation>equals</operation>
+                <value>MHF</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>LT_Main</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Business_Unit__c</field>
+                <operation>equals</operation>
+                <value>Lord + Taylor</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>The_Bay_Main</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Support Case</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

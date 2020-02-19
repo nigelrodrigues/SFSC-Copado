@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CTI Field Value Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CTI Field Value Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- CTI Value --></label>
+        <name>CTI_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>Field_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Value Mapping --></label>
+        <name>Parent_Mapping__c</name>
+        <relationshipLabel><!-- Field Value Mapping --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

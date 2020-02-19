@@ -1,0 +1,49 @@
+<!--
+ - Created by jhoran on 8/20/2019.
+ -->
+
+<aura:component description="trac_OrderHold">
+    <aura:attribute name="orderHold" type="Object"/>
+
+    <div>
+        <aura:if isTrue="{!not(empty(v.orderHold))}">
+
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12">
+                    <lightning:layout>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Hold Type</p>
+                                <p>{!v.orderHold.HoldType}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Reason</p>
+                                <p>{!v.orderHold.ReasonText}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Status</p>
+                                <p>{!v.orderHold.StatusDescription}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Date</p>
+                                <p><lightning:formattedDateTime value="{!v.orderHold.LastHoldTypeDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit"/></p>
+                            </div>
+                        </lightning:layoutItem>
+
+                    </lightning:layout>
+                </lightning:layoutItem>
+
+            </lightning:layout>
+        </aura:if>
+    </div>
+</aura:component>

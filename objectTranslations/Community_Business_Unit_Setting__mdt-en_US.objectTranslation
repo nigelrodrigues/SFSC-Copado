@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Community Business Unit Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Community Business Unit Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- The Business Unit or Banner, should match the options in the Banner__c field on Urgent Message --></help>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+        <picklistValues>
+            <masterLabel>Hudson&apos;s Bay</masterLabel>
+            <translation><!-- Hudson&apos;s Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lord + Taylor</masterLabel>
+            <translation><!-- Lord + Taylor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MHF</masterLabel>
+            <translation><!-- MHF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The name of the Community in the &quot;Network&quot; object and in &quot;All Communities&quot; --></help>
+        <label><!-- Community Network Name --></label>
+        <name>Community_Network_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

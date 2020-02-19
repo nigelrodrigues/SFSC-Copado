@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecommendationStrategy xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contextRecordType>Case</contextRecordType>
+    <filter>
+        <childNode>All_Cases</childNode>
+        <label>Email is blank</label>
+        <name>Email_is_blank</name>
+        <expression>ISBLANK($Record.ContactEmail)</expression>
+    </filter>
+    <label>Support</label>
+    <recommendationLoad>
+        <label>All Cases</label>
+        <name>All_Cases</name>
+        <condition>
+            <field>IsDeleted</field>
+            <operator>EQUALS</operator>
+            <value>
+                <type>BOOLEAN</type>
+                <value>false</value>
+            </value>
+        </condition>
+        <conditionLogic>and</conditionLogic>
+    </recommendationLoad>
+    <union>
+        <childNode>Email_is_blank</childNode>
+        <label>Output</label>
+        <name>Output_09d04bb702eb438782be43c31994dda2</name>
+    </union>
+</RecommendationStrategy>

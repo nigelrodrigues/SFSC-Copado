@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is used to hold aggregated Case Time Log records.  A batch process updates this object based on values in custom meta data settings.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Aggregation_Days__c</fullName>
+        <description>The number of days in the date ranges for this record&apos;s aggregation.</description>
+        <externalId>false</externalId>
+        <formula>Aggregation_End_Date__c -  Aggregation_Start_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The number of days in the date ranges for this record&apos;s aggregation.</inlineHelpText>
+        <label>Aggregation Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Aggregation_End_Date__c</fullName>
+        <description>The end date for the range of days to be aggregated.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The end date for the range of days to be aggregated.</inlineHelpText>
+        <label>Aggregation End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Aggregation_Name__c</fullName>
+        <description>The name of a particular aggregration made up of the Start &lt;field&gt; and End &lt;field&gt; text: Owner - Owner New,  Status - Status New,   Owner - Status.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of a particular aggregration made up of the Start &lt;field&gt; and End &lt;field&gt; text: Owner - Owner New,  Status - Status New,   Owner - Status.</inlineHelpText>
+        <label>Aggregation Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Aggregation_Start_Date__c</fullName>
+        <description>The start date for the range of days to be aggregated.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The start date for the range of days to be aggregated.</inlineHelpText>
+        <label>Aggregation Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Aggregation_Type__c</fullName>
+        <description>The type of a particular aggregration made up of the Start and End field labels: Owner - Owner New,  Status - Status New,   Owner - Status.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of a particular aggregration made up of the Start and End field labels: Owner - Owner New,  Status - Status New,   Owner - Status.</inlineHelpText>
+        <label>Aggregation Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Owner - Owner New</fullName>
+                    <default>false</default>
+                    <label>Owner - Owner New</label>
+                </value>
+                <value>
+                    <fullName>Status - Status New</fullName>
+                    <default>false</default>
+                    <label>Status - Status New</label>
+                </value>
+                <value>
+                    <fullName>Owner - Status</fullName>
+                    <default>false</default>
+                    <label>Owner - Status</label>
+                </value>
+                <value>
+                    <fullName>Touches</fullName>
+                    <default>false</default>
+                    <label>Touches</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Average_Time_Log_Touches__c</fullName>
+        <description>The average number of Time Logs per Case across the aggregated date range.   This is the average number of Touches.</description>
+        <externalId>false</externalId>
+        <formula>No_of_Time_Logs_Touched__c  /   No_of_Cases_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average number of Time Logs per Case across the aggregated date range.   This is the average number of Touches.</inlineHelpText>
+        <label>Average Time Log Touches</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biz_Avg_Hours__c</fullName>
+        <description>Business Hours Duration Average in Hours</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration_Average__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Business Hours Duration Average in Hours</inlineHelpText>
+        <label>Biz Avg Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biz_Avg_Min__c</fullName>
+        <description>Business Hours Duration Average converted from seconds to minutes.</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration_Average__c /60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Business Hours Duration Average converted from seconds to minutes.</inlineHelpText>
+        <label>Biz Avg Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biz_Max_Hours__c</fullName>
+        <description>Business Hours Duration Maximum in Hours</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration_Maximum__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Business Hours Duration Maximum in Hours</inlineHelpText>
+        <label>Biz Max Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biz_Max_Min__c</fullName>
+        <description>Business Hours Duration Maximum in minutes</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration_Maximum__c /60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Business Hours Duration Maximum in minutes</inlineHelpText>
+        <label>Biz Max Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biz_Min_Hours__c</fullName>
+        <description>Business Hours Duration Minimum in Hours</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration_Minimum__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Business Hours Duration Minimum in Hours</inlineHelpText>
+        <label>Biz Min Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biz_Min_Min__c</fullName>
+        <description>Business Hours Minimum in minutes</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration_Minimum__c /60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Business Hours Minimum in minutes</inlineHelpText>
+        <label>Biz Min Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Biz_Sum_Hours__c</fullName>
+        <description>Business Hours Duration Sum in Hours</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration_Sum__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Business Hours Duration Sum in Hours</inlineHelpText>
+        <label>Biz Sum Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Duration_Average__c</fullName>
+        <description>The average business hours time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <formula>0 + Business_Hours_Duration_Sum__c / No_of_Time_Logs_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average business hours time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Business Hours Duration Average</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Duration_Maximum__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>The maximum business hours time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The maximum business hours time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Business Hours Duration Maximum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Duration_Minimum__c</fullName>
+        <description>The minimum business hours time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The minimum business hours time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Business Hours Duration Minimum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Duration_Sum__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>The sum of business hours time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The sum of business hours time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Business Hours Duration Sum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Avg_Days__c</fullName>
+        <description>Calendar Hours Duration Average in Days</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Duration_Average__c /(3600* 24)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Average in Days</inlineHelpText>
+        <label>Cal Avg Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Avg_Hours__c</fullName>
+        <description>Calendar Hours Duration Average in Hours</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Duration_Average__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Average in Hours</inlineHelpText>
+        <label>Cal Avg Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Avg_Min__c</fullName>
+        <description>Calendar Hours Duration Average converted from seconds to minutes.</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Duration_Average__c /60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Average converted from seconds to minutes.</inlineHelpText>
+        <label>Cal Avg Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Max_Days__c</fullName>
+        <description>Calendar Hours Duration Maximum in Hours</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Maximum__c / (3600 * 24)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Maximum in Hours</inlineHelpText>
+        <label>Cal Max Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Max_Hours__c</fullName>
+        <description>Calendar Hours Duration Maximum in Hours</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Maximum__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Maximum in Hours</inlineHelpText>
+        <label>Cal Max Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Max_Min__c</fullName>
+        <description>Calender Hours Duration Maximum in minutes</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Maximum__c /60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calender Hours Duration Maximum in minutes</inlineHelpText>
+        <label>Cal Max Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Min_Days__c</fullName>
+        <description>Calendar Hours Duration Minimum in Days</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Minimum__c/ (3600*24)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Minimum in Days</inlineHelpText>
+        <label>Cal Min Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Min_Hours__c</fullName>
+        <description>Calendar Hours Duration Minimum in Hours</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Minimum__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Minimum in Hours</inlineHelpText>
+        <label>Cal Min Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Min_Min__c</fullName>
+        <description>Calender Hours Duration Minimum in minutes</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Minimum__c / 60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calender Hours Duration Minimum in minutes</inlineHelpText>
+        <label>Cal Min Min</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Sum_Days__c</fullName>
+        <description>Calendar Hours Duration Maximum in Days</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Sum__c /(3600*24)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Maximum in Days</inlineHelpText>
+        <label>Cal Sum Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cal_Sum_Hours__c</fullName>
+        <description>Calendar Hours Duration Sum in Hours</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Sum__c /3600</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Calendar Hours Duration Sum in Hours</inlineHelpText>
+        <label>Cal Sum Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Hours_Duration_Average__c</fullName>
+        <description>The average calendar time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Hours_Sum__c /  No_of_Time_Logs_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average calendar time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Calendar Hours Duration Average</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Hours_Maximum__c</fullName>
+        <description>The maximum calendar time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The maximum calendar time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Calendar Hours Maximum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Hours_Minimum__c</fullName>
+        <description>The minimum calendar time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The minimum calendar time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Calendar Hours Minimum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Hours_Sum__c</fullName>
+        <description>The sum of calendar time, in seconds, across the Cases for this aggregation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The sum of calendar time, in seconds, across the Cases for this aggregation.</inlineHelpText>
+        <label>Calendar Hours Sum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Status_Group__c</fullName>
+        <description>The Status Group that this aggregation belongs to.  Usually this is either Company or Customer.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Status Group that this aggregation belongs to.  Usually this is either Company or Customer.</inlineHelpText>
+        <label>Case Status Group</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>Company</fullName>
+                    <default>false</default>
+                    <label>Company</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>No_of_Cases_Touched__c</fullName>
+        <description>The number of Cases included in the aggregation for &quot;touches&quot;.  The count of Cases across the aggregation date range.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of Cases included in the aggregation for &quot;touches&quot;.  The count of Cases across the aggregation date range.</inlineHelpText>
+        <label>No. of Cases Touched</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_of_Time_Logs_Touched__c</fullName>
+        <description>The count of Time Logs used in the touches calculations.  The total number of Time Logs in the aggregation date range.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The count of Time Logs used in the touches calculations.  The total number of Time Logs in the aggregation date range.</inlineHelpText>
+        <label>No. of Time Logs Touched</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Cases__c</fullName>
+        <description>The number of Cases included in an aggregation date range for a particular aggregation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of Cases included in an aggregation date range for a particular aggregation.</inlineHelpText>
+        <label>Number of Cases</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Count_Average__c</fullName>
+        <description>The average number of Owners of a Case for all the Cases in this aggregation date range.  Average Owner type touches.</description>
+        <externalId>false</externalId>
+        <formula>Time_Log_Owner_Count__c /  No_of_Cases_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average number of Owners of a Case for all the Cases in this aggregation date range.  Average Owner type touches.</inlineHelpText>
+        <label>Owner Count Average</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Count_Maximum__c</fullName>
+        <description>The maximum number of Owners any Case had for the aggregation date range.  Used in Owner type touches.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The maximum number of Owners any Case had for the aggregation date range.  Used in Owner type touches.</inlineHelpText>
+        <label>Owner Count Maximum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Count_Minimum__c</fullName>
+        <description>The minimum number of Owners any Case had for the aggregation date range.  Used in Owner type touches.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The minimum number of Owners any Case had for the aggregation date range.  Used in Owner type touches.</inlineHelpText>
+        <label>Owner Count Minimum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Owner_Type__c</fullName>
+        <description>This field indicates whether the Parent record Owner was a User or a Queue.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field indicates whether the Parent record Owner was a User or a Queue.</inlineHelpText>
+        <label>Owner Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>User</fullName>
+                    <default>false</default>
+                    <label>User</label>
+                </value>
+                <value>
+                    <fullName>Queue</fullName>
+                    <default>false</default>
+                    <label>Queue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_New_Text__c</fullName>
+        <description>The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is closed or ended.   Text value,  not the Look up value.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is closed or ended.   Text value,  not the Look up value.</inlineHelpText>
+        <label>Parent Owner New</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_New__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is closed or ended.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is closed or ended.</inlineHelpText>
+        <label>Parent Owner New</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Aggregated_Case_Time_Logs1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_Text__c</fullName>
+        <description>The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log was created.   Text value,  not the Look up value.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log was created.   Text value,  not the Look up value.</inlineHelpText>
+        <label>Parent Owner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The User that is the Owner of the Parent Object record ( e.g. Case Owner) when the time log is created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User that is the Owner of the Parent Object record (e.g. Case Owner) when the time log is created.</inlineHelpText>
+        <label>Parent Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Aggregated_Case_Time_Logs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status_Count_Average__c</fullName>
+        <description>The average number of Status changes per Case for the aggregation date range.  Used for Touch calculations.</description>
+        <externalId>false</externalId>
+        <formula>Time_Log_Status_Count__c /  No_of_Cases_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average number of Status changes per Case for the aggregation date range.  Used for Touch calculations.</inlineHelpText>
+        <label>Status Count Average</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status_Count_Maximum__c</fullName>
+        <description>The maximum number of Status changes for a Case for the aggregation date range.  Used for Touch calculations.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The maximum number of Status changes for a Case for the aggregation date range.  Used for Touch calculations.</inlineHelpText>
+        <label>Status Count Maximum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status_Count_Minimum__c</fullName>
+        <description>The minimum number of Status changes for a Case for the aggregation date range.  Used for Touch calculations.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The minimum number of Status changes for a Case for the aggregation date range.  Used for Touch calculations.</inlineHelpText>
+        <label>Status Count Minimum</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status_New__c</fullName>
+        <description>The Status value of the Parent Object record (e.g. Case Status) when the time log is closed or ended.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Status value of the Parent Object record (e.g. Case Status) when the time log is closed or ended.</inlineHelpText>
+        <label>Status New</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>The Status value of the Parent Object record (e.g. Case Status) when the time log is created or started.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Status value of the Parent Object record (e.g. Case Status) when the time log is created or started.</inlineHelpText>
+        <label>Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Log_Owner_Count__c</fullName>
+        <description>The total number of Owner changes across the Time Logs in an aggregation date range.  Used in Touch calculations.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total number of Owner changes across the Time Logs in an aggregation date range.  Used in Touch calculations.</inlineHelpText>
+        <label>Time Log Owner Count</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Log_Status_Count__c</fullName>
+        <description>The total number of Status changes across the Time Logs in an aggregation date range.  Used in Touch calculations.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total number of Status changes across the Time Logs in an aggregation date range.  Used in Touch calculations.</inlineHelpText>
+        <label>Time Log Status Count</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Avergae__c</fullName>
+        <description>The average of Status plus Owner changes across the Time Logs in an aggregation date range. Used in Touch calculations.</description>
+        <externalId>false</externalId>
+        <formula>(Time_Log_Owner_Count__c +  Time_Log_Status_Count__c )  /   No_of_Cases_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average of Status plus Owner changes across the Time Logs in an aggregation date range. Used in Touch calculations.</inlineHelpText>
+        <label>Total Avergae</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Owner_Average__c</fullName>
+        <description>The average number of Owner changes across the Time Logs in an aggregation date range.  Used in Touch calculations.</description>
+        <externalId>false</externalId>
+        <formula>Time_Log_Owner_Count__c /  No_of_Cases_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average number of Owner changes across the Time Logs in an aggregation date range.  Used in Touch calculations.</inlineHelpText>
+        <label>Total Owner Average</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Status_Average__c</fullName>
+        <description>The average number of Status changes across the Time Logs in an aggregation date range. Used in Touch calculations.</description>
+        <externalId>false</externalId>
+        <formula>Time_Log_Status_Count__c /  No_of_Cases_Touched__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The average number of Status changes across the Time Logs in an aggregation date range. Used in Touch calculations.</inlineHelpText>
+        <label>Total Status Average</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Aggregated Case Time Log</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Owner_Owner_New</fullName>
+        <columns>CREATED_DATE</columns>
+        <columns>Number_of_Cases__c</columns>
+        <columns>NAME</columns>
+        <columns>Aggregation_Name__c</columns>
+        <columns>Business_Hours_Duration_Sum__c</columns>
+        <columns>Business_Hours_Duration_Maximum__c</columns>
+        <columns>Business_Hours_Duration_Minimum__c</columns>
+        <columns>Calendar_Hours_Sum__c</columns>
+        <columns>Aggregation_Type__c</columns>
+        <columns>Owner_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Aggregation_Type__c</field>
+            <operation>equals</operation>
+            <value>Owner - Owner New</value>
+        </filters>
+        <label>Owner - Owner New</label>
+    </listViews>
+    <listViews>
+        <fullName>Owner_Status</fullName>
+        <columns>NAME</columns>
+        <columns>Aggregation_Name__c</columns>
+        <columns>Business_Hours_Duration_Sum__c</columns>
+        <columns>Business_Hours_Duration_Maximum__c</columns>
+        <columns>Business_Hours_Duration_Minimum__c</columns>
+        <columns>Calendar_Hours_Sum__c</columns>
+        <columns>Number_of_Cases__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Aggregation_Type__c</field>
+            <operation>equals</operation>
+            <value>Owner - Status</value>
+        </filters>
+        <label>Owner - Status</label>
+    </listViews>
+    <listViews>
+        <fullName>Status_Status_New</fullName>
+        <columns>NAME</columns>
+        <columns>Aggregation_Name__c</columns>
+        <columns>Business_Hours_Duration_Sum__c</columns>
+        <columns>Business_Hours_Duration_Maximum__c</columns>
+        <columns>Business_Hours_Duration_Minimum__c</columns>
+        <columns>Number_of_Cases__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Aggregation_Type__c</field>
+            <operation>equals</operation>
+            <value>Status - Status New</value>
+        </filters>
+        <label>Status - Status New</label>
+    </listViews>
+    <listViews>
+        <fullName>Touches</fullName>
+        <columns>NAME</columns>
+        <columns>Aggregation_Type__c</columns>
+        <columns>No_of_Cases_Touched__c</columns>
+        <columns>No_of_Time_Logs_Touched__c</columns>
+        <columns>Time_Log_Owner_Count__c</columns>
+        <columns>Time_Log_Status_Count__c</columns>
+        <columns>Status_Count_Average__c</columns>
+        <columns>Owner_Count_Average__c</columns>
+        <columns>Owner_Count_Maximum__c</columns>
+        <columns>Number_of_Cases__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Aggregation_Type__c</field>
+            <operation>equals</operation>
+            <value>Touches</value>
+        </filters>
+        <label>Touches</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ACTL-{000000}</displayFormat>
+        <label>Aggregated Case Time Log Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Aggregated Case Time Logs</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>

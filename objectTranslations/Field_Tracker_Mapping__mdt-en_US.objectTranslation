@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Field Tracker Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Field Tracker Mappings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Specify the field you want to track (E.g. Status) --></help>
+        <label><!-- Parent Record Field --></label>
+        <name>Parent_Record_Field__c</name>
+    </fields>
+    <fields>
+        <help><!-- Specify the Object Type you want to track (E.g. Case) --></help>
+        <label><!-- Parent Record Object --></label>
+        <name>Parent_Record_Object__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field on Time Log object that parent record&apos;s value will be written (E.g. Status__c) --></help>
+        <label><!-- Time Log Field Mapping --></label>
+        <name>Time_Log_Field_Mapping__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field on Time Log object that parent record&apos;s updated value will be written (E.g. Status_New__c) --></help>
+        <label><!-- Time Log Field New Value --></label>
+        <name>Time_Log_Field_New_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

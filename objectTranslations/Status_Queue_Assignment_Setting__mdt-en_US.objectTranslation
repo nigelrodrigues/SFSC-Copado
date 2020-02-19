@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Status Queue Assignment Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Status Queue Assignment Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Case Status - when changed to this status, the Case Queue will be changed --></help>
+        <label><!-- Case Status --></label>
+        <name>Case_Status__c</name>
+        <picklistValues>
+            <masterLabel>Awaiting Customer Response</masterLabel>
+            <translation><!-- Awaiting Customer Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awaiting Internal Response</masterLabel>
+            <translation><!-- Awaiting Internal Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awaiting Service Excellence Review</masterLabel>
+            <translation><!-- Awaiting Service Excellence Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MNR Review</masterLabel>
+            <translation><!-- MNR Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POS Team</masterLabel>
+            <translation><!-- POS Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Fraud Team</masterLabel>
+            <translation><!-- Pending Fraud Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Response Received</masterLabel>
+            <translation><!-- Response Received --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Issue</masterLabel>
+            <translation><!-- System Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Team Assistance Needed</masterLabel>
+            <translation><!-- Team Assistance Needed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- When checked, will not run process if the Case is owned by Executive Escalation --></help>
+        <label><!-- Ignore on Executive Escalation --></label>
+        <name>Ignore_on_Executive_Escalation__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Queue that will own the Case after the Status is updated --></help>
+        <label><!-- Queue --></label>
+        <name>Queue__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

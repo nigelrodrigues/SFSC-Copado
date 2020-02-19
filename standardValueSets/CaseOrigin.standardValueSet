@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Phone</fullName>
+        <default>true</default>
+        <label>Phone</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Social Media</fullName>
+        <default>false</default>
+        <label>Social Media</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Support Community</fullName>
+        <default>false</default>
+        <label>Support Community</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email - The Bay</fullName>
+        <default>false</default>
+        <label>Email - The Bay</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email - LT</fullName>
+        <default>false</default>
+        <label>Email - LT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email - Executive Escalation</fullName>
+        <default>false</default>
+        <label>Email - Executive Escalation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal</fullName>
+        <default>false</default>
+        <label>Internal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Live Agent</fullName>
+        <default>false</default>
+        <label>Live Agent</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email - Store Operation</fullName>
+        <default>false</default>
+        <label>Email - Store Operation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email - Service Excellence</fullName>
+        <default>false</default>
+        <label>Email - Service Excellence</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marketing - The Bay</fullName>
+        <default>false</default>
+        <label>Marketing - The Bay</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marketing - LT</fullName>
+        <default>false</default>
+        <label>Marketing - LT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marketing - Saks</fullName>
+        <default>false</default>
+        <label>Marketing - Saks</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Marketing - Off 5th</fullName>
+        <default>false</default>
+        <label>Marketing - Off 5th</label>
+    </standardValue>
+</StandardValueSet>

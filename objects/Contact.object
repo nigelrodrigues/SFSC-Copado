@@ -1,0 +1,2080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddCampaign</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddCampaign</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddToCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddToCampaign</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddToCampaign</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableCustomerPortal</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableCustomerPortal</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableCustomerPortal</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnablePartnerPortalUser</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnablePartnerPortalUser</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnablePartnerPortalUser</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableSelfService</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableSelfService</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableSelfService</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ListClean</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ListClean</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ListClean</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Merge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Merge</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Merge</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewContact</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewContact</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewContact</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewCustomerPortal</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewCustomerPortal</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewCustomerPortal</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewPartnerPortalUser</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewPartnerPortalUser</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewPartnerPortalUser</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewSelfService</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewSelfService</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewSelfService</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>Contact_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Contact_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Language__c</fields>
+        <fields>Phone_Formula__c</fields>
+        <fields>Click_To_Dial__c</fields>
+        <fields>Email</fields>
+        <fields>Business_Unit__c</fields>
+        <label>Contact Compact Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>HBC_Asset_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Store_Number__c</fields>
+        <fields>Store_Alpha__c</fields>
+        <fields>Phone_Formula__c</fields>
+        <fields>Click_To_Dial__c</fields>
+        <fields>General_Manager_Cell__c</fields>
+        <fields>General_Manager__c</fields>
+        <label>HBC Asset Compact Layout</label>
+    </compactLayouts>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>medalliaOutbound_createSurvey</fullName>
+        <description>Medallia Invocable Method example</description>
+        <displayedFields>
+            <field>Id</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Title</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>OwnerId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Account.Id</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Account.OwnerId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Account.AccountNumber</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>medalliaOutbound_createSurvey</label>
+    </fieldSets>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AssistantName</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>AssistantPhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Birthdate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Business_Unit__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Unit</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hudson&apos;s Bay</fullName>
+                    <default>false</default>
+                    <label>Hudson&apos;s Bay</label>
+                </value>
+                <value>
+                    <fullName>Lord + Taylor</fullName>
+                    <default>false</default>
+                    <label>Lord + Taylor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Can_Re_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Can Re-Order</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>true</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Channel_Origin__c</fullName>
+        <defaultValue>&quot;Internal&quot;</defaultValue>
+        <description>The Channel that was used to create the Contact</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Channel that was used to create the Contact</inlineHelpText>
+        <label>Channel Origin</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Social Media</fullName>
+                    <default>false</default>
+                    <label>Social Media</label>
+                </value>
+                <value>
+                    <fullName>Support Community</fullName>
+                    <default>false</default>
+                    <label>Support Community</label>
+                </value>
+                <value>
+                    <fullName>Email - The Bay</fullName>
+                    <default>false</default>
+                    <label>Email - The Bay</label>
+                </value>
+                <value>
+                    <fullName>Email - LT</fullName>
+                    <default>false</default>
+                    <label>Email - LT</label>
+                </value>
+                <value>
+                    <fullName>Email - Executive Escalation</fullName>
+                    <default>false</default>
+                    <label>Email - Executive Escalation</label>
+                </value>
+                <value>
+                    <fullName>Internal</fullName>
+                    <default>false</default>
+                    <label>Internal</label>
+                </value>
+                <value>
+                    <fullName>Live Agent</fullName>
+                    <default>false</default>
+                    <label>Live Agent</label>
+                </value>
+                <value>
+                    <fullName>Email - Store Operation</fullName>
+                    <default>false</default>
+                    <label>Email - Store Operation</label>
+                </value>
+                <value>
+                    <fullName>Email - Service Excellence</fullName>
+                    <default>false</default>
+                    <label>Email - Service Excellence</label>
+                </value>
+                <value>
+                    <fullName>Marketing - The Bay</fullName>
+                    <default>false</default>
+                    <label>Marketing - The Bay</label>
+                </value>
+                <value>
+                    <fullName>Marketing - LT</fullName>
+                    <default>false</default>
+                    <label>Marketing - LT</label>
+                </value>
+                <value>
+                    <fullName>Marketing - Saks</fullName>
+                    <default>false</default>
+                    <label>Marketing - Saks</label>
+                </value>
+                <value>
+                    <fullName>Marketing - Off 5th</fullName>
+                    <default>false</default>
+                    <label>Marketing - Off 5th</label>
+                </value>
+                <value>
+                    <fullName>Search</fullName>
+                    <default>false</default>
+                    <label>Search</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Click_To_Dial__c</fullName>
+        <externalId>false</externalId>
+        <label>Click To Dial</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Department</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>DoNotCall</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Email_Marketing__c</fullName>
+        <description>Customer would like to receive email marketing</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer would like to receive email marketing</inlineHelpText>
+        <label>Email Marketing</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Opt In</fullName>
+                    <default>false</default>
+                    <label>Opt In</label>
+                </value>
+                <value>
+                    <fullName>Opt Out</fullName>
+                    <default>false</default>
+                    <label>Opt Out</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Fax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>General_Manager_Cell__c</fullName>
+        <externalId>false</externalId>
+        <label>General Manager Cell</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>General_Manager__c</fullName>
+        <externalId>false</externalId>
+        <label>General Manager</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfEmail</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfFax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>HomePhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>IndividualId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Invalid_Contact__c</fullName>
+        <description>Checks if the contact is only a phone number</description>
+        <externalId>false</externalId>
+        <formula>OR (
+OR (
+BEGINS(LastName, &quot;+&quot;),
+BEGINS(LastName, &quot;1&quot;),
+BEGINS(LastName, &quot;2&quot;),
+BEGINS(LastName, &quot;3&quot;),
+BEGINS(LastName, &quot;4&quot;),
+BEGINS(LastName, &quot;5&quot;),
+BEGINS(LastName, &quot;6&quot;),
+BEGINS(LastName, &quot;7&quot;),
+BEGINS(LastName, &quot;8&quot;),
+BEGINS(LastName, &quot;9&quot;)
+) &amp;&amp; ISBLANK(FirstName),
+OR (
+BEGINS(Phone, &quot;888&quot;),
+BEGINS(Phone, &quot;800&quot;),
+BEGINS(Phone, &quot;866&quot;),
+BEGINS(Phone, &quot;877&quot;),
+BEGINS(Phone, &quot;855&quot;)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Invalid Contact</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_UCID_Update__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>A flag to specify whether a pending update is coming from UCID</description>
+        <externalId>false</externalId>
+        <label>Is UCID Update</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Jigsaw</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Language__c</fullName>
+        <externalId>false</externalId>
+        <label>Language</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>English</fullName>
+                    <default>true</default>
+                    <label>English</label>
+                </value>
+                <value>
+                    <fullName>French</fullName>
+                    <default>false</default>
+                    <label>French</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LastCURequestDate</fullName>
+    </fields>
+    <fields>
+        <fullName>LastCUUpdateDate</fullName>
+    </fields>
+    <fields>
+        <fullName>Last_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Last Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Contacts</relationshipLabel>
+        <relationshipName>Contacts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Latest_System_Update__c</fullName>
+        <defaultValue>&quot;Salesforce&quot;</defaultValue>
+        <description>The System that provided the latest Contact information</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The System that provided the latest Contact information</inlineHelpText>
+        <label>Latest System Update</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Salesforce</fullName>
+                    <default>false</default>
+                    <label>Salesforce</label>
+                </value>
+                <value>
+                    <fullName>OMS</fullName>
+                    <default>false</default>
+                    <label>OMS</label>
+                </value>
+                <value>
+                    <fullName>UCID</fullName>
+                    <default>false</default>
+                    <label>UCID</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Loyalty_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Loyalty Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loyalty_Tier__c</fullName>
+        <externalId>false</externalId>
+        <label>Loyalty Tier</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Basic</fullName>
+                    <default>false</default>
+                    <label>Basic</label>
+                </value>
+                <value>
+                    <fullName>Associate/Retiree</fullName>
+                    <default>false</default>
+                    <label>Associate/Retiree</label>
+                </value>
+                <value>
+                    <fullName>Regular</fullName>
+                    <default>false</default>
+                    <label>Regular</label>
+                </value>
+                <value>
+                    <fullName>PLCC non-Premier</fullName>
+                    <default>false</default>
+                    <label>PLCC non-Premier</label>
+                </value>
+                <value>
+                    <fullName>Plus</fullName>
+                    <default>false</default>
+                    <label>Plus</label>
+                </value>
+                <value>
+                    <fullName>Premier</fullName>
+                    <default>false</default>
+                    <label>Premier</label>
+                </value>
+                <value>
+                    <fullName>VIP</fullName>
+                    <default>false</default>
+                    <label>VIP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Mail_Marketing__c</fullName>
+        <description>Customer would like to receive physical mail marketing</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer would like to receive physical mail marketing</inlineHelpText>
+        <label>Mail Marketing</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Opt In</fullName>
+                    <default>false</default>
+                    <label>Opt In</label>
+                </value>
+                <value>
+                    <fullName>Opt Out</fullName>
+                    <default>false</default>
+                    <label>Opt Out</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>MailingAddress</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Mailing_Email__c</fullName>
+        <description>Email of the recipient when an order is shipped</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Email of the recipient when an order is shipped</inlineHelpText>
+        <label>Mailing Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_First_Name__c</fullName>
+        <description>First Name of the recipient when an order is shipped</description>
+        <externalId>false</externalId>
+        <inlineHelpText>First Name of the recipient when an order is shipped</inlineHelpText>
+        <label>Mailing First Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Last_Name__c</fullName>
+        <description>Last Name of the recipient when an order is shipped</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Last Name of the recipient when an order is shipped</inlineHelpText>
+        <label>Mailing Last Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mailing_Phone__c</fullName>
+        <description>Phone of the recipient when an order is shipped</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Phone of the recipient when an order is shipped</inlineHelpText>
+        <label>Mailing Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>MobilePhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Order_Number__c</fullName>
+        <description>Used in Search UI for simplicity, should not be on any page layouts</description>
+        <externalId>true</externalId>
+        <label>Order Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherAddress</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OtherPhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Phone_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_Marketing__c</fullName>
+        <description>Customer would like to receive phone marketing</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Customer would like to receive phone marketing</inlineHelpText>
+        <label>Phone Marketing</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Opt In</fullName>
+                    <default>false</default>
+                    <label>Opt In</label>
+                </value>
+                <value>
+                    <fullName>Opt Out</fullName>
+                    <default>false</default>
+                    <label>Opt Out</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ReportsToId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Store_Alpha__c</fullName>
+        <externalId>false</externalId>
+        <label>Store Alpha</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Store_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Store Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Store_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Store Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Diamond</fullName>
+                    <default>false</default>
+                    <label>Diamond</label>
+                </value>
+                <value>
+                    <fullName>Updated Modern</fullName>
+                    <default>false</default>
+                    <label>Updated Modern</label>
+                </value>
+                <value>
+                    <fullName>Balanced Loyalist</fullName>
+                    <default>false</default>
+                    <label>Balanced Loyalist</label>
+                </value>
+                <value>
+                    <fullName>Classic Conservative</fullName>
+                    <default>false</default>
+                    <label>Classic Conservative</label>
+                </value>
+                <value>
+                    <fullName>Moderate Diverse</fullName>
+                    <default>false</default>
+                    <label>Moderate Diverse</label>
+                </value>
+                <value>
+                    <fullName>Boca</fullName>
+                    <default>false</default>
+                    <label>Boca</label>
+                </value>
+                <value>
+                    <fullName>Silver</fullName>
+                    <default>false</default>
+                    <label>Silver</label>
+                </value>
+                <value>
+                    <fullName>Silver-S</fullName>
+                    <default>false</default>
+                    <label>Silver-S</label>
+                </value>
+                <value>
+                    <fullName>Silver-M</fullName>
+                    <default>false</default>
+                    <label>Silver-M</label>
+                </value>
+                <value>
+                    <fullName>Gold</fullName>
+                    <default>false</default>
+                    <label>Gold</label>
+                </value>
+                <value>
+                    <fullName>Gold-S</fullName>
+                    <default>false</default>
+                    <label>Gold-S</label>
+                </value>
+                <value>
+                    <fullName>Gold-M</fullName>
+                    <default>false</default>
+                    <label>Gold-M</label>
+                </value>
+                <value>
+                    <fullName>Gold-L</fullName>
+                    <default>false</default>
+                    <label>Gold-L</label>
+                </value>
+                <value>
+                    <fullName>Platinum</fullName>
+                    <default>false</default>
+                    <label>Platinum</label>
+                </value>
+                <value>
+                    <fullName>Platinum-M</fullName>
+                    <default>false</default>
+                    <label>Platinum-M</label>
+                </value>
+                <value>
+                    <fullName>Platinum-L</fullName>
+                    <default>false</default>
+                    <label>Platinum-L</label>
+                </value>
+                <value>
+                    <fullName>Platinum Better</fullName>
+                    <default>false</default>
+                    <label>Platinum Better</label>
+                </value>
+                <value>
+                    <fullName>Platinum Better-S</fullName>
+                    <default>false</default>
+                    <label>Platinum Better-S</label>
+                </value>
+                <value>
+                    <fullName>Platinum Better-M</fullName>
+                    <default>false</default>
+                    <label>Platinum Better-M</label>
+                </value>
+                <value>
+                    <fullName>Platinum Better-L</fullName>
+                    <default>false</default>
+                    <label>Platinum Better-L</label>
+                </value>
+                <value>
+                    <fullName>Platinum Better-XL</fullName>
+                    <default>false</default>
+                    <label>Platinum Better-XL</label>
+                </value>
+                <value>
+                    <fullName>Flagship</fullName>
+                    <default>false</default>
+                    <label>Flagship</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>System_Origin__c</fullName>
+        <defaultValue>&quot;Salesforce&quot;</defaultValue>
+        <description>System of Origin where this record was created</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System of Origin where this record was created</inlineHelpText>
+        <label>System Origin</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Salesforce</fullName>
+                    <default>false</default>
+                    <label>Salesforce</label>
+                </value>
+                <value>
+                    <fullName>OMS</fullName>
+                    <default>false</default>
+                    <label>OMS</label>
+                </value>
+                <value>
+                    <fullName>UCID</fullName>
+                    <default>false</default>
+                    <label>UCID</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Title</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>UCID_Number__c</fullName>
+        <description>External ID from UCID (Contact MDM)</description>
+        <externalId>true</externalId>
+        <label>UCID Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UCID_Update_Date__c</fullName>
+        <description>Last time this Contact was updated to/from UCID</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Last time this Contact was updated to/from UCID</inlineHelpText>
+        <label>UCID Update Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Unique_External_Id__c</fullName>
+        <description>Business Unit concatenated with UCID number for a unique external ID</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Business Unit concatenated with UCID number for a unique external ID</inlineHelpText>
+        <label>Unique External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>AllContacts</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.FIRST_NAME</columns>
+        <columns>CORE.USERS.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Contacts</label>
+    </listViews>
+    <listViews>
+        <fullName>HBC_Phonebook</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>equals</operation>
+            <value>HBC Phonebook</value>
+        </filters>
+        <label>HBC Phonebook</label>
+    </listViews>
+    <listViews>
+        <fullName>MyContacts</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Contacts</label>
+    </listViews>
+    <listViews>
+        <fullName>Stores_Husdson_s_Bay</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>General_Manager__c</columns>
+        <columns>General_Manager_Cell__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Business_Unit__c</field>
+            <operation>equals</operation>
+            <value>Hudson&apos;s Bay</value>
+        </filters>
+        <filters>
+            <field>CONTACT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Contact.HBC_Asset</value>
+        </filters>
+        <label>Stores - Husdson&apos;s Bay</label>
+    </listViews>
+    <listViews>
+        <fullName>Stores_Lord_Taylor</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>General_Manager__c</columns>
+        <columns>General_Manager_Cell__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Business_Unit__c</field>
+            <operation>equals</operation>
+            <value>Lord + Taylor</value>
+        </filters>
+        <filters>
+            <field>CONTACT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Contact.HBC_Asset</value>
+        </filters>
+        <label>Stores - Lord + Taylor</label>
+    </listViews>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Customer</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Contact_Compact_Layout</compactLayoutAssignment>
+        <label>Customer</label>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Can_Re_Order__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel_Origin__c</picklist>
+            <values>
+                <fullName>Email - Executive Escalation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Store Operation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Agent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Saks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Support Community</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Email_Marketing__c</picklist>
+            <values>
+                <fullName>Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opt Out</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Language__c</picklist>
+            <values>
+                <fullName>English</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>French</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Latest_System_Update__c</picklist>
+            <values>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salesforce</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UCID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Google AdWords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Website</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Loyalty_Tier__c</picklist>
+            <values>
+                <fullName>Associate%2FRetiree</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Basic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PLCC non-Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mail_Marketing__c</picklist>
+            <values>
+                <fullName>Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opt Out</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Name</picklist>
+            <values>
+                <fullName>Dr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mrs%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ms%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prof%2E</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Phone_Marketing__c</picklist>
+            <values>
+                <fullName>Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opt Out</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Store_Type__c</picklist>
+            <values>
+                <fullName>Balanced Loyalist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Boca</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Classic Conservative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Diamond</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flagship</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moderate Diverse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum Better</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Updated Modern</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>System_Origin__c</picklist>
+            <values>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salesforce</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UCID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>HBC_Asset</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>HBC_Asset_Compact_Layout</compactLayoutAssignment>
+        <label>HBC Asset</label>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Can_Re_Order__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel_Origin__c</picklist>
+            <values>
+                <fullName>Email - Executive Escalation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Store Operation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Agent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Saks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Search</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Support Community</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Email_Marketing__c</picklist>
+            <values>
+                <fullName>Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opt Out</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Language__c</picklist>
+            <values>
+                <fullName>English</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>French</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Latest_System_Update__c</picklist>
+            <values>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salesforce</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UCID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Google AdWords</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Website</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Loyalty_Tier__c</picklist>
+            <values>
+                <fullName>Associate%2FRetiree</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Basic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PLCC non-Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Mail_Marketing__c</picklist>
+            <values>
+                <fullName>Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opt Out</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Name</picklist>
+            <values>
+                <fullName>Dr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mrs%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ms%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prof%2E</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Phone_Marketing__c</picklist>
+            <values>
+                <fullName>Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opt Out</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Store_Type__c</picklist>
+            <values>
+                <fullName>Balanced Loyalist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Boca</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Classic Conservative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Diamond</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flagship</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold-L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold-M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold-S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moderate Diverse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum Better</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum Better-L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum Better-M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum Better-S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum Better-XL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum-L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Platinum-M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver-M</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Silver-S</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Updated Modern</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>System_Origin__c</picklist>
+            <values>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Salesforce</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UCID</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>FULL_NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CONTACT.PHONE1</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>FULL_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE1</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE3</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE4</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE5</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE6</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.PHONE1</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.EMAIL</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Prevent_Name_Edit</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND (
+ Is_UCID_Update__c = FALSE,
+Ischanged(FirstName),
+Ischanged(LastName),
+NOT(isblank(PRIORVALUE(FirstName))))</errorConditionFormula>
+        <errorMessage>Only edit the information if the customer changed both their first and last name. If not, please do a Contact Search to link the customer to the case. (Error Contact-01)</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>GoogleMaps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Maps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://maps.google.com/maps?f=q&amp;hl=en&amp;q={!Contact_MailingStreet}+{!Contact_MailingCity}+{!Contact_MailingState}&amp;om=1</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GoogleSearch</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Search</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://www.google.com/search?q={!Contact_FirstName} {!Contact_LastName}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>cnx__CallToPhoneButton</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>obsolete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>return true;</url>
+    </webLinks>
+</CustomObject>

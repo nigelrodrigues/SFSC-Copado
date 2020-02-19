@@ -1,0 +1,4 @@
+<aura:tokens extends="force:base">
+    <aura:token name="rcl_background_notification" value="#1c29a7"/>
+    <aura:token name="rcl_background_notification_hover" value="#2a3ada"/>
+</aura:tokens>

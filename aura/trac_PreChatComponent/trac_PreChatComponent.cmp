@@ -1,0 +1,26 @@
+<!--
+ - @description ${DESCRIPTION}
+ - @name trac_PreChatComponent
+ - @author Daniel Labonte, Traction on Demand
+ - @date 2019-08-28
+ -->
+
+<aura:component description="trac_PreChatComponent" implements="lightningsnapin:prechatUI">
+    <!-- Pre-chat field components to render -->
+    <aura:attribute name="prechatFieldComponents" type="List" description="An array of objects representing the pre-chat fields specified in pre-chat setup."/>
+
+    <!-- For Aura performance -->
+    <aura:locator target="startButton" description="Pre-chat form submit button."/>
+
+    <!-- Contains methods for getting pre-chat fields, starting a chat, and validating fields -->
+    <lightningsnapin:prechatAPI aura:id="prechatAPI"/>
+
+    <div class="prechatUI">
+        <div class="prechatContent">
+            <ul class="fieldsList">
+                <c:tracPreChatForm onformsubmitaura="{!c.handleFormSubmit}" />
+            </ul>
+        </div>
+    </div>
+
+</aura:component>

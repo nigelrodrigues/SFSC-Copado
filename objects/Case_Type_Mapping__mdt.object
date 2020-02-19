@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Maps values that are available for selection in the community to values that are available on the case type field in salesforce</description>
+    <fields>
+        <fullName>Community_Value__c</fullName>
+        <description>Value selected in the community picklist</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Community Value</label>
+        <length>40</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Map_to_Field__c</fullName>
+        <description>Case field that the value should be mapped to</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Map to Field</label>
+        <length>40</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Map_to_Value__c</fullName>
+        <description>Value to map into the case field</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Map to Value</label>
+        <length>40</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Case Type Mapping</label>
+    <pluralLabel>Case Type Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

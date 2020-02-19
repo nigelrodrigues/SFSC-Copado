@@ -1,0 +1,16 @@
+<!--
+ - Created by jhoran on 8/1/2019.
+ -->
+
+<aura:component description="trac_Note">
+    <aura:attribute name="note" type="Object"/>
+
+    <div class="slds-border_bottom">
+        <lightning:card>
+            <aura:set attribute="title">
+                {! v.note.ContactUser }
+            </aura:set>
+            {! v.note.NoteText }
+        </lightning:card>
+    </div>
+</aura:component>

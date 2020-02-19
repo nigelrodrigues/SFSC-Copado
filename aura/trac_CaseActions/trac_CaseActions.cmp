@@ -1,0 +1,42 @@
+<!--
+ - Created by jhoran on 7/4/2019.
+ -->
+
+<aura:component description="trac_CaseActions" extends="c:trac_BaseComponent" controller="trac_NewOrderCtlr"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForRecordHome">
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Id, ContactId, Order_Number__c, Business_Unit__c, Case_Language__c, Order_Billing_Postal_Code__c"
+                      targetFields="{!v.caseRecord}"
+                      targetError="{!v.recordLoadError}"
+                      recordUpdated="{!c.recordUpdated}"
+    />
+
+    <article class="slds-card">
+        <div class="slds-m-around_x-small">
+            <lightning:buttonGroup>
+                <c:trac_NewOrder recordId="{!v.recordId}"/>
+
+                <aura:if isTrue="{!v.caseRecord.Order_Number__c != null}">
+                    <lightning:button onclick="{!c.navigateToWebcom}"
+                                      label="Open Order"
+                                      iconName="utility:new_window"/>
+                </aura:if>
+
+                <aura:if isTrue="{!v.caseRecord.Order_Number__c != null}">
+                    <lightning:button onclick="{!c.navigateToNarvar}"
+                                      label="Returns"
+                                      iconName="utility:redo"
+                                      disabled="{!empty(v.caseRecord.Business_Unit__c)}"/>
+                </aura:if>
+            </lightning:buttonGroup>
+        </div>
+    </article>
+</aura:component>

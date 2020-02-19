@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Order Refund Credit Case Status Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Order Refund Credit Case Status Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Should this process run? --></help>
+        <label><!-- Enabled --></label>
+        <name>Enabled__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Object the Process is running on --></help>
+        <label><!-- Object --></label>
+        <name>Object__c</name>
+        <picklistValues>
+            <masterLabel>Case</masterLabel>
+            <translation><!-- Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order Refund Credit</masterLabel>
+            <translation><!-- Order Refund Credit --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The apex process that will be run --></help>
+        <label><!-- Process --></label>
+        <name>Process__c</name>
+        <picklistValues>
+            <masterLabel>Set Case Status</masterLabel>
+            <translation><!-- Set Case Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Set ORC Approval Status</masterLabel>
+            <translation><!-- Set ORC Approval Status --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The Status of the Record --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

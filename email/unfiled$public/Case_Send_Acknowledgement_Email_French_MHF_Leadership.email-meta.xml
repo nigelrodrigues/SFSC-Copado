@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Acknowledgement Email (French - MHF Leadership)</name>
+    <style>none</style>
+    <subject>Merci d’avoir communiqué avec La Baie d’Hudson</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you for contacting {!Case.Business_Unit__c}! We are in the process of resolving your issue and will provide you with an update within 48 hours. If you need to contact us in the meantime about this issue, please click  here
+
+Your Case Number: {!Case.CaseNumber}
+
+All the best,
+
+Your {!Case.Business_Unit__c} Customer Service Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

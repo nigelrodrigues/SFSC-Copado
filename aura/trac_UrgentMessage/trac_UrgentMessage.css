@@ -1,0 +1,18 @@
+.THIS .urgent-message-name {
+    font-family: token(fontFamily);
+    font-weight: bold;
+    line-height: 200%;
+    color: WHITE;
+    background-color: token(rcl_background_notification);
+    text-align:center;
+    border-style: solid;
+    border-bottom: thin;
+}
+
+.THIS .urgent-message-name:hover {
+    background-color: token(rcl_background_notification_hover);
+}
+
+.THIS .urgent-message-name:active {
+    background-color: token(rcl_background_notification_hover);
+}

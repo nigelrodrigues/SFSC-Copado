@@ -1,0 +1,294 @@
+<!--
+ - Created by ragrawal on 6/26/2019.
+ -->
+
+<aura:component description="trac_OrderLineItem">
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="order" type="Object"/>
+    <aura:attribute name="orderLineItem" type="Object"/>
+    <aura:attribute name="addAttributes" type="Object" />
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="businessUnit" type="String" />
+
+    <div class="slds-border_top">
+        <aura:if isTrue="{!not(empty(v.orderLineItem))}">
+
+                    <lightning:layout multipleRows="true">
+                        <lightning:layoutItem size="12">
+                            <lightning:layout>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <aura:if isTrue="{!not(empty(v.orderLineItem.Notes.Note))}">
+                                            <lightning:icon iconName="utility:note" alternativeText="Notes" size="xx-small"/>
+                                        </aura:if>
+                                    </div>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Manufacturer</p>
+                                        <p>{!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}</p>
+                                    </div>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Product</p>
+                                        <p>{!v.orderLineItem.ItemDetails.PrimaryInformation.ShortDescription}</p>
+                                    </div>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Unit Price</p>
+                                        <p>{!v.orderLineItem.LinePriceInfo.UnitPrice}</p>
+                                    </div>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Quantity</p>
+                                        <p>{!v.orderLineItem.OrderedQty}</p>
+                                    </div>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Line Total</p>
+                                        <p>{!v.orderLineItem.LineOverallTotals.LineTotal}</p>
+                                    </div>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Status</p>
+                                        <p>{!v.orderLineItem.Status}</p>
+                                    </div>
+                                </lightning:layoutItem>
+
+                                <aura:if isTrue="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute != null}" >
+                                    <aura:iteration items="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute}" var="attribute" >
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">{!attribute.Name}</p>
+                                                <p>{!attribute.Value}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+                                    </aura:iteration>
+                                </aura:if>
+
+                            </lightning:layout>
+                        </lightning:layoutItem>
+
+                        <!-- BUTTONS START -->
+                        <lightning:layoutItem>
+                            <lightning:layout>
+                                <lightning:layoutItem padding="around-small">
+                                    <lightning:button onclick="{!c.openModel}"
+                                                      variant="neutral"
+                                                      label="View Details"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small">
+                                    <c:trac_OrderRefundCredit orderLineItem="{!v.orderLineItem}" order="{!v.order}"
+                                                              caseRecord="{!v.caseRecord}"/>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <c:trac_CancelOrder orderLineItem="{!v.orderLineItem}" order="{!v.order}"
+                                                        caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+                                </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <c:trac_AddNote orderLineItem="{!v.orderLineItem}" order="{!v.order}"
+                                                    caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                        <!-- BUTTONS END -->
+                    </lightning:layout>
+        </aura:if>
+    </div>
+
+    <div>
+        <aura:if isTrue="{!v.isModalOpen}">
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                     aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Order Line Item
+                            Details</h2>
+                        <!--{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute[0].Name}-->
+
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
+                        <lightning:tabset selectedTabId="orderLineItem">
+                            <lightning:tab label="Line Item" id="orderLineItem">
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                    <tr>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation + v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" height="120px" width="auto"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Description </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                {!v.orderLineItem.ItemDetails.PrimaryInformation.ShortDescription}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                    <tr>
+                                        <aura:if isTrue="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute != null}" >
+                                            <aura:iteration items="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute}" var="attribute" >
+                                                <td>
+                                                    <div class="slds-truncate">
+                                                        <label class="slds-form-element__label" for="select-01"> {!attribute.Name} </label>
+                                                    </div>
+                                                    <div>
+                                                {!attribute.Value}
+                                            </div>
+                                                </td>
+                                            </aura:iteration>
+                                        </aura:if>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">Transaction ID / Invoice Number</label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.Extn.ExtnTransactionID}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">Returnable</label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.Extn.ExtnIsReturnable}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">Manufacturer</label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">SKN #</label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.Item.ItemID}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">Style Code</label>
+                                                <lightning:helptext content="Only available for online orders"/>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.ItemDetails.ClassificationCodes.Model}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">Unit Price</label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.LinePriceInfo.UnitPrice}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Quantity </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                {!v.orderLineItem.OrderedQty}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> List Price </label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.LinePriceInfo.ListPrice}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Tax </label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.LinePriceInfo.Tax}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Fulfillment Method </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                {!v.orderLineItem.DeliveryMethod}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Carrier </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                {!v.orderLineItem.SCAC}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Carrier Service </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                {!v.orderLineItem.CarrierServiceCode}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Status </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                {!v.orderLineItem.Status}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </lightning:tab>
+                            <lightning:tab label="Notes" iconName="{!not(empty(v.orderLineItem.Notes.Note)) ? 'utility:note' : ''}" id="notes">
+                                <aura:iteration items="{!v.orderLineItem.Notes.Note}" var="note">
+                                    <c:trac_Note note="{!note}"/>
+                                </aura:iteration>
+                            </lightning:tab>
+                        </lightning:tabset>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Close"
+                                          onclick="{! c.closeModel }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+
+</aura:component>

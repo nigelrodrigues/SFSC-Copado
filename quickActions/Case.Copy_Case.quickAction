@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Apex trigger that will create a copy of the case and associated the original case as the parent of the new case.</description>
+    <height>150</height>
+    <label>Copy Case</label>
+    <lightningComponent>CopyCaseButton</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Time Log records for the Case object. A snapshot of Case fields and time calculations when closed.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Business_Hours_Duration_Days__c</fullName>
+        <description>Converts Business_Hours_Duration__c (secs) to days</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration__c / 86400</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of days this Time Log record had during business hours.</inlineHelpText>
+        <label>Business Hours Duration - Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Duration_Hrs__c</fullName>
+        <description>Converts  Business_Hours_Duration__c (secs) to hours</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration__c / 3600</formula>
+        <inlineHelpText>Number of hours this Time Log record had during business hours.</inlineHelpText>
+        <label>Business Hours Duration - Hrs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Duration_Mins__c</fullName>
+        <description>Converts Business_Hours_Duration__c (secs) to minutes</description>
+        <externalId>false</externalId>
+        <formula>Business_Hours_Duration__c / 60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of minutes this Time Log record had during business hours.</inlineHelpText>
+        <label>Business Hours Duration - Mins</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Hours_Duration__c</fullName>
+        <description>Calculate business time duration when a Time Log record &quot;closes&quot; in seconds.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of seconds this Time Log record had during business hours.</inlineHelpText>
+        <label>Business Hours Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Duration_Days__c</fullName>
+        <description>Converts Calendar_Duration__c (secs) to days</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Duration__c / 86400</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of days this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time.</inlineHelpText>
+        <label>Calendar Duration - Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Duration_Hrs__c</fullName>
+        <description>Converts Calendar_Duration__c (secs) to hours</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Duration__c / 3600</formula>
+        <inlineHelpText>Number of hours this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time</inlineHelpText>
+        <label>Calendar Duration - Hrs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Duration_Mins__c</fullName>
+        <description>Converts Calendar_Duration__c (secs) to minutes</description>
+        <externalId>false</externalId>
+        <formula>Calendar_Duration__c / 60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Number of minutes this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time.</inlineHelpText>
+        <label>Calendar Duration - Mins</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calendar_Duration__c</fullName>
+        <description>Calculate calendar time duration when a Time Log record &quot;closes&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of seconds this Time Log record had in calendar time. Calendar time includes both business hours time and non business hours time.</inlineHelpText>
+        <label>Calendar Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Status_Change__c</fullName>
+        <description>If  Case Status equals Case Status New set to 0, else set to 1.</description>
+        <externalId>false</externalId>
+        <formula>IF( Case_Status__c = Case_Status_New__c, 0, 1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>1 in this field indicates that the Case Status has changed.</inlineHelpText>
+        <label>Case Status Change</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Status_Group__c</fullName>
+        <description>This field allows categorization of the Case Status values into Customer or Company for reporting purposes.  Edit the formula below as required to account for the values in the Case Status field.</description>
+        <externalId>false</externalId>
+        <formula>/* EDIT THIS FORMULA AS REQUIRED TO MATCH THE CASE STATUS FIELD VALUES */
+/* THIS IS AN EXAMPLE ONLY */
+/*                         */
+Case ( Case_Status__c , 
+&quot;Team Assistance Needed&quot;,&quot;Company&quot;, 
+&quot;Awaiting Service Excellence Review&quot;,&quot;Company&quot;, 
+&quot;POS Team&quot;,&quot;Company&quot;, 
+&quot;Pending Fraud Team&quot;,&quot;Company&quot;, 
+&quot;System Issue&quot;,&quot;Company&quot;, 
+&quot;Awaiting Customer Response&quot;,&quot;Customer&quot;, 
+&quot;Awaiting Internal Response&quot;,&quot;Company&quot;, 
+&quot;Response Received&quot;,&quot;Company&quot;, 
+&quot;New&quot;,&quot;Company&quot;, 
+&quot;In Progress&quot;,&quot;Company&quot;, 
+&quot;Closed&quot;,&quot;Customer&quot;, 
+&quot;Company&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This field allows categorization of the Case Status values into Customer or Company for reporting purposes.</inlineHelpText>
+        <label>Case Status Group</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Status_New__c</fullName>
+        <description>The value of the Case Status field when the Time Log record was closed / ended.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The value of the Case Status field when the Time Log record was closed / ended.</inlineHelpText>
+        <label>Case Status New</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Status__c</fullName>
+        <description>The value of the Case Status field when the Time Log record was created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The value of the Case Status field when the Time Log record was created.</inlineHelpText>
+        <label>Case Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Parent object lookup</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the link up to the Case record (parent record) for this Time Log record.</inlineHelpText>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Case Time Logs</relationshipLabel>
+        <relationshipName>Case_Time_Logs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>End_Time__c</fullName>
+        <description>The date time that this time log record was closed or ended.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date time that this time log record was closed or ended.</inlineHelpText>
+        <label>End Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Is_Aggregated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field indicates if this record is already considered in aggregation logic</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field indicates if this record is already considered in aggregation logic</inlineHelpText>
+        <label>Aggregated?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Owner_Type__c</fullName>
+        <description>This field indicates whether the Parent record Owner was a User or a Queue.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field indicates whether the Parent record Owner was a User or a Queue.</inlineHelpText>
+        <label>Owner Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>User</fullName>
+                    <default>false</default>
+                    <label>User</label>
+                </value>
+                <value>
+                    <fullName>Queue</fullName>
+                    <default>false</default>
+                    <label>Queue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_Change__c</fullName>
+        <description>Set value to 1 if Parent Owner is not the same as Parent Owner New</description>
+        <externalId>false</externalId>
+        <formula>IF ( Parent_Owner__c =  Parent_Owner_New__c, 0, 1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Set value to 1 if Parent Owner is not the same as Parent Owner New.   This allows the counting of how many times Case Ownship changed.</inlineHelpText>
+        <label>Parent Owner Change</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_New_Role__c</fullName>
+        <description>Role of the User in the Parent_Owner_User_New_c field. Used to support report filtering/grouping of Time Log records by User group attributes, e.g. role.</description>
+        <externalId>false</externalId>
+        <formula>Parent_Owner_User_New__r.UserRole.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Role of the new Owner of the Parent Object. (User that was the Owner of the Case record at the time the Time Log record was CLOSED).</inlineHelpText>
+        <label>Case Owner New - Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_New__c</fullName>
+        <description>This field contains the value of the Parent record Owner that caused this Time Log record to be &quot;closed&quot;. This is the text value of the Case Owner field (Parent record Owner). This field can be used for reporting as it includes both the User and Queue names in the same field. Changes to other fields being tracked will cause this field to be updated, but not changed when the Time Log record is created for other changes.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the Owner of the Parent record at the time the time log record was closed.  This value is updated when the Parent record&apos;s Owner changes, otherwise it doesn&apos;t change, since the Owner hasn&apos;t actually changed on the Parent record.</inlineHelpText>
+        <label>Parent Owner New</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_Role__c</fullName>
+        <description>Role of the user in the Parent_Owner_User__c field. Used to support report filtering/grouping of Time Log records by user group attributes, e.g. role.   This is configured in the custom metadata settings.</description>
+        <externalId>false</externalId>
+        <formula>Parent_Owner_User__r.UserRole.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Role of the User in the Case Owner field when the time log record is created.</inlineHelpText>
+        <label>Case Owner - Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_User_New__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>User object lookup, indicating the User that was the Owner of the Case record at the time the Time Log record was CLOSED; the new &quot;Owner&quot; when the owner of the parent record changes.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>User object lookup, indicating the User that was the Owner of the Case record at the time the Time Log record was CLOSED; the new &quot;Owner&quot; when the owner of the parent record changes.</inlineHelpText>
+        <label>Case Owner New - User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Case_Time_Logs_Owner_User_New</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>User object lookup from the Case Owner field at time of Time Log creation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>User object lookup, indicating the User that was the Owner of the Case record at the time the Time Log record was created.</inlineHelpText>
+        <label>Case Owner - User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Case_Time_Logs_Owner_User</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Owner__c</fullName>
+        <description>This is the text value of the Case Owner field (Parent record Owner). This field can be used for reporting as it includes both the User and Queue names in the same field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the text value of the Case Owner field (Parent record Owner). This field can be used for reporting as it includes both the User and Queue names in the same field.</inlineHelpText>
+        <label>Parent Owner</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Time__c</fullName>
+        <description>The date time that this Time Log record was started / created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date time that this Time Log record was started / created.</inlineHelpText>
+        <label>Start Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Time_Since_Start__c</fullName>
+        <externalId>false</externalId>
+        <formula>End_Time__c -  Case__r.CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Time Since Start</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Since__c</fullName>
+        <externalId>false</externalId>
+        <formula>Now()- CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Time Since Log Created</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Case Time Log</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>Case__c</columns>
+        <columns>Case_Status__c</columns>
+        <columns>Case_Status_New__c</columns>
+        <columns>Owner_Type__c</columns>
+        <columns>Parent_Owner__c</columns>
+        <columns>Parent_Owner_New__c</columns>
+        <columns>Parent_Owner_User__c</columns>
+        <columns>Parent_Owner_Role__c</columns>
+        <columns>Parent_Owner_User_New__c</columns>
+        <columns>Parent_Owner_New_Role__c</columns>
+        <columns>Is_Aggregated__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CTL-{00000}</displayFormat>
+        <label>Time Log Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Case Time Logs</pluralLabel>
+    <searchLayouts>
+        <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <listViewButtons>Run_Aggregation</listViewButtons>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Run_Aggregation</fullName>
+        <availability>online</availability>
+        <description>{!URLFOR(&apos;/lightning/cmp/todft_AggregationBatchCaller&apos;, null)}</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Run Aggregation</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!URLFOR(&apos;/lightning/cmp/todft_AggregationBatchCaller&apos;, null)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>test</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>test</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!URLFOR(&apos;/lightning/cmp/todft_AggregationBatchCaller&apos;, null)}</url>
+    </webLinks>
+</CustomObject>

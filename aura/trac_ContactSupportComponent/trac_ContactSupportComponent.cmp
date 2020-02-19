@@ -1,0 +1,21 @@
+<!--
+ - @Name trac_ContactSupportComponent
+ - @Author Daniel Labonte, Traction on Demand
+ - @Date June 18, 2019 
+ - 
+ - @Description wrapper component for the contact support form lwc that fires an application event
+ -->
+<aura:component description="trac_ContactSupportComponent" implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="language" type="String" />
+    <aura:attribute name="englishCommunityUserId" type="String" />
+    <aura:attribute name="frenchCommunityUserId" type="String" />
+
+    <aura:attribute name="refresh" type="Boolean" default="true"/>
+
+    <c:trac_contactsupportform ontopicchange="{!c.handleTopicChange}"
+                               businessUnit="{!v.businessUnit}"
+                               englishCommunityUser="{!v.englishCommunityUserId}"
+                               frenchCommunityUser="{!v.frenchCommunityUserId}"
+                               language="{!v.language}"/>
+</aura:component>

@@ -1,0 +1,160 @@
+<!--
+ - @description Pre chat form for the hudson's bay community
+ - @name tracPreChatForm
+ - @author Daniel Labonte, Traction on Demand
+ - @date 2019-08-29
+ -->
+
+<!-- Pre Chat Form -->
+<template>
+    <div class="custom-container slds-m-around_small">
+
+        <!-- START FORM -->
+        <div class="custom-content">
+            <template if:true={isEditMode}>
+                <lightning-record-edit-form record-id={caseId}
+                                            object-api-name="Case"
+                                            onload={handleFormLoad}
+                                            onerror={handleFormError}
+                                            onsubmit={handleFormSubmit}
+                                            onsuccess={handleFormSuccess}>
+
+                    <div class="slds-section">
+                        <section>
+                            <div class="slds-section slds-is-open">
+                                <div class="slds-section__content slds-p-top--none">
+                                    <div class="slds-form slds-form_stacked slds-is-editing">
+                                        <div class="slds-grid slds-gutters_small cols-1">
+                                            <div class="slds-grid slds-col slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-messages></lightning-messages>
+                                            </div>
+                                        </div>
+                                        <div if:true={hasError}
+                                             class="slds-grid slds-col slds-is-editing slds-has-flexi-truncate slds-text-color_error slds-p-horizontal_medium custom-margin-4 custom-error-box">
+                                            {labels.lblGenericErrorMessage}
+                                        </div>
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-2 slds-is-editing slds-has-flexi-truncate slds-p-right_none">
+                                                <lightning-input
+                                                        name="FirstName"
+                                                        label={placeholders.firstName}
+                                                        class="custom-input-field custom-required">
+                                                </lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-is-editing slds-has-flexi-truncate slds-p-left_none">
+                                                <lightning-input
+                                                        name="LastName"
+                                                        label={placeholders.lastName}
+                                                        class="custom-input-field custom-required">
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 email-field slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-input name="Email"
+                                                                 label={placeholders.email}
+                                                                 class="custom-input-field custom-required email-input">
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
+                                                <template if:true={caseTypePicklistValues.data}>
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label slds-no-flex"
+                                                               for="tracCaseTypeSelect">Type</label>
+                                                        <div class="slds-form-element__control">
+                                                            <div class="slds-select_container">
+                                                                <select id="tracCaseTypeSelect"
+                                                                        class="slds-select custom-required custom-input-field"
+                                                                        onchange={handleOrderTypeChange} name="Community_Case_Type__c">
+                                                                    <option class='select-option' value=''>
+                                                                        {labels.lblNone}
+                                                                    </option>
+                                                                    <template
+                                                                            for:each={caseTypePicklistValues.data.values}
+                                                                            for:item="option">
+                                                                        <option class='select-option' key={option.value} value={option.value}>
+                                                                            {option.label}
+                                                                        </option>
+                                                                    </template>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-input name="Order_Number__c"
+                                                                 label={placeholders.order.optional}
+                                                                 class={orderFieldClassList}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-input name="Subject"
+                                                                 label={placeholders.description}
+                                                                 class="custom-input-field"
+                                                                 onchange={handleSubjectChange}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="slds-grid slds-grid_align-center slds-p-bottom--x-small">
+                        <lightning-button variant="brand"
+                                          type="submit"
+                                          label={labels.lblChatButton}
+                                          class="slds-m-top_medium custom-button">
+                        </lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </template>
+            <!-- END FORM -->
+
+
+            <!-- START CASE RECORD VIEW -->
+            <template if:false={isEditMode}>
+                <section>
+                    <div class="slds-wrap slds-p-vertical--medium ">
+                        <h1 class="slds-page-header__title">{labels.lblCreatedTitle}</h1>
+                        <div class="slds-m-top--small">{labels.lblCreatedSubtitle}</div>
+                    </div>
+                    <div class="slds-border_top slds-p-vertical--medium ">
+                        <h2>{labels.lblCreatedSummary}</h2>
+                        <lightning-record-view-form record-id={caseId} object-api-name="Case">
+                            <lightning-output-field field-name="Subject"></lightning-output-field>
+                            <lightning-output-field field-name="Description"></lightning-output-field>
+                            <lightning-output-field field-name="CaseNumber"></lightning-output-field>
+                        </lightning-record-view-form>
+                    </div>
+                </section>
+            </template>
+        </div>
+        <!-- END CASE RECORD VIEW -->
+
+
+        <!-- START SPINNER -->
+        <template if:true={isBusy}>
+            <div class="slds-spinner_container">
+                <div class="slds-spinner--brand slds-spinner slds-spinner--large" role="alert">
+                    <span class="slds-assistive-text">Loading, Please Wait...</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </template>
+        <!-- END SPINNER -->
+
+    </div>
+</template>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Links to other sites to be used on the widget component</description>
+    <fields>
+        <fullName>Order__c</fullName>
+        <defaultValue>50</defaultValue>
+        <description>The order in which links will be displayed (lowest number first)</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The order in which links will be displayed (lowest number first)</inlineHelpText>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>URL__c</fullName>
+        <description>The link to the website that should open</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The link to the website that should open</inlineHelpText>
+        <label>URL</label>
+        <required>true</required>
+        <type>Url</type>
+    </fields>
+    <label>External Link Setting</label>
+    <listViews>
+        <fullName>All_with_Info</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>URL__c</columns>
+        <columns>Order__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All with Info</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>External Link Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

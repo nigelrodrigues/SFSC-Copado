@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <description>Validates if a case was retrieved</description>
+        <name>Case_Found</name>
+        <label>Case Found</label>
+        <locationX>549</locationX>
+        <locationY>301</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Case_Found_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Case_Subject</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Case_Status_Result</targetReference>
+            </connector>
+            <label>Case Found True</label>
+        </rules>
+        <rules>
+            <name>Case_Found_False</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Case_Subject</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error</targetReference>
+            </connector>
+            <label>Case Found False</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Get Case Status {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get Case Status</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Case</name>
+        <label>Get Case</label>
+        <locationX>402</locationX>
+        <locationY>145</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Case_Found</targetReference>
+        </connector>
+        <filters>
+            <field>CaseNumber</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Case_Number_Text</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactEmail</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Email_used</elementReference>
+            </value>
+        </filters>
+        <object>Case</object>
+        <outputAssignments>
+            <assignToReference>Case_External_Status</assignToReference>
+            <field>External_Status__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Case_Subject</assignToReference>
+            <field>Subject</field>
+        </outputAssignments>
+        <sortField>Id</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <screens>
+        <name>Case_Status</name>
+        <label>Case Status</label>
+        <locationX>203</locationX>
+        <locationY>63</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Get_Case</targetReference>
+        </connector>
+        <fields>
+            <name>Form_Instructions</name>
+            <fieldText>Complete the fields below to obtain the status of a case submitted to our support team.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Case_Number_Text</name>
+            <dataType>String</dataType>
+            <fieldText>Case Number (8 digits)</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Email_used</name>
+            <dataType>String</dataType>
+            <fieldText>Email used to submit case</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Case_Status_Result</name>
+        <label>Case Status Result</label>
+        <locationX>726</locationX>
+        <locationY>180</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Display_Case_Status</name>
+            <fieldText>Case Subject : {!Case_Subject}
+Case Status : {!Case_External_Status}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>722</locationX>
+        <locationY>377</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Match_Not_Found</name>
+            <fieldText>Sorry, we couldn&apos;t find a match based on the information provided. Please verify your case number and email address and click the Previous button to try again, if desired.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <startElementReference>Case_Status</startElementReference>
+    <status>Draft</status>
+    <variables>
+        <name>Case_External_Status</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Case_Subject</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

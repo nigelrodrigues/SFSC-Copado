@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used when an agent has completed all ORC requests and is ready to send to POS or Service Excellence to be approved or processed.</description>
+    <fieldOverrides>
+        <field>ORC_Submitted__c</field>
+        <formula>TRUE</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Status</field>
+        <formula>IF(
+ Case.ORC_Missing_Item_or_No_Order__c &gt; 0,
+ &apos;MNR Review&apos;,
+ IF( 
+  OR(
+   Case.ORC_Requiring_Approval_Count__c &gt; 0,
+   Case.PayPal_ORC__c &gt;0
+  ),
+  &apos;Awaiting Service Excellence Review&apos;,
+  &apos;POS Team&apos;
+ )
+)</formula>
+    </fieldOverrides>
+    <label>Submit ORC</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>ORC_Count__c</field>
+                <uiBehavior>Readonly</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>ORC_Requiring_Approval_Count__c</field>
+                <uiBehavior>Readonly</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>PayPal_ORC__c</field>
+                <uiBehavior>Readonly</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+    </quickActionLayout>
+    <successMessage>Case was submitted to process Refund/Credit and the Status and Owner were updated</successMessage>
+    <type>Update</type>
+</QuickAction>

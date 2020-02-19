@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Bay French ES Team Lead</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Bay_French_ES_Team_Lead</publicGroup>
+        </publicGroups>
+        <users>
+            <user>c997997@hbc.com</user>
+            <user>jose.contreras-vendor@hbc.com</user>
+            <user>leyla.marroquin@hbc.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>All_Queues</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

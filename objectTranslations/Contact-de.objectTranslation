@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- medalliaOutbound_createSurvey --></label>
+        <name>medalliaOutbound_createSurvey</name>
+    </fieldSets>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+        <picklistValues>
+            <masterLabel>Hudson&apos;s Bay</masterLabel>
+            <translation><!-- Hudson&apos;s Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lord + Taylor</masterLabel>
+            <translation><!-- Lord + Taylor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Can Re-Order --></label>
+        <name>Can_Re_Order__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The Channel that was used to create the Contact --></help>
+        <label><!-- Channel Origin --></label>
+        <name>Channel_Origin__c</name>
+        <picklistValues>
+            <masterLabel>Email - Executive Escalation</masterLabel>
+            <translation><!-- Email - Executive Escalation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - LT</masterLabel>
+            <translation><!-- Email - LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Service Excellence</masterLabel>
+            <translation><!-- Email - Service Excellence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Store Operation</masterLabel>
+            <translation><!-- Email - Store Operation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - The Bay</masterLabel>
+            <translation><!-- Email - The Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Agent</masterLabel>
+            <translation><!-- Live Agent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - LT</masterLabel>
+            <translation><!-- Marketing - LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - Off 5th</masterLabel>
+            <translation><!-- Marketing - Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - Saks</masterLabel>
+            <translation><!-- Marketing - Saks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - The Bay</masterLabel>
+            <translation><!-- Marketing - The Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search</masterLabel>
+            <translation><!-- Search --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media</masterLabel>
+            <translation><!-- Social Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Community</masterLabel>
+            <translation><!-- Support Community --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Click To Dial --></label>
+        <name>Click_To_Dial__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer would like to receive email marketing --></help>
+        <label><!-- Email Marketing --></label>
+        <name>Email_Marketing__c</name>
+        <picklistValues>
+            <masterLabel>Opt In</masterLabel>
+            <translation><!-- Opt In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opt Out</masterLabel>
+            <translation><!-- Opt Out --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- General Manager Cell --></label>
+        <name>General_Manager_Cell__c</name>
+    </fields>
+    <fields>
+        <label><!-- General Manager --></label>
+        <name>General_Manager__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invalid Contact --></label>
+        <name>Invalid_Contact__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is UCID Update --></label>
+        <name>Is_UCID_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation><!-- French --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Last Case --></label>
+        <name>Last_Case__c</name>
+        <relationshipLabel><!-- Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The System that provided the latest Contact information --></help>
+        <label><!-- Latest System Update --></label>
+        <name>Latest_System_Update__c</name>
+        <picklistValues>
+            <masterLabel>OMS</masterLabel>
+            <translation><!-- OMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UCID</masterLabel>
+            <translation><!-- UCID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Number --></label>
+        <name>Loyalty_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Tier --></label>
+        <name>Loyalty_Tier__c</name>
+        <picklistValues>
+            <masterLabel>Associate/Retiree</masterLabel>
+            <translation><!-- Associate/Retiree --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basic</masterLabel>
+            <translation><!-- Basic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLCC non-Premier</masterLabel>
+            <translation><!-- PLCC non-Premier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plus</masterLabel>
+            <translation><!-- Plus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Premier</masterLabel>
+            <translation><!-- Premier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regular</masterLabel>
+            <translation><!-- Regular --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIP</masterLabel>
+            <translation><!-- VIP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Customer would like to receive physical mail marketing --></help>
+        <label><!-- Mail Marketing --></label>
+        <name>Mail_Marketing__c</name>
+        <picklistValues>
+            <masterLabel>Opt In</masterLabel>
+            <translation><!-- Opt In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opt Out</masterLabel>
+            <translation><!-- Opt Out --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Email of the recipient when an order is shipped --></help>
+        <label><!-- Mailing Email --></label>
+        <name>Mailing_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- First Name of the recipient when an order is shipped --></help>
+        <label><!-- Mailing First Name --></label>
+        <name>Mailing_First_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last Name of the recipient when an order is shipped --></help>
+        <label><!-- Mailing Last Name --></label>
+        <name>Mailing_Last_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Phone of the recipient when an order is shipped --></help>
+        <label><!-- Mailing Phone --></label>
+        <name>Mailing_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>Order_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>Phone_Formula__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer would like to receive phone marketing --></help>
+        <label><!-- Phone Marketing --></label>
+        <name>Phone_Marketing__c</name>
+        <picklistValues>
+            <masterLabel>Opt In</masterLabel>
+            <translation><!-- Opt In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opt Out</masterLabel>
+            <translation><!-- Opt Out --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Store Alpha --></label>
+        <name>Store_Alpha__c</name>
+    </fields>
+    <fields>
+        <label><!-- Store Number --></label>
+        <name>Store_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Store Type --></label>
+        <name>Store_Type__c</name>
+        <picklistValues>
+            <masterLabel>Balanced Loyalist</masterLabel>
+            <translation><!-- Balanced Loyalist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boca</masterLabel>
+            <translation><!-- Boca --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Classic Conservative</masterLabel>
+            <translation><!-- Classic Conservative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diamond</masterLabel>
+            <translation><!-- Diamond --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Flagship</masterLabel>
+            <translation><!-- Flagship --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold-L</masterLabel>
+            <translation><!-- Gold-L --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold-M</masterLabel>
+            <translation><!-- Gold-M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold-S</masterLabel>
+            <translation><!-- Gold-S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moderate Diverse</masterLabel>
+            <translation><!-- Moderate Diverse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum Better</masterLabel>
+            <translation><!-- Platinum Better --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum Better-L</masterLabel>
+            <translation><!-- Platinum Better-L --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum Better-M</masterLabel>
+            <translation><!-- Platinum Better-M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum Better-S</masterLabel>
+            <translation><!-- Platinum Better-S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum Better-XL</masterLabel>
+            <translation><!-- Platinum Better-XL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum-L</masterLabel>
+            <translation><!-- Platinum-L --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum-M</masterLabel>
+            <translation><!-- Platinum-M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation><!-- Silver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver-M</masterLabel>
+            <translation><!-- Silver-M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver-S</masterLabel>
+            <translation><!-- Silver-S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Updated Modern</masterLabel>
+            <translation><!-- Updated Modern --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- System of Origin where this record was created --></help>
+        <label><!-- System Origin --></label>
+        <name>System_Origin__c</name>
+        <picklistValues>
+            <masterLabel>OMS</masterLabel>
+            <translation><!-- OMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UCID</masterLabel>
+            <translation><!-- UCID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- UCID Number --></label>
+        <name>UCID_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Last time this Contact was updated to/from UCID --></help>
+        <label><!-- UCID Update Date --></label>
+        <name>UCID_Update_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Business Unit concatenated with UCID number for a unique external ID --></help>
+        <label><!-- Unique External Id --></label>
+        <name>Unique_External_Id__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Customer --></label>
+        <name>Customer</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- HBC Asset --></label>
+        <name>HBC_Asset</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Only edit the information if the customer changed both their first and last name. If not, please do a Contact Search to link the customer to the case. (Error Contact-01) --></errorMessage>
+        <name>Prevent_Name_Edit</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CallToPhoneButton --></label>
+        <name>cnx__CallToPhoneButton</name>
+    </webLinks>
+</CustomObjectTranslation>

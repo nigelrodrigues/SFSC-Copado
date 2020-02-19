@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Account</masterLabel>
+        <translation>Compte</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Delivery</masterLabel>
+        <translation><!-- Delivery --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gift Card(s)</masterLabel>
+        <translation><!-- Gift Card(s) --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Gift Registry</masterLabel>
+        <translation><!-- Gift Registry --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>In Store Experience</masterLabel>
+        <translation><!-- In Store Experience --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Major Home Fashion</masterLabel>
+        <translation><!-- Major Home Fashion --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Order Inquiry</masterLabel>
+        <translation><!-- Order Inquiry --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Place an order</masterLabel>
+        <translation><!-- Place an order --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Product Information</masterLabel>
+        <translation><!-- Product Information --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Refunds/Credits</masterLabel>
+        <translation><!-- Refunds/Credits --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Returns</masterLabel>
+        <translation><!-- Returns --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rewards</masterLabel>
+        <translation><!-- Rewards --></translation>
+    </valueTranslation>
+</StandardValueSetTranslation>

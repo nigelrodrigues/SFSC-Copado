@@ -1,0 +1,6 @@
+<!--
+ - Created by Jeremy on 9/20/2019.
+ -->
+
+<aura:event type="APPLICATION" description="trac_NewOrderModalCloseEvent">
+</aura:event>

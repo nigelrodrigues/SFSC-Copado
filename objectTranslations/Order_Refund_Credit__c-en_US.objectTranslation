@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Order Refund/Credit</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Order Refunds/Credits</value>
+    </caseValues>
+    <fields>
+        <label><!-- Adjusted Price --></label>
+        <name>Adjusted_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total amount charged on the order --></help>
+        <label><!-- Amount Charged - Order --></label>
+        <name>Amount_Charged_Full_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount Charged - Item --></label>
+        <name>Amount_Charged_Item__c</name>
+    </fields>
+    <fields>
+        <help><!-- Line item or full order tax amount depending on ORC Type --></help>
+        <label><!-- Amount Charged - Tax --></label>
+        <name>Amount_Charged_Tax__c</name>
+    </fields>
+    <fields>
+        <help><!-- Line item or full order amount depending on ORC Type --></help>
+        <label><!-- Amount Charged ORC --></label>
+        <name>Amount_Charged__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount Charged to Credit Card --></label>
+        <name>Amount_Charged_to_Credit_Card__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount Charged to Gift Card(s) --></label>
+        <name>Amount_Charged_to_Gift_Card__c</name>
+    </fields>
+    <fields>
+        <label><!-- ORC Amount to Refund --></label>
+        <name>Amount_to_Refund__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Required --></label>
+        <name>Approval_Required_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Required --></label>
+        <name>Approval_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved By --></label>
+        <name>Approved_By__c</name>
+        <relationshipLabel><!-- Order Refunds/Credits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CC Amount Refund --></label>
+        <name>CC_Amount_Refund__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Profile --></label>
+        <name>Case_Owner_Profile__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Role --></label>
+        <name>Case_Owner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner --></label>
+        <name>Case_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Order Refunds/Credits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Competitor Name --></label>
+        <name>Competitor_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Web Site --></label>
+        <name>Competitor_Web_Site__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Country from the Order&apos;s Billing Address --></help>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Credit Card Alias --></label>
+        <name>Credit_Card_Alias__c</name>
+    </fields>
+    <fields>
+        <label><!-- Credit Shipping Fee --></label>
+        <name>Credit_Shipping_Fee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Name on Order Received --></label>
+        <name>Customer_Name_on_Order_Received__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Package was Returned --></label>
+        <name>Date_Package_was_Returned__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date of Sale --></label>
+        <name>Date_of_Sale__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason (Required for Declines) --></label>
+        <name>Decline_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Discount (%) --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Final Gift Card Amount --></label>
+        <name>Final_Gift_Card_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Credit Card Number OLD --></label>
+        <name>Full_Credit_Card_Number_Old__c</name>
+    </fields>
+    <fields>
+        <label><!-- Credit Card Number --></label>
+        <name>Full_Credit_Card_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Appeasement Gift Card Amount --></label>
+        <name>Gift_Card_Amount__c</name>
+        <picklistValues>
+            <masterLabel>100</masterLabel>
+            <translation><!-- 100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25</masterLabel>
+            <translation><!-- 25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50</masterLabel>
+            <translation><!-- 50 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>75</masterLabel>
+            <translation><!-- 75 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Initial Form Completed --></label>
+        <name>Initial_Form_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Item Description --></label>
+        <name>Item_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Item Name --></label>
+        <name>Item_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Tier --></label>
+        <name>Loyalty_Tier__c</name>
+        <picklistValues>
+            <masterLabel>Associate/Retiree</masterLabel>
+            <translation><!-- Associate/Retiree --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basic</masterLabel>
+            <translation><!-- Basic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLCC non-Premier</masterLabel>
+            <translation><!-- PLCC non-Premier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plus</masterLabel>
+            <translation><!-- Plus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Premier</masterLabel>
+            <translation><!-- Premier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regular</masterLabel>
+            <translation><!-- Regular --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIP</masterLabel>
+            <translation><!-- VIP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Manual Adjustment ($) --></label>
+        <name>Manual_Adjustment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Method of Payment --></label>
+        <name>Method_of_Payment__c</name>
+        <picklistValues>
+            <masterLabel>Gift Card</masterLabel>
+            <translation><!-- Gift Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HBC MasterCard</masterLabel>
+            <translation><!-- HBC MasterCard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HBC PLCC</masterLabel>
+            <translation><!-- HBC PLCC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>L+T PLCC</masterLabel>
+            <translation><!-- L+T PLCC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PayPal</masterLabel>
+            <translation><!-- PayPal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- New GC Amount --></label>
+        <name>New_GC_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Gift Card Number --></label>
+        <name>New_Gift_Card_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Unit Price --></label>
+        <name>New_Unit_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- OMS Transaction Number --></label>
+        <name>OMS_Transaction_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- ORC Status --></label>
+        <name>ORC_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requires Approval</masterLabel>
+            <translation><!-- Requires Approval --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- A full table of all the order line items for an order --></help>
+        <label><!-- Order Items Table --></label>
+        <name>Order_Items_Table__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number Received --></label>
+        <name>Order_Number_Received__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>Order_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Original Gift Card Balance --></label>
+        <name>Original_Gift_Card_Balance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Original Gift Card Number --></label>
+        <name>Original_Gift_Card_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Original Gift Card Status --></label>
+        <name>Original_Gift_Card_Status__c</name>
+        <picklistValues>
+            <masterLabel>Value 1</masterLabel>
+            <translation><!-- Value 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value 2</masterLabel>
+            <translation><!-- Value 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Other Refund --></label>
+        <name>Other_Refund__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Override Reason --></label>
+        <name>Price_Override_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Amount charged different from order confirmation</masterLabel>
+            <translation><!-- Amount charged different from order confirmation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Item on sale</masterLabel>
+            <translation><!-- Item on sale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price tag on item different from price charged</masterLabel>
+            <translation><!-- Price tag on item different from price charged --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Price Override --></label>
+        <name>Price_Override__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promo Code --></label>
+        <name>Promo_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promo Date --></label>
+        <name>Promo_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity Not Received --></label>
+        <name>Quantity_Not_Received__c</name>
+    </fields>
+    <fields>
+        <help><!-- Line item quantity --></help>
+        <label><!-- Quantity --></label>
+        <name>Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason --></label>
+        <name>Reason__c</name>
+        <picklistValues>
+            <masterLabel>Defective Item</masterLabel>
+            <translation><!-- Defective Item --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Card (Refund)</masterLabel>
+            <translation><!-- Gift Card (Refund) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Card to Original Tender</masterLabel>
+            <translation><!-- Gift Card to Original Tender --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing Items</masterLabel>
+            <translation><!-- Missing Items --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order Not Received</masterLabel>
+            <translation><!-- Order Not Received --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Adjustment</masterLabel>
+            <translation><!-- Price Adjustment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Match</masterLabel>
+            <translation><!-- Price Match --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price Override</masterLabel>
+            <translation><!-- Price Override --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promo Questions/Problem</masterLabel>
+            <translation><!-- Promo Questions/Problem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Return Problem</masterLabel>
+            <translation><!-- Return Problem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping Fee</masterLabel>
+            <translation><!-- Shipping Fee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tax Exclusion</masterLabel>
+            <translation><!-- Tax Exclusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wrong Item Received</masterLabel>
+            <translation><!-- Wrong Item Received --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wrong Order Received</masterLabel>
+            <translation><!-- Wrong Order Received --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reason for Gift Card Change --></label>
+        <name>Reason_for_Gift_Card_Change__c</name>
+        <picklistValues>
+            <masterLabel>Adjustment to Gift Card Online Order</masterLabel>
+            <translation><!-- Adjustment to Gift Card Online Order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bridal Registry</masterLabel>
+            <translation><!-- Bridal Registry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Service Issue</masterLabel>
+            <translation><!-- Customer Service Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery Issue</masterLabel>
+            <translation><!-- Delivery Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Depleted</masterLabel>
+            <translation><!-- Depleted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fulfillment Issue</masterLabel>
+            <translation><!-- Fulfillment Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive/Purged</masterLabel>
+            <translation><!-- Inactive/Purged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lost/Stolen</masterLabel>
+            <translation><!-- Lost/Stolen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Damaged</masterLabel>
+            <translation><!-- Product Damaged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Returns</masterLabel>
+            <translation><!-- Returns --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media Issue</masterLabel>
+            <translation><!-- Social Media Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual or Traditional</masterLabel>
+            <translation><!-- Virtual or Traditional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wrong Address</masterLabel>
+            <translation><!-- Wrong Address --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Refund Gift Card Amount --></label>
+        <name>Refund_Gift_Card_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Replacement Gift Card Amount --></label>
+        <name>Replacement_Gift_Card_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- SKU# Received --></label>
+        <name>SKU_Received__c</name>
+    </fields>
+    <fields>
+        <label><!-- SKU# --></label>
+        <name>SKU__c</name>
+    </fields>
+    <fields>
+        <help><!-- Full order shipping fee --></help>
+        <label><!-- Amount Charged - Shipping Fee --></label>
+        <name>Shipping_Fee__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shipping Method --></label>
+        <name>Shipping_Method__c</name>
+        <picklistValues>
+            <masterLabel>Canada Post</masterLabel>
+            <translation><!-- Canada Post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canpar</masterLabel>
+            <translation><!-- Canpar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FedEx</masterLabel>
+            <translation><!-- FedEx --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Purolator</masterLabel>
+            <translation><!-- Purolator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smartpost/USPS</masterLabel>
+            <translation><!-- Smartpost/USPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UPS</masterLabel>
+            <translation><!-- UPS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The State/Province from the Order&apos;s Billing Address --></help>
+        <label><!-- State/Province --></label>
+        <name>State_Province__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status in OMS --></label>
+        <name>Status_in_OMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Store (MHF Only) --></label>
+        <name>Store__c</name>
+    </fields>
+    <fields>
+        <label><!-- Store(temp) --></label>
+        <name>Store_temp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tax Code --></label>
+        <name>Tax_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tax Exclusion Code --></label>
+        <name>Tax_Exclusion_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tax Exclusion Reason --></label>
+        <name>Tax_Exclusion_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Value 1</masterLabel>
+            <translation><!-- Value 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value 2</masterLabel>
+            <translation><!-- Value 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total ORC Amount --></label>
+        <name>Total_ORC_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tracking Number --></label>
+        <name>Tracking_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Number --></label>
+        <name>Transaction_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Universal Product Code --></help>
+        <label><!-- UPC --></label>
+        <name>UPC__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Zip/Postal Code from the Order&apos;s Billing Address --></help>
+        <label><!-- Zip/Postal Code --></label>
+        <name>Zip_Postal_Code__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Gift Card --></label>
+        <name>Gift_Card</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Price Adjustment --></label>
+        <name>Price_Adjustment</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Shipping --></label>
+        <name>Shipping</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Must select a Price Override Reason (Error ORC-01) --></errorMessage>
+        <name>Price_Override_Reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only the Service Excellence Team is allowed to approve ORC&apos;s (Error ORC-03) --></errorMessage>
+        <name>Support_Agent_Cant_Approve_ORCs</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only the POS Team is allowed to close ORC&apos;s once they have been processed (Error ORC-02) --></errorMessage>
+        <name>Support_Agent_Cant_Close_ORCs</name>
+    </validationRules>
+</CustomObjectTranslation>

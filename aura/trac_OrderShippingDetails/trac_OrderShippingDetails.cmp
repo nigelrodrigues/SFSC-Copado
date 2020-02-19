@@ -1,0 +1,136 @@
+<!--
+ - Created by jhoran on 7/26/2019.
+ -->
+
+<aura:component description="trac_OrderShippingDetails">
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="order" type="Object"/>
+    <aura:attribute name="shipment" type="Object"/>
+
+    <div class="slds-border_top">
+        <aura:if isTrue="{!not(empty(v.shipment))}">
+
+            <div class="slds-text-title slds-border_bottom">
+                Shipment
+            </div>
+
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12">
+                    <lightning:layout>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Ship Node</p>
+                                <p>{!v.shipment.ShipNode.ShipNode}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Expected Shipment Date</p>
+                                <p><lightning:formattedDateTime value="{!v.shipment.ExpectedShipmentDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit"/></p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Actual Shipment Date</p>
+                                <p><lightning:formattedDateTime value="{!v.shipment.ActualShipmentDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit"/></p>
+                            </div>
+                        </lightning:layoutItem>
+
+                    </lightning:layout>
+                </lightning:layoutItem>
+
+            </lightning:layout>
+
+            <aura:if isTrue="{!not(empty(v.shipment.Containers.Container))}">
+                <div class="slds-text-title">
+                    Containers
+                </div>
+            </aura:if>
+            <aura:iteration items="{!v.shipment.Containers.Container}" var="container">
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem size="12">
+                        <lightning:layout>
+
+                            <lightning:layoutItem padding="around-small">
+                                <div class="header-column">
+                                    <p class="field-title slds-form-element__label slds-no-flex">Carrier</p>
+                                    <p>{!container.SCAC}</p>
+                                </div>
+                            </lightning:layoutItem>
+
+                            <lightning:layoutItem padding="around-small">
+                                <div class="header-column">
+                                    <p class="field-title slds-form-element__label slds-no-flex">Carrier Service</p>
+                                    <p>{!container.CarrierServiceCode}</p>
+                                </div>
+                            </lightning:layoutItem>
+
+                            <lightning:layoutItem padding="around-small">
+                                <div class="header-column">
+                                    <p class="field-title slds-form-element__label slds-no-flex">Tracking Number</p>
+                                    <p>{!container.TrackingNo}</p>
+                                </div>
+                            </lightning:layoutItem>
+
+                            <aura:if isTrue="{!not(empty(container.URL))}">
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Tracking Link</p>
+                                        <p><a target="_blank" href="{!container.URL}">Track</a></p>
+                                    </div>
+                                </lightning:layoutItem>
+                            </aura:if>
+
+                        </lightning:layout>
+                    </lightning:layoutItem>
+                </lightning:layout>
+
+                <div class="slds-border_top">
+                    <aura:if isTrue="{!not(empty(container.ContainerDetails.ContainerDetail))}">
+
+                        <div class="slds-text-title slds-border_bottom">
+                            Items
+                        </div>
+
+                        <aura:iteration items="{!container.ContainerDetails.ContainerDetail}" var="containerDetail">
+                            <lightning:layout multipleRows="true">
+                                <lightning:layoutItem size="12">
+                                    <lightning:layout>
+
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">SKN #</p>
+                                                <p>{!containerDetail.ItemID}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">Item Name</p>
+                                                <p>{!containerDetail.customItemName}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">Quantity</p>
+                                                <p>{!containerDetail.Quantity}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </aura:iteration>
+
+                    </aura:if>
+                </div>
+
+            </aura:iteration>
+
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,82 @@
+<!--
+ - Created by jhoran on 8/12/2019.
+ -->
+
+<aura:component description="trac_ReturnOrder">
+    <aura:attribute name="returnOrder" type="Object"/>
+
+    <div>
+        <aura:if isTrue="{!not(empty(v.returnOrder))}">
+
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12">
+                    <lightning:layout>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Order Number</p>
+                                <p>{!v.returnOrder.OrderNo}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Return Date</p>
+                                <p><lightning:formattedDateTime value="{!v.returnOrder.OrderDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit"/></p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Channel</p>
+                                <p>{!v.returnOrder.EntryType}</p>
+                            </div>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </lightning:layoutItem>
+
+                <lightning:layoutItem size="12">
+                    <lightning:layout>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Return Total</p>
+                                <p>{!v.returnOrder.OverallTotals.GrandTotal}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Exchange Amount</p>
+                                <p>{!v.returnOrder.OverallTotals.GrandExchangeTotal}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Refund Amount</p>
+                                <p>{!v.returnOrder.OverallTotals.GrandRefundTotal}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Amount Refunded</p>
+                                <p>{!v.returnOrder.OverallTotals.RefundedAmount}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Remaining Refund Amount</p>
+                                <p>{!v.returnOrder.OverallTotals.PendingRefundAmount}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                    </lightning:layout>
+                </lightning:layoutItem>
+
+            </lightning:layout>
+        </aura:if>
+    </div>
+</aura:component>

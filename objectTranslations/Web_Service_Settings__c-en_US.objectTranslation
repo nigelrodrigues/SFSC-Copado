@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Web Service Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Web Service Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- API Key --></label>
+        <name>API_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Base Url --></label>
+        <name>Base_Url__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancel Order Endpoint --></label>
+        <name>Cancel_Order_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Create Order Endpoint --></label>
+        <name>Create_Order_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Debug --></label>
+        <name>Debug__c</name>
+    </fields>
+    <fields>
+        <label><!-- Get Order Details Endpoint --></label>
+        <name>Get_Order_Details_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Get Order List Endpoint --></label>
+        <name>Get_Order_List_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timeout --></label>
+        <name>Timeout__c</name>
+    </fields>
+    <fields>
+        <label><!-- UCID Create Endpoint --></label>
+        <name>UCID_Create_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- UCID Query Endpoint --></label>
+        <name>UCID_Query_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- UCID Update Endpoint --></label>
+        <name>UCID_Update_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update Order Endpoint --></label>
+        <name>Update_Order_Endpoint__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

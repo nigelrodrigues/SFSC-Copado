@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Case Type Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Case Type Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Community Value --></label>
+        <name>Community_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Map to Field --></label>
+        <name>Map_to_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Map to Value --></label>
+        <name>Map_to_Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

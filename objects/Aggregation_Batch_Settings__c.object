@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Batch_End_Date__c</fullName>
+        <description>This is the ending Date time for the batch.   NOTE:  12:00 AM  on the first day of the following month will insure you get everthing for the previous month.   e.g.  urn up to  11:59:59 PM on the last day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the ending Date time for the batch.   NOTE:  12:00 AM  on the first day of the following month will insure you get everthing for the previous month.   e.g.  urn up to  11:59:59 PM on the last day of the month.</inlineHelpText>
+        <label>Batch End Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Batch_Start_Date__c</fullName>
+        <description>This is the start Date Time for the Batch.  All the Time Log records after this date time and before the end time are included in the aggregation batch</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the start Date Time for the Batch.  All the Time Log records after this date time and before the end time are included in the aggregation batch</inlineHelpText>
+        <label>Batch Start Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <label>Aggregation Batch Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

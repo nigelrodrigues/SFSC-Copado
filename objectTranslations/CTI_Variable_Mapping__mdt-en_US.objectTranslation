@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CTI Variable Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CTI Variable Mappings</value>
+    </caseValues>
+    <fields>
+        <help><!-- Nodes defined by the call event JSON --></help>
+        <label><!-- CTI Parameter Name --></label>
+        <name>CTI_Parameter_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field --></label>
+        <name>Field__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this to lookup the value in a list of possible child mappings --></help>
+        <label><!-- Indirect Mapping --></label>
+        <name>Indirect_Mapping__c</name>
+    </fields>
+    <fields>
+        <label><!-- SObject --></label>
+        <name>SObject__c</name>
+        <picklistValues>
+            <masterLabel>Case</masterLabel>
+            <translation><!-- Case --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

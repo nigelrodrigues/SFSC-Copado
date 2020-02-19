@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Closed Case Email Handler Settings</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Default_Status__c</fullName>
+        <defaultValue>&apos;New&apos;</defaultValue>
+        <description>The Status of the new Case created when the existing Case is closed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Status of the new Case created when the existing Case is closed</inlineHelpText>
+        <label>Default Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fields_To_Clone__c</fullName>
+        <defaultValue>&apos;Description, AccountId, ContactId, AssetId, Origin, ContactEmail, Subject, Type, Category__c, Subcategory__c&apos;</defaultValue>
+        <description>Comma separated list of fields to clone from the closed Case to the new Case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Comma separated list of fields to clone from the closed Case to the new Case</inlineHelpText>
+        <label>Fields To Clone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Hours_Since_Closed__c</fullName>
+        <defaultValue>48</defaultValue>
+        <description>How long the Case has been closed for in order to make a new Case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How long the Case has been closed for in order to make a new Case</inlineHelpText>
+        <label>Hours Since Closed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Re_Run_Assignment_Rules__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>If checked, the new Case will be assigned using default assignment rules</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If checked, the new Case will be assigned using default assignment rules</inlineHelpText>
+        <label>Re-Run Assignment Rules</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Closed Case Email Handler Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

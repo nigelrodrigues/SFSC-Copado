@@ -1,0 +1,11 @@
+<aura:component controller="trac_OrderSearchController">
+    <aura:attribute name="showOrderDetails" type="Boolean" default="false" />
+    <aura:attribute name="caseRecord" type="Case"/>
+    
+    <aura:attribute name="actualOrder" type="Object" />
+	<aura:if isTrue="{!v.showOrderDetails}">
+        <aura:iteration items="{!v.actualOrder.OrderLines.OrderLine}" var="orderLine">
+            <c:trac_OrderLineItem orderLineItem="{!orderLine}"  caseRecord="{!v.caseRecord}"/>
+        </aura:iteration>
+    </aura:if>
+</aura:component>

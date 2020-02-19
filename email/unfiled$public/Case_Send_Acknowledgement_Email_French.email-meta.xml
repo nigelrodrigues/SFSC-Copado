@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Acknowledgement Email (French)</name>
+    <style>none</style>
+    <subject>Merci d’avoir communiqué avec La Baie d’Hudson</subject>
+    <textOnly>Bonjour {!Contact.FirstName},
+
+Merci d’avoir communiqué avec La Baie d’Hudson. Nous avons reçu votre message et mettons tout en œuvre pour y répondre dans les plus brefs délais. Pour obtenir une aide immédiate, veuillez nous téléphoner en précisant le numéro de référence {!Case.CaseNumber}.
+
+Vous trouverez le numéro de téléphone du Service à la clientèle et des réponses aux questions les plus fréquemment posées sur le site de notre centre d’assistance : https://service.labaie.com/.
+
+
+Sincères salutations.
+Service à la clientèle de La Baie d’Hudson</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

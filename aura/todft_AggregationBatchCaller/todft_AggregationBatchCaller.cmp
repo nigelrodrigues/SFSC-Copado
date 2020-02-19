@@ -1,0 +1,5 @@
+<aura:component description="This quick action component calls Time log aggregation batch" access="global" controller="todft_AggregationBatchCallerController" implements="lightning:actionOverride,force:lightningQuickAction,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome">
+    <div class="slds-align_absolute-center slds-m-around--large slds-p-around--xx-large " style="height: 25rem;">
+        <lightning:button variant="brand" label="Start Aggregation" title="Start Aggregation" onclick="{! c.doInit }" />
+    </div>
+</aura:component>

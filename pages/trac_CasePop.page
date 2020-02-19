@@ -1,0 +1,44 @@
+<!--
+ - @name trac_CasePop
+ - @author Daniel Labonte, Traction on Demand
+ - @date 2019-07-10
+ - @description page that is contained in the cti utility bar component to create and pop a case on incoming call connection
+ -->
+
+<apex:page sidebar="false" showheader="false" standardStylesheets="false" doctype="html-5.0" cache="false" applyHtmlTag="false" applyBodyTag="false" controller="trac_CasePopController">
+    <apex:includeScript value="{!URLFOR($Resource.cnx__CnxSfdcResources,'js/ConnectsIntegrationAPI.min.js')}"/>
+
+    <script>
+        // event when an agent connects on a call
+        ConnectsIntegrationAPI.onWorkItemCreate = function (event) {
+            console.log(event);
+            if (event.item.Channel === "VOICE") {
+                ctiEvent(JSON.stringify(event));
+            }
+        };
+
+        ConnectsIntegrationAPI.onActivitySave = function (event) {
+            console.log(event);
+            if(event.created) {
+                ctiEvent(JSON.stringify(event));
+            }
+        };
+
+        function popRecord(recordId) {
+            if (recordId !== undefined) {
+                ConnectsIntegrationAPI.screenPop(recordId, function (response) {
+                    if (!response.success) {
+                        //ConnectsIntegrationAPI.showError("USER","ScreenPop failed ", response.error);
+                    }
+                });
+            }
+        }
+    </script>
+
+
+    <apex:form id="form">
+        <apex:actionFunction name="ctiEvent" action="{!handleCtiEvent}" oncomplete="popRecord('{!recordId}')" reRender="form">
+            <apex:param id="jsonVarMap" name="jsonVarMap" value=""/>
+        </apex:actionFunction>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,31 @@
+<!--
+ - @description Component to provide a search interface for Orders
+ - @author      Rajat Agrawal, Traction on Demand
+ - @date        2019-06-26
+ -->
+<aura:component description="trac_CaseOrder"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForRecordHome">
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Id, ContactId, Order_Number__c, Business_Unit__c, Contact.Email, Contact.Phone"
+                      targetFields="{!v.caseRecord}"
+                      targetError="{!v.recordLoadError}"
+    />
+
+    <div>
+        <!--Hello! Order No. - {!v.caseRecord.Order_Number__c}-->
+        <aura:if isTrue="{!v.caseRecord.Order_Number__c != null}">
+            <c:trac_OrderSearch orderNumber="{!v.caseRecord.Order_Number__c}" caseRecord="{!v.caseRecord}"/>
+            <aura:set attribute="else" >
+                <c:trac_OrderSearch caseRecord="{!v.caseRecord}"/>
+            </aura:set>
+        </aura:if>
+    </div>
+
+</aura:component>

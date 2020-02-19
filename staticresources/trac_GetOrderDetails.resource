@@ -1,0 +1,189 @@
+{
+    "OrderPurpose": "",
+    "EntryType": "Online",
+    "Containers": {},
+    "OrderDate": "2019-05-29T03:21:25-04:00",
+    "SellerOrganizationCode": "BAY",
+    "Promotions": {},
+    "PaymentMethods": {
+        "PaymentMethod": [
+            {
+                "PaymentType": "CREDIT_CARD_HBC",
+                "PaymentReference1": "1208",
+                "TotalCharged": "0.00",
+                "TotalRefundedAmount": "0.00",
+                "RequestedChargeAmount": "0.00",
+                "CreditCardType": "VISA",
+                "CreditCardNo": "4599060008421869",
+                "PersonInfoBillTo": {
+                    "EMailID": "testga@gmail.com",
+                    "State": "ON",
+                    "FirstName": "Guillermo",
+                    "LastName": "red",
+                    "DayPhone": "5136752099",
+                    "Country": "CA",
+                    "ZipCode": "K9H 1W6",
+                    "AddressLine1": "317 Rogers St",
+                    "City": "Peterborough",
+                    "AddressLine2": "",
+                    "AddressLine3": ""
+                },
+                "TotalAuthorized": "655.40"
+            }
+        ]
+    },
+    "HeaderTaxes": {},
+    "Status": "Created",
+    "BillToID": "testga@gmail.com",
+    "PriceInfo": {
+        "TotalAmount": "655.40",
+        "Currency": "CAD"
+    },
+    "OrderNo": "5100013039",
+    "OverallTotals": {
+        "HdrTotal": "0.00",
+        "GrandTax": "75.40",
+        "LineSubTotal": "580.00",
+        "HdrCharges": "0.00",
+        "GrandCharges": "0.00",
+        "HdrTax": "0.00",
+        "HdrDiscount": "0.00",
+        "GrandTotal": "655.40",
+        "GrandDiscount": "0.00"
+    },
+    "EnterpriseCode": "BAY",
+    "OrderLines": {
+        "OrderLine": [
+            {
+                "SCAC": "CanadaPost",
+                "LinePriceInfo": {
+                    "ListPrice": "580.00",
+                    "UnitPrice": "580.00",
+                    "RetailPrice": "580.00"
+                },
+                "LineCharges": {
+                    "LineCharge": [
+                        {
+                            "ChargeAmount": "0.00",
+                            "ChargeName": "SHIPPINGCHARGE",
+                            "ChargeCategory": "SHIPPINGCHARGE",
+                            "ChargePerUnit": "0.00",
+                            "ChargePerLine": "0.00"
+                        }
+                    ]
+                },
+                "ItemDetails": {
+                    "ItemID": "89559630",
+                    "AdditionalAttributeList": {
+                        "AdditionalAttribute": [
+                            {
+                                "Name": "Color",
+                                "Value": "ONYX"
+                            },
+                            {
+                                "Name": "Size",
+                                "Value": "One Size"
+                            }
+                        ]
+                    },
+                    "ClassificationCodes": {
+                        "Model": "0600089559630"
+                    },
+                    "PrimaryInformation": {
+                        "ShortDescription": "14K Yellow Gold and Onyx Drop Earrings",
+                        "ManufacturerName": "Effy",
+                        "ImageID": "617892999475_main",
+                        "ImageLocation": "https://s7d9.scene7.com/is/image/TheBay/"
+                    }
+                },
+                "Extn": {
+                    "ExtnSignatureRequired": "N",
+                    "ExtnIsReturnable": "Y"
+                },
+                "OrderedQty": "1",
+                "GiftWrap": "N",
+                "OrderStatuses": {
+                    "OrderStatus": [
+                        {
+                            "TotalQuantity": "1",
+                            "Status": "1100",
+                            "OrderHeaderKey": "20190529032201983162432",
+                            "StatusDate": "2019-05-29T03:22:01-04:00",
+                            "Details": {
+                                "ExpectedDeliveryDate": "2019-05-29T03:22:01-04:00"
+                            },
+                            "StatusDescription": "Created",
+                            "StatusQty": "1"
+                        }
+                    ]
+                },
+                "PersonInfoShipTo": {
+                    "State": "ON",
+                    "FirstName": "Guillermo",
+                    "LastName": "red",
+                    "Country": "CA",
+                    "ZipCode": "K9H 1W6",
+                    "AddressLine1": "317 Rogers St",
+                    "City": "Peterborough",
+                    "AddressLine2": "",
+                    "AddressLine3": ""
+                },
+                "LineTaxes": {
+                    "LineTax": [
+                        {
+                            "ChargeName": "SHIPPINGCHARGE",
+                            "ChargeCategory": "SHIPPINGCHARGE",
+                            "Tax": "0.00",
+                            "TaxName": "GST/HST"
+                        },
+                        {
+                            "ChargeName": "PRICE",
+                            "ChargeCategory": "PRICE",
+                            "Tax": "75.40",
+                            "TaxName": "GST/HST"
+                        }
+                    ]
+                },
+                "CarrierServiceCode": "Standard",
+                "Status": "Created",
+                "Item": {
+                    "ItemID": "89559630"
+                },
+                "OrderLineKey": "20190529032201983162433",
+                "Instructions": {
+                    "NumberOfInstructions": "0"
+                },
+                "LineOverallTotals": {
+                    "LineTotal": "655.40",
+                    "ExtendedPrice": "580.00",
+                    "Tax": "75.40",
+                    "Discount": "0.00",
+                    "UnitPrice": "580.00",
+                    "Charges": "0.00"
+                },
+                "DeliveryMethod": "SHP"
+            }
+        ]
+    },
+    "PersonInfoBillTo": {
+        "AlternateEmailID": "",
+        "EMailID": "testga@gmail.com",
+        "LastName": "red",
+        "Country": "CA",
+        "DayPhone": "5136752099",
+        "ZipCode": "K9H 1W6",
+        "Title": "",
+        "City": "Peterborough",
+        "EveningFaxNo": "",
+        "MiddleName": "",
+        "DayFaxNo": "",
+        "State": "ON",
+        "FirstName": "Guillermo",
+        "EveningPhone": "5136752099",
+        "AddressLine1": "317 Rogers St",
+        "AddressLine2": "",
+        "AddressLine3": ""
+    },
+    "DocumentType": "0001",
+    "HeaderCharges": {}
+}

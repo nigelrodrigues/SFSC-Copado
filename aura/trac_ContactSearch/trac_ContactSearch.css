@@ -1,0 +1,16 @@
+/**
+ * Created by ragrawal on 6/20/2019.
+ */
+.THIS {
+}
+
+.THIS .slds-modal__container{
+    max-width: 70rem !important;
+    width:80% !important;
+}
+
+.THIS .sldsCustomWidth{
+    max-height: 70rem !important;
+    height: 50rem !important;
+    overflow-y: auto;
+}

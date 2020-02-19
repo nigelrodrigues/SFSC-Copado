@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Closed Case Email Handler Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Closed Case Email Handler Settings</value>
+    </caseValues>
+    <fields>
+        <help><!-- The Status of the new Case created when the existing Case is closed --></help>
+        <label><!-- Default Status --></label>
+        <name>Default_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Comma separated list of fields to clone from the closed Case to the new Case --></help>
+        <label><!-- Fields To Clone --></label>
+        <name>Fields_To_Clone__c</name>
+    </fields>
+    <fields>
+        <help><!-- How long the Case has been closed for in order to make a new Case --></help>
+        <label><!-- Hours Since Closed --></label>
+        <name>Hours_Since_Closed__c</name>
+    </fields>
+    <fields>
+        <help><!-- If checked, the new Case will be assigned using default assignment rules --></help>
+        <label><!-- Re-Run Assignment Rules --></label>
+        <name>Re_Run_Assignment_Rules__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>
