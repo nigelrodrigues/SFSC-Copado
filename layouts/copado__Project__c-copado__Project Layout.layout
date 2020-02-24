@@ -9,10 +9,6 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Copado_Integration_Setting__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
@@ -113,7 +109,6 @@
         <fields>copado__Start_Date__c</fields>
         <fields>copado__End_Date__c</fields>
         <fields>copado__Status__c</fields>
-        <fields>Copado_Integration_Setting__c</fields>
     </miniLayout>
     <relatedLists>
         <fields>NAME</fields>

@@ -49,10 +49,6 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__LightningInstrumentation</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>standard__LightningBolt</name>
         <type>CustomApplication</type>
     </appMenuItems>
@@ -130,10 +126,6 @@
     </appMenuItems>
     <appMenuItems>
         <name>copado__Copado_Selenium_Testing</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Copado_Integrations</name>
         <type>CustomApplication</type>
     </appMenuItems>
 </AppMenu>

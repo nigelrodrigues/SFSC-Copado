@@ -117,10 +117,6 @@
         <settingValue>true</settingValue>
     </preferences>
     <preferences>
-        <settingName>ScratchOrgManagementPref</settingName>
-        <settingValue>false</settingValue>
-    </preferences>
-    <preferences>
         <settingName>SelfSetPasswordInApi</settingName>
         <settingValue>true</settingValue>
     </preferences>

@@ -49,18 +49,6 @@
         <name>copado__Work_Manager_Relations</name>
     </fieldSets>
     <fields>
-        <label><!-- Enable Logs --></label>
-        <name>Enable_Logs__c</name>
-    </fields>
-    <fields>
-        <label><!-- External Id --></label>
-        <name>External_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- JIRA key --></label>
-        <name>JIRA_key__c</name>
-    </fields>
-    <fields>
         <label><!-- Acceptance Criteria Status --></label>
         <name>copado__Acceptance_Criteria_Status__c</name>
         <picklistValues>

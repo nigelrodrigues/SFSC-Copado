@@ -4,13 +4,6 @@
     <attachmentOption>All</attachmentOption>
     <authenticationFailureAction>Discard</authenticationFailureAction>
     <authorizationFailureAction>Bounce</authorizationFailureAction>
-    <emailServicesAddresses>
-        <authorizedSenders>naveen.korandla@hbc.com</authorizedSenders>
-        <developerName>emailtosalesforce80</developerName>
-        <isActive>true</isActive>
-        <localPart>emailtosalesforce</localPart>
-        <runAsUser>naveen.korandla@hbc.com</runAsUser>
-    </emailServicesAddresses>
     <functionInactiveAction>Bounce</functionInactiveAction>
     <functionName>EmailToSalesforce</functionName>
     <isActive>true</isActive>

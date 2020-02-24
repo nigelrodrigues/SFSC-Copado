@@ -19,7 +19,6 @@
     </actionOverrides>
     <brand>
         <headerColor>#021D35</headerColor>
-        <logo>HBC_Logo</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
     </brand>
@@ -32,12 +31,12 @@
     <navType>Console</navType>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>HBC_Asset_Record_Page</content>
+        <content>Case_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.HBC_Asset</recordType>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Support_Case</recordType>
         <type>Flexipage</type>
-        <profile>HBC Executive Services</profile>
+        <profile>HBC Fraud Agent</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -46,7 +45,61 @@
         <pageOrSobjectType>Contact</pageOrSobjectType>
         <recordType>Contact.HBC_Asset</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>Chatter External User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HBC_Asset_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.HBC_Asset</recordType>
+        <type>Flexipage</type>
+        <profile>Chatter Free User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HBC_Asset_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.HBC_Asset</recordType>
+        <type>Flexipage</type>
+        <profile>Chatter Moderator User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HBC_Asset_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.HBC_Asset</recordType>
+        <type>Flexipage</type>
+        <profile>ContractManager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HBC_Asset_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.HBC_Asset</recordType>
+        <type>Flexipage</type>
+        <profile>CPQ Integration User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HBC_Asset_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.HBC_Asset</recordType>
+        <type>Flexipage</type>
+        <profile>Guest License User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HBC_Asset_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.HBC_Asset</recordType>
+        <type>Flexipage</type>
+        <profile>HBC Executive Services</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -113,75 +166,21 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>HBC_Asset_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.HBC_Asset</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>Marketing_Case_Lightning_Page_Layout</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Case</pageOrSobjectType>
         <recordType>Case.Marketing_Emails</recordType>
         <type>Flexipage</type>
         <profile>HBC Support Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HBC_Asset_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.HBC_Asset</recordType>
-        <type>Flexipage</type>
-        <profile>Guest License User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Case_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Case</pageOrSobjectType>
-        <recordType>Case.Support_Case</recordType>
-        <type>Flexipage</type>
-        <profile>HBC Fraud Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HBC_Asset_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.HBC_Asset</recordType>
-        <type>Flexipage</type>
-        <profile>Chatter External User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HBC_Asset_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.HBC_Asset</recordType>
-        <type>Flexipage</type>
-        <profile>Chatter Free User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HBC_Asset_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.HBC_Asset</recordType>
-        <type>Flexipage</type>
-        <profile>Chatter Moderator User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HBC_Asset_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.HBC_Asset</recordType>
-        <type>Flexipage</type>
-        <profile>ContractManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HBC_Asset_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.HBC_Asset</recordType>
-        <type>Flexipage</type>
-        <profile>CPQ Integration User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -254,15 +253,6 @@
         <recordType>Case.Support_Case</recordType>
         <type>Flexipage</type>
         <profile>Chatter Moderator User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Case_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Case</pageOrSobjectType>
-        <recordType>Case.Support_Case</recordType>
-        <type>Flexipage</type>
-        <profile>Chatter External User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -407,6 +397,15 @@
         <recordType>Case.Support_Case</recordType>
         <type>Flexipage</type>
         <profile>TEST PROFILE AGENT</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Case_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Support_Case</recordType>
+        <type>Flexipage</type>
+        <profile>Chatter External User</profile>
     </profileActionOverrides>
     <setupExperience>service</setupExperience>
     <tabs>standard-home</tabs>
