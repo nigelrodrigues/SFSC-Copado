@@ -72,13 +72,12 @@
                       <td>
 
                           
-                          <p>Hi {!Contact.FirstName},
+                          <p>Hi {!Case.First_Name_Extract__c},
 						  <br><br>
-Thanks for contacting Hudson’s Bay. We've received your message and we'll make our best effort to respond as soon as possible. If you need immediate assistance, please call us and refer to case {!Case.CaseNumber}.
-
-You can find our customer service contact information and answers to our most commonly asked questions in our Help Center: https://support.thebay.com/
-
-<br><br>		  
+						Thanks for contacting Hudson’s Bay. We’re in the process of resolving your issue and will provide you with an update within 48 hours. If you need additional assistance, please don’t hesitate to contact us and refer to case {!Case.CaseNumber}.
+<br><br>
+<a href="mailto:customer.service@hbc.com?subject=Thanks for contacting Hudson’s Bay-{!Case.Thread_Id}" > CONTACT US </a>
+						  
 						  <br><br><i>
 						  Sincerely,
 						  <br>
@@ -158,3 +157,4 @@ You can find our customer service contact information and answers to our most co
 
     </body>
 </html>
+{!Case.Thread_Id}

@@ -3,13 +3,10 @@
  */
 ({
     newOrder: function(component, event, helper) {
-        component.set('v.showModal', true);
+        helper.checkBusinessUnit(component, event, helper);
     },
 
     handleLoad: function(component, event, helper) {
-        // component.find('field').forEach(function(f) {
-        //     f.reset();
-        // });
         component.set('v.isLoading', false);
     },
 
@@ -19,8 +16,6 @@
     },
 
     handleError: function(component, event, helper) {
-        // errors are handled by lightning:inputField and lightning:messages
-        // so this just hides the spinner
         component.set('v.showSpinner', false);
     },
 

@@ -6,10 +6,10 @@
                 implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForRecordHome">
 
     <aura:attribute name="recordId" type="String"/>
-    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="caseRecord" type="Case" default="{'sObjectType':'Case', 'Origin':'Phone'}"/>
     <aura:attribute name="recordLoadError" type="String"/>
     <aura:attribute name="showModal" type="Boolean"/>
-
+    
     <aura:registerEvent name="refreshOrderEvent" type="c:trac_NewOrderModalCloseEvent"/>
 
     <force:recordData aura:id="recordLoader"

@@ -253,13 +253,6 @@
                 <value>true</value>
             </componentInstanceProperties>
             <componentName>force:relatedListSingleContainer</componentName>
-            <visibilityRule>
-                <criteria>
-                    <leftValue>{!$User.Profile.Name}</leftValue>
-                    <operator>CONTAINS</operator>
-                    <rightValue>Administrator</rightValue>
-                </criteria>
-            </visibilityRule>
         </componentInstances>
         <mode>Replace</mode>
         <name>relatedTabContent</name>
@@ -340,6 +333,10 @@
             <componentInstanceProperties>
                 <name>maxDisplayPropositions</name>
                 <value>1</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>shouldLaunchActionOnReject</name>
+                <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>showDescription</name>

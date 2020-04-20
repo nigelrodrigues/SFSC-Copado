@@ -673,7 +673,7 @@ var globalSldsResourcePath = globalSldsResourcePath ? globalSldsResourcePath : u
                         templateQueryLimit: contents.dataTemplate.templateQueryLimit,
                         templateDescription: contents.dataTemplate.templateDescription,
                         templateFilterLogic: contents.dataTemplate.templateFilterLogic,
-                        templateAttachmentOptions: contents.dataTemplate.templateAttachmentOptions,
+                        templateAttachmentOptions: contents.dataTemplate.templateAttachmentOption,
                         templateBatchSize: contents.dataTemplate.templateBatchSize,
                         templateMatchOwners: contents.dataTemplate.templateMatchOwners,
                         templateMatchRecordTypes: contents.dataTemplate.templateMatchRecordTypes,

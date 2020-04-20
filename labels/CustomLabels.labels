@@ -129,6 +129,22 @@
         <value>Close</value>
     </labels>
     <labels>
+        <fullName>Community_Url_SaksOff5th</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Community Url SaksOff5th</shortDescription>
+        <value>https://qa-hbc.cs40.force.com/saksoff5th</value>
+    </labels>
+    <labels>
+        <fullName>Community_Url_ServiceSaksOff5th</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Community Url ServiceSaksOff5th</shortDescription>
+        <value>https://qa-hbc.cs40.force.com/servicesaksoff5th</value>
+    </labels>
+    <labels>
         <fullName>Created_Subtitle</fullName>
         <categories>Contact Support Form</categories>
         <language>en_US</language>
@@ -289,6 +305,14 @@
         <value>Please resolve the errors in the form fields below</value>
     </labels>
     <labels>
+        <fullName>Hudson_Bay_CommunityName</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hudson Bay CommunityName</shortDescription>
+        <value>hudsonbay</value>
+    </labels>
+    <labels>
         <fullName>Hudson_s_Bay_Narvar</fullName>
         <categories>Environment</categories>
         <language>en_US</language>
@@ -375,6 +399,14 @@
         <protected>false</protected>
         <shortDescription>LA_Waiting_WithoutQueuePos_WaitingMessage_04IS00000004CBs_2407379</shortDescription>
         <value>Help is on the way.</value>
+    </labels>
+    <labels>
+        <fullName>La_Baie_CommunityName</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>La Baie CommunityName</shortDescription>
+        <value>labaie</value>
     </labels>
     <labels>
         <fullName>Language</fullName>
@@ -536,6 +568,28 @@
         <value>https://oms.hbc.com/isccs/isccs/login.do</value>
     </labels>
     <labels>
+        <fullName>OMS_OFF5_Login</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OMS OFF5 Login</shortDescription>
+        <value>https://o5oms.hbc.com/isccs/isccs/login.do</value>
+    </labels>
+    <labels>
+        <fullName>OMS_SAKS_Login</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OMS SAKS Login</shortDescription>
+        <value>https://s5aoms.hbc.com/isccs/isccs/login.do</value>
+    </labels>
+    <labels>
+        <fullName>Off_5th_Narvar</fullName>
+        <categories>Environment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Off 5th Narvar</shortDescription>
+        <value>https://returns.narvar.com/off5th/returns</value>
+    </labels>
+    <labels>
         <fullName>Optional</fullName>
         <categories>General UI</categories>
         <language>en_US</language>
@@ -616,6 +670,22 @@
         <value>(Required)</value>
     </labels>
     <labels>
+        <fullName>Saks_Narvar</fullName>
+        <categories>Environment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saks Narvar</shortDescription>
+        <value>https://returns.narvar.com/saksfifthavenue/returns</value>
+    </labels>
+    <labels>
+        <fullName>Saks_Off_5th_CommunityName</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saks Off 5th CommunityName</shortDescription>
+        <value>saksoff5th</value>
+    </labels>
+    <labels>
         <fullName>Search</fullName>
         <categories>General UI</categories>
         <language>en_US</language>
@@ -638,6 +708,14 @@
         <protected>false</protected>
         <shortDescription>Select Promo Code</shortDescription>
         <value>Select promo code:</value>
+    </labels>
+    <labels>
+        <fullName>ServiceSaksOff5th_CommunityName</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ServiceSaksOff5th CommunityName</shortDescription>
+        <value>servicesaksoff5th</value>
     </labels>
     <labels>
         <fullName>Submit</fullName>
@@ -663,6 +741,14 @@ Give us all the details in the form below.</value>
         <protected>false</protected>
         <shortDescription>Success</shortDescription>
         <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>Support_Saks_CommunityName</fullName>
+        <categories>Community</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Support Saks CommunityName</shortDescription>
+        <value>SupportSaks</value>
     </labels>
     <labels>
         <fullName>TYPE_OPTION_NOT_SELECTED</fullName>

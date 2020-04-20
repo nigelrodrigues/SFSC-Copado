@@ -207,6 +207,57 @@
     <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Agent_Hire_Date__c</fullName>
+        <description>The date that an agent was hired. Will be used to determine tenure on cases.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that the agent is hired</inlineHelpText>
+        <label>Agent Hire Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Agent_Location__c</fullName>
+        <description>The location where the agent works.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The location where the agent works</inlineHelpText>
+        <label>Agent Location</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Jackson</fullName>
+                    <default>false</default>
+                    <label>Jackson</label>
+                </value>
+                <value>
+                    <fullName>Cebu</fullName>
+                    <default>false</default>
+                    <label>Cebu</label>
+                </value>
+                <value>
+                    <fullName>El Salvador</fullName>
+                    <default>false</default>
+                    <label>El Salvador</label>
+                </value>
+                <value>
+                    <fullName>Moncton</fullName>
+                    <default>false</default>
+                    <label>Moncton</label>
+                </value>
+                <value>
+                    <fullName>Davao</fullName>
+                    <default>false</default>
+                    <label>Davao</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>ManagerId</fullName>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Hierarchy</type>

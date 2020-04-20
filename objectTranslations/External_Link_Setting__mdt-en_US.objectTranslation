@@ -9,9 +9,29 @@
         <value>External Link Settings</value>
     </caseValues>
     <fields>
+        <label><!-- Bay --></label>
+        <name>Bay__c</name>
+    </fields>
+    <fields>
+        <label><!-- LT --></label>
+        <name>LT__c</name>
+    </fields>
+    <fields>
+        <label><!-- MHF --></label>
+        <name>MHF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Off 5th --></label>
+        <name>Off_5th__c</name>
+    </fields>
+    <fields>
         <help><!-- The order in which links will be displayed (lowest number first) --></help>
         <label><!-- Order --></label>
         <name>Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Saks --></label>
+        <name>Saks__c</name>
     </fields>
     <fields>
         <help><!-- The link to the website that should open --></help>

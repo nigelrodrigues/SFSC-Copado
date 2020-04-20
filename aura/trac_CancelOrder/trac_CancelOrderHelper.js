@@ -11,18 +11,20 @@
         var orderLineItem = component.get("v.orderLineItem");
         var caseRecord = component.get("v.caseRecord");
         var cancelReasonCode = component.get("v.cancelReasonCode");
+        var quantityToCancel = component.get("v.quantityToCancel");
         var businessUnit = component.get("v.businessUnit");
 
         var apexAction = component.get("c.cancelOrder");
 
         apexAction.setParams({
+            "caseRecord" : caseRecord,
             "businessUnit" : businessUnit,
             "orderNumber" : helper.getOrderNumber(order),
             "primeLineNumber" : helper.getPrimeLineNumber(orderLineItem),
             "cancelReason" : cancelReason,
-            "cancelReasonCode" : cancelReasonCode
+            "cancelReasonCode" : cancelReasonCode,
+            "quantityToCancel" : quantityToCancel
         });
-
 
         apexAction.setCallback(this, function(response) {
             var state = response.getState();
@@ -86,20 +88,71 @@
         resultsToast.fire();
     },
 
+    /*
+    Modified by Nigel Rodrigues, Traction on Demand, 10-Jan-2019
+     */
     setDisabled: function(component) {
-        var disabled = false;
+
 
         var order = component.get("v.order");
         var orderLineItem = component.get("v.orderLineItem");
 
+       /* var disabled = false;
         if (orderLineItem && orderLineItem.Status !== 'Created') {
             disabled = true;
         }
 
         if (!orderLineItem && order.Status !== 'Created') {
             disabled = true;
+        }*/
+       var disabled = true;
+       if( orderLineItem &&
+           (
+               orderLineItem.Status === 'Released' ||
+               orderLineItem.Status === 'Backordered' ||
+               orderLineItem.Status === 'Hold Credit' ||
+               orderLineItem.Status === 'Hold Risk' ||
+               orderLineItem.Status === 'General Error' ||
+               orderLineItem.Status === 'Created' ||
+               orderLineItem.Status === 'Open'
+           )
+       )
+       {
+           disabled = false;
+       }
+
+        if ( !orderLineItem &&
+            (
+                order.Status === 'Released' ||
+                order.Status === 'Backordered' ||
+                order.Status === 'Hold Credit' ||
+                order.Status === 'Hold Risk' ||
+                order.Status === 'General Error' ||
+                order.Status === 'Created' ||
+                order.Status === 'Open'
+            )
+        )
+        {
+            disabled = false;
         }
 
         component.set("v.disabled", disabled);
+    },
+
+    getQuantityOptions: function(component) {
+        var orderLine = component.get("v.orderLineItem");
+        if (orderLine) {
+            var quantity = orderLine.OrderedQty;
+
+            if (quantity) {
+                var options = [];
+                for (var i = quantity; i > 0; i--) {
+                    options.push({'label': String(i), 'value': String(i)});
+                }
+                console.log('options',options);
+                component.set("v.quantityOptions", options);
+                component.set("v.quantityToCancel", quantity);
+            }
+        }
     }
 })

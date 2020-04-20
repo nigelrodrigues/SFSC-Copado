@@ -78,7 +78,7 @@
 <br>
 <br>
 
-<a href="mailto:customercare.other@lordandtaylor.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id}" > CONTACT US NOW </a><br><br><i>
+<a href="mailto:customercare.other@lordandtaylor.com?subject=We need more info to assist you-{!Case.Thread_Id}" > CONTACT US </a><br><br><i>
 						  Sincerely, <br>Lord and Taylor Customer Service  </i></p>
 
 
@@ -152,3 +152,4 @@
 
     </body>
 </html>
+{!Case.Thread_Id}

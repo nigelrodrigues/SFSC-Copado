@@ -4,15 +4,19 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Case - Send Acknowledgement Email (LT)</name>
     <style>none</style>
-    <subject>Thank you for contacting  {!Case.Business_Unit__c}!</subject>
-    <textOnly>Hi {!Contact.FirstName},
+    <subject>Thank you for contacting  Lord + Taylor!</subject>
+    <textOnly>Dear {!Case.First_Name_Extract__c},
 
-Thanks for contacting Lord and Taylor. We&apos;ve received your message and we&apos;ll make our best effort to respond as soon as possible. If you need immediate assistance, please call us and refer to case {!Case.CaseNumber}.
+Thank you for contacting {!Case.Business_Unit__c}! We are in the process of resolving your issue and will provide you with an update within 48 hours. If you need to contact us in the meantime about this issue, please click  here
 
-We&apos;re available from 8am-12am EST, seven days a week, at 1-800-223-7440.
+Your Case Number: {!Case.CaseNumber}
 
-Sincerely,
-Lord and Taylor Customer Service</textOnly>
+All the best,
+
+Your {!Case.Business_Unit__c} Customer Service Team
+
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

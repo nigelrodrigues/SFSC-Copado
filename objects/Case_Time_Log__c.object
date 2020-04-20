@@ -155,6 +155,78 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Agent_Location__c</fullName>
+        <description>The location of the agent working on the case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The location of the agent working on the case</inlineHelpText>
+        <label>Agent Location</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Jackson</fullName>
+                    <default>false</default>
+                    <label>Jackson</label>
+                </value>
+                <value>
+                    <fullName>Cebu</fullName>
+                    <default>false</default>
+                    <label>Cebu</label>
+                </value>
+                <value>
+                    <fullName>El Salvador</fullName>
+                    <default>false</default>
+                    <label>El Salvador</label>
+                </value>
+                <value>
+                    <fullName>Moncton</fullName>
+                    <default>false</default>
+                    <label>Moncton</label>
+                </value>
+                <value>
+                    <fullName>Manilla</fullName>
+                    <default>false</default>
+                    <label>Manilla</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Agent_Team_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The agent on the time logs team lead</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The agents team lead</inlineHelpText>
+        <label>Agent Team Lead</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Case_Time_Logs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Agent_Tenure__c</fullName>
+        <description>The age in months the agent had worked for HBC</description>
+        <externalId>false</externalId>
+        <formula>ROUND(
+				(  DATEVALUE(CreatedDate) - Case__r.Owner:User.Agent_Hire_Date__c) / 365 * 12,
+				1
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The age in months the agent had worked for HBC</inlineHelpText>
+        <label>Agent Tenure</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Business_Hours_Duration_Days__c</fullName>
         <description>Converts Business_Hours_Duration__c (secs) to days</description>
         <externalId>false</externalId>

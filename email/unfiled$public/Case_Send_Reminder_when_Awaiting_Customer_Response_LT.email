@@ -82,7 +82,7 @@
 If for some reason you’re unable to locate our original email, contact us using the link below and and refer to case {!Case.CaseNumber}.
 <br><br>
 						  
-<a href="mailto:customercare.other@lordandtaylor.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id}" > CONTACT US NOW </a>
+<a href="mailto:customercare.other@lordandtaylor.com?subject=We need more info to assist you-{!Case.Thread_Id}" > CONTACT US </a>
 						  <br><br><i>
 						  Sincerely, 
 						  <br>
@@ -159,3 +159,5 @@ If for some reason you’re unable to locate our original email, contact us usin
 
     </body>
 </html>
+
+{!Case.Thread_Id}

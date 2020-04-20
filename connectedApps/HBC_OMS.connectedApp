@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>jhoran@tractionondemand.com</contactEmail>
+    <label>HBC OMS</label>
+    <oauthConfig>
+        <callbackUrl>https://test.salesforce.com/services/oauth2/success</callbackUrl>
+        <consumerKey>3MVG9ZF4bs_.MKuiHsEPeIOb6ORQzxi3McKdKHdfFqU1xcmLTGgO.yTZlbZ28LAiXhtu3nG_M2nNQVwxAVbic</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+</ConnectedApp>

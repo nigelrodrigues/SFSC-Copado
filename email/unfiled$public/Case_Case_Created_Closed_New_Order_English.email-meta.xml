@@ -11,7 +11,9 @@
 Thanks for shopping with us. We’re happy we were able to assist you with placing your order today.  Please note, your order number is: {!Case.Order_Number__c}.
 
 Sincerely,
-Hudson’s Bay Customer Service</textOnly>
+Hudson’s Bay Customer Service
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -579,6 +579,32 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Off_5th_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>service@off5th.com</emailAddress>
+            <emailServicesAddress>service@2mx7x6edfffirw23csr06kxvrx4f26u69bhrl97xuqb9568v43.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>Off 5th More! Program</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Off_5th_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>orders@saksoff5th.com</emailAddress>
+            <emailServicesAddress>orders@s-1nh7hoxg62xnzyhstb0uepu7dygq6watk9tk9f3toat97j0qop.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>Off 5th Order Status</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
             <caseOrigin>Email - Service Excellence</caseOrigin>
             <caseOwner>POS_Bay_Escalations</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
@@ -614,6 +640,110 @@
             <emailServicesAddress>callcenterproductdiscrepancies@z-z6q0ir27xbxdk37f251dniwtphhroijqit28s1khc4ahsbnvv.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Product Discrepancies</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>comments@saksfifthavenue.com</emailAddress>
+            <emailServicesAddress>comments@m-53iw3tpv7n3i8jmksdaks9l5qpc40mzw228jp3ye0pot5pixi.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A Comments</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>internationalshipment@saks.com</emailAddress>
+            <emailServicesAddress>internationalshipment@2r48es9804e6zi8455zs8ooepodlmq1vnb9rz441vbvx7alx0d.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A International Shipping</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email - The Bay</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>orders@saksfifthavenue.com</emailAddress>
+            <emailServicesAddress>orders@1-1uie6j0g3ypozhj2aslggs9jiifm6gr6z5fjh0jnwln5c0g8ci.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A Order Status</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>service@saks.com</emailAddress>
+            <emailServicesAddress>service@1-3537krttchlv4qyh8ynjt5m5ieq40h5ses9gsujiir5dbici1n.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A Other Assistance</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>productinfo@saks.com</emailAddress>
+            <emailServicesAddress>productinfo@1log129jqe8llg65xwziaces3cgt9ldpq3fspogis26hc001ca.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A Product Information</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>saksfirst@saksfifthavenue.com</emailAddress>
+            <emailServicesAddress>saksfirst@tr8q1lbslxjthnepqd6gccqjbgygwiw91umyiddrxakih2c6w.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A SAKSFIRST</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>sitehelp@saksfifthavenue.com</emailAddress>
+            <emailServicesAddress>sitehelp@o-p34khujlk6oos3su115ipca9xpnnno652zdugvcvhjxgzsiq7.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A Site Assistance</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Phone</caseOrigin>
+            <caseOwner>Saks_Main</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>stores@saksfifthavenue.com</emailAddress>
+            <emailServicesAddress>stores@h-2t4ucmnk78he8mnl0b1mcznlgndpflsybinasku18h9g1b5ri3.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <isVerified>true</isVerified>
+            <routingName>S5A Store Information</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -688,6 +818,8 @@
     <enableDraftEmails>false</enableDraftEmails>
     <enableEarlyEscalationRuleTriggers>false</enableEarlyEscalationRuleTriggers>
     <enableEmailActionDefaultsHandler>false</enableEmailActionDefaultsHandler>
+    <enableEscalateQfiToCaseInternal>false</enableEscalateQfiToCaseInternal>
+    <enableEscalateQfiToCaseNetworks>false</enableEscalateQfiToCaseNetworks>
     <enableSuggestedArticlesApplication>false</enableSuggestedArticlesApplication>
     <enableSuggestedArticlesCustomerPortal>false</enableSuggestedArticlesCustomerPortal>
     <enableSuggestedArticlesPartnerPortal>false</enableSuggestedArticlesPartnerPortal>
@@ -702,6 +834,7 @@
     <systemUserEmail>admin@tractionondemand.com</systemUserEmail>
     <useSystemEmailAddress>true</useSystemEmailAddress>
     <useSystemUserAsDefaultCaseUser>false</useSystemUserAsDefaultCaseUser>
+    <visibleInCssCheckbox>true</visibleInCssCheckbox>
     <webToCase>
         <enableWebToCase>false</enableWebToCase>
     </webToCase>

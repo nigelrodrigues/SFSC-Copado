@@ -14,7 +14,6 @@ public without sharing class trac_CaseTriggerHelper {
     private static final String ORDER_NOT_FOUND = 'Order Not Found';
 
     public static void updateCaseOriginIfChat(List<Case> cases) {
-        Map<String, Case_Type_Mapping__mdt> mapper = new Map<String, Case_Type_Mapping__mdt>();
         for (Case cse : cases) {
             if (String.isNotBlank(cse.Origin_Is_Chat__c) && cse.Origin_Is_Chat__c.equals('True')) {
                 cse.Origin = 'Live Agent';
@@ -33,13 +32,21 @@ public without sharing class trac_CaseTriggerHelper {
 
 
     public static void mapCaseTypeFromCommunity(List<Case> cases) {
-        Map<String, Case_Type_Mapping__mdt> mapper = new Map<String, Case_Type_Mapping__mdt>();
-        for (Case_Type_Mapping__mdt mapping : [SELECT Community_Value__c, Map_to_Field__c, Map_to_Value__c FROM Case_Type_Mapping__mdt]) {
-            mapper.put(mapping.Community_Value__c, mapping);
-        }
 
+        List<Case> casesToMap = new List<Case>();
         for (Case cs : cases) {
             if ((cs.Origin == 'Support Community' || cs.Origin == 'Live Agent') && cs.Community_Case_Type__c != null) {
+                casesToMap.add(cs);
+            }
+        }
+
+        if (!casesToMap.isEmpty()) {
+            Map<String, Case_Type_Mapping__mdt> mapper = new Map<String, Case_Type_Mapping__mdt>();
+            for (Case_Type_Mapping__mdt mapping : [SELECT Community_Value__c, Map_to_Field__c, Map_to_Value__c FROM Case_Type_Mapping__mdt]) {
+                mapper.put(mapping.Community_Value__c, mapping);
+            }
+
+            for (Case cs : casesToMap) {
                 if (mapper.get(cs.Community_Case_Type__c) != null) {
                     Case_Type_Mapping__mdt thisMap = mapper.get(cs.Community_Case_Type__c);
                     cs.put(thisMap.Map_to_Field__c, thisMap.Map_to_Value__c);
@@ -76,7 +83,8 @@ public without sharing class trac_CaseTriggerHelper {
             if (cs.Status == 'Closed' && (oldMap == null || oldMap.get(cs.Id).Status != cs.Status)) {
                 if (String.valueOf(cs.OwnerId).startsWithIgnoreCase('00G')) {
                     cs.OwnerId = userId;
-                } else if (cs.Owner_When_First_Closed__c == null) {
+                }
+                else if (cs.Owner_When_First_Closed__c == null) {
                     cs.Owner_When_First_Closed__c = cs.OwnerId;
                 }
                 if (cs.Date_Time_First_Closed__c == null) {
@@ -87,10 +95,10 @@ public without sharing class trac_CaseTriggerHelper {
     }
 
     /**
-* @description Checks if there is a Contact associated to the Case, create a new Contact otherwise
-* @param       newList, List of new Case records being inserted
-* @return      void
-*/
+    * @description Checks if there is a Contact associated to the Case, create a new Contact otherwise
+    * @param       newList, List of new Case records being inserted
+    * @return      void
+    */
     public static void checkContact(List<Case> newList) {
 
         List<Case> cases = new List<Case>();
@@ -156,10 +164,10 @@ public without sharing class trac_CaseTriggerHelper {
     }
 
     /**
-* @description Returns a new Contact created from the specified Case record values
-* @param       cs, Case record for which the Contact is to be created
-* @return      Contact, the new Contact record to be inserted
-*/
+    * @description Returns a new Contact created from the specified Case record values
+    * @param       cs, Case record for which the Contact is to be created
+    * @return      Contact, the new Contact record to be inserted
+    */
     private static Contact createContact(Case cs) {
         //Return null if all supplied fields are blank
         if (cs.SuppliedName == null && cs.SuppliedEmail == null && cs.SuppliedPhone == null) {
@@ -220,11 +228,11 @@ public without sharing class trac_CaseTriggerHelper {
     }
 
     /**
-* @description Checks if there is a Contact associated to the Case, create a new Contact otherwise
-* @param       newList, List of new Case records being inserted
-* @param       oldMap, Trigger.oldMap of Case
-* @return      void
-*/
+    * @description Checks if there is a Contact associated to the Case, create a new Contact otherwise
+    * @param       newList, List of new Case records being inserted
+    * @param       oldMap, Trigger.oldMap of Case
+    * @return      void
+    */
     public static void updateLastCaseOnContact(List<Case> newList, Map<Id, Case> oldMap) {
 
         List<Contact> contacts = new List<Contact>();
@@ -241,12 +249,12 @@ public without sharing class trac_CaseTriggerHelper {
     }
 
     /**
-* @description If an Order Number is populated, search for an existing Case with the same Order Number, if found, set it as the parent Case
-* @date        2019-06-10
-* @param       newList, List of new Case records being inserted
-* @param       oldMap, Trigger.oldMap of Case
-* @return      void
-*/
+    * @description If an Order Number is populated, search for an existing Case with the same Order Number, if found, set it as the parent Case
+    * @date        2019-06-10
+    * @param       newList, List of new Case records being inserted
+    * @param       oldMap, Trigger.oldMap of Case
+    * @return      void
+    */
     public static void updateParentCase(List<Case> newList, Map<Id, Case> oldMap) {
         List<Case> cases = new List<Case>();
         Map<String, Set<Id>> mapOrderNoToCases = new Map<String, Set<Id>>();
@@ -260,54 +268,62 @@ public without sharing class trac_CaseTriggerHelper {
             }
         }
 
-        if (mapOrderNoToCases.isEmpty()) return ;
+        if (!mapOrderNoToCases.isEmpty()) {
 
-        for (Case aCase : [SELECT Id, Order_Number__c FROM Case WHERE Order_Number__c IN:mapOrderNoToCases.keySet() ORDER BY CreatedDate DESC]) {
-            if (mapOrderNoToCases.containsKey(aCase.Order_Number__c)) {
-                for (Id caseId : mapOrderNoToCases.get(aCase.Order_Number__c)) {
-                    if (aCase.Id != caseId) {
-                        Case cs = new Case(Id = caseId, ParentId = aCase.Id);
-                        cases.add(cs);
-                        if (mapOrderNoToCases.containsKey(aCase.Order_Number__c))
-                            mapOrderNoToCases.remove(aCase.Order_Number__c);
+            for (Case aCase : [SELECT Id, Order_Number__c FROM Case WHERE Order_Number__c IN:mapOrderNoToCases.keySet() ORDER BY CreatedDate DESC]) {
+                if (mapOrderNoToCases.containsKey(aCase.Order_Number__c)) {
+                    for (Id caseId : mapOrderNoToCases.get(aCase.Order_Number__c)) {
+                        if (aCase.Id != caseId) {
+                            Case cs = new Case(Id = caseId, ParentId = aCase.Id);
+                            cases.add(cs);
+
+                            if (mapOrderNoToCases.containsKey(aCase.Order_Number__c)) {
+                                mapOrderNoToCases.remove(aCase.Order_Number__c);
+                            }
+                        }
                     }
                 }
             }
-        }
 
-        if (!cases.isEmpty()) {
-            update cases;
+            if (!cases.isEmpty()) {
+                update cases;
+            }
         }
     }
 
 
     /**
-* @description update case queue or other field updates based on the change in status
-* @param       newList, List of new Case records being inserted
-* @param       oldMap, Trigger.oldMap of Case
-*/
+    * @description update case queue or other field updates based on the change in status
+    * @param       newList, List of new Case records being inserted
+    * @param       oldMap, Trigger.oldMap of Case
+    */
     public static void caseStatusAutomation(List<Case> newList, Map<Id, Case> oldMap) {
-        queueSettingByStatus = mapQueueSettings();
-        queueByDeveloperName = mapQueueNames();
 
-        for (Case aCase : (List<Case>) TLTrigger.filterByFieldChanged(newList, oldMap, Case.Status)) {
-            if (aCase.RecordTypeId == TLSObj.getRecordTypeIdForName(Case.SObjectType, trac_CaseConstants.RECORD_TYPE_DEVNAME_SUPPORT_CASE)) {
-                if (aCase.Status == trac_CaseConstants.STATUS_POS_TEAM) {
-                    if (aCase.Business_Unit__c != null) {
-                        if (aCase.Business_Unit__c == trac_CaseConstants.BUSINESS_UNIT_HB && queueByDeveloperName.containsKey(trac_CaseConstants.QUEUE_POS_BAY)) {
-                            aCase.OwnerId = queueByDeveloperName.get(trac_CaseConstants.QUEUE_POS_BAY);
-                        } else if (aCase.Business_Unit__c == trac_CaseConstants.BUSINESS_UNIT_LT && queueByDeveloperName.containsKey(trac_CaseConstants.QUEUE_POS_LT)) {
-                            aCase.OwnerId = queueByDeveloperName.get(trac_CaseConstants.QUEUE_POS_LT);
-                        } else if (aCase.Business_Unit__c == trac_CaseConstants.BUSINESS_UNIT_MHF && queueByDeveloperName.containsKey(trac_CaseConstants.QUEUE_POS_MHF)) {
-                            aCase.OwnerId = queueByDeveloperName.get(trac_CaseConstants.QUEUE_POS_MHF);
+        List<Case> casesWhereStatusChanged = (List<Case>) TLTrigger.filterByFieldChanged(newList, oldMap, Case.Status);
+
+        if (!casesWhereStatusChanged.isEmpty()) {
+            queueSettingByStatus = mapQueueSettings();
+            queueByDeveloperName = mapQueueNames();
+
+            for (Case aCase : casesWhereStatusChanged) {
+                if (aCase.RecordTypeId == TLSObj.getRecordTypeIdForName(Case.SObjectType, trac_CaseConstants.RECORD_TYPE_DEVNAME_SUPPORT_CASE)) {
+                    if (aCase.Status == trac_CaseConstants.STATUS_POS_TEAM) {
+                        if (aCase.Business_Unit__c != null) {
+                            if (aCase.Business_Unit__c == trac_CaseConstants.BUSINESS_UNIT_HB && queueByDeveloperName.containsKey(trac_CaseConstants.QUEUE_POS_BAY)) {
+                                aCase.OwnerId = queueByDeveloperName.get(trac_CaseConstants.QUEUE_POS_BAY);
+                            } else if (aCase.Business_Unit__c == trac_CaseConstants.BUSINESS_UNIT_LT && queueByDeveloperName.containsKey(trac_CaseConstants.QUEUE_POS_LT)) {
+                                aCase.OwnerId = queueByDeveloperName.get(trac_CaseConstants.QUEUE_POS_LT);
+                            } else if (aCase.Business_Unit__c == trac_CaseConstants.BUSINESS_UNIT_MHF && queueByDeveloperName.containsKey(trac_CaseConstants.QUEUE_POS_MHF)) {
+                                aCase.OwnerId = queueByDeveloperName.get(trac_CaseConstants.QUEUE_POS_MHF);
+                            }
                         }
+                    } else {
+                        assignToQueue(aCase);
                     }
-                } else {
-                    assignToQueue(aCase);
+                    setIssueSystemStart(aCase);
+                    setIssueSystemEnd(aCase, oldMap.get(aCase.Id));
+                    setStatusClosed(aCase);
                 }
-                setIssueSystemStart(aCase);
-                setIssueSystemEnd(aCase, oldMap.get(aCase.Id));
-                setStatusClosed(aCase);
             }
         }
     }
@@ -395,7 +411,7 @@ public without sharing class trac_CaseTriggerHelper {
     }
 
     public static void ownerChanged(List<Case> newList, Map<Id, Case> oldMap) {
-        Group holdQueue = [SELECT Id FROM Group WHERE DeveloperName = 'Hold' AND Type = 'Queue'];
+
         List<Case> ownerChangedCases = new List<Case>();
         if (oldMap != null) {
             ownerChangedCases = TLTrigger.filterByFieldChanged(newList, oldMap, Case.OwnerId);
@@ -403,70 +419,22 @@ public without sharing class trac_CaseTriggerHelper {
             ownerChangedCases = newList;
         }
 
-        for (Case aCase : ownerChangedCases) {
-            if (String.valueOf(aCase.OwnerId).substring(0, 3) == '00G' && aCase.OwnerId != holdQueue.Id) {
-                aCase.Previous_Queue_Owner_ID__c = aCase.OwnerId;
+        if (!ownerChangedCases.isEmpty()) {
+            Group holdQueue = [SELECT Id FROM Group WHERE DeveloperName = 'Hold' AND Type = 'Queue'];
+
+            for (Case aCase : ownerChangedCases) {
+                if (String.valueOf(aCase.OwnerId).substring(0, 3) == '00G' && aCase.OwnerId != holdQueue.Id) {
+                    aCase.Previous_Queue_Owner_ID__c = aCase.OwnerId;
+                }
             }
         }
     }
 
-
     /**
-* @description update case priority if case coming from a high priority contact
-* @param       newList, list of new case records
-* @param       oldMap, map of id vs old case records
-*//*
-public static void updateCasePriority(List<Case> newList, Map<Id, Case> oldMap) {
-List<Case> casesChangedContact;
-if (oldMap != null) {
-casesChangedContact = TLTrigger.filterByFieldChanged(newList, oldMap, Case.ContactId);
-} else {
-casesChangedContact = newList;
-}
-
-Set<Id> conIdSet = new Set<Id>();
-for (Case cse : casesChangedContact) {
-conIdSet.add(cse.ContactId);
-}
-Map<Id, Contact> idToContactMap;
-if (conIdSet != null && !conIdSet.isEmpty()) {
-idToContactMap = new Map<Id, Contact>([SELECT Id,High_Priority_Contact__c FROM Contact WHERE Id IN:conIdSet]);
-}
-for (Case cse : casesChangedContact) {
-if (idToContactMap != null && idToContactMap.containsKey(cse.ContactId) && idToContactMap.get(cse.ContactId).High_Priority_Contact__c) {
-cse.Priority = trac_CaseConstants.CASE_PRIORITY_HIGH;
-}
-}
-}
-
-*//**
-* @description update routing priority if case priority is high
-* @param       newList, list of new case records
-*//*
-public static void updateCaseRoutingPriority(Map<Id,Case> newMap, Map<Id,Case> oldMap) {
-Map<Id,PendingServiceRouting> idToServiceRouting = new Map<Id,PendingServiceRouting>([SELECT Id, WorkItemId, RoutingPriority FROM PendingServiceRouting WHERE WorkItemId IN : newMap.keySet()]);
-List<PendingServiceRouting> serviceRoutingsToUpdate = new List<PendingServiceRouting>();
-for(Id psrId: idToServiceRouting.keySet()){
-Id workItemId = idToServiceRouting.get(psrId).WorkItemId;
-System.debug('>>Inside for');
-if(workItemId!=null && newMap.get(workItemId).Priority!=null && newMap.get(workItemId).Priority.equals('High') && (oldMap==null || newMap.get(workItemId).Priority!= oldMap.get(workItemId).Priority)){
-idToServiceRouting.get(psrId).RoutingPriority = 0;
-serviceRoutingsToUpdate.add(idToServiceRouting.get(psrId));
-System.debug('>>serviceRoutingsToUpdate: '+ serviceRoutingsToUpdate);
-}
-}
-if(serviceRoutingsToUpdate!=null && !serviceRoutingsToUpdate.isEmpty()){
-update serviceRoutingsToUpdate;
-System.debug('>>serviceRoutingsToUpdate: '+ serviceRoutingsToUpdate);
-}
-}*/
-
-
-    /**
-* @description update the case routing to keep the case's created date when owner changes to a queue
-* @param       newList, list of new case records
-* @param       oldMap, map of old case records
-*/
+    * @description update the case routing to keep the case's created date when owner changes to a queue
+    * @param       newList, list of new case records
+    * @param       oldMap, map of old case records
+    */
     public static void channelRouting(List<Case> newList, Map<Id, Case> oldMap) {
         List<Case> casesChangedOwner = TLTrigger.filterByFieldChanged(newList, oldMap, Case.OwnerId);
         Map<Id, Datetime> caseIdToCreatedDate = new Map<Id, Datetime>();
@@ -489,9 +457,9 @@ System.debug('>>serviceRoutingsToUpdate: '+ serviceRoutingsToUpdate);
     }
 
     /**
-* @description get the related pending service routing record and update the custom requested datetime to the original datetime the case was created
-* @param caseIdToCreatedDate - map of case id to datetime the case was created
-*/
+    * @description get the related pending service routing record and update the custom requested datetime to the original datetime the case was created
+    * @param caseIdToCreatedDate - map of case id to datetime the case was created
+    */
     @Future
     public static void updateServiceRoutingsAsync(Map<Id, Datetime> caseIdToCreatedDate) {
         updateServiceRoutingsSync(caseIdToCreatedDate);
@@ -508,10 +476,10 @@ System.debug('>>serviceRoutingsToUpdate: '+ serviceRoutingsToUpdate);
     }
 
     /**
-* @description Set business hours on the case based on Business Unit
-* @param       newList, List of new Case records being inserted
-* @return      void
-*/
+    * @description Set business hours on the case based on Business Unit
+    * @param       newList, List of new Case records being inserted
+    * @return      void
+    */
     public static void updateBusinessHours(List<Case> newList) {
 
         Map<String, Id> mapUnitToHour = new Map<String, Id>();
@@ -641,26 +609,30 @@ System.debug('>>serviceRoutingsToUpdate: '+ serviceRoutingsToUpdate);
             }
         }
 
-        //Creating map of business unit + gift card to queue's developer name
-        Map<String, String> bUnitQueueNameMap = new Map<String, String>();
-        for (Gift_Card_Mapping__mdt gftCard : [SELECT Id, Business_Unit__c, Includes_Gift_Card__c, Queue_Developer_Name__c FROM Gift_Card_Mapping__mdt]) {
-            bUnitQueueNameMap.put(gftCard.Business_Unit__c + '--' + gftCard.Includes_Gift_Card__c, gftCard.Queue_Developer_Name__c);
-        }
+        if (!caseList.isEmpty()) {
+            //Creating map of business unit + gift card to queue's developer name
+            Map<String, String> bUnitQueueNameMap = new Map<String, String>();
+            for (Gift_Card_Mapping__mdt gftCard : [SELECT Id, Business_Unit__c, Includes_Gift_Card__c, Queue_Developer_Name__c FROM Gift_Card_Mapping__mdt]) {
+                bUnitQueueNameMap.put(gftCard.Business_Unit__c + '--' + gftCard.Includes_Gift_Card__c, gftCard.Queue_Developer_Name__c);
+            }
 
-        //Creating map of quene name to id
-        Map<String, String> queueNameToIdMap = new Map<String, String>();
-        for (Group grp : [SELECT Id, DeveloperName FROM Group WHERE Type = 'Queue' AND DeveloperName IN:bUnitQueueNameMap.values()]) {
-            queueNameToIdMap.put(grp.DeveloperName, grp.Id);
-        }
+            //Creating map of queue name to id
+            Map<String, String> queueNameToIdMap = new Map<String, String>();
+            for (Group grp : [SELECT Id, DeveloperName FROM Group WHERE Type = 'Queue' AND DeveloperName IN:bUnitQueueNameMap.values()]) {
+                queueNameToIdMap.put(grp.DeveloperName, grp.Id);
+            }
 
-        for (Case cs : caseList) {
-            Boolean includesGiftCard = false;
-            if (cs.ORC_Gift_Card_Amount__c != null && cs.ORC_Gift_Card_Amount__c > 0)
-                includesGiftCard = true;
-            if (bUnitQueueNameMap.containsKey(cs.Business_Unit__c + '--' + includesGiftCard)) {
-                String queueId = queueNameToIdMap.get(bUnitQueueNameMap.get(cs.Business_Unit__c + '--' + includesGiftCard));
-                if (String.isNotBlank(queueId))
-                    cs.OwnerId = queueId;
+            for (Case cs : caseList) {
+                Boolean includesGiftCard = false;
+                if (cs.ORC_Gift_Card_Amount__c != null && cs.ORC_Gift_Card_Amount__c > 0) {
+                    includesGiftCard = true;
+                }
+                if (bUnitQueueNameMap.containsKey(cs.Business_Unit__c + '--' + includesGiftCard)) {
+                    String queueId = queueNameToIdMap.get(bUnitQueueNameMap.get(cs.Business_Unit__c + '--' + includesGiftCard));
+                    if (String.isNotBlank(queueId)) {
+                        cs.OwnerId = queueId;
+                    }
+                }
             }
         }
     }
@@ -673,20 +645,22 @@ System.debug('>>serviceRoutingsToUpdate: '+ serviceRoutingsToUpdate);
             }
         }
 
-        List<String> ctiGenericNumbers = new List<String>();
-        for (CTI_Generic_Number__mdt cti : [SELECT Phone_Number__c FROM CTI_Generic_Number__mdt]) {
-            ctiGenericNumbers.add(cti.Phone_Number__c.replaceAll('[^0-9]', ''));
-        }
+        if (!caseToContactIdMap.isEmpty()) {
+            List<String> ctiGenericNumbers = new List<String>();
+            for (CTI_Generic_Number__mdt cti : [SELECT Phone_Number__c FROM CTI_Generic_Number__mdt]) {
+                ctiGenericNumbers.add(cti.Phone_Number__c.replaceAll('[^0-9]', ''));
+            }
 
-        Map<Id, String> contactIdToPhoneMap = new Map <Id, String>();
-        for (Contact c : [SELECT Id, Phone FROM Contact WHERE Id IN:caseToContactIdMap.values()]) {
-            contactIdToPhoneMap.put(c.Id, c.Phone);
-        }
+            Map<Id, String> contactIdToPhoneMap = new Map <Id, String>();
+            for (Contact c : [SELECT Id, Phone FROM Contact WHERE Id IN:caseToContactIdMap.values()]) {
+                contactIdToPhoneMap.put(c.Id, c.Phone);
+            }
 
-        for (Case cs : caseToContactIdMap.keySet()) {
-            if (contactIdToPhoneMap.containsKey(cs.ContactId)
-                    && ctiGenericNumbers.contains(contactIdToPhoneMap.get(cs.ContactId))) {
-                cs.ContactId = null;
+            for (Case cs : caseToContactIdMap.keySet()) {
+                if (contactIdToPhoneMap.containsKey(cs.ContactId)
+                        && ctiGenericNumbers.contains(contactIdToPhoneMap.get(cs.ContactId))) {
+                    cs.ContactId = null;
+                }
             }
         }
     }

@@ -35,6 +35,18 @@
         <unique>false</unique>
     </fields>
     <label>Case Type Mapping</label>
+    <listViews>
+        <fullName>All_Columns</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>Community_Value__c</columns>
+        <columns>Map_to_Field__c</columns>
+        <columns>Map_to_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Columns</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>Case Type Mappings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmbeddedServiceBranding xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contrastInvertedColor>#ffffff</contrastInvertedColor>
+    <contrastPrimaryColor>#222222</contrastPrimaryColor>
+    <embeddedServiceConfig>Off_5th_French_Chat</embeddedServiceConfig>
+    <font>Salesforce Sans</font>
+    <masterLabel>EmbeddedServiceBranding_Parent04I2E000000Xd6YUAS_17140e8881d</masterLabel>
+    <navBarColor>#222222</navBarColor>
+    <primaryColor>#222222</primaryColor>
+    <secondaryColor>#005290</secondaryColor>
+</EmbeddedServiceBranding>

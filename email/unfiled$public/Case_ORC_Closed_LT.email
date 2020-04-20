@@ -78,7 +78,7 @@
 						  <br><br>
 						Thanks for contacting Lord and Taylor. We’ve issued your refund and it will reflect in your account within 14 days. If you have any questions or concerns, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
 <br><br>
- <a href="mailto:customercare.other@lordandtaylor.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id}" > CONTACT US NOW </a>
+<a href="mailto:customercare.other@lordandtaylor.com?subject=We’ve issued your refund-{!Case.Thread_Id}" > CONTACT US </a>
 					
 						  <br><br><i>
 						  Sincerely,
@@ -155,3 +155,4 @@
 
     </body>
 </html>
+{!Case.Thread_Id}

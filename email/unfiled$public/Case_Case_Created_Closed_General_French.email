@@ -78,7 +78,7 @@
 Merci d’avoir communiqué avec nous. Nous sommes heureux d’avoir pu vous aider à régler votre problème. Pour toute autre question, n’hésitez pas à communiquer de nouveau avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
 <br>
 <br>
- <a href="mailto:customer.service@hbc.com? subject= {!EmailMessage.Subject}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
+ <a href="mailto:labaie@hbc.com?subject=Nous avons réglé votre problème-{!Case.Thread_Id}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
 <br>
 <br>
 Sincères salutations. <br>
@@ -160,3 +160,4 @@ Service à la clientèle de La Baie d’Hudson
 
     </body>
 </html>
+{!Case.Thread_Id}

@@ -158,6 +158,7 @@ MetadataGrid2.prototype._reapplyFilters = function(tabIndex) {
         if(that.savedFilters)
             that.eltGrid.jqxGrid('loadstate', that.savedFilters);
         that._setGridFiltersByType();
+        
     }else if(tabIndex === 1) {
         that.savedFilters = that.eltGrid.jqxGrid('getstate');
         // Filter by SELECTION, regardless of the type
@@ -217,7 +218,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
         {
             text: copadoLabels.LastModifiedDate,
             filtertype: 'range',
-            cellsformat: 'yyyy/MM/dd',
+            cellsformat: 'yyyy-MM-dd',
             editable: false,
             datafield: 'd',
             width: 120
@@ -233,7 +234,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
         {
             text: copadoLabels.CREATEDDATE,
             filtertype: 'range',
-            cellsformat: 'yyyy/MM/dd',
+            cellsformat: 'yyyy-MM-dd',
             editable: false,
             datafield: 'cd',
             width: 120
@@ -301,7 +302,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
                     filtertype: 'range',
                     editable: false,
                     datafield: 'lastUpdate',
-                    cellsformat: 'yyyy/MM/dd',
+                    cellsformat: 'yyyy-MM-dd',
                     width: '25%'
                 }
             ];
@@ -335,7 +336,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
                     text: copadoLabels.LastModifiedDate,
                     filtertype: 'range',
                     editable: false,
-                    cellsformat: 'yyyy/MM/dd',
+                    cellsformat: 'yyyy-MM-dd',
                     datafield: 'd',
                     width: 120
                 },
@@ -352,7 +353,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
                     filtertype: 'range',
                     editable: false,
                     datafield: 'cd',
-                    cellsformat: 'yyyy/MM/dd',
+                    cellsformat: 'yyyy-MM-dd',
                     width: 120}
             ];
         }
@@ -395,7 +396,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
         }, {
             text: copadoLabels.LastModifiedDate,
             filtertype: 'range',
-            cellsformat: 'yyyy/MM/dd',
+            cellsformat: 'yyyy-MM-dd',
             editable: false,
             datafield: 'd',
             width: 120
@@ -409,7 +410,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
         },{
             text: copadoLabels.CREATEDDATE,
             filtertype: 'range',
-            cellsformat: 'yyyy/MM/dd',
+            cellsformat: 'yyyy-MM-dd',
             editable:false,
             datafield:'cd',
             width:120
@@ -488,7 +489,7 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
         }, {
             text: copadoLabels.LastModifiedDate,
             filtertype: 'range',
-            cellsformat: 'yyyy/MM/dd',
+            cellsformat: 'yyyy-MM-dd',
             editable: false,
             datafield: 'd',
             width: 120
@@ -528,13 +529,13 @@ MetadataGrid2.prototype._getColumnsByGridMode = function() {
         }, {
             text: copadoLabels.LastModifiedDate,
             filtertype: 'range',
-            cellsformat: 'yyyy/MM/dd',
+            cellsformat: 'yyyy-MM-dd',
             editable: false,
             datafield: 'd',
             width: 120
         },
             {text: copadoLabels.CREATEDBY, filtertype: 'input', columntype: 'textbox', editable:false, datafield:'cb', width:220},
-            {text: copadoLabels.CREATEDDATE, filtertype: 'range', cellsformat: 'yyyy/MM/dd', editable:false, datafield:'cd', width:120}
+            {text: copadoLabels.CREATEDDATE, filtertype: 'range', cellsformat: 'yyyy-MM-dd', editable:false, datafield:'cd', width:120}
         ];
     }
     return columns;
@@ -558,7 +559,6 @@ MetadataGrid2.prototype.render = function(cbAfterRender) {
 
     // rendering the "tabs", which in fact are a filter type
     this.eltTabs = this.eltMain.find('.mg2_tabs');
-
     if(this.eltTabs.length) {
         this.eltTabs.jqxTabs({});
 
@@ -777,16 +777,20 @@ MetadataGrid2.prototype.render = function(cbAfterRender) {
     }
 
     if(this.conf.gridMode !== 'orgMetadata') {
-        var selectAll = function(sel) {
-                var list = that.eltGrid.jqxGrid('getrows');
-                that._setSelectionState(sel, list, true);
-                that.render();
+        var selectAll = function(sel) {            
+            var list = that.eltGrid.jqxGrid('getrows');
+            that._setSelectionState(sel, list, true);         
+            that.render();
         };
         // Initialize the select all/unselect all buttons
         var $unselectAll = $copado('<button id="unselectAll">Unselect All</button>').on('click', function(e) {
-                e.preventDefault();
-                selectAll(false);
-            });
+            e.preventDefault();
+            selectAll(false);
+            // setting tab to "All Metadata" when there is no selection.
+            if(that.eltTabs) {
+                that.eltTabs.jqxTabs('select', 0);
+            }
+        });
 
         var $selectAll = $copado('<button id="selectAll">Select All</button>').on('click', function(e) {
             e.preventDefault();
@@ -957,7 +961,7 @@ MetadataGrid2.prototype.loadMetaData = function(callbackFinished, forceRefresh) 
 
             // refresh the grid/filter, so the column type has filter values
             if(!this.isTypeFilterable){
-                that.eltGrid.jqxGrid('updatebounddata');  
+                that.eltGrid.jqxGrid('updatebounddata');
                 if(that.eltGrid){
                     that.eltGrid.jqxGrid('setcolumnproperty', 't', 'filteritems',that.types.sort());
                 }
@@ -1039,9 +1043,8 @@ MetadataGrid2.prototype._matchSelectedItemsWithAllMetaData = function(allMetaDat
 };
 
 // changes the grid data, replacing whatever is in there now.
-MetadataGrid2.prototype._setGridData = function(allMetaData) { 
+MetadataGrid2.prototype._setGridData = function(allMetaData) {
     this._matchSelectedItemsWithAllMetaData(allMetaData);
-
     if( this.conf.gridMode === 'gitCommit') {
         // save all the .r selections, rebind the data, and restore them in the new dataset.
         var e, eltsWithRetrieveOnly = [];
@@ -1051,6 +1054,7 @@ MetadataGrid2.prototype._setGridData = function(allMetaData) {
                 eltsWithRetrieveOnly.push(e.t+' '+e.n);
         }
         setWithoutRebinding(this.allMetaData, allMetaData);
+
 
         idx_allItems = {};
         for(i=0 ; i < this.allMetaData.length ; i++ ) {

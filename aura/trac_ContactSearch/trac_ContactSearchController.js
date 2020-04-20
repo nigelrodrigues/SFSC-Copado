@@ -21,9 +21,12 @@
                     if(!$A.util.isEmpty(returnVal)){
                         if(!$A.util.isEmpty(returnVal.Business_Unit__c)){
                             component.find("businessUnit").set("v.value", returnVal.Business_Unit__c);
+                            var contact = component.get("v.contactRecord");
+                            contact.Business_Unit__c = returnVal.Business_Unit__c;
+                            component.set("v.contactRecord", contact);
                         }
                         if(!$A.util.isEmpty(returnVal.Contact.Unique_External_Id__c)){
-                            component.set("v.caseContactExtKey", returnVal.Contact.Unique_External_Id__c)
+                            component.set("v.caseContactExtKey", returnVal.Contact.Unique_External_Id__c);
                         }
                     }
                 }
@@ -37,8 +40,15 @@
     },
 
     formPress: function (component, event, helper) {
-        if (event.which == 13) {
-            helper.SearchHelper(component, event);
+        if (event.which === 13) {
+            component.set("v.showError", false);
+            var contactFields = component.find("contactField");
+            if(helper.validateForm(component, contactFields)){
+                helper.searchHelper(component, event);
+            }
+            else {
+                component.set("v.showError", true);
+            }
         }
     },
 
@@ -52,8 +62,6 @@
     openModel: function(component, event, helper) {
         // Set isModalOpen attribute to true
         component.set("v.isModalOpen", true);
-        /*var utilityAPI = component.find("utilitybar");
-        utilityAPI.minimizeUtility();*/
     },
 
     closeModel: function(component, event, helper) {
@@ -70,20 +78,21 @@
      * @param event         Event reference
      * @param helper        Helper reference
      */
-    Search: function(component, event, helper) {
+    search: function(component, event, helper) {
         component.set("v.showError", false);
-        var restFields = component.find('field');
-        if(helper.checkBlank(component, restFields)){
-            component.set("v.showError", true);
-            return;
+
+        var contactFields = component.find("contactField");
+        if(helper.validateForm(component, contactFields)){
+            helper.searchHelper(component, event);
         }
-        helper.SearchHelper(component, event);
+        else {
+            component.set("v.showError", true);
+        }
     },
 
 
 
     handleCloseModalEvent: function(component, event, helper) {
-        //alert('Event Handled!');
         var closeModal = event.getParam("closeModal");
         component.set("v.isModalOpen", closeModal);
         if(!closeModal){
@@ -135,18 +144,14 @@
     {
         component.set("v.isModalOpen", false);
         component.set("v.createNewContact",false);
-        var caseId=component.get("v.recordId");
+        var caseId = component.get("v.recordId");
         var payload = event.getParams().response;
-        var contactId=payload.id;
+        var contactId = payload.id;
         component.find('notifLib').showToast({
             "variant": "success",
             "title": "Contact Created"
-            //"message": "Record ID: " + event.getParam("id")
         });
-        //alert('contactId: '+contactId);
         helper.linkContactAndCase(component,caseId,contactId);
-
-
     },
 
     handleLoad : function(component, event, helper){
@@ -155,9 +160,10 @@
         component.find('fname').set('v.value', con.FirstName);
         component.find('email').set('v.value',con.Email);
         component.find('phone').set('v.value',con.Phone);
-        var bunit=component.find("businessUnit").get("v.value");
-        if(bunit=='MHF')
-            bunit='Hudson\'s Bay';
+        var bunit = con.Business_Unit__c;
+        if(bunit === 'MHF') {
+            bunit = 'Hudson\'s Bay';
+        }
         component.find('bunit').set('v.value', bunit);
 
     },

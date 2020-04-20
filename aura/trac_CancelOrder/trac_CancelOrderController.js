@@ -7,6 +7,24 @@
 
     doInit: function(component, event, helper) {
         helper.setDisabled(component);
+        helper.getQuantityOptions(component);
+
+        //Set Cancellation type picklist values
+        var action = component.get('c.fetchCancellationReasons');
+
+        action.setCallback(this,function(response){
+            var response = response.getReturnValue();
+
+            var optionsList = [];
+            for (var key in response) {
+                    optionsList.push({value: response[key], label: key});
+
+            };
+            component.set('v.cancellationReasonsPicklist', optionsList);
+
+        });
+        $A.enqueueAction(action);
+
     },
 
     handleOpenModal: function(component, event, helper) {

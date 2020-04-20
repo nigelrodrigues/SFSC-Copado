@@ -28,6 +28,7 @@
     <requireInsecurePortalAccess>false</requireInsecurePortalAccess>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
     <siteAdmin>tractionadmin@hbc.com</siteAdmin>
+    <siteGuestRecordDefaultOwner>tractionadmin@hbc.com</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
     <subdomain>hbc</subdomain>
     <urlPathPrefix>hudsonbay</urlPathPrefix>

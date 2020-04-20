@@ -24,6 +24,7 @@
     <requireInsecurePortalAccess>false</requireInsecurePortalAccess>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
     <siteAdmin>darcy@eventus.com</siteAdmin>
+    <siteGuestRecordDefaultOwner>uad-dev@hbc.com</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
     <subdomain>hbc</subdomain>
 </CustomSite>

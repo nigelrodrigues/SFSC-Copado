@@ -14,7 +14,7 @@ public with sharing class trac_ContactSearchController {
     public static List<Contact> getContacts(Contact contact) {
         List<Contact> contacts = new List<Contact>();
 
-        if(contact == null){
+        if (contact == null) {
             return contacts;
         }
 
@@ -22,12 +22,16 @@ public with sharing class trac_ContactSearchController {
 
         if (isUcidSearch(contact)) {
             trac_WS_GetCustomerDetails.GetCustomerDetailsResponse response = trac_WS_CustomerUtils.searchContact(contact);
-            List<Contact> ucidContacts = trac_WS_CustomerUtils.getContactsFromSearchResponse(response);
-            for (Contact ucidContact : ucidContacts) {
-                ucidContact.System_Origin__c = trac_ContactConstants.ORIGIN_UCID;
-                ucidContact.Channel_Origin__c = 'Search';
-                ucidContact.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
-                ucidContact.UCID_Update_Date__c = Datetime.now();
+            List<Contact> ucidContacts = new List<Contact>();
+            if( response != null ) {
+                ucidContacts = trac_WS_CustomerUtils.getContactsFromSearchResponse(response);
+
+                for (Contact ucidContact : ucidContacts) {
+                    ucidContact.System_Origin__c = trac_ContactConstants.ORIGIN_UCID;
+                    ucidContact.Channel_Origin__c = 'Search';
+                    ucidContact.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
+                    ucidContact.UCID_Update_Date__c = Datetime.now();
+                }
             }
             contacts.addAll(ucidContacts);
         }
@@ -50,11 +54,10 @@ public with sharing class trac_ContactSearchController {
     @AuraEnabled
     public static Case getBusinessUnit(Id caseId) {
         List<Case> cases = new List<Case>();
-        cases = [SELECT Id, Business_Unit__c, ContactId, Contact.Unique_External_Id__c FROM Case WHERE Id =: caseId];
-        if(cases.isEmpty()){
+        cases = [SELECT Id, Business_Unit__c, ContactId, Contact.Unique_External_Id__c FROM Case WHERE Id = :caseId];
+        if (cases.isEmpty()) {
             return null;
-        }
-        else{
+        } else {
             return cases[0];
         }
     }
@@ -72,17 +75,16 @@ public with sharing class trac_ContactSearchController {
         con.OwnerId = UserInfo.getUserId();
         con.RecordTypeId = trac_CaseConstants.RECORD_TYPE_ID_CUSTOMER_CONTACT;
 
-        try{
+        try {
             if (con.Id == null && con.UCID_Number__c != null && con.Business_Unit__c != null) {
                 con.Unique_External_Id__c = trac_WS_CustomerUtils.getUniqueExternalId(con);
                 Schema.SObjectField externalId = Contact.fields.Unique_External_Id__c;
                 Database.upsert(con, externalId);
-            }
-            else {
+            } else {
                 upsert con;
             }
             return con;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
     }
@@ -97,9 +99,9 @@ public with sharing class trac_ContactSearchController {
                 aCase.Business_Unit__c = con.Business_Unit__c;
             }
 
-            try{
+            try {
                 update aCase;
-            }catch (Exception e){
+            } catch (Exception e) {
                 throw new AuraHandledException(e.getMessage());
             }
         }
@@ -108,20 +110,19 @@ public with sharing class trac_ContactSearchController {
     }
 
     @AuraEnabled
-    public static Id linkContactWithCase(Id contactId, Id caseId)
-    {
+    public static Id linkContactWithCase(Id contactId, Id caseId) {
         System.debug('IN LINKING STAGE...');
-        Contact contact=new Contact(Id=contactId);
+        Contact contact = new Contact(Id = contactId);
         Case cs = new Case(
                 Id = caseId,
                 ContactId = contact.Id
         );
 
-        try{
+        try {
             update cs;
-            System.debug('CASE: '+cs);
+            System.debug('CASE: ' + cs);
             return cs.Id;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
     }
@@ -137,12 +138,12 @@ public with sharing class trac_ContactSearchController {
         return isUcidSearch;
     }
 
+    public static List<String> genericNumbers = new List<String>();
     private static List<Contact> getSalesforceContacts(Contact contact) {
         List<Contact> contacts = new List<Contact>();
 
         String queryString = buildQuery(contact);
-
-
+        queryString = excludeGenericPhoneContacts(queryString);
         if (queryString != null) {
             contacts = Database.query(queryString);
         }
@@ -150,11 +151,40 @@ public with sharing class trac_ContactSearchController {
         return contacts;
     }
 
+    /**
+     * @description  Excluding all the contacts having Generic CTI Phone numbers on them from the query string
+     * @param queryString query obtained by buildQuery method
+     * @return String query returned upon filtering generic CTI numbers
+     */
+    private static String excludeGenericPhoneContacts(String queryString) {
+
+        for (CTI_Generic_Number__mdt genericNumber : [SELECT Phone_Number__c FROM CTI_Generic_Number__mdt]) {
+            genericNumbers.add(genericNumber.Phone_Number__c.replaceAll('[^0-9]',''));
+        }
+        if (!genericNumbers.isEmpty() && String.isNotBlank(queryString)) {
+            if (queryString.containsIgnoreCase('WHERE')) {
+                if (queryString.containsIgnoreCase('LIMIT')) {
+                    queryString = queryString.substring(0, queryString.indexOf('LIMIT')) + ' AND Phone NOT IN: genericNumbers '+ ' ' + queryString.substring(queryString.indexOf('LIMIT'));
+                } else {
+                    queryString += ' AND Phone NOT IN: genericNumbers';
+                }
+            } else {
+                if (queryString.containsIgnoreCase('LIMIT')) {
+                    queryString = queryString.substring(0, queryString.indexOf('LIMIT')) + ' WHERE Phone NOT IN: genericNumbers '+ ' ' + queryString.substring(queryString.indexOf('LIMIT'));
+                } else {
+                    queryString += ' WHERE Phone NOT IN: genericNumbers';
+                }
+            }
+        }
+        return queryString;
+    }
+
     public static String buildQuery(Contact con) {
 
         List<String> fieldsToQuery = new List<String>{
                 'Id', 'FirstName', 'LastName', 'Email', 'Phone', 'Birthdate', 'MailingStreet', 'MailingCity', 'MailingState',
-                'MailingStateCode', 'MailingPostalCode', 'MailingCountryCode', 'UCID_Number__c', 'Unique_External_Id__c', 'Business_Unit__c'
+                'MailingStateCode', 'MailingPostalCode', 'MailingCountryCode', 'UCID_Number__c', 'Unique_External_Id__c', 'Business_Unit__c',
+                'SFCC_Customer_Id__c'
         };
 
         List<String> fieldsToSearch = new List<String>{
@@ -165,20 +195,18 @@ public with sharing class trac_ContactSearchController {
         queryBuilder.setObject('Contact');
         queryBuilder.setFields(fieldsToQuery);
         queryBuilder.setLogicalOperator(TLQueryBuilder.AND_OPERATOR);
-        queryBuilder.setLimit(25);
+        queryBuilder.setLimit(50);
 
         Boolean isValidQuery = false;
         for (String field : fieldsToSearch) {
             if ((field == 'MailingStateCode' || field == 'MailingState') && con.MailingState != null && !String.isEmpty(con.MailingState)) {
                 if (con.MailingState.length() == 2) {
                     queryBuilder.baseOperator.addCondition(new TLQueryBuilder.Condition('MailingStateCode', TLQueryBuilder.EQUALS_OPERATOR, getCleanString(con.MailingState)));
-                }
-                else {
+                } else {
                     queryBuilder.baseOperator.addCondition(new TLQueryBuilder.Condition('MailingState', TLQueryBuilder.EQUALS_OPERATOR, getCleanString(con.MailingState)));
                 }
                 isValidQuery = true;
-            }
-            else if(con.get(field) != null && !String.isEmpty(String.valueOf(con.get(field)))){
+            } else if (con.get(field) != null && !String.isEmpty(String.valueOf(con.get(field)))) {
                 queryBuilder.baseOperator.addCondition(new TLQueryBuilder.Condition(field, TLQueryBuilder.EQUALS_OPERATOR, getCleanString(con.get(field))));
                 isValidQuery = true;
             }
@@ -188,7 +216,7 @@ public with sharing class trac_ContactSearchController {
         if (isValidQuery) {
             queryBuilder.baseOperator.addCondition(new TLQueryBuilder.Condition('LastName', TLQueryBuilder.NOT_EQUALS_OPERATOR, 'null', 'TypeBoolean'));
         }
-        
+
         return (isValidQuery) ? queryBuilder.build() : null;
     }
 
@@ -200,8 +228,7 @@ public with sharing class trac_ContactSearchController {
         for (Contact contact : contacts) {
             if (contact.UCID_Number__c != null) {
                 contactsByUcidNumber.put(contact.UCID_Number__c, contact);
-            }
-            else {
+            } else {
                 filteredContacts.add(contact);
             }
         }

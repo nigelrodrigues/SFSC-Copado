@@ -78,7 +78,7 @@
 <br>
 <br>
 
-<a href="mailto:customer.service@hbc.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id}" > CONTACT US NOW </a>
+<a href="mailto:customer.service@hbc.com?subject=Thanks for shopping thebay.com-{!Case.Thread_Id}" > CONTACT US </a>
 						  <br><br><i>
 						  Sincerely,
 						  <br>
@@ -158,3 +158,4 @@
 
     </body>
 </html>
+{!Case.Thread_Id}

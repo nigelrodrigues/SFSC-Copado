@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <description>Sent to customer when a case is in Awaiting Customer Response for more than 7 days</description>
     <encodingKey>UTF-8</encodingKey>
     <name>Case - Case Closed No Response (English)</name>
     <style>none</style>
@@ -13,7 +12,9 @@ You recently contacted us regarding an issue, but we were unable to help you res
 CONTACT US NOW
 
 Sincerely,
-Hudson’s Bay Customer Service</textOnly>
+Hudson’s Bay Customer Service
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -12,7 +12,9 @@ Thank you for contacting {!Case.Business_Unit__c}! We&apos;re glad we were able 
 
 Your Case Number: {!Case.CaseNumber}
 
-All the best, Your {!Case.Business_Unit__c} Customer Service Team</textOnly>
+All the best, Your {!Case.Business_Unit__c} Customer Service Team
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

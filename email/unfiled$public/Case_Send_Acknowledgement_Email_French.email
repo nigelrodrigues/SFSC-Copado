@@ -70,13 +70,11 @@
                       <td>
 
                           <p>
- <p>Bonjour {!Contact.FirstName},
+ <p>Bonjour {!Case.First_Name_Extract__c},
 						  <br><br>
-						Merci d’avoir communiqué avec La Baie d’Hudson. Nous avons reçu votre message et mettons tout en œuvre pour y répondre dans les plus brefs délais. Pour obtenir une aide immédiate, veuillez nous téléphoner en précisant le numéro de référence {!Case.CaseNumber}. 
+						Merci d’avoir communiqué avec La Baie d’Hudson. Nous travaillons à la résolution de votre problème et communiquerons avec vous dans les 48 heures. Si vous avez besoin d’aide supplémentaire, n’hésitez pas à communiquer avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
 <br><br>
-Vous trouverez le numéro de téléphone du Service à la clientèle et des réponses aux questions les plus fréquemment posées sur le site de notre centre d’assistance : https://service.labaie.com/.
-
-<br><br>
+<a href="mailto:labaie@hbc.com?subject=Merci d’avoir communiqué avec La Baie d’Hudson-{!Case.Thread_Id}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
 						  
 						  <br><br><i>
 						Sincères salutations. 
@@ -161,3 +159,4 @@ Vous trouverez le numéro de téléphone du Service à la clientèle et des rép
 
     </body>
 </html>
+{!Case.Thread_Id}

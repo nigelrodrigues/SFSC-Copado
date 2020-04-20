@@ -11,79 +11,85 @@ var cacheDate;
             localizationobj.emptydatastring = 'Repository not found';
             unlockScreen();
         }
-        // prepare the data
-        var source = {
-            localdata: listOfBranches,
-            datafields: [
-                {name: 's', type: 'bool'},
-                {name: 'name', type: 'string'},
-                {name: 'type', type: 'string'},
-                {name: 'lastUpdate', type: 'string'}
-            ]
-        };
-         var linkrenderer = function (row, column, branchName) {
-            console.log('conf.gridMode : ',conf.gridMode);
-            var html = '<a href="#" title="Select & Next" onclick="lockScreen(); selectBranch(' + htmlEntities(JSON.stringify(branchName)) + '); return false;">' + htmlEntities(branchName) + '</a>';
-            return html;
-        };
-        var dataAdapter = new $copado.jqx.dataAdapter(source);
-         // Create jqxGrid.
-        console.debug("initBraches() elt=", $copado("#branchSelectorGrid"));
-        var rowSelectionMode = 'none';
-        if(conf.gridMode === 'dxOperations') {
-            rowSelectionMode = 'singlerow';
-        }
-
-        var types = []; 
-        for (i =0; i<listOfBranches.length; i++){
-            if(!types.includes(listOfBranches[i].type) && listOfBranches[i].type){
-                types.push(listOfBranches[i].type);
+         
+        if(listOfBranches){ 
+            // prepare the data
+            var source = {
+                localdata: listOfBranches,
+                datafields: [
+                    {name: 's', type: 'bool'},
+                    {name: 'name', type: 'string'},
+                    {name: 'type', type: 'string'},
+                    {name: 'lastUpdate', type: 'string'}
+                ]
+            };
+             var linkrenderer = function (row, column, branchName) {
+                //console.log('conf.gridMode : ',conf.gridMode);
+                var html = '<a href="#" title="Select & Next" onclick="lockScreen(); selectBranch(' + htmlEntities(JSON.stringify(branchName)) + '); return false;">' + htmlEntities(branchName) + '</a>';
+                return html;
+            };
+            var dataAdapter = new $copado.jqx.dataAdapter(source);
+             // Create jqxGrid.
+            //console.debug("initBraches() elt=", $copado("#branchSelectorGrid"));
+            var rowSelectionMode = 'none';
+            if(conf.gridMode === 'dxOperations') {
+                rowSelectionMode = 'singlerow';
             }
-        }
-
-        var branchGrid = $copado("#branchSelectorGrid").jqxGrid({
-            width: '100%',
-            height: '100%',
-            source: dataAdapter,
-            pageable: true,
-            autoheight: false,
-            filterable: true,
-            sortable: true,
-            selectionmode: rowSelectionMode,
-            localization: localizationobj,
-            pagesizeoptions: ['10', '50', '100', '500', '1000', '5000'],
-            pagesize: 200,
-            theme: 'base',
-            showfilterrow: true,
-            columns: [
-                {
-                    text: copadoLabels.name,
-                    filtertype: 'textbox',
-                    filtercondition: 'contains',
-                    editable: false,
-                    datafield: 'name',
-                    width: '40%',
-                    cellsrenderer: linkrenderer
-                },
-                {
-                    text: copadoLabels.type,
-                    datafield: 'type',
-                    filterItems: types,
-                    filterable: !conf.isPatch,
-                    filtertype: 'checkedlist',
-                    editable: false,
-                    columntype: 'textbox',
-                    width: '30%'
-                },
-                {
-                    text: copadoLabels.LastModifiedDate,
-                    filtertype: 'textbox',
-                    editable: false,
-                    datafield: 'lastUpdate',
-                    width: '30%'
+    
+            var types = []; 
+            for (i =0; i<listOfBranches.length; i++){
+                if(!types.includes(listOfBranches[i].type) && listOfBranches[i].type){
+                    types.push(listOfBranches[i].type);
                 }
-            ]
-        });
+            }
+    
+            var branchGrid = $copado("#branchSelectorGrid").jqxGrid({
+                width: '100%',
+                height: '100%',
+                source: dataAdapter,
+                pageable: true,
+                autoheight: false,
+                filterable: true,
+                sortable: true,
+                selectionmode: rowSelectionMode,
+                localization: localizationobj,
+                pagesizeoptions: ['10', '50', '100', '500', '1000', '5000'],
+                pagesize: 200,
+                theme: 'base',
+                showfilterrow: true,
+                columns: [
+                    {
+                        text: copadoLabels.name,
+                        filtertype: 'textbox',
+                        filtercondition: 'contains',
+                        editable: false,
+                        datafield: 'name',
+                        width: '40%',
+                        cellsrenderer: linkrenderer
+                    },
+                    {
+                        text: copadoLabels.type,
+                        datafield: 'type',
+                        filterItems: types,
+                        filterable: !conf.isPatch,
+                        filtertype: 'checkedlist',
+                        editable: false,
+                        columntype: 'textbox',
+                        width: '30%'
+                    },
+                    {
+                        text: copadoLabels.LastModifiedDate,
+                        filtertype: 'textbox',
+                        editable: false,
+                        datafield: 'lastUpdate',
+                        width: '30%'
+                    }
+                ]
+            });
+        } else {
+            $copado("#branchSelectorGrid").hide();
+        }
+         
         if(conf.repoId && conf.repoId != '000000000000000') {
             branches._createCacheDeleteButton(conf.repoId);
         }

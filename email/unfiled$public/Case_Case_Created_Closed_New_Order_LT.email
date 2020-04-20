@@ -79,7 +79,7 @@
 						  Thank you for shopping with us. We're happy we were able to assist you with placing your order today. Please note, your order number is: {!Case.Order_Number__c}<br>
 <br>
 
-<a href="mailto:customercare.other@lordandtaylor.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id}" > CONTACT US NOW </a>
+<a href="mailto:customercare.other@lordandtaylor.com?subject=Thank you for shopping with  Lord + Taylor!-{!Case.Thread_Id}" > CONTACT US </a>
 						  <br><br><i>
 						  All the best,
 						  <br>
@@ -156,3 +156,4 @@
 
     </body>
 </html>
+{!Case.Thread_Id}

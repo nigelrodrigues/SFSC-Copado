@@ -78,7 +78,7 @@
 
 Hi {!Contact.FirstName},<br><br>Thanks for contacting Lord and Taylor. We're in the process of providing you with the resolution we spoke about on the phone. You will receive an email once this is complete. If you have any more questions regarding this issue, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}. 
 <br><br>
- <a href="mailto:customercare.other@lordandtaylor.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id}" > CONTACT US NOW</a><br><br>
+<a href="mailto:customercare.other@lordandtaylor.com?subject=We’re working to resolve your issue-{!Case.Thread_Id}" > CONTACT US </a><br><br>
 
 <i>Sincerely, <br>Lord and Taylor Customer Service </i></p>
 
@@ -152,3 +152,4 @@ Hi {!Contact.FirstName},<br><br>Thanks for contacting Lord and Taylor. We're in 
 
     </body>
 </html>
+{!Case.Thread_Id}

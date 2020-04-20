@@ -27,10 +27,11 @@ public with sharing class trac_WS_CustomerUtils {
 
             Contact ucidContact = getContactFromSearchResponse(customerDetailsResponse);
             if (ucidContact != null) {
-                Contact contactToUpdate = getUpdatedContact(contact, ucidContact);
-                contactToUpdate.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
-                contactToUpdate.UCID_Update_Date__c = Datetime.now();
                 try {
+                    Contact contactToUpdate = getUpdatedContact(contact, ucidContact);
+                    contactToUpdate.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
+                    contactToUpdate.UCID_Update_Date__c = Datetime.now();
+
                     update contactToUpdate;
                 } catch (Exception e) {
 
@@ -537,12 +538,10 @@ public with sharing class trac_WS_CustomerUtils {
         List<Contact> contacts = [
                 SELECT Id, FirstName, LastName, MiddleName, Salutation, Email, Phone, Birthdate, Language__c, UCID_Number__c,
                         MailingStreet, MailingCity, MailingPostalCode, MailingStateCode, MailingCountryCode, Business_Unit__c,
-                        Phone_Marketing__c, Email_Marketing__c, Mail_Marketing__c
+                        Phone_Marketing__c, Email_Marketing__c, Mail_Marketing__c, Unique_External_Id__c
                 FROM Contact
                 WHERE Id = :contactId
         ];
         return (!contacts.isEmpty()) ? contacts[0] : null;
     }
-
-
 }

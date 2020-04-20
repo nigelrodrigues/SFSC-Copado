@@ -1,0 +1,149 @@
+<!--
+ - @description: SPA Calculator
+ - @author     : Piyush Bansal, Traction on Demand.
+ - @date       : 2/11/2020
+ -->
+
+<!-- Trac Spa Calculator -->
+<template>
+    <lightning-layout>
+        <lightning-layout-item padding="around-small">
+            <lightning-input name="Order_number" label="Enter Order Number" onchange={handleOrderNumberChange} type="search">
+            </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" class="buttonCtr">
+            <lightning-button variant="neutral" name="get_Order" label="Get Order" onclick={getOrder}>
+            </lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <template if:true={orderLineItems}>
+        <div class="slds-scrollable">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-scrollable slds-table_striped">
+                <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Select"></div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Product">Product</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Process">Process</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Submit">Submit</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Void">Void</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="SPA">SPA</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Audit">Audit</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Manual">Manual</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Wait">Wait</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Order #">Order #</div>
+                    </th>
+<!--                    <th class="" scope="col">-->
+<!--                        <div class="slds-truncate slds-align_absolute-center" title="LOCATION">LOCATION</div>-->
+<!--                    </th>-->
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="UPC">UPC</div>
+                    </th>
+<!--                    <th class="" scope="col">-->
+<!--                        <div class="slds-truncate slds-align_absolute-center" title="Audit Comment">Audit Comment</div>-->
+<!--                    </th>-->
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Item Number">Item Number</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="QTY">QTY</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Item Price">Item Price</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Ext Price">Ext Price</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Adj Price">Adj Price</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Price Diff">Price Diff</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Line Tax">Line Tax</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Ship Tax">Ship Tax</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Adj Tax">Adj Tax</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Tax Diff">Tax Diff</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Ttl Diff">Ttl Diff</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Adj Type">Adj<br/>Type</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Adj Val">Adj<br/>Val</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Adj Amt">Adj<br/>Amt</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Shipping Fee">Shipping<br/>Fee</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Gift Wrap Fee">Gift Wrap<br/>Fee</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Return Fee">Return<br/>Fee</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Dateline">Dateline</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Modified By">Modified<br/>By</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Modified On">Modified<br/>On</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Submitted By">Submitted<br/>By</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Submitted On">Submitted<br/>On</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Audited By">Audited<br/>By</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="Audited On">Audited<br/>On</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate slds-align_absolute-center" title="SPA ID">SPA<br/>ID</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <template for:each={orderLineItems} for:item="orderLineItem">
+                        <c-trac_-s-p-a_-order-line-item key={orderLineItem.id} orderlineitem={orderLineItem} onrefreshspa={handleRefreshSPA}></c-trac_-s-p-a_-order-line-item>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </template>
+</template>

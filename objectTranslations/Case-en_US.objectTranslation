@@ -151,6 +151,14 @@
             <masterLabel>MHF</masterLabel>
             <translation><!-- MHF --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Off 5th</masterLabel>
+            <translation><!-- Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks</masterLabel>
+            <translation><!-- Saks --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- CSRID --></label>
@@ -275,6 +283,58 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Cancellation Reason --></label>
+        <name>Cancellation_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancellation Type --></label>
+        <name>Cancellation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Customer Preference</masterLabel>
+            <translation><!-- Customer Preference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Request</masterLabel>
+            <translation><!-- Customer Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer has different Coupon</masterLabel>
+            <translation><!-- Customer has different Coupon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Different Method of Payment</masterLabel>
+            <translation><!-- Different Method of Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Different Price</masterLabel>
+            <translation><!-- Different Price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Item order Verification - RM</masterLabel>
+            <translation><!-- Item order Verification - RM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Inventory</masterLabel>
+            <translation><!-- No Inventory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reprocess</masterLabel>
+            <translation><!-- Reprocess --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping Delay</masterLabel>
+            <translation><!-- Shipping Delay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Store Locator Reprocess</masterLabel>
+            <translation><!-- Store Locator Reprocess --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Candidate for Knowledge Article --></label>
         <name>Candidate_for_Knowledge_Article__c</name>
     </fields>
@@ -300,12 +360,24 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Case Owner Location --></label>
+        <name>Case_Owner_Location__c</name>
+    </fields>
+    <fields>
         <label><!-- Case Owner Profile --></label>
         <name>Case_Owner_Profile__c</name>
     </fields>
     <fields>
         <label><!-- Case Owner Role --></label>
         <name>Case_Owner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Supervisor ID --></label>
+        <name>Case_Owner_Supervisor_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Owner Supervisor --></label>
+        <name>Case_Owner_Supervisor__c</name>
     </fields>
     <fields>
         <label><!-- Case Steward --></label>
@@ -1406,6 +1478,11 @@
     <fields>
         <label><!-- Order Revenue --></label>
         <name>Order_Revenue__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checkbox that indicates if an order was cancelled during the case. The statement will evaluate true based on the Cancel order action. --></help>
+        <label><!-- Order is Cancelled --></label>
+        <name>Order_is_Cancelled__c</name>
     </fields>
     <fields>
         <label><!-- Origin Is Chat --></label>

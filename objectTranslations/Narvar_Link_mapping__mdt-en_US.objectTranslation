@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Narvar Link mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Narvar Link mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+        <picklistValues>
+            <masterLabel>Hudson&apos;s Bay</masterLabel>
+            <translation><!-- Hudson&apos;s Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lord + Taylor</masterLabel>
+            <translation><!-- Lord + Taylor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MHF</masterLabel>
+            <translation><!-- MHF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Off 5th</masterLabel>
+            <translation><!-- Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks</masterLabel>
+            <translation><!-- Saks --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Language --></label>
+        <name>Language__c</name>
+    </fields>
+    <fields>
+        <label><!-- Link to Narvar --></label>
+        <name>Link_to_Narvar__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

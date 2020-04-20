@@ -76,7 +76,7 @@ var targetDomain = '';
         if (currentStepValue) {
             var stepNumber = currentStepValue;
             var offset = 30;
-            var position = $copado($copado('.slds-progress__list>li')[stepNumber]).position().left;
+            //var position = $copado($copado('.slds-progress__list>li')[stepNumber]).position().left;
             var leftPosition = ($copado($copado('.slds-progress__list>li')[stepNumber]).position().left - offset) + 'px';
 
             $copado(`#step-${currentStepValue}-tooltip`).css({
@@ -143,11 +143,19 @@ var targetDomain = '';
 
             // show all rows
             $copado(`#${tableId}_length`).find('select').val(-1).trigger('change');
-            rows = $copado(`#${tableId}`).find('tr');
+            rows = $copado(`#${tableId}`).find('tbody').find('tr');
 
             // click event
             rows.click((event) => {
                 checkDataTableRow(event.currentTarget, tableId, rows, currentPage);
+            });
+
+            // remove disabled from button if deployment is cloned, we are checking any checkbox in the datatable with checked to remove disable class from a button and break the process
+            rows.each((index, row) => {   
+                if ($copado(row).find('td:first').find('input[type="checkbox"]')[0].checked === true && $copado('.disabled-Buttons').length > 0) {
+                    $copado('.disabled-Buttons').removeClass('disabled');
+                    return false;
+                }
             });
 
             // return the pagination to first situation

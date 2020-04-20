@@ -15,9 +15,6 @@
     </queueMembers>
     <queueRoutingConfig>Chat_English</queueRoutingConfig>
     <queueSobject>
-        <sobjectType>Case</sobjectType>
-    </queueSobject>
-    <queueSobject>
         <sobjectType>LiveAgentSession</sobjectType>
     </queueSobject>
     <queueSobject>

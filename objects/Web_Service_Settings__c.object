@@ -26,6 +26,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CNS_Email_Search_Endpoint__c</fullName>
+        <description>Relative endpoint for the email search API</description>
+        <externalId>false</externalId>
+        <label>CNS Email Search Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CNS_Get_Email_Body__c</fullName>
+        <externalId>false</externalId>
+        <label>CNS Get Email Body</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CNS_Send_Email_Endpoint__c</fullName>
+        <description>Endpoint for the CNS Send Email API</description>
+        <externalId>false</externalId>
+        <label>CNS Send Email Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Cancel_Order_Endpoint__c</fullName>
         <description>OMS Cancel Order relative Endpoint</description>
         <externalId>false</externalId>
@@ -56,6 +88,16 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Email_Search_API_key__c</fullName>
+        <externalId>false</externalId>
+        <label>Email Search API key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Get_Order_Details_Endpoint__c</fullName>
         <description>OMS Get Order Details relative Endpoint</description>
         <externalId>false</externalId>
@@ -78,6 +120,106 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>IPA_Gift_Card_Balance_Endpoint__c</fullName>
+        <description>Relative endpoint for gift card balance check</description>
+        <externalId>false</externalId>
+        <label>IPA Gift Card Balance Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loyalty_Saks_Endpoint__c</fullName>
+        <description>Relative endpoint for SaksFirst Loyalty API</description>
+        <externalId>false</externalId>
+        <label>Loyalty Saks Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OMS_Order_Payment_Endpoint__c</fullName>
+        <description>Relative endpoint for updating order payment information</description>
+        <externalId>false</externalId>
+        <label>OMS Order Payment Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OMS_Order_Return_Endpoint__c</fullName>
+        <description>Relative endpoint for OMS Return Fee API</description>
+        <externalId>false</externalId>
+        <label>OMS Order Return Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OMS_Purchase_Order_Endpoint__c</fullName>
+        <description>Relative Endpoint for VendorNet or other Purchase Order related external information</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Relative Endpoint for VendorNet or other Purchase Order related external information</inlineHelpText>
+        <label>OMS Purchase Order Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order_Line_History_Endpoint__c</fullName>
+        <description>OMS Order Line History Service relative Endpoint</description>
+        <externalId>false</externalId>
+        <label>Order Line History Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SPA_Get_Adjustment_Endpoint__c</fullName>
+        <description>Sales Price Adjustment Calculator Relative Endpoint for getting an adjustment by ID</description>
+        <externalId>false</externalId>
+        <label>SPA Get Adjustment Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SPA_Get_Order_Adjustments_Endpoint__c</fullName>
+        <description>Sales Price Adjustment Calculator Relative Endpoint for getting an adjustment by Order Number</description>
+        <externalId>false</externalId>
+        <label>SPA Get Order Adjustments Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SPA_Update_Adjustment_Endpoint__c</fullName>
+        <description>Sales Price Adjustment Calculator Relative Endpoint for updating an adjustment by ID</description>
+        <externalId>false</externalId>
+        <label>SPA Update Adjustment Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Timeout__c</fullName>
         <externalId>false</externalId>
         <label>Timeout</label>
@@ -86,6 +228,50 @@
         <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tokenex_API_Key__c</fullName>
+        <description>TokenEx API Key for authenticating to tokenize API</description>
+        <externalId>false</externalId>
+        <label>Tokenex API Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tokenex_Endpoint__c</fullName>
+        <description>Full TokenEx Endpoint</description>
+        <externalId>false</externalId>
+        <label>Tokenex Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tokenex_ID__c</fullName>
+        <description>TokenEx Client ID</description>
+        <externalId>false</externalId>
+        <label>Tokenex ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tokenex_Token_Scheme__c</fullName>
+        <description>Token Scheme used to encrypt data</description>
+        <externalId>false</externalId>
+        <label>Tokenex Token Scheme</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>

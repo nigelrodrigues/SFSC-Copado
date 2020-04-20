@@ -3,8 +3,24 @@
     <label>Team Lead Queue</label>
     <protected>false</protected>
     <values>
+        <field>Business_Unit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Case_Status__c</field>
         <value xsi:type="xsd:string">Team Assistance Needed</value>
+    </values>
+    <values>
+        <field>Case_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Ignore_Metadata_Mapping__c</field>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Ignore_on_Executive_Escalation__c</field>
@@ -13,5 +29,13 @@
     <values>
         <field>Queue__c</field>
         <value xsi:type="xsd:string">LT_Bay_Cebu_Team_Lead</value>
+    </values>
+    <values>
+        <field>Sub_Category__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Transfer_Stewardship__c</field>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
 </CustomMetadata>

@@ -7842,7 +7842,7 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
         <masterLabel>Validate Changes</masterLabel>
         <openType>sidebar</openType>
         <protected>false</protected>
-        <url>/apex/{!IF(CONTAINS($Action.copado__User_Story__c.New, &apos;copado__&apos;), &apos;copado__&apos;, &apos;&apos;)}UserStoryPageWaitingFor?id={!copado__User_Story__c.Id}&amp;type=validation</url>
+        <url>/apex/{!IF(CONTAINS($Action.copado__User_Story__c.New, &apos;copado__&apos;), &apos;copado__&apos;, &apos;&apos;)}UserStoryPageWaitingFor?id={!copado__User_Story__c.Id}&amp;type=co_validation</url>
     </webLinks>
     <webLinks>
         <fullName>copado__Pull_Request</fullName>
@@ -7861,7 +7861,7 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
         <protected>false</protected>
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
-        <url>/apex/{!IF(CONTAINS($Action.copado__User_Story__c.New, &apos;copado__&apos;), &apos;copado__&apos;, &apos;&apos;)}UserStoryPageWaitingFor?id={!copado__User_Story__c.Id}&amp;type=pullRequest</url>
+        <url>/apex/{!IF(CONTAINS($Action.copado__User_Story__c.New, &apos;copado__&apos;), &apos;copado__&apos;, &apos;&apos;)}UserStoryPageWaitingFor?id={!copado__User_Story__c.Id}&amp;type=co_pullRequest</url>
     </webLinks>
     <webLinks>
         <fullName>copado__Ready_for_Promotion</fullName>

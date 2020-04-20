@@ -212,6 +212,74 @@
                     <stringValue>English</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideReferenceTo</name>
+                    <value>
+                        <stringValue>Contact</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Contact.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myRule_11_A1</targetReference>
             </connector>
@@ -296,6 +364,74 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>French</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideReferenceTo</name>
+                    <value>
+                        <stringValue>Contact</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>ID</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Contact.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -812,7 +948,7 @@
                 <leftValueReference>myVariable_current.OwnerId</leftValueReference>
                 <operator>StartsWith</operator>
                 <rightValue>
-                    <elementReference>formula_9_myRule_8_9347844506</elementReference>
+                    <elementReference>formula_9_myRule_8_1064137986</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -904,7 +1040,7 @@
 NULL)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_3_A1_0310286424</name>
+        <name>formula_4_myRule_3_A1_3306032049</name>
         <dataType>String</dataType>
         <expression>CASE( {!myVariable_current.Origin} ,
 &quot;Email - The Bay&quot;, &quot;Hudson&apos;s Bay&quot;,
@@ -925,11 +1061,11 @@ NULL)</expression>
                 <stringValue>&quot;00G&quot;</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_8_9347844506</name>
+        <name>formula_9_myRule_8_1064137986</name>
         <dataType>String</dataType>
         <expression>&quot;00G&quot;</expression>
     </formulas>
-    <interviewLabel>Case_Automation_on_Create_V2-3_InterviewLabel</interviewLabel>
+    <interviewLabel>Case_Automation_on_Create_V2-6_InterviewLabel</interviewLabel>
     <label>Case - Automation on Create V2</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -1528,7 +1664,7 @@ NULL)</expression>
             </processMetadataValues>
             <field>Business_Unit__c</field>
             <value>
-                <elementReference>formula_4_myRule_3_A1_0310286424</elementReference>
+                <elementReference>formula_4_myRule_3_A1_3306032049</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>

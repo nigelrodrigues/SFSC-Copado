@@ -4,7 +4,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Case - Send Reminder when Awaiting Internal Response - 1 Day</name>
     <style>none</style>
-    <subject>Reminder: Awaiting Internal Response - Case : {!Case.CaseNumber}</subject>
+    <subject>Reminder: Awaiting Internal Response -  Case : {!Case.CaseNumber} - {!Case.Order_Number__c}</subject>
     <textOnly>Case Number: {!Case.CaseNumber}
 Case Subject: {!Case.Subject}
 &quot;Content to be provided by HBC&quot;</textOnly>

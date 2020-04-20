@@ -93,6 +93,14 @@
         <name>Close</name>
     </customLabels>
     <customLabels>
+        <label><!-- Community Url SaksOff5th --></label>
+        <name>Community_Url_SaksOff5th</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Community Url ServiceSaksOff5th --></label>
+        <name>Community_Url_ServiceSaksOff5th</name>
+    </customLabels>
+    <customLabels>
         <label>Nous vous contacterons bientôt.</label>
         <name>Created_Subtitle</name>
     </customLabels>
@@ -173,6 +181,10 @@
         <name>Generic_Error_Message</name>
     </customLabels>
     <customLabels>
+        <label><!-- Hudson Bay CommunityName --></label>
+        <name>Hudson_Bay_CommunityName</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Hudson&apos;s Bay Narvar --></label>
         <name>Hudson_s_Bay_Narvar</name>
     </customLabels>
@@ -215,6 +227,10 @@
     <customLabels>
         <label><!-- LA_Waiting_WithoutQueuePos_WaitingMessage_04IS00000004CBs_2407379 --></label>
         <name>LA_Waiting_WithoutQueuePos_WaitingMessage_04IS00000004CBs_2407379</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- La Baie CommunityName --></label>
+        <name>La_Baie_CommunityName</name>
     </customLabels>
     <customLabels>
         <label>French</label>
@@ -297,6 +313,18 @@
         <name>OMS_LT_BAY_Login</name>
     </customLabels>
     <customLabels>
+        <label><!-- OMS OFF5 Login --></label>
+        <name>OMS_OFF5_Login</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OMS SAKS Login --></label>
+        <name>OMS_SAKS_Login</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Off 5th Narvar --></label>
+        <name>Off_5th_Narvar</name>
+    </customLabels>
+    <customLabels>
         <label>(Optionnel)</label>
         <name>Optional</name>
     </customLabels>
@@ -337,6 +365,14 @@
         <name>Required</name>
     </customLabels>
     <customLabels>
+        <label><!-- Saks Narvar --></label>
+        <name>Saks_Narvar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Saks Off 5th CommunityName --></label>
+        <name>Saks_Off_5th_CommunityName</name>
+    </customLabels>
+    <customLabels>
         <label>Chercher</label>
         <name>Search</name>
     </customLabels>
@@ -347,6 +383,10 @@
     <customLabels>
         <label>Sélectionnez le code promo:</label>
         <name>Select_Promo_Code</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ServiceSaksOff5th CommunityName --></label>
+        <name>ServiceSaksOff5th_CommunityName</name>
     </customLabels>
     <customLabels>
         <label>ENVOYER</label>
@@ -360,6 +400,10 @@ Donnez-nous tous les détails dans le formulaire ci-dessous.</label>
     <customLabels>
         <label>Succès</label>
         <name>Success</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Support Saks CommunityName --></label>
+        <name>Support_Saks_CommunityName</name>
     </customLabels>
     <customLabels>
         <label><!-- Please choose a valid custom metadata type. --></label>
@@ -8257,6 +8301,16 @@ Donnez-nous tous les détails dans le formulaire ci-dessous.</label>
         <label><!-- Custom Metadata Loader --></label>
         <name>Custom_Metadata_Loader</name>
     </customTabs>
+    <customTabs>
+        <label><!-- SPA --></label>
+        <name>SPA</name>
+    </customTabs>
+    <prompts>
+        <name>ContactInformationUpdate</name>
+        <promptVersions>
+            <name>Contact Information Update</name>
+        </promptVersions>
+    </prompts>
     <quickActions>
         <label><!-- Aggregate Case Time Logs --></label>
         <name>Aggregate_Case_Time_Logs</name>
@@ -8326,6 +8380,18 @@ Donnez-nous tous les détails dans le formulaire ci-dessous.</label>
         <name>Snapins_Case_PrechatQuickAction_08h2E000000blxY_1581506734708</name>
     </quickActions>
     <quickActions>
+        <label><!-- Snapins_Case_PrechatQuickAction_08h2E000000XaTF_1585931729572 --></label>
+        <name>Snapins_Case_PrechatQuickAction_08h2E000000XaTF_1585931729572</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Case_PrechatQuickAction_08h2E000000XaTK_1585931877888 --></label>
+        <name>Snapins_Case_PrechatQuickAction_08h2E000000XaTK_1585931877888</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Case_PrechatQuickAction_08h2E000000XaTP_1585931923397 --></label>
+        <name>Snapins_Case_PrechatQuickAction_08h2E000000XaTP_1585931923397</name>
+    </quickActions>
+    <quickActions>
         <label><!-- Snapins_Case_PrechatQuickAction_08h54000000CadI --></label>
         <name>Snapins_Case_PrechatQuickAction_08h54000000CadI</name>
     </quickActions>
@@ -8352,6 +8418,18 @@ Donnez-nous tous les détails dans le formulaire ci-dessous.</label>
     <quickActions>
         <label><!-- Snapins_Contact_PrechatQuickAction_08h2E000000blxY_1581506734567 --></label>
         <name>Snapins_Contact_PrechatQuickAction_08h2E000000blxY_1581506734567</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Contact_PrechatQuickAction_08h2E000000XaTF_1585931729060 --></label>
+        <name>Snapins_Contact_PrechatQuickAction_08h2E000000XaTF_1585931729060</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Contact_PrechatQuickAction_08h2E000000XaTK_1585931877683 --></label>
+        <name>Snapins_Contact_PrechatQuickAction_08h2E000000XaTK_1585931877683</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Snapins_Contact_PrechatQuickAction_08h2E000000XaTP_1585931923210 --></label>
+        <name>Snapins_Contact_PrechatQuickAction_08h2E000000XaTP_1585931923210</name>
     </quickActions>
     <quickActions>
         <label><!-- Snapins_Contact_PrechatQuickAction_08h54000000CadI --></label>

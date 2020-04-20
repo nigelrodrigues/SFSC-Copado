@@ -5,15 +5,17 @@
     <name>Case - Send Acknowledgement Email (French)</name>
     <style>none</style>
     <subject>Merci d’avoir communiqué avec La Baie d’Hudson</subject>
-    <textOnly>Bonjour {!Contact.FirstName},
+    <textOnly>Dear {!Case.First_Name_Extract__c},
 
-Merci d’avoir communiqué avec La Baie d’Hudson. Nous avons reçu votre message et mettons tout en œuvre pour y répondre dans les plus brefs délais. Pour obtenir une aide immédiate, veuillez nous téléphoner en précisant le numéro de référence {!Case.CaseNumber}.
+Thank you for contacting {!Case.Business_Unit__c}! We are in the process of resolving your issue and will provide you with an update within 48 hours. If you need to contact us in the meantime about this issue, please click  here
 
-Vous trouverez le numéro de téléphone du Service à la clientèle et des réponses aux questions les plus fréquemment posées sur le site de notre centre d’assistance : https://service.labaie.com/.
+Your Case Number: {!Case.CaseNumber}
 
+All the best,
 
-Sincères salutations.
-Service à la clientèle de La Baie d’Hudson</textOnly>
+Your {!Case.Business_Unit__c} Customer Service Team
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

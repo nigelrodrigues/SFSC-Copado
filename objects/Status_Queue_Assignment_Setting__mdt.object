@@ -2,6 +2,52 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Case Queue Mapping for certain Statuses</description>
     <fields>
+        <fullName>Business_Unit__c</fullName>
+        <description>The business unit that in combination with other fields will map to a specific queue</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>The business unit that in combination with other fields will map to a specific queue</inlineHelpText>
+        <label>Business Unit</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>All</fullName>
+                    <default>true</default>
+                    <label>All</label>
+                </value>
+                <value>
+                    <fullName>Hudson&apos;s Bay</fullName>
+                    <default>false</default>
+                    <label>Hudson&apos;s Bay</label>
+                </value>
+                <value>
+                    <fullName>MHF</fullName>
+                    <default>false</default>
+                    <label>MHF</label>
+                </value>
+                <value>
+                    <fullName>Lord + Taylor</fullName>
+                    <default>false</default>
+                    <label>Lord + Taylor</label>
+                </value>
+                <value>
+                    <fullName>Saks</fullName>
+                    <default>false</default>
+                    <label>Saks</label>
+                </value>
+                <value>
+                    <fullName>Off 5th</fullName>
+                    <default>false</default>
+                    <label>Off 5th</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Case_Status__c</fullName>
         <description>Case Status - when changed to this status, the Case Queue will be changed</description>
         <externalId>false</externalId>
@@ -83,6 +129,1082 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Case_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Case Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BTO - Big Ticket Order (New Purchases)</fullName>
+                    <default>false</default>
+                    <label>BTO - Big Ticket Order (New Purchases)</label>
+                </value>
+                <value>
+                    <fullName>Credit Hold</fullName>
+                    <default>false</default>
+                    <label>Credit Hold</label>
+                </value>
+                <value>
+                    <fullName>Delivery</fullName>
+                    <default>false</default>
+                    <label>Delivery</label>
+                </value>
+                <value>
+                    <fullName>Delivery (WISMO)</fullName>
+                    <default>false</default>
+                    <label>Delivery (WISMO)</label>
+                </value>
+                <value>
+                    <fullName>Delivery Resolution</fullName>
+                    <default>false</default>
+                    <label>Delivery Resolution</label>
+                </value>
+                <value>
+                    <fullName>Exchange / Return / Allowance (ERA)</fullName>
+                    <default>false</default>
+                    <label>Exchange / Return / Allowance (ERA)</label>
+                </value>
+                <value>
+                    <fullName>Gift Card(s)</fullName>
+                    <default>false</default>
+                    <label>Gift Card(s)</label>
+                </value>
+                <value>
+                    <fullName>Gift Registry</fullName>
+                    <default>false</default>
+                    <label>Gift Registry</label>
+                </value>
+                <value>
+                    <fullName>In Store Experience</fullName>
+                    <default>false</default>
+                    <label>In Store Experience</label>
+                </value>
+                <value>
+                    <fullName>Major Home Fashion</fullName>
+                    <default>false</default>
+                    <label>Major Home Fashion</label>
+                </value>
+                <value>
+                    <fullName>Order Inquiry</fullName>
+                    <default>false</default>
+                    <label>Order Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Order placed</fullName>
+                    <default>false</default>
+                    <label>Order placed</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                    <fullName>Place an order</fullName>
+                    <default>false</default>
+                    <label>Place an order</label>
+                </value>
+                <value>
+                    <fullName>Product Information</fullName>
+                    <default>false</default>
+                    <label>Product Information</label>
+                </value>
+                <value>
+                    <fullName>Refunds/Credits</fullName>
+                    <default>false</default>
+                    <label>Refunds/Credits</label>
+                </value>
+                <value>
+                    <fullName>Returns</fullName>
+                    <default>false</default>
+                    <label>Returns</label>
+                </value>
+                <value>
+                    <fullName>Rewards</fullName>
+                    <default>false</default>
+                    <label>Rewards</label>
+                </value>
+                <value>
+                    <fullName>Special Projects</fullName>
+                    <default>false</default>
+                    <label>Special Projects</label>
+                </value>
+                <value>
+                    <fullName>Store Experience</fullName>
+                    <default>false</default>
+                    <label>Store Experience</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>VIP</fullName>
+                    <default>false</default>
+                    <label>VIP</label>
+                </value>
+                <value>
+                    <fullName>Warranty</fullName>
+                    <default>false</default>
+                    <label>Warranty</label>
+                </value>
+                <value>
+                    <fullName>Executive Escalation Only</fullName>
+                    <default>false</default>
+                    <label>Executive Escalation Only</label>
+                </value>
+                <value>
+                    <fullName>Store Locator</fullName>
+                    <default>false</default>
+                    <label>Store Locator</label>
+                </value>
+                <value>
+                    <fullName>Pricing</fullName>
+                    <default>false</default>
+                    <label>Pricing</label>
+                </value>
+                <value>
+                    <fullName>New L</fullName>
+                    <default>false</default>
+                    <label>New L</label>
+                </value>
+                <value>
+                    <fullName>General Error</fullName>
+                    <default>false</default>
+                    <label>General Error</label>
+                </value>
+                <value>
+                    <fullName>Hold Batch</fullName>
+                    <default>false</default>
+                    <label>Hold Batch</label>
+                </value>
+                <value>
+                    <fullName>Hold Credit</fullName>
+                    <default>false</default>
+                    <label>Hold Credit</label>
+                </value>
+                <value>
+                    <fullName>Exchange Log</fullName>
+                    <default>false</default>
+                    <label>Exchange Log</label>
+                </value>
+                <value>
+                    <fullName>Call Tag</fullName>
+                    <default>false</default>
+                    <label>Call Tag</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account information update or question</fullName>
+                    <default>false</default>
+                    <label>Account information update or question</label>
+                </value>
+                <value>
+                    <fullName>Add Item to List</fullName>
+                    <default>false</default>
+                    <label>Add Item to List</label>
+                </value>
+                <value>
+                    <fullName>Add promotion code after purchase</fullName>
+                    <default>false</default>
+                    <label>Add promotion code after purchase</label>
+                </value>
+                <value>
+                    <fullName>Address Change Required</fullName>
+                    <default>false</default>
+                    <label>Address Change Required</label>
+                </value>
+                <value>
+                    <fullName>Allowance Request</fullName>
+                    <default>false</default>
+                    <label>Allowance Request</label>
+                </value>
+                <value>
+                    <fullName>Appliance Claim</fullName>
+                    <default>false</default>
+                    <label>Appliance Claim</label>
+                </value>
+                <value>
+                    <fullName>Archived Accounts</fullName>
+                    <default>false</default>
+                    <label>Archived Accounts</label>
+                </value>
+                <value>
+                    <fullName>Back Ordered Report</fullName>
+                    <default>false</default>
+                    <label>Back Ordered Report</label>
+                </value>
+                <value>
+                    <fullName>Better Business Bureau</fullName>
+                    <default>false</default>
+                    <label>Better Business Bureau</label>
+                </value>
+                <value>
+                    <fullName>Broken/Damaged Item</fullName>
+                    <default>false</default>
+                    <label>Broken/Damaged Item</label>
+                </value>
+                <value>
+                    <fullName>BTO</fullName>
+                    <default>false</default>
+                    <label>BTO</label>
+                </value>
+                <value>
+                    <fullName>Can I cancel my order?</fullName>
+                    <default>false</default>
+                    <label>Can I cancel my order?</label>
+                </value>
+                <value>
+                    <fullName>Can I change my order?</fullName>
+                    <default>false</default>
+                    <label>Can I change my order?</label>
+                </value>
+                <value>
+                    <fullName>Can you reactivate my gift card?</fullName>
+                    <default>false</default>
+                    <label>Can you reactivate my gift card?</label>
+                </value>
+                <value>
+                    <fullName>Casper Mattress</fullName>
+                    <default>false</default>
+                    <label>Casper Mattress</label>
+                </value>
+                <value>
+                    <fullName>Clear D</fullName>
+                    <default>false</default>
+                    <label>Clear D</label>
+                </value>
+                <value>
+                    <fullName>Credit Points Dispute</fullName>
+                    <default>false</default>
+                    <label>Credit Points Dispute</label>
+                </value>
+                <value>
+                    <fullName>Customer asked for Store Information (phone number / details)</fullName>
+                    <default>false</default>
+                    <label>Customer asked for Store Information (phone number / details)</label>
+                </value>
+                <value>
+                    <fullName>Customer Care Followup Alert</fullName>
+                    <default>false</default>
+                    <label>Customer Care Followup Alert</label>
+                </value>
+                <value>
+                    <fullName>Customer Care Follow-Up Alerts (CCFU)</fullName>
+                    <default>false</default>
+                    <label>Customer Care Follow-Up Alerts (CCFU)</label>
+                </value>
+                <value>
+                    <fullName>Customer preferred placing order over phone</fullName>
+                    <default>false</default>
+                    <label>Customer preferred placing order over phone</label>
+                </value>
+                <value>
+                    <fullName>Customer Reschedule Request</fullName>
+                    <default>false</default>
+                    <label>Customer Reschedule Request</label>
+                </value>
+                <value>
+                    <fullName>Daily Delivery Data Report</fullName>
+                    <default>false</default>
+                    <label>Daily Delivery Data Report</label>
+                </value>
+                <value>
+                    <fullName>DC Pick Up Report</fullName>
+                    <default>false</default>
+                    <label>DC Pick Up Report</label>
+                </value>
+                <value>
+                    <fullName>Defective Item</fullName>
+                    <default>false</default>
+                    <label>Defective Item</label>
+                </value>
+                <value>
+                    <fullName>Delivery Not Completed Alert</fullName>
+                    <default>false</default>
+                    <label>Delivery Not Completed Alert</label>
+                </value>
+                <value>
+                    <fullName>Delivery Provider/Driver calls</fullName>
+                    <default>false</default>
+                    <label>Delivery Provider/Driver calls</label>
+                </value>
+                <value>
+                    <fullName>Delivery Status Update</fullName>
+                    <default>false</default>
+                    <label>Delivery Status Update</label>
+                </value>
+                <value>
+                    <fullName>Didn&apos;t receive when expected</fullName>
+                    <default>false</default>
+                    <label>Didn&apos;t receive when expected</label>
+                </value>
+                <value>
+                    <fullName>Did not receive Order</fullName>
+                    <default>false</default>
+                    <label>Did not receive Order</label>
+                </value>
+                <value>
+                    <fullName>Does this come in my size?</fullName>
+                    <default>false</default>
+                    <label>Does this come in my size?</label>
+                </value>
+                <value>
+                    <fullName>Driver Call</fullName>
+                    <default>false</default>
+                    <label>Driver Call</label>
+                </value>
+                <value>
+                    <fullName>Employee Discount</fullName>
+                    <default>false</default>
+                    <label>Employee Discount</label>
+                </value>
+                <value>
+                    <fullName>ERA Request - In Policy</fullName>
+                    <default>false</default>
+                    <label>ERA Request - In Policy</label>
+                </value>
+                <value>
+                    <fullName>ERA Request - Out of Policy</fullName>
+                    <default>false</default>
+                    <label>ERA Request - Out of Policy</label>
+                </value>
+                <value>
+                    <fullName>Estimated delivery date inquiry</fullName>
+                    <default>false</default>
+                    <label>Estimated delivery date inquiry</label>
+                </value>
+                <value>
+                    <fullName>Exchange / Returns / Allowance (ERA)</fullName>
+                    <default>false</default>
+                    <label>Exchange / Returns / Allowance (ERA)</label>
+                </value>
+                <value>
+                    <fullName>Exchange item</fullName>
+                    <default>false</default>
+                    <label>Exchange item</label>
+                </value>
+                <value>
+                    <fullName>Furniture Claim</fullName>
+                    <default>false</default>
+                    <label>Furniture Claim</label>
+                </value>
+                <value>
+                    <fullName>General</fullName>
+                    <default>false</default>
+                    <label>General</label>
+                </value>
+                <value>
+                    <fullName>Gift_Appeasements</fullName>
+                    <default>false</default>
+                    <label>Gift_Appeasements</label>
+                </value>
+                <value>
+                    <fullName>Gift Card</fullName>
+                    <default>false</default>
+                    <label>Gift Card</label>
+                </value>
+                <value>
+                    <fullName>Gift Card Purchase</fullName>
+                    <default>false</default>
+                    <label>Gift Card Purchase</label>
+                </value>
+                <value>
+                    <fullName>Gift card to Original Tender</fullName>
+                    <default>false</default>
+                    <label>Gift card to Original Tender</label>
+                </value>
+                <value>
+                    <fullName>Have you received my return?</fullName>
+                    <default>false</default>
+                    <label>Have you received my return?</label>
+                </value>
+                <value>
+                    <fullName>How do I return my order?</fullName>
+                    <default>false</default>
+                    <label>How do I return my order?</label>
+                </value>
+                <value>
+                    <fullName>How much do I have left on my gift card?</fullName>
+                    <default>false</default>
+                    <label>How much do I have left on my gift card?</label>
+                </value>
+                <value>
+                    <fullName>Hudson&apos;s Bay VIP</fullName>
+                    <default>false</default>
+                    <label>Hudson&apos;s Bay VIP</label>
+                </value>
+                <value>
+                    <fullName>I&apos;m confused about the new returns process (Narvar)</fullName>
+                    <default>false</default>
+                    <label>I&apos;m confused about the new returns process (Narvar)</label>
+                </value>
+                <value>
+                    <fullName>I lost my gift card</fullName>
+                    <default>false</default>
+                    <label>I lost my gift card</label>
+                </value>
+                <value>
+                    <fullName>Inactive Points</fullName>
+                    <default>false</default>
+                    <label>Inactive Points</label>
+                </value>
+                <value>
+                    <fullName>I need additional information details on a product</fullName>
+                    <default>false</default>
+                    <label>I need additional information details on a product</label>
+                </value>
+                <value>
+                    <fullName>I need a return label</fullName>
+                    <default>false</default>
+                    <label>I need a return label</label>
+                </value>
+                <value>
+                    <fullName>I need to change my payment method</fullName>
+                    <default>false</default>
+                    <label>I need to change my payment method</label>
+                </value>
+                <value>
+                    <fullName>I need to unlock my gift card</fullName>
+                    <default>false</default>
+                    <label>I need to unlock my gift card</label>
+                </value>
+                <value>
+                    <fullName>Information Request</fullName>
+                    <default>false</default>
+                    <label>Information Request</label>
+                </value>
+                <value>
+                    <fullName>Inquiry on gift wrapping</fullName>
+                    <default>false</default>
+                    <label>Inquiry on gift wrapping</label>
+                </value>
+                <value>
+                    <fullName>International order issue (Borderfree)</fullName>
+                    <default>false</default>
+                    <label>International order issue (Borderfree)</label>
+                </value>
+                <value>
+                    <fullName>In Transit Report</fullName>
+                    <default>false</default>
+                    <label>In Transit Report</label>
+                </value>
+                <value>
+                    <fullName>Inventory inquiry in store (website is out of stock)</fullName>
+                    <default>false</default>
+                    <label>Inventory inquiry in store (website is out of stock)</label>
+                </value>
+                <value>
+                    <fullName>Inventory inquiry on website</fullName>
+                    <default>false</default>
+                    <label>Inventory inquiry on website</label>
+                </value>
+                <value>
+                    <fullName>Item(s) in order damaged</fullName>
+                    <default>false</default>
+                    <label>Item(s) in order damaged</label>
+                </value>
+                <value>
+                    <fullName>I want a refund for my shipping fee</fullName>
+                    <default>false</default>
+                    <label>I want a refund for my shipping fee</label>
+                </value>
+                <value>
+                    <fullName>Locked out of my account/password reset</fullName>
+                    <default>false</default>
+                    <label>Locked out of my account/password reset</label>
+                </value>
+                <value>
+                    <fullName>Loyalty</fullName>
+                    <default>false</default>
+                    <label>Loyalty</label>
+                </value>
+                <value>
+                    <fullName>Manual Requests</fullName>
+                    <default>false</default>
+                    <label>Manual Requests</label>
+                </value>
+                <value>
+                    <fullName>Marketing / Promo Offers</fullName>
+                    <default>false</default>
+                    <label>Marketing / Promo Offers</label>
+                </value>
+                <value>
+                    <fullName>Marketing Complaints</fullName>
+                    <default>false</default>
+                    <label>Marketing Complaints</label>
+                </value>
+                <value>
+                    <fullName>Mark Item as Purchased</fullName>
+                    <default>false</default>
+                    <label>Mark Item as Purchased</label>
+                </value>
+                <value>
+                    <fullName>Mark Item as Returned</fullName>
+                    <default>false</default>
+                    <label>Mark Item as Returned</label>
+                </value>
+                <value>
+                    <fullName>Mattress</fullName>
+                    <default>false</default>
+                    <label>Mattress</label>
+                </value>
+                <value>
+                    <fullName>Merchandise Not Received (MNR)</fullName>
+                    <default>false</default>
+                    <label>Merchandise Not Received (MNR)</label>
+                </value>
+                <value>
+                    <fullName>MHF_Ret_Exch_Diff Report</fullName>
+                    <default>false</default>
+                    <label>MHF_Ret_Exch_Diff Report</label>
+                </value>
+                <value>
+                    <fullName>Missing Items</fullName>
+                    <default>false</default>
+                    <label>Missing Items</label>
+                </value>
+                <value>
+                    <fullName>Missing Points from Online Order</fullName>
+                    <default>false</default>
+                    <label>Missing Points from Online Order</label>
+                </value>
+                <value>
+                    <fullName>Missing Points from Store Purchase</fullName>
+                    <default>false</default>
+                    <label>Missing Points from Store Purchase</label>
+                </value>
+                <value>
+                    <fullName>My order was incomplete</fullName>
+                    <default>false</default>
+                    <label>My order was incomplete</label>
+                </value>
+                <value>
+                    <fullName>New Account Enrollment</fullName>
+                    <default>false</default>
+                    <label>New Account Enrollment</label>
+                </value>
+                <value>
+                    <fullName>NO SSD Report</fullName>
+                    <default>false</default>
+                    <label>NO SSD Report</label>
+                </value>
+                <value>
+                    <fullName>Not Placed</fullName>
+                    <default>false</default>
+                    <label>Not Placed</label>
+                </value>
+                <value>
+                    <fullName>Order not delivered when expected</fullName>
+                    <default>false</default>
+                    <label>Order not delivered when expected</label>
+                </value>
+                <value>
+                    <fullName>Order Not Paid Queue</fullName>
+                    <default>false</default>
+                    <label>Order Not Paid Queue</label>
+                </value>
+                <value>
+                    <fullName>Order Not Received</fullName>
+                    <default>false</default>
+                    <label>Order Not Received</label>
+                </value>
+                <value>
+                    <fullName>Order was incorrect</fullName>
+                    <default>false</default>
+                    <label>Order was incorrect</label>
+                </value>
+                <value>
+                    <fullName>Partner Air Miles</fullName>
+                    <default>false</default>
+                    <label>Partner Air Miles</label>
+                </value>
+                <value>
+                    <fullName>Partner Petro</fullName>
+                    <default>false</default>
+                    <label>Partner Petro</label>
+                </value>
+                <value>
+                    <fullName>Partner RBC</fullName>
+                    <default>false</default>
+                    <label>Partner RBC</label>
+                </value>
+                <value>
+                    <fullName>Past Due DC Pick Up Report</fullName>
+                    <default>false</default>
+                    <label>Past Due DC Pick Up Report</label>
+                </value>
+                <value>
+                    <fullName>PayPal Issue</fullName>
+                    <default>false</default>
+                    <label>PayPal Issue</label>
+                </value>
+                <value>
+                    <fullName>Place New Order</fullName>
+                    <default>false</default>
+                    <label>Place New Order</label>
+                </value>
+                <value>
+                    <fullName>POD POST Call Queue</fullName>
+                    <default>false</default>
+                    <label>POD POST Call Queue</label>
+                </value>
+                <value>
+                    <fullName>Points Inquire</fullName>
+                    <default>false</default>
+                    <label>Points Inquire</label>
+                </value>
+                <value>
+                    <fullName>Points Program Conversion</fullName>
+                    <default>false</default>
+                    <label>Points Program Conversion</label>
+                </value>
+                <value>
+                    <fullName>POND Delivery Reschld New Prod</fullName>
+                    <default>false</default>
+                    <label>POND Delivery Reschld New Prod</label>
+                </value>
+                <value>
+                    <fullName>POND Delivery Reschld Same</fullName>
+                    <default>false</default>
+                    <label>POND Delivery Reschld Same</label>
+                </value>
+                <value>
+                    <fullName>Poor Quality Item</fullName>
+                    <default>false</default>
+                    <label>Poor Quality Item</label>
+                </value>
+                <value>
+                    <fullName>POS General - POS Team Only</fullName>
+                    <default>false</default>
+                    <label>POS General - POS Team Only</label>
+                </value>
+                <value>
+                    <fullName>POS Rejected</fullName>
+                    <default>false</default>
+                    <label>POS Rejected</label>
+                </value>
+                <value>
+                    <fullName>Pre Call Alert</fullName>
+                    <default>false</default>
+                    <label>Pre Call Alert</label>
+                </value>
+                <value>
+                    <fullName>Pre Call Research Alert</fullName>
+                    <default>false</default>
+                    <label>Pre Call Research Alert</label>
+                </value>
+                <value>
+                    <fullName>President&apos;s Letter</fullName>
+                    <default>false</default>
+                    <label>President&apos;s Letter</label>
+                </value>
+                <value>
+                    <fullName>Price Adjustment</fullName>
+                    <default>false</default>
+                    <label>Price Adjustment</label>
+                </value>
+                <value>
+                    <fullName>Price Adjustment due to competitor price match</fullName>
+                    <default>false</default>
+                    <label>Price Adjustment due to competitor price match</label>
+                </value>
+                <value>
+                    <fullName>Price Adjustment due to sales after purchase</fullName>
+                    <default>false</default>
+                    <label>Price Adjustment due to sales after purchase</label>
+                </value>
+                <value>
+                    <fullName>Price at check-out different than expected</fullName>
+                    <default>false</default>
+                    <label>Price at check-out different than expected</label>
+                </value>
+                <value>
+                    <fullName>Price Match</fullName>
+                    <default>false</default>
+                    <label>Price Match</label>
+                </value>
+                <value>
+                    <fullName>Price override</fullName>
+                    <default>false</default>
+                    <label>Price override</label>
+                </value>
+                <value>
+                    <fullName>Privacy/Data Security (Include Order#/Customer Name)</fullName>
+                    <default>false</default>
+                    <label>Privacy/Data Security (Include Order#/Customer Name)</label>
+                </value>
+                <value>
+                    <fullName>Procurement PO Date Change</fullName>
+                    <default>false</default>
+                    <label>Procurement PO Date Change</label>
+                </value>
+                <value>
+                    <fullName>Product</fullName>
+                    <default>false</default>
+                    <label>Product</label>
+                </value>
+                <value>
+                    <fullName>Promo code technical error</fullName>
+                    <default>false</default>
+                    <label>Promo code technical error</label>
+                </value>
+                <value>
+                    <fullName>Promo Questions/Problem</fullName>
+                    <default>false</default>
+                    <label>Promo Questions/Problem</label>
+                </value>
+                <value>
+                    <fullName>Promotion confusion (example: exclusion list)</fullName>
+                    <default>false</default>
+                    <label>Promotion confusion (example: exclusion list)</label>
+                </value>
+                <value>
+                    <fullName>Purchase Item on Registry</fullName>
+                    <default>false</default>
+                    <label>Purchase Item on Registry</label>
+                </value>
+                <value>
+                    <fullName>Redemption Order</fullName>
+                    <default>false</default>
+                    <label>Redemption Order</label>
+                </value>
+                <value>
+                    <fullName>Refund Credit Delay</fullName>
+                    <default>false</default>
+                    <label>Refund Credit Delay</label>
+                </value>
+                <value>
+                    <fullName>Remove Item from List</fullName>
+                    <default>false</default>
+                    <label>Remove Item from List</label>
+                </value>
+                <value>
+                    <fullName>Reserved Report</fullName>
+                    <default>false</default>
+                    <label>Reserved Report</label>
+                </value>
+                <value>
+                    <fullName>Return Problem</fullName>
+                    <default>false</default>
+                    <label>Return Problem</label>
+                </value>
+                <value>
+                    <fullName>Returns / Warranty/Installation</fullName>
+                    <default>false</default>
+                    <label>Returns / Warranty/Installation</label>
+                </value>
+                <value>
+                    <fullName>Return when final sale and/or past window return</fullName>
+                    <default>false</default>
+                    <label>Return when final sale and/or past window return</label>
+                </value>
+                <value>
+                    <fullName>Rewards not applied properly after purchase</fullName>
+                    <default>false</default>
+                    <label>Rewards not applied properly after purchase</label>
+                </value>
+                <value>
+                    <fullName>Rewards Points</fullName>
+                    <default>false</default>
+                    <label>Rewards Points</label>
+                </value>
+                <value>
+                    <fullName>Service</fullName>
+                    <default>false</default>
+                    <label>Service</label>
+                </value>
+                <value>
+                    <fullName>Shipping/Delivery/ Pick Up</fullName>
+                    <default>false</default>
+                    <label>Shipping/Delivery/ Pick Up</label>
+                </value>
+                <value>
+                    <fullName>Shipping Fee</fullName>
+                    <default>false</default>
+                    <label>Shipping Fee</label>
+                </value>
+                <value>
+                    <fullName>Shipping Fee Waive due to missed delivery window</fullName>
+                    <default>false</default>
+                    <label>Shipping Fee Waive due to missed delivery window</label>
+                </value>
+                <value>
+                    <fullName>ShopRunner wasn&apos;t working</fullName>
+                    <default>false</default>
+                    <label>ShopRunner wasn&apos;t working</label>
+                </value>
+                <value>
+                    <fullName>Signature Required Inquiry</fullName>
+                    <default>false</default>
+                    <label>Signature Required Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Sold Not Delivered Report</fullName>
+                    <default>false</default>
+                    <label>Sold Not Delivered Report</label>
+                </value>
+                <value>
+                    <fullName>SOWMA Report</fullName>
+                    <default>false</default>
+                    <label>SOWMA Report</label>
+                </value>
+                <value>
+                    <fullName>Special Delivery Arrangement Requests</fullName>
+                    <default>false</default>
+                    <label>Special Delivery Arrangement Requests</label>
+                </value>
+                <value>
+                    <fullName>Store Associate called for assistance on customer&apos;s gift card</fullName>
+                    <default>false</default>
+                    <label>Store Associate called for assistance on customer&apos;s gift card</label>
+                </value>
+                <value>
+                    <fullName>Tax Exclusion</fullName>
+                    <default>false</default>
+                    <label>Tax Exclusion</label>
+                </value>
+                <value>
+                    <fullName>TIME STOP Alert</fullName>
+                    <default>false</default>
+                    <label>TIME STOP Alert</label>
+                </value>
+                <value>
+                    <fullName>Tracking number inquiry</fullName>
+                    <default>false</default>
+                    <label>Tracking number inquiry</label>
+                </value>
+                <value>
+                    <fullName>Tracking says order arrived but I don&apos;t have it</fullName>
+                    <default>false</default>
+                    <label>Tracking says order arrived but I don&apos;t have it</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>Transfer to CapOne</fullName>
+                    <default>false</default>
+                    <label>Transfer to CapOne</label>
+                </value>
+                <value>
+                    <fullName>Transfer to Credit Services</fullName>
+                    <default>false</default>
+                    <label>Transfer to Credit Services</label>
+                </value>
+                <value>
+                    <fullName>Transfer to Digital Team</fullName>
+                    <default>false</default>
+                    <label>Transfer to Digital Team</label>
+                </value>
+                <value>
+                    <fullName>Transfer to MHF</fullName>
+                    <default>false</default>
+                    <label>Transfer to MHF</label>
+                </value>
+                <value>
+                    <fullName>Transfer to Store</fullName>
+                    <default>false</default>
+                    <label>Transfer to Store</label>
+                </value>
+                <value>
+                    <fullName>Transfer to Total Guard/Vendor</fullName>
+                    <default>false</default>
+                    <label>Transfer to Total Guard/Vendor</label>
+                </value>
+                <value>
+                    <fullName>Unable to redeem rewards points</fullName>
+                    <default>false</default>
+                    <label>Unable to redeem rewards points</label>
+                </value>
+                <value>
+                    <fullName>Unachievable Delivery Date</fullName>
+                    <default>false</default>
+                    <label>Unachievable Delivery Date</label>
+                </value>
+                <value>
+                    <fullName>Unrecognized charge on account</fullName>
+                    <default>false</default>
+                    <label>Unrecognized charge on account</label>
+                </value>
+                <value>
+                    <fullName>Unsubscribe and/or deactivate account</fullName>
+                    <default>false</default>
+                    <label>Unsubscribe and/or deactivate account</label>
+                </value>
+                <value>
+                    <fullName>VIP Account Setup/Password Reset</fullName>
+                    <default>false</default>
+                    <label>VIP Account Setup/Password Reset</label>
+                </value>
+                <value>
+                    <fullName>VIP Offers</fullName>
+                    <default>false</default>
+                    <label>VIP Offers</label>
+                </value>
+                <value>
+                    <fullName>VIP Soft / Hard Benefits</fullName>
+                    <default>false</default>
+                    <label>VIP Soft / Hard Benefits</label>
+                </value>
+                <value>
+                    <fullName>VIP Website Issue (i.e. page load, points, checkout issue)</fullName>
+                    <default>false</default>
+                    <label>VIP Website Issue (i.e. page load, points, checkout issue)</label>
+                </value>
+                <value>
+                    <fullName>Website prevented from placing order (not functioning)</fullName>
+                    <default>false</default>
+                    <label>Website prevented from placing order (not functioning)</label>
+                </value>
+                <value>
+                    <fullName>What is my rewards balance?</fullName>
+                    <default>false</default>
+                    <label>What is my rewards balance?</label>
+                </value>
+                <value>
+                    <fullName>What is your return policy?</fullName>
+                    <default>false</default>
+                    <label>What is your return policy?</label>
+                </value>
+                <value>
+                    <fullName>Where is my credit?</fullName>
+                    <default>false</default>
+                    <label>Where is my credit?</label>
+                </value>
+                <value>
+                    <fullName>Where is my refund?</fullName>
+                    <default>false</default>
+                    <label>Where is my refund?</label>
+                </value>
+                <value>
+                    <fullName>Why can&apos;t you ship to my address?</fullName>
+                    <default>false</default>
+                    <label>Why can&apos;t you ship to my address?</label>
+                </value>
+                <value>
+                    <fullName>Why did you cancel my order?</fullName>
+                    <default>false</default>
+                    <label>Why did you cancel my order?</label>
+                </value>
+                <value>
+                    <fullName>Wrong Item Received</fullName>
+                    <default>false</default>
+                    <label>Wrong Item Received</label>
+                </value>
+                <value>
+                    <fullName>Wrong Order Received</fullName>
+                    <default>false</default>
+                    <label>Wrong Order Received</label>
+                </value>
+                <value>
+                    <fullName>CS - Customer Service</fullName>
+                    <default>false</default>
+                    <label>CS - Customer Service</label>
+                </value>
+                <value>
+                    <fullName>RN - Return Policy</fullName>
+                    <default>false</default>
+                    <label>RN - Return Policy</label>
+                </value>
+                <value>
+                    <fullName>PA - Price Adjustment</fullName>
+                    <default>false</default>
+                    <label>PA - Price Adjustment</label>
+                </value>
+                <value>
+                    <fullName>RC - Refund Credit</fullName>
+                    <default>false</default>
+                    <label>RC - Refund Credit</label>
+                </value>
+                <value>
+                    <fullName>M - Merchandise</fullName>
+                    <default>false</default>
+                    <label>M - Merchandise</label>
+                </value>
+                <value>
+                    <fullName>GC - Gift Card</fullName>
+                    <default>false</default>
+                    <label>GC - Gift Card</label>
+                </value>
+                <value>
+                    <fullName>PL - Privacy/Legal</fullName>
+                    <default>false</default>
+                    <label>PL - Privacy/Legal</label>
+                </value>
+                <value>
+                    <fullName>F - Fulfillment</fullName>
+                    <default>false</default>
+                    <label>F - Fulfillment</label>
+                </value>
+                <value>
+                    <fullName>S - Shipping</fullName>
+                    <default>false</default>
+                    <label>S - Shipping</label>
+                </value>
+                <value>
+                    <fullName>CA - Cancellation</fullName>
+                    <default>false</default>
+                    <label>CA - Cancellation</label>
+                </value>
+                <value>
+                    <fullName>RI - Risk</fullName>
+                    <default>false</default>
+                    <label>RI - Risk</label>
+                </value>
+                <value>
+                    <fullName>WI - Website Issue</fullName>
+                    <default>false</default>
+                    <label>WI - Website Issue</label>
+                </value>
+                <value>
+                    <fullName>OT - Other</fullName>
+                    <default>false</default>
+                    <label>OT - Other</label>
+                </value>
+                <value>
+                    <fullName>Did not receive gift with purchase</fullName>
+                    <default>false</default>
+                    <label>Did not receive gift with purchase</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Ignore_Metadata_Mapping__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Ignore Metadata Mapping</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Ignore_on_Executive_Escalation__c</fullName>
         <defaultValue>false</defaultValue>
         <description>When checked, will not run process if the Case is owned by Executive Escalation (Executive_Escalation_Owner__c = true)</description>
@@ -103,6 +1225,683 @@
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sub_Category__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Sub Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Address Issue</fullName>
+                    <default>false</default>
+                    <label>Address Issue</label>
+                </value>
+                <value>
+                    <fullName>Alterations / repairs</fullName>
+                    <default>false</default>
+                    <label>Alterations / repairs</label>
+                </value>
+                <value>
+                    <fullName>Availability / assortment of merchandise</fullName>
+                    <default>false</default>
+                    <label>Availability / assortment of merchandise</label>
+                </value>
+                <value>
+                    <fullName>Bay PLCC/Mastercard Holder</fullName>
+                    <default>false</default>
+                    <label>Bay PLCC/Mastercard Holder</label>
+                </value>
+                <value>
+                    <fullName>BTO order not placed as customer paying with Gift Card</fullName>
+                    <default>false</default>
+                    <label>BTO order not placed as customer paying with Gift Card</label>
+                </value>
+                <value>
+                    <fullName>BTO order not placed as sale ended</fullName>
+                    <default>false</default>
+                    <label>BTO order not placed as sale ended</label>
+                </value>
+                <value>
+                    <fullName>BTO order not placed because of delivery date</fullName>
+                    <default>false</default>
+                    <label>BTO order not placed because of delivery date</label>
+                </value>
+                <value>
+                    <fullName>BTO order not placed because of the DC pick up location</fullName>
+                    <default>false</default>
+                    <label>BTO order not placed because of the DC pick up location</label>
+                </value>
+                <value>
+                    <fullName>BTO order not placed because SKU is discontinued</fullName>
+                    <default>false</default>
+                    <label>BTO order not placed because SKU is discontinued</label>
+                </value>
+                <value>
+                    <fullName>BTO order not placed due to competitor pricing</fullName>
+                    <default>false</default>
+                    <label>BTO order not placed due to competitor pricing</label>
+                </value>
+                <value>
+                    <fullName>BTO order not placed due to Out of Zone delivery cost</fullName>
+                    <default>false</default>
+                    <label>BTO order not placed due to Out of Zone delivery cost</label>
+                </value>
+                <value>
+                    <fullName>Call to MHF in error</fullName>
+                    <default>false</default>
+                    <label>Call to MHF in error</label>
+                </value>
+                <value>
+                    <fullName>Cancel at Door</fullName>
+                    <default>false</default>
+                    <label>Cancel at Door</label>
+                </value>
+                <value>
+                    <fullName>Casper</fullName>
+                    <default>false</default>
+                    <label>Casper</label>
+                </value>
+                <value>
+                    <fullName>Change a Reward Account Address</fullName>
+                    <default>false</default>
+                    <label>Change a Reward Account Address</label>
+                </value>
+                <value>
+                    <fullName>Change Rejected MOP</fullName>
+                    <default>false</default>
+                    <label>Change Rejected MOP</label>
+                </value>
+                <value>
+                    <fullName>Credit Points Dispute</fullName>
+                    <default>false</default>
+                    <label>Credit Points Dispute</label>
+                </value>
+                <value>
+                    <fullName>Cust /SA request for Special Delivery Arrangements</fullName>
+                    <default>false</default>
+                    <label>Cust /SA request for Special Delivery Arrangements</label>
+                </value>
+                <value>
+                    <fullName>Cust call for Warranty/ Parts or In Home Repair</fullName>
+                    <default>false</default>
+                    <label>Cust call for Warranty/ Parts or In Home Repair</label>
+                </value>
+                <value>
+                    <fullName>Customer f/up missed/cust. Waiting on update</fullName>
+                    <default>false</default>
+                    <label>Customer f/up missed/cust. Waiting on update</label>
+                </value>
+                <value>
+                    <fullName>Customer request for Compensation</fullName>
+                    <default>false</default>
+                    <label>Customer request for Compensation</label>
+                </value>
+                <value>
+                    <fullName>Customer requests Return / Exchange out of policy</fullName>
+                    <default>false</default>
+                    <label>Customer requests Return / Exchange out of policy</label>
+                </value>
+                <value>
+                    <fullName>Custom wants to place an order</fullName>
+                    <default>false</default>
+                    <label>Custom wants to place an order</label>
+                </value>
+                <value>
+                    <fullName>DC</fullName>
+                    <default>false</default>
+                    <label>DC</label>
+                </value>
+                <value>
+                    <fullName>DC Pick-Up Loc</fullName>
+                    <default>false</default>
+                    <label>DC Pick-Up Loc</label>
+                </value>
+                <value>
+                    <fullName>Delay in issuing refund credit</fullName>
+                    <default>false</default>
+                    <label>Delay in issuing refund credit</label>
+                </value>
+                <value>
+                    <fullName>Delivery fees</fullName>
+                    <default>false</default>
+                    <label>Delivery fees</label>
+                </value>
+                <value>
+                    <fullName>DP/Courier Issues (late delivery; damaged; returned to store; wrong address; left in rain)</fullName>
+                    <default>false</default>
+                    <label>DP/Courier Issues (late delivery; damaged; returned to store; wrong address; left in rain)</label>
+                </value>
+                <value>
+                    <fullName>DP - Driver concerns/service concerns</fullName>
+                    <default>false</default>
+                    <label>DP - Driver concerns/service concerns</label>
+                </value>
+                <value>
+                    <fullName>Driver call because customer Not At Home for delivery</fullName>
+                    <default>false</default>
+                    <label>Driver call because customer Not At Home for delivery</label>
+                </value>
+                <value>
+                    <fullName>Driver calling in a no fit from the home</fullName>
+                    <default>false</default>
+                    <label>Driver calling in a no fit from the home</label>
+                </value>
+                <value>
+                    <fullName>Driver calling in damage from home</fullName>
+                    <default>false</default>
+                    <label>Driver calling in damage from home</label>
+                </value>
+                <value>
+                    <fullName>Driver calling with on site delivery restriction</fullName>
+                    <default>false</default>
+                    <label>Driver calling with on site delivery restriction</label>
+                </value>
+                <value>
+                    <fullName>Driver reporting canceled at door</fullName>
+                    <default>false</default>
+                    <label>Driver reporting canceled at door</label>
+                </value>
+                <value>
+                    <fullName>Driver unable to find address</fullName>
+                    <default>false</default>
+                    <label>Driver unable to find address</label>
+                </value>
+                <value>
+                    <fullName>Employee Discount wrong or not applied</fullName>
+                    <default>false</default>
+                    <label>Employee Discount wrong or not applied</label>
+                </value>
+                <value>
+                    <fullName>Enrollment/New Account</fullName>
+                    <default>false</default>
+                    <label>Enrollment/New Account</label>
+                </value>
+                <value>
+                    <fullName>Express shipment did not arrive on time</fullName>
+                    <default>false</default>
+                    <label>Express shipment did not arrive on time</label>
+                </value>
+                <value>
+                    <fullName>Faulty merchandise (damaged / sensor left on product / etc.)</fullName>
+                    <default>false</default>
+                    <label>Faulty merchandise (damaged / sensor left on product / etc.)</label>
+                </value>
+                <value>
+                    <fullName>Fraud Hold</fullName>
+                    <default>false</default>
+                    <label>Fraud Hold</label>
+                </value>
+                <value>
+                    <fullName>Fulfillment (merchandise not received; wrong merchandise sent; missing tags)</fullName>
+                    <default>false</default>
+                    <label>Fulfillment (merchandise not received; wrong merchandise sent; missing tags)</label>
+                </value>
+                <value>
+                    <fullName>Gift Card Balance</fullName>
+                    <default>false</default>
+                    <label>Gift Card Balance</label>
+                </value>
+                <value>
+                    <fullName>Gift Card Payment</fullName>
+                    <default>false</default>
+                    <label>Gift Card Payment</label>
+                </value>
+                <value>
+                    <fullName>Gift Registry</fullName>
+                    <default>false</default>
+                    <label>Gift Registry</label>
+                </value>
+                <value>
+                    <fullName>Inactive Points</fullName>
+                    <default>false</default>
+                    <label>Inactive Points</label>
+                </value>
+                <value>
+                    <fullName>Incorrectly processed</fullName>
+                    <default>false</default>
+                    <label>Incorrectly processed</label>
+                </value>
+                <value>
+                    <fullName>Information inquiry (request tracking info, etc.)</fullName>
+                    <default>false</default>
+                    <label>Information inquiry (request tracking info, etc.)</label>
+                </value>
+                <value>
+                    <fullName>In Process with SLA</fullName>
+                    <default>false</default>
+                    <label>In Process with SLA</label>
+                </value>
+                <value>
+                    <fullName>In Transit (Canada Post)</fullName>
+                    <default>false</default>
+                    <label>In Transit (Canada Post)</label>
+                </value>
+                <value>
+                    <fullName>In Transit (Canpar)</fullName>
+                    <default>false</default>
+                    <label>In Transit (Canpar)</label>
+                </value>
+                <value>
+                    <fullName>In Transit (FedEx)</fullName>
+                    <default>false</default>
+                    <label>In Transit (FedEx)</label>
+                </value>
+                <value>
+                    <fullName>In Transit (Purolator)</fullName>
+                    <default>false</default>
+                    <label>In Transit (Purolator)</label>
+                </value>
+                <value>
+                    <fullName>In Transit (Smartpost/USPS)</fullName>
+                    <default>false</default>
+                    <label>In Transit (Smartpost/USPS)</label>
+                </value>
+                <value>
+                    <fullName>In transit (UPS)</fullName>
+                    <default>false</default>
+                    <label>In transit (UPS)</label>
+                </value>
+                <value>
+                    <fullName>Leesa</fullName>
+                    <default>false</default>
+                    <label>Leesa</label>
+                </value>
+                <value>
+                    <fullName>Lost Package - Canada Post</fullName>
+                    <default>false</default>
+                    <label>Lost Package - Canada Post</label>
+                </value>
+                <value>
+                    <fullName>Lost Package - Canpar</fullName>
+                    <default>false</default>
+                    <label>Lost Package - Canpar</label>
+                </value>
+                <value>
+                    <fullName>Lost Package - FedEx</fullName>
+                    <default>false</default>
+                    <label>Lost Package - FedEx</label>
+                </value>
+                <value>
+                    <fullName>Lost Package - Purolator</fullName>
+                    <default>false</default>
+                    <label>Lost Package - Purolator</label>
+                </value>
+                <value>
+                    <fullName>Lost Package - Smart Post</fullName>
+                    <default>false</default>
+                    <label>Lost Package - Smart Post</label>
+                </value>
+                <value>
+                    <fullName>Loyalty program (points, eligibility of merch., events, reward card, Points Balance, Missing points on purchase etc)</fullName>
+                    <default>false</default>
+                    <label>Loyalty program (points, eligibility of merch., events, reward card, Points Balance, Missing points on purchase etc)</label>
+                </value>
+                <value>
+                    <fullName>Mailing list (add/remove/change)</fullName>
+                    <default>false</default>
+                    <label>Mailing list (add/remove/change)</label>
+                </value>
+                <value>
+                    <fullName>Manufacture warranty issues (defective merchandise, sagging, etc.)</fullName>
+                    <default>false</default>
+                    <label>Manufacture warranty issues (defective merchandise, sagging, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Marketing Complaints</fullName>
+                    <default>false</default>
+                    <label>Marketing Complaints</label>
+                </value>
+                <value>
+                    <fullName>Marketing Inquiries</fullName>
+                    <default>false</default>
+                    <label>Marketing Inquiries</label>
+                </value>
+                <value>
+                    <fullName>Merchandise not received on time</fullName>
+                    <default>false</default>
+                    <label>Merchandise not received on time</label>
+                </value>
+                <value>
+                    <fullName>MHF Address change on existing order</fullName>
+                    <default>false</default>
+                    <label>MHF Address change on existing order</label>
+                </value>
+                <value>
+                    <fullName>Missing Item Refund</fullName>
+                    <default>false</default>
+                    <label>Missing Item Refund</label>
+                </value>
+                <value>
+                    <fullName>Missing Points from Online Order</fullName>
+                    <default>false</default>
+                    <label>Missing Points from Online Order</label>
+                </value>
+                <value>
+                    <fullName>Missing Points from Store Purchase</fullName>
+                    <default>false</default>
+                    <label>Missing Points from Store Purchase</label>
+                </value>
+                <value>
+                    <fullName>Natuzzi Warranty Claim referred to Guardsman</fullName>
+                    <default>false</default>
+                    <label>Natuzzi Warranty Claim referred to Guardsman</label>
+                </value>
+                <value>
+                    <fullName>No Fit</fullName>
+                    <default>false</default>
+                    <label>No Fit</label>
+                </value>
+                <value>
+                    <fullName>Not at Home (NAH)</fullName>
+                    <default>false</default>
+                    <label>Not at Home (NAH)</label>
+                </value>
+                <value>
+                    <fullName>One-time courtesy</fullName>
+                    <default>false</default>
+                    <label>One-time courtesy</label>
+                </value>
+                <value>
+                    <fullName>Opt out of marketing</fullName>
+                    <default>false</default>
+                    <label>Opt out of marketing</label>
+                </value>
+                <value>
+                    <fullName>Order amount over free shipping threshold</fullName>
+                    <default>false</default>
+                    <label>Order amount over free shipping threshold</label>
+                </value>
+                <value>
+                    <fullName>Order Never Shipped</fullName>
+                    <default>false</default>
+                    <label>Order Never Shipped</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Other - Advertising / Marketing [please specify in free response]</fullName>
+                    <default>false</default>
+                    <label>Other - Advertising / Marketing [please specify in free response]</label>
+                </value>
+                <value>
+                    <fullName>Other Mattress Vendor</fullName>
+                    <default>false</default>
+                    <label>Other Mattress Vendor</label>
+                </value>
+                <value>
+                    <fullName>Other - Product [please specify in free response]</fullName>
+                    <default>false</default>
+                    <label>Other - Product [please specify in free response]</label>
+                </value>
+                <value>
+                    <fullName>Other - Returns/Warranty [please specify in free response]</fullName>
+                    <default>false</default>
+                    <label>Other - Returns/Warranty [please specify in free response]</label>
+                </value>
+                <value>
+                    <fullName>Other - Shipping/Pick Up [please specify in free response]</fullName>
+                    <default>false</default>
+                    <label>Other - Shipping/Pick Up [please specify in free response]</label>
+                </value>
+                <value>
+                    <fullName>Out of Zone (OOZ) Cost</fullName>
+                    <default>false</default>
+                    <label>Out of Zone (OOZ) Cost</label>
+                </value>
+                <value>
+                    <fullName>Partial Delivery Accepted</fullName>
+                    <default>false</default>
+                    <label>Partial Delivery Accepted</label>
+                </value>
+                <value>
+                    <fullName>Partner Air Miles</fullName>
+                    <default>false</default>
+                    <label>Partner Air Miles</label>
+                </value>
+                <value>
+                    <fullName>Partner Petro</fullName>
+                    <default>false</default>
+                    <label>Partner Petro</label>
+                </value>
+                <value>
+                    <fullName>Partner RBC</fullName>
+                    <default>false</default>
+                    <label>Partner RBC</label>
+                </value>
+                <value>
+                    <fullName>Points Inquire</fullName>
+                    <default>false</default>
+                    <label>Points Inquire</label>
+                </value>
+                <value>
+                    <fullName>Points Program Conversion</fullName>
+                    <default>false</default>
+                    <label>Points Program Conversion</label>
+                </value>
+                <value>
+                    <fullName>Post 14 days</fullName>
+                    <default>false</default>
+                    <label>Post 14 days</label>
+                </value>
+                <value>
+                    <fullName>President&apos;s Letter</fullName>
+                    <default>false</default>
+                    <label>President&apos;s Letter</label>
+                </value>
+                <value>
+                    <fullName>Price Match</fullName>
+                    <default>false</default>
+                    <label>Price Match</label>
+                </value>
+                <value>
+                    <fullName>Price of merchandise / competitive pricing</fullName>
+                    <default>false</default>
+                    <label>Price of merchandise / competitive pricing</label>
+                </value>
+                <value>
+                    <fullName>Product Damage</fullName>
+                    <default>false</default>
+                    <label>Product Damage</label>
+                </value>
+                <value>
+                    <fullName>Product Questions</fullName>
+                    <default>false</default>
+                    <label>Product Questions</label>
+                </value>
+                <value>
+                    <fullName>Promo code error</fullName>
+                    <default>false</default>
+                    <label>Promo code error</label>
+                </value>
+                <value>
+                    <fullName>Promo Offer Question</fullName>
+                    <default>false</default>
+                    <label>Promo Offer Question</label>
+                </value>
+                <value>
+                    <fullName>Promotion</fullName>
+                    <default>false</default>
+                    <label>Promotion</label>
+                </value>
+                <value>
+                    <fullName>Purchase Order (PO) Date Beyond Avail</fullName>
+                    <default>false</default>
+                    <label>Purchase Order (PO) Date Beyond Avail</label>
+                </value>
+                <value>
+                    <fullName>Quality of merchandise</fullName>
+                    <default>false</default>
+                    <label>Quality of merchandise</label>
+                </value>
+                <value>
+                    <fullName>Question about an offer</fullName>
+                    <default>false</default>
+                    <label>Question about an offer</label>
+                </value>
+                <value>
+                    <fullName>Redemption Order</fullName>
+                    <default>false</default>
+                    <label>Redemption Order</label>
+                </value>
+                <value>
+                    <fullName>Request for smaller delivery window</fullName>
+                    <default>false</default>
+                    <label>Request for smaller delivery window</label>
+                </value>
+                <value>
+                    <fullName>Reschedule Delivery</fullName>
+                    <default>false</default>
+                    <label>Reschedule Delivery</label>
+                </value>
+                <value>
+                    <fullName>Restricted Access</fullName>
+                    <default>false</default>
+                    <label>Restricted Access</label>
+                </value>
+                <value>
+                    <fullName>Return declined (no proof of purchase, out of policy, etc.)</fullName>
+                    <default>false</default>
+                    <label>Return declined (no proof of purchase, out of policy, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Sealy</fullName>
+                    <default>false</default>
+                    <label>Sealy</label>
+                </value>
+                <value>
+                    <fullName>Serta</fullName>
+                    <default>false</default>
+                    <label>Serta</label>
+                </value>
+                <value>
+                    <fullName>SKU Not Available</fullName>
+                    <default>false</default>
+                    <label>SKU Not Available</label>
+                </value>
+                <value>
+                    <fullName>Springwall</fullName>
+                    <default>false</default>
+                    <label>Springwall</label>
+                </value>
+                <value>
+                    <fullName>Store Complaint</fullName>
+                    <default>false</default>
+                    <label>Store Complaint</label>
+                </value>
+                <value>
+                    <fullName>Store Fulfillment</fullName>
+                    <default>false</default>
+                    <label>Store Fulfillment</label>
+                </value>
+                <value>
+                    <fullName>Store Pick-Up</fullName>
+                    <default>false</default>
+                    <label>Store Pick-Up</label>
+                </value>
+                <value>
+                    <fullName>Third Party Program Issues (i.e. Quick Contractors and Total Guard)</fullName>
+                    <default>false</default>
+                    <label>Third Party Program Issues (i.e. Quick Contractors and Total Guard)</label>
+                </value>
+                <value>
+                    <fullName>Transfer to Credit Services</fullName>
+                    <default>false</default>
+                    <label>Transfer to Credit Services</label>
+                </value>
+                <value>
+                    <fullName>Transfer to MHF</fullName>
+                    <default>false</default>
+                    <label>Transfer to MHF</label>
+                </value>
+                <value>
+                    <fullName>Transfer to Store</fullName>
+                    <default>false</default>
+                    <label>Transfer to Store</label>
+                </value>
+                <value>
+                    <fullName>Transfer to Total Guard</fullName>
+                    <default>false</default>
+                    <label>Transfer to Total Guard</label>
+                </value>
+                <value>
+                    <fullName>Vendor drop-ship</fullName>
+                    <default>false</default>
+                    <label>Vendor drop-ship</label>
+                </value>
+                <value>
+                    <fullName>VIP Account Setup/Password Reset</fullName>
+                    <default>false</default>
+                    <label>VIP Account Setup/Password Reset</label>
+                </value>
+                <value>
+                    <fullName>VIP Offers</fullName>
+                    <default>false</default>
+                    <label>VIP Offers</label>
+                </value>
+                <value>
+                    <fullName>VIP Soft / Hard Benefits</fullName>
+                    <default>false</default>
+                    <label>VIP Soft / Hard Benefits</label>
+                </value>
+                <value>
+                    <fullName>VIP Website Issue (i.e. page load, points, checkout issue)</fullName>
+                    <default>false</default>
+                    <label>VIP Website Issue (i.e. page load, points, checkout issue)</label>
+                </value>
+                <value>
+                    <fullName>Warranty/ Parts / In Home Repair issues</fullName>
+                    <default>false</default>
+                    <label>Warranty/ Parts / In Home Repair issues</label>
+                </value>
+                <value>
+                    <fullName>Website/online shopping issues</fullName>
+                    <default>false</default>
+                    <label>Website/online shopping issues</label>
+                </value>
+                <value>
+                    <fullName>Wrong Address - Call Center Order</fullName>
+                    <default>false</default>
+                    <label>Wrong Address - Call Center Order</label>
+                </value>
+                <value>
+                    <fullName>Wrong Address - Store Order</fullName>
+                    <default>false</default>
+                    <label>Wrong Address - Store Order</label>
+                </value>
+                <value>
+                    <fullName>Wrong Address - Website Order</fullName>
+                    <default>false</default>
+                    <label>Wrong Address - Website Order</label>
+                </value>
+                <value>
+                    <fullName>Wrong Item Received - Refund</fullName>
+                    <default>false</default>
+                    <label>Wrong Item Received - Refund</label>
+                </value>
+                <value>
+                    <fullName>Wrong Order Received - Refund</fullName>
+                    <default>false</default>
+                    <label>Wrong Order Received - Refund</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Transfer_Stewardship__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Transfer Stewardship</label>
+        <type>Checkbox</type>
     </fields>
     <label>Status Queue Assignment Setting</label>
     <listViews>

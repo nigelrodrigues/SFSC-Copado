@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>OMS API version used in services for a specific business unit.</description>
+    <fields>
+        <fullName>Business_Unit__c</fullName>
+        <description>Case Business Unit</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Business Unit</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hudson&apos;s Bay</fullName>
+                    <default>true</default>
+                    <label>Hudson&apos;s Bay</label>
+                </value>
+                <value>
+                    <fullName>Lord + Taylor</fullName>
+                    <default>false</default>
+                    <label>Lord + Taylor</label>
+                </value>
+                <value>
+                    <fullName>Saks</fullName>
+                    <default>false</default>
+                    <label>Saks</label>
+                </value>
+                <value>
+                    <fullName>Off 5th</fullName>
+                    <default>false</default>
+                    <label>Off 5th</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>OMS_API_Version__c</fullName>
+        <description>replaces /orders with this string</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>OMS API Version</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>API Business Unit Version Setting</label>
+    <pluralLabel>API Business Unit Version Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

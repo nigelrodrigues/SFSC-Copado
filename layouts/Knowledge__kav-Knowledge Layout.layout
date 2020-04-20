@@ -36,6 +36,9 @@
                 <field>IsVisibleInPkb</field>
             </layoutItems>
             <layoutItems>
+                <field>ValidationStatus</field>
+            </layoutItems>
+            <layoutItems>
                 <field>PublishStatus</field>
             </layoutItems>
             <layoutItems>
@@ -86,6 +89,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>EditDraftKnowledgeArticleVersion</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>CreateDraftFromOnlineKnowledgeArticleVersion</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
@@ -109,11 +117,6 @@
             <actionName>SubmitKnowledgeArticleVersionForTranslation</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>EditDraftKnowledgeArticleVersion</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>

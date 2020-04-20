@@ -74,12 +74,12 @@
                       <td width="10%">&nbsp;</td>
                       <td>
 
-                         <p>Hi {!Contact.FirstName},
+                         <p>Hi {!Case.First_Name_Extract__c},
 						  <br><br>
-						Thanks for contacting Lord and Taylor. We've received your message and we'll make our best effort to respond as soon as possible. If you need immediate assistance, please call us and refer to case {!Case.CaseNumber}. 
-	  <br><br>
-We're available from 8am-12am EST, seven days a week, at 1-800-223-7440.
-				
+						Thanks for contacting Lord and Taylor. We’re in the process of resolving your issue and will provide you with an update within 48 hours. If you need additional assistance, please don’t hesitate to contact us and refer to case {!Case.CaseNumber}.
+<br><br>
+<a href="mailto:customercare.other@lordandtaylor.com?subject=Thank you for contacting  Lord + Taylor!-{!Case.Thread_Id}" > CONTACT US </a>
+						  
 						  <br><br><i>
 						  Sincerely,
 						  <br>
@@ -155,3 +155,5 @@ We're available from 8am-12am EST, seven days a week, at 1-800-223-7440.
 
     </body>
 </html>
+
+{!Case.Thread_Id}

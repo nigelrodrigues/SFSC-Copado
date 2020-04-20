@@ -16,7 +16,11 @@ public with sharing class trac_WS_CancelOrder {
     }
 
     public Boolean send() {
-        res = trac_WS_WebServiceHelper.sendPostRequest(ENDPOINT, cancelOrderRequest);
+        String dynamicEndpoint = ENDPOINT;
+        if (cancelOrderRequest != null && cancelOrderRequest.Order != null && cancelOrderRequest.Order.EnterpriseCode == 'OFF5' || cancelOrderRequest.Order.EnterpriseCode == 'SAKS') {
+            dynamicEndpoint = ENDPOINT.replace('/orders', '/orders/v2');
+        }
+        res = trac_WS_WebServiceHelper.sendPostRequest(dynamicEndpoint, cancelOrderRequest);
         if(trac_WS_WebServiceHelper.isValidResponse(res)) {
             cancelOrderResponse = parse(res.getBody());
             return true;
@@ -78,6 +82,7 @@ public with sharing class trac_WS_CancelOrder {
         public String PrimeLineNo;
         public String SubLineNo;
         public String OrderedQty;
+        public String QuantityToCancel;
     }
 
     public class res_NotesWrapper {

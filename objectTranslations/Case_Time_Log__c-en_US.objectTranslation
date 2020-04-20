@@ -9,6 +9,42 @@
         <value>Case Time Logs</value>
     </caseValues>
     <fields>
+        <help><!-- The location of the agent working on the case --></help>
+        <label><!-- Agent Location --></label>
+        <name>Agent_Location__c</name>
+        <picklistValues>
+            <masterLabel>Cebu</masterLabel>
+            <translation><!-- Cebu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Salvador</masterLabel>
+            <translation><!-- El Salvador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jackson</masterLabel>
+            <translation><!-- Jackson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manilla</masterLabel>
+            <translation><!-- Manilla --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moncton</masterLabel>
+            <translation><!-- Moncton --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The agents team lead --></help>
+        <label><!-- Agent Team Lead --></label>
+        <name>Agent_Team_Lead__c</name>
+        <relationshipLabel><!-- Case Time Logs (Agent Team Lead) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The age in months the agent had worked for HBC --></help>
+        <label><!-- Agent Tenure --></label>
+        <name>Agent_Tenure__c</name>
+    </fields>
+    <fields>
         <help><!-- Number of days this Time Log record had during business hours. --></help>
         <label><!-- Business Hours Duration - Days --></label>
         <name>Business_Hours_Duration_Days__c</name>

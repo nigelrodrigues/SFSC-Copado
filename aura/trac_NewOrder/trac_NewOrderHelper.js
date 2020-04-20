@@ -2,6 +2,18 @@
  * Created by jhoran on 7/4/2019.
  */
 ({
+    checkBusinessUnit : function(component, event, helper) {
+        var caseRecord = component.get('v.caseRecord');
+        var businessUnit = caseRecord.Business_Unit__c;
+        if(!businessUnit){
+            component.set('v.isLoading', false);
+            helper.showToast("Business Unit is required to create a New Order", "error", "Business Unit Required");
+        }
+        else{
+            component.set('v.showModal', true);
+        }
+    },
+    
     createNewOrderApex : function(component, helper, contactId) {
 
         var apexAction = component.get("c.createNewOrder");
@@ -93,7 +105,6 @@
             var mailingCountry = fields.MailingCountryCode;
             var billingCountry = fields.OtherCountryCode;
             var businessUnit = caseRecord.Business_Unit__c;
-
             if (!fields.FirstName) {
                 isError = true;
                 component.set('v.errorMsg', 'First Name is required to place an order');
@@ -138,7 +149,8 @@
                 isError = true;
                 component.set('v.errorMsg', 'Please enter a valid Contact with a full address: Street, City, State, Country and Postal Code');
             }
-            else if (fields.MailingStateCode == null) {
+            //&& (mailingCountry === 'US' || mailingCountry === 'CA')
+            else if (fields.MailingStateCode == null ) {
                 isError = true;
                 component.set('v.errorMsg', 'Please enter a valid Contact with a full address: Street, City, State, Country and Postal Code');
             }
@@ -158,7 +170,8 @@
                 isError = true;
                 component.set('v.errorMsg', 'Please enter a valid Contact with a full address: Street, City, State, Country and Postal Code');
             }
-            else if (fields.OtherStateCode == null) {
+            //&& (billingCountry === 'US' || billingCountry === 'CA')
+            else if (fields.OtherStateCode == null ) {
                 isError = true;
                 component.set('v.errorMsg', 'Please enter a valid Contact with a full address: Street, City, State, Country and Postal Code');
             }
@@ -170,7 +183,7 @@
                 isError = true;
                 component.set("v.errorMsg", 'Lord + Taylor Only Ships to US address, please place this order via BorderFree to ship internationally');
             }
-            else if (businessUnit === 'Lord + Taylor' && (billingCountry !== 'US' && billingCountry !== 'CA' && billingCountry !== 'UK')) {
+            else if (businessUnit === 'Lord + Taylor' && (billingCountry !== 'US' && billingCountry !== 'CA' && billingCountry !== 'GB')) {
                 isError = true;
                 component.set("v.errorMsg", 'Lord + Taylor only accepts US, Canada and UK billing countries');
             }
@@ -178,7 +191,7 @@
                 isError = true;
                 component.set("v.errorMsg", 'The Bay Only Ships to Canadian address');
             }
-            else if (businessUnit === 'Hudson\'s Bay' && (billingCountry !== 'US' && billingCountry !== 'CA' && billingCountry !== 'UK')) {
+            else if (businessUnit === 'Hudson\'s Bay' && (billingCountry !== 'US' && billingCountry !== 'CA' && billingCountry !== 'GB')) {
                 isError = true;
                 component.set("v.errorMsg", 'The Bay only accepts US, Canada and UK billing countries');
             }

@@ -20,6 +20,7 @@
             </value>
         </condition>
         <conditionLogic>and</conditionLogic>
+        <object>Recommendation</object>
     </recommendationLoad>
     <union>
         <childNode>Email_is_blank</childNode>

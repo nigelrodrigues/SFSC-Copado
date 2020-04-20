@@ -136,4 +136,8 @@
         <name>Copado_Integrations</name>
         <type>CustomApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>HBC_OMS</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
 </AppMenu>

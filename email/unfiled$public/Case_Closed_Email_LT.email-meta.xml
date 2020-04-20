@@ -12,7 +12,9 @@ Case ClosedENGLISH
 Case Number : {!Case.CaseNumber}
 {!Case.Thread_Id}
 
-If you want to comment on this case click here: customer.service@hbc.com</textOnly>
+If you want to comment on this case click here: customer.service@hbc.com
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

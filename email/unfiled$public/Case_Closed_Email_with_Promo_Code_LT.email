@@ -78,7 +78,8 @@
 						  <br><br>
 						We always want you to have a positive shopping experience. To show you how much we appreciate your business, please enjoy this one-time offer* using promo code {!Case.Promo_Code__c}. If you have any questions, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
 <br><br>
- <a href="mailto:customercare.other@lordandtaylor.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id} " > CONTACT US NOW </a>
+<a href="mailto:customercare.other@lordandtaylor.com?subject=Your one-time promo code is waiting inside-{!Case.Thread_Id}" > CONTACT US </a>
+
 						  
 						  <br><br><i>
 						  Sincerely,

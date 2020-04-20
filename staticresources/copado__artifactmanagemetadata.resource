@@ -168,7 +168,7 @@ copadoApp.init = function(conf, force, isScalable, type){
             {
                 text: copadoLabels.LastModifiedDate,
                 filtertype: 'range',
-                cellsformat: 'yyyy/MM/dd',
+                cellsformat: 'yyyy-MM-dd',
                 editable: false,
                 datafield: 'd',
                 width: '10%'
@@ -184,7 +184,7 @@ copadoApp.init = function(conf, force, isScalable, type){
             {
                 text: copadoLabels.CREATEDDATE,
                 filtertype: 'range',
-                cellsformat: 'yyyy/MM/dd',
+                cellsformat: 'yyyy-MM-dd',
                 editable: false,
                 datafield: 'cd',
                 width: '10%'

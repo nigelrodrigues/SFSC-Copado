@@ -77,7 +77,7 @@
 						Thanks for contacting us. We’re happy we were able to assist you in resolving your issue. If you have any more questions, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
 <br>
  <br>
-<a href="mailto:customer.service@hbc.com? subject= {!EmailMessage.Subject} - {!Case.Thread_Id}" > CONTACT US NOW </a>
+<a href="mailto:customer.service@hbc.com?subject=We’ve resolved your issue-{!Case.Thread_Id}" > CONTACT US </a>
 						  
 						  
 						  <br><br><i>
@@ -159,3 +159,4 @@
 
     </body>
 </html>
+{!Case.Thread_Id}

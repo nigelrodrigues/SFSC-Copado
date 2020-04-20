@@ -4,12 +4,15 @@
         <profiles>
             <profile>admin</profile>
             <profile>business administrator</profile>
+            <profile>hbc executive services</profile>
             <profile>hbc support agent</profile>
             <profile>hbc support management</profile>
             <profile>hbc support team lead</profile>
         </profiles>
         <users>
             <user>tractionadmin@hbc.com</user>
+            <user>cherry.arnejo@hbc.com</user>
+            <user>cleo.estoquia@hbc.com</user>
         </users>
     </assignments>
     <criticalWaitTime>30</criticalWaitTime>
@@ -32,4 +35,7 @@
     <enableWhisperMessage>true</enableWhisperMessage>
     <label>Support Chat Configuration</label>
     <supervisorDefaultAgentStatusFilter>Online</supervisorDefaultAgentStatusFilter>
+    <transferableButtons>
+        <button>Bay_Supervisor_Transfer_English</button>
+    </transferableButtons>
 </LiveChatAgentConfig>

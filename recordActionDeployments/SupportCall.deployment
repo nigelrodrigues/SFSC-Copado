@@ -13,5 +13,6 @@
         <hasRejectAction>true</hasRejectAction>
         <hasTitle>true</hasTitle>
         <maxDisplayRecommendations>1</maxDisplayRecommendations>
+        <shouldLaunchActionOnReject>false</shouldLaunchActionOnReject>
     </recommendation>
 </RecordActionDeployment>

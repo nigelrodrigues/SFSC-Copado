@@ -72,7 +72,7 @@
                       <td>
 
                           
-                     We emailed you yesterday about a customer request related to case : {!Case.CaseNumber}. Please provide a response so we can assist the customer in a timely manner. <br><br> Thank you!
+                     We emailed you yesterday about a customer request related to case : {!Case.CaseNumber} - {!Case.Order_Number__c} . Please provide a response so we can assist the customer in a timely manner. <br><br> Thank you!
 
 
                         </td>

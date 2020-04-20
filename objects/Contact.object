@@ -453,6 +453,16 @@
                     <default>false</default>
                     <label>Lord + Taylor</label>
                 </value>
+                <value>
+                    <fullName>Off 5th</fullName>
+                    <default>false</default>
+                    <label>Off 5th</label>
+                </value>
+                <value>
+                    <fullName>Saks</fullName>
+                    <default>false</default>
+                    <label>Saks</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1031,6 +1041,20 @@ BEGINS(Phone, &quot;855&quot;)))</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>SFCC_Customer_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This field holds Salesforce Commerce Cloud Customer ID.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field holds Salesforce Commerce Cloud Customer ID.</inlineHelpText>
+        <label>SFCC Customer Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>Store_Alpha__c</fullName>
         <externalId>false</externalId>
         <label>Store Alpha</label>
@@ -1342,6 +1366,14 @@ BEGINS(Phone, &quot;855&quot;)))</formula>
             </values>
             <values>
                 <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

@@ -80,7 +80,7 @@ Merci d’avoir communiqué avec La Baie d’Hudson. Nous voulons vous aider à
 Si, pour quelque raison que ce soit, vous ne retrouvez pas notre courriel initial, veuillez communiquer avec nous en cliquant sur le lien ci-dessous et en précisant le numéro de référence {!Case.CaseNumber}.
 <br>
 <br>
- <a href="mailto:customer.service@hbc.com? subject= {!EmailMessage.Subject}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
+<a href="mailto:labaie@hbc.com?subject=Nous avons besoin de plus de renseignements pour pouvoir vous aider-{!Case.Thread_Id}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
 <br>
 <br>
 Sincères salutations. <br>
@@ -163,3 +163,5 @@ Service à la clientèle de La Baie d’Hudson
 
     </body>
 </html>
+
+{!Case.Thread_Id}

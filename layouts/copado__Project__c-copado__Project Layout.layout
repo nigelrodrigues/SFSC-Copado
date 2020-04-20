@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>Sync_External_User_Stories</customButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -7,10 +8,6 @@
         <editHeading>true</editHeading>
         <label>Information</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Copado_Integration_Setting__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Name</field>
@@ -21,11 +18,27 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>JQL_Extended_Filter__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>copado__End_Date__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Project_External_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Enable_Logs__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>copado__Index_Metadata__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Copado_Integration_Setting__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -40,6 +53,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>copado__Deployment_Flow__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Workspace_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -113,7 +130,6 @@
         <fields>copado__Start_Date__c</fields>
         <fields>copado__End_Date__c</fields>
         <fields>copado__Status__c</fields>
-        <fields>Copado_Integration_Setting__c</fields>
     </miniLayout>
     <relatedLists>
         <fields>NAME</fields>
@@ -122,6 +138,22 @@
         <fields>copado__Status__c</fields>
         <fields>copado__Story_points__c</fields>
         <relatedList>copado__Sprint__c.copado__Project__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Salesforce_Field_Name__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>LAST_UPDATE</fields>
+        <fields>UPDATEDBY_USER</fields>
+        <fields>Exclude_from_tpu__c</fields>
+        <fields>Exclude_from_su__c</fields>
+        <fields>Third_Party_Field_Name__c</fields>
+        <relatedList>Field_Mapping__c.Project__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Callout_Log__c.Project__c</relatedList>
     </relatedLists>
     <relatedLists>
         <customButtons>copado__Mass_Add_User_Stories</customButtons>
@@ -178,7 +210,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h24000001ec7S</masterLabel>
+        <masterLabel>00h2E00000cnELj</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

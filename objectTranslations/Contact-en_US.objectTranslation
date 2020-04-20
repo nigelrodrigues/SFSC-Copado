@@ -111,6 +111,14 @@
             <masterLabel>Lord + Taylor</masterLabel>
             <translation><!-- Lord + Taylor --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Off 5th</masterLabel>
+            <translation><!-- Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks</masterLabel>
+            <translation><!-- Saks --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Can Re-Order --></label>
@@ -349,6 +357,11 @@
             <masterLabel>Opt Out</masterLabel>
             <translation><!-- Opt Out --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field holds Salesforce Commerce Cloud Customer ID. --></help>
+        <label><!-- SFCC Customer Id --></label>
+        <name>SFCC_Customer_Id__c</name>
     </fields>
     <fields>
         <label><!-- Store Alpha --></label>

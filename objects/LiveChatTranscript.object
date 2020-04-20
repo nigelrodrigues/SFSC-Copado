@@ -278,9 +278,9 @@
     <fields>
         <fullName>Wait_Time_outside_of_10_Seconds__c</fullName>
         <externalId>false</externalId>
-        <formula>WaitTime &gt; 10</formula>
+        <formula>WaitTime &gt; 20</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Wait Time outside of 10 Seconds</label>
+        <label>Wait Time outside of 20 Seconds</label>
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
@@ -294,10 +294,28 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Bay_Chat_English_Supervisor_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Bay Chat - English Supervisor</label>
+        <queue>Bay_Chat_English_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Bay_Chat_French_LiveChatTranscript</fullName>
         <filterScope>Queue</filterScope>
         <label>Bay Chat French</label>
         <queue>Bay_Chat_French</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Bay_Chat_French_Supervisor_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Bay Chat - French Supervisor</label>
+        <queue>Bay_Chat_French_Supervisor</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -334,6 +352,60 @@
         <filterScope>Queue</filterScope>
         <label>Chat - MHF</label>
         <queue>Chat_MHF</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_English_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat English</label>
+        <queue>Off_5th_Chat_English</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_English_Supervisor_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat - English Supervisor</label>
+        <queue>Off_5th_Chat_English_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_French_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat French</label>
+        <queue>Off_5th_Chat_French</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_French_Supervisor_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat - French Supervisor</label>
+        <queue>Off_5th_Chat_French_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Saks_Chat_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Saks Chat</label>
+        <queue>Saks_Chat</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Saks_Chat_Supervisor_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Saks Chat - Supervisor</label>
+        <queue>Saks_Chat_Supervisor</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

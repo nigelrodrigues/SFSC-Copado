@@ -2,6 +2,41 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Links to other sites to be used on the widget component</description>
     <fields>
+        <fullName>Bay__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Checkbox to check if link is available for The Bay</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Bay</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LT__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Checkbox to check if link is available for The LT</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>LT</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MHF__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>MHF</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Off_5th__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox to check if link is available for The Off 5th</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Off 5th</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Order__c</fullName>
         <defaultValue>50</defaultValue>
         <description>The order in which links will be displayed (lowest number first)</description>
@@ -14,6 +49,15 @@
         <scale>0</scale>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Saks__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Checkbox to check if link is available for The Saks</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Saks</label>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>URL__c</fullName>

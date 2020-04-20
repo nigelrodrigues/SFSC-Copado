@@ -176,6 +176,61 @@
             <field>CapacityModel</field>
             <table>AgentWork</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.MasterLabel</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.CreatedBy</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.CreatedDate</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.DeveloperName</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.LastModifiedBy</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.LastModifiedDate</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.Language</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.DoesMinimizeWidgetOnAccept</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.ModuleNamespace</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.RelatedEntity</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ServiceChannel.Id</field>
+            <table>AgentWork</table>
+        </columns>
         <masterLabel>Agent Work</masterLabel>
     </sections>
 </ReportType>

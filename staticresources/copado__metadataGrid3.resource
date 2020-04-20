@@ -262,9 +262,9 @@ var MetadataGrid3 = (() => {
                 [ copadoLabels.name,              '30%',              'input',           'n',     'textbox',        null,   false,              null,            null,                     true,         null ],
                 [ copadoLabels.type,              '15%',  this.TypeFilterType,           't',     'textbox',        null,   false,              null,            null,                     null,         null ],
                 [ copadoLabels.LASTMODIFIEDBY,    '15%',              'input',           'b',     'textbox',        null,   false,              null,            null,                     null,         null ],
-                [ copadoLabels.LastModifiedDate,  '10%',              'range',           'd',          null,        null,   false,              null,            null,                     null, 'yyyy/MM/dd' ],
+                [ copadoLabels.LastModifiedDate,  '10%',              'range',           'd',          null,        null,   false,              null,            null,                     null, 'yyyy-MM-dd' ],
                 [ copadoLabels.CREATEDBY,         '15%',              'input',          'cb',     'textbox',        null,   false,              null,            null,                     null,         null ],
-                [ copadoLabels.CREATEDDATE,       '10%',              'range',          'cd',          null,        null,   false,              null,            null,                     null, 'yyyy/MM/dd' ]
+                [ copadoLabels.CREATEDDATE,       '10%',              'range',          'cd',          null,        null,   false,              null,            null,                     null, 'yyyy-MM-dd' ]
             ],
 
             'testClasses': [
@@ -277,16 +277,16 @@ var MetadataGrid3 = (() => {
                 [ copadoLabels.selected,          '5%',               'bool',      'select',          null,        null,   false,               null,             null,                   false,        null ],
                 [ copadoLabels.name,             '40%',              'input',        'name',     'textbox',        null,   false,               null,             null,                    true,          null ],
                 [ copadoLabels.type,             '30%',  this.TypeFilterType,        'type',     'textbox',        null,   false,               null,             null,  !this.isTypeFilterable,        null ],
-                [ copadoLabels.LastModifiedDate, '25%',              'range',  'lastUpdate',          null,        null,   false,               null,             null,                    null,  'yyyy/MM/dd' ]
+                [ copadoLabels.LastModifiedDate, '25%',              'range',  'lastUpdate',          null,        null,   false,               null,             null,                    null,  'yyyy-MM-dd' ]
             ],
 
             'orgMetadata': [
                 [ copadoLabels.name,             '35%',            'input',           'n',       'textbox',        null,   false,               null,             null,                    null,          null ],
                 [ copadoLabels.type,             '15%',this.TypeFilterType,           't',       'textbox',        null,   false,               null,             null,  !this.isTypeFilterable,        null ],
                 [ copadoLabels.LastModifiedById, '15%',            'input',           'b',       'textbox',        null,   false,               null,             null,                    null,          null ],
-                [ copadoLabels.LastModifiedDate, '10%',            'range',           'd',            null,        null,   false,               null,             null,                    null,  'yyyy/MM/dd' ],
+                [ copadoLabels.LastModifiedDate, '10%',            'range',           'd',            null,        null,   false,               null,             null,                    null,  'yyyy-MM-dd' ],
                 [ copadoLabels.CREATEDBY,        '15%',            'input',          'cb',       'textbox',        null,   false,               null,             null,                    null,          null ],
-                [ copadoLabels.CREATEDDATE,      '10%',            'range',          'cd',            null,        null,   false,               null,             null,                    null,  'yyyy/MM/dd' ]
+                [ copadoLabels.CREATEDDATE,      '10%',            'range',          'cd',            null,        null,   false,               null,             null,                    null,  'yyyy-MM-dd' ]
 
             ],
 
@@ -296,9 +296,9 @@ var MetadataGrid3 = (() => {
                 [ copadoLabels.name,             '35%',              'input',           'n',     'textbox',        null,   false,                null,             null,                    null,          null ],
                 [ copadoLabels.type,             '10%',  this.TypeFilterType,           't',     'textbox',        null,   false,                null,             null,  !this.isTypeFilterable,        null ],
                 [ copadoLabels.LastModifiedById, '15%',              'input',           'b',     'textbox',        null,   false,                null,             null,                    null,          null ],
-                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                null,             null,                    null,  'yyyy/MM/dd' ],
+                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                null,             null,                    null,  'yyyy-MM-dd' ],
                 [ copadoLabels.CREATEDBY,        '10%',              'input',          'cb',     'textbox',        null,   false,                null,             null,                    null,          null ],
-                [ copadoLabels.CREATEDDATE,      '10%',              'range',          'cd',          null,        null,   false,                null,             null,                    null,  'yyyy/MM/dd' ]
+                [ copadoLabels.CREATEDDATE,      '10%',              'range',          'cd',          null,        null,   false,                null,             null,                    null,  'yyyy-MM-dd' ]
 
             ],
 
@@ -307,7 +307,7 @@ var MetadataGrid3 = (() => {
                 [ copadoLabels.name,             '45%',              'input',           'n',     'textbox',  'contains',   false,                null,             null,                    null,          null ],
                 [ copadoLabels.type,             '20%',  this.TypeFilterType,           't',     'textbox',        null,   false,                null,             null,  !this.isTypeFilterable,        null ],
                 [ copadoLabels.LastModifiedById, '20%',              'input',           'b',     'textbox',        null,   false,                null,             null,                    null,          null ],
-                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                null,             null,                    null,  'yyyy/MM/dd' ]
+                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                null,             null,                    null,  'yyyy-MM-dd' ]
 
             ],
 
@@ -317,7 +317,7 @@ var MetadataGrid3 = (() => {
                 [ copadoLabels.name,             '35%',              'input',           'n',     'textbox',  'contains',   false,                 null,             null,                    null,        null ],
                 [ copadoLabels.type,             '15%',  this.TypeFilterType,           't',     'textbox',        null,   false,                 null,             null,  !this.isTypeFilterable,        null ],
                 [ copadoLabels.LastModifiedById, '15%',              'input',           'b',          null,  'contains',   false,                 null,             null,                    null,        null ],
-                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,  'contains',   false,                 null,             null,                    null,        null ],
+                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,  'contains',   false,                 null,             null,                    null,        'yyyy-MM-dd'],
                 [ '',                            '15%',              'input',          'ch',          null,        null,   false,                 null,             null,                    false,       null ]
 
             ],
@@ -341,9 +341,9 @@ var MetadataGrid3 = (() => {
                 [ copadoLabels.name,             '30%',              'input',           'n',          null,        null,    true,  validateBlankSpaces,             null,                    null,          null ],
                 [ copadoLabels.type,             '15%',  this.TypeFilterType,           't',     'textbox',        null,    true,         validationFn,             null,  !this.isTypeFilterable,        null ],
                 [ copadoLabels.LastModifiedById, '15%',              'input',           'b',          null,        null,   false,                 null,             null,                    null,          null ],
-                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                 null,             null,                    null,  'yyyy/MM/dd' ],
+                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                 null,             null,                    null,  'yyyy-MM-dd' ],
                 [ copadoLabels.CREATEDBY,        '15%',              'input',          'cb',          null,        null,   false,                 null,             null,                    null,          null ],
-                [ copadoLabels.CREATEDDATE,      '10%',              'range',          'cd',          null,        null,   false,                 null,             null,                    null,  'yyyy/MM/dd' ]
+                [ copadoLabels.CREATEDDATE,      '10%',              'range',          'cd',          null,        null,   false,                 null,             null,                    null,  'yyyy-MM-dd' ]
 
             ],
 
@@ -352,9 +352,9 @@ var MetadataGrid3 = (() => {
                 [ copadoLabels.name,             '30%',              'input',           'n',     'textbox',        null,   false,                 null,             null,                    null,          null ],
                 [ copadoLabels.type,             '15%',  this.TypeFilterType,           't',     'textbox',        null,   false,                 null,             null,  !this.isTypeFilterable,        null ],
                 [ copadoLabels.LastModifiedById, '15%',              'input',           'b',     'textbox',        null,   false,                 null,             null,                    null,          null ],
-                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                 null,             null,                    null,  'yyyy/MM/dd' ],
+                [ copadoLabels.LastModifiedDate, '10%',              'range',           'd',          null,        null,   false,                 null,             null,                    null,  'yyyy-MM-dd' ],
                 [ copadoLabels.CREATEDBY,        '15%',              'input',          'cb',     'textbox',        null,   false,                 null,             null,                    null,          null ],
-                [ copadoLabels.CREATEDDATE,      '10%',              'range',          'cd',          null,        null,   false,                 null,             null,                    null,  'yyyy/MM/dd' ]
+                [ copadoLabels.CREATEDDATE,      '10%',              'range',          'cd',          null,        null,   false,                 null,             null,                    null,  'yyyy-MM-dd' ]
 
             ]
 

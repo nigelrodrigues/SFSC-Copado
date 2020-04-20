@@ -71,6 +71,11 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>TITLE</field>
+            <operation>contains</operation>
+            <value>pick</value>
+        </filters>
         <label>Public Published Articles</label>
     </listViews>
     <listViews>

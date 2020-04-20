@@ -1,0 +1,313 @@
+<!--
+ - Created by jhoran on 3/3/2020.
+ -->
+
+<!-- Trac Spa Order Line Item -->
+<template>
+
+    <td key={orderlineitem.id} data-label="Submit">
+        <lightning-button variant="base" label="Select" title="Select" onclick={toggleModal} ></lightning-button>
+    </td>
+    <td key={orderlineitem.line_details.description} data-label="Product">
+        {orderlineitem.line_details.description}
+    </td>
+    <td key={orderlineitem.state.processed} data-label="Process">
+        <lightning-input type="checkbox" variant="label-hidden" name="processed" disabled checked={orderlineitem.state.processed}></lightning-input>
+    </td>
+    <td key={orderlineitem.state.submitted} data-label="Submit">
+        <lightning-input type="checkbox" variant="label-hidden" name="submitted" disabled checked={orderlineitem.state.submitted}></lightning-input>
+    </td>
+    <td key={orderlineitem.state.voided} data-label="Void">
+        <lightning-input type="checkbox" variant="label-hidden" name="voided" disabled checked={orderlineitem.state.voided}></lightning-input>
+    </td>
+    <td key={orderlineitem.state.spa} data-label="SPA">
+        <lightning-input type="checkbox" variant="label-hidden" name="spa" disabled checked={orderlineitem.state.spa}></lightning-input>
+    </td>
+    <td key={orderlineitem.state.audited} data-label="Audit">
+        <lightning-input type="checkbox" variant="label-hidden" name="audited" disabled checked={orderlineitem.state.audited}></lightning-input>
+    </td>
+    <td key={orderlineitem.manual} data-label="Manual">
+        <lightning-input type="checkbox" variant="label-hidden" name="manual" disabled checked={orderlineitem.state.manual}></lightning-input>
+    </td>
+    <td key={orderlineitem.waiting} data-label="Wait">
+        <lightning-input type="checkbox" variant="label-hidden" name="waiting" disabled checked={orderlineitem.state.waiting}></lightning-input>
+    </td>
+    <td key={orderlineitem.order_number} data-label="Order #">
+        {orderlineitem.order_number}
+    </td>
+<!--    <td key={orderlineitem.order_number} data-label="LOCATION">-->
+<!--        {orderlineitem.line_details.fulfillment_location}-->
+<!--    </td>-->
+    <td key={orderlineitem.line_details.scan_upc} data-label="UPC">
+        {orderlineitem.line_details.scan_upc}
+    </td>
+<!--    <td key={orderlineitem.state.spa_audit_comments} data-label="Audit Comment">-->
+<!--        {orderlineitem.state.spa_audit_comments}-->
+<!--    </td>-->
+    <td key={orderlineitem.line_details.product_code} data-label="Item Number">
+        {orderlineitem.line_details.product_code}
+    </td>
+    <td key={orderlineitem.line_details.quantity} data-label="QTY">
+        {orderlineitem.line_details.quantity}
+    </td>
+    <td key={orderlineitem.amounts.item_price} data-label="Item Price">
+        <lightning-formatted-number value={orderlineitem.amounts.item_price} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.extended_price} data-label="Ext Price">
+        <lightning-formatted-number value={orderlineitem.amounts.extended_price} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.adjusted_price} data-label="Adj Price">
+        <lightning-formatted-number value={orderlineitem.amounts.adjusted_price} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.price_diff} data-label="Price Diff">
+        <lightning-formatted-number value={orderlineitem.amounts.price_diff} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.line_tax} data-label="Line Tax">
+        <lightning-formatted-number value={orderlineitem.amounts.line_tax} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.shipping_tax} data-label="Ship Tax">
+        <lightning-formatted-number value={orderlineitem.amounts.shipping_tax} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.adjusted_tax} data-label="Adj Tax">
+        <lightning-formatted-number value={orderlineitem.amounts.adjusted_tax} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.tax_diff} data-label="Tax Diff">
+        <lightning-formatted-number value={orderlineitem.amounts.tax_diff} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.total_diff} data-label="Ttl Diff">
+        <lightning-formatted-number value={orderlineitem.amounts.total_diff} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.adjust_type} data-label="Adj Type">
+        {orderlineitem.amounts.adjust_type}
+    </td>
+    <td key={orderlineitem.amounts.adjusted_value} data-label="Adj Val">
+        <lightning-formatted-number value={orderlineitem.amounts.adjusted_value} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.adjusted_amount} data-label="Adj Amt">
+        <lightning-formatted-number value={orderlineitem.amounts.adjusted_amount} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.shipping_fee} data-label="Shipping Fee">
+        <lightning-formatted-number value={orderlineitem.amounts.shipping_fee} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.gift_wrap_fee} data-label="Gift Wrap Fee">
+        <lightning-formatted-number value={orderlineitem.amounts.gift_wrap_fee} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.amounts.return_label_fee} data-label="Return Fee">
+        <lightning-formatted-number value={orderlineitem.amounts.return_label_fee} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+    </td>
+    <td key={orderlineitem.line_details.shipped_dateline} data-label="Dateline">
+        {orderlineitem.line_details.shipped_dateline}
+    </td>
+    <td key={orderlineitem.log.modified_by} data-label="Modified By">
+        {orderlineitem.log.modified_by}
+    </td>
+    <td key={orderlineitem.log.modified_on} data-label="Modified On">
+        {orderlineitem.log.modified_on}
+<!--        <lightning-formatted-date-time value={orderlineitem.log.modified_on}-->
+<!--                year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit">-->
+<!--        </lightning-formatted-date-time>-->
+    </td>
+    <td key={orderlineitem.log.submitted_by} data-label="Submitted By">
+        {orderlineitem.log.submitted_by}
+    </td>
+    <td key={orderlineitem.log.submitted_on} data-label="Submitted On">
+        {orderlineitem.log.submitted_on}
+<!--        <lightning-formatted-date-time value={orderlineitem.log.submitted_on}-->
+<!--                                       year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit">-->
+<!--        </lightning-formatted-date-time>-->
+    </td>
+    <td key={orderlineitem.log.audited_by} data-label="Audited By">
+        {orderlineitem.log.audited_by}
+    </td>
+    <td key={orderlineitem.log.audited_on} data-label="Audited On">
+        {orderlineitem.log.audited_on}
+<!--        <lightning-formatted-date-time value={orderlineitem.log.audited_on}-->
+<!--                                       year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit">-->
+<!--        </lightning-formatted-date-time>-->
+    </td>
+    <td key={orderlineitem.id} data-label="SPA ID">
+        {orderlineitem.id}
+    </td>
+
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                 aria-describedby="modal-content-id-1" class="slds-modal slds-modal_small slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">SPA Calculator</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
+                    <lightning-layout multiple-rows>
+                        <template if:true={params.types.visible}>
+                            <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal">
+                                <lightning-combobox label="Type" placeholder="Adjustment Type" name="adjustmentType"
+                                                    value={typeValue}
+                                                    options={SPATypes}
+                                                    onchange={handleChangeAdjustmentType}
+                                                    disabled={params.types.disabled}>
+                                </lightning-combobox>
+
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                        <div class="slds-box">
+                            <lightning-layout multiple-rows>
+                                <template if:true={params.actions.visible}>
+                                    <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal">
+                                        <lightning-combobox value={selectedAction} label="Adjustment Action" name="actions"
+                                                            options={actionOptions}
+                                                            onchange={handleChangeAction}
+                                                            disabled={params.actions.disabled}>
+                                        </lightning-combobox>
+
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={params.extended_price.visible}>
+                                    <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="select-01">
+                                                Extended Price:</label>
+                                            <div class="slds-form-element__control">
+                                                <lightning-input type="text" variant="label-hidden" name="extended_price"
+                                                                 value={orderLineItemToAdjust.amounts.extended_price}
+                                                                 onchange={handleAmountChange}
+                                                                 disabled={params.extended_price.disabled}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={params.adjusted_amount.visible}>
+                                    <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="select-01">
+                                                {adjusted_amount_label}</label>
+                                            <div class="slds-form-element__control">
+                                                <template if:true={isCurrencyAction}>
+                                                    <lightning-input type="number" formatter="currency" step="0.01"  variant="label-hidden" name="adjusted_amount"
+                                                                     value={orderLineItemToAdjust.amounts.adjusted_amount}
+                                                                     onchange={handleAmountChange} onblur={handleAmountBlur}
+                                                                     disabled={params.adjusted_amount.disabled}>
+                                                    </lightning-input>
+                                                </template>
+                                                <template if:true={isPercentAction}>
+                                                    <lightning-input type="number" step="0"  variant="label-hidden" name="adjusted_amount"
+                                                                     value={orderLineItemToAdjust.amounts.adjusted_amount}
+                                                                     onchange={handleAmountChange} onblur={handleAmountBlur}
+                                                                     disabled={params.adjusted_amount.disabled}>
+                                                    </lightning-input>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+
+                            <hr>
+
+                            <lightning-layout multiple-rows>
+                                <template if:true={params.adjusted_price.visible}>
+                                    <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="select-01">
+                                                {adjusted_price_label}</label>
+                                            <div class="slds-form-element__control">
+                                                <lightning-input type="number" formatter="currency" step="0.01" variant="label-hidden" name="adjusted_price"
+                                                                 value={orderLineItemToAdjust.amounts.adjusted_price}
+                                                                 onchange={handleAmountChange} onblur={handleAmountBlur}
+                                                                 disabled={params.adjusted_price.disabled}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <template if:true={params.adjusted_tax.visible}>
+                                    <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="select-01">
+                                                Tax:</label>
+                                            <div class="slds-form-element__control">
+                                                <lightning-input type="number" formatter="currency" step="0.01" variant="label-hidden" name="adjusted_tax"
+                                                                 value={orderLineItemToAdjust.amounts.adjusted_tax}
+                                                                 onchange={handleAmountChange} onblur={handleAmountBlur}
+                                                                 disabled={params.adjusted_tax.disabled}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+
+                                <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal slds-border_top">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="select-01">
+                                            {total_price_label}</label>
+                                        <div class="slds-form-element__control">
+                                            <lightning-formatted-number minimum-fraction-digits="2" maximum-fraction-digits="2"
+                                                                        value={totalPrice}>
+                                            </lightning-formatted-number>
+                                            <!-- This Field has to be Calculated  Convert.ToDouble(txtAdjustedPrice.Text) + Convert.ToDouble(txtSalesTax.Text);-->
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+
+                                <lightning-layout-item padding="around-small" size='12' class="slds-form-element_horizontal slds-border_top">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="select-01">
+                                            Adjusted Difference:</label>
+                                        <div class="slds-form-element__control">
+                                            <lightning-formatted-number minimum-fraction-digits="2" maximum-fraction-digits="2"
+                                                                        value={orderLineItemToAdjust.amounts.total_diff}>
+                                            </lightning-formatted-number>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+
+                    <lightning-layout multiple-rows>
+                        <template if:true={params.spa_comments.visible}>
+                            <lightning-layout-item padding="around-small" size='12'>
+                                <lightning-textarea label="Comments:" placeholder="Enter Note here" name="description"
+                                                    value={orderLineItemToAdjust.state.spa_comments}
+                                                    onchange={handleStateChange}
+                                                    disabled={params.spa_comments.disabled}>
+                                </lightning-textarea>
+                                <!-- Populate txtSubmissionReason -->
+                            </lightning-layout-item>
+                        </template>
+
+                    </lightning-layout>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <div class="slds-align--absolute-center">
+                        <template if:true={params.calculate.visible}>
+                            <lightning-button variant="brand" label="Calculate" name="calculate"
+                                              onclick={calculateAmounts}
+                                              disabled={params.calculate.disabled}>
+                            </lightning-button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </template>
+                        <template if:true={params.submit.visible}>
+                            <lightning-button variant="neutral" label="Submit" name="cancel"
+                                              onclick={handleSubmit}
+                                              disabled={params.submit.disabled}>
+                            </lightning-button>
+                        </template>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <lightning-button variant="neutral" label="Close" name="cancel"
+                                          onclick={closeModal}>
+                        </lightning-button>
+                    </div>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>SPA</label>
+    <lwcComponent>trac_SPA_Calculator</lwcComponent>
+    <motif>Custom21: Computer</motif>
+</CustomTab>

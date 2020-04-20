@@ -12,6 +12,7 @@
     <salesforceLoginUrl>https://hudsonbaycompany.my.salesforce.com?so=00D2E000000oL0r</salesforceLoginUrl>
     <samlEntityId>https://hudsonbaycompany.my.salesforce.com</samlEntityId>
     <samlVersion>SAML2_0</samlVersion>
+    <useConfigRequestMethod>false</useConfigRequestMethod>
     <userProvisioning>false</userProvisioning>
     <validationCert>MIIDpDCCAoygAwIBAgIGAV2meqXrMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEG
 A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU

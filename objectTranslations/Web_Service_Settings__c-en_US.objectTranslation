@@ -17,6 +17,18 @@
         <name>Base_Url__c</name>
     </fields>
     <fields>
+        <label><!-- CNS Email Search Endpoint --></label>
+        <name>CNS_Email_Search_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- CNS Get Email Body --></label>
+        <name>CNS_Get_Email_Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- CNS Send Email Endpoint --></label>
+        <name>CNS_Send_Email_Endpoint__c</name>
+    </fields>
+    <fields>
         <label><!-- Cancel Order Endpoint --></label>
         <name>Cancel_Order_Endpoint__c</name>
     </fields>
@@ -29,6 +41,10 @@
         <name>Debug__c</name>
     </fields>
     <fields>
+        <label><!-- Email Search API key --></label>
+        <name>Email_Search_API_key__c</name>
+    </fields>
+    <fields>
         <label><!-- Get Order Details Endpoint --></label>
         <name>Get_Order_Details_Endpoint__c</name>
     </fields>
@@ -37,8 +53,61 @@
         <name>Get_Order_List_Endpoint__c</name>
     </fields>
     <fields>
+        <label><!-- IPA Gift Card Balance Endpoint --></label>
+        <name>IPA_Gift_Card_Balance_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Saks Endpoint --></label>
+        <name>Loyalty_Saks_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- OMS Order Payment Endpoint --></label>
+        <name>OMS_Order_Payment_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- OMS Order Return Endpoint --></label>
+        <name>OMS_Order_Return_Endpoint__c</name>
+    </fields>
+    <fields>
+        <help><!-- Relative Endpoint for VendorNet or other Purchase Order related external information --></help>
+        <label><!-- OMS Purchase Order Endpoint --></label>
+        <name>OMS_Purchase_Order_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Line History Endpoint --></label>
+        <name>Order_Line_History_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPA Get Adjustment Endpoint --></label>
+        <name>SPA_Get_Adjustment_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPA Get Order Adjustments Endpoint --></label>
+        <name>SPA_Get_Order_Adjustments_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPA Update Adjustment Endpoint --></label>
+        <name>SPA_Update_Adjustment_Endpoint__c</name>
+    </fields>
+    <fields>
         <label><!-- Timeout --></label>
         <name>Timeout__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tokenex API Key --></label>
+        <name>Tokenex_API_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tokenex Endpoint --></label>
+        <name>Tokenex_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tokenex ID --></label>
+        <name>Tokenex_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tokenex Token Scheme --></label>
+        <name>Tokenex_Token_Scheme__c</name>
     </fields>
     <fields>
         <label><!-- UCID Create Endpoint --></label>

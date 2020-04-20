@@ -5,40 +5,40 @@
  -->
 <aura:component description="trac_ContactSearch" controller="trac_ContactSearchController"
                 implements="force:hasRecordId,flexipage:availableForAllPageTypes,lightning:isUrlAddressable">
-
+    
     <lightning:workspaceAPI aura:id="workspace"/>
-    <aura:attribute name="fields" type="String[]" default="['FirstName','LastName']" />
     <lightning:notificationsLibrary aura:id="notifLib"/>
-
     <lightning:utilityBarAPI aura:id="utilitybar"/>
 
-    <aura:attribute name="recordId" type="String"/>
-
-    <aura:attribute name="searchResult" type="Contact[]"
-                    description="use for store and display contact list return from server"/>
-    <aura:attribute name="Message" type="boolean" default="false"
-                    description="use for display no record found message"/>
-    <aura:attribute name="TotalNumberOfRecord" type="integer" default="0"
-                    description="use for display Number of records"/>
-    <aura:attribute type="Contact" name="contactRecord"
-                    default="{'sObjectType':'Contact', 'Business_Unit__c':'Hudson\'s Bay'}"/>
-    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
-
-    <aura:attribute name="createNewContact" type="boolean" default="false"/>
-
-    <aura:attribute name="showError" type="boolean" default="false"/>
-    <aura:attribute name="errorMessage" type="String"
-                    default="Please specify at least one more search criteria for detailed search."/>
+    <aura:attribute name="fields" type="String[]" default="['FirstName','LastName']" />
+    
+    <aura:attribute name="recordId"          type="String"/>
     <aura:attribute name="caseContactExtKey" type="String" />
+    <aura:attribute name="errorMessage"      type="String" default="Please specify at least one more search criteria for detailed search."/>
+
+    <aura:attribute name="isModalOpen"       type="boolean" default="false"/>
+    <aura:attribute name="createNewContact"  type="boolean" default="false"/>
+    <aura:attribute name="showError"         type="boolean" default="false"/>
+    <aura:attribute name="isPartial"         type="boolean" default="false"/>
+    <aura:attribute name="isNewOrder"        type="boolean" default="false"/>
+    <aura:attribute name="showSearchFilters" type="boolean" default="true"/>
+    <aura:attribute name="Message"           type="boolean" default="false" description="use for display no record found message"/>
+
+    <aura:attribute name="searchResult" type="Contact[]" description="use for store and display contact list return from server"/>
+
+    <aura:attribute name="TotalNumberOfRecord" type="integer" default="0" description="use for display Number of records"/>
+
+    <aura:attribute type="Contact" name="contactRecord" default="{'sObjectType':'Contact', 'Business_Unit__c':'Hudson\'s Bay'}"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-
     <aura:handler name="change" value="{!v.recordId}" action="{!c.doInit}"/>
     <aura:handler name="closeModalEvent" event="c:trac_CloseModalEvent" action="{!c.handleCloseModalEvent}"/>
 
+    <aura:method name="callSearchMethod" action="{!c.search}" />
+    
     <!-- SHOW LOADING SPINNER-->
     <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
-
+    
     <div class="slds-m-around_medium" onkeyup="{!c.formPress}">
         <div style="padding-left: 1%;" class="slds-text-color_destructive">
             <aura:if isTrue="{!v.showError}">
@@ -46,78 +46,70 @@
             </aura:if>
         </div>
         <!-- SEARCH INPUT AND SEARCH BUTTON-->
-        <lightning:layout multipleRows="true">
+        <aura:if isTrue="{!v.showSearchFilters}">
+            <lightning:layout multipleRows="true">
+                
+                <lightning:layoutItem size="3" padding="around-small">
+                    <lightning:select aura:id="businessUnit" label="Business Unit" onchange="{!c.businessUnitChanged}">
+                        <option value="Hudson's Bay">Hudson's Bay</option>
+                        <option value="Lord + Taylor">Lord + Taylor</option>
+                        <option value="Saks">Saks</option>
+                        <option value="Off 5th">Off 5th</option>
+                    </lightning:select>
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem size="3" padding="around-small">
+                    <lightning:input aura:id="contactField" class="required-fields" label="Email" type="email" value="{!v.contactRecord.Email}"/>
+                </lightning:layoutItem>
 
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:select aura:id="businessUnit" label="Business Unit" onchange="{!c.businessUnitChanged}">
-                    <option value="Hudson's Bay">Hudson's Bay</option>
-                    <option value="Lord + Taylor">Lord + Taylor</option>
-                    <!--<option value="Saks">Saks</option>-->
-                    <!--<option value="Off 5th">Off 5th</option>-->
-                </lightning:select>
-            </lightning:layoutItem>
+                <aura:if isTrue="{!not(v.isNewOrder)}">
+                    <lightning:layoutItem size="3" padding="around-small">
+                        <lightning:input aura:id="contactField" class="required-fields" label="Phone" type="tel" value="{!v.contactRecord.Phone}"/>
+                    </lightning:layoutItem>
 
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="Email" type="email" value="{!v.contactRecord.Email}"/>
-            </lightning:layoutItem>
+                    <lightning:layoutItem size="3" padding="around-small">
+                        <lightning:input aura:id="contactField" class="required-fields" label="Order Number" type="text"
+                                         value="{!v.contactRecord.Order_Number__c}"/>
+                    </lightning:layoutItem>
 
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="Phone" type="tel" value="{!v.contactRecord.Phone}"/>
-            </lightning:layoutItem>
+                    <lightning:layoutItem size="3" padding="around-small">
+                        <lightning:input aura:id="contactField" label="First Name" type="text"
+                                         value="{!v.contactRecord.FirstName}"/>
+                    </lightning:layoutItem>
 
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="Order Number" type="text"
-                                 value="{!v.contactRecord.Order_Number__c}"/>
-            </lightning:layoutItem>
+                    <lightning:layoutItem size="3" padding="around-small">
+                        <lightning:input aura:id="contactField" class="required-fields" label="Last Name" type="text"
+                                         value="{!v.contactRecord.LastName}"/>
+                    </lightning:layoutItem>
 
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="First Name" type="text" value="{!v.contactRecord.FirstName}"/>
-            </lightning:layoutItem>
+                    <lightning:layoutItem size="3" padding="around-small">
+                        <lightning:input aura:id="contactField" label="City" type="text"
+                                         value="{!v.contactRecord.MailingCity}"/>
+                    </lightning:layoutItem>
 
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="Last Name" type="text" value="{!v.contactRecord.LastName}"/>
-            </lightning:layoutItem>
+                    <lightning:layoutItem size="3" padding="around-small">
+                        <lightning:input aura:id="contactField" label="State/Province" type="text"
+                                         value="{!v.contactRecord.MailingState}"/>
+                    </lightning:layoutItem>
 
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="City" type="text" value="{!v.contactRecord.MailingCity}"/>
-            </lightning:layoutItem>
-
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="State/Province" type="text" value="{!v.contactRecord.MailingState}"/>
-            </lightning:layoutItem>
-
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:input aura:id="field" label="Zip/Postal Code" type="text"
-                                 value="{!v.contactRecord.MailingPostalCode}"/>
-            </lightning:layoutItem>
-
-            <!-- <lightning:layoutItem size="3" padding="around-small">
-                 <lightning:input label="Account Number" type="number" value="{!v.contactRecord.Acc}" />
-             </lightning:layoutItem>-->
-
-        </lightning:layout>
-
-        <lightning:layout>
-            <lightning:layoutItem size="3" padding="around-small">
-                <lightning:button onclick="{!c.Search}"
-                                  variant="brand"
-                                  label="Search"
-                                  iconName="utility:search"/>
-            </lightning:layoutItem>
-        </lightning:layout>
-
-
-        <!-- ERROR MESSAGE IF NO RECORDS FOUND-->
-        <!--<aura:if isTrue="{!v.Message}">
-            <div class="slds-notify_container slds-is-relative">
-                <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
-                    <div class="slds-notify__content">
-                        <h2 class="slds-text-heading_small">No Records Found...</h2>
-                    </div>
-                </div>
-            </div>
-        </aura:if>-->
-
+                    <lightning:layoutItem size="3" padding="around-small">
+                        <lightning:input aura:id="contactField" label="Zip/Postal Code" type="text"
+                                         value="{!v.contactRecord.MailingPostalCode}"/>
+                    </lightning:layoutItem>
+                </aura:if>
+                
+            </lightning:layout>
+            
+            <lightning:layout>
+                <lightning:layoutItem size="3" padding="around-small">
+                    <lightning:button onclick="{!c.search}"
+                                      variant="brand"
+                                      label="Search"
+                                      iconName="utility:search"/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:if>
+        
         <aura:if isTrue="{!v.isModalOpen}">
             <!-- Modal/Popup Box starts here-->
             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -126,7 +118,7 @@
                     <!-- Modal/Popup Box Header Starts here-->
                     <header class="slds-modal__header">
                         <lightning:buttonIcon iconName="utility:close"
-                                              onclick="{! c.closeModel }"
+                                              onclick="{!c.closeModel }"
                                               alternativeText="close"
                                               variant="bare-inverse"
                                               class="slds-modal__close"/>
@@ -134,40 +126,47 @@
                     </header>
                     <!--Modal/Popup Box Body Starts here-->
                     <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
-                        <!-- TOTAL RECORDS BADGES-->
                         <div class="slds-m-around_x-small">
+                            <!-- TOTAL RECORDS BADGES-->
                             <lightning:badge label="{!v.TotalNumberOfRecord}"/>
+                            <!-- PARTIAL RECORDS BADGE-->
+                            <aura:if isTrue="{!v.isPartial}">
+                                <span style="background-color: red;" class="slds-badge slds-badge_inverse">Partial Results</span>
+                             </aura:if>
                         </div>
                         <!-- TABLE CONTENT-->
                         <div class="slds-scrollable_x">
-                            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-size_12-of-12">
+                            <table class="slds-table slds-table_bordered slds-size_12-of-12">
                                 <thead>
-                                <tr class="slds-text-title_caps">
-                                    <th scope="col">
-                                        <div>Name</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>DOB</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>Email</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>Phone</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>Address</div>
-                                    </th>
-                                    <th scope="col">
-                                        <div>Create/Import Case</div>
-                                    </th>
-                                </tr>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div></div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>Name</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>DOB</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>Email</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>Phone</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>Address</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>Create/Import Case</div>
+                                        </th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <aura:iteration items="{!v.searchResult}" var="con" indexVar="count">
-                                    <c:trac_DisplaySearchResults con="{!con}" index="{!count}"
-                                                                 recordId="{!v.recordId}" caseContactExtKey="{!v.caseContactExtKey}"/>
-                                </aura:iteration>
+                                    <aura:iteration items="{!v.searchResult}" var="con" indexVar="count">
+                                        <c:trac_DisplaySearchResults con="{!con}" index="{!count}"
+                                                                     recordId="{!v.recordId}" caseContactExtKey="{!v.caseContactExtKey}"/>
+                                    </aura:iteration>
                                 </tbody>
                             </table>
                         </div>
@@ -183,7 +182,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                         </aura:if>
                         <div class="slds-align--absolute-center">
                             <lightning:button onclick="{!c.newContact}"
@@ -197,35 +196,35 @@
                         <lightning:button variant="neutral"
                                           label="Cancel"
                                           title="Cancel"
-                                          onclick="{! c.closeModel }"/>
+                                          onclick="{!c.closeModel }"/>
                     </footer>
                 </div>
             </section>
             <div class="slds-backdrop slds-backdrop_open"></div>
         </aura:if>
     </div>
-
-
+    
+    
     <aura:if isTrue="{!v.createNewContact}">
-       <section role="dialog" tabindex="-2" aria-labelledby="modal-heading-02" aria-modal="true"
+        <section role="dialog" tabindex="-2" aria-labelledby="modal-heading-02" aria-modal="true"
                  aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
                 <header class="slds-modal__header">
                     <lightning:buttonIcon iconName="utility:close"
-                                          onclick="{! c.closeModel }"
+                                          onclick="{!c.closeModel }"
                                           alternativeText="close"
                                           variant="bare-inverse"
                                           class="slds-modal__close"/>
                     <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">New Contact: Customer</h2>
                 </header>
-
+                
                 <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-2">
-
-
+                    
+                    
                     <lightning:recordEditForm
-                            onload="{!c.handleLoad}"
-                            onsuccess="{!c.handleSuccess}"
-                            objectApiName="Contact">
+                                              onload="{!c.handleLoad}"
+                                              onsuccess="{!c.handleSuccess}"
+                                              objectApiName="Contact">
                         <!-- the messages component is for error messages -->
                         <lightning:messages />
                         <div class="slds-section slds-is-open">
@@ -236,17 +235,12 @@
                                 <div class="slds-grid slds-gutters">
                                     <div class="slds-col">
                                         <span>
-                                             <!--<div style="display:none">
-                                                    <lightning:inputField fieldName="Name"/>
-                                                </div>
-                                                <lightning:inputField fieldName="Salutation"/>-->
-                                                <lightning:inputField fieldName="FirstName" aura:id="fname"/>
-                                               <!-- <lightning:inputField fieldName="MiddleName"/>-->
-                                                <lightning:inputField fieldName="LastName" aura:id="last_name"/>
+                                            <lightning:inputField fieldName="FirstName" aura:id="fname"/>
+                                            <lightning:inputField fieldName="LastName" aura:id="last_name"/>
                                         </span>
                                     </div>
                                     <div class="slds-col">
-
+                                        
                                         <span><label for="phone">Phone</label>
                                             <lightning:inputField fieldName="Phone" aura:id="phone" variant="label-hidden"/></span>
                                     </div>
@@ -254,7 +248,7 @@
                                 <div class="slds-grid slds-gutters">
                                     <div class="slds-col">
                                         <span>
-                                                <lightning:inputField fieldName="Email" aura:id="email"/>
+                                            <lightning:inputField fieldName="Email" aura:id="email"/>
                                         </span>
                                     </div>
                                     <div class="slds-col">
@@ -263,7 +257,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="slds-section slds-is-open">
                             <h3 class="slds-section__title slds-theme_shade">
                                 <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Additional Information</span>
@@ -272,9 +266,9 @@
                                 <div class="slds-grid slds-gutters">
                                     <div class="slds-col">
                                         <span>
-
-                                                <lightning:inputField fieldName="Language__c" aura:id="first_name"/>
-
+                                            
+                                            <lightning:inputField fieldName="Language__c" aura:id="first_name"/>
+                                            
                                         </span>
                                     </div>
                                     <div class="slds-col">
@@ -283,19 +277,15 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
+                        
                         <div class="slds-m-top_medium slds-float--right">
                             <lightning:button variant="brand" type="submit" name="save" label="Save" />
                             <lightning:button class="slds-button_neutral" variant="brand" type="button" name="cancel" label="Cancel"  onclick="{!c.closeModel}"/>
                         </div>
                     </lightning:recordEditForm>
-
+                    
                 </div>
-
+                
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>

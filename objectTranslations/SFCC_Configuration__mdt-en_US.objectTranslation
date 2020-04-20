@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SFCC Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SFCC Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Id --></label>
+        <name>Client_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Secret --></label>
+        <name>Client_Secret__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer List ID --></label>
+        <name>Customer_List_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Default Customer ID to use when running through Guest Flow --></help>
+        <label><!-- Default Customer Id --></label>
+        <name>Default_Customer_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- The ID of the storefront --></help>
+        <label><!-- Store ID --></label>
+        <name>Store_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Storefront URL --></label>
+        <name>Storefront_URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -19,6 +19,14 @@
         <name>Fields_To_Clone__c</name>
     </fields>
     <fields>
+        <label><!-- Hours Since Closed External --></label>
+        <name>Hours_Since_Closed_External__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hours Since Closed Internal --></label>
+        <name>Hours_Since_Closed_Internal__c</name>
+    </fields>
+    <fields>
         <help><!-- How long the Case has been closed for in order to make a new Case --></help>
         <label><!-- Hours Since Closed --></label>
         <name>Hours_Since_Closed__c</name>

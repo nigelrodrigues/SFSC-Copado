@@ -10,4 +10,12 @@
         <field>Community_Network_Name__c</field>
         <value xsi:type="xsd:string">Hudson Bay</value>
     </values>
+    <values>
+        <field>Language__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Record_Type_Developer_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
 </CustomMetadata>

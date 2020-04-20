@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LiveChatButton xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <autoGreeting>Hello {!LiveAgent_VisitorName}! My name is {!User_FirstName} and I&apos;ll be assisting you going forward.</autoGreeting>
+    <chasitorIdleTimeout>240</chasitorIdleTimeout>
+    <chasitorIdleTimeoutWarning>120</chasitorIdleTimeoutWarning>
+    <customAgentName>Saks 5th Avenue</customAgentName>
+    <deployments/>
+    <enableQueue>true</enableQueue>
+    <isActive>true</isActive>
+    <label>Saks Supervisor Transfer</label>
+    <optionsCustomRoutingIsEnabled>false</optionsCustomRoutingIsEnabled>
+    <optionsHasChasitorIdleTimeout>true</optionsHasChasitorIdleTimeout>
+    <optionsHasInviteAfterAccept>false</optionsHasInviteAfterAccept>
+    <optionsHasInviteAfterReject>false</optionsHasInviteAfterReject>
+    <optionsHasRerouteDeclinedRequest>false</optionsHasRerouteDeclinedRequest>
+    <optionsIsAutoAccept>false</optionsIsAutoAccept>
+    <optionsIsInviteAutoRemove>false</optionsIsInviteAutoRemove>
+    <perAgentQueueLength>4</perAgentQueueLength>
+    <routingType xsi:nil="true"/>
+    <type>Standard</type>
+    <windowLanguage>en_US</windowLanguage>
+</LiveChatButton>

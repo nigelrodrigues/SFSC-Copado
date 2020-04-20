@@ -12,7 +12,9 @@ Merci d’avoir communiqué avec La Baie d’Hudson. Nous réglons les derniers 
 
 COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT
 
-Sincères salutations. Service à la clientèle de La Baie d’Hudson</textOnly>
+Sincères salutations. Service à la clientèle de La Baie d’Hudson
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

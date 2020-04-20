@@ -191,10 +191,28 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Bay_Chat_English_Supervisor_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Bay Chat - English Supervisor</label>
+        <queue>Bay_Chat_English_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Bay_Chat_French_LiveAgentSession</fullName>
         <filterScope>Queue</filterScope>
         <label>Bay Chat French</label>
         <queue>Bay_Chat_French</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Bay_Chat_French_Supervisor_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Bay Chat - French Supervisor</label>
+        <queue>Bay_Chat_French_Supervisor</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -231,6 +249,60 @@
         <filterScope>Queue</filterScope>
         <label>Chat - MHF</label>
         <queue>Chat_MHF</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_English_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat English</label>
+        <queue>Off_5th_Chat_English</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_English_Supervisor_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat - English Supervisor</label>
+        <queue>Off_5th_Chat_English_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_French_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat French</label>
+        <queue>Off_5th_Chat_French</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_French_Supervisor_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat - French Supervisor</label>
+        <queue>Off_5th_Chat_French_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Saks_Chat_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Saks Chat</label>
+        <queue>Saks_Chat</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Saks_Chat_Supervisor_LiveAgentSession</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Saks Chat - Supervisor</label>
+        <queue>Saks_Chat_Supervisor</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

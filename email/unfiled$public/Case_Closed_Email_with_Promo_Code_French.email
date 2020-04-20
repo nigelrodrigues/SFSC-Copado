@@ -77,7 +77,7 @@
 Nous tenons toujours à ce que votre expérience de magasinage soit positive. Pour vous montrer à quel point nous tenons à vous, nous vous invitons à profiter de cette offre valide une seule fois* en utilisant le code promotionnel {!Case.Promo_Code__c}. Pour toute question, n’hésitez pas à communiquer de nouveau avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
 <br>
 <br>
- <a href="mailto:customer.service@hbc.com? subject= {!EmailMessage.Subject}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
+<a href="mailto:labaie@hbc.com?subject=Voici votre code promotionnel à usage unique-{!Case.Thread_Id}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
 <br>
 <br>
 Sincères salutations. <br>
@@ -198,3 +198,4 @@ Service à la clientèle de La Baie d’Hudson
         </table>
     </body>
 </html>
+{!Case.Thread_Id}

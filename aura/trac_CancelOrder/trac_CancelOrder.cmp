@@ -7,17 +7,29 @@
     <aura:attribute name="caseRecord" type="Case"/>
     <aura:attribute name="cancelReason" type="String"/>
     <aura:attribute name="cancelReasonCode" type="String"/>
+    <aura:attribute name="quantityToCancel" type="String"/>
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
     <aura:attribute name="disabled" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
 
-    <aura:attribute name="options" type="List" default="[
+    <aura:attribute name="quantityOptions" type="List" default="[{'label': '1', 'value': '1'}]"/>
+
+   <!-- <aura:attribute name="options" type="List" default="[
     {'label': 'Customer has different Coupon', 'value': 'HBC_MC_CC_001'},
-    {'label': 'Customer Preference', 'value': 'HBC_MC_CC_002'},
-    {'label': 'Different Method of Payment', 'value': 'HBC_MC_CC_003'},
-    {'label': 'Different Price', 'value': 'HBC_MC_CC_004'},
-    {'label': 'Other', 'value': 'HBC_MC_CC_005'}
-    ]"/>
+    {'label': 'Customer Preference',           'value': 'HBC_MC_CC_002'},
+    {'label': 'Different Method of Payment',   'value': 'HBC_MC_CC_003'},
+    {'label': 'Different Price',               'value': 'HBC_MC_CC_004'},
+    {'label': 'Other',                         'value': 'HBC_MC_CC_005'},
+    {'label': 'Customer Request',              'value': 'HBC_MC_CC_006'},
+    {'label': 'Shipping Delay',                'value': 'HBC_MC_CC_007'},
+    {'label': 'Store Locator Reprocess',       'value': 'HBC_MC_CC_008'},
+    {'label': 'Item order Verification - RM',  'value': 'HBC_MC_CC_009'},
+    {'label': 'No Inventory',                  'value': 'HBC_MC_CC_010'},
+    {'label': 'Reprocess',                     'value': 'HBC_MC_CC_011'}
+    ]"/>-->
+
+    <aura:attribute name="cancellationReasonsPicklist" type="Map" />
+
 
     <aura:registerEvent name="refreshOrderEvent" type="c:trac_RefreshOrderEvent"/>
 
@@ -38,17 +50,30 @@
                 <header class="slds-modal__header">
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Confirm Cancellation</h2>
 
-                    <lightning:combobox name="cancelReasonCode"
-                                        label="Cancellation Type"
-                                        value="{!v.cancelReasonCode}"
-                                        placeholder="Select Cancellation Type"
-                                        options="{! v.options }"
+                    <lightning:combobox name="quantityToCancel"
+                                        label="Quantity to Cancel"
+                                        value="{!v.quantityToCancel}"
+                                        options="{!v.quantityOptions}"
                                         required="true"
+                                        aura:id = "quantityToCancel"
                     />
 
-                    <lightning:textarea name="cancelReason" value="{!v.cancelReason}"
+                    <lightning:select name="cancelReason" label="Cancellation Type" value="{!v.cancelReasonCode}"
+                                      required="true" aura:id = "cancellationType">
+                            <option value="">Select Cancellation Type</option>
+                            <aura:iteration items="{!v.cancellationReasonsPicklist}" var="option">
+                                <option value="{!option.value}" text="{!option.label}"
+                                        selected="{!option.selected}">
+                                </option>
+                            </aura:iteration>
+                    </lightning:select>
+
+                    <lightning:textarea name="cancelReason"
+                                        value="{!v.cancelReason}"
                                         label="Cancellation Reason:"
-                                        required="true"/>
+                                        required="true"
+                                        aura:id = "cancellationReason"
+                    />
 
                 </header>
                 <!--Modal/Popup Box Body Starts here-->

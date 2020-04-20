@@ -13,7 +13,9 @@ Thanks for contacting Hudson’s Bay. We’re happy we were able to assist you i
 CONTACT US NOW
 
 Sincerely,
-Hudson’s Bay Customer Service</textOnly>
+Hudson’s Bay Customer Service
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

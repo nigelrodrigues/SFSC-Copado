@@ -6,7 +6,7 @@ var globalSldsResourcePath = globalSldsResourcePath ? globalSldsResourcePath : u
     'use strict';
     var tablesList = ['dataTemplateTable'];
     var tableIdPaginationObject = {};
-    var placeHolder;
+    var placeHolder = null;
     var realDataTemplateIdMap = [];
     app.isValidated = false;
     app.totalValidatedTemplate = 0;
@@ -364,7 +364,6 @@ var globalSldsResourcePath = globalSldsResourcePath ? globalSldsResourcePath : u
         var childRelationshipsResult = describeResult.childRelationships;
         var globalDescribe = JSON.parse(resultData.globalDescribe);
         var globalDescribeSobjects = globalDescribe.sobjects;
-        console.log('globalDescribeSobjects: ', globalDescribeSobjects);
         var updatedDescribeFieldsResult = {};
         var updatedChildRelationshipResult = {};
         var currentField = {};
@@ -382,12 +381,24 @@ var globalSldsResourcePath = globalSldsResourcePath ? globalSldsResourcePath : u
 
             var isSelected = currentField ? true : false;
             var tempUseAsExternalId = currentField && currentField.useAsExternalId ? currentField.useAsExternalId : false;
-            var tempFieldContentUpdate = currentField && currentField.fieldContentUpdate ? currentField.fieldContentUpdate : placeHolder;
-            var tempReplaceValue = currentField && currentField.replaceValue ? currentField.replaceValue : placeHolder;
+            var tempFieldContentUpdate = currentField && currentField.fieldContentUpdate ? currentField.fieldContentUpdate : '';
+            var tempReplaceValue = currentField && currentField.replaceValue ? currentField.replaceValue : '';
             var tempReplaceValueNumber = currentField && currentField.replaceValueNumber ? currentField.replaceValueNumber : placeHolder;
             var tempReplaceValueDate = currentField && currentField.replaceValueDate ? currentField.replaceValueDate : placeHolder;
             var tempReplaceValueDatetime = currentField && currentField.replaceValueDatetime ? currentField.replaceValueDatetime : placeHolder;
             var tempContentValueUpdateValues = currentField && currentField.contentValueUpdateValues ? currentField.contentValueUpdateValues : placeHolder;
+            var tempParentObjectApiNameMap = {};
+
+            // to populate 'parentObjectApiNameMap' parameter, we will check if the field has reference to any other object
+            var currentSObject = {};
+            if (object.referenceTo) {
+                object.referenceTo.forEach((objectName) => {
+                    currentSObject = globalDescribeSobjects.find((element) => {
+                        return element.name === objectName;
+                    });
+                    tempParentObjectApiNameMap[currentSObject.name] = currentSObject.label;
+                });
+            }
 
             var copadoFields = {
                 isSelected: isSelected,
@@ -395,21 +406,22 @@ var globalSldsResourcePath = globalSldsResourcePath ? globalSldsResourcePath : u
                 externalId: object.externalId,
                 label: object.label,
                 name: object.name,
+                fieldType: object.type,
                 contentValueUpdateValues: tempContentValueUpdateValues,
                 fieldContentUpdate: tempFieldContentUpdate,
                 replaceValue: tempReplaceValue,
                 replaceValueNumber: tempReplaceValueNumber,
                 replaceValueDate: tempReplaceValueDate,
                 replaceValueDatetime: tempReplaceValueDatetime,
-                parentObjectApiNameMap: placeHolder,
-                deploymentTemplateNameMap: {},
+                parentObjectApiNameMap: tempParentObjectApiNameMap,
+                deploymentTemplateNameMap: placeHolder,
                 deploymentTemplate: 'Select Template'
             };
 
             updatedDescribeFieldsResult[object.name] = copadoFields;
 
             var newDescribeResultField = {
-                autonumber: object.autonumber,
+                autonumber: object.autonumber, 
                 calculated: object.calculated,
                 custom: object.custom,
                 externalId: object.externalId,
@@ -549,7 +561,7 @@ var globalSldsResourcePath = globalSldsResourcePath ? globalSldsResourcePath : u
             templateQueryLimit: attachmentBodyData.templateDetails[attachmentBodyData.namespace + 'Max_Record_Limit__c'],
             templateBatchSize: attachmentBodyData.templateDetails[attachmentBodyData.namespace + 'Batch_Size__c'],
             templateFilterLogic: attachmentBodyData.templateDetails[attachmentBodyData.namespace + 'Filter_Logic__c'],
-            templateAttachmentOptions: attachmentBodyData.templateDetails[attachmentBodyData.namespace + 'Attachment_Options__c'],
+            templateAttachmentOption: attachmentBodyData.templateDetails[attachmentBodyData.namespace + 'Attachment_Options__c'],
         };
 
         var resultData = {

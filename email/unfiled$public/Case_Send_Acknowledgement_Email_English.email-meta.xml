@@ -5,14 +5,16 @@
     <name>Case - Send Acknowledgement Email (English)</name>
     <style>none</style>
     <subject>Thanks for contacting Hudson’s Bay</subject>
-    <textOnly>Hi {!Contact.FirstName},
+    <textOnly>Hi {!Case.First_Name_Extract__c},
 
-Thanks for contacting Hudson’s Bay. We&apos;re received your message and we&apos;ll make our best effort to respond as soon as possible. If you need immediate assistance, please call us and refer to case {!Case.CaseNumber}.
+Thanks for contacting Hudson’s Bay. We’re in the process of resolving your issue and will provide you with an update within 48 hours. If you need additional assistance, please don’t hesitate to contact us and refer to case {!Case.CaseNumber}.
 
-You can find our phone numbers and answers to our most commonly asked questions in our Help Center: https://support.thebay.com/
+CONTACT US NOW
 
 Sincerely,
-Hudson’s Bay Customer Service</textOnly>
+Hudson’s Bay Customer Service
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

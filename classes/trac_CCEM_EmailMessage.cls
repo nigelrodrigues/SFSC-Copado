@@ -39,20 +39,29 @@ public with sharing class trac_CCEM_EmailMessage {
                 casesToInsert.add(newCase);
             }
         }
-        if (casesToInsert.size() > 0) {
-            insert casesToInsert;
-        }
 
-        //Re-parent the email message to the new case
-        for(Case newCase : casesToInsert) {
-            EmailMessage em = caseToEmailMsgMap.get(newCase.ParentId);
-            em.ParentId = newCase.Id;
-            if (em.HtmlBody != null) {
-                em.HtmlBody = em.HtmlBody.replaceAll(newCase.Id, newCase.ParentId);
+        try {
+            if (casesToInsert.size() > 0) {
+                insert casesToInsert;
             }
-            if (em.TextBody != null) {
-                em.TextBody = em.TextBody.replaceAll(newCase.Id, newCase.ParentId);
+
+            //Re-parent the email message to the new case
+            for (Case newCase : casesToInsert) {
+                EmailMessage em = caseToEmailMsgMap.get(newCase.ParentId);
+                em.ParentId = newCase.Id;
+                if (em.HtmlBody != null) {
+                    em.HtmlBody = em.HtmlBody.replaceAll(newCase.Id, newCase.ParentId);
+                }
+                if (em.TextBody != null) {
+                    em.TextBody = em.TextBody.replaceAll(newCase.Id, newCase.ParentId);
+                }
             }
+        } catch (Exception e) {
+            Integration_Error__c integrationError = trac_IntegrationError.addError(new Integration_Error__c(
+                    Description__c = e.getMessage() + '\n' + e.getStackTraceString(),
+                    Service__c = 'Closed Case Email Message Trigger'
+            ));
+            insert integrationError;
         }
     }
 

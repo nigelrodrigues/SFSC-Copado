@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Case Description Origin Settings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cases Description Origin Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Origin --></label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Email - Executive Escalation</masterLabel>
+            <translation><!-- Email - Executive Escalation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - LT</masterLabel>
+            <translation><!-- Email - LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Off 5th</masterLabel>
+            <translation><!-- Email - Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Saks</masterLabel>
+            <translation><!-- Email - Saks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Service Excellence</masterLabel>
+            <translation><!-- Email - Service Excellence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Service Excellence MHF</masterLabel>
+            <translation><!-- Email - Service Excellence MHF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Store Operation</masterLabel>
+            <translation><!-- Email - Store Operation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - The Bay</masterLabel>
+            <translation><!-- Email - The Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Agent</masterLabel>
+            <translation><!-- Live Agent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - LT</masterLabel>
+            <translation><!-- Marketing - LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - Off 5th</masterLabel>
+            <translation><!-- Marketing - Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - Saks</masterLabel>
+            <translation><!-- Marketing - Saks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - The Bay</masterLabel>
+            <translation><!-- Marketing - The Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OMS</masterLabel>
+            <translation><!-- OMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media</masterLabel>
+            <translation><!-- Social Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Community</masterLabel>
+            <translation><!-- Support Community --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

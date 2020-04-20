@@ -4,4 +4,10 @@
     <description>www_sfdcstatic_com Trusted Site Added Via Community Builder</description>
     <endpointUrl>https://www.sfdcstatic.com</endpointUrl>
     <isActive>true</isActive>
+    <isApplicableToConnectSrc>true</isApplicableToConnectSrc>
+    <isApplicableToFontSrc>true</isApplicableToFontSrc>
+    <isApplicableToFrameSrc>true</isApplicableToFrameSrc>
+    <isApplicableToImgSrc>true</isApplicableToImgSrc>
+    <isApplicableToMediaSrc>true</isApplicableToMediaSrc>
+    <isApplicableToStyleSrc>true</isApplicableToStyleSrc>
 </CspTrustedSite>

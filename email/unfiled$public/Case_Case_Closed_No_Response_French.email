@@ -76,7 +76,7 @@
 Vous avez récemment communiqué avec nous à propos d’un problème, mais nous n’avons pas été en mesure de vous aider, car nous avions besoin de renseignements additionnels. Si vous avez toujours besoin d’aide, veuillez communiquer avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
 <br>
 <br>
- <a href="mailto:customer.service@hbc.com? subject= {!EmailMessage.Subject}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
+<a href="mailto:labaie@hbc.com?subject=Nous avons besoin de plus de renseignements pour pouvoir vous aider-{!Case.Thread_Id}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
 <br>
 <br>
 Sincères salutations. <br>
@@ -158,3 +158,4 @@ Service à la clientèle de La Baie d’Hudson
 
     </body>
 </html>
+{!Case.Thread_Id}

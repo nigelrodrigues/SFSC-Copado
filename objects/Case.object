@@ -770,6 +770,16 @@
                     <default>false</default>
                     <label>Lord + Taylor</label>
                 </value>
+                <value>
+                    <fullName>Saks</fullName>
+                    <default>false</default>
+                    <label>Saks</label>
+                </value>
+                <value>
+                    <fullName>Off 5th</fullName>
+                    <default>false</default>
+                    <label>Off 5th</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1133,6 +1143,88 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Cancellation_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancellation_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancellation Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HBC_MC_CC_001</fullName>
+                    <default>false</default>
+                    <label>Customer has different Coupon</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_002</fullName>
+                    <default>false</default>
+                    <label>Customer Preference</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_003</fullName>
+                    <default>false</default>
+                    <label>Different Method of Payment</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_004</fullName>
+                    <default>false</default>
+                    <label>Different Price</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_005</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_006</fullName>
+                    <default>false</default>
+                    <label>Customer Request</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_007</fullName>
+                    <default>false</default>
+                    <label>Shipping Delay</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_008</fullName>
+                    <default>false</default>
+                    <label>Store Locator Reprocess</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_009</fullName>
+                    <default>false</default>
+                    <label>Item order Verification - RM</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_010</fullName>
+                    <default>false</default>
+                    <label>No Inventory</label>
+                </value>
+                <value>
+                    <fullName>HBC_MC_CC_011</fullName>
+                    <default>false</default>
+                    <label>Reprocess</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Candidate_for_Knowledge_Article__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Used by agents to flag cases that would be a good candidate to have a Knowledge article created for. Completed when they close the case.</description>
@@ -1201,6 +1293,18 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Case_Owner_Location__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Owner:User.Agent_Location__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Owner Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Case_Owner_Profile__c</fullName>
         <externalId>false</externalId>
         <formula>Owner:User.Profile.Name</formula>
@@ -1218,6 +1322,31 @@
         <formula>Owner:User.UserRole.Name</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Case Owner Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Owner_Supervisor_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Owner:User.ManagerId</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Owner Supervisor ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Owner_Supervisor__c</fullName>
+        <description>The direct supervisor of the current case owner.</description>
+        <externalId>false</externalId>
+        <formula>Owner:User.Manager.FirstName + &quot; &quot; +  Owner:User.Manager.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Owner Supervisor</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1381,18 +1510,24 @@
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Account</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Delivery (WISMO)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Gift Card(s)</valueName>
             </valueSettings>
             <valueSettings>
@@ -1403,60 +1538,80 @@
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Order Inquiry</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Order placed</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Other</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Product Information</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Refunds/Credits</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Returns</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Rewards</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Special Projects</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Store Experience</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Transfer</valueName>
             </valueSettings>
             <valueSettings>
@@ -1467,6 +1622,8 @@
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Executive Escalation Only</valueName>
             </valueSettings>
             <valueSettings>
@@ -3651,6 +3808,12 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Language</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
         <fullName>Last_Status_Change__c</fullName>
         <description>Stores the last time the status changed -- used by the Case Business Hours Tools package.</description>
         <externalId>false</externalId>
@@ -3967,6 +4130,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Order_is_Cancelled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checkbox that indicates if an order was cancelled during the case. The statement will evaluate true based on the Cancel order action.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Checkbox that indicates if an order was cancelled during the case. The statement will evaluate true based on the Cancel order action.</inlineHelpText>
+        <label>Order is Cancelled</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Origin</fullName>
@@ -5853,10 +6028,10 @@
         <label>All Cases for Follow Up</label>
     </listViews>
     <listViews>
-        <fullName>Bay_Chat_English_Case</fullName>
+        <fullName>Bay_Chat_English_Supervisor_Case</fullName>
         <filterScope>Queue</filterScope>
-        <label>Bay Chat English</label>
-        <queue>Bay_Chat_English</queue>
+        <label>Bay Chat - English Supervisor</label>
+        <queue>Bay_Chat_English_Supervisor</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -5871,19 +6046,19 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Bay_French_ES_Team_Lead_Case</fullName>
+        <fullName>Bay_Chat_French_Supervisor_Case</fullName>
         <filterScope>Queue</filterScope>
-        <label>Bay French ES Team Lead</label>
-        <queue>Bay_French_ES_Team_Lead</queue>
+        <label>Bay Chat - French Supervisor</label>
+        <queue>Bay_Chat_French_Supervisor</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Chat_English_Case</fullName>
+        <fullName>Bay_French_ES_Team_Lead_Case</fullName>
         <filterScope>Queue</filterScope>
-        <label>Bay Chat English</label>
-        <queue>Bay_Chat_English</queue>
+        <label>Bay French ES Team Lead</label>
+        <queue>Bay_French_ES_Team_Lead</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -6094,6 +6269,14 @@
     </listViews>
     <listViews>
         <fullName>Hold_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Previous_Queue_Owner_Name__c</columns>
         <filterScope>Queue</filterScope>
         <label>Hold</label>
         <queue>Hold</queue>
@@ -6492,6 +6675,51 @@
         <label>My Cases for Follow Up</label>
     </listViews>
     <listViews>
+        <fullName>Off_5th_Chat_English_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat English</label>
+        <queue>Off_5th_Chat_English</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_English_Supervisor_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat - English Supervisor</label>
+        <queue>Off_5th_Chat_English_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_French_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat French</label>
+        <queue>Off_5th_Chat_French</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Chat_French_Supervisor_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th Chat - French Supervisor</label>
+        <queue>Off_5th_Chat_French_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Off_5th_Main_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Off 5th- Main</label>
+        <queue>Off_5th_Main</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>POS_Bay_Case</fullName>
         <filterScope>Queue</filterScope>
         <label>POS - Bay</label>
@@ -6586,6 +6814,33 @@
         <filterScope>Queue</filterScope>
         <label>HBC SE-MNR</label>
         <queue>SE_MNR</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Saks_Chat_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Saks Chat</label>
+        <queue>Saks_Chat</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Saks_Chat_Supervisor_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Saks Chat - Supervisor</label>
+        <queue>Saks_Chat_Supervisor</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Saks_Main_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Saks - Main</label>
+        <queue>Saks_Main</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -6838,6 +7093,53 @@
             <values>
                 <fullName>Yes</fullName>
                 <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Type__c</picklist>
+            <values>
+                <fullName>HBC_MC_CC_001</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_002</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_003</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_004</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_005</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_006</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_007</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_008</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_009</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_010</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_011</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -8177,6 +8479,14 @@
                 <fullName>MHF</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Call_Status__c</picklist>
@@ -8202,6 +8512,53 @@
             <values>
                 <fullName>Yes</fullName>
                 <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Type__c</picklist>
+            <values>
+                <fullName>HBC_MC_CC_001</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_002</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_003</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_004</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_005</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_006</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_007</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_008</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_009</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_010</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_011</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
