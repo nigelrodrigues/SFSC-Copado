@@ -11,8 +11,7 @@
     },
 
     navigateToSubtab : function(component, urlLink) {
-        console.log('test');
-        console.log(urlLink);
+
         var workspaceAPI = component.find("workspace");
 
         workspaceAPI.getEnclosingTabId().then(function(tabId) {

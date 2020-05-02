@@ -128,16 +128,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Order_Refund</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Order_Refund</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
@@ -153,6 +159,32 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Address_is_Serviceable__c</fullName>
+        <description>Field used to capture if the address is serviceable for GotJunk</description>
+        <externalId>false</externalId>
+        <label>Address is Serviceable?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <fields>
         <fullName>Adjusted_Price__c</fullName>
         <description>Price to be used for adjustments. Used in ORC Amount to Refund</description>
@@ -250,6 +282,18 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Amount_of_Reversal__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount of Reversal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Amount_to_Refund__c</fullName>
         <externalId>false</externalId>
         <formula>if(OR(ispickval( Reason__c , &quot;Order Not Received&quot;)=TRUE, Quantity__c = Quantity_Not_Received__c ), Amount_Charged__c,Amount_Charged__c - Adjusted_Price__c) + if( Credit_Shipping_Fee__c =TRUE, Shipping_Fee__c ,0)+Other_Refund__c</formula>
@@ -280,7 +324,7 @@
         <formula>( Amount_to_Refund__c &gt;= 100 ||  Replacement_Gift_Card_Amount__c &gt;=100 || ISPICKVAL(Gift_Card_Amount__c, &quot;100&quot;) ) 
 &amp;&amp; 
 
-NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &apos;Closed&apos;) || ISPICKVAL(ORC_Status__c, &apos;Cancelled&apos;))</formula>
+NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &apos;Closed&apos;) || ISPICKVAL(ORC_Status__c, &apos;Cancelled&apos;) || ISPICKVAL(ORC_Status__c, &apos;Draft&apos;))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Approval Required</label>
         <trackHistory>false</trackHistory>
@@ -300,6 +344,60 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Billing_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Unit__c</fullName>
+        <description>The Business Unit of the ORC</description>
+        <externalId>false</externalId>
+        <label>Business Unit</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hudson&apos;s Bay</fullName>
+                    <default>false</default>
+                    <label>Hudson&apos;s Bay</label>
+                </value>
+                <value>
+                    <fullName>MHF</fullName>
+                    <default>false</default>
+                    <label>MHF</label>
+                </value>
+                <value>
+                    <fullName>Lord + Taylor</fullName>
+                    <default>false</default>
+                    <label>Lord + Taylor</label>
+                </value>
+                <value>
+                    <fullName>Saks</fullName>
+                    <default>false</default>
+                    <label>Saks</label>
+                </value>
+                <value>
+                    <fullName>Off 5th</fullName>
+                    <default>false</default>
+                    <label>Off 5th</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>CC_Amount_Refund__c</fullName>
@@ -416,6 +514,18 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Credit_Card_Number_last_4_digits__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit Card Number (last 4 digits)</label>
+        <length>4</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Credit_Shipping_Fee__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -458,6 +568,66 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Debit_Amount__c</fullName>
+        <description>The amount that HBC is charging the customer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The amount that HBC is charging the customer</inlineHelpText>
+        <label>Debit Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Debit_Charge_Reason__c</fullName>
+        <description>Field used to capture the reason for debiting a customer</description>
+        <externalId>false</externalId>
+        <label>Debit/Charge Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Reverse a ORC Discount</fullName>
+                    <default>false</default>
+                    <label>Reverse a ORC Discount</label>
+                </value>
+                <value>
+                    <fullName>Customer Requests Expedited Delivery</fullName>
+                    <default>false</default>
+                    <label>Customer Requests Expedited Delivery</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Debit_Percentage__c</fullName>
+        <description>The percentage you are charging the customer</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The percentage you are charging the customer</inlineHelpText>
+        <label>Debit Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>Decline_Reason__c</fullName>
         <description>Reason Why ORC was declined</description>
         <externalId>false</externalId>
@@ -481,6 +651,34 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>Final_Approval_Status__c</fullName>
+        <description>Field captures if the ORC was either approved or declined</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field captures if the ORC was either approved or declined</inlineHelpText>
+        <label>Final Approval Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Declined</fullName>
+                    <default>false</default>
+                    <label>Declined</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Final_Gift_Card_Amount__c</fullName>
         <description>Total amount of the gift card to be issues including refunds and appeasements.</description>
         <externalId>false</externalId>
@@ -493,6 +691,32 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>First_Mattress_Pickup_Date_Time__c</fullName>
+        <description>The first requested mattress pickup date and time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The first requested mattress pickup date and time</inlineHelpText>
+        <label>First Mattress Pickup Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <description>Field used to capture the contact for pick up&apos;s first name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents the contact for the pick up&apos;s first name</inlineHelpText>
+        <label>First Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Full_Credit_Card_Number_Old__c</fullName>
@@ -557,6 +781,31 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         </valueSet>
     </fields>
     <fields>
+        <fullName>Gift_Card_Appeasement_Reason__c</fullName>
+        <description>The reason an agent is giving a gift card appeasement</description>
+        <externalId>false</externalId>
+        <label>Gift Card Appeasement Reason</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Gift_Card_Appeasement_Value__c</fullName>
+        <description>The value of the gift cards being given to clients for appeasement</description>
+        <externalId>false</externalId>
+        <label>Gift Card Appeasement Value</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Initial_Form_Completed__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Used in page layout display filter. Populated by the ORC flow</description>
@@ -583,6 +832,20 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <externalId>false</externalId>
         <label>Item Name</label>
         <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Name__c</fullName>
+        <description>Represents the contact for the pick up&apos;s last name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents the contact for the pick up&apos;s last name</inlineHelpText>
+        <label>Last Name</label>
+        <length>80</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -735,6 +998,20 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Number_of_Mattresses_for_Pickup__c</fullName>
+        <description>The number of mattresses for pickup</description>
+        <externalId>false</externalId>
+        <label>Number of Mattresses for Pickup</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>OMS_Transaction_Number__c</fullName>
         <externalId>false</externalId>
         <label>OMS Transaction Number</label>
@@ -759,6 +1036,11 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                    <label>Draft</label>
+                </value>
                 <value>
                     <fullName>New</fullName>
                     <default>false</default>
@@ -788,11 +1070,6 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
                     <fullName>Closed</fullName>
                     <default>false</default>
                     <label>Closed</label>
-                </value>
-                <value>
-                    <fullName>Draft</fullName>
-                    <default>true</default>
-                    <label>Draft</label>
                 </value>
                 <value>
                     <fullName>Cancelled</fullName>
@@ -902,6 +1179,86 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Phone__c</fullName>
+        <description>The number to reach the contact during pickup</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number to reach the contact during pickup</inlineHelpText>
+        <label>Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Pickup_City__c</fullName>
+        <description>The city that the mattress return is located in</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The city that the mattress return is located in</inlineHelpText>
+        <label>Pickup City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Country__c</fullName>
+        <description>The country the mattress return is located</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The country the mattress return is located</inlineHelpText>
+        <label>Pickup Country</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Postal_Code__c</fullName>
+        <description>The postal code that the mattress return is located in</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The postal code that the mattress return is located in</inlineHelpText>
+        <label>Pickup Postal Code</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Province__c</fullName>
+        <description>The province that the mattress return is located in</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The province that the mattress return is located in</inlineHelpText>
+        <label>Pickup Province</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Street__c</fullName>
+        <description>The street that the mattress return is located in</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The street that the mattress return is located in</inlineHelpText>
+        <label>Pickup Street</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Price_Override_Reason__c</fullName>
         <externalId>false</externalId>
         <label>Price Override Reason</label>
@@ -941,6 +1298,19 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Promo_Code_Gift_Card_Amount__c</fullName>
+        <description>The amount of a promo code gift card</description>
+        <externalId>false</externalId>
+        <label>Promo Code Gift Card Amount</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -995,7 +1365,6 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
     </fields>
     <fields>
         <fullName>Reason__c</fullName>
-        <description>Type of ORC</description>
         <externalId>false</externalId>
         <label>Reason</label>
         <required>false</required>
@@ -1004,13 +1373,23 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
+            <controllingField>Business_Unit__c</controllingField>
             <valueSetDefinition>
                 <sorted>false</sorted>
+                <value>
+                    <fullName>Debit Category</fullName>
+                    <default>false</default>
+                    <label>Debit Category</label>
+                </value>
                 <value>
                     <fullName>Defective Item</fullName>
                     <default>false</default>
                     <label>Defective Item</label>
+                </value>
+                <value>
+                    <fullName>Gift Card (Appeasement)</fullName>
+                    <default>false</default>
+                    <label>Gift Card (Appeasement)</label>
                 </value>
                 <value>
                     <fullName>Gift Card (Refund)</fullName>
@@ -1021,6 +1400,11 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
                     <fullName>Gift Card to Original Tender</fullName>
                     <default>false</default>
                     <label>Gift Card to Original Tender</label>
+                </value>
+                <value>
+                    <fullName>Mattress</fullName>
+                    <default>false</default>
+                    <label>Mattress</label>
                 </value>
                 <value>
                     <fullName>Missing Items</fullName>
@@ -1078,12 +1462,177 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
                     <label>Wrong Order Received</label>
                 </value>
                 <value>
-                    <fullName>Gift Card (appeasement)</fullName>
+                    <fullName>Returns Not Received</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Gift Card (appeasement)</label>
+                    <label>Returns Not Received</label>
+                </value>
+                <value>
+                    <fullName>Tax Exempt</fullName>
+                    <default>false</default>
+                    <label>Tax Exempt</label>
+                </value>
+                <value>
+                    <fullName>Charge Customer</fullName>
+                    <default>false</default>
+                    <label>Charge Customer</label>
+                </value>
+                <value>
+                    <fullName>Promo Code Gift Card</fullName>
+                    <default>false</default>
+                    <label>Promo Code Gift Card</label>
+                </value>
+                <value>
+                    <fullName>EGC to Account</fullName>
+                    <default>false</default>
+                    <label>EGC to Account</label>
                 </value>
             </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <valueName>Debit Category</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Defective Item</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Gift Card (Appeasement)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Gift Card (Refund)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <valueName>Gift Card to Original Tender</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <valueName>Mattress</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Missing Items</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Order Not Received</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Price Adjustment</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Price Match</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Price Override</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Promo Questions/Problem</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Return Problem</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <valueName>Shipping Fee</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <valueName>Tax Exclusion</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Wrong Item Received</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <controllingFieldValue>Lord + Taylor</controllingFieldValue>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Wrong Order Received</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Returns Not Received</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Tax Exempt</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>Charge Customer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Saks</controllingFieldValue>
+                <controllingFieldValue>Off 5th</controllingFieldValue>
+                <valueName>EGC to Account</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -1194,10 +1743,20 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Reversal_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Reversal Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>SKU_Received__c</fullName>
         <externalId>false</externalId>
         <label>SKU# Received</label>
-        <length>80</length>
+        <length>250</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1209,13 +1768,25 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <fullName>SKU__c</fullName>
         <externalId>false</externalId>
         <label>SKU#</label>
-        <length>80</length>
+        <length>250</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Second_Mattress_Pick_Up_Date_Time__c</fullName>
+        <description>The second requested mattress pickup date and time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The second requested mattress pickup date and time</inlineHelpText>
+        <label>Second Mattress Pick Up Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Shipping_Fee__c</fullName>
@@ -1378,6 +1949,32 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         </valueSet>
     </fields>
     <fields>
+        <fullName>Third_Mattress_Pickup_Date_Time__c</fullName>
+        <description>The third requested mattress pickup date and time</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The third requested mattress pickup date and time</inlineHelpText>
+        <label>Third Mattress Pickup Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Total_Debit_Amount__c</fullName>
+        <description>The final amount to be charged to the customer</description>
+        <externalId>false</externalId>
+        <formula>IF( NOT(ISNULL(Debit_Percentage__c)),(  Debit_Percentage__c  *  Amount_Charged__c ),  Debit_Amount__c )</formula>
+        <inlineHelpText>The final amount to be charged to the customer</inlineHelpText>
+        <label>Total Debit Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Total_ORC_Amount__c</fullName>
         <description>Total ORC amount including both refund and appeasements</description>
         <externalId>false</externalId>
@@ -1416,6 +2013,33 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Type_of_Gift_Card__c</fullName>
+        <description>The type of gift card being given to the customer.</description>
+        <externalId>false</externalId>
+        <label>Type of Gift Card</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Virtual</fullName>
+                    <default>false</default>
+                    <label>Virtual</label>
+                </value>
+                <value>
+                    <fullName>Physical</fullName>
+                    <default>false</default>
+                    <label>Physical</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>UPC__c</fullName>
         <description>Universal Product Code</description>
         <externalId>false</externalId>
@@ -1428,6 +2052,31 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Where_the_Mattress_was_Purchased__c</fullName>
+        <externalId>false</externalId>
+        <label>Where the Mattress was Purchased</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Online</fullName>
+                    <default>false</default>
+                    <label>Online</label>
+                </value>
+                <value>
+                    <fullName>In-Store</fullName>
+                    <default>false</default>
+                    <label>In-Store</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Zip_Postal_Code__c</fullName>
@@ -1447,7 +2096,7 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>ORC_Status__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -1460,6 +2109,8 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <columns>Case_Owner_Profile__c</columns>
         <columns>Order_Number__c</columns>
         <columns>Reason__c</columns>
+        <columns>ORC_Status__c</columns>
+        <columns>Status_in_OMS__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>ORC_Status__c</field>
@@ -1479,9 +2130,70 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
-        <fullName>Gift_Card</fullName>
+        <fullName>Debit_Category</fullName>
         <active>true</active>
-        <label>Gift Card</label>
+        <description>Record type used to display fields to charge the customer</description>
+        <label>Debit Category</label>
+        <picklistValues>
+            <picklist>Address_is_Serviceable__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Debit_Charge_Reason__c</picklist>
+            <values>
+                <fullName>Customer Requests Expedited Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse a ORC Discount</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Final_Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Gift_Card_Amount__c</picklist>
             <values>
@@ -1623,7 +2335,15 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <picklistValues>
             <picklist>Reason__c</picklist>
             <values>
+                <fullName>Debit Category</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Appeasement%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1632,6 +2352,10 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             </values>
             <values>
                 <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mattress</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1769,6 +2493,807 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             </values>
             <values>
                 <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type_of_Gift_Card__c</picklist>
+            <values>
+                <fullName>Physical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Where_the_Mattress_was_Purchased__c</picklist>
+            <values>
+                <fullName>In-Store</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Gift_Card</fullName>
+        <active>true</active>
+        <label>Gift Card</label>
+        <picklistValues>
+            <picklist>Address_is_Serviceable__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Debit_Charge_Reason__c</picklist>
+            <values>
+                <fullName>Customer Requests Expedited Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse a ORC Discount</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Final_Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Card_Amount__c</picklist>
+            <values>
+                <fullName>100</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Loyalty_Tier__c</picklist>
+            <values>
+                <fullName>Associate%2FRetiree</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Basic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PLCC non-Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method_of_Payment__c</picklist>
+            <values>
+                <fullName>Gift Card</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC MasterCard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L%2BT PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PayPal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ORC_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requires Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Original_Gift_Card_Status__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Price_Override_Reason__c</picklist>
+            <values>
+                <fullName>Amount charged different from order confirmation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Item on sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price tag on item different from price charged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason__c</picklist>
+            <values>
+                <fullName>Debit Category</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Appeasement%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Refund%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mattress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing Items</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Not Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Adjustment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Match</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Override</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Questions%2FProblem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping Fee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tax Exclusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Item Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Order Received</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Gift_Card_Change__c</picklist>
+            <values>
+                <fullName>Adjustment to Gift Card Online Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bridal Registry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Depleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfillment Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive%2FPurged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost%2FStolen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Damaged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual or Traditional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Address</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Shipping_Method__c</picklist>
+            <values>
+                <fullName>Canada Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canpar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FedEx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purolator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smartpost%2FUSPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UPS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tax_Exclusion_Reason__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type_of_Gift_Card__c</picklist>
+            <values>
+                <fullName>Physical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Where_the_Mattress_was_Purchased__c</picklist>
+            <values>
+                <fullName>In-Store</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Mattress_Return</fullName>
+        <active>true</active>
+        <description>Record Type used to display fields relevant to Mattress Returns</description>
+        <label>Mattress Return</label>
+        <picklistValues>
+            <picklist>Address_is_Serviceable__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Debit_Charge_Reason__c</picklist>
+            <values>
+                <fullName>Customer Requests Expedited Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse a ORC Discount</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Final_Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Gift_Card_Amount__c</picklist>
+            <values>
+                <fullName>100</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>75</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Loyalty_Tier__c</picklist>
+            <values>
+                <fullName>Associate%2FRetiree</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Basic</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PLCC non-Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premier</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method_of_Payment__c</picklist>
+            <values>
+                <fullName>Gift Card</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC MasterCard</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L%2BT PLCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PayPal</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ORC_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requires Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Original_Gift_Card_Status__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Price_Override_Reason__c</picklist>
+            <values>
+                <fullName>Amount charged different from order confirmation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Item on sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price tag on item different from price charged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason__c</picklist>
+            <values>
+                <fullName>Debit Category</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Appeasement%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Refund%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mattress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing Items</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Not Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Adjustment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Match</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price Override</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Questions%2FProblem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping Fee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tax Exclusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Item Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Order Received</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Gift_Card_Change__c</picklist>
+            <values>
+                <fullName>Adjustment to Gift Card Online Order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bridal Registry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Service Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Depleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfillment Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive%2FPurged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost%2FStolen</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Damaged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual or Traditional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wrong Address</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Shipping_Method__c</picklist>
+            <values>
+                <fullName>Canada Post</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canpar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FedEx</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purolator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Smartpost%2FUSPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UPS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tax_Exclusion_Reason__c</picklist>
+            <values>
+                <fullName>Value 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type_of_Gift_Card__c</picklist>
+            <values>
+                <fullName>Physical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Where_the_Mattress_was_Purchased__c</picklist>
+            <values>
+                <fullName>In-Store</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1778,6 +3303,66 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <active>true</active>
         <label>Price Adjustment</label>
         <picklistValues>
+            <picklist>Address_is_Serviceable__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Debit_Charge_Reason__c</picklist>
+            <values>
+                <fullName>Customer Requests Expedited Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse a ORC Discount</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Final_Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Gift_Card_Amount__c</picklist>
             <values>
                 <fullName>100</fullName>
@@ -1918,7 +3503,15 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <picklistValues>
             <picklist>Reason__c</picklist>
             <values>
+                <fullName>Debit Category</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Appeasement%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1927,6 +3520,10 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             </values>
             <values>
                 <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mattress</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1955,6 +3552,10 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             </values>
             <values>
                 <fullName>Return Problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns Not Received</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2064,6 +3665,28 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             </values>
             <values>
                 <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type_of_Gift_Card__c</picklist>
+            <values>
+                <fullName>Physical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Where_the_Mattress_was_Purchased__c</picklist>
+            <values>
+                <fullName>In-Store</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2073,6 +3696,66 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <active>true</active>
         <label>Shipping</label>
         <picklistValues>
+            <picklist>Address_is_Serviceable__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Debit_Charge_Reason__c</picklist>
+            <values>
+                <fullName>Customer Requests Expedited Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reverse a ORC Discount</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Final_Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Declined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Gift_Card_Amount__c</picklist>
             <values>
                 <fullName>100</fullName>
@@ -2213,7 +3896,15 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <picklistValues>
             <picklist>Reason__c</picklist>
             <values>
+                <fullName>Debit Category</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Defective Item</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card %28Appeasement%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2222,6 +3913,10 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             </values>
             <values>
                 <fullName>Gift Card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mattress</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2359,6 +4054,28 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             </values>
             <values>
                 <fullName>Value 2</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type_of_Gift_Card__c</picklist>
+            <values>
+                <fullName>Physical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Virtual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Where_the_Mattress_was_Purchased__c</picklist>
+            <values>
+                <fullName>In-Store</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

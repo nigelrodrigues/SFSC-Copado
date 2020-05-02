@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent when a order is cancelled</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Closed Case Order Cancelled Email (O5 French)</name>
+    <style>none</style>
+    <subject>Your order has been cancelled</subject>
+    <textOnly>CONTENT TO BE ADDED
+
+Case ClosedENGLISH
+Case Number : {!Case.CaseNumber}
+{!Case.Thread_Id}
+
+If you want to comment on this case click here: customer.service@hbc.com
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

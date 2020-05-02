@@ -6,55 +6,85 @@
 public with sharing class trac_WS_GetOrderDetails {
     public final String ENDPOINT = (trac_WS_WebServiceHelper.webServiceSettings.Base_Url__c != null) ?
             trac_WS_WebServiceHelper.webServiceSettings.Base_Url__c + trac_WS_WebServiceHelper.webServiceSettings.Get_Order_Details_Endpoint__c : trac_WS_WebServiceHelper.webServiceSettings.Get_Order_Details_Endpoint__c;
+    private final String PRE_ORDER_DATE_TYPE = 'YCD_COMPLETELY_SHIPPED_OR_CANCELLED';
+    private final String ITEM_ALIAS_UPC = 'ACTIVE_UPC';
     private HttpResponse res = new HttpResponse();
     public GetOrderDetailsRequest getOrderDetailsRequest;
     public GetOrderDetailsResponse getOrderDetailsResponse;
     public String jsonError;
 
     public Boolean send() {
-        res = trac_WS_WebServiceHelper.sendPostRequest(ENDPOINT, getOrderDetailsRequest);
+        Boolean success = false;
+
+        res = trac_WS_WebServiceHelper.sendPostRequest(getEndpoint(), getOrderDetailsRequest);
 
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderDetailsResponse = parse(res.getBody());
-            try {
-                setItemNames();
-            } catch (Exception e) {
 
-            }
-            return true;
+            updateDataFormat();
+
+            success = true;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
         }
 
-        return false;
+        return success;
     }
 
     public static GetOrderDetailsResponse parse(String json) {
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
-    private void setItemNames() {
-        Map<String, String> itemNamesByItemId = new Map<String, String>();
+    private String getEndpoint() {
+        String dynamicEndpoint = ENDPOINT;
+
+        if (getOrderDetailsRequest != null && getOrderDetailsRequest.Order != null) {
+
+            String businessUnit = trac_WS_OrderUtils.getBusinessUnitFromEnterpriseCode(getOrderDetailsRequest.Order.EnterpriseCode);
+
+            dynamicEndpoint = trac_WS_OrderUtils.getDynamicEndpoint(dynamicEndpoint, businessUnit);
+        }
+
+        return dynamicEndpoint;
+    }
+
+    private void updateDataFormat() {
+        try {
+            linkItemsToContainers();
+            linkItemsToShipmentLines();
+            setPreOrderDateFields();
+            setItemUPCs();
+            setBlueMartiniStatus();
+            sortItems();
+        } catch (Exception e) {
+        }
+    }
+
+    private void sortItems() {
+        if (getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+            getOrderDetailsResponse.OrderLines.OrderLine.sort();
+        }
+    }
+
+    private void linkItemsToContainers() {
+        Map<String, String> itemNamesByItemId = getItemNamesByItemId();
+        Map<String, res_OrderLineWrapper> itemsByItemId = getItemsByItemId();
 
         if (getOrderDetailsResponse != null) {
-            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                    if (orderLineWrapper != null && orderLineWrapper.Item != null && orderLineWrapper.Item.ItemID != null && orderLineWrapper.ItemDetails != null
-                            && orderLineWrapper.ItemDetails.PrimaryInformation != null && orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription != null) {
-                        itemNamesByItemId.put(orderLineWrapper.Item.ItemID, orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription);
-                    }
-                }
-            }
-
             if (getOrderDetailsResponse.Shipments != null && getOrderDetailsResponse.Shipments.Shipment != null) {
                 for (res_ShipmentWrapper shipmentWrapper : getOrderDetailsResponse.Shipments.Shipment) {
                     if (shipmentWrapper != null && shipmentWrapper.Containers != null && shipmentWrapper.Containers.Container != null) {
                         for (res_ContainerWrapper containerWrapper : shipmentWrapper.Containers.Container) {
                             if (containerWrapper != null && containerWrapper.ContainerDetails != null && containerWrapper.ContainerDetails.ContainerDetail != null) {
                                 for (res_ContainerDetailWrapper containerDetailWrapper : containerWrapper.ContainerDetails.ContainerDetail) {
-                                    if (containerDetailWrapper != null && containerDetailWrapper.ItemID != null && itemNamesByItemId.containsKey(containerDetailWrapper.ItemID)) {
-                                        containerDetailWrapper.customItemName = itemNamesByItemId.get(containerDetailWrapper.ItemID);
+                                    if (containerDetailWrapper != null && containerDetailWrapper.ItemID != null) {
+                                        if (itemNamesByItemId.containsKey(containerDetailWrapper.ItemID)) {
+                                            containerDetailWrapper.customItemName = itemNamesByItemId.get(containerDetailWrapper.ItemID);
+                                        }
+                                        if (itemsByItemId.containsKey(containerDetailWrapper.ItemID)) {
+                                            itemsByItemId.get(containerDetailWrapper.ItemID).customContainer = containerWrapper;
+                                        }
                                     }
                                 }
                             }
@@ -65,6 +95,124 @@ public with sharing class trac_WS_GetOrderDetails {
         }
     }
 
+    private void linkItemsToShipmentLines() {
+        Map<String, res_OrderLineWrapper> itemsByItemId = getItemsByItemId();
+
+        if (getOrderDetailsResponse != null) {
+            if (getOrderDetailsResponse.Shipments != null && getOrderDetailsResponse.Shipments.Shipment != null) {
+                for (res_ShipmentWrapper shipmentWrapper : getOrderDetailsResponse.Shipments.Shipment) {
+                    if (shipmentWrapper != null && shipmentWrapper.ShipmentLines != null && shipmentWrapper.ShipmentLines.ShipmentLine != null) {
+                        for (res_ShipmentLineWrapper shipmentLineWrapper : shipmentWrapper.ShipmentLines.ShipmentLine) {
+                            if (itemsByItemId.containsKey(shipmentLineWrapper.ItemID)) {
+                                itemsByItemId.get(shipmentLineWrapper.ItemID).customShipmentLine = shipmentLineWrapper;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private Map<String, String> getItemNamesByItemId() {
+        Map<String, String> itemNamesByItemId = new Map<String, String>();
+
+        if (getOrderDetailsResponse != null) {
+            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                    if (orderLineWrapper != null && orderLineWrapper.Item != null && orderLineWrapper.Item.ItemID != null) {
+
+                        if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.PrimaryInformation != null
+                                && orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription != null) {
+                            itemNamesByItemId.put(orderLineWrapper.Item.ItemID, orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription);
+                        }
+                    }
+                }
+            }
+        }
+
+        return itemNamesByItemId;
+    }
+
+    private Map<String, res_OrderLineWrapper> getItemsByItemId() {
+        Map<String, res_OrderLineWrapper> itemsByItemId = new Map<String, res_OrderLineWrapper>();
+
+        if (getOrderDetailsResponse != null) {
+            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                    if (orderLineWrapper != null && orderLineWrapper.Item != null && orderLineWrapper.Item.ItemID != null) {
+
+                        itemsByItemId.put(orderLineWrapper.Item.ItemID, orderLineWrapper);
+                    }
+                }
+            }
+        }
+
+        return itemsByItemId;
+    }
+
+    private void setPreOrderDateFields() {
+        if (getOrderDetailsResponse != null) {
+            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                    if (orderLineWrapper.OrderDates != null && orderLineWrapper.OrderDates.OrderDate != null) {
+                        for (res_OrderDateWrapper orderDateWrapper : orderLineWrapper.OrderDates.OrderDate) {
+                            if (orderDateWrapper.DateTypeId == PRE_ORDER_DATE_TYPE) {
+                                orderLineWrapper.customRequestedDate = orderDateWrapper.RequestedDate;
+                                orderLineWrapper.customExpectedDate = orderDateWrapper.ExpectedDate;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void setBlueMartiniStatus() {
+        if (getOrderDetailsResponse != null) {
+            if (getOrderDetailsResponse.Extn != null) {
+                getOrderDetailsResponse.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(getOrderDetailsResponse.Extn.ExtnBlueMartiniStatus);
+            }
+            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                    if (orderLineWrapper.Extn != null) {
+                        orderLineWrapper.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(orderLineWrapper.Extn.ExtnBlueMartiniStatus);
+                    }
+                }
+            }
+        }
+    }
+
+    private void setItemUPCs() {
+        if (getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+            for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.ItemAliasList != null && orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias != null) {
+
+                    for (res_ItemAliasWrapper itemAliasWrapper : orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias) {
+                        if (itemAliasWrapper.AliasName == ITEM_ALIAS_UPC) {
+                            orderLineWrapper.customUPC = itemAliasWrapper.AliasValue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private static String getBlueMartiniDisplayStatusFromCode(String blueMartiniStatusCode) {
+        String displayStatus = blueMartiniStatusCode;
+
+        Map<String, Map<String, Reference_Data__mdt>> referenceDataBySystemValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('Blue Martini', 'System_Value__c');
+
+        if (referenceDataBySystemValueByType.containsKey('Status')) {
+            Map<String, Reference_Data__mdt> referenceDataByStatus = referenceDataBySystemValueByType.get('Status');
+
+            if (referenceDataByStatus.containsKey(blueMartiniStatusCode)) {
+                displayStatus = referenceDataByStatus.get(blueMartiniStatusCode).Salesforce_Value__c;
+            }
+        }
+
+        return displayStatus;
+    }
+
     public class GetOrderDetailsRequest {
         public req_OrderWrapper Order;
     }
@@ -73,7 +221,11 @@ public with sharing class trac_WS_GetOrderDetails {
         public String OrderNo;
         public String EnterpriseCode;
         public String DocumentType;
+        public PersonInfoBillToWrapper PersonInfoBillTo;
         public String IsTrackURLReq;
+    }
+    public class PersonInfoBillToWrapper {
+        public String ZipCode;
     }
 
     public class GetOrderDetailsResponse {
@@ -93,6 +245,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String EnterpriseCode;
         @AuraEnabled public res_OrderLinesWrapper OrderLines;
         @AuraEnabled public res_AddressWrapper PersonInfoBillTo;
+        @AuraEnabled public res_AddressWrapper PersonInfoShipTo;
         @AuraEnabled public String DocumentType;
         @AuraEnabled public res_HeaderChargesWrapper HeaderCharges;
         @AuraEnabled public String CustomerFirstName;
@@ -108,6 +261,43 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ReturnOrdersWrapper ReturnOrders;
         @AuraEnabled public String CustCustPONo;
         @AuraEnabled public res_OrderHoldTypesWrapper OrderHoldTypes;
+        @AuraEnabled public res_OrderDatesWrapper OrderDates;
+        @AuraEnabled public String customBlueMartiniStatus;
+    }
+
+    public class res_OrderLineWrapper implements Comparable {
+        @AuraEnabled public String SCAC;
+        @AuraEnabled public res_LinePriceInfoWrapper LinePriceInfo;
+        @AuraEnabled public res_LineChargesWrapper LineCharges;
+        @AuraEnabled public res_ItemDetailsWrapper ItemDetails;
+        @AuraEnabled public res_ExtnWrapper Extn;
+        @AuraEnabled public String OrderedQty;
+        @AuraEnabled public String GiftWrap;
+        @AuraEnabled public res_OrderStatusesWrapper OrderStatuses;
+        @AuraEnabled public res_AddressWrapper PersonInfoShipTo;
+        @AuraEnabled public res_LineTaxesWrapper LineTaxes;
+        @AuraEnabled public String CarrierServiceCode;
+        @AuraEnabled public String Status;
+        @AuraEnabled public res_ItemWrapper Item;
+        @AuraEnabled public String OrderLineKey;
+        @AuraEnabled public res_InstructionsWrapper Instructions;
+        @AuraEnabled public res_LineOverallTotalsWrapper LineOverallTotals;
+        @AuraEnabled public String DeliveryMethod;
+        @AuraEnabled public String PrimeLineNo;
+        @AuraEnabled public String GiftFlag;
+        @AuraEnabled public res_NotesWrapper Notes;
+        @AuraEnabled public res_ContainerWrapper customContainer;
+        @AuraEnabled public res_OrderDatesWrapper OrderDates;
+        @AuraEnabled public String customRequestedDate;
+        @AuraEnabled public String customExpectedDate;
+        @AuraEnabled public res_ShipmentLineWrapper customShipmentLine;
+        @AuraEnabled public String customUPC;
+        @AuraEnabled public String customBlueMartiniStatus;
+
+        public Integer compareTo(Object compareTo) {
+            res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
+            return (PrimeLineNo != null && compareToOrderLineWrapper != null && Integer.valueOf(PrimeLineNo) > Integer.valueOf(compareToOrderLineWrapper.PrimeLineNo)) ? 1 : -1;
+        }
     }
 
     public class res_OrderHoldTypesWrapper {
@@ -182,6 +372,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ItemID;
         @AuraEnabled public String Quantity;
         @AuraEnabled public String PrimeLineNo;
+        @AuraEnabled public res_ShipmentTagSerialsWrapper ShipmentTagSerials;
     }
 
     public class res_PromotionWrapper {
@@ -264,27 +455,19 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public List<res_OrderLineWrapper> OrderLine;
     }
 
-    public class res_OrderLineWrapper {
-        @AuraEnabled public String SCAC;
-        @AuraEnabled public res_LinePriceInfoWrapper LinePriceInfo;
-        @AuraEnabled public res_LineChargesWrapper LineCharges;
-        @AuraEnabled public res_ItemDetailsWrapper ItemDetails;
-        @AuraEnabled public res_ExtnWrapper Extn;
-        @AuraEnabled public String OrderedQty;
-        @AuraEnabled public String GiftWrap;
-        @AuraEnabled public res_OrderStatusesWrapper OrderStatuses;
-        @AuraEnabled public res_AddressWrapper PersonInfoShipTo;
-        @AuraEnabled public res_LineTaxesWrapper LineTaxes;
-        @AuraEnabled public String CarrierServiceCode;
-        @AuraEnabled public String Status;
-        @AuraEnabled public res_ItemWrapper Item;
+    public class res_OrderDatesWrapper {
+        @AuraEnabled public List<res_OrderDateWrapper> OrderDate;
+    }
+
+    public class res_OrderDateWrapper {
+        @AuraEnabled public String ActualDate;
+        @AuraEnabled public String OrderHeaderKey;
+        @AuraEnabled public String OrderReleaseKey;
         @AuraEnabled public String OrderLineKey;
-        @AuraEnabled public res_InstructionsWrapper Instructions;
-        @AuraEnabled public res_LineOverallTotalsWrapper LineOverallTotals;
-        @AuraEnabled public String DeliveryMethod;
-        @AuraEnabled public String PrimeLineNo;
-        @AuraEnabled public String GiftFlag;
-        @AuraEnabled public res_NotesWrapper Notes;
+        @AuraEnabled public String DateTypeId;
+        @AuraEnabled public String ExpectedDate;
+        @AuraEnabled public String CommittedDate;
+        @AuraEnabled public String RequestedDate;
     }
 
     public class res_ReturnOrdersWrapper {
@@ -310,6 +493,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String CustomerEMailID;
         @AuraEnabled public String MaxOrderStatusDesc;
         @AuraEnabled public String DocumentType;
+        @AuraEnabled public res_ExtnWrapper Extn;
     }
 
     public class res_LinePriceInfoWrapper {
@@ -399,6 +583,17 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnReference1;
         @AuraEnabled public String ExtnChargeShippingLabel;
         @AuraEnabled public String ExtnShopRnrAuthTok;
+        @AuraEnabled public String ExtnRegisterNo;
+        @AuraEnabled public String ExtnTransactionNo;
+        @AuraEnabled public String ExtnResponseDate;
+        @AuraEnabled public String ExtnResponseCode;
+        @AuraEnabled public String ExtnApprovalCode;
+        @AuraEnabled public String ExtnReturnTrackingNo;
+        @AuraEnabled public String ExtnReturnTrackingURL;
+        @AuraEnabled public String ExtnAssociateName;
+        @AuraEnabled public String ExtnBlueMartiniStatus;
+        @AuraEnabled public String ExtnEstimatedShipDate;
+        @AuraEnabled public String ExtnFirstEstimatedShipDate;
     }
 
     public class res_OrderStatusesWrapper {
@@ -442,7 +637,14 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public class res_InstructionsWrapper {
+        @AuraEnabled public List<res_InstructionWrapper> Instruction;
         @AuraEnabled public String NumberOfInstructions;
+    }
+
+    public class res_InstructionWrapper {
+        @AuraEnabled public String InstructionType;
+        @AuraEnabled public String InstructionText;
+        @AuraEnabled public String SequenceNo;
     }
 
     public class res_LineOverallTotalsWrapper {
@@ -469,6 +671,11 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String RemainingAmountToAuth;
         @AuraEnabled public List<res_ChargeTransactionDetailWrapper> ChargeTransactionDetail;
         @AuraEnabled public String TotalTransferredOut;
+        @AuraEnabled public String TotalOpenBookings;
+        @AuraEnabled public String TotalOpenAuthorizations;
+        @AuraEnabled public String TotalDebits;
+        @AuraEnabled public String AdditionalExpectedAuthorizations;
+        @AuraEnabled public String TotalCredits;
     }
 
     public class res_ChargeTransactionDetailWrapper {
@@ -477,6 +684,16 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String DebitAmount;
         @AuraEnabled public String CreditAmount;
         @AuraEnabled public res_InvoiceCollectionDetailsWrapper InvoiceCollectionDetails;
+        @AuraEnabled public String ChargeType;
+        @AuraEnabled public String Status;
+        @AuraEnabled public res_TransferToOrderWrapper TransferToOrder;
+        @AuraEnabled public res_TransferFromOrderWrapper TransferFromOrder;
+    }
+
+    public class res_TransferToOrderWrapper {
+    }
+
+    public class res_TransferFromOrderWrapper {
     }
 
     public class res_InvoiceCollectionDetailsWrapper {
@@ -611,6 +828,12 @@ public with sharing class trac_WS_GetOrderDetails {
 
     public class res_ShipmentTagSerialsWrapper {
         @AuraEnabled public String TotalNumberOfRecords;
+        @AuraEnabled public List<res_ShipmentTagSerialWrapper> ShipmentTagSerial;
+    }
+
+    public class res_ShipmentTagSerialWrapper {
+        @AuraEnabled public String SerialNo;
+        @AuraEnabled public res_ExtnWrapper Extn;
     }
 
     public class res_ShipNodeWrapper {

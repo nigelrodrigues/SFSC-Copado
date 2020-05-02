@@ -1,0 +1,77 @@
+<!--
+ - @description Search for email based on order number or email address
+ - @author Nigel Rodrigues, Traction on Demand
+ -->
+
+<aura:component description="trac_EmailSearch"
+                controller="trac_EmailSearchController"
+                extends="c:trac_BaseComponent"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForRecordHome"
+>
+
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="orderNumber" type="String" default=""/>
+    <aura:attribute name="emails" type="Object[]"/>
+    <aura:attribute name="email" type="Object"/>
+    <aura:attribute name="emailListResult" type="Object"/>
+    <aura:attribute name="objInfo" type="Case" default="{sobjectType : 'Case'}"/>
+    <aura:attribute name="noEmailsFound" type="Boolean" default="false"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    <aura:attribute name="showAdvanceSearch" type="Boolean" default="false"/>
+    <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="showError" type="boolean" default="false"/>
+    <aura:attribute name="errorMessage" type="String" default="Please specify at least Email or Order Number for the search." />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:trac_RefreshOrderEvent" action="{!c.handleRefreshEvent}"/>
+
+
+    <div onkeyup="{!c.formPress}">
+        <lightning:spinner variant="brand" class="{!v.isLoading ? '' : 'slds-hide'}"/>
+        <div class="slds-text-color_destructive">
+            <aura:if isTrue="{!v.showError}">
+                {!v.errorMessage}
+            </aura:if>
+        </div>
+        <lightning:layout>
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="Order Number" type="text" aura:id="orderNumberInput"
+                                 messageWhenPatternMismatch="Invalid Order Number."
+                                 pattern="[0-9]*"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="Email" type="email" aura:id="emailInput"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="Start Date" type="date" aura:id="orderStartDateInput"/>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="End Date" type="date" aura:id="orderEndDateInput"/>
+            </lightning:layoutItem>
+
+            <div style="padding-top: 24px; padding-left: 8px">
+                <lightning:layoutItem padding="around-small">
+                    <lightning:button label="Search" variant="brand" onclick="{!c.handleSearch}"/>
+                </lightning:layoutItem>
+            </div>
+        </lightning:layout>
+    </div>
+
+    <div>
+
+                <aura:if isTrue="{!not(empty(v.emails))}">
+                    <c:trac_EmailList emails="{!v.emails}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+                </aura:if>
+
+        <aura:if isTrue="{!v.noEmailsFound}">
+            <div class="slds-text-align_center slds-text-heading_medium slds-text-color_destructive">
+                No emails found.
+            </div>
+        </aura:if>
+
+    </div>
+
+</aura:component>

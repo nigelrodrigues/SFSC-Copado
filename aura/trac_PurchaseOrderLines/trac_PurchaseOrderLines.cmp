@@ -1,0 +1,33 @@
+<aura:component description="trac_PurchaseOrderLines">
+    <aura:attribute name="orderLine" type="Object"/>
+    <aura:attribute name="count" type="Integer"/>
+
+    <aura:if isTrue="{!not(empty(v.orderLine))}">
+
+        <div class="slds-grid slds-box_border slds-theme--default slds-p-around_small">
+            <div class="slds-col slds-p-left--small">
+                <span class="slds-form-element__label slds-no-flex">OrderLine Number</span>
+                <p class="slds-text-title">#{!v.count+1}</p>
+            </div>
+
+            <div class="slds-col">
+                <span class="slds-form-element__label slds-no-flex">Destination</span>
+                <p class="slds-text-title">{!v.orderLine.Shipnode.ShipNodePersonInfo.FirstName + ' ' + v.orderLine.Shipnode.ShipNodePersonInfo.LastName + ', ' + v.orderLine.Shipnode.ShipNodePersonInfo.DayPhone}</p>
+                <p class="slds-text-title">{!v.orderLine.Shipnode.ShipNodePersonInfo.AddressLine1}</p>
+                <p class="slds-text-title">{!v.orderLine.Shipnode.ShipNodePersonInfo.City + ' ' + v.orderLine.Shipnode.ShipNodePersonInfo.State + ' ' + v.orderLine.Shipnode.ShipNodePersonInfo.ZipCode  + ', ' + v.orderLine.Shipnode.ShipNodePersonInfo.Country}</p>
+            </div>
+
+            <div class="slds-col">
+                <span class="slds-form-element__label slds-no-flex"> Node Type</span>
+                <p class="slds-text-title">{!v.orderLine.Shipnode.NodeType}</p>
+            </div>
+
+            <div class="slds-col">
+                <span class="slds-form-element__label slds-no-flex">ShipNode</span>
+                <p class="slds-text-title">{!v.orderLine.Shipnode.ShipNode}</p>
+            </div>
+        </div>
+
+    </aura:if>
+
+</aura:component>

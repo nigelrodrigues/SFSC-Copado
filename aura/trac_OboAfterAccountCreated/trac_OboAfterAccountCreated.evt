@@ -1,0 +1,11 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @date 30-Jan-2020
+ - @description Event to automatically navigate the agent to Order on behalf of,
+ -              once the Commerce Cloud account is created.
+ -->
+
+<aura:event type="APPLICATION" description="trac_OboAfterAccountCreated">
+    <aura:attribute name="customerId"       type="Id"/>
+    <aura:attribute name="contactId"       type="Id"/>
+</aura:event>

@@ -83,11 +83,11 @@
     getUPC: function(orderLineItem, order) {
         var upc;
 
-        if (orderLineItem && orderLineItem.Item && orderLineItem.Item.ItemAliasList) {
+        if (orderLineItem && orderLineItem.ItemDetails && orderLineItem.ItemDetails.ItemAliasList && orderLineItem.ItemDetails.ItemAliasList.ItemAlias) {
             var i;
-            for (i = 0; i < orderLineItem.Item.ItemAliasList.length; i++) {
-                if (orderLineItem.Item.ItemAliasList[i].AliasName && orderLineItem.Item.ItemAliasList[i].AliasValue && orderLineItem.Item.ItemAliasList[i].AliasName === "ACTIVE_UPC") {
-                    upc = orderLineItem.Item.ItemAliasList[i].AliasValue;
+            for (i = 0; i < orderLineItem.ItemDetails.ItemAliasList.ItemAlias.length; i++) {
+                if (orderLineItem.ItemDetails.ItemAliasList.ItemAlias[i].AliasName && orderLineItem.ItemDetails.ItemAliasList.ItemAlias[i].AliasValue && orderLineItem.ItemDetails.ItemAliasList.ItemAlias[i].AliasName === "ACTIVE_UPC") {
+                    upc = orderLineItem.ItemDetails.ItemAliasList.ItemAlias[i].AliasValue;
                     break;
                 }
             }
@@ -333,6 +333,9 @@
         orderItemsTable += '<th>Transaction ID / Invoice Number</th>';
         orderItemsTable += '<th>SKN</th>';
         orderItemsTable += '<th>UPC</th>';
+        orderItemsTable += '<th>Unit Price</th>';
+        orderItemsTable += '<th>Tax Percentage</th>';
+        orderItemsTable += '<th>Tax Amount</th>';
         orderItemsTable += '<th>Shipping Fee</th>';
         orderItemsTable += '</tr>';
 
@@ -344,11 +347,17 @@
                 var sku = helper.getSKU(orderLineItem, order);
                 var upc = helper.getUPC(orderLineItem, order);
                 var shippingFee = helper.getOrderLineShippingFee(orderLineItem, order);
+                var unitPrice = helper.getUnitPrice(orderLineItem, order);
+                var taxAmount = helper.getTaxCharged(orderLineItem, order);     
+                var taxPercentage = ((taxAmount/unitPrice)*100).toFixed(3).slice(0,-1) +'%';          
 
                 orderItemsTable += '<tr>';
                 orderItemsTable += ((transactionId) ? ('<td>' + transactionId + '</td>') : '<td></td>');
                 orderItemsTable += ((sku) ? ('<td>' + sku + '</td>') : '<td></td>');
                 orderItemsTable += ((upc) ? ('<td>' + upc + '</td>') : '<td></td>');
+                orderItemsTable += ((unitPrice) ? ('<td>' + unitPrice + '</td>') : '<td></td>');
+                orderItemsTable += ((taxPercentage) ? ('<td>' + taxPercentage + '</td>') : '<td></td>');
+                orderItemsTable += ((taxAmount) ? ('<td>' + taxAmount + '</td>') : '<td></td>');
                 orderItemsTable += ((shippingFee) ? ('<td>' + shippingFee + '</td>') : '<td></td>');
                 orderItemsTable += '</tr>';
             }
@@ -357,5 +366,15 @@
         orderItemsTable += '</table>';
 
         return orderItemsTable;
+    },
+
+    showToast : function(message, type, title) {
+        var resultsToast = $A.get("e.force:showToast");
+        resultsToast.setParams({
+            "title": title,
+            "message": message,
+            "type" : type
+        });
+        resultsToast.fire();
     }
 })

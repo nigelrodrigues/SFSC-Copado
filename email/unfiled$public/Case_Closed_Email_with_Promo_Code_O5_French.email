@@ -1,0 +1,201 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, 
+        initial-scale=1.0">
+
+        <style type="text/css">
+        body, div, p, a, li, td {
+          -webkit-text-size-adjust: none;
+          -ms-text-size-adjust: none;
+          vertical-align: middle;
+        }
+        
+        /* Header CSS */
+        .logo{
+          padding-bottom: 50px;
+          padding-top:30px;
+          max-width: 600px;
+        }
+        /* End Header CSS */
+
+
+
+        .mainContent{
+          font-family: "Helvetica Neue", Helvetica, sans-serif;
+          max-width: 600px;
+          line-height: 1.5;
+        }
+
+
+        /* Footer CSS */
+        .footerContainer{
+          padding-top: 75px;
+          max-width: 620px;
+        }
+
+        .footer{
+          border-top: 1px solid #d1d1d1;
+          
+        }
+        /* End Footer CSS */
+
+        
+
+        </style>
+
+    </head>
+
+    <body bgcolor="#fff" leftmargin="0" topmargin="0" marginwidth="0" 
+    marginheight="0">
+              <!-- Begin Header -->
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" 
+          align="center"  bgcolor="#FFFFFF" class="logo">
+                    <tr>
+                        <td align="center"><a 
+              href="https://www.saksoff5th.com/"><img 
+              src="https://image.s5a.com/is/image/saksoff5th/OFF5TH_NAV_LOGO?scl=1&qlt=97&fmt=jpg" 
+              alt="{!Case.Business_Unit__c}"
+              /></a></td>
+                    </tr>
+              </table>
+              <!-- End Header -->
+             
+
+
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" 
+          align="center"  bgcolor="#FFFFFF" class="mainContent">
+                    <tr>
+                      <td width="10%">&nbsp;</td>
+                      <td>
+
+                          <p>Bonjour {!Contact.FirstName},
+<br>
+<br>
+
+
+Nous tenons toujours à ce que votre expérience de magasinage soit positive. Pour vous montrer à quel point nous tenons à vous, nous vous invitons à profiter de cette offre valide une seule fois* en utilisant le code promotionnel {!Case.Promo_Code__c}. Pour toute question, n’hésitez pas à communiquer de nouveau avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
+<br>
+<br>
+<a href="mailto:service@off5th.com?subject=Voici votre code promotionnel à usage unique-{!Case.Thread_Id}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a>
+<br>
+<br>
+Sincères salutations. <br>
+Service à la clientèle de {!Case.Business_Unit__c}
+
+
+
+                        </td>
+                        <td width="10%">&nbsp;</td>
+                    </tr>
+              </table>
+
+             
+
+             <!-- Begin Footer -->
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" 
+            align="center" bgcolor="#FFFFFF" class="footerContainer">
+              <tr>
+                <td>
+              <table width="95%" border="0" cellspacing="0" cellpadding="0" 
+        align="center" bgcolor="#FFFFFF" 
+                class="footer">
+                <tr>
+                    <td height="80" align="center" bgcolor="#FFFFFF">
+                      <table width="100%" 
+                border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="22%">&nbsp;</td>
+                           <td width="8%"><a target="_blank" 
+                href="https://www.facebook.com/saksoff5th/"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_facebook?scl=1&fmt=png" 
+                alt="" width="8" height="18" border="0" 
+                /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://www.instagram.com/saksoff5th/"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_instagram?scl=1&fmt=png" 
+                alt="" width="18" height="18" border="0" 
+                class="fbIcon" /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://twitter.com/saksoff5th"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_twitter?scl=1&fmt=png" 
+                alt="" width="18" height="15" border="0" 
+                class="fbIcon" /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://www.youtube.com/saks"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_youtube?scl=1&fmt=png" 
+                alt="" width="18" height="12" border="0" 
+                /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://www.pinterest.ca/saksoff5th/"><img 
+                src="https://image.s5a.com/is/image/TheBay/HB_Pinterest?scl=1&fmt=png" 
+                alt="" width="18" height="18" border="0" 
+                /></a></td>
+                          <td width="18%" align="right"><a 
+                href="https://apps.apple.com/us/app/saks-fifth-avenue/id491507258?c=appinfopage-itunes&pid=appinfopage-itunes&shortlink=afef443a"><img 
+                src="https://image.s5a.com/is/image/TheBay/HB_download-on-the-app-store_FRENCH?scl=1&fmt=png" 
+                 width="80" height="25" border="0" /></a></td>
+                          <td width="21%">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+              </table>
+            
+
+              <table width="98%" border="0" cellspacing="0" cellpadding="0" 
+          align="center" bgcolor="#FFFFFF" class="footer">
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- End Footer -->
+<table width="30%" border="0" cellspacing="0" cellpadding="0" 
+          align="center" bgcolor="#FFFFFF" >
+                  <tr>
+                    <td>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>EXCLUSIONS </strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>FEMME</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">3.1&nbsp;PHILLIP&nbsp;LIM, 7&nbsp;FOR ALL&nbsp;MANKIND, ACLER, AG&nbsp;JEANS, AGOLDE, ALLSAINTS, AMOENA, ANDERSSON BELL, APPARIS, AXEL ARIGATO, BA&amp;SH, BACON, BAUM UND PFERDGARTEN, BEAUFILLE, BIRGITTE HERSKIND, BLEUFOR&Ecirc;T, CAARA, CHAMPION PREMIUM REVERSE&nbsp;WEAVE, CINQ&nbsp;&Agrave;&nbsp;SEPT, CINZIA&nbsp;ROCCA (Y&nbsp;COMPRIS ICONS), CITIZENS OF&nbsp;HUMANITY, COLMAR, DIANE VON&nbsp;FURSTENBERG, DIESEL, DONNA&nbsp;KARAN, DORINA, EBERJEY, ECKHAUS&nbsp;LATTA, EILEEN&nbsp;FISHER, EQUIPMENT, &Ecirc;TRE&nbsp;C&Eacute;CILE, FLORA, FRAME, GANNI, GAYEON&nbsp;LEE, GCDS, GOOD AMERICAN, HAIGHT, HANKY&nbsp;PANKY, HARRIS WHARF, HELMUT&nbsp;LANG, HERSCHEL, HUGO, ISABEL MARANT, J&nbsp;BRAND, JOHN&nbsp;+&nbsp;JENN, JOIE, JORDACHE, KATE&nbsp;SPADE NEW&nbsp;YORK, KLEINFELD, LAMARQUE, LEMLEM, LES&nbsp;COYOTES DE&nbsp;PARIS, LES&nbsp;R&Ecirc;VERIES, LINE, MADEWELL, MAGGIE&nbsp;MARILYN, MAJE, MASSCOB, MO&amp;CO., MODERN ETERNITY, MONOGRAM, MOOSE&nbsp;KNUCKLES, MORRIS&nbsp;FURS, MOTHER, MSGM, NANUSHKA, NATORI, NEEDLE&nbsp;&amp;&nbsp;THREAD, NORDEN, OLIVIA&nbsp;RUBIN, OLSEN EUROPE, ONIA, OPENING&nbsp;CEREMONY, PAIGE (DENIM), PAPER&nbsp;LABEL, PERFECT MOMENT, P.J.&nbsp;SALVAGE, PUSHBUTTON, QUARTZ&nbsp;CO, RAG&nbsp;&amp;&nbsp;BONE, RAILS, ROTATE, RUBIE&rsquo;S (COSTUMES), SANDRO, SAVE THE&nbsp;DUCK, SELF&nbsp;PORTRAIT, SKIN, SOLID&nbsp;&amp;&nbsp;STRIPED, SPANX (DESSOUS GALBANTS, CHAUSSETTES ET COLLANTS), STAND, STINE&nbsp;GOYA, STUDIO MAX&nbsp;MARA, T&nbsp;BY&nbsp;ALEXANDER WANG, TANYA&nbsp;TAYLOR, TED&nbsp;BAKER, TFNC, THE&nbsp;ROOM, THEORY, TIBI, TONI&nbsp;PLUS&nbsp;INC., TOPSHOP, UGG (V&Ecirc;TEMENTS DE NUIT), WACOAL, WEEKEND MAX&nbsp;MARA ET WOLFORD.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>HOMME</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">3.1&nbsp;PHILLIP&nbsp;LIM, 49&nbsp;WINTERS, A&nbsp;FISH NAMED&nbsp;FRED, ALEXANDER WANG, ALPHA INDUSTRIES, ALTEA, AMI, ANN DEMEULEMEESTER, A.P.C., AXEL&nbsp;ARIGATO, BN3TH, BALMAIN, BOSS, BOSS&nbsp;GREEN, BRIXTON, BRUUN&nbsp;&amp; STENGADE, BUGATTI, DANIEL&nbsp;PATRICK, DIESEL, DRKSHDW BY&nbsp;RICK&nbsp;OWENS, DSQUARED2, FAIRPLAY, FJ&Auml;LLR&Auml;VEN, FRED&nbsp;PERRY, FRED&nbsp;PERRY x&nbsp;RAF&nbsp;SIMONS, GCDS, HACKETT, HELMUT&nbsp;LANG, HERSCHEL SUPPLY&nbsp;CO., HOLUBAR, HUF, HUGO, JUNYA WATANABE, JUUN&nbsp;J, JW&nbsp;ANDERSON, KENZO, KOLLAR, LACOSTE, MARNI, MATTHEW&nbsp;MILLER, MICHAEL&nbsp;KORS, MISSONI, MOOSE&nbsp;KNUCKLES, MOSCHINO, MSGM, NEIL&nbsp;BARRETT, NOBIS, OBEY, OPPOSUITS, PAUL&nbsp;SMITH, POLO RALPH&nbsp;LAUREN, PS&nbsp;PAUL&nbsp;SMITH, PUBLISH, RAG&nbsp;&amp;&nbsp;BONE, RHUDE, ROBERT&nbsp;GRAHAM, SANDRO, SAXX (SOUS-V&Ecirc;TEMENTS), STAMPD, STANCE, STRELLSON, TED&nbsp;BAKER, THE&nbsp;TIE&nbsp;BAR, TIGER&nbsp;OF&nbsp;SWEDEN, TOMBOLINI, TOPMAN, WOOD&nbsp;WOOD, WOODPECKER, WOOYOUNGMI, ZANEROBE ET&nbsp;ZEGNA.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>CHAUSSURES POUR FEMME</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">AQUATALIA, AXEL&nbsp;ARIGATO, BLACKSTONE, BROTHER VELLIES, BUGATTI, BY&nbsp;FAR, CAROLINA SANTO&nbsp;DOMINGO, CHAMPION, COACH, COACH&nbsp;x TABATHA SIMMONS, DEMELLIER, DIEMME, DR.&nbsp;MARTENS, EYTYS, F_WD, FILA, FUR&nbsp;DELUXE, GANNI, GCDS, HUNTER, JOSEPH, JW&nbsp;ANDERSON, KATE&nbsp;SPADE NEW&nbsp;YORK, KLEINFELD, KURT GEIGER, LEANDRA MEDINE, LES&nbsp;PETITS JOUEURS, MANU&nbsp;ATELIER, MARNI, MATT&nbsp;&amp;&nbsp;NAT, NICOLE&nbsp;SALDANA, RAG&nbsp;&amp;&nbsp;BONE, REBECCA&nbsp;MINKOFF, REJINA&nbsp;PYO, RON WHITE, SCHUTZ, SHRIMPS, SOREL, TED&nbsp;BAKER, THE&nbsp;ROOM, THE&nbsp;VOLON, TIMBERLAND, TOPSHOP, TORY&nbsp;BURCH, UGG AUSTRALIA, V&Ecirc;TIR&nbsp;VERT ET YUUL&nbsp;YIE.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>CHAUSSURES POUR&nbsp;HOMME</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">AXEL&nbsp;ARIGATO, BALLY, BALMAIN, BOSS, BOSS&nbsp;GREEN, DR.&nbsp;MARTENS, DSQUARED2, HUGO, HUNTER, JOHNSTON &amp; MURPHY, KENZO, MARNI, MOSCHINO, PAUL&nbsp;SMITH, SOREL, SWIMS, TED&nbsp;BAKER, TIMBERLAND, TOPMAN ET UGG&nbsp;AUSTRALIA.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>PRODUITS DE BEAUT&Eacute;</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">TOUTES LES MARQUES.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>ACCESSOIRES</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">HERSCHEL SUPPLY&nbsp;CO., THE&nbsp;ROOM, TOPMAN ET TOPSHOP.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>SACS &Agrave;&nbsp;MAIN ET&nbsp;PORTEFEUILLES</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">COACH, KATE SPADE NEW YORK, MARC JACOBS, MATT &amp; NAT, REBECCA MINKOFF, TED BAKER, THE&nbsp;ROOM, TOPSHOP ET TORY&nbsp;BURCH.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>LUNETTES DE SOLEIL</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">BURBERRY, OAKLEY, RAY-BAN ET SUNGLASS&nbsp;HUT.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>BIJOUX</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">AMOR, ANIA HAIE, GENEVI&Egrave;VE DOSTALER, HERM&Egrave;S, KATE SPADE NEW YORK, RAND (CONCESSIONS), MICHAEL KORS, SERPENTINA SILVER, SWAROVSKI ET UNO&nbsp;DE&nbsp;50.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>MONTRES</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">MONTRES TECHNOS, HERM&Egrave;S, MICHAEL&nbsp;KORS, OLIVIA BURTON, SHINOLA ET TAG&nbsp;HEUER.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>MODE POUR ENFANT ET B&Eacute;B&Eacute;, JOUETS ET MEUBLES ET &Eacute;QUIPEMENT POUR B&Eacute;B&Eacute;</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">4MOMS, BABYBJ&Ouml;RN, BABYLETTO, BEABA, BRITAX, CLEK, CYBEX, DIONO, DR.&nbsp;MARTENS, DUTAILIER, ESSENTIALS BY&nbsp;BRITAX, FJ&Auml;LLR&Auml;VEN, HALO, HERSCHEL SUPPLY&nbsp;CO., HUNTER, LITTLE UNICORN, MAXI&nbsp;COSI, NANIT, NOBIS, NUNA, NURSERY WORKS, OWLET, RALPH LAUREN, REEBOK, THULE, TIMBERLAND, UGG (CHAUSSURES) ET UPPABABY.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>BAGAGES ET SACS &Agrave;&nbsp;DOS</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">BRIC&rsquo;S, BRIGGS &amp;&nbsp;RILEY, EVERLITE, FJ&Auml;LLR&Auml;VEN, HERSCHEL SUPPLY&nbsp;CO., HEYS (ACCESSOIRES), SAMSONITE (COLLECTION BLACK&nbsp;LABEL, ET SACS ET SACS &Agrave; DOS DE&nbsp;TRAVAIL), THULE, TRUNKI, TUMI ET VICTORINOX.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>MAISON</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">ARB, BLENDTEC, BLUEAIR, BOBSWEEP, BONECO AIR-O-SWISS, BROIL KING, DOLCE&amp;GABBANA PAR&nbsp;SMEG, DYSON, EZVIZ, GE&nbsp;CAF&Eacute;, GOOGLE, IROBOT, JENN-AIR, LITTLE LUXURY, MIELE, MILL, MONOGRAM, NAPOLEON, PETITS &Eacute;LECTROS DONT LE&nbsp;PRIX SE&nbsp;TERMINE PAR&nbsp;97&nbsp;&cent;, SAECO, SERVICES D&rsquo;INSTALLATION D&rsquo;&Eacute;LECTROM&Eacute;NAGERS, SONOS, STADLER FORM, THULE, VANITY&nbsp;ART, VITAMIX, WEBER, WEISER ET WIZ.</span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;"><strong>AUTRES</strong></span></p>
+<p><span style="font-family: helvetica; font-size: 6pt;">BELTONE, COLLECTION COMPAGNIE DE&nbsp;LA&nbsp;BAIE D&rsquo;HUDSON (CANOTS), COMPASS, ENHANCED HEALTH, ENTREP&Ocirc;T DE LA&nbsp;LUNETTE, EVELINE&nbsp;CHARLES, FONDATION&nbsp;HBC (PELUCHES CARITATIVES), FONDATION OLYMPIQUE CANADIENNE (MITAINES ROUGES, LUNETTES DE SOLEIL ET ENSEMBLES DE 2&nbsp;&Eacute;PINGLETTES), FONDATION PARALYMPIQUE CANADIENNE (SANDALES DE PLAGE), GRAND PORTAGE (MINIPAGAIES ET PORTE-CL&Eacute;S), H&amp;R&nbsp;BLOCK, HEALTHWEST PROPTOTICS, JOHN&nbsp;ALLAN'S, NABIL, PROTH&Egrave;SES AUDITIVES (TAO ET AUTRES), PURE&nbsp;BEAUTY, RUZA&nbsp;HAIR, SQUISH, TENSPOT, TIMBRES ROUSSEAU, UNIVERSIT&Eacute; DE REGINA ET VOYAGES MARITIME. UN&nbsp;RABAIS MAXIMAL DE&nbsp;10&nbsp;% S&rsquo;APPLIQUE AUX&nbsp;MARQUES SUIVANTES&nbsp;: CILQUE, FRETTE AT&nbsp;HOME ET MICHAEL&nbsp;ARAM.</span></p>
+
+
+
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+    </body>
+</html>
+{!Case.Thread_Id}

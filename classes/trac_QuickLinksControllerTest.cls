@@ -5,11 +5,11 @@
 */
 @isTest
 private class trac_QuickLinksControllerTest {
-
     @isTest
     static void testGetQuickLinks() {
-        List<External_Link_Setting__mdt> externalLinkSettings = new List<External_Link_Setting__mdt>();
-        externalLinkSettings = trac_QuickLinksController.getQuickLinks();
-        System.assert(externalLinkSettings.size() > 0, 'Links not found.');
+
+        TLAuraResponse response = trac_QuickLinksController.getQuickLinks();
+        Map<String,List<External_Link_Setting__mdt>> externalLinkSettingsByBusinessUnit = (Map<String,List<External_Link_Setting__mdt>>) response.returnValuesMap.get('externalLinks');
+        System.assert(externalLinkSettingsByBusinessUnit.size() > 0, 'Links not found.');
     }
 }

@@ -15,9 +15,32 @@
 
     <aura:registerEvent name="closeModalEvent" type="c:trac_CloseModalEvent"/>
 
+    <!-- SHOW LOADING SPINNER-->
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
+
     <lightning:workspaceAPI aura:id="workspace"/>
 
     <tr>
+        <td class="slds-cell-wrap">
+            <div>
+                <aura:if isTrue="{!not(empty(v.con.SFCC_Customer_Id__c))}">
+                    <lightning:icon iconName="action:approval" alternativeText="HasAccount" size="x-small"/>
+                    <aura:set attribute="else">
+                        <lightning:icon iconName="utility:close" alternativeText="HasAccount" size="x-small"/>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </td>
+        <td class="slds-cell-wrap">
+            <div>
+                <aura:if isTrue="{!not(empty(v.con.Loyalty_Id__c))}">
+                    <lightning:icon iconName="action:approval" alternativeText="HasAccount" size="x-small"/>
+                    <aura:set attribute="else">
+                        <lightning:icon iconName="utility:close" alternativeText="HasAccount" size="x-small"/>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </td>
         <td class="slds-cell-wrap slds-size_1-of-12">
             {!v.con.Salutation + ' ' + v.con.FirstName + ' ' + v.con.MiddleName + ' ' + v.con.LastName + ' ' + v.con.Suffix}
         </td>

@@ -186,6 +186,16 @@
                     <default>false</default>
                     <label>MHF</label>
                 </value>
+                <value>
+                    <fullName>Saks</fullName>
+                    <default>false</default>
+                    <label>Saks</label>
+                </value>
+                <value>
+                    <fullName>Off 5th</fullName>
+                    <default>false</default>
+                    <label>Off 5th</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>6</visibleLines>

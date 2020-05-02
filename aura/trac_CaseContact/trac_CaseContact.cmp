@@ -1,0 +1,74 @@
+<!--
+ - Created by jhoran on 1/15/2020.
+ -->
+
+<aura:component description="trac_CaseContact" extends="c:trac_BaseComponent">
+
+    <aura:attribute name="recordId"        type="String"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="caseRecord"      type="Case"/>
+
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Id, ContactId, Order_Number__c, Business_Unit__c, Contact.SFCC_Customer_Id__c, Contact.Phone, Contact.Email, Contact.Birthdate,
+                              Contact.Salutation, Contact.FirstName, Contact.MiddleName, Contact.LastName, Contact.Suffix,
+                              Contact.MailingStreet, Contact.MailingCity, Contact.MailingStateCode, Contact.MailingCountryCode, Contact.MailingPostalCode"
+                      targetFields="{!v.caseRecord}"
+                      targetError="{!v.recordLoadError}"
+    />
+
+    <aura:if isTrue="{!not(empty(v.caseRecord.ContactId))}">
+        <div class="slds-scrollable_x">
+            <table class="slds-table slds-table_bordered slds-size_12-of-12">
+                <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+                        <div></div>
+                    </th>
+                    <th scope="col">
+                        <div>Name</div>
+                    </th>
+                    <th scope="col">
+                        <div>DOB</div>
+                    </th>
+                    <th scope="col">
+                        <div>Email</div>
+                    </th>
+                    <th scope="col">
+                        <div>Phone</div>
+                    </th>
+                    <th scope="col">
+                        <div>Address</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="slds-cell-wrap">
+                        <div>
+                            <aura:if isTrue="{!not(empty(v.caseRecord.Contact.SFCC_Customer_Id__c))}">
+                                <lightning:icon iconName="utility:cart" alternativeText="HasAccount" size="small"/>
+                            </aura:if>
+                        </div>
+                    </td>
+                    <td class="slds-cell-wrap slds-size_1-of-12">
+                        {!v.caseRecord.Contact.Salutation + ' ' + v.caseRecord.Contact.FirstName + ' ' + v.caseRecord.Contact.MiddleName + ' ' + v.caseRecord.Contact.LastName + ' ' + v.caseRecord.Contact.Suffix}
+                    </td>
+                    <td class="slds-cell-wrap slds-size_1-of-12">
+                        <div>{!v.caseRecord.Contact.Birthdate}</div>
+                    </td>
+                    <td class="slds-cell-wrap slds-size_1-of-12">
+                        <div>{!v.caseRecord.Contact.Email}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{!v.caseRecord.Contact.Phone}</div>
+                    </td>
+                    <td class="slds-cell-wrap slds-size_4-of-12">
+                        <div>{!v.caseRecord.Contact.MailingStreet + ' ' + v.caseRecord.Contact.MailingCity + ' ' + v.caseRecord.Contact.MailingStateCode + ' ' + v.caseRecord.Contact.MailingCountryCode + ' ' + v.caseRecord.Contact.MailingPostalCode}</div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </aura:if>
+</aura:component>

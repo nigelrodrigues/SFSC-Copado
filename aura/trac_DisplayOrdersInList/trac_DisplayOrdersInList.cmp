@@ -10,6 +10,7 @@
     <aura:attribute name="actualOrder" type="Object" />
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="postalCode" type="String" default=""/>
 
     <tr>
         <td>

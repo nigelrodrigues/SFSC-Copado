@@ -4,7 +4,7 @@
         <fullName>Send Acknowledgement Email</fullName>
         <active>true</active>
         <ruleEntry>
-            <booleanFilter>(1 OR 3 OR 4 OR 5) AND 2</booleanFilter>
+            <booleanFilter>(1 OR 3 OR 4 OR 5 OR 6) AND 2</booleanFilter>
             <criteriaItems>
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
@@ -29,6 +29,11 @@
                 <field>Case.OwnerId</field>
                 <operation>equals</operation>
                 <value>MHF ERA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>MHF Service Excellence</value>
             </criteriaItems>
             <notifyCcRecipients>false</notifyCcRecipients>
             <senderEmail>no.replies@hbc.com</senderEmail>
@@ -146,6 +151,75 @@
             <senderEmail>no.repiles@lordandtaylor.com</senderEmail>
             <senderName>Lord and Taylor Customer Service - Do Not Reply</senderName>
             <template>unfiled$public/Case_Send_Acknowledgement_Email_LT</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Saks</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@saks.com</senderEmail>
+            <senderName>Saks Customer Service &lt;Do Not Reply&gt;</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_S5A_English</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Off 5th</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Language__c</field>
+                <operation>equals</operation>
+                <value>English</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@saksoff5th.com</senderEmail>
+            <senderName>Saks Off 5th Customer Service &lt;Do Not Reply&gt;</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_O5_English</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Off 5th</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Language__c</field>
+                <operation>equals</operation>
+                <value>French</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Executive_Escalation__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@saksoff5th.com</senderEmail>
+            <senderName>Saks Off 5th Customer Service &lt;Do Not Reply&gt;</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_O5_French</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>Executive Escalation</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>no.replies@hbc.com</senderEmail>
+            <senderName>HBC Customer Service - Do Not Reply</senderName>
+            <template>unfiled$public/Case_Send_Acknowledgement_Email_English</template>
         </ruleEntry>
     </autoResponseRule>
 </AutoResponseRules>

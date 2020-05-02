@@ -1,8 +1,9 @@
 /**
- * Created by jhoran on 7/4/2019.
+ *  @description Order Utilities Class, contains methods and default values for interacting with OMS API
+ *  @author      Jeremy Horan, Traction on Demand.
+ *  @date        07/04/2019
  */
-
-public with sharing class trac_WS_OrderUtils {
+public without sharing class trac_WS_OrderUtils {
 
     private static final String DEFAULT_ENTERPRISE_CODE = 'BAY';
     private static final String DEFAULT_ORDER_TYPE = '0001';
@@ -14,9 +15,24 @@ public with sharing class trac_WS_OrderUtils {
     private static final String DEFAULT_MAX_RECORDS = '25';
     private static final String DEFAULT_SUB_LINE_NUMBER = '1';
     private static final String DEFAULT_MODIFICATION_CODE = 'HBC_MC_CC_005';
+    private static final String DEFAULT_GIFT_CARD_ENTRY_MODE = 'KEYED';
     private static final String CREATE_ACTION = 'CREATE';
     private static final String MODIFY_ACTION = 'MODIFY';
     private static final String CANCEL_ACTION = 'CANCEL';
+
+    private static final Map<String, String> IPA_STORE_NUMBER_BY_ENTERPRISE_CODE = new Map<String, String>{
+            'BAY'  => '1963',
+            'OFF5' => '8669',
+            'SAKS' => '7789'
+    };
+
+    private static final Map<String, String> IPA_CARD_TYPE_BY_OMS_TYPE = new Map<String, String>{
+            'HBGC'               => 'HBGC',
+            'LTGC'               => 'LTGC',
+            'GIFT_CARD'          => 'EGC',
+            'MERCHANDISE_CREDIT' => 'EMC',
+            'VIRTUAL_GIFT_CARD'  => 'VGC'
+    };
 
     private static Map<String, Map<String, Reference_Data__mdt>> referenceDataBySystemValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('OMS', 'System_Value__c');
     private static Map<String, Map<String, Reference_Data__mdt>> referenceDataBySalesforceValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('OMS', 'Salesforce_Value__c');
@@ -29,7 +45,7 @@ public with sharing class trac_WS_OrderUtils {
         }
     }
 
-    @Future(callout=true)
+    @Future(Callout=true)
     private static void setCaseOrderInformationAsync(Set<Id> caseIds) {
         setCaseOrderInformationSync(caseIds);
     }
@@ -155,6 +171,20 @@ public with sharing class trac_WS_OrderUtils {
         return enterpriseCode;
     }
 
+    public static String getBusinessUnitFromEnterpriseCode(String enterpriseCode) {
+        String businessUnit;
+
+        if (referenceDataBySalesforceValueByType.containsKey('Enterprise Code')) {
+            Map<String, Reference_Data__mdt> referenceDataByValue = referenceDataBySystemValueByType.get('Enterprise Code');
+
+            if (referenceDataByValue.containsKey(enterpriseCode)) {
+                businessUnit = referenceDataByValue.get(enterpriseCode).Salesforce_Value__c;
+            }
+        }
+
+        return businessUnit;
+    }
+
     public static String getFormattedDatetime(Datetime datetimeValue) {
         String datetimeString;
 
@@ -177,6 +207,40 @@ public with sharing class trac_WS_OrderUtils {
         }
 
         return dateValue;
+    }
+
+    public static String getDynamicEndpoint(String endpoint, String businessUnit) {
+        String dynamicEndpoint = endpoint;
+
+        if (businessUnit != null && dynamicEndpoint != null) {
+            List<API_Business_Unit_Version_Setting__mdt> apiBusinessUnitVersionSettings = [SELECT Business_Unit__c, OMS_API_Version__c FROM API_Business_Unit_Version_Setting__mdt WHERE Business_Unit__c = :businessUnit];
+
+            if (!apiBusinessUnitVersionSettings.isEmpty() && apiBusinessUnitVersionSettings[0].OMS_API_Version__c != null) {
+                dynamicEndpoint = dynamicEndpoint.replace('/orders', apiBusinessUnitVersionSettings[0].OMS_API_Version__c);
+            }
+        }
+
+        return dynamicEndpoint;
+    }
+
+    public static String getGiftCardStoreCodeFromEnterpriseCode(String enterpriseCode) {
+        String storeCode;
+
+        if (IPA_STORE_NUMBER_BY_ENTERPRISE_CODE.containsKey(enterpriseCode)) {
+            storeCode = IPA_STORE_NUMBER_BY_ENTERPRISE_CODE.get(enterpriseCode);
+        }
+
+        return storeCode;
+    }
+
+    public static String getGiftCardTypeFromOMSType(String omsCardType) {
+        String giftCardType;
+
+        if (IPA_CARD_TYPE_BY_OMS_TYPE.containsKey(omsCardType)) {
+            giftCardType = IPA_CARD_TYPE_BY_OMS_TYPE.get(omsCardType);
+        }
+
+        return giftCardType;
     }
 
     public static String getOrderType() {
@@ -225,6 +289,10 @@ public with sharing class trac_WS_OrderUtils {
 
     public static String getSubLineNumber() {
         return DEFAULT_SUB_LINE_NUMBER;
+    }
+
+    public static String getGiftCardEntryMode() {
+        return DEFAULT_GIFT_CARD_ENTRY_MODE;
     }
 
     private static List<Case> getCasesByIds(Set<Id> caseIds) {

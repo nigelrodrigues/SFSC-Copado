@@ -140,7 +140,10 @@
                                 <thead>
                                     <tr class="slds-text-title_caps">
                                         <th scope="col">
-                                            <div></div>
+                                            <div>SFCC Account</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>Loyalty</div>
                                         </th>
                                         <th scope="col">
                                             <div>Name</div>

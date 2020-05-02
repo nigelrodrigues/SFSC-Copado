@@ -10,8 +10,7 @@ public with sharing class trac_CCEM_CaseSelector {
      *  @date        2016-05-19
      */
     public static List<Case> getCasesByIds(Set<Id> caseIds, Set<String> fieldsToQuery){
-
-        Set<String> requiredFields = new Set<String>{'Id', 'IsClosed', 'ClosedDate'};
+        Set<String> requiredFields = new Set<String>{'Id', 'IsClosed', 'ClosedDate', 'Origin', 'Business_Unit__c'};
 
         fieldsToQuery.addAll(requiredFields);
 

@@ -1,0 +1,40 @@
+<aura:component description="trac_PurchaseOrder" controller="trac_PurchaseOrderCtrl">
+    <aura:attribute name="purchaseOrder" type="Object"/>
+    <aura:attribute name="businessUnit" type="String"/>
+    <aura:attribute name="noOrderFound" type="Boolean" default="false"/>
+    <aura:attribute name="order" type="Object"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:card>
+        <aura:iteration items="{!v.purchaseOrder.Order}" var="order">
+            <div class="slds-box_border slds-p-around_medium slds-theme--shade">
+
+                <div class="header-column slds-p-around_small">
+                    <h3>Order Number</h3>
+                    <p class="slds-text-title">{!order.OrderNo}</p><br/>
+                </div>
+
+                <aura:if isTrue="{!and(not(empty(order.OrderLines)), not(empty(order.OrderLines.OrderLine)))}">
+                    <h3 class="slds-p-left_small">>Order Lines</h3>
+
+                    <aura:iteration items="{!order.OrderLines.OrderLine}" var="orderLine" indexVar="count">
+                        <c:trac_PurchaseOrderLines orderLine="{!orderLine}" count="{!count}"/>
+                    </aura:iteration>
+
+                    <aura:set attribute="else">
+                        <span class="slds-text-heading_small slds-align--absolute-center">No OrderLines found.</span><br/>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </aura:iteration>
+
+        <div>
+            <lightning:spinner class="slds-show" alternativeText="Loading" size="medium" aura:id="spinner-wait"/>
+        </div>
+        <aura:if isTrue="{!v.noOrderFound}">
+                <span class="slds-text-heading_small slds-align--absolute-center">No Orders linked to {!v.order.OrderNo}
+                    .</span><br/>
+        </aura:if>
+    </lightning:card>
+</aura:component>

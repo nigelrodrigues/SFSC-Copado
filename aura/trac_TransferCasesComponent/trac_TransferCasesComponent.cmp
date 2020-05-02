@@ -1,0 +1,80 @@
+<!--
+* @description Aura component to display selected cases to be mass transferred
+* @author      Abhishek Solanki, Traction on Demand
+* @date        2019-02-06
+-->
+<aura:component controller="trac_TransferCasesController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global">
+    <aura:attribute name="caseList" type="List"/>
+    <aura:attribute name="selectedOwner" type="String"/>
+    <aura:attribute name="OwnerId" type="String"/>
+    <aura:attribute name="icon" type="String" default="standard:user"/>
+
+    <aura:handler name="oSelectedRecordEvent" event="c:trac_DisplayLookupRecordsEvent"
+                  action="{!c.handleComponentEvent}"/>
+
+
+    <lightning:card iconName="action:change_owner" title="Transfer Cases" variant="base">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning:select aura:id="select" name="select" label="Assign Owner as"
+                                          value="{!v.selectedOwner}"
+                                          class="slds-p-left_small slds-size_1-of-3" required="true"
+                                          onchange="{!c.handleChange}">
+                            <option value="User">User</option>
+                            <option value="Queue">Queue</option>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_xx-small">
+                        <c:trac_CustomLookupComponent aura:id="ownerLookup" objectAPIName="{!v.selectedOwner}"
+                                                      label="Select New Owner"
+                                                      IconName="{!v.icon}"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Case Number">Case Number</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Subject">Subject</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Status">Status</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <aura:iteration items="{!v.caseList}" var="item">
+                <tr class="slds-hint-parent">
+                    <th data-label="Case Number" scope="row">
+                        <div class="slds-truncate" title="Case Number">
+                            {!item.CaseNumber}
+                        </div>
+                    </th>
+                    <td data-label="Subject">
+                        <div class="slds-truncate" title="Subject">{!item.Subject}</div>
+                    </td>
+                    <td data-label="Status">
+                        <div class="slds-truncate" title="Status">{!item.Status}</div>
+                    </td>
+                </tr>
+            </aura:iteration>
+            </tbody>
+        </table>
+
+
+        <span class="slds-align_absolute-center">
+            <lightning:button onclick="{!c.goBack}" variant="brand" label="Back"/>
+            <lightning:button onclick="{!c.handleConfirm}" variant="brand" label="Confirm" type="submit"/>
+        </span>
+    </lightning:card>
+</aura:component>

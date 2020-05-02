@@ -32,6 +32,22 @@
                                 <p>{!v.returnOrder.EntryType}</p>
                             </div>
                         </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Tracking Number</p>
+                                <p>{!v.returnOrder.Extn.ExtnReturnTrackingNo}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <aura:if isTrue="{!not(empty(v.returnOrder.Extn.ExtnReturnTrackingURL))}">
+                            <lightning:layoutItem padding="around-small">
+                                <div class="header-column">
+                                    <p class="field-title slds-form-element__label slds-no-flex">Tracking Link</p>
+                                    <p><a target="_blank" href="{!v.returnOrder.Extn.ExtnReturnTrackingURL}">Track On Carrier Website</a></p>
+                                </div>
+                            </lightning:layoutItem>
+                        </aura:if>
                     </lightning:layout>
                 </lightning:layoutItem>
 

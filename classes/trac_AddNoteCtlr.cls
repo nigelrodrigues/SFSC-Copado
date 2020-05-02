@@ -54,7 +54,7 @@ public with sharing class trac_AddNoteCtlr {
         trac_WS_UpdateOrder.req_NotesWrapper notesWrapper = new trac_WS_UpdateOrder.req_NotesWrapper();
 
         notesWrapper.Note.NoteText = notesString;
-        notesWrapper.Note.ContactUser = UserInfo.getUserName();
+        notesWrapper.Note.ContactUser = UserInfo.getName();
 
         return notesWrapper;
     }

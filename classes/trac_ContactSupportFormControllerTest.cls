@@ -16,7 +16,28 @@ private class trac_ContactSupportFormControllerTest {
         List<String> caseTypeValues = trac_ContactSupportFormController.getCaseTypeValidations();
         System.assert(caseTypeValues.size() > 0, 'No values were retrieved from the org.');
     }
+    @IsTest
+    static void testgetCommunityDependentValues() {
+     trac_ContactSupportFormController.getCommunityDependentValues();
+    //System.assert(trac_ContactSupportFormController.getCommunityDependentValues() > 0, 'No values were retrieved from the org.');
+    }
 
+    @IsTest
+    static void testgetGuestUserId() {
+      String userId = trac_ContactSupportFormController.getGuestUserId();
+        system.assert(userId != null, 'User Id found');
+    }
+    
+    @IsTest
+    static void testgetCaseFieldLabels() {
+        Map<String, String> fieldMap = new Map<String, String>();
+        List<String> fieldsList=new List<String>();
+        fieldsList.add('Status');
+        fieldsList.add('Case_Type__c');
+       fieldMap= trac_ContactSupportFormController.getCaseFieldLabels(fieldsList);
+    system.assert(fieldMap.keySet().size()==2,'Map of label and field name');  
+    }
+    
     @IsTest
     static void testAttachFilesToCase() {
 

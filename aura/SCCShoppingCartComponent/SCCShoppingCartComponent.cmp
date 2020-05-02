@@ -1,0 +1,76 @@
+<aura:component controller="ShoppingCartAuraController"
+                extends="c:trac_BaseComponent"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,force:lightningQuickAction"
+                access="global" >
+
+    <ltng:require scripts="/resource/jQueryFiles/jquery/jquery-1.12.4.min.js" afterScriptsLoaded="{!c.afterScriptsLoaded}"/>
+    
+    <aura:attribute name="checkRecordType"    type="Boolean" default="false"/>
+    <aura:attribute name="showModal"          type="Boolean" default="false"/>
+    <aura:attribute name="recordId"           type="String"/>
+    <aura:attribute name="storeSessionURL"    type="String"/>
+    <aura:attribute name="storeFrontURL"      type="String"/>
+    <aura:attribute name="guestStoreFrontURL" type="String"/>
+    <aura:attribute name="recordLoadError"    type="String"/>
+    <aura:attribute name="caseRecord"         type="Case"/>
+    <aura:handler name="OBONewAccount" event="c:trac_OBO_ComponentEvent" action="{!c.openShoppingCart}"/>
+
+
+    <force:recordData aura:id="recordLoader"
+                        recordId="{!v.recordId}"
+                        fields="Id, ContactId, Order_Number__c, Business_Unit__c, Contact.SFCC_Customer_Id__c"
+                        targetFields="{!v.caseRecord}"
+                        targetError="{!v.recordLoadError}"
+    />
+
+    <lightning:button variant="brand" label="New Order (SFCC)" iconName="utility:cart" iconPosition="right" onclick="{!c.createNewOrder}" />
+
+    <aura:if isTrue="{!v.showModal}">
+        <div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                     aria-describedby="modal-content-id-1" class="slds-modal slds-modal_medium slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Confirm Contact</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
+                        <h3 class="slds-text-heading_small">Step 1. Confirm the contact information</h3>
+                        <c:trac_CaseContact recordId="{!v.recordId}"/>
+                        <div class="slds-p-top--medium">
+                            <h3 class="slds-text-heading_small">Step 2. If there is no contact information or it's wrong, search by email</h3>
+                        </div>
+                        <c:trac_ContactSearch recordId="{!v.recordId}" isNewOrder="true"/>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <div class="slds-text-align_left">
+                            <h3 class="slds-text-heading_small">Step 3. Once the contact information is confirmed, open the store front</h3>
+                            <ul>
+                                <li>You can create an account if the customer doesn't have one</li>
+                                <li>You can continue as guest without creating an online account</li>
+                                <li>You can log in on behalf of the customer using their account</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <lightning:buttonGroup>
+                                <!--<lightning:button variant="brand" label="Create Account" iconName="utility:adduser" iconPosition="right" onclick="{!c.createAccountAndOpenShoppingCart}"-->
+                                                  <!--disabled="{!or(not(empty(v.caseRecord.Contact.SFCC_Customer_Id__c)),empty(v.caseRecord.ContactId))}"/>-->
+
+                                <c:trac_CreateCommerceCloudAccount recordId="{!v.recordId}" buttonDisabled="{!or(not(empty(v.caseRecord.Contact.SFCC_Customer_Id__c)),empty(v.caseRecord.ContactId))}"/>
+                                <lightning:button variant="brand" label="Continue As Guest" iconName="utility:cart" iconPosition="right" onclick="{!c.openShoppingCartGuest}"
+                                                  disabled="{!not(empty(v.caseRecord.Contact.SFCC_Customer_Id__c))}"/>
+                                <lightning:button variant="brand" label="Order On Behalf" iconName="utility:cart" iconPosition="right" onclick="{!c.openShoppingCart}"
+                                                  disabled="{!empty(v.caseRecord.Contact.SFCC_Customer_Id__c)}"/>
+                                <lightning:button variant="neutral" label="Cancel" iconPosition="right" onclick="{!c.closeModal}" />
+                            </lightning:buttonGroup>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop--open"></div>
+        </div>
+    </aura:if>
+
+
+</aura:component>

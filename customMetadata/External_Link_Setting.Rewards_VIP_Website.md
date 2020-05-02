@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Bay__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>LT__c</field>
@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>MHF__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Off_5th__c</field>

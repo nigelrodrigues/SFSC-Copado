@@ -3,7 +3,7 @@
  *  @author      Jeremy Horan, Traction on Demand.
  *  @date        7/17/2019
  */
-public with sharing class trac_CancelOrderCtlr {
+public without sharing class trac_CancelOrderCtlr {
 
     private final static String CASE_FAILED_MSG = 'Case update failed.';
 
@@ -17,9 +17,6 @@ public with sharing class trac_CancelOrderCtlr {
                                             String cancelReasonCode,
                                             String quantityToCancel)
     {
-        System.debug('cancelReason' + cancelReason);
-        System.debug('cancelReasonCode' + cancelReasonCode);
-
         TLAuraResponse response = new TLAuraResponse(true);
 
         trac_WS_CancelOrder cancelOrder = new trac_WS_CancelOrder();
@@ -82,14 +79,10 @@ public with sharing class trac_CancelOrderCtlr {
         try {
             caseRecord.Cancellation_Reason__c = cancelReason;
             caseRecord.Order_is_Cancelled__c = true;
-            System.debug('Cancellation_Type__c: ' + caseRecord.Cancellation_Type__c);
-            System.debug('Cancellation_Reason__c: ' + caseRecord.Cancellation_Reason__c);
-            System.debug('Order_is_Cancelled__c: ' + caseRecord.Order_is_Cancelled__c);
             update caseRecord;
         }
         catch(Exception e)
         {
-            System.debug(CASE_FAILED_MSG + 'Error: ' + e.getMessage());
             throw new CustomException(CASE_FAILED_MSG + 'Error: ' + e.getMessage());
         }
     }

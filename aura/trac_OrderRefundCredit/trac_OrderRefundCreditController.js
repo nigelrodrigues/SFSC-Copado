@@ -51,12 +51,16 @@
 
                 component.find("orderRefundCreditCreator").saveRecord(function(saveResult) {
                     if (saveResult.state === "SUCCESS" || saveResult.state === "DRAFT") {
-                        var navigateEvent = $A.get("e.force:navigateToSObject");
-                        navigateEvent.setParams({
-                            "recordId": saveResult.recordId
-                        });
-                        navigateEvent.fire();
-
+                        component.set("v.isModalOpen", true);
+                        var flow = component.find("flow");
+                        var inputVariables = [
+                            {
+                                name : 'RecordID',
+                                type : 'String',
+                                value : saveResult.recordId
+                            }
+                        ];
+                        flow.startFlow("Order_Refund_Credit", inputVariables);
                     } else if (saveResult.state === "INCOMPLETE") {
                         // handle the incomplete state
                         console.log("User is offline, device doesn't support drafts.");
@@ -71,5 +75,20 @@
                 component.set('v.isLoading', false);
             })
         );
+    },
+
+    handleOpenModal: function(component, event, helper) {
+        component.set("v.isModalOpen", true);
+    },
+
+    handleCloseModal: function(component, event, helper) {
+        component.set("v.isModalOpen", false);
+    },
+
+    handleStatusChange : function (component, event, helper) {
+        if(event.getParam("status") === "FINISHED") {
+            component.set("v.isModalOpen", false);
+            helper.showToast("Order Refund Credit created!", "success", "Success");
+        }
     }
 })

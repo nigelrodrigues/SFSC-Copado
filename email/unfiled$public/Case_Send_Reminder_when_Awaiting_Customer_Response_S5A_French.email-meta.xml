@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email reminder to customer for Saks in French</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Reminder when Awaiting Customer Response (S5A French)</name>
+    <style>none</style>
+    <subject>Nous avons besoin de plus de renseignements pour pouvoir vous aider</subject>
+    <textOnly>Bonjour {!Contact.FirstName},
+
+Merci d’avoir communiqué avec {!Case.Business_Unit__c}. Nous voulons vous aider à régler votre problème, mais nous avons besoin d’autres renseignements. Veuillez répondre d’ici deux jours au courriel que nous vous avons fait parvenir il y a cinq jours.
+
+Si, pour quelque raison que ce soit, vous ne retrouvez pas notre courriel initial, veuillez communiquer avec nous en cliquant sur le lien ci-dessous et en précisant le numéro de référence {!Case.CaseNumber}.
+
+COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT
+
+Sincères salutations.
+Service à la clientèle de {!Case.Business_Unit__c}
+
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

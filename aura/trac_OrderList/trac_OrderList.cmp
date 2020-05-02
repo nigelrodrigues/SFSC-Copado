@@ -7,6 +7,7 @@
     <aura:attribute name="caseRecord" type="Case"/>
     <aura:attribute name="orders" type="Object[]"/>
     <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="postalCode" type="String" default=""/>
 
     <div class="slds-scrollable" >
         <!-- TABLE CONTENT-->
@@ -44,7 +45,7 @@
         <!--</table>-->
             <tbody>
                 <aura:iteration items="{!v.orders}" var="order" indexVar="count">
-                    <c:trac_DisplayOrdersInList order="{!order}" count="{!count}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+                    <c:trac_DisplayOrdersInList order="{!order}" count="{!count}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}" postalCode="{!v.postalCode}" />
             </aura:iteration>
             </tbody>
         </table>

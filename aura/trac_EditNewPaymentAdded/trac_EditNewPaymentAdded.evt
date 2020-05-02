@@ -1,0 +1,6 @@
+<!--
+ - Created by asolanki on 4/1/2020.
+ -->
+
+<aura:event type="APPLICATION" description="trac_EditNewPaymentAdded">
+</aura:event>

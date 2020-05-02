@@ -5,12 +5,15 @@
  - @date 2019-08-28
  -->
 
-<aura:component description="trac_PreChatComponent" implements="lightningsnapin:prechatUI">
+<aura:component description="trac_PreChatComponent" implements="lightningsnapin:prechatUI" controller="trac_ContactSupportFormController" >
     <!-- Pre-chat field components to render -->
     <aura:attribute name="prechatFieldComponents" type="List" description="An array of objects representing the pre-chat fields specified in pre-chat setup."/>
+    <aura:attribute name="communityValues" type="trac_ContactSupportFormController.MetaDataWrapper" />
+    <aura:attribute name="showForm" type="Boolean" default="false"/>
 
     <!-- For Aura performance -->
     <aura:locator target="startButton" description="Pre-chat form submit button."/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
     <!-- Contains methods for getting pre-chat fields, starting a chat, and validating fields -->
     <lightningsnapin:prechatAPI aura:id="prechatAPI"/>
@@ -18,7 +21,9 @@
     <div class="prechatUI">
         <div class="prechatContent">
             <ul class="fieldsList">
-                <c:tracPreChatForm onformsubmitaura="{!c.handleFormSubmit}" />
+                <aura:if isTrue="{!v.showForm}">
+                    <c:tracPreChatForm onformsubmitaura="{!c.handleFormSubmit}" language="{!v.communityValues.Language}" caseRecordTypeId="{!v.communityValues.RecordTypeId}" businessUnit="{!v.communityValues.BusinessUnit}" />
+                </aura:if>
             </ul>
         </div>
     </div>

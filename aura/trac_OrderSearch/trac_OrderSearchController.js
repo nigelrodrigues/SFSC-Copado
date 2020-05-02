@@ -6,6 +6,13 @@
         helper.fetchPickListVal(component, 'Business_Unit__c', 'businessUnit');
         var orderNo = component.get("v.orderNumber");
         var cs = component.get("v.caseRecord");
+
+        if(cs && (cs.Business_Unit__c == 'Off 5th'|| cs.Business_Unit__c == 'Saks')){
+            component.set("v.setPostalRequired",true);
+        }else{
+            component.set("v.setPostalRequired",false);
+        }
+
         if (orderNo !== null && !$A.util.isEmpty(orderNo)) {
             if (component.find("orderNumberInput")) {
                 component.find("orderNumberInput").set("v.value", orderNo);
@@ -15,9 +22,7 @@
             }
             helper.searchByOrderNumber(component, event, helper, orderNo);
         }
-        /*else{
-            var action = component.get("c.searchOrders");
-        }*/
+
     },
 
     formPress: function (component, event, helper) {
@@ -28,6 +33,11 @@
 
     onPicklistChange: function (component, event, helper) {
         var pickVal = event.getSource().get("v.value");
+        if(pickVal == 'Off 5th' || pickVal == 'Saks'){
+            component.set("v.setPostalRequired",true);
+        }else{
+            component.set("v.setPostalRequired",false);
+        }
     },
 
     advanceSearch: function (component, event, helper) {
@@ -44,7 +54,8 @@
     },
 
     handleSearch: function (component, event, helper) {
-        helper.handleSearch(component, event, helper);
+    helper.handleSearch(component, event, helper);
+
     },
 
     handleRefreshEvent: function (component, event, helper) {

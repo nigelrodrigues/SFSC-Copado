@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Case opened and closed within 8 calendar hours and associate placed a new order on behalf of the customer</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Case Created &amp; Closed - New Order (O5 French)</name>
+    <style>none</style>
+    <subject>Merci de magasiner à Off 5th!</subject>
+    <textOnly>Bonjour {!Contact.FirstName},
+
+Merci d’avoir magasiné chez nous. Nous sommes heureux d’avoir pu vous aider à passer votre commande aujourd’hui. Veuillez noter que votre numéro de commande est le {!Case.Order_Number__c}.
+
+COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT
+
+Sincères salutations.
+{!Case.Business_Unit__c} Customer Service
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

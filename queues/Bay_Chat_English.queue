@@ -6,14 +6,11 @@
         <publicGroups>
             <publicGroup>Bay_Chat_English</publicGroup>
         </publicGroups>
-        <users>
-            <user>aditi.ray@hbc.com</user>
-            <user>tractionadmin@hbc.com</user>
-            <user>conswella.magee-vendor@hbc.com</user>
-            <user>jenalyn.ababon@hbc.com</user>
-        </users>
     </queueMembers>
     <queueRoutingConfig>Chat_English</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
     <queueSobject>
         <sobjectType>LiveAgentSession</sobjectType>
     </queueSobject>

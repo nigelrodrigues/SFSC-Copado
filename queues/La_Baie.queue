@@ -6,22 +6,8 @@
         <publicGroups>
             <publicGroup>Bay_Digital_French</publicGroup>
         </publicGroups>
-        <roles>
-            <role>Bay_Digital_El_Salvador</role>
-        </roles>
-        <users>
-            <user>audrey.plantegenet@hbc.com</user>
-            <user>birante.doucoure@hbc.com</user>
-            <user>cynthia.mcgraw@hbc.com</user>
-            <user>harold.adjibi@hbc.com</user>
-            <user>kevin.richard@hbc.com</user>
-            <user>robert.kelly@hbc.com</user>
-            <user>shelsea.cormier@hbc.com</user>
-            <user>stephane.parent@hbc.com</user>
-            <user>svetlana.lynch@hbc.com</user>
-        </users>
     </queueMembers>
-    <queueRoutingConfig>All_Queues</queueRoutingConfig>
+    <queueRoutingConfig>French_Email_Web_Case</queueRoutingConfig>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

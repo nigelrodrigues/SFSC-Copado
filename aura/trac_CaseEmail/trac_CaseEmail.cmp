@@ -1,0 +1,31 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @description Component for searching emails based on order number or email.
+ -->
+
+<aura:component description="trac_CaseEmail"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForRecordHome"
+>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Id, ContactId, Order_Number__c, Business_Unit__c,
+                                Contact.Email, Contact.Phone"
+                      targetFields="{!v.caseRecord}"
+                      targetError="{!v.recordLoadError}"
+    />
+
+    <div>
+        <aura:if isTrue="{!v.caseRecord.Order_Number__c != null}">
+            <c:trac_EmailSearch orderNumber="{!v.caseRecord.Order_Number__c}" caseRecord="{!v.caseRecord}"
+                                email="{!v.caseRecord.Contact.Email}" />
+            <aura:set attribute="else" >
+                <c:trac_EmailSearch caseRecord="{!v.caseRecord}"/>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

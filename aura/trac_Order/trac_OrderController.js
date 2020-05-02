@@ -3,11 +3,8 @@
  */
 ({
     doInit : function (component, event, helper) {
-        if(component.get("v.callOrderDetailAPI")){
-            var orderNo = component.get("v.order").OrderNo;
-            helper.searchByOrderNumber(component, event, helper, orderNo);
-        }
         helper.setUnresolvedHolds(component, event, helper);
+        helper.spaBusinessUnit(component, event, helper);
     },
 
     showOrderLineItems : function (component, event, helper) {
@@ -26,7 +23,8 @@
 
         action.setParams({
             "caseId": caseRecord.Id,
-            "orderNo": order.OrderNo
+            "orderNo": order.OrderNo,
+            "orderZipCode": (order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : null
         });
 
         action.setCallback(this, function (response) {
@@ -41,5 +39,15 @@
         });
 
         $A.enqueueAction(action);
+    },
+
+    handleAdditionalInfo: function (component, event, helper) {
+        if (component.get("v.showAdditionalInfo")) {
+            component.set("v.showAdditionalInfo", false);
+        }
+        else {
+            component.set("v.showAdditionalInfo", true);
+        }
     }
+
 })

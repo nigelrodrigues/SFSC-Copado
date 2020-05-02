@@ -388,17 +388,6 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Amount__c</fullName>
-        <externalId>false</externalId>
-        <label>Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
         <fullName>Business_Unit__c</fullName>
         <externalId>false</externalId>
         <label>Business Unit</label>
@@ -464,6 +453,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Consumed_Date__c</fullName>
+        <description>https://hbcdigital.atlassian.net/browse/UAD-1090
+Date to store the timestamp when the Promo Code was consumed</description>
+        <externalId>false</externalId>
+        <label>Consumed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>Consumed__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -471,6 +471,63 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Promo_Code_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Promo Code Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Shipping delay</fullName>
+                    <default>false</default>
+                    <label>Shipping delay</label>
+                </value>
+                <value>
+                    <fullName>Incorrect merchandise</fullName>
+                    <default>false</default>
+                    <label>Incorrect merchandise</label>
+                </value>
+                <value>
+                    <fullName>Damaged merchandise</fullName>
+                    <default>false</default>
+                    <label>Damaged merchandise</label>
+                </value>
+                <value>
+                    <fullName>Cancelled order</fullName>
+                    <default>false</default>
+                    <label>Cancelled order</label>
+                </value>
+                <value>
+                    <fullName>Refund delay</fullName>
+                    <default>false</default>
+                    <label>Refund delay</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>TBD</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TBD</label>
+                </value>
+                <value>
+                    <fullName>Test value 1</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Test value 1</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Promo_Code__c</fullName>
@@ -488,7 +545,6 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Amount__c</columns>
         <columns>Amount_List__c</columns>
         <columns>Case__c</columns>
         <columns>Consumed__c</columns>

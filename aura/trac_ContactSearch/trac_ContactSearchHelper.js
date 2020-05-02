@@ -2,7 +2,7 @@
  * Created by ragrawal on 6/17/2019.
  */
 ({
-    searchHelper: function(component, event) {
+    searchHelper: function(component, event, helper) {
         component.set("v.Message", false);
         component.find("Id_spinner").set("v.class" , 'slds-show');
         
@@ -23,7 +23,14 @@
                 } else {
                     component.set("v.Message", false);
                 }
-                if( storeResponse.length!=null && storeResponse.length>25 ) {
+                if (storeResponse.length === 1) {
+                    component.set("v.isModalOpen", false);
+                    var caseId = component.get("v.recordId");
+                    var contact = storeResponse[0];
+                    if (caseId && contact) {
+                        helper.linkContactAndCase(component, caseId, contact.Id);
+                    }
+                }else if( storeResponse.length!=null && storeResponse.length>25 ) {
                     component.set("v.TotalNumberOfRecord", 25);
                     var partialResults = storeResponse.slice(0, 25);
                     component.set("v.searchResult", partialResults);
@@ -34,7 +41,7 @@
                     component.set("v.isPartial", false);
                 }
             }else if (state === "INCOMPLETE") {
-                alert('Response is Incompleted');
+                alert('Response is incomplete');
             }else if (state === "ERROR") {
                 var errors = response.getError();
                 if (errors) {

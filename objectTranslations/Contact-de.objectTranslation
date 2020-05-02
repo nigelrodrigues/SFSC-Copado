@@ -5,6 +5,10 @@
         <name>medalliaOutbound_createSurvey</name>
     </fieldSets>
     <fields>
+        <label><!-- Available Points --></label>
+        <name>Available_Points__c</name>
+    </fields>
+    <fields>
         <label><!-- Business Unit --></label>
         <name>Business_Unit__c</name>
         <picklistValues>
@@ -131,6 +135,15 @@
         <name>General_Manager__c</name>
     </fields>
     <fields>
+        <label><!-- Gift card amount --></label>
+        <name>Gift_card_amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check if an high priority contact --></help>
+        <label><!-- High Priority Contact --></label>
+        <name>High_Priority_Contact__c</name>
+    </fields>
+    <fields>
         <label><!-- Invalid Contact --></label>
         <name>Invalid_Contact__c</name>
     </fields>
@@ -171,6 +184,14 @@
             <masterLabel>UCID</masterLabel>
             <translation><!-- UCID --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Linked --></label>
+        <name>Linked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Id --></label>
+        <name>Loyalty_Id__c</name>
     </fields>
     <fields>
         <label><!-- Loyalty Number --></label>
@@ -242,6 +263,14 @@
         <name>Mailing_Phone__c</name>
     </fields>
     <fields>
+        <label><!-- Next gift card amount --></label>
+        <name>Next_gift_card_amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- OMS Update Date --></label>
+        <name>OMS_Update_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- Order Number --></label>
         <name>Order_Number__c</name>
     </fields>
@@ -263,13 +292,26 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Points to next reward --></label>
+        <name>Points_to_next_reward__c</name>
+    </fields>
+    <fields>
         <help><!-- This field holds Salesforce Commerce Cloud Customer ID. --></help>
         <label><!-- SFCC Customer Id --></label>
         <name>SFCC_Customer_Id__c</name>
     </fields>
     <fields>
+        <help><!-- This field holds Salesforce Commerce Cloud customer number. --></help>
+        <label><!-- SFCC Customer Number --></label>
+        <name>SFCC_Customer_Number__c</name>
+    </fields>
+    <fields>
         <label><!-- Store Alpha --></label>
         <name>Store_Alpha__c</name>
+    </fields>
+    <fields>
+        <label><!-- Store Hours --></label>
+        <name>Store_Hours__c</name>
     </fields>
     <fields>
         <label><!-- Store Number --></label>
@@ -385,6 +427,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Loyalty Tier --></label>
+        <name>Tier_Status__c</name>
+    </fields>
+    <fields>
         <label><!-- UCID Number --></label>
         <name>UCID_Number__c</name>
     </fields>
@@ -406,6 +452,10 @@
         <label><!-- HBC Asset --></label>
         <name>HBC_Asset</name>
     </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Contact Cannot be created for the supplied Phone Number --></errorMessage>
+        <name>Prevent_Generic_Contact_Creation</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Only edit the information if the customer changed both their first and last name. If not, please do a Contact Search to link the customer to the case. (Error Contact-01) --></errorMessage>
         <name>Prevent_Name_Edit</name>

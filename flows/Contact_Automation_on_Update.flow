@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Contact_Changes_Informed</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Send updated contact info</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>Contact.Contact_Changes_Informed</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -11,6 +31,9 @@
         <label>myDecision</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
@@ -52,8 +75,49 @@
             <label>Is UCID UPDATE</label>
         </rules>
     </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Contact Info Changed?</label>
+        </rules>
+    </decisions>
     <description>Remove the Is UCID Update</description>
-    <interviewLabel>Contact_Automation_on_Update-1_InterviewLabel</interviewLabel>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>OR(ISCHANGED([Contact].LastName) , ISCHANGED([Contact].Email) , ISCHANGED([Contact].Phone), ISCHANGED([Contact].MailingCity), 
+ISCHANGED([Contact].MailingCountry), ISCHANGED([Contact].MailingCountryCode), ISCHANGED([Contact].MailingPostalCode), ISCHANGED([Contact].MailingState),  ISCHANGED([Contact].MailingStateCode), ISCHANGED([Contact].MailingStreet))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(ISCHANGED({!myVariable_current.LastName}) , ISCHANGED({!myVariable_current.Email}) , ISCHANGED({!myVariable_current.Phone}), ISCHANGED({!myVariable_current.MailingCity}), 
+ISCHANGED({!myVariable_current.MailingCountry}), ISCHANGED({!myVariable_current.MailingCountryCode}), ISCHANGED({!myVariable_current.MailingPostalCode}), ISCHANGED({!myVariable_current.MailingState}),  ISCHANGED({!myVariable_current.MailingStateCode}), ISCHANGED({!myVariable_current.MailingStreet}))</expression>
+    </formulas>
+    <interviewLabel>Contact_Automation_on_Update-4_InterviewLabel</interviewLabel>
     <label>Contact - Automation on Update</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -109,6 +173,9 @@
         <label>Make UCID False</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision2</targetReference>
+        </connector>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -161,7 +228,7 @@
         <object>Contact</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

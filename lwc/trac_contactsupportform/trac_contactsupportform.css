@@ -30,17 +30,3 @@
 .custom-hidden {
     display: none;
 }
-.custom-message {
-    padding-left:4px;
-    margin-top:-8px
-}
-.custom-margin-4 {
-    margin-left: 4px;
-    margin-right: 4px;
-}
-.custom-error-box {
-    padding: 8px 12px 8px 12px;
-    border: solid 2px;
-    background-color: #ffe6e6;
-    margin-bottom: .75rem;
-}

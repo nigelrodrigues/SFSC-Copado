@@ -24,7 +24,7 @@ public without sharing class trac_NewOrderCtlr {
             createOrder.createOrderRequest.Order.DocumentType = trac_WS_OrderUtils.getOrderType();
             createOrder.createOrderRequest.Order.EnterpriseCode = trac_WS_OrderUtils.getEnterpriseCodeFromBusinessUnit(aCase.Business_Unit__c);
             createOrder.createOrderRequest.Order.EntryType = trac_WS_OrderUtils.getNewOrderEntryType();
-            createOrder.createOrderRequest.Order.OrderDate =trac_WS_OrderUtils.getFormattedDatetime(Datetime.now());
+            createOrder.createOrderRequest.Order.OrderDate = trac_WS_OrderUtils.getFormattedDatetime(Datetime.now());
 
             if (contact != null && validateContact(contact)) {
                 createOrder.createOrderRequest.Order.CustomerEMailID = contact.Email;
@@ -34,8 +34,7 @@ public without sharing class trac_NewOrderCtlr {
                 createOrder.createOrderRequest.Order.PersonInfoShipTo = getMailingAddressWrapperFromContact(contact);
 
                 Boolean success = createOrder.send();
-
-                if (success &&  createOrder.createOrderResponse != null && createOrder.createOrderResponse.OrderNo != null) {
+                if (success && createOrder.createOrderResponse != null && createOrder.createOrderResponse.OrderNo != null) {
                     aCase.Order_Number__c = createOrder.createOrderResponse.OrderNo;
                     update aCase;
 
@@ -45,8 +44,7 @@ public without sharing class trac_NewOrderCtlr {
                         response.returnValuesMap.put('username', user.EmployeeNumber);
                     }
                     response.returnValuesMap.put('orderNumber', createOrder.createOrderResponse.OrderNo);
-                }
-                else {
+                } else {
                     Integration_Error__c integrationError = trac_IntegrationError.addError(new Integration_Error__c(
                             Description__c = createOrder.jsonError,
                             Endpoint__c = createOrder.ENDPOINT,
@@ -57,8 +55,7 @@ public without sharing class trac_NewOrderCtlr {
 
                     response = new TLAuraResponse(false, 'Looks like there\'s a problem with OMS, give your admin this  error ID: ' + integrationError.Id);
                 }
-            }
-            else {
+            } else {
                 response = new TLAuraResponse(false, 'Please enter a valid Contact with a full address: Street, City, State, Country and Postal Code');
             }
 
@@ -138,7 +135,7 @@ public without sharing class trac_NewOrderCtlr {
         if (contact.MailingCountryCode == null) {
             isValid = false;
         }
-        if (contact.MailingStateCode == null) {
+        if (contact.MailingStateCode == null && String.isNotBlank(contact.MailingCountryCode) && (contact.MailingCountryCode.equals('US') || contact.MailingCountryCode.equals('CA'))) {
             isValid = false;
         }
         if (contact.MailingPostalCode == null) {
@@ -153,7 +150,7 @@ public without sharing class trac_NewOrderCtlr {
         if (contact.OtherCountryCode == null) {
             isValid = false;
         }
-        if (contact.OtherStateCode == null) {
+        if (contact.OtherStateCode == null && String.isNotBlank(contact.OtherCountryCode) && (contact.OtherCountryCode.equals('US') || contact.OtherCountryCode.equals('CA'))) {
             isValid = false;
         }
         if (contact.OtherPostalCode == null) {
@@ -196,5 +193,29 @@ public without sharing class trac_NewOrderCtlr {
                 WHERE Id = :userId
         ];
         return (!users.isEmpty()) ? users[0] : null;
+    }
+    
+    @AuraEnabled
+    public static String getNarvarLinks(String businessUnit, String language) {
+        List<Narvar_Link_mapping__mdt> narvarLinkMappings = new List<Narvar_Link_mapping__mdt>();
+        if(String.isNotBlank(language) && businessUnit.equals('Hudson\'s Bay')){
+            narvarLinkMappings = [
+                    SELECT Business_Unit__c, Language__c, Link_to_Narvar__c
+                    FROM Narvar_Link_mapping__mdt
+                    WHERE Business_Unit__c = :businessUnit AND Language__c = :language
+            ];
+        }else if(!businessUnit.equals('Hudson\'s Bay')){
+            narvarLinkMappings = [
+                    SELECT Business_Unit__c, Language__c, Link_to_Narvar__c
+                    FROM Narvar_Link_mapping__mdt
+                    WHERE Business_Unit__c = :businessUnit
+            ];
+        }
+
+        if (!narvarLinkMappings.isEmpty()) {
+            return narvarLinkMappings[0].Link_to_Narvar__c;
+        } else {
+            return null;
+        }
     }
 }

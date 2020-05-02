@@ -1,0 +1,31 @@
+<!--
+ - @description Component to provide Contact Search based on different fields
+ - @author      Piyush Bansal, Traction on Demand
+ - @date        2019-12-11
+ -->
+<aura:component description="trac_SearchContacts"
+                implements="force:hasRecordId,flexipage:availableForAllPageTypes,lightning:isUrlAddressable">
+    <aura:attribute type="Contact" name="contactRecord"
+                    default="{'sObjectType':'Contact', 'Business_Unit__c':'Hudson\'s Bay'}"/>
+    <aura:attribute type="Case" name="caseRecord" default="{'sObjectType':'Case'}"/>
+    <aura:attribute type="Boolean" name="showSearchFilters" default="false"/>
+
+    <aura:attribute name="recordId" type="String"/>
+
+    <force:recordData aura:id="caseLoader"
+                      recordId="{!v.recordId}"
+                      fields="SuppliedEmail,SuppliedPhone,Business_Unit__c"
+                      targetFields="{!v.caseRecord}"
+    />
+
+    <lightning:button onclick="{!c.searchContact}"
+                      variant="brand"
+                      label="Search Contacts"
+                      iconName="utility:search"/>
+    <c:trac_ContactSearch aura:id="searchModal"
+                          contactRecord="{!v.contactRecord}"
+                          showSearchFilters="{!v.showSearchFilters}"
+                          recordId="{!v.recordId}"
+    />
+
+</aura:component>

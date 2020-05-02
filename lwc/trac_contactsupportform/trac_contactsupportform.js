@@ -8,14 +8,25 @@
 import { LightningElement, track, api, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import strUserId from '@salesforce/apex/trac_ContactSupportFormController.getGuestUserId';
+
 import { getPicklistValues } from 'lightning/uiObjectInfoApi';
+
 import getCaseTypeValidations from '@salesforce/apex/trac_ContactSupportFormController.getCaseTypeValidations';
-import getCaseTypePicklistValues from '@salesforce/apex/trac_ContactSupportFormController.getCaseTypeValues';
+/*import getCaseTypePicklistValues from '@salesforce/apex/trac_ContactSupportFormController.getCaseTypeValues';*/
 import attachFilesToCase from '@salesforce/apex/trac_ContactSupportFormController.attachFilesToCase';
+
 import { labels, fieldLabels } from './trac_contactsupportformlabels';
+
+
+
+
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import CASE_OBJECT from '@salesforce/schema/Case';
 import CASETYPE_FIELD from '@salesforce/schema/Case.Case_Type__c';
+
+
+
+
 
 
 const ORDER_CLASS = 'order-number custom-input-field';
@@ -23,21 +34,12 @@ const REQUIRED_CLASS = 'custom-required';
 
 
 export default class trac_ContactSupportForm extends LightningElement {
-    @api englishCommunityUser;
-    @api frenchCommunityUser;
 
     @wire(getObjectInfo, { objectApiName: CASE_OBJECT })
     objectInfo;
-    @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: CASETYPE_FIELD})
+    @wire(getPicklistValues, { recordTypeId: '$_caseRecordTypeId', fieldApiName: CASETYPE_FIELD})
     caseTypePicklistValues;
 
-    get currentUserId() {
-        if(this.labels.lblLanguage === 'English') {
-            return this.englishCommunityUser;
-        } else if(this.labels.lblLanguage === 'French') {
-            return this.frenchCommunityUser;
-        }
-    }
 
     labels = labels;  // any visible UI text on the layout
     subtitle = {
@@ -55,21 +57,25 @@ export default class trac_ContactSupportForm extends LightningElement {
             required : fieldLabels.OrderNumber
         },
         subject : fieldLabels.Subject,
-        description : fieldLabels.Description + ' ' + labels.lblOptional
+        description : fieldLabels.Description + ' ' + labels.lblOptional,
     };
 
-    @track defaultBusinessUnit = 'Hudson\'s Bay'; // Prepopulated value (should be set from aura component but doesn't work)
-    @track defaultLanguage = 'English'; // Prepopulated value (should be set from aura component but doesn't work)
-
-    @track caseTypeValues = getCaseTypePicklistValues({businessUnitValue : this.businessUnit}).then(result => {
-        this.caseTypeValues = result;
-    });
-
-    get businessUnit() {
-        return this.defaultBusinessUnit;
+    @api businessUnit;
+    @api language;
+    @api get caseRecordTypeId(){
+        return this._caseRecordTypeId;
+    }
+    set caseRecordTypeId(value){
+        this._caseRecordTypeId = value;
     }
 
+    /*@track caseTypeValues = getCaseTypePicklistValues({businessUnitValue : this.businessUnit}).then(result => {
+        this.caseTypeValues = result;
+    });*/
+
+
     get caseTypeOptions() {
+        console.log('caseType--'+this.caseTypePicklistValues);
         return this.caseTypePicklistValues;
     }
 
@@ -81,7 +87,6 @@ export default class trac_ContactSupportForm extends LightningElement {
     //guest = isGuest; // Boolean value used to decipher logged in user from guest user
     @track fieldCaseType; // String value set by the Case field "Case_Type__c" on the UI
     @track orderClass = ORDER_CLASS; // String value of the css class to identify the Order_Number__c field
-    @track emptyFileList = true; //used to determine if the file list is empty or not so that the pill continer can be hidden
     defaultOrigin = 'Support Community';
 
     get isEditMode() {
@@ -106,7 +111,6 @@ export default class trac_ContactSupportForm extends LightningElement {
         this.handleTopicChange(event, 'Subject');
         this.fieldCaseType = event.detail.value;
         const orderInputDiv = this.template.querySelector('.order-number');
-        const orderErrorDiv = this.template.querySelector('.order-number-error-div');
 
         let orderRequired = false;
         for (let i = 0; i < this.caseTypes.length; i++) {
@@ -118,14 +122,15 @@ export default class trac_ContactSupportForm extends LightningElement {
         if (orderRequired) {
             this.orderClass = ORDER_CLASS + ' ' + REQUIRED_CLASS;
             orderInputDiv.label = this.placeholders.order.required;
-            orderErrorDiv.classList.add('custom-message');
+            // orderErrorDiv.classList.add('custom-message');
         } else {
             this.orderClass = ORDER_CLASS;
             // orderErrorDiv.classList.remove('custom-message');
             orderInputDiv.classList.remove('slds-has-error');
             orderInputDiv.label = this.placeholders.order.optional;
-            orderErrorDiv.classList.add('custom-hidden');
+            // orderErrorDiv.classList.add('custom-hidden');
         }
+
     }
 
 
@@ -157,7 +162,6 @@ export default class trac_ContactSupportForm extends LightningElement {
             });
         }
         this.uploadedFiles = JSON.parse(JSON.stringify(this.uploadedFiles));
-        this.emptyFileList = false;
     }
 
 
@@ -168,9 +172,6 @@ export default class trac_ContactSupportForm extends LightningElement {
     handleRemoveFile(event) {
         this.uploadedFiles.splice(event.detail.index, 1);
         this.uploadedFiles = JSON.parse(JSON.stringify(this.uploadedFiles));
-        if(this.uploadedFiles.length === 0){
-            this.emptyFileList = true;
-        }
     }
 
 
@@ -181,8 +182,6 @@ export default class trac_ContactSupportForm extends LightningElement {
     userId = strUserId().then(result => {
         this.userId = result;
     });
-
-    @track hasError = false;
 
     @track caseId; // String of the case id that gets created
     @track busy = true; // Boolean value used to hide or show the loading spinner
@@ -216,37 +215,35 @@ export default class trac_ContactSupportForm extends LightningElement {
         this.busy = true;
         // const fields = this.template.querySelectorAll('lightning-input-field.custom-required');
         const requiredFields = this.template.querySelectorAll('.custom-required');
-        const errorLabels = this.template.querySelectorAll('.custom-message');
+        // const errorLabels = this.template.querySelectorAll('.custom-message');
         let missingField = false;
 
         for(let i = 0; i < requiredFields.length; i++) {
             if (requiredFields[i].value === undefined || requiredFields[i].value === null || requiredFields[i].value === '') {
                 missingField = true;
-
                 if(!requiredFields[i].classList.contains('slds-has-error')) {
                     requiredFields[i].classList.add('slds-has-error');
-                    errorLabels[i].classList.remove('custom-hidden');
+                    // errorLabels[i].classList.remove('custom-hidden');
                 }
             } else {
-                errorLabels[i].classList.add('custom-hidden');
                 if(requiredFields[i].classList.contains('slds-has-error')) {
                     requiredFields[i].classList.remove('slds-has-error');
+                    // errorLabels[i].classList.add('custom-hidden');
                 }
             }
         }
 
         if(missingField) {
+            console.log('Inside handleFormSubmit');
             event.preventDefault();
-            // this.dispatchEvent(
-            //     new ShowToastEvent({
-            //         title: labels.lblError,
-            //         message: labels.lblCaseErrorMessage,
-            //         variant: 'error',
-            //     }),
-            // );
-
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: labels.lblError,
+                    message: labels.lblCaseErrorMessage,
+                    variant: 'error',
+                }),
+            );
             this.busy = false;
-            this.hasError = true;
         } else {
             const fields = event.detail.fields;
             const inputs = this.template.querySelectorAll('.custom-input-field');
@@ -255,11 +252,12 @@ export default class trac_ContactSupportForm extends LightningElement {
                 fields[field.name] = field.value;
             });
 
-            fields.Business_Unit__c = this.defaultBusinessUnit;
-            fields.Case_Language__c = this.labels.lblLanguage;
+            fields.Business_Unit__c = this.businessUnit;
+            fields.Case_Language__c = this.language;
+            fields.RecordTypeId = this.caseRecordTypeId;
             fields.Origin = this.defaultOrigin;
 
-            fields.Business_Unit__c = this.defaultBusinessUnit;
+            console.log(JSON.stringify(fields));
             this.template.querySelector('lightning-record-edit-form').submit(fields);
         }
         // this.busy = false;

@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>Map_to_Value__c</field>
-        <value xsi:type="xsd:string">Other</value>
+        <value xsi:type="xsd:string">Order Inquiry</value>
     </values>
 </CustomMetadata>

@@ -3,4 +3,13 @@
     <description>Provides access to the Online Email and Chat presence status</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Live Agent</label>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>QuickText</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
 </PermissionSet>

@@ -24,6 +24,14 @@
             <masterLabel>MHF</masterLabel>
             <translation><!-- MHF --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Off 5th</masterLabel>
+            <translation><!-- Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks</masterLabel>
+            <translation><!-- Saks --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- The name of the Community in the &quot;Network&quot; object and in &quot;All Communities&quot; --></help>

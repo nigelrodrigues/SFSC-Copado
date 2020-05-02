@@ -1,0 +1,24 @@
+<!--
+ - Created by Jeremy on 3/30/2020.
+ -->
+
+<aura:component description="trac_OrderLineItemInstructions">
+    <aura:attribute name="orderLineItem" type="Object"/>
+
+    <aura:if isTrue="{!not(empty(v.orderLineItem.Instructions.Instruction))}">
+        <aura:iteration items="{!v.orderLineItem.Instructions.Instruction}" var="instruction">
+            <div class="slds-border_bottom">
+                <lightning:card>
+                    <div class="slds-p-bottom--small">
+                        <h2 class="slds-card__header-title">Type:</h2>
+                        <lightning:formattedText value="{! instruction.InstructionType }"/>
+                    </div>
+                    <div>
+                        <h2 class="slds-card__header-title">Details:</h2>
+                        <lightning:formattedText value="{! instruction.InstructionText }"/>
+                    </div>
+                </lightning:card>
+            </div>
+        </aura:iteration>
+    </aura:if>
+</aura:component>

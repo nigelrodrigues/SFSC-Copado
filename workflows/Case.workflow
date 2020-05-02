@@ -37,6 +37,66 @@
         <template>unfiled$public/Case_Assigned_to_POS_team_LT</template>
     </alerts>
     <alerts>
+        <fullName>Case_Assigned_to_POS_Team_Client_Notification_O5</fullName>
+        <description>Case - Assigned to POS Team  - Client Notification O5</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Assigned_to_POS_team_O5</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Assigned_to_POS_Team_Client_Notification_O5_EN</fullName>
+        <description>Case - Assigned to POS Team  - Client Notification O5 (EN)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Assigned_to_POS_team_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Assigned_to_POS_Team_Client_Notification_O5_French</fullName>
+        <description>Case - Assigned to POS Team  - Client Notification O5 (FR)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Assigned_to_POS_team_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Assigned_to_POS_Team_Client_Notification_S5A_English</fullName>
+        <description>Case - Assigned to POS Team  - Client Notification S5A (EN)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Assigned_to_POS_team_S5A_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Assigned_to_POS_Team_Client_Notification_S5A_French</fullName>
+        <description>Case - Assigned to POS Team  - Client Notification S5A (FR)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Assigned_to_POS_team_S5A_French</template>
+    </alerts>
+    <alerts>
         <fullName>Case_Case_Closed_No_Response_English</fullName>
         <description>Case - Case Closed No Response (English)</description>
         <protected>false</protected>
@@ -71,6 +131,66 @@
         <senderAddress>no.repiles@lordandtaylor.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Case_Case_Closed_No_Response_LT</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Closed_No_Response_O5</fullName>
+        <description>Case - Case Closed No Response O5</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Closed_No_Response_O5</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Closed_No_Response_O5_English</fullName>
+        <description>Case - Case Closed No Response O5 (English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Closed_No_Response_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Closed_No_Response_O5_French</fullName>
+        <description>Case - Case Closed No Response O5 (French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Closed_No_Response_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Closed_No_Response_S5A_English</fullName>
+        <description>Case - Case Closed No Response S5A (English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Closed_No_Response_S5A_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Closed_No_Response_S5A_French</fullName>
+        <description>Case - Case Closed No Response S5A (French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Closed_No_Response_S5A_French</template>
     </alerts>
     <alerts>
         <fullName>Case_Case_Created_Closed_General_English</fullName>
@@ -109,6 +229,42 @@
         <template>unfiled$public/Case_Case_Created_Closed_General_LT</template>
     </alerts>
     <alerts>
+        <fullName>Case_Case_Created_Closed_General_O5_English</fullName>
+        <description>Case - Case Created &amp; Closed - General O5 (English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Created_Closed_General_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Created_Closed_General_O5_French</fullName>
+        <description>Case - Case Created &amp; Closed - General O5 (French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Created_Closed_General_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Created_Closed_General_S5A_English</fullName>
+        <description>Case - Case Created &amp; Closed - General S5A (English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Created_Closed_General_S5A_English</template>
+    </alerts>
+    <alerts>
         <fullName>Case_Case_Created_Closed_New_Order_English</fullName>
         <description>Case - Case Created &amp; Closed - New Order (English)</description>
         <protected>false</protected>
@@ -143,6 +299,114 @@
         <senderAddress>no.repiles@lordandtaylor.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Case_Case_Created_Closed_New_Order_LT</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Created_Closed_New_Order_O5_English</fullName>
+        <description>Case - Case Created &amp; Closed - New Order (O5 English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Created_Closed_New_Order_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Created_Closed_New_Order_O5_French</fullName>
+        <description>Case - Case Created &amp; Closed - New Order (O5 French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Created_Closed_New_Order_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Case_Created_Closed_New_Order_S5A_English</fullName>
+        <description>Case - Case Created &amp; Closed - New Order (S5A English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Case_Created_Closed_New_Order_S5A_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Case_Order_Cancelled_Email_Bay_English</fullName>
+        <description>Case Closed Case Order Cancelled Email Bay (English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>no.replies@hbc.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Case_Order_Cancelled_Email_Bay_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Case_Order_Cancelled_Email_Bay_French</fullName>
+        <description>Case Closed Case Order Cancelled Email Bay (French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>no.replies@hbc.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Case_Order_Cancelled_Email_Bay_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Case_Order_Cancelled_Email_LT</fullName>
+        <description>Case Closed Case Order Cancelled Email LT</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>no.repiles@lordandtaylor.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Case_Order_Cancelled_Email_LT</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Case_Order_Cancelled_Email_O5_English</fullName>
+        <description>Case Closed Case Order Cancelled Email (O5 English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Case_Order_Cancelled_Email_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Case_Order_Cancelled_Email_O5_French</fullName>
+        <description>Case Closed Case Order Cancelled Email (O5 French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Case_Order_Cancelled_Email_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Case_Order_Cancelled_Email_S5A_English</fullName>
+        <description>Case Closed Case Order Cancelled Email (S5A English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Case_Order_Cancelled_Email_S5A_English</template>
     </alerts>
     <alerts>
         <fullName>Case_Closed_Email_English</fullName>
@@ -181,6 +445,42 @@
         <template>unfiled$public/Case_Closed_Email_LT</template>
     </alerts>
     <alerts>
+        <fullName>Case_Closed_Email_O5_English</fullName>
+        <description>Case - Closed Email - (O5 English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Email_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Email_O5_French</fullName>
+        <description>Case - Closed Email - (O5 French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Email_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Email_S5A_English</fullName>
+        <description>Case - Closed Email - S5A English</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Email_S5A_English</template>
+    </alerts>
+    <alerts>
         <fullName>Case_Closed_Email_with_Promo_Code_English</fullName>
         <description>Case - Closed Email with Promo Code - English</description>
         <protected>false</protected>
@@ -215,6 +515,42 @@
         <senderAddress>no.repiles@lordandtaylor.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Case_Closed_Email_with_Promo_Code_LT</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Email_with_Promo_Code_O5_English</fullName>
+        <description>Case - Closed Email with Promo Code - (O5 English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Email_with_Promo_Code_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Email_with_Promo_Code_O5_French</fullName>
+        <description>Case - Closed Email with Promo Code - (O5 French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Email_with_Promo_Code_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Closed_Email_with_Promo_Code_S5A_English</fullName>
+        <description>Case - Closed Email with Promo Code - S5A English</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Closed_Email_with_Promo_Code_S5A_English</template>
     </alerts>
     <alerts>
         <fullName>Case_Closed_Executive_Escalation</fullName>
@@ -265,6 +601,66 @@
         <template>unfiled$public/Case_ORC_Closed_LT</template>
     </alerts>
     <alerts>
+        <fullName>Case_ORC_Processed_O5</fullName>
+        <description>Case - ORC Processed O5</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_ORC_Closed_O5</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_ORC_Processed_O5_EN</fullName>
+        <description>Case - ORC Processed (O5 EN)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_ORC_Closed_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_ORC_Processed_O5_FR</fullName>
+        <description>Case - ORC Processed (O5 FR)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_ORC_Closed_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_ORC_Processed_S5A_Eng</fullName>
+        <description>Case - ORC Processed S5A Eng</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_ORC_Closed_S5A_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_ORC_Processed_S5A_FR</fullName>
+        <description>Case - ORC Processed S5A FR</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_ORC_Closed_S5A_French</template>
+    </alerts>
+    <alerts>
         <fullName>Case_Send_Acknowledgement_Email_English</fullName>
         <description>Case - Send Acknowledgement Email (English)</description>
         <protected>false</protected>
@@ -301,6 +697,66 @@
         <template>unfiled$public/Case_Send_Acknowledgement_Email_LT</template>
     </alerts>
     <alerts>
+        <fullName>Case_Send_Acknowledgement_Email_O5</fullName>
+        <description>Case - Send Acknowledgement Email O5</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Acknowledgement_Email_O5</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Acknowledgement_Email_O5_English</fullName>
+        <description>Case - Send Acknowledgement Email (O5 English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>no.replies@saksoff5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Acknowledgement_Email_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Acknowledgement_Email_O5_French</fullName>
+        <description>Case - Send Acknowledgement Email (O5 French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>no.replies@saksoff5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Acknowledgement_Email_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Acknowledgement_Email_S5A_English</fullName>
+        <description>Case - Send Acknowledgement Email S5A (English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Acknowledgement_Email_S5A_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Acknowledgement_Email_S5A_French</fullName>
+        <description>Case - Send Acknowledgement Email S5A (French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Acknowledgement_Email_S5A_French</template>
+    </alerts>
+    <alerts>
         <fullName>Case_Send_Reminder_when_Awaiting_Customer_Response_English</fullName>
         <description>Case - Send Reminder when Awaiting Customer Response (English)</description>
         <protected>false</protected>
@@ -335,6 +791,66 @@
         <senderAddress>customercare.other@lordandtaylor.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Case_Send_Reminder_when_Awaiting_Customer_Response_LT</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Reminder_when_Awaiting_Customer_Response_O5</fullName>
+        <description>Case - Send Reminder when Awaiting Customer Response O5</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>customer.service@hbc.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Reminder_when_Awaiting_Customer_Response_O5</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Reminder_when_Awaiting_Customer_Response_O5_English</fullName>
+        <description>Case - Send Reminder when Awaiting Customer Response (O5 English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Reminder_when_Awaiting_Customer_Response_O5_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Reminder_when_Awaiting_Customer_Response_O5_French</fullName>
+        <description>Case - Send Reminder when Awaiting Customer Response (O5 French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@off5th.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Reminder_when_Awaiting_Customer_Response_O5_French</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Reminder_when_Awaiting_Customer_Response_S5A_English</fullName>
+        <description>Case - Send Reminder when Awaiting Customer Response S5A (English)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Reminder_when_Awaiting_Customer_Response_S5A_English</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Send_Reminder_when_Awaiting_Customer_Response_S5A_French</fullName>
+        <description>Case - Send Reminder when Awaiting Customer Response S5A (French)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactId</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>service@saks.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Case_Send_Reminder_when_Awaiting_Customer_Response_S5A_French</template>
     </alerts>
     <alerts>
         <fullName>Case_Send_Reminder_when_Awaiting_Internal_Response</fullName>

@@ -18,6 +18,8 @@ public with sharing class trac_CaseConstants {
     public static final String STATUS_POS_TEAM = 'POS Team';
     public static final String STATUS_CLOSED = 'Closed';
     public static final String STATUS_NEW = 'New';
+    public static final String STATUS_LIVE_AGENT = 'Live Agent';
+    public static final String STATUS_NON_RESPONSIVE_CUSTOMER = 'Non Responsive Customer';
 
     public static final String CALL_STATUS_ANSWERED = 'Answered';
     public static final String CALL_STATUS_TRANSFERRED = 'Transferred';
@@ -33,11 +35,19 @@ public with sharing class trac_CaseConstants {
     //Contact Record Type Customer
     public static final String RECORD_TYPE_DEVNAME_CUSTOMER_CONTACT = 'Customer';
     public static final String RECORD_TYPE_ID_CUSTOMER_CONTACT = Schema.SObjectType.Contact.getRecordTypeInfosByDeveloperName().get(RECORD_TYPE_DEVNAME_CUSTOMER_CONTACT).getRecordTypeId();
+    public static final String RECORD_TYPE_DEVNAME_OFF_5TH = 'Off_5th_Support_Case';
+    public static final String RECORD_TYPE_DEVNAME_SAKS = 'Saks_Support_Case';
+
+    //Case Record Type Click To Call
+    public static final String RECORD_TYPE_CLICK_TO_CALL_CASE = 'Click_to_Call';
+    public static final String RECORD_TYPE_ID_CLICK_TO_CALL_CASE = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get(RECORD_TYPE_CLICK_TO_CALL_CASE).getRecordTypeId();
 
     /* BUSINESS UNITS */
     public static final String BUSINESS_UNIT_MHF = 'MHF';
     public static final String BUSINESS_UNIT_HB = 'Hudson\'s Bay';
     public static final String BUSINESS_UNIT_LT = 'Lord + Taylor';
+    public static final String BUSINESS_UNIT_OFF_5TH = 'Off 5th';
+    public static final String BUSINESS_UNIT_SAKS = 'Saks';
 
     /* LANGUAGES */
     public static final String CASE_LANGUAGE_ENGLISH = 'English';
@@ -49,9 +59,17 @@ public with sharing class trac_CaseConstants {
 
     /* QUEUES */
     public static final String QUEUE_POS_BAY = 'POS_Bay';
+    public static final String QUEUE_STORE_OPERATIONS = 'Store_Operations';
     public static final String QUEUE_POS_LT = 'POS_LT';
     public static final String QUEUE_POS_MHF = 'POS_MHF';
+    public static final String QUEUE_POS_O5 = 'POS_O5';
+    public static final String QUEUE_O5_RISK_SUPPORT_JACKSON = 'O5_Risk_Support_Jackson';
+    public static final String QUEUE_POS_SAKS = 'POS_Saks';
     public static final String QUEUE_POS_MHF_GIFT_CARD = 'POS_MHF_Gift_Card';
+    public static final String QUEUE_CLICK_TO_CALL_CASE = 'Click_to_Call';
+    public static final String QUEUE_MHF = 'MHF';
+    public static final String QUEUE_MHF_REWARDS = 'MHF_Rewards';
+    public static final String QUEUE_MHF_FRENCH = 'MHF_French';
 
     /* CASE PRIORITY */
     public static final String CASE_PRIORITY_HIGH = 'High';
@@ -59,6 +77,15 @@ public with sharing class trac_CaseConstants {
     /* EMAIL MESSAGE */
     public static final Integer MINUTES = -5;
 
+    /* ROLES */
+    public static final String ROLE_CC_LEADERSHIP = 'Customer Care Leadership';
+
     /* CASE ORIGIN */
     public static final String ORIGIN_CHAT = 'Live Agent';
+    public static final String ORIGIN_WEB_TO_CASE = 'Support Community';
+
+    /* CASE TOPIC VALUES */
+    public static final String CASE_MAJOR_HOME_PURCHASES = 'Major Home Purchases';
+    public static final String CASE_HUDSON_BAY_REWARDS = 'Hudson\'s Bay Rewards';
+    public static final String CASE_STORE_EXPERIENCE = 'Store Experience';
 }

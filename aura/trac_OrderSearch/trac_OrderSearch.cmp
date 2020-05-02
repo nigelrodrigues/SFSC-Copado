@@ -15,6 +15,8 @@
     <aura:attribute name="isLoading" type="Boolean" default="false"/>
     <aura:attribute name="showAdvanceSearch" type="Boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="postalCode" type="String" default=""/>
+    <aura:attribute name="setPostalRequired" type="Boolean" default="false"/>
     <aura:attribute name="showError" type="boolean" default="false"/>
     <aura:attribute name="errorMessage" type="String" default="Please specify at least Order Number, Email or Phone Number for a detailed search." />
 
@@ -43,6 +45,10 @@
                         <ui:inputSelect aura:id="businessUnit" class="slds-select" change="{!c.onPicklistChange}"/>
                     </div>
                 </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+                <lightning:input label="Postal Code" value="{!v.postalCode}" type="text" aura:id="postalInput" required="{! v.setPostalRequired}"/>
             </lightning:layoutItem>
 
             <lightning:layoutItem padding="around-small">
@@ -122,7 +128,7 @@
             <c:trac_Order order="{!v.order}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
             <aura:set attribute="else">
                 <aura:if isTrue="{!not(empty(v.orders))}">
-                    <c:trac_OrderList orders="{!v.orders}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+                    <c:trac_OrderList orders="{!v.orders}" caseRecord="{!v.caseRecord}"  businessUnit="{!v.businessUnit}" postalCode="{!v.postalCode}" />
                 </aura:if>
             </aura:set>
         </aura:if>

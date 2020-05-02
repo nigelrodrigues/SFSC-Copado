@@ -85,6 +85,10 @@
         <name>Calendar_Duration__c</name>
     </fields>
     <fields>
+        <label><!-- Case Origin --></label>
+        <name>Case_Origin__c</name>
+    </fields>
+    <fields>
         <help><!-- 1 in this field indicates that the Case Status has changed. --></help>
         <label><!-- Case Status Change --></label>
         <name>Case_Status_Change__c</name>

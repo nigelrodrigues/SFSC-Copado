@@ -25,9 +25,7 @@
             if (state === "SUCCESS") {
                 var result = response.getReturnValue();
                 if (!$A.util.isEmpty(result)) {
-                    //alert(JSON.stringify(result));
                     component.set("v.con", result);
-                    // if($A.util.isEmpty(component.get("v.recordId"))){
                     if (!component.get("v.isCase")) {
                         var createRecordEvent = $A.get('e.force:createRecord');
                         if (createRecordEvent) {
@@ -47,20 +45,11 @@
                         }
                     }
                     else {
-                        //alert(component.get("v.con.Id"));
-                        /*var editRecordEvent = $A.get("e.force:editRecord");
-                        editRecordEvent.setParams({
-                            "recordId": component.get("v.recordId"),
-                            "ContactId" : component.get("v.con.Id")
-                        });
-                        editRecordEvent.fire();*/
                         helper.updateCase(component, event, helper);
                     }
-
                 }
-
             } else if (state === "INCOMPLETE") {
-                alert('Response is Incompleted');
+                alert('Response is Incomplete');
             } else if (state === "ERROR") {
                 var errors = response.getError();
                 if (errors) {

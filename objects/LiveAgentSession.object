@@ -236,24 +236,6 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Chat_MHF_French_LiveAgentSession</fullName>
-        <filterScope>Queue</filterScope>
-        <label>Chat - MHF French</label>
-        <queue>Chat_MHF_French</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Chat_MHF_LiveAgentSession</fullName>
-        <filterScope>Queue</filterScope>
-        <label>Chat - MHF</label>
-        <queue>Chat_MHF</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Off_5th_Chat_English_LiveAgentSession</fullName>
         <filterScope>Queue</filterScope>
         <label>Off 5th Chat English</label>

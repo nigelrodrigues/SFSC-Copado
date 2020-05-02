@@ -4,5 +4,5 @@
     <isAttributeBased>false</isAttributeBased>
     <label>All Queues</label>
     <routingModel>MOST_AVAILABLE</routingModel>
-    <routingPriority>2</routingPriority>
+    <routingPriority>3</routingPriority>
 </QueueRoutingConfig>

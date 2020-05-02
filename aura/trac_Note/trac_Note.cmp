@@ -10,7 +10,16 @@
             <aura:set attribute="title">
                 {! v.note.ContactUser }
             </aura:set>
-            {! v.note.NoteText }
+            <div class="slds-p-bottom--small">
+                <h2 class="slds-card__header-title">Note:</h2>
+                <lightning:formattedText value="{! v.note.NoteText }"/>
+            </div>
+            <aura:if isTrue="{!not(empty(v.note.ReasonCode))}">
+                <div>
+                    <h2 class="slds-card__header-title">Reason:</h2>
+                    <lightning:formattedText value="{! v.note.ReasonCode }"/><!--todo: add mapping from OMS-->
+                </div>
+            </aura:if>
         </lightning:card>
     </div>
 </aura:component>

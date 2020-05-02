@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Acknowledgement email for Saks French</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Send Acknowledgement Email (S5A French)</name>
+    <style>none</style>
+    <subject>Merci d’avoir communiqué avec {!Case.Business_Unit__c}</subject>
+    <textOnly>Bonjour {!Case.First_Name_Extract__c},
+
+Merci d’avoir communiqué avec {!Case.Business_Unit__c}. Nous travaillons à la résolution de votre problème et communiquerons avec vous dans les 48 heures. Si vous avez besoin d’aide supplémentaire, n’hésitez pas à communiquer avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
+
+COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT
+
+Sincères salutations.
+Service à la clientèle de {!Case.Business_Unit__c}
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

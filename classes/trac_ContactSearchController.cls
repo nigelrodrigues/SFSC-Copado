@@ -3,7 +3,7 @@
  * @author      Rajat Agrawal, Traction on Demand
  * @date        2019-06-017
  */
-public with sharing class trac_ContactSearchController {
+public without sharing class trac_ContactSearchController {
 
     /**
      * @description Get the contact records
@@ -17,8 +17,9 @@ public with sharing class trac_ContactSearchController {
         if (contact == null) {
             return contacts;
         }
-
-        contacts.addAll(getSalesforceContacts(contact));
+        if (contact.Order_Number__c == null) {
+            contacts.addAll(getSalesforceContacts(contact));
+        }
 
         if (isUcidSearch(contact)) {
             trac_WS_GetCustomerDetails.GetCustomerDetailsResponse response = trac_WS_CustomerUtils.searchContact(contact);
@@ -47,6 +48,8 @@ public with sharing class trac_ContactSearchController {
         }
 
         contacts = filterContactsByUcidNumber(contacts);
+        contacts = sortContacts(contacts);
+
 
         return contacts;
     }
@@ -111,7 +114,6 @@ public with sharing class trac_ContactSearchController {
 
     @AuraEnabled
     public static Id linkContactWithCase(Id contactId, Id caseId) {
-        System.debug('IN LINKING STAGE...');
         Contact contact = new Contact(Id = contactId);
         Case cs = new Case(
                 Id = caseId,
@@ -120,7 +122,6 @@ public with sharing class trac_ContactSearchController {
 
         try {
             update cs;
-            System.debug('CASE: ' + cs);
             return cs.Id;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
@@ -257,5 +258,91 @@ public with sharing class trac_ContactSearchController {
                 WHERE Id = :caseId
         ];
         return (!cases.isEmpty()) ? cases[0] : null;
+    }
+
+    private static List<Contact> sortContacts(List<Contact> contacts) {
+        List<Contact> sortedContacts = new List<Contact>();
+
+        Map<String, List<Contact_Search_Score_Setting__mdt>> contactSearchScoreSettingsByFieldApiName = getContactSearchScoreSettingsByFieldApiName();
+
+        List<ContactWrapper> contactWrappers = new List<ContactWrapper>();
+        for (Contact contact : contacts) {
+            ContactWrapper contactWrapper = new ContactWrapper(contact, contactSearchScoreSettingsByFieldApiName);
+            contactWrappers.add(contactWrapper);
+        }
+
+        contactWrappers.sort();
+
+        for (ContactWrapper contactWrapper : contactWrappers) {
+            sortedContacts.add(contactWrapper.contact);
+        }
+
+        return sortedContacts;
+    }
+
+    private static Map<String, List<Contact_Search_Score_Setting__mdt>> getContactSearchScoreSettingsByFieldApiName() {
+        Map<String, List<Contact_Search_Score_Setting__mdt>> contactSearchScoreSettingsByFieldApiName = new Map<String, List<Contact_Search_Score_Setting__mdt>>();
+
+        List<Contact_Search_Score_Setting__mdt> contactSearchScoreSettings = [
+                SELECT Id, Field_API_Name__c, Field_Value__c, Is_Populated__c, Score__c
+                FROM Contact_Search_Score_Setting__mdt
+                WHERE Active__c = true
+        ];
+
+        for (Contact_Search_Score_Setting__mdt contactSearchScoreSetting : contactSearchScoreSettings) {
+            if (!contactSearchScoreSettingsByFieldApiName.containsKey(contactSearchScoreSetting.Field_API_Name__c)) {
+                contactSearchScoreSettingsByFieldApiName.put(contactSearchScoreSetting.Field_API_Name__c, new List<Contact_Search_Score_Setting__mdt>());
+            }
+            contactSearchScoreSettingsByFieldApiName.get(contactSearchScoreSetting.Field_API_Name__c).add(contactSearchScoreSetting);
+        }
+
+        return contactSearchScoreSettingsByFieldApiName;
+    }
+
+    public class ContactWrapper  implements Comparable {
+        Contact contact;
+        Decimal dataCompletionScore;
+
+        public ContactWrapper(Contact contactToWrap, Map<String, List<Contact_Search_Score_Setting__mdt>> contactSearchScoreSettingsByFieldApiName) {
+            contact = contactToWrap;
+
+            setScore(contactSearchScoreSettingsByFieldApiName);
+        }
+
+        private void setScore(Map<String, List<Contact_Search_Score_Setting__mdt>> contactSearchScoreSettingsByFieldApiName) {
+            dataCompletionScore = 0;
+
+            for (String fieldApiName : contactSearchScoreSettingsByFieldApiName.keySet()) {
+                if (contact.isSet(fieldApiName)) {
+
+
+                    List<Contact_Search_Score_Setting__mdt> contactSearchScoreSettings = contactSearchScoreSettingsByFieldApiName.get(fieldApiName);
+
+                    Decimal fieldScore = 0;
+                    for (Contact_Search_Score_Setting__mdt contactSearchScoreSetting : contactSearchScoreSettings) {
+                        if (contactSearchScoreSetting.Score__c != null) {
+                            if ((contactSearchScoreSetting.Is_Populated__c && contact.get(fieldApiName) != null) || (contact.get(fieldApiName) != null && contactSearchScoreSetting.Field_Value__c == String.valueOf(contact.get(fieldApiName)))) {
+                                fieldScore += contactSearchScoreSetting.Score__c;
+                            }
+                        }
+                    }
+                    dataCompletionScore += fieldScore;
+                }
+            }
+        }
+
+        public Integer compareTo(Object compareTo) {
+            Integer hasLowerScore = 0;
+
+            ContactWrapper contactToCompare = (ContactWrapper) compareTo;
+
+            if (dataCompletionScore > contactToCompare.dataCompletionScore) {
+                hasLowerScore = -1;
+            } else if (dataCompletionScore < contactToCompare.dataCompletionScore) {
+                hasLowerScore = 1;
+            }
+
+            return hasLowerScore;
+        }
     }
 }

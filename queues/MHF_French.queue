@@ -7,7 +7,7 @@
             <publicGroup>MHF_French</publicGroup>
         </publicGroups>
     </queueMembers>
-    <queueRoutingConfig>All_Queues</queueRoutingConfig>
+    <queueRoutingConfig>French_Email_Web_Case</queueRoutingConfig>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

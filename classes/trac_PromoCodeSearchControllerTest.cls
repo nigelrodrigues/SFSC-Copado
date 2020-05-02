@@ -12,6 +12,7 @@ private class trac_PromoCodeSearchControllerTest {
 
     @TestSetup
     static void setup() {
+        
         List<String> pickListValuesList = new List<String>();
         for (Schema.PicklistEntry pickListVal : Promo_Code__c.Amount_List__c.getDescribe().getPicklistValues()){
             pickListValuesList.add(pickListVal.getLabel());
@@ -26,6 +27,7 @@ private class trac_PromoCodeSearchControllerTest {
             }
             randomIndex--;
         }
+        
     }
 
     @IsTest
@@ -51,9 +53,23 @@ private class trac_PromoCodeSearchControllerTest {
 
         Object testResult;
         Test.startTest();
-        testResult = trac_PromoCodeSearchController.applyPromoCode(AMOUNT_LIST_PICKLIST_VALUE, cs.Id);
+        testResult = trac_PromoCodeSearchController.applyPromoCode(AMOUNT_LIST_PICKLIST_VALUE, null, cs.Id);
         Test.stopTest();
 
         System.assert(testResult != null, 'No promo codes were retrieved');
+    }
+    @IsTest
+    static void testTriggerMail() {
+        TLTestFactory factory = new TLTestFactory();
+        factory.createSObject(new Promo_Code__c(Amount_List__c=AMOUNT_LIST_PICKLIST_VALUE), true);
+
+        Case cs = (Case)factory.createSObject(new Case(),true);
+
+        Object testResult;
+        Test.startTest();
+        trac_PromoCodeSearchController.getPromoPicklistOptions();
+        trac_PromoCodeSearchController.triggerEmail(AMOUNT_LIST_PICKLIST_VALUE, 750, 'Hudson\'s Bay');
+        Test.stopTest();
+
     }
 }

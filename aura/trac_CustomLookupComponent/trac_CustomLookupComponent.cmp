@@ -1,0 +1,52 @@
+<!--
+* @description Aura component to display custom lookup field
+* @author      Abhishek Solanki, Traction on Demand
+* @date        2019-02-06
+-->
+<aura:component description="trac_CustomLookupComponent" controller="trac_CustomLookUpController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global">
+
+    <aura:attribute name="selectedRecord" type="sObject" default="{}"
+                    description="Use,for storing SELECTED sObject Record"/>
+    <aura:attribute name="listOfSearchRecords" type="List"
+                    description="Use,for storing the list of search records which returns from apex class"/>
+    <aura:attribute name="SearchKeyWord" type="String"/>
+    <aura:attribute name="objectAPIName" type="String" default=""/>
+    <aura:attribute name="IconName" type="String" default=""/>
+    <aura:attribute name="label" type="String" default=""/>
+    <aura:attribute name="Message" type="String" default="No Results Found"/>
+
+    <aura:handler name="oSelectedRecordEvent" event="c:trac_DisplayLookupRecordsEvent"
+                  action="{!c.handleComponentEvent}"/>
+
+    <aura:method name="callChild" action="{!c.clear}"/>
+
+    <div onmouseleave="{!c.onblur}" aura:id="searchRes" class="slds-form-element slds-lookup slds-is-close"
+         data-select="single">
+        <label class="slds-p-left_small slds-form-element__label" for="lookup-348">{!v.label}</label>
+        <div class="slds-input-has-icon slds-input-has-icon--right">
+            <div aura:id="lookup-pill" class="slds-pill-container slds-size_1-of-1 slds-hide">
+                <lightning:pill class="pillSize " label="{!v.selectedRecord.Name}" name="{!v.selectedRecord.Name}"
+                                onremove="{! c.clear }">
+                    <aura:set attribute="media">
+                        <lightning:icon iconName="{!v.IconName}" size="xx-small" alternativeText="{!v.IconName}"/>
+                    </aura:set>
+                </lightning:pill>
+            </div>
+            <div aura:id="lookupField" class="slds-show">
+                <lightning:input class="slds-size_1-of-2" type="search" onclick="{!c.onfocus}"
+                                 onchange="{!c.keyPressController}" value="{!v.SearchKeyWord}" placeholder="Search"/>
+            </div>
+        </div>
+
+        <ul class="slds-listbox_vertical  slds-dropdown_fluid slds-lookup__menu slds-size_1-of-1 slds-align_absolute-left"
+            role="listbox">
+            <lightning:spinner class="slds-hide" variant="brand" size="small" aura:id="mySpinner"/>
+            {!v.Message}
+            <aura:iteration items="{!v.listOfSearchRecords}" var="singleRec">
+                <c:trac_CustomLookupResult oRecord="{!singleRec}" IconName="{!v.IconName}"/>
+            </aura:iteration>
+        </ul>
+    </div>
+</aura:component>

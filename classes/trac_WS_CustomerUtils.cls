@@ -5,10 +5,13 @@
  */
 public with sharing class trac_WS_CustomerUtils {
 
-    private static Integer DEFAULT_SEARCH_COUNT = 10;
-    private static String DEFAULT_SOURCE_CODE = trac_WS_WebServiceHelper.DEFAULT_SOURCE_ID;
-    private static String DEFAULT_BANNER_CODE = '4';
-    private static String DEFAULT_LANGUAGE_CODE = '0';
+    private static final Integer DEFAULT_SEARCH_COUNT = 10;
+    private static final String DEFAULT_SOURCE_CODE = trac_WS_WebServiceHelper.DEFAULT_SOURCE_ID;
+    private static final String DEFAULT_BANNER_CODE = '4';
+    private static final String DEFAULT_LANGUAGE_CODE = '0';
+    private static final String EXTERNAL_ID_SFCC_ID = 'SFCC_GUID';
+    private static final String EXTERNAL_ID_SFCC_CUSTOMER_NUMBER = 'SFCC';
+    private static final String EXTERNAL_ID_LOYALTY = 'BM';
 
     private static Map<String, Map<String, Reference_Data__mdt>> referenceDataBySystemValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('UCID', 'System_Value__c');
     private static Map<String, Map<String, Reference_Data__mdt>> referenceDataBySalesforceValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('UCID', 'Salesforce_Value__c');
@@ -21,25 +24,22 @@ public with sharing class trac_WS_CustomerUtils {
 
     public static void syncContactFromExternal(Contact contact) {
 
-        trac_WS_GetCustomerDetails.GetCustomerDetailsResponse customerDetailsResponse = searchContact(contact);
-        
+        trac_WS_GetCustomerDetails.GetCustomerDetailsResponse customerDetailsResponse = searchContactByEmail(contact);
+
         if (customerDetailsResponse != null && customerDetailsResponse.customerRecord != null && !customerDetailsResponse.customerRecord.isEmpty()) {
 
             Contact ucidContact = getContactFromSearchResponse(customerDetailsResponse);
             if (ucidContact != null) {
+                Contact contactToUpdate = getUpdatedContact(contact, ucidContact);
+                contactToUpdate.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
+                contactToUpdate.UCID_Update_Date__c = Datetime.now();
                 try {
-                    Contact contactToUpdate = getUpdatedContact(contact, ucidContact);
-                    contactToUpdate.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
-                    contactToUpdate.UCID_Update_Date__c = Datetime.now();
-
                     update contactToUpdate;
                 } catch (Exception e) {
 
                 }
             }
-
-        }
-        else {
+        } else {
 
             trac_WS_CreateCustomerDetails.CreateCustomerDetailsResponse createCustomerDetailsResponse = createContact(contact);
             if (createCustomerDetailsResponse != null && createCustomerDetailsResponse.customerRecord != null && createCustomerDetailsResponse.customerRecord.UCIDNumber != null) {
@@ -52,10 +52,10 @@ public with sharing class trac_WS_CustomerUtils {
         }
     }
 
-    public static trac_WS_GetCustomerDetails.GetCustomerDetailsResponse searchContact(Id contactId) {
+    /*public static trac_WS_GetCustomerDetails.GetCustomerDetailsResponse searchContact(Id contactId) {
         Contact contact = getContactWithFields(contactId);
         return searchContact(contact);
-    }
+    }*/
 
     public static trac_WS_GetCustomerDetails.GetCustomerDetailsResponse searchContact(Contact contact) {
         trac_WS_GetCustomerDetails customerDetails = new trac_WS_GetCustomerDetails();
@@ -75,6 +75,17 @@ public with sharing class trac_WS_CustomerUtils {
         customerDetails.getCustomerDetailsRequest.bannerCode = getInteger(getBannerCodeFromBusinessUnit(contact.Business_Unit__c));
 
         customerDetails.send();
+
+        return customerDetails.getCustomerDetailsResponse;
+    }
+
+    public static trac_WS_GetCustomerDetails.GetCustomerDetailsResponse searchContactByEmail(Contact contact) {
+        trac_WS_GetCustomerDetails customerDetails = new trac_WS_GetCustomerDetails();
+
+        if (contact != null && contact.Email != null) {
+            customerDetails.getCustomerDetailsRequest.contactDetails.emailId = getString(contact.Email);
+            customerDetails.send();
+        }
 
         return customerDetails.getCustomerDetailsResponse;
     }
@@ -162,7 +173,7 @@ public with sharing class trac_WS_CustomerUtils {
 
         List<Contact> contacts = getContactsFromSearchResponse(customerDetailsResponse);
 
-        if (!contacts.isEmpty()) {
+        if (contacts.size() == 1) {
             contact = contacts[0];
         }
 
@@ -214,6 +225,12 @@ public with sharing class trac_WS_CustomerUtils {
                 contact.Language__c = getLanguageFromLanguageCode(customerRecord.languagePref);
             }
 
+            if (customerRecord.externalId != null) {
+                contact.SFCC_Customer_Id__c = getCommerceCloudId(customerRecord);
+                contact.SFCC_Customer_Number__c = getCommerceCloudCustomerNumber(customerRecord);
+                contact.Loyalty_Number__c = getLoyaltyId(customerRecord);
+            }
+
             if (customerRecord.contactDetails != null) {
                 if (getMailingStreetFromContactDetails(customerRecord.contactDetails) != null) {
                     contact.MailingStreet = getMailingStreetFromContactDetails(customerRecord.contactDetails);
@@ -251,7 +268,6 @@ public with sharing class trac_WS_CustomerUtils {
 
         if (contact.Business_Unit__c != null && contact.Order_Number__c != null) {
             trac_WS_GetOrderDetails.GetOrderDetailsResponse orderDetailsResponse = trac_WS_OrderUtils.getOrderDetailsResponseFromOrderNumber(contact.Business_Unit__c, contact.Order_Number__c);
-
             orderContact = getContactFromOrderDetailResponse(orderDetailsResponse);
             if (orderContact != null) {
                 orderContact.Business_Unit__c = contact.Business_Unit__c;
@@ -264,13 +280,14 @@ public with sharing class trac_WS_CustomerUtils {
     public static Contact getContactFromOrderDetailResponse(trac_WS_GetOrderDetails.GetOrderDetailsResponse orderDetailsResponse) {
         Contact contact;
 
-        if (orderDetailsResponse != null && orderDetailsResponse.PersonInfoBillTo != null) {
+        if (orderDetailsResponse != null && orderDetailsResponse.PersonInfoBillTo != null && orderDetailsResponse.PersonInfoBillTo.FirstName != null
+                && orderDetailsResponse.PersonInfoBillTo.LastName != null && orderDetailsResponse.PersonInfoBillTo.EMailID != null) {
             contact = new Contact();
             contact.Title = orderDetailsResponse.PersonInfoBillTo.Title;
             contact.FirstName = orderDetailsResponse.PersonInfoBillTo.FirstName;
             contact.LastName = orderDetailsResponse.PersonInfoBillTo.LastName;
             contact.Email = orderDetailsResponse.PersonInfoBillTo.EMailID;
-            contact.Phone = orderDetailsResponse.PersonInfoBillTo.MobilePhone;
+            contact.Phone = orderDetailsResponse.PersonInfoBillTo.DayPhone;
             contact.MailingCountryCode = orderDetailsResponse.PersonInfoBillTo.Country;
             contact.MailingStateCode = orderDetailsResponse.PersonInfoBillTo.State;
             contact.MailingPostalCode = orderDetailsResponse.PersonInfoBillTo.ZipCode;
@@ -344,6 +361,9 @@ public with sharing class trac_WS_CustomerUtils {
 
         if (originalContact.Phone == null) {
             originalContact.Phone = newContact.Phone;
+        }
+        if (originalContact.SFCC_Customer_Id__c == null) {
+            originalContact.SFCC_Customer_Id__c = newContact.SFCC_Customer_Id__c;
         }
 
         return originalContact;
@@ -495,8 +515,7 @@ public with sharing class trac_WS_CustomerUtils {
         if (stringValue != null) {
             try {
                 dateValue = Date.valueOf(stringValue.left(10));
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
 
             }
         }
@@ -512,6 +531,48 @@ public with sharing class trac_WS_CustomerUtils {
         }
 
         return uniqueExternalId;
+    }
+
+    public static String getCommerceCloudId(trac_WS_GetCustomerDetails.res_customerRecordWrapper customerRecordWrapper) {
+        String commerceCloudId;
+
+        if (customerRecordWrapper != null && customerRecordWrapper.externalId != null) {
+            for (trac_WS_GetCustomerDetails.res_externalIdWrapper externalIdWrapper : customerRecordWrapper.externalId) {
+                if (externalIdWrapper.extTypeCode == EXTERNAL_ID_SFCC_ID) {
+                    commerceCloudId = externalIdWrapper.extTypeValue;
+                }
+            }
+        }
+
+        return commerceCloudId;
+    }
+
+    public static String getCommerceCloudCustomerNumber(trac_WS_GetCustomerDetails.res_customerRecordWrapper customerRecordWrapper) {
+        String commerceCloudId;
+
+        if (customerRecordWrapper != null && customerRecordWrapper.externalId != null) {
+            for (trac_WS_GetCustomerDetails.res_externalIdWrapper externalIdWrapper : customerRecordWrapper.externalId) {
+                if (externalIdWrapper.extTypeCode == EXTERNAL_ID_SFCC_CUSTOMER_NUMBER) {
+                    commerceCloudId = externalIdWrapper.extTypeValue;
+                }
+            }
+        }
+
+        return commerceCloudId;
+    }
+
+    public static String getLoyaltyId(trac_WS_GetCustomerDetails.res_customerRecordWrapper customerRecordWrapper) {
+        String loyaltyId;
+
+        if (customerRecordWrapper != null && customerRecordWrapper.externalId != null) {
+            for (trac_WS_GetCustomerDetails.res_externalIdWrapper externalIdWrapper : customerRecordWrapper.externalId) {
+                if (externalIdWrapper.extTypeCode == EXTERNAL_ID_LOYALTY) {
+                    loyaltyId = externalIdWrapper.extTypeValue;
+                }
+            }
+        }
+
+        return loyaltyId;
     }
 
     public static String clearCountryCode(String phoneNumber) {
@@ -538,10 +599,12 @@ public with sharing class trac_WS_CustomerUtils {
         List<Contact> contacts = [
                 SELECT Id, FirstName, LastName, MiddleName, Salutation, Email, Phone, Birthdate, Language__c, UCID_Number__c,
                         MailingStreet, MailingCity, MailingPostalCode, MailingStateCode, MailingCountryCode, Business_Unit__c,
-                        Phone_Marketing__c, Email_Marketing__c, Mail_Marketing__c, Unique_External_Id__c
+                        Phone_Marketing__c, Email_Marketing__c, Mail_Marketing__c, Unique_External_Id__c, SFCC_Customer_Id__c
                 FROM Contact
                 WHERE Id = :contactId
         ];
         return (!contacts.isEmpty()) ? contacts[0] : null;
     }
+
+
 }

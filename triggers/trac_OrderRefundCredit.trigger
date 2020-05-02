@@ -12,10 +12,14 @@ trigger trac_OrderRefundCredit on Order_Refund_Credit__c (before insert, before 
             }
         } else if (Trigger.isAfter) {
             if (Trigger.isInsert) {
+                trac_OrderRefundCreditHelper.flagCaseIfOpenORC(Trigger.new, new Map<Id, Order_Refund_Credit__c>());
                 trac_OrderRefundCreditHelper.setCaseStatus(Trigger.new, new Map<Id, Order_Refund_Credit__c>());
+                trac_OrderRefundCreditHelper.closeCase(Trigger.new, new Map<Id, Order_Refund_Credit__c>());
             } else if (Trigger.isUpdate) {
+                trac_OrderRefundCreditHelper.flagCaseIfOpenORC(Trigger.new, Trigger.oldMap);
                 trac_OrderRefundCreditHelper.setCaseStatus(Trigger.new, Trigger.oldMap);
                 trac_OrderRefundCreditHelper.postOnParentCase(Trigger.newMap,Trigger.oldMap);
+                trac_OrderRefundCreditHelper.closeCase(Trigger.new, Trigger.oldMap);
             }
         }
     } catch (Exception e) {

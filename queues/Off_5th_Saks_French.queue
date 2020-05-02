@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Off 5th/Saks - French</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Off_5th_French</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueRoutingConfig>All_Queues</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

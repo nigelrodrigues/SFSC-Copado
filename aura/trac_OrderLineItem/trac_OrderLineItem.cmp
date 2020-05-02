@@ -8,20 +8,35 @@
     <aura:attribute name="orderLineItem" type="Object"/>
     <aura:attribute name="addAttributes" type="Object" />
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="showTrackingInfo" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
 
-    <div class="slds-border_top">
+    <div class="slds-box slds-theme_shade">
         <aura:if isTrue="{!not(empty(v.orderLineItem))}">
-
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-12">
+                    <lightning:layout>
+                        <lightning:layoutItem size="12">
+                            <div class="header-column">
+                                <aura:if isTrue="{!v.businessUnit == 'Saks'}">
+                                    <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation +'/'+ v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" class="trac-img"/>
+                                    <aura:set attribute="else">
+                                        <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation + v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" class="trac-img"/>
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </div>
+                <div class="slds-col slds-size_11-of-12">
                     <lightning:layout multipleRows="true">
                         <lightning:layoutItem size="12">
                             <lightning:layout>
 
                                 <lightning:layoutItem padding="around-small">
                                     <div class="header-column">
-                                        <aura:if isTrue="{!not(empty(v.orderLineItem.Notes.Note))}">
-                                            <lightning:icon iconName="utility:note" alternativeText="Notes" size="xx-small"/>
-                                        </aura:if>
+                                        <p class="field-title slds-form-element__label slds-no-flex">Line #</p>
+                                        <p>{!v.orderLineItem.PrimeLineNo}</p>
                                     </div>
                                 </lightning:layoutItem>
 
@@ -67,6 +82,15 @@
                                     </div>
                                 </lightning:layoutItem>
 
+                                <aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniStatus))}">
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Blue Martini Status</p>
+                                            <p>{!v.orderLineItem.customBlueMartiniStatus}</p>
+                                        </div>
+                                    </lightning:layoutItem>
+                                </aura:if>
+
                                 <aura:if isTrue="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute != null}" >
                                     <aura:iteration items="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute}" var="attribute" >
                                         <lightning:layoutItem padding="around-small">
@@ -77,6 +101,17 @@
                                         </lightning:layoutItem>
                                     </aura:iteration>
                                 </aura:if>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <aura:if isTrue="{!not(empty(v.orderLineItem.Notes.Note))}">
+                                            <lightning:icon iconName="utility:note" alternativeText="Notes" size="small"/>
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">
+                                            <lightning:icon iconName="standard:thanks" alternativeText="Gift" size="small"/>
+                                        </aura:if>
+                                    </div>
+                                </lightning:layoutItem>
 
                             </lightning:layout>
                         </lightning:layoutItem>
@@ -103,10 +138,26 @@
                                     <c:trac_AddNote orderLineItem="{!v.orderLineItem}" order="{!v.order}"
                                                     caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
                                 </lightning:layoutItem>
+
+                                <lightning:layoutItem padding="around-small">
+                                    <lightning:button onclick="{!c.toggleTracking}"
+                                                      variant="brand"
+                                                      label="Track"
+                                                      disabled="{!empty(v.orderLineItem.customContainer.TrackingNo)}"
+                                                      iconName="utility:checkin"/>
+                                </lightning:layoutItem>
                             </lightning:layout>
                         </lightning:layoutItem>
                         <!-- BUTTONS END -->
                     </lightning:layout>
+                </div>
+            </div>
+
+            <div class="{!v.showTrackingInfo ? '' : 'slds-hide' }">
+                <aura:if isTrue="{!not(empty(v.orderLineItem.customContainer))}">
+                    <c:trac_OrderShippingContainer container="{!v.orderLineItem.customContainer}"/>
+                </aura:if>
+            </div>
         </aura:if>
     </div>
 
@@ -114,7 +165,7 @@
         <aura:if isTrue="{!v.isModalOpen}">
             <!-- Modal/Popup Box starts here-->
             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-                     aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                     aria-describedby="modal-content-id-1" class="slds-modal slds-modal_medium slds-fade-in-open">
                 <div class="slds-modal__container">
                     <!-- Modal/Popup Box Header Starts here-->
                     <header class="slds-modal__header">
@@ -201,6 +252,14 @@
                                                 {!v.orderLineItem.ItemDetails.ClassificationCodes.Model}
                                             </div>
                                         </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">UPC</label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.customUPC}
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -270,12 +329,55 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Requested Date (Pre-Order) </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                <lightning:formattedDateTime value="{!v.orderLineItem.Extn.ExtnFirstEstimatedShipDate}" year="numeric" month="short"
+                                                                             day="2-digit" hour="2-digit" minute="2-digit"/>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01"> Expected Date (Pre-Order) </label>
+                                            </div>
+                                            <div class="slds-truncate">
+                                                <lightning:formattedDateTime value="{!v.orderLineItem.Extn.ExtnEstimatedShipDate}" year="numeric" month="short"
+                                                                             day="2-digit" hour="2-digit" minute="2-digit"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <label class="slds-form-element__label" for="select-01">Is Gift</label>
+                                            </div>
+                                            <div>
+                                                {!v.orderLineItem.GiftFlag}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <aura:if isTrue="{!not(empty(v.orderLineItem.customShipmentLine))}">
+                                        <c:trac_OrderShipmentLine shipmentLine="{!v.orderLineItem.customShipmentLine}"/>
+                                    </aura:if>
                                 </table>
+
+
                             </lightning:tab>
                             <lightning:tab label="Notes" iconName="{!not(empty(v.orderLineItem.Notes.Note)) ? 'utility:note' : ''}" id="notes">
                                 <aura:iteration items="{!v.orderLineItem.Notes.Note}" var="note">
                                     <c:trac_Note note="{!note}"/>
                                 </aura:iteration>
+                            </lightning:tab>
+                            <lightning:tab label="History" id="lineHistory">
+                                <c:trac_OrderLineStatusHistory
+                                        businessUnit="{!v.businessUnit}"
+                                        order="{!v.order}"
+                                        orderLineItem="{!v.orderLineItem}"/>
+                            </lightning:tab>
+                            <lightning:tab label="Instructions" iconName="{!not(empty(v.orderLineItem.Instructions.Instruction)) ? 'utility:task' : ''}" id="instructions">
+                                <c:trac_OrderLineItemInstructions orderLineItem="{!v.orderLineItem}"/>
                             </lightning:tab>
                         </lightning:tabset>
                     </div>

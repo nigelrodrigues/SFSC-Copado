@@ -396,6 +396,10 @@
             <translation><!-- BTO - Big Ticket Order (New Purchases) --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Credit Hold</masterLabel>
+            <translation><!-- Credit Hold --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Delivery</masterLabel>
             <translation><!-- Delivery --></translation>
         </picklistValues>
@@ -424,16 +428,16 @@
             <translation><!-- Gift Registry --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>In Store Experience</masterLabel>
-            <translation><!-- In Store Experience --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Major Home Fashion</masterLabel>
             <translation><!-- Major Home Fashion --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Order Inquiry</masterLabel>
             <translation><!-- Order Inquiry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order System Error</masterLabel>
+            <translation><!-- Order System Error --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Order placed</masterLabel>
@@ -450,6 +454,10 @@
         <picklistValues>
             <masterLabel>Place an order</masterLabel>
             <translation><!-- Place an order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing</masterLabel>
+            <translation><!-- Pricing --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product Information</masterLabel>
@@ -540,6 +548,10 @@
             <translation><!-- Better Business Bureau --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Borderfree</masterLabel>
+            <translation><!-- Borderfree --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Broken/Damaged Item</masterLabel>
             <translation><!-- Broken/Damaged Item --></translation>
         </picklistValues>
@@ -550,6 +562,10 @@
         <picklistValues>
             <masterLabel>CS - Customer Service</masterLabel>
             <translation><!-- CS - Customer Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Tag</masterLabel>
+            <translation><!-- Call Tag --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Can I cancel my order?</masterLabel>
@@ -570,6 +586,10 @@
         <picklistValues>
             <masterLabel>Clear D</masterLabel>
             <translation><!-- Clear D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Hold</masterLabel>
+            <translation><!-- Credit Hold --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Credit Points Dispute</masterLabel>
@@ -624,6 +644,10 @@
             <translation><!-- Did not receive Order --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Did not receive gift with purchase</masterLabel>
+            <translation><!-- Did not receive gift with purchase --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Didn&apos;t receive when expected</masterLabel>
             <translation><!-- Didn&apos;t receive when expected --></translation>
         </picklistValues>
@@ -656,6 +680,10 @@
             <translation><!-- Exchange / Returns / Allowance (ERA) --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Exchange Log</masterLabel>
+            <translation><!-- Exchange Log --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Exchange item</masterLabel>
             <translation><!-- Exchange item --></translation>
         </picklistValues>
@@ -674,6 +702,10 @@
         <picklistValues>
             <masterLabel>General</masterLabel>
             <translation><!-- General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Error</masterLabel>
+            <translation><!-- General Error --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Ghost Call</masterLabel>
@@ -698,6 +730,10 @@
         <picklistValues>
             <masterLabel>Have you received my return?</masterLabel>
             <translation><!-- Have you received my return? --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hold Batch</masterLabel>
+            <translation><!-- Hold Batch --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>How do I return my order?</masterLabel>
@@ -840,6 +876,10 @@
             <translation><!-- New Account Enrollment --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>New L</masterLabel>
+            <translation><!-- New L --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Not Placed</masterLabel>
             <translation><!-- Not Placed --></translation>
         </picklistValues>
@@ -862,6 +902,10 @@
         <picklistValues>
             <masterLabel>Order was incorrect</masterLabel>
             <translation><!-- Order was incorrect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PA - Price Adjustment</masterLabel>
@@ -1084,6 +1128,10 @@
             <translation><!-- Store Associate called for assistance on customer&apos;s gift card --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Store Locator</masterLabel>
+            <translation><!-- Store Locator --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>TIME STOP Alert</masterLabel>
             <translation><!-- TIME STOP Alert --></translation>
         </picklistValues>
@@ -1205,8 +1253,12 @@
         <name>Closed_Less_than_48h__c</name>
     </fields>
     <fields>
-        <label><!-- Type --></label>
+        <label><!-- Topic --></label>
         <name>Community_Case_Type__c</name>
+        <picklistValues>
+            <masterLabel>Gift Cards</masterLabel>
+            <translation><!-- Gift Cards --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Gifts</masterLabel>
             <translation><!-- Gifts --></translation>
@@ -1236,6 +1288,10 @@
             <translation><!-- Payment Methods --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Pricing</masterLabel>
+            <translation><!-- Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Returns</masterLabel>
             <translation><!-- Returns --></translation>
         </picklistValues>
@@ -1243,6 +1299,18 @@
             <masterLabel>Shipping</masterLabel>
             <translation><!-- Shipping --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Store Experience</masterLabel>
+            <translation><!-- Store Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stores</masterLabel>
+            <translation><!-- Stores --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Create Time --></label>
+        <name>Create_Time__c</name>
     </fields>
     <fields>
         <label><!-- Date/Time First Closed --></label>
@@ -1347,6 +1415,11 @@
         <name>Follow_Up_Date__c</name>
     </fields>
     <fields>
+        <help><!-- The count of times agents missed their follow up date. --></help>
+        <label><!-- Follow Up Misses --></label>
+        <name>Follow_Up_Misses__c</name>
+    </fields>
+    <fields>
         <label><!-- Follow Up Requested By --></label>
         <name>Follow_Up_Requested_By__c</name>
         <relationshipLabel><!-- Cases (Follow Up Requested By) --></relationshipLabel>
@@ -1369,12 +1442,20 @@
         <name>IVR_Log__c</name>
     </fields>
     <fields>
+        <label><!-- Inactive for at least 30 days --></label>
+        <name>Inactive_for_at_least_30_days__c</name>
+    </fields>
+    <fields>
         <label><!-- Internal Contact Email --></label>
         <name>Internal_Contact_Email__c</name>
     </fields>
     <fields>
         <label><!-- Is Follow Up --></label>
         <name>Is_Follow_Up__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is ORC Open --></label>
+        <name>Is_ORC_Open__c</name>
     </fields>
     <fields>
         <label><!-- Keep Ownership --></label>
@@ -1388,6 +1469,10 @@
         <help><!-- The extension of the agent who most recently answered a call for this case --></help>
         <label><!-- Latest Agent Extension --></label>
         <name>Latest_Agent_Extension__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Tier --></label>
+        <name>Loyalty_Tier__c</name>
     </fields>
     <fields>
         <label><!-- Medallia Feedback - Main Score --></label>
@@ -1409,6 +1494,11 @@
     <fields>
         <label><!-- Next Steps --></label>
         <name>Next_Steps__c</name>
+    </fields>
+    <fields>
+        <help><!-- There is no activity on Case for more then 5 calendar days. --></help>
+        <label><!-- No Activity on Case --></label>
+        <name>No_Activity_on_Case__c</name>
     </fields>
     <fields>
         <label><!-- No. Agent changes --></label>
@@ -1439,16 +1529,36 @@
         <name>ORC_Count__c</name>
     </fields>
     <fields>
+        <label><!-- ORC El Salvador Review --></label>
+        <name>ORC_El_Salvador_Review__c</name>
+    </fields>
+    <fields>
         <label><!-- ORC Gift Card Amount --></label>
         <name>ORC_Gift_Card_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- ORC_Jackson_POS --></label>
+        <name>ORC_Jackson_POS__c</name>
+    </fields>
+    <fields>
+        <label><!-- ORC MNR El Salvador Follow Up --></label>
+        <name>ORC_MNR_El_Salvador_Follow_Up__c</name>
     </fields>
     <fields>
         <label><!-- ORC Missing Item or No Order --></label>
         <name>ORC_Missing_Item_or_No_Order__c</name>
     </fields>
     <fields>
+        <label><!-- ORC POS Gift Card Saks/O5 --></label>
+        <name>ORC_POS_Gift_Card_Saks_O5__c</name>
+    </fields>
+    <fields>
         <label><!-- ORC Requiring Approval Count --></label>
         <name>ORC_Requiring_Approval_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- ORC Saks O5 MNR Review --></label>
+        <name>ORC_Saks_O5_MNR_Review__c</name>
     </fields>
     <fields>
         <label><!-- ORC Submitted --></label>
@@ -1457,6 +1567,10 @@
     <fields>
         <label><!-- ORC Value --></label>
         <name>ORC_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- ORC Virtual Gift Card Queue --></label>
+        <name>ORC_Virtual_Gift_Card_Queue__c</name>
     </fields>
     <fields>
         <label><!-- Open ORC --></label>
@@ -1544,8 +1658,28 @@
         <name>Resolution_Information__c</name>
     </fields>
     <fields>
+        <help><!-- Field used to capture the return label from Narvar. Copy and paste the value into this field. --></help>
+        <label><!-- Return Label Link --></label>
+        <name>Return_Label_Link__c</name>
+    </fields>
+    <fields>
         <label><!-- Root Cause --></label>
         <name>Root_Cause__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field holds salesforce commerce cloud customer id. Usually case will be connected to contact but this field is to cover edge cases. --></help>
+        <label><!-- SFCC Customer Id --></label>
+        <name>SFCC_Customer_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field holds commerce cloud customer number --></help>
+        <label><!-- SFCC Customer Number --></label>
+        <name>SFCC_Customer_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field holds Salesforce Commerce Cloud Order No. This is optional field --></help>
+        <label><!-- SFCC Order No --></label>
+        <name>SFCC_Order_No__c</name>
     </fields>
     <fields>
         <label><!-- Subcategory --></label>
@@ -2088,6 +2222,14 @@
         <name>System_Issue_Start__c</name>
     </fields>
     <fields>
+        <label><!-- TL Review Reason --></label>
+        <name>TL_Review_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- TL Review Required --></label>
+        <name>TL_Review_Required__c</name>
+    </fields>
+    <fields>
         <help><!-- The time in business hours that this case spent in the hands of the customer. --></help>
         <label><!-- Time With Customer --></label>
         <name>Time_With_Customer__c</name>
@@ -2152,6 +2294,10 @@
         <name>Total_Touches__c</name>
     </fields>
     <fields>
+        <label><!-- Transfer Stewardship --></label>
+        <name>Transfer_Stewardship__c</name>
+    </fields>
+    <fields>
         <help><!-- The time when this case was transferred by the agent --></help>
         <label><!-- Transfer Time --></label>
         <name>Transfer_Time__c</name>
@@ -2170,35 +2316,62 @@
         <name>Type_Completed__c</name>
     </fields>
     <recordTypes>
+        <label><!-- Click to Call --></label>
+        <name>Click_to_Call</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Marketing Emails --></label>
         <name>Marketing_Emails</name>
     </recordTypes>
     <recordTypes>
-        <label><!-- Support Case --></label>
+        <description><!-- Record type for Off 5th support cases --></description>
+        <label><!-- Off 5th Support Case --></label>
+        <name>Off_5th_Support_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Saks Support Cases --></description>
+        <label><!-- Saks Support Case --></label>
+        <name>Saks_Support_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This Record Type is used for Support Cases for Bay and LT cases --></description>
+        <label><!-- Bay/LT Support Case --></label>
         <name>Support_Case</name>
     </recordTypes>
     <validationRules>
-        <errorMessage><!-- Order Refund/Credit above 100$ must be sent to the Service Excellence Team for approval before being sent to the POS Team or Closed (Error Case-01) --></errorMessage>
+        <errorMessage><!-- Order Refund/Credit above 100$ must be sent to the Service Excellence Team for approval before being sent to the POS Team or Closed (Validation Case - 01) --></errorMessage>
         <name>Case_01_ORC_100_plus_go_to_SE_team</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You must select a Case Type before closing the case (Error Case - 04) --></errorMessage>
-        <name>Close_Case_Without_Case_Type</name>
+        <errorMessage><!-- As a front line agent you cannot set a follow up date. (Validation Case - 02) --></errorMessage>
+        <name>Case_02_Prevent_Follow_Up_On_Roles</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You must enter a Follow Up date if setting case to Follow Up Status. --></errorMessage>
-        <name>Follow_Up_Date</name>
+        <errorMessage><!-- Only team leads and management can escalate a case awaiting POS or MNR Review (Validation Case - 03) --></errorMessage>
+        <name>Case_03_Escalating_POS_OR_MNR</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You can&apos;t close a case of this type without a valid contact. (Error Case-05) --></errorMessage>
-        <name>Prevent_Closing_Case_Without_Contact</name>
+        <errorMessage><!-- You must select a Case Type before closing the case (Validation Case - 04) --></errorMessage>
+        <name>Case_04_Close_Case_Without_Case_Type</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- All ORC must be closed before the case can be closed. (Error Case - 02) --></errorMessage>
-        <name>Prevent_close_case_with_active_ORC</name>
+        <errorMessage><!-- You can&apos;t close a case of this type without a valid contact. (Validation Case - 05) --></errorMessage>
+        <name>Case_05_Prevent_Close_Case_No_Contact</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You must submit the case to the POS team using the Submit ORC button. (Error Case - 03) --></errorMessage>
-        <name>Status_Change_to_POS</name>
+        <errorMessage><!-- You must enter a Follow Up date if setting case to Follow Up Status. The date cannot be more than 30 days into the future. The date cannot be set in the past. (Validation Case - 06) --></errorMessage>
+        <name>Case_06_Follow_Up_Date</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- All ORC must be closed before the case can be closed.(Validation Case - 07) --></errorMessage>
+        <name>Case_07_Cant_close_case_with_active_ORC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter an appropriate TL Review reason to proceed. (Validation Case - 08) --></errorMessage>
+        <name>Case_08_TL_Reason_Required</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Transfer_Cases --></label>
+        <name>Transfer_Cases</name>
+    </webLinks>
 </CustomObjectTranslation>

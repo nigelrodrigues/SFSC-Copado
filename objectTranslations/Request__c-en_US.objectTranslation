@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+        <picklistValues>
+            <masterLabel>Hudson&apos;s Bay</masterLabel>
+            <translation><!-- Hudson&apos;s Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lord + Taylor</masterLabel>
+            <translation><!-- Lord + Taylor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MHF</masterLabel>
+            <translation><!-- MHF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Off 5th</masterLabel>
+            <translation><!-- Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks</masterLabel>
+            <translation><!-- Saks --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case Contact Phone Number --></label>
+        <name>Case_Contact_Phone_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field contains the contact of the case at the time of the request --></help>
+        <label><!-- Case Contact --></label>
+        <name>Case_Contact__c</name>
+        <relationshipLabel><!-- Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Number --></label>
+        <name>Case_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Origin --></label>
+        <name>Case_Origin__c</name>
+        <picklistValues>
+            <masterLabel>Email - Executive Escalation</masterLabel>
+            <translation><!-- Email - Executive Escalation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - LT</masterLabel>
+            <translation><!-- Email - LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Off 5th</masterLabel>
+            <translation><!-- Email - Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Saks</masterLabel>
+            <translation><!-- Email - Saks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Service Excellence</masterLabel>
+            <translation><!-- Email - Service Excellence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Service Excellence MHF</masterLabel>
+            <translation><!-- Email - Service Excellence MHF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - Store Operation</masterLabel>
+            <translation><!-- Email - Store Operation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email - The Bay</masterLabel>
+            <translation><!-- Email - The Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Agent</masterLabel>
+            <translation><!-- Live Agent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - LT</masterLabel>
+            <translation><!-- Marketing - LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - Off 5th</masterLabel>
+            <translation><!-- Marketing - Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - Saks</masterLabel>
+            <translation><!-- Marketing - Saks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing - The Bay</masterLabel>
+            <translation><!-- Marketing - The Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OMS</masterLabel>
+            <translation><!-- OMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media</masterLabel>
+            <translation><!-- Social Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Community</masterLabel>
+            <translation><!-- Support Community --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case Owner --></label>
+        <name>Case_Owner__c</name>
+        <relationshipLabel><!-- Requests (Case Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case Status --></label>
+        <name>Case_Status__c</name>
+        <picklistValues>
+            <masterLabel>Awaiting Customer Response</masterLabel>
+            <translation><!-- Awaiting Customer Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awaiting Internal Response</masterLabel>
+            <translation><!-- Awaiting Internal Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awaiting Service Excellence Review</masterLabel>
+            <translation><!-- Awaiting Service Excellence Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Tag</masterLabel>
+            <translation><!-- Call Tag --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow Up</masterLabel>
+            <translation><!-- Follow Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MNR Review</masterLabel>
+            <translation><!-- MNR Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non Responsive Customer</masterLabel>
+            <translation><!-- Non Responsive Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POS Team</masterLabel>
+            <translation><!-- POS Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Fraud Team</masterLabel>
+            <translation><!-- Pending Fraud Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Response Received</masterLabel>
+            <translation><!-- Response Received --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Issue</masterLabel>
+            <translation><!-- System Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Team Lead Assistance Needed</masterLabel>
+            <translation><!-- Team Lead Assistance Needed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case Type --></label>
+        <name>Case_Type__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BTO - Big Ticket Order (New Purchases)</masterLabel>
+            <translation><!-- BTO - Big Ticket Order (New Purchases) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Hold</masterLabel>
+            <translation><!-- Credit Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery</masterLabel>
+            <translation><!-- Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery (WISMO)</masterLabel>
+            <translation><!-- Delivery (WISMO) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delivery Resolution</masterLabel>
+            <translation><!-- Delivery Resolution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exchange / Return / Allowance (ERA)</masterLabel>
+            <translation><!-- Exchange / Return / Allowance (ERA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Executive Escalation Only</masterLabel>
+            <translation><!-- Executive Escalation Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Card(s)</masterLabel>
+            <translation><!-- Gift Card(s) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Registry</masterLabel>
+            <translation><!-- Gift Registry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Store Experience</masterLabel>
+            <translation><!-- In Store Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Major Home Fashion</masterLabel>
+            <translation><!-- Major Home Fashion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order Inquiry</masterLabel>
+            <translation><!-- Order Inquiry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order placed</masterLabel>
+            <translation><!-- Order placed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Place an order</masterLabel>
+            <translation><!-- Place an order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Information</masterLabel>
+            <translation><!-- Product Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refunds/Credits</masterLabel>
+            <translation><!-- Refunds/Credits --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Returns</masterLabel>
+            <translation><!-- Returns --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rewards</masterLabel>
+            <translation><!-- Rewards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Special Projects</masterLabel>
+            <translation><!-- Special Projects --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Store Experience</masterLabel>
+            <translation><!-- Store Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer</masterLabel>
+            <translation><!-- Transfer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIP</masterLabel>
+            <translation><!-- VIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warranty</masterLabel>
+            <translation><!-- Warranty --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Requests (Case) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cause of the issue --></label>
+        <name>Cause_of_the_issue__c</name>
+        <picklistValues>
+            <masterLabel>Commerce Cloud Bug</masterLabel>
+            <translation><!-- Commerce Cloud Bug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Issue</masterLabel>
+            <translation><!-- Network Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UAD Bug</masterLabel>
+            <translation><!-- UAD Bug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Error</masterLabel>
+            <translation><!-- User Error --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The IVR Log of the call that created the Case --></help>
+        <label><!-- IVR Log --></label>
+        <name>IVR_Log__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please describe the issue you are having. Place a screenshot if you have one. --></help>
+        <label><!-- Issue Description --></label>
+        <name>Issue_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issue Location --></label>
+        <name>Issue_Location__c</name>
+        <picklistValues>
+            <masterLabel>All Locations</masterLabel>
+            <translation><!-- All Locations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cebu</masterLabel>
+            <translation><!-- Cebu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Davao</masterLabel>
+            <translation><!-- Davao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Salvador</masterLabel>
+            <translation><!-- El Salvador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jackson</masterLabel>
+            <translation><!-- Jackson --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moncton</masterLabel>
+            <translation><!-- Moncton --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Issue Type --></label>
+        <name>Issue_Type__c</name>
+        <picklistValues>
+            <masterLabel>Network</masterLabel>
+            <translation><!-- Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical</masterLabel>
+            <translation><!-- Technical --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>Order_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Initiator --></label>
+        <name>Request_Initiator__c</name>
+        <relationshipLabel><!-- Requests (Request Initiator) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Request Status --></label>
+        <name>Request_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Resolution Notes --></label>
+        <name>Resolution_Notes__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Record Type for requests that are related to a case --></description>
+        <label><!-- Case Specific Requests --></label>
+        <name>Case_Specific_Requests</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Requests specific to issues on a case --></description>
+        <label><!-- General Technical Requests --></label>
+        <name>General_Technical_Requests</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot change case information after a request is made. --></errorMessage>
+        <name>Request_01_Cannot_Change_Historical_Info</name>
+    </validationRules>
+</CustomObjectTranslation>

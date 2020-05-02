@@ -61,10 +61,10 @@
 
                                         <div class="slds-grid slds-wrap slds-gutters_small cols-1">
                                             <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
-                                                <template if:true={caseTypePicklistValues.data}>
+                                                <template if:true={caseTypePickValues}>
                                                     <div class="slds-form-element">
                                                         <label class="slds-form-element__label slds-no-flex"
-                                                               for="tracCaseTypeSelect">Type</label>
+                                                               for="tracCaseTypeSelect">{placeholders.type}</label>
                                                         <div class="slds-form-element__control">
                                                             <div class="slds-select_container">
                                                                 <select id="tracCaseTypeSelect"
@@ -74,7 +74,7 @@
                                                                         {labels.lblNone}
                                                                     </option>
                                                                     <template
-                                                                            for:each={caseTypePicklistValues.data.values}
+                                                                            for:each={caseTypePickValues}
                                                                             for:item="option">
                                                                         <option class='select-option' key={option.value} value={option.value}>
                                                                             {option.label}
@@ -120,30 +120,7 @@
                     </div>
                 </lightning-record-edit-form>
             </template>
-            <!-- END FORM -->
-
-
-            <!-- START CASE RECORD VIEW -->
-            <template if:false={isEditMode}>
-                <section>
-                    <div class="slds-wrap slds-p-vertical--medium ">
-                        <h1 class="slds-page-header__title">{labels.lblCreatedTitle}</h1>
-                        <div class="slds-m-top--small">{labels.lblCreatedSubtitle}</div>
-                    </div>
-                    <div class="slds-border_top slds-p-vertical--medium ">
-                        <h2>{labels.lblCreatedSummary}</h2>
-                        <lightning-record-view-form record-id={caseId} object-api-name="Case">
-                            <lightning-output-field field-name="Subject"></lightning-output-field>
-                            <lightning-output-field field-name="Description"></lightning-output-field>
-                            <lightning-output-field field-name="CaseNumber"></lightning-output-field>
-                        </lightning-record-view-form>
-                    </div>
-                </section>
-            </template>
         </div>
-        <!-- END CASE RECORD VIEW -->
-
-
         <!-- START SPINNER -->
         <template if:true={isBusy}>
             <div class="slds-spinner_container">

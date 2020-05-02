@@ -11,14 +11,7 @@ import lblReceipt from '@salesforce/label/c.Attach_Receipt';
 import lblCreatedTitle from '@salesforce/label/c.Created_Title';
 import lblCreatedSubtitle from '@salesforce/label/c.Created_Subtitle';
 import lblCreatedSummary from '@salesforce/label/c.Created_Summary';
-
-import lblGenericErrorMessage from '@salesforce/label/c.Generic_Error_Message';
-import lblFieldErrorName from '@salesforce/label/c.Field_Error_Name';
-import lblFieldErrorEmail from '@salesforce/label/c.Field_Error_Email';
-import lblFieldErrorTopic from '@salesforce/label/c.Field_Error_Topic';
-import lblFieldErrorOrderNumber from '@salesforce/label/c.Field_Error_Order_Number';
-import lblFieldErrorSubject from '@salesforce/label/c.Field_Error_Subject';
-
+import lblNullFieldMessage from '@salesforce/label/c.Null_Field_Message';
 import lblRequired from '@salesforce/label/c.Required';
 import lblOptional from '@salesforce/label/c.Optional';
 import lblSuccess from '@salesforce/label/c.Success';
@@ -46,7 +39,7 @@ const labels = {
     lblCreatedTitle,
     lblCreatedSubtitle,
     lblCreatedSummary,
-    lblGenericErrorMessage,
+    lblNullFieldMessage,
     lblSubmit,
     lblRequired,
     lblOptional,
@@ -55,12 +48,8 @@ const labels = {
     lblFileError,
     lblCaseSuccessMessage,
     lblCaseErrorMessage,
-    lblFileErrorMessage,
-    lblFieldErrorName,
-    lblFieldErrorEmail,
-    lblFieldErrorTopic,
-    lblFieldErrorOrderNumber,
-    lblFieldErrorSubject,
+    lblFileErrorMessage
+    // lblDropdownPlaceholder
 };
 
 const fieldLabels = {

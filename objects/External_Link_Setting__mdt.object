@@ -76,6 +76,11 @@
         <columns>DeveloperName</columns>
         <columns>URL__c</columns>
         <columns>Order__c</columns>
+        <columns>Bay__c</columns>
+        <columns>LT__c</columns>
+        <columns>Saks__c</columns>
+        <columns>Off_5th__c</columns>
+        <columns>MHF__c</columns>
         <filterScope>Everything</filterScope>
         <label>All with Info</label>
         <language>en_US</language>

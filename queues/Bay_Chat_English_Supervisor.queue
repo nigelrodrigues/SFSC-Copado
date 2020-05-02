@@ -4,8 +4,7 @@
     <name>Bay Chat - English Supervisor</name>
     <queueMembers>
         <users>
-            <user>ardiente.richelle@hbc.com</user>
-            <user>rodiel.martinez-vendor@hbc.com</user>
+            <user>jhoran@tractionondemand.com.hbc</user>
         </users>
     </queueMembers>
     <queueRoutingConfig>Chat_English</queueRoutingConfig>

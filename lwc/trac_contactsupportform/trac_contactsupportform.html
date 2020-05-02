@@ -11,19 +11,19 @@
         <!-- START FORM -->
         <div class="custom-content">
             <template if:true={isEditMode}>
-                <lightning-record-edit-form
-                        record-id={caseId}
-                        object-api-name="Case"
-                        onload={handleFormLoad}
-                        onerror={handleFormError}
-                        onsubmit={handleFormSubmit}
-                        onsuccess={handleFormSuccess}>
+                <lightning-record-edit-form record-id={caseId}
+                                            record-type-id={caseRecordTypeId}
+                                            object-api-name="Case"
+                                            onload={handleFormLoad}
+                                            onerror={handleFormError}
+                                            onsubmit={handleFormSubmit}
+                                            onsuccess={handleFormSuccess}>
 
                     <div class="header-message slds-p-top_small slds-align-middle slds-text-align_center ">
                         <h1 class="slds-page-header__title">{labels.lblTitle}</h1>
                         <span>{subtitle.Q}<br>{subtitle.A}</span>
-                    </div>
 
+                    </div>
                     <div class="slds-section">
                         <section>
                             <div class="slds-section slds-is-open">
@@ -34,68 +34,60 @@
                                                 <lightning-messages></lightning-messages>
                                             </div>
                                         </div>
-                                        <div if:true={hasError} class="slds-grid slds-col slds-is-editing slds-has-flexi-truncate slds-text-color_error slds-p-horizontal_medium custom-margin-4 custom-error-box">
-                                            {labels.lblGenericErrorMessage}
-                                        </div>
-                                        <div class="slds-grid slds-wrap slds-gutters_small mdp cols-1 forcePageBlockSectionRow">
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
                                             <div class="slds-col slds-size_1-of-1 email-field slds-is-editing slds-has-flexi-truncate">
-                                                <lightning-input
-                                                        name="SuppliedEmail"
-                                                        label={placeholders.email}
-                                                        class="custom-input-field custom-required">
+                                                <lightning-input name="SuppliedEmail"
+                                                                 label={placeholders.email}
+                                                                 class="custom-input-field custom-required">
                                                 </lightning-input>
-                                                <span class="slds-form-element__help slds-text-color_error custom-message custom-hidden">{labels.lblFieldErrorEmail}</span>
-                                            </div>
-                                        </div>
-                                        <div class="slds-grid slds-wrap slds-gutters_small mdp cols-1 forcePageBlockSectionRow">
-                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
-                                                <lightning-input
-                                                        name="SuppliedName"
-                                                        label={placeholders.name}
-                                                        class="custom-input-field custom-required" onchange={handleOrderTypeChange}>
-                                                </lightning-input>
-                                                <span class="slds-form-element__help slds-text-color_error custom-message custom-hidden">{labels.lblFieldErrorName}</span>
-                                            </div>
-                                        </div>
-                                        <div class="slds-grid slds-wrap slds-gutters_small mdp cols-1 forcePageBlockSectionRow">
-                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
-                                                <lightning-input-field
-                                                        class="custom-required custom-input-field"
-                                                        field-name="Community_Case_Type__c"
-                                                        variant="compact"
-                                                        onchange={handleOrderTypeChange}>
-                                                </lightning-input-field>
-                                                <span class="slds-form-element__help slds-text-color_error custom-message custom-hidden">{labels.lblFieldErrorTopic}</span>
                                             </div>
                                         </div>
                                         <div class="slds-grid slds-wrap slds-gutters_small cols-1">
                                             <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
-                                                <lightning-input
-                                                        name="Order_Number__c"
-                                                        label={placeholders.order.optional}
-                                                        class={orderFieldClassList}>
+                                                <lightning-input name="SuppliedName"
+                                                                 label={placeholders.name}
+                                                                 class="custom-input-field custom-required">
                                                 </lightning-input>
-                                                <span class="slds-form-element__help slds-text-color_error"><span class="order-number-error-div">{labels.lblFieldErrorOrderNumber}</span></span>
-                                            </div>
-                                        </div>
-                                        <div class="slds-grid slds-wrap slds-gutters_small mdp cols-1 forcePageBlockSectionRow">
-                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
-                                                <lightning-input
-                                                        name="Subject"
-                                                        label={placeholders.subject}
-                                                        class="custom-input-field custom-required "
-                                                        onchange={handleSubjectChange}>
-                                                </lightning-input>
-                                                <span class="slds-form-element__help slds-text-color_error custom-message custom-hidden">{labels.lblFieldErrorSubject}</span>
                                             </div>
                                         </div>
                                         <div class="slds-grid slds-wrap slds-gutters_small cols-1">
                                             <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
-                                                <lightning-textarea
-                                                        name="Description"
-                                                        label={placeholders.description}
-                                                        class="custom-input-field"
-                                                        onchange={handleDescriptionChange}>
+                                                <!--<lightning-input-field class="custom-hidden" field-name="Business_Unit__c" value={defaultBusinessUnit}></lightning-input-field>-->
+                                                <lightning-input-field class="custom-required" field-name="Community_Case_Type__c" variant="compact" onchange={handleOrderTypeChange}></lightning-input-field>
+
+                                                <!--<lightning-combobox name="Case_Type__c"-->
+                                                <!--class="custom-required custom-input-field"-->
+                                                <!--label={placeholders.type}-->
+                                                <!--value={value}-->
+                                                <!--placeholder={labels.lblDropdownPlaceholder}-->
+                                                <!--options={caseTypeOptions}-->
+                                                <!--onchange={handleOrderTypeChange}>-->
+                                                <!--</lightning-combobox>-->
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-input name="Order_Number__c"
+                                                                 label={placeholders.order.optional}
+                                                                 class={orderFieldClassList}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-input name="Subject"
+                                                                 label={placeholders.subject}
+                                                                 class="custom-input-field custom-required "
+                                                                 onchange={handleSubjectChange}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-textarea name="Description"
+                                                                    label={placeholders.description}
+                                                                    class="custom-input-field"
+                                                                    onchange={handleDescriptionChange}>
                                                 </lightning-textarea>
                                             </div>
                                         </div>
@@ -103,27 +95,24 @@
                                 </div>
                             </div>
                             <div style="padding:4px; margin-top:-25px;">
-                                <div if:true={userId} style="margin-bottom:6px">
-                                    <lightning-file-upload
-                                            label=""
-                                            name="fileUploader"
-                                            multiple
-                                            record-id={currentUserId}
-                                            onuploadfinished={handleUploadFinished}>
+                                <div style="margin-bottom:6px">
+                                    <lightning-file-upload label=""
+                                                           name="fileUploader"
+                                                           multiple
+                                                           record-id={userId}
+                                                           onuploadfinished={handleUploadFinished}
+                                                           accept={acceptedFileFormats}>
                                     </lightning-file-upload>
                                 </div>
-                                <template if:false={emptyFileList}>
-                                    <lightning-pill-container class="file-list" items={fileList} onitemremove={handleRemoveFile} ></lightning-pill-container>
-                                </template>
+                                <lightning-pill-container items={fileList} onitemremove={handleRemoveFile} ></lightning-pill-container>
                             </div>
                         </section>
                     </div>
                     <div class="slds-grid slds-grid_align-center slds-p-bottom--x-small">
-                        <lightning-button
-                                variant="brand"
-                                type="submit"
-                                label={labels.lblSubmit}
-                                class="slds-m-top_medium custom-button">
+                        <lightning-button variant="brand"
+                                          type="submit"
+                                          label={labels.lblSubmit}
+                                          class="slds-m-top_medium custom-button">
                         </lightning-button>
                     </div>
                 </lightning-record-edit-form>

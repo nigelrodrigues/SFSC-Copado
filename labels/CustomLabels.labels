@@ -110,7 +110,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Case Field Type</shortDescription>
-        <value>What can we help you with?</value>
+        <value>Topic</value>
     </labels>
     <labels>
         <fullName>Chat_Button</fullName>

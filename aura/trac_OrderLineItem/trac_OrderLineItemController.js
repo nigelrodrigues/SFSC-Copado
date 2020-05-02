@@ -9,4 +9,10 @@
     closeModel: function(component, event, helper) {
         component.set("v.isModalOpen", false);
     },
+
+    toggleTracking: function(component, event, helper) {
+        var showTrackingInfo = component.get("v.showTrackingInfo");
+
+        component.set("v.showTrackingInfo", !showTrackingInfo);
+    }
 })

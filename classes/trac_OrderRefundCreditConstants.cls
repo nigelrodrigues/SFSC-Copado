@@ -11,5 +11,5 @@ public with sharing class trac_OrderRefundCreditConstants {
     public static final String STATUS_DRAFT = 'Draft';
     public static final String STATUS_CANCELLED = 'Cancelled';
     public static final String STATUS_NEW = 'New';
-
+    public static final String STATUS_IN_PROGRESS = 'In Progress';
 }

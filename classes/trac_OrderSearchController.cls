@@ -5,16 +5,35 @@
  */
 public with sharing class trac_OrderSearchController {
 
+    private static final Map<String, Integer> ORDER_LENGTH_BY_BUSINESS_UNIT = new Map<String, Integer>{
+            'Hudson\'s Bay' => 10,
+            'Lord + Taylor' => 10,
+            'Off 5th' => 8,
+            'Saks' => 8
+    };
+
     @AuraEnabled
-    public static TLAuraResponse getOrderDetails(String businessUnit, String orderNo) {
+    public static TLAuraResponse getOrderDetails(String businessUnit, String orderNo , String postalCode) {
         TLAuraResponse response = new TLAuraResponse(true);
 
         trac_WS_GetOrderDetails orderDetails = new trac_WS_GetOrderDetails();
 
+        Integer orderLength;
+        if (ORDER_LENGTH_BY_BUSINESS_UNIT.containsKey(businessUnit)) {
+            orderLength = ORDER_LENGTH_BY_BUSINESS_UNIT.get(businessUnit);
+        }
+        while(orderNo.length() < orderLength) {
+            orderNo = '0'+orderNo;
+        }
         try {
             trac_WS_GetOrderDetails.req_OrderWrapper reqWrapper = new trac_WS_GetOrderDetails.req_OrderWrapper();
             reqWrapper.EnterpriseCode = trac_WS_OrderUtils.getEnterpriseCodeFromBusinessUnit(businessUnit);
             reqWrapper.DocumentType = trac_WS_OrderUtils.getOrderType();
+
+            trac_WS_GetOrderDetails.PersonInfoBillToWrapper personInfoBillTo = new  trac_WS_GetOrderDetails.PersonInfoBillToWrapper();
+            personInfoBillTo.ZipCode = postalCode;
+
+            reqWrapper.PersonInfoBillTo = personInfoBillTo;
             reqWrapper.IsTrackURLReq = 'Y';
             reqWrapper.OrderNo = orderNo;
 
@@ -48,7 +67,7 @@ public with sharing class trac_OrderSearchController {
     }
 
     @AuraEnabled
-    public static TLAuraResponse getOrderList(String businessUnit, String email) {
+    public static TLAuraResponse getOrderList(String businessUnit, String email, String accountNumber) {
 
         TLAuraResponse response = new TLAuraResponse(true);
 
@@ -57,8 +76,8 @@ public with sharing class trac_OrderSearchController {
 
         try {
             reqWrapper.EnterpriseCode = trac_WS_OrderUtils.getEnterpriseCodeFromBusinessUnit(businessUnit);
-            reqWrapper.BillToID = email;
-
+            reqWrapper.CustomerEMailId = email;
+            reqWrapper.BillToID = accountNumber;
             trac_WS_GetOrderList.GetOrderListResponse res = callGetOrderList(reqWrapper);
             response.returnValuesMap.put('orderList',res);
 
@@ -177,8 +196,12 @@ public with sharing class trac_OrderSearchController {
     }
 
     @AuraEnabled
-    public static void updateCase(Id caseId, String orderNo) {
-        Case cs = new Case(Id = caseId, Order_Number__c = orderNo);
+    public static void updateCase(Id caseId, String orderNo, String orderZipCode) {
+        Case cs = new Case(
+                Id = caseId,
+                Order_Number__c = orderNo,
+                Order_Billing_Postal_Code__c = orderZipCode
+        );
         update cs;
     }
 

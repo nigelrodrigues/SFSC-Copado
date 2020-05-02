@@ -121,11 +121,11 @@ public without sharing class trac_ContactTriggerHelper {
             if (contact.OtherPostalCode == null) {
                 contact.OtherPostalCode = contact.MailingPostalCode;
             }
-            if (contact.OtherStateCode == null) {
-                contact.OtherStateCode = contact.MailingStateCode;
-            }
             if (contact.OtherCountryCode == null) {
                 contact.OtherCountryCode = contact.MailingCountryCode;
+            }
+            if (contact.OtherStateCode == null && contact.OtherCountryCode != null && contact.OtherCountryCode.equals(contact.MailingCountryCode)) {
+                contact.OtherStateCode = contact.MailingStateCode;
             }
             if (contact.Mailing_First_Name__c == null) {
                 contact.Mailing_First_Name__c = contact.FirstName;

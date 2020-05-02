@@ -21,7 +21,7 @@
 
     searchByOrderNumber : function(component, event, helper, orderNo) {
         var businessUnit = component.find("businessUnit").get("v.value");
-
+        var postalCode = component.get("v.postalCode");
         if (!businessUnit) {
             var cs = component.get("v.caseRecord");
             businessUnit = cs.Business_Unit__c;
@@ -34,7 +34,8 @@
         var action = component.get("c.getOrderDetails");
         action.setParams({
             "orderNo": orderNo,
-            "businessUnit": businessUnit
+            "businessUnit": businessUnit,
+            "postalCode" :postalCode
         });
 
         action.setCallback(this, function (response) {
@@ -49,8 +50,11 @@
                 } else {
                     if(result.isSuccess) {
                         if(!$A.util.isEmpty(result.returnValuesMap['orderDetails'])) {
-                            component.set("v.order", result.returnValuesMap['orderDetails']);
-                            helper.linkToCase(component, orderNo);
+                            if(component.get("v.orderNumber")){
+                                component.set("v.order", result.returnValuesMap['orderDetails']);
+                            }else{
+                                helper.linkToCase(component, orderNo);
+                            }
                         }
                     } else {
                         component.set("v.isError", true);
@@ -107,6 +111,7 @@
 
     handleSearch : function (component, event, helper) {
         helper.resetResults(component);
+
         component.set("v.showError", false);
         if(helper.checkBlank(component, 'orderNumberInput') && helper.checkBlank(component, 'emailInput')){
             if(!component.find("phoneInput") || helper.checkBlank(component, 'phoneInput')){
@@ -114,7 +119,6 @@
                 return;
             }
         }
-
         if(component.find("creditCardInput")){
             var validity = component.find("creditCardInput").get("v.validity");
             if(validity.patternMismatch)   return;
@@ -144,6 +148,7 @@
             var giftCard = component.find("giftCardNumberInput").get("v.value");
             var archievedOrder = component.find("archivedOrderInput").get("v.value") ? 'Y' : 'N';
             var draftOrder = component.find("draftOrderInput").get("v.value") ? 'Y' : 'N';
+            var accountNumber = component.find('accountNumberInput').get("v.value");
 
             var action = component.get("c.getOrderListAdv");
             action.setParams({
@@ -163,20 +168,20 @@
             var action = component.get("c.getOrderList");
             action.setParams({
                 "email": email,
-                "businessUnit": businessUnit
+                "businessUnit": businessUnit,
+                "accountNumber": accountNumber
             });
         }
 
         action.setCallback(this, function (response) {
             var state = response.getState();
-
             if (component.isValid() && state === "SUCCESS") {
 
                 var result =  response.getReturnValue();
-
                 if (result == null) {
                     component.set("v.errorMsg", "Connection Error");
                 } else {
+
                     if(result.isSuccess) {
                         var returnVal = result.returnValuesMap['orderList'];
                         if(!$A.util.isEmpty(returnVal) && returnVal.TotalOrderList !== '0'){
@@ -219,18 +224,19 @@
     linkToCase : function (component, orderNo) {
         var action = component.get("c.updateCase");
         var caseRecord = component.get("v.caseRecord");
+        var order = component.get("v.order");
 
         if (caseRecord && !caseRecord.Order_Number__c) {
             action.setParams({
                 "caseId": caseRecord.Id,
-                "orderNo": orderNo
+                "orderNo": orderNo,
+                "orderZipCode": (order && order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : null
             });
 
             action.setCallback(this, function (response) {
                 var state = response.getState();
-
                 if (component.isValid() && state === "SUCCESS") {
-                    //$A.get('e.force:refreshView').fire();
+                    $A.get('e.force:refreshView').fire();
                 } else {
                     console.log("failed with state: " + state);
                 }

@@ -81,9 +81,9 @@
                     <label>Awaiting Internal Response</label>
                 </value>
                 <value>
-                    <fullName>Team Assistance Needed</fullName>
+                    <fullName>Team Lead Assistance Needed</fullName>
                     <default>false</default>
-                    <label>Team Assistance Needed</label>
+                    <label>Team Lead Assistance Needed</label>
                 </value>
                 <value>
                     <fullName>Awaiting Service Excellence Review</fullName>
@@ -124,6 +124,92 @@
                     <fullName>MNR Review</fullName>
                     <default>false</default>
                     <label>MNR Review</label>
+                </value>
+                <value>
+                    <fullName>Transferred to Store Operations</fullName>
+                    <default>false</default>
+                    <label>Transferred to Store Operations</label>
+                </value>
+                <value>
+                    <fullName>Escalate ORC MNR Review</fullName>
+                    <default>false</default>
+                    <label>Escalate ORC MNR Review</label>
+                </value>
+                <value>
+                    <fullName>Transferred to Back Office</fullName>
+                    <default>false</default>
+                    <label>Transferred to Back Office</label>
+                </value>
+                <value>
+                    <fullName>Risk Support El Salvador Team</fullName>
+                    <default>false</default>
+                    <label>Risk Support El Salvador Team</label>
+                </value>
+                <value>
+                    <fullName>Risk Support Jackson Team</fullName>
+                    <default>false</default>
+                    <label>Risk Support Jackson Team</label>
+                </value>
+                <value>
+                    <fullName>Escalate Risk Support El Salvador Team</fullName>
+                    <default>false</default>
+                    <label>Escalate Risk Support El Salvador Team</label>
+                </value>
+                <value>
+                    <fullName>Escalate Risk Support Jackson Team</fullName>
+                    <default>false</default>
+                    <label>Escalate Risk Support Jackson Team</label>
+                </value>
+                <value>
+                    <fullName>Escalate ORC POS Review</fullName>
+                    <default>false</default>
+                    <label>Escalate ORC POS Review</label>
+                </value>
+                <value>
+                    <fullName>Virtual Gift Card Processing</fullName>
+                    <default>false</default>
+                    <label>Virtual Gift Card Processing</label>
+                </value>
+                <value>
+                    <fullName>POS Gift Card Processing</fullName>
+                    <default>false</default>
+                    <label>POS Gift Card Processing</label>
+                </value>
+                <value>
+                    <fullName>Borderfree Transfer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Borderfree Transfer</label>
+                </value>
+                <value>
+                    <fullName>Call Tag</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Call Tag</label>
+                </value>
+                <value>
+                    <fullName>Dropship Transfer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Dropship Transfer</label>
+                </value>
+                <value>
+                    <fullName>GWP Transfer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>GWP Transfer</label>
+                </value>
+                <value>
+                    <fullName>Team Assistance Needed</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Team Assistance Needed</label>
+                </value>
+                <value>
+                    <fullName>UND Transfer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>UND Transfer</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1909,6 +1995,12 @@
         <columns>MasterLabel</columns>
         <columns>Case_Status__c</columns>
         <columns>Queue__c</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case_Type__c</columns>
+        <columns>Category__c</columns>
+        <columns>Sub_Category__c</columns>
+        <columns>Transfer_Stewardship__c</columns>
+        <columns>Ignore_Metadata_Mapping__c</columns>
         <columns>Ignore_on_Executive_Escalation__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Columns</label>

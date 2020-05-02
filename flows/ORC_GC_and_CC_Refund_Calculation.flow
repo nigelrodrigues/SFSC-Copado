@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <decisions>
+        <name>isChangedDecision12_myRule_11_ORC_Status_c</name>
+        <label>isChangedDecision12_myRule_11_ORC_Status_c</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>isChangedRule_12_myRule_11_ORC_Status_c</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>myVariable_old.ORC_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>myVariable_current.ORC_Status__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myDecision</targetReference>
+            </connector>
+            <label>isChangedRule_12_myRule_11_ORC_Status_c</label>
+        </rules>
+    </decisions>
+    <decisions>
         <processMetadataValues>
             <name>index</name>
             <value>
@@ -53,6 +85,120 @@
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
             <label>Form Completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision10</name>
+        <label>myDecision10</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_11</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>isChangedRule_12_myRule_11_ORC_Status_c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.ORC_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.ORC_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Declined</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_11_A1</targetReference>
+            </connector>
+            <label>Approved or Declined</label>
         </rules>
     </decisions>
     <decisions>
@@ -207,6 +353,9 @@
         <label>myDecision7</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision10</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_8</name>
@@ -279,7 +428,7 @@
             <label>Full Refund</label>
         </rules>
     </decisions>
-    <description>Update of full order amount field</description>
+    <description>Added approval or decline stamp</description>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -287,7 +436,7 @@
                 <stringValue>[Order_Refund_Credit__c].Amount_to_Refund__c - [Order_Refund_Credit__c].Amount_Charged_to_Credit_Card__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_6_myRule_5_A1_0537782153</name>
+        <name>formula_6_myRule_5_A1_8034236157</name>
         <dataType>Currency</dataType>
         <expression>{!myVariable_current.Amount_to_Refund__c} - {!myVariable_current.Amount_Charged_to_Credit_Card__c}</expression>
         <scale>18</scale>
@@ -299,13 +448,13 @@
                 <stringValue>[Order_Refund_Credit__c].Amount_to_Refund__c - [Order_Refund_Credit__c].Amount_Charged_to_Gift_Card__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_9_myRule_8_A1_7765203555</name>
+        <name>formula_9_myRule_8_A1_0314922180</name>
         <dataType>Currency</dataType>
         <expression>{!myVariable_current.Amount_to_Refund__c} - {!myVariable_current.Amount_Charged_to_Gift_Card__c}</expression>
         <scale>18</scale>
     </formulas>
-    <interviewLabel>ORC_GC_and_CC_Refund_Calculation-3_InterviewLabel</interviewLabel>
-    <label>ORC GC and CC Refund Calculation</label>
+    <interviewLabel>ORC_GC_and_CC_Refund_Calculation-5_InterviewLabel</interviewLabel>
+    <label>ORC- On Update Automation</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -331,6 +480,86 @@
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Order_Refund_Credit__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_11_A1</name>
+        <label>Stamp Approved</label>
+        <locationX>1100</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Final Approval Status</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Final_Approval_Status__c</field>
+            <value>
+                <elementReference>myVariable_current.ORC_Status__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Order_Refund_Credit__c</object>
+    </recordUpdates>
     <recordUpdates>
         <processMetadataValues>
             <name>evaluationType</name>
@@ -1009,7 +1238,7 @@
             </processMetadataValues>
             <field>New_GC_Amount__c</field>
             <value>
-                <elementReference>formula_6_myRule_5_A1_0537782153</elementReference>
+                <elementReference>formula_6_myRule_5_A1_8034236157</elementReference>
             </value>
         </inputAssignments>
         <object>Order_Refund_Credit__c</object>
@@ -1273,7 +1502,7 @@
             </processMetadataValues>
             <field>CC_Amount_Refund__c</field>
             <value>
-                <elementReference>formula_9_myRule_8_A1_7765203555</elementReference>
+                <elementReference>formula_9_myRule_8_A1_0314922180</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1343,6 +1572,9 @@
         <label>Refund Smaller than GC Amount</label>
         <locationX>800</locationX>
         <locationY>300</locationY>
+        <connector>
+            <targetReference>myDecision10</targetReference>
+        </connector>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -1443,7 +1675,7 @@
         </inputAssignments>
         <object>Order_Refund_Credit__c</object>
     </recordUpdates>
-    <startElementReference>myDecision</startElementReference>
+    <startElementReference>isChangedDecision12_myRule_11_ORC_Status_c</startElementReference>
     <status>Active</status>
     <variables>
         <name>myVariable_current</name>

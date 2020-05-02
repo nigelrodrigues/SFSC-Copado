@@ -785,11 +785,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Amount__c</field>
-            <table>Case.Promo_Codes__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Consumed__c</field>
             <table>Case.Promo_Codes__r</table>
         </columns>

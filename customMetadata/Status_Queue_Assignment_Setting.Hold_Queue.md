@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Business_Unit__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">All</value>
     </values>
     <values>
         <field>Case_Status__c</field>

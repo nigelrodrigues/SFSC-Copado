@@ -1,0 +1,40 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @description To display the emails retrieved in a list
+ -->
+
+<aura:component description="trac_EmailList">
+
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="emails" type="Object[]"/>
+    <aura:attribute name="businessUnit" type="String" />
+
+    <div class="slds-scrollable" >
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate">Email Type</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">RECIPIENT</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">Email Sent On </div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">Actions</div>
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.emails}" var="email" indexVar="count">
+                    <c:trac_DisplayEmailInList email="{!email}" count="{!count}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
+                </aura:iteration>
+            </tbody>
+        </table>
+
+    </div>
+
+</aura:component>

@@ -25,7 +25,7 @@ private class trac_ContactSearchControllerTest {
         insert settings;*/
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
         List<Contact> contacts = new List<Contact>();
-        Contact con = new Contact(LastName = 'Test');
+        Contact con = new Contact(LastName = 'Test',Order_Number__c='1234',Business_Unit__c='MHF');
         contacts = trac_ContactSearchController.getContacts(con);
         System.assert(contacts.size() > 0, 'Contacts not found.');
     }
@@ -48,5 +48,52 @@ private class trac_ContactSearchControllerTest {
         Test.stopTest();
         Case updatedCase = [SELECT Id, Business_Unit__c FROM Case WHERE Id =: caseId];
         System.assertEquals(con.Business_Unit__c, updatedCase.Business_Unit__c, 'Case not updated.');
+    }
+    
+    @IsTest
+    static void testGetBusinessUnit(){
+        Case cs = (Case)factory.createSObject(new Case(), true);
+        Case retCase;
+        retCase = trac_ContactSearchController.getBusinessUnit(cs.id);
+        System.assert(retCase != null, 'Case not found.');
+    }
+    
+    @IsTest
+    static void testLinkContactWithCase(){
+        Contact con = (Contact)factory.createSObject(new Contact(Business_Unit__c = 'MHF', Order_Number__c = null), true);
+        Case cs = (Case)factory.createSObject(new Case(), true);
+        Test.startTest();
+        Id caseId = trac_ContactSearchController.linkContactWithCase(con.id, cs.Id);
+        Test.stopTest();
+        Case updatedCase = [SELECT Id, ContactId FROM Case WHERE Id =: caseId];
+        System.assertEquals(con.id, updatedCase.ContactId, 'Contact not linked with Case.');
+        System.assertEquals(false, String.isBlank(trac_ContactSearchController.buildQuery(con)));
+        trac_ContactSearchController.getContacts(con);
+
+    }
+
+    @isTest
+    static void testGetContactFromResponse()
+    {
+        Contact testContact = new Contact(LastName='Test', Order_Number__c = '12345', Business_Unit__c ='SAKS');
+        insert testContact;
+
+        Test.startTest();
+        Test.setMock(HttpCalloutMock.class, new trac_CustomerDetailsResponse());
+        Contact contact = trac_WS_CustomerUtils.getContactFromOrderByContact(testContact);
+        Test.stopTest();
+        System.assertEquals(true, contact!=null);
+    }
+
+    @isTest
+    static void testSyncContactFromExternal()
+    {
+        Contact testContact = new Contact(LastName='Test', Order_Number__c = '12345', Business_Unit__c ='SAKS', Email ='test@example.com');
+        insert testContact;
+
+        Test.startTest();
+        Test.setMock(HttpCalloutMock.class, new trac_GetCustomerDetailsResource());
+        trac_WS_CustomerUtils.syncContactFromExternal(testContact);
+        Test.stopTest();
     }
 }

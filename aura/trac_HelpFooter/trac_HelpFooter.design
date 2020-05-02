@@ -7,4 +7,7 @@
     <design:attribute name="headingLabel" label="Heading Label" />
     <design:attribute name="linkLabel" label="Link Label" />
     <design:attribute name="linkUrl" label="Link Url" />
+    <design:attribute name="languageUrl" label="Language Url"/>
+    <design:attribute name="englishUrl" label="English Url"/>
+    <design:attribute name="frenchUrl" label="French Url" />
 </design:component>

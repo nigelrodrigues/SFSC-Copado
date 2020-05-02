@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent when a case is closed -Saks in English</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Closed Email (S5A English)</name>
+    <style>none</style>
+    <subject>Nous avons réglé votre problème</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you for contacting {!Case.Business_Unit__c}! We&apos;re glad we were able to assist you. Si vous souhaitez ajouter un commentaire, cliquez  ici
+
+Your Case Number: {!Case.CaseNumber}
+
+All the best, Your {!Case.Business_Unit__c} Customer Service Team
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

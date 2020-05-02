@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Virtual Gift Card Queue</name>
+    <queueMembers>
+        <roles>
+            <role>Bay_French_ES_Team_Lead</role>
+            <role>LT_Bay_Cebu_Team_Lead</role>
+            <role>LT_Bay_SE_Cebu_Team_Lead</role>
+            <role>MHF_Cebu_Team_Lead</role>
+            <role>MHF_French_Moncton_Team_Lead</role>
+            <role>MHF_Moncton_SE_Team_Lead</role>
+            <role>MHF_Moncton_Team_Lead</role>
+            <role>Off_5th_TL_Cebu</role>
+            <role>POS_Moncton_Team_Lead</role>
+            <role>Saks_TL_El_Salvador</role>
+        </roles>
+    </queueMembers>
+    <queueRoutingConfig>Action_Required</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

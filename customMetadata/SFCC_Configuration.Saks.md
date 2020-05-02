@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Default_Customer_Id__c</field>
-        <value xsi:type="xsd:string">abk8k34iIpA4uglyJMNb5T8WW0</value>
+        <value xsi:type="xsd:string">abQvoWTMAOL615nbHVUeRxFZ28</value>
     </values>
     <values>
         <field>Store_ID__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Storefront_URL__c</field>
-        <value xsi:type="xsd:string">https://development-test-hbc.demandware.net</value>
+        <value xsi:type="xsd:string">beta.saksoff5th.com</value>
     </values>
 </CustomMetadata>

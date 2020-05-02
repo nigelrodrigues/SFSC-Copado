@@ -1,0 +1,8 @@
+/**
+ * Created by nrodrigues on 3/3/2020.
+ */
+
+.THIS tbody td, .THIS tbody th, .THIS .slds-table--bordered tbody td, .THIS .slds-table--bordered tbody th {
+    border-top : 0px !important;
+    border-bottom : 0px !important;
+}

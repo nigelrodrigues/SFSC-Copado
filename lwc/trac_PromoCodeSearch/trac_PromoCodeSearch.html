@@ -2,36 +2,76 @@
  - @name trac_PromoCodeSearch
  - @author Daniel Labonte, Traction on Demand
  - @date 2019-07-04
- - @description html file fot the Promo Code Search Component
+ - @description html file for the Promo Code Search Component
  -->
 
 <!-- Promo Code Component -->
 <template>
     <!-- START SEARCH BAR -->
     <div class="tabset slds-tabs_card uiTabset--base uiTabset--default uiTabset--dense uiTabset flexipageTabset">
-        <div class="slds-text-title">
-            One Time Appeasement Promo Code
-        </div>
-        <div class="slds-grid">
-            <div class="slds-col slds-no-space slds-m-right_xx-small slds-m-left_none">
-                <lightning-combobox
-                        class="fill"
-                        name="promoCode"
-                        label=""
-                        variant="label-hidden"
-                        value={initialSearchAmount}
-                        placeholder="Select One Time Promo Code"
-                        options={picklistOptions}
-                        onchange={handleInitialAmountChange} ></lightning-combobox>
-            </div>
-            <div class="slds-no-space slds-m-left_xx-small slds-m-right_none">
-                <lightning-button class="slds-float--right"
-                                  variant="brand"
-                                  label="Apply"
-                                  title="Apply"
-                                  onclick={handleSearchClick}>
-                </lightning-button>
-            </div>
+
+        <div class="slds-grid slds-wrap">
+
+            <template if:true={amountPicklistValues.data}>
+
+                <div class="slds-text-title slds-size_4-of-4">
+                    One Time Appeasement Promo Code
+                </div>
+
+                <div class="slds-size_3-of-4">
+                    <lightning-combobox
+                            class = "fill"
+                            name = "promoCodeAmount"
+                            label = ""
+                            variant = "label-hidden"
+                            value = {amountValue}
+                            placeholder = "Select One Time Promo Code"
+                            options = {amountPicklistValues.data.values}
+                            onchange = {handleAmountChange}
+                            required
+                    >
+
+                    </lightning-combobox>
+                </div>
+
+                <div class="slds-size_1-of-4 slds-no-space"></div>
+
+            </template>
+
+            <template if:true={reasonPicklistValues.data}>
+
+                <div class="slds-text-title slds-size_4-of-4 slds-p-top_x-small">
+                    Promo Code Reason
+                </div>
+
+                <div class="slds-size_3-of-4">
+                    <lightning-combobox
+                            class = "fill"
+                            name = "promoCodeReason"
+                            label = ""
+                            variant = "label-hidden"
+                            value = {reasonPicklistValues.data.values}
+                            placeholder = "Select Promo Code Reason"
+                            options = {reasonPicklistValues.data.values}
+                            onchange = {handleReasonChange}
+                            required
+                    >
+
+                    </lightning-combobox>
+                </div>
+
+                <div class="slds-size_1-of-4 slds-no-space">
+                    <lightning-button class="slds-float--right"
+                                      variant="brand"
+                                      label="Apply"
+                                      title="Apply"
+                                      onclick={handleSearchClick}>
+                    </lightning-button>
+                </div>
+
+            </template>
+
+
         </div>
         <template if:true={promoApplied}>
             <div class="slds-text-title">

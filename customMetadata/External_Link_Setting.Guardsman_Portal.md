@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>MHF__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Off_5th__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">https://guardsman.com/en/about/partner_access.html</value>
+        <value xsi:type="xsd:string">https://myaccount.valspar.com/val/fcc/login.jsp?</value>
     </values>
 </CustomMetadata>

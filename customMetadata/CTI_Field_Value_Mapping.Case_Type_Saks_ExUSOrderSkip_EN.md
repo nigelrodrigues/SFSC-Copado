@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Field_Value__c</field>
-        <value xsi:type="xsd:string">Order Inquiry</value>
+        <value xsi:type="xsd:string">WISMO</value>
     </values>
     <values>
         <field>Parent_Mapping__c</field>

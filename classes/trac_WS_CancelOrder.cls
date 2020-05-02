@@ -4,6 +4,7 @@
  *  @date        7/15/2019
  */
 public with sharing class trac_WS_CancelOrder {
+
     public final String ENDPOINT = (trac_WS_WebServiceHelper.webServiceSettings.Base_Url__c != null) ?
             trac_WS_WebServiceHelper.webServiceSettings.Base_Url__c + trac_WS_WebServiceHelper.webServiceSettings.Cancel_Order_Endpoint__c : trac_WS_WebServiceHelper.webServiceSettings.Cancel_Order_Endpoint__c;
     private HttpResponse res = new HttpResponse();
@@ -16,20 +17,31 @@ public with sharing class trac_WS_CancelOrder {
     }
 
     public Boolean send() {
-        String dynamicEndpoint = ENDPOINT;
-        if (cancelOrderRequest != null && cancelOrderRequest.Order != null && cancelOrderRequest.Order.EnterpriseCode == 'OFF5' || cancelOrderRequest.Order.EnterpriseCode == 'SAKS') {
-            dynamicEndpoint = ENDPOINT.replace('/orders', '/orders/v2');
-        }
-        res = trac_WS_WebServiceHelper.sendPostRequest(dynamicEndpoint, cancelOrderRequest);
+        Boolean success = false;
+
+        res = trac_WS_WebServiceHelper.sendPostRequest(getEndpoint(), cancelOrderRequest);
         if(trac_WS_WebServiceHelper.isValidResponse(res)) {
             cancelOrderResponse = parse(res.getBody());
-            return true;
+            success = true;
         }
         else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
         }
-        return false;
+        return success;
+    }
+
+    private String getEndpoint() {
+        String dynamicEndpoint = ENDPOINT;
+
+        if (cancelOrderRequest != null && cancelOrderRequest.Order != null) {
+
+            String businessUnit = trac_WS_OrderUtils.getBusinessUnitFromEnterpriseCode(cancelOrderRequest.Order.EnterpriseCode);
+
+            dynamicEndpoint = trac_WS_OrderUtils.getDynamicEndpoint(dynamicEndpoint, businessUnit);
+        }
+
+        return dynamicEndpoint;
     }
 
     public static CancelOrderResponse parse(String json) {

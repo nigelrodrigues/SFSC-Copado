@@ -1,0 +1,22 @@
+<!--
+* @description VF page trac_TransferCases
+* @author      Abhishek Solanki, Traction on Demand
+* @date        2019-02-06
+-->
+<apex:page standardController="Case" extensions="trac_TransferCasesController" recordSetVar="cases">
+    <apex:includeLightning />
+
+    <div id="lightning"/>
+    <script>
+        $Lightning.use("c:trac_TransferCasesApp", function () {
+            $Lightning.createComponent("c:trac_TransferCasesComponent",
+                {
+                    caseList: {!casesSerialized}
+                },
+                "lightning",
+                function (cmp) {
+                    console.log('Component created!');
+                });
+        });
+    </script>
+</apex:page>

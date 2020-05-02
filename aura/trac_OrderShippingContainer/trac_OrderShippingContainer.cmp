@@ -1,0 +1,93 @@
+<!--
+ - Created by jhoran on 2/13/2020.
+ -->
+
+<aura:component description="trac_OrderShippingContainer">
+    <aura:attribute name="container" type="Object"/>
+
+    <div class="slds-box_border slds-theme--default">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12">
+                <lightning:layout>
+
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title slds-form-element__label slds-no-flex">Carrier</p>
+                            <p>{!v.container.SCAC}</p>
+                        </div>
+                    </lightning:layoutItem>
+
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title slds-form-element__label slds-no-flex">Carrier Service</p>
+                            <p>{!v.container.CarrierServiceCode}</p>
+                        </div>
+                    </lightning:layoutItem>
+
+                    <lightning:layoutItem padding="around-small">
+                        <div class="header-column">
+                            <p class="field-title slds-form-element__label slds-no-flex">Tracking Number</p>
+                            <p>{!v.container.TrackingNo}</p>
+                        </div>
+                    </lightning:layoutItem>
+
+                    <aura:if isTrue="{!not(empty(v.container.URL))}">
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Tracking Link</p>
+                                <p><a target="_blank" href="{!v.container.URL}">Track On Carrier Website</a></p>
+                            </div>
+                        </lightning:layoutItem>
+                    </aura:if>
+
+                </lightning:layout>
+            </lightning:layoutItem>
+        </lightning:layout>
+
+        <div>
+            <aura:if isTrue="{!not(empty(v.container.ContainerDetails.ContainerDetail))}">
+
+                <div class="slds-text-title slds-p-around_small">
+                    <h3> > Items </h3>
+
+                    <aura:iteration items="{!v.container.ContainerDetails.ContainerDetail}" var="containerDetail">
+                        <div class="slds-box_border slds-theme--shade">
+                            <lightning:layout multipleRows="true">
+                                <lightning:layoutItem size="12">
+                                    <lightning:layout>
+
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">SKN #</p>
+                                                <p>{!containerDetail.ItemID}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">Item
+                                                    Name</p>
+                                                <p>{!containerDetail.customItemName}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">
+                                                    Quantity</p>
+                                                <p>{!containerDetail.Quantity}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div>
+                    </aura:iteration>
+                </div>
+
+            </aura:if>
+        </div>
+    </div>
+
+</aura:component>

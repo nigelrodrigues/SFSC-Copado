@@ -1,0 +1,50 @@
+<!--
+ - Created by nrodrigues on 3/3/2020.
+ -->
+
+<aura:component description="trac_DisplayEmailInList"
+                controller="trac_EmailSearchController"
+>
+
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="email" type="Object" />
+    <aura:attribute name="count" type="Integer" />
+    <aura:attribute name="businessUnit" type="String" />
+
+    <tr>
+        <td>
+            <div class="slds-truncate">
+                {!v.email.email_name}
+            </div>
+        </td>
+
+        <td>
+            <aura:if isTrue="{!not(empty(v.email.primary_email))}">
+            <div class="slds-truncate">{!v.email.primary_email}</div>
+                <aura:set attribute="else">
+                    <div class="slds-p-left_large"> Not available </div>
+                </aura:set>
+            </aura:if>
+        </td>
+
+        <td>
+            <!--{!v.email.primary_sentAt}-->
+            <!--<lightning:formattedDateTime value="{!v.email.primary_sentAt}" year="numeric"
+                                         month="short" day="2-digit" hour="2-digit" minute="2-digit"/>-->
+
+            <aura:if isTrue="{!not(empty(v.email.primary_sentAt))}">
+                <ui:outputDate aura:id="oDate" value="{!v.email.primary_sentAt}" />
+                <aura:set attribute="else">
+                    <div > Not available </div>
+                </aura:set>
+            </aura:if>
+        </td>
+
+        <td>
+            <c:trac_ResendEmail email = "{!v.email.primary_email}" id= "{!v.email.id}"/>
+        </td>
+    </tr>
+
+
+
+</aura:component>

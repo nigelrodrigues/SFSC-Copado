@@ -1,0 +1,8 @@
+<!--
+ - Created by asolanki on 4/1/2020.
+ -->
+
+<aura:event type="APPLICATION" description="trac_NewPaymentMethodEditEvent">
+    <aura:attribute name="paymentMethod" type="Object" />
+    <aura:attribute name="indexVal" type="String" description="Return the index of payment method to update" />
+</aura:event>

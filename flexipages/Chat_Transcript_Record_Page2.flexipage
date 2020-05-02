@@ -154,7 +154,7 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>updateQuickActionName</name>
-                <value>Case.Chat_Case_Update</value>
+                <value>Case._LightningUpdateCase</value>
             </componentInstanceProperties>
             <componentName>console:relatedRecord</componentName>
         </componentInstances>

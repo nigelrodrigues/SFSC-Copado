@@ -12,18 +12,33 @@ public with sharing class trac_WS_GetOrderList {
     public String jsonError;
 
     public Boolean send() {
+        Boolean success = false;
 
-        res = trac_WS_WebServiceHelper.SendPostRequest(ENDPOINT, getOrderListRequest);
+        res = trac_WS_WebServiceHelper.sendPostRequest(getEndpoint(), getOrderListRequest);
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderListResponse = parse(res.getBody());
-            return true;
+            success = true;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
         }
 
-        return false;
+        return success;
     }
+
+    private String getEndpoint() {
+        String dynamicEndpoint = ENDPOINT;
+
+        if (getOrderListRequest != null && getOrderListRequest.Order != null) {
+
+            String businessUnit = trac_WS_OrderUtils.getBusinessUnitFromEnterpriseCode(getOrderListRequest.Order.EnterpriseCode);
+
+            dynamicEndpoint = trac_WS_OrderUtils.getDynamicEndpoint(dynamicEndpoint, businessUnit);
+        }
+
+        return dynamicEndpoint;
+    }
+
     public static GetOrderListResponse parse(String json) {
         return (GetOrderListResponse) System.JSON.deserialize(json, GetOrderListResponse.class);
     }
@@ -42,6 +57,8 @@ public with sharing class trac_WS_GetOrderList {
         public String CustomerPhoneNo;
         public req_PaymentMethodWrapper PaymentMethod;
         public req_OrderLineWrapper OrderLine;
+        public String CustomerEMailID;
+        public res_OverallTotalsWrapper OverallTotals;
     }
 
     public class req_OrderLineWrapper {
@@ -82,5 +99,12 @@ public with sharing class trac_WS_GetOrderList {
         @AuraEnabled public List<res_OrderWrapper> Order;
         @AuraEnabled public String TotalOrderList;
         @AuraEnabled public String LastRecordSet;
+    }
+    public class res_OverallTotalsWrapper {
+        @AuraEnabled public String SubtotalWithoutTaxes;
+        @AuraEnabled public String GrandTax;
+        @AuraEnabled public String LineSubTotal;
+        @AuraEnabled public String GrandShippingTotal;
+        @AuraEnabled public String GrandTotal;
     }
 }

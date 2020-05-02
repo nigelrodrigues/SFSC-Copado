@@ -2,6 +2,9 @@
  *  @description Customer Query Service (UCID)
  *  @author      Jeremy Horan, Traction on Demand.
  *  @date        6/3/2019
+ *
+ *  @Modifications
+ *  Rank and Order UCID Search Results - Piyush Bansal January 21,2020
  */
 public with sharing class trac_WS_GetCustomerDetails {
     private final String ENDPOINT = (trac_WS_WebServiceHelper.webServiceSettings.Base_Url__c != null) ?
@@ -25,7 +28,6 @@ public with sharing class trac_WS_GetCustomerDetails {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
 
-            //getCustomerDetailsResponse = parse(res.getBody());
             try {
                 getCustomerDetailsResponse = parse(res.getBody());
             }
@@ -44,6 +46,7 @@ public with sharing class trac_WS_GetCustomerDetails {
         public req_accountDetailsWrapper accountDetails;
         public Integer recordCount;
         public Integer bannerCode;
+
 
         public GetCustomerDetailsRequest() {
             contactDetails = new req_contactDetailsWrapper();
@@ -81,6 +84,7 @@ public with sharing class trac_WS_GetCustomerDetails {
         public List<req_externalIdWrapper> externalId;
         public String emailId;
         public req_phoneDetailsWrapper phoneDetails;
+        public Long UCIDNumber;
 
         public req_accountDetailsWrapper() {
             externalId = new List<req_externalIdWrapper>();

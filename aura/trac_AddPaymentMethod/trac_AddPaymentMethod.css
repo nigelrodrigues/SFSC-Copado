@@ -1,0 +1,14 @@
+/**
+ * Created by jhoran on 2/24/2020.
+ */
+.THIS trac-addpaymentmodal {
+    width: 60%;
+    max-width: 40rem!important;
+}
+.THIS .slds-modal {
+    width: 50%;
+}
+
+.THIS .trac-balance_button {
+    padding-top: 21px;
+}

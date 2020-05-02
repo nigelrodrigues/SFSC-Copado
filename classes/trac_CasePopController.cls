@@ -10,13 +10,13 @@ public without sharing class trac_CasePopController {
     public String currentCaseId { get; set; } // record id of the newly created case
 
     // all mappings from ivr paramaters to sobject fields (sames ivr param can updated multiple sobject type records)
-    public List<CTI_Variable_Mapping__mdt> varMappings =
-    [SELECT CTI_Parameter_Name__c, SObject__c, Field__c, Indirect_Mapping__c FROM CTI_Variable_Mapping__mdt];
+    public List<CTI_Variable_Mapping__mdt> varMappings = [SELECT CTI_Parameter_Name__c, SObject__c, Field__c, Indirect_Mapping__c FROM CTI_Variable_Mapping__mdt];
 
     /**
      * constructor
      */
-    public trac_CasePopController() {}
+    public trac_CasePopController() {
+    }
 
     /**
      * @description create a new case from the IVR parameters to be popped to the screen on call inbound connect
@@ -25,14 +25,13 @@ public without sharing class trac_CasePopController {
     public PageReference handleCtiEvent() {
         recordId = null;
 
-        Map<String, Object> event = (Map<String,Object>)JSON.deserializeUntyped(ApexPages.currentPage().getParameters().get('jsonVarMap'));
+        Map<String, Object> event = (Map<String, Object>) JSON.deserializeUntyped(ApexPages.currentPage().getParameters().get('jsonVarMap'));
         Object eventType = event.get('eventType');
 
-        if(eventType == 'OnWorkItemCreate') {
-            createCase(event.get('item'));
-        }
-        else if(eventType == 'OnActivitySave') {
-            attachActivity(String.valueOf(event.get('recordId')),(Map<String,Object>) event.get('item'));
+        if (eventType == 'OnWorkItemCreate') {
+            findOrCreateCase(event.get('item'));
+        } else if (eventType == 'OnActivitySave') {
+            attachActivity(String.valueOf(event.get('recordId')), (Map<String, Object>) event.get('item'));
         }
         return null;
     }
@@ -41,106 +40,57 @@ public without sharing class trac_CasePopController {
      * @description creates a case based on the incoming call and ivr's mapped using custom metadata types
      * @param event json object from the cti event
      */
-    public void createCase(Object event) {
+    public void findOrCreateCase(Object event) {
         String eventString = JSON.serialize(event);
-        Map<String, Object> pageParams = (Map<String,Object>)JSON.deserializeUntyped(eventString);
+        Map<String, Object> pageParams = (Map<String, Object>) JSON.deserializeUntyped(eventString);
 
         String callType = String.valueOf(pageParams.get('CallType'));
-
         String callDirection = String.valueOf(pageParams.get('Direction'));
+        String phoneNumber = trac_WS_CustomerUtils.clearCountryCode(String.valueOf(pageParams.get('Sender')));
+        String agentExtension = String.valueOf(pageParams.get('Destination'));
 
-        if(callType == 'CONSULT' && callDirection == 'outbound') {
-            transferCase(event);
+        if (existingCase(String.valueOf(pageParams.get('UniqueId'))) != null) {
             return;
         }
 
-        if(callDirection != 'inbound' || callType == 'CONSULT' || existingCase(String.valueOf(pageParams.get('UniqueId'))) != null) {
-            return;
+        Boolean wasTransferred = handleTransferLogic(pageParams, callType, callDirection, phoneNumber);
+
+        if (!wasTransferred && callDirection == 'inbound' && callType != 'CONSULT') {
+            createCase(pageParams, eventString, phoneNumber);
         }
+    }
+
+    private void createCase(Map<String, Object> pageParams, String eventString, String phoneNumber) {
+        Case aCase = new Case(Origin = 'Phone', OwnerId = UserInfo.getUserId(), SuppliedPhone = phoneNumber);
 
         String agentExtension = String.valueOf(pageParams.get('Destination'));
 
-        if (callType == 'TRANSFER') {
-            String originalCallId = String.valueOf(pageParams.get('Id'));
-
-            Case transferredCase = findTransferredCase(originalCallId);
-
-            if (transferredCase != null) {
-
-                transferredCase.Call_Status__c = trac_CaseConstants.CALL_STATUS_ANSWERED;
-                transferredCase.Latest_Agent_Extension__c = agentExtension;
-
-                update transferredCase;
-                this.recordId = transferredCase.Id;
-                this.currentCaseId = transferredCase.Id;
-                return;
-            }
-        }
-
-        String phoneNumber = trac_WS_CustomerUtils.clearCountryCode(String.valueOf(pageParams.get('Sender')));
-        String dialedNumber = String.valueOf(pageParams.get('DialedNumber'));
-
-        if (isTransfer(dialedNumber)) {
-            Case transferredCase = findTransferredCase(phoneNumber, dialedNumber);
-
-            if (transferredCase != null) {
-
-                transferredCase.Call_Status__c = trac_CaseConstants.CALL_STATUS_ANSWERED;
-                transferredCase.Latest_Agent_Extension__c = agentExtension;
-
-                update transferredCase;
-                this.recordId = transferredCase.Id;
-                this.currentCaseId = transferredCase.Id;
-                return;
-            }
-        }
-
-        Case aCase = new Case(Origin = 'Phone', OwnerId = UserInfo.getUserId(), SuppliedPhone = phoneNumber);
+        mapCaseFieldsFromIVR(aCase, pageParams);
 
         if (eventString != null) {
             aCase.IVR_Log__c = eventString.left(131072);
         }
 
-        // Preload this map for using in the loop
-        Map<String,SObjectType> globalDescribed = Schema.getGlobalDescribe();
-        for (CTI_Variable_Mapping__mdt mdt : varMappings) {
-
-
-            String ssobject = mdt.SObject__c,
-                    field    = mdt.Field__c;
-            DescribeFieldResult fieldResult = globalDescribed.get(ssobject).getDescribe().fields.getMap().get(field).getDescribe();
-
-            if (fieldResult.getSoapType().name() != 'ID') {
-                if (ssobject == String.valueOf(aCase.getSObjectType())) {
-                    aCase.put(
-                            field,
-                            getChildFieldValue(mdt,String.valueOf(pageParams.get(mdt.CTI_Parameter_Name__c)))
-                    );
-                }
-            }
-        }
-
-        if (aCase.Business_Unit__c == null && aCase.Subject != null && aCase.Subject.startsWith('Lord + Taylor')) {
-            aCase.Business_Unit__c = 'Lord + Taylor';
-        }
-
-        if (aCase.Order_Number__c != null && aCase.Order_Number__c != '0000000000' && aCase.Order_Number__c != 'Order Not Found' && !String.isBlank(aCase.Order_Number__c)) {
-            Case openOrderCase = findOpenCaseByOrderNumber(aCase.Order_Number__c);
-
-            if (openOrderCase != null) {
-                aCase.Id = openOrderCase.Id;
-            }
-        }
-
         if (phoneNumber != null && aCase.Business_Unit__c != null) {
             try {
-                Contact ucidContact = getContactFromSearch(phoneNumber, aCase.Business_Unit__c);
+                if (!isGenericNumber(phoneNumber)) {
+                    System.debug('phoneNumber: ' + phoneNumber);
+                    System.debug('aCase.Business_Unit__c: ' + aCase.Business_Unit__c);
+                    System.debug('aCase.Order_Number__c: ' + aCase.Order_Number__c);
 
-                if(ucidContact != null) {
-                    if (ucidContact.LastName != null && ucidContact.Unique_External_Id__c != null) {
-                        Schema.SObjectField externalId = Contact.fields.Unique_External_Id__c;
-                        Database.upsert(ucidContact, externalId);
-                        aCase.ContactId = ucidContact.Id;
+                    Contact caseContact = getContactFromSearch(phoneNumber, aCase.Business_Unit__c, aCase.Order_Number__c);
+
+                    System.debug('caseContact: ' + caseContact);
+
+                    if (caseContact != null && caseContact.LastName != null) {
+                        Contact fetchedContact = new Contact();
+                        fetchedContact = searchContactByBUAndEmail(caseContact);
+                        if(fetchedContact!=null){
+                            aCase.ContactId = fetchedContact.Id;
+                        }else{
+                            upsert caseContact;
+                            aCase.ContactId = caseContact.Id;
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -166,20 +116,89 @@ public without sharing class trac_CasePopController {
         this.currentCaseId = aCase.Id;
     }
 
-    public static Contact getContactFromSearch(String phoneNumber, String businessUnit) {
-        Contact contact = new Contact(Phone = phoneNumber, Business_Unit__c = businessUnit);
+
+    public static Contact searchContactByBUAndEmail(Contact caseContact){
+        List<Contact> conList = new List<Contact>();
+        if(String.isNotBlank(caseContact.Business_Unit__c) && String.isNotBlank(caseContact.Email)){
+            conList = [SELECT Id,Business_Unit__c,Email FROM Contact WHERE Business_Unit__c =: caseContact.Business_Unit__c AND Email =: caseContact.Email];
+        }
+
+        if(conList!=null && !conList.isEmpty()){
+            return conList[0];
+        }else{
+            return null;
+        }
+    }
+
+    private void mapCaseFieldsFromIVR(Case aCase, Map<String, Object> pageParams) {
+        // Preload this map for using in the loop
+        Map<String, SObjectType> globalDescribed = Schema.getGlobalDescribe();
+        Set<Id> ctiVariableMappingIds = new Set<Id>();
+        for (CTI_Variable_Mapping__mdt ctiVariableMapping : varMappings) {
+            ctiVariableMappingIds.add(ctiVariableMapping.Id);
+        }
+
+        Map<Id, Map<String, CTI_Field_Value_Mapping__mdt>> fieldValueMapByValueByParentIds = getFieldValueMapByValueByParentIds(ctiVariableMappingIds);
+
+        for (CTI_Variable_Mapping__mdt ctiVariableMapping : varMappings) {
+
+            String sObjectName = ctiVariableMapping.SObject__c;
+            String field = ctiVariableMapping.Field__c;
+            String ctiValue = String.valueOf(pageParams.get(ctiVariableMapping.CTI_Parameter_Name__c));
+            DescribeFieldResult fieldResult = globalDescribed.get(sObjectName).getDescribe().fields.getMap().get(field).getDescribe();
+
+            if (fieldResult.getSoapType().name() != 'ID' && sObjectName == String.valueOf(aCase.getSObjectType())) {
+                aCase.put(
+                        field,
+                        getChildFieldValue(ctiVariableMapping, ctiValue, fieldValueMapByValueByParentIds)
+                );
+            }
+        }
+
+        if (aCase.Order_Number__c == '0000000000' || aCase.Order_Number__c == 'Order Not Found') {
+            aCase.Order_Number__c = null;
+        }
+
+        if (aCase.Business_Unit__c == null && aCase.Subject != null && aCase.Subject.startsWith('Lord + Taylor')) {
+            aCase.Business_Unit__c = 'Lord + Taylor';
+        }
+
+        if (aCase.Order_Number__c != null && aCase.Order_Number__c != '0000000000' && aCase.Order_Number__c != 'Order Not Found' && !String.isBlank(aCase.Order_Number__c)) {
+            Case openOrderCase = findOpenCaseByOrderNumber(aCase.Order_Number__c);
+
+            if (openOrderCase != null) {
+                aCase.Id = openOrderCase.Id;
+            }
+        }
+    }
+
+    /**
+     * @description  Need to find if the incoming number is among one of the pre-existing generic numbers fetched from CTI Generic Number metadata
+     * @param phoneNumber the incoming number
+     * @return boolean true if phone number is generic
+     */
+    public static Boolean isGenericNumber(String phoneNumber) {
+        Boolean isGenericNumber = false;
+        if (String.isNotBlank(phoneNumber)) {
+            for (CTI_Generic_Number__mdt genericNumber : [SELECT Phone_Number__c FROM CTI_Generic_Number__mdt]) {
+                if (String.isNotBlank(genericNumber.Phone_Number__c) && phoneNumber.equalsIgnoreCase(genericNumber.Phone_Number__c.replaceAll('[^0-9]', ''))) {
+                    isGenericNumber = true;
+                }
+            }
+        }
+        return isGenericNumber;
+    }
+
+    public static Contact getContactFromSearch(String phoneNumber, String businessUnit, String orderNumber) {
+        Contact contact = new Contact(Phone = phoneNumber, Business_Unit__c = businessUnit, Order_Number__c = orderNumber);
 
         if (!trac_WS_CustomerUtils.excludeFromProcesses(contact)) {
-            trac_WS_GetCustomerDetails.GetCustomerDetailsResponse customerDetailsResponse = trac_WS_CustomerUtils.searchContact(contact);
-
-            if (customerDetailsResponse != null && customerDetailsResponse.customerRecord != null && !customerDetailsResponse.customerRecord.isEmpty()) {
-                contact = trac_WS_CustomerUtils.getContactFromSearchResponse(customerDetailsResponse);
-                if (contact != null) {
-                    contact.System_Origin__c = trac_ContactConstants.ORIGIN_UCID;
-                    contact.Channel_Origin__c = trac_ContactConstants.CHANNEL_PHONE;
-                    contact.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
-                    contact.UCID_Update_Date__c = Datetime.now();
-                }
+            contact = trac_WS_CustomerUtils.getContactFromOrderByContact(contact);
+            if (contact != null) {
+                contact.System_Origin__c = trac_ContactConstants.ORIGIN_OMS;
+                contact.Channel_Origin__c = trac_ContactConstants.CHANNEL_PHONE;
+                contact.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
+                contact.OMS_Update_Date__c = Datetime.now();
             }
         }
 
@@ -195,27 +214,76 @@ public without sharing class trac_CasePopController {
      * @param parentVarValue the value of the ivr sent in from the cti event
      * @return string of the value to set the sobject field
      */
-    public String getChildFieldValue(CTI_Variable_Mapping__mdt parent, String parentVarValue) {
-        if(!parent.Indirect_Mapping__c) {
-            return parentVarValue;
+    public String getChildFieldValue(CTI_Variable_Mapping__mdt parent, String parentVarValue, Map<Id, Map<String, CTI_Field_Value_Mapping__mdt>> fieldValueMapByValueByParentIds) {
+        String fieldValue;
+
+        if (!parent.Indirect_Mapping__c) {
+            fieldValue = parentVarValue;
         } else {
             CTI_Field_Value_Mapping__mdt fieldValueMapping;
-            try {
-                fieldValueMapping = [
-                        SELECT Field_Value__c
-                        FROM CTI_Field_Value_Mapping__mdt
-                        WHERE Parent_Mapping__c = :parent.Id
-                        AND CTI_Value__c = :parentVarValue
-                        LIMIT 1
-                ];
-            }
-            catch (Exception e) {}
+            if (fieldValueMapByValueByParentIds != null && fieldValueMapByValueByParentIds.containsKey(parent.Id) && fieldValueMapByValueByParentIds.get(parent.Id).containsKey(parentVarValue)) {
+                fieldValueMapping = fieldValueMapByValueByParentIds.get(parent.Id).get(parentVarValue);
 
-            if(fieldValueMapping != null && fieldValueMapping.Field_Value__c != null) {
-                return fieldValueMapping.Field_Value__c;
+                if (fieldValueMapping.Field_Value__c != null) {
+                    fieldValue = fieldValueMapping.Field_Value__c;
+                }
             }
-            return null; // shouldnt ever get here
         }
+
+        return fieldValue;
+    }
+
+    public static Map<Id, Map<String, CTI_Field_Value_Mapping__mdt>> getFieldValueMapByValueByParentIds(Set<Id> parentIds) {
+        Map<Id, Map<String, CTI_Field_Value_Mapping__mdt>> fieldValueMapByValueByParentIds = new Map<Id, Map<String, CTI_Field_Value_Mapping__mdt>>();
+
+        List<CTI_Field_Value_Mapping__mdt> fieldValueMappings = [
+                SELECT Field_Value__c, Parent_Mapping__c, CTI_Value__c
+                FROM CTI_Field_Value_Mapping__mdt
+                WHERE Parent_Mapping__c IN :parentIds AND CTI_Value__c != null
+        ];
+
+        for (CTI_Field_Value_Mapping__mdt fieldValueMapping : fieldValueMappings) {
+            if (!fieldValueMapByValueByParentIds.containsKey(fieldValueMapping.Parent_Mapping__c)) {
+                fieldValueMapByValueByParentIds.put(fieldValueMapping.Parent_Mapping__c, new Map<String, CTI_Field_Value_Mapping__mdt>());
+            }
+            fieldValueMapByValueByParentIds.get(fieldValueMapping.Parent_Mapping__c).put(fieldValueMapping.CTI_Value__c, fieldValueMapping);
+        }
+
+        return fieldValueMapByValueByParentIds;
+    }
+
+
+    private Boolean handleTransferLogic(Map<String, Object> pageParams, String callType, String callDirection, String phoneNumber) {
+        Boolean wasTransferred = false;
+
+        String dialedNumber = String.valueOf(pageParams.get('DialedNumber'));
+        String agentExtension = String.valueOf(pageParams.get('Destination'));
+
+        if (callType == 'CONSULT' && callDirection == 'outbound') {
+            transferCase(pageParams);
+            wasTransferred = true;
+        }
+        else if (!wasTransferred && callType == 'TRANSFER') {
+            String originalCallId = String.valueOf(pageParams.get('Id'));
+
+            Case transferredCase = findTransferredCase(originalCallId);
+
+            if (transferredCase != null) {
+                updateCaseTransferInformation(transferredCase, agentExtension);
+                wasTransferred = true;
+            }
+        }
+
+        if (!wasTransferred && isTransfer(dialedNumber)) {
+            Case transferredCase = findTransferredCase(phoneNumber, dialedNumber);
+
+            if (transferredCase != null) {
+                updateCaseTransferInformation(transferredCase, agentExtension);
+                wasTransferred = true;
+            }
+        }
+
+        return wasTransferred;
     }
 
     private Boolean isTransfer(String phoneNumber) {
@@ -226,6 +294,33 @@ public without sharing class trac_CasePopController {
         }
 
         return isTransfer;
+    }
+
+    public void transferCase(Map<String, Object> pageParams) {
+
+        if (currentCaseId != null) {
+
+            Case existingCase = new Case(Id = currentCaseId);
+
+            String dialedNumber = String.valueOf(pageParams.get('DialedNumber'));
+            String agentExtension = String.valueOf(pageParams.get('Sender'));
+
+            existingCase.Call_Status__c = trac_CaseConstants.CALL_STATUS_TRANSFERRED;
+            existingCase.Transferred_Number__c = dialedNumber;
+            existingCase.Latest_Agent_Extension__c = agentExtension;
+            existingCase.Transfer_Time__c = Datetime.now();
+
+            update existingCase;
+        }
+    }
+
+    private void updateCaseTransferInformation(Case transferredCase, String agentExtension) {
+        transferredCase.Call_Status__c = trac_CaseConstants.CALL_STATUS_ANSWERED;
+        transferredCase.Latest_Agent_Extension__c = agentExtension;
+
+        update transferredCase;
+        this.recordId = transferredCase.Id;
+        this.currentCaseId = transferredCase.Id;
     }
 
     /**
@@ -267,26 +362,6 @@ public without sharing class trac_CasePopController {
         return (!cases.isEmpty()) ? cases[0] : null;
     }
 
-    public void transferCase(Object event) {
-        String eventString = JSON.serialize(event);
-        Map<String, Object> pageParams = (Map<String,Object>)JSON.deserializeUntyped(eventString);
-
-        if (currentCaseId != null) {
-
-            Case existingCase = new Case(Id = currentCaseId);
-
-            String dialedNumber = String.valueOf(pageParams.get('DialedNumber'));
-            String agentExtension = String.valueOf(pageParams.get('Sender'));
-
-            existingCase.Call_Status__c = trac_CaseConstants.CALL_STATUS_TRANSFERRED;
-            existingCase.Transferred_Number__c = dialedNumber;
-            existingCase.Latest_Agent_Extension__c = agentExtension;
-            existingCase.Transfer_Time__c = Datetime.now();
-
-            update existingCase;
-        }
-    }
-
     /**
      * @description associate the activity to the case that was created when the call connected
      * @param activityId
@@ -295,7 +370,7 @@ public without sharing class trac_CasePopController {
     public void attachActivity(String activityId, Map<String,Object> event) {
         String uniqueCallId = String.valueOf(event.get('UniqueId'));
         Case existingCase = existingCase(uniqueCallId);
-        if(existingCase != null && existingCase.Id != null) {
+        if (existingCase != null && existingCase.Id != null) {
             update new Task(Id = activityId, WhatId = existingCase.Id);
         }
         else {
@@ -306,7 +381,7 @@ public without sharing class trac_CasePopController {
     @Future
     private static void attachActivityAsync(String activityId, String uniqueCallId) {
         Case existingCase = existingCase(uniqueCallId);
-        if(existingCase != null && existingCase.Id != null) {
+        if (existingCase != null && existingCase.Id != null) {
             update new Task(Id = activityId, WhatId = existingCase.Id);
         }
     }

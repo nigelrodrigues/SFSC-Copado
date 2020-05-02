@@ -341,6 +341,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Case_Origin__c</fullName>
+        <externalId>false</externalId>
+        <formula>Text(Case__r.Origin)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Origin</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Case_Status_Change__c</fullName>
         <description>If  Case Status equals Case Status New set to 0, else set to 1.</description>
         <externalId>false</externalId>

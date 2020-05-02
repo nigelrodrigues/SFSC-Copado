@@ -115,18 +115,21 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Chat_Transcript_Record_Page2</content>
+        <content>Live_Chat_w_Order_Info</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Live_Chat_w_Order_Info</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
@@ -334,24 +337,6 @@
         <filterScope>Queue</filterScope>
         <label>Bay Chat French</label>
         <queue>Bay_Chat_French</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Chat_MHF_French_LiveChatTranscript</fullName>
-        <filterScope>Queue</filterScope>
-        <label>Chat - MHF French</label>
-        <queue>Chat_MHF_French</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Chat_MHF_LiveChatTranscript</fullName>
-        <filterScope>Queue</filterScope>
-        <label>Chat - MHF</label>
-        <queue>Chat_MHF</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

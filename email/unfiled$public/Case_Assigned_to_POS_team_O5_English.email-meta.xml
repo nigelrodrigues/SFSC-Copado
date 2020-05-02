@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to customers when case is assigned to POS team - O5</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Assigned to POS team - O5 (English)</name>
+    <style>none</style>
+    <subject>We’re working to resolve your issue</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you for contacting {!Case.Business_Unit__c}! We have submitted your credit request for processing. You will receive an email once it has been processed. If you need to contact us about this issue, please click  here
+
+Your Case Number: {!Case.CaseNumber}
+
+All the best,
+
+Your {!Case.Business_Unit__c} Customer Service Team
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,112 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @date 17-January-2020
+ - @description Create a new customer on behalf of an agent.
+ -->
+
+<aura:component description="trac_CreateCommerceCloudAccount"
+                controller="trac_HandleCommerceCloudAccount"
+                extends="c:trac_BaseComponent"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,force:lightningQuickAction"
+                access="global">
+
+    <aura:attribute name="showModal"        type="Boolean"/>
+    <aura:attribute name="buttonDisabled"   type="Boolean" default="false"/>
+    <aura:attribute name="storeSessionURL"  type="String"/>
+    <aura:attribute name="agentAccessToken" type="String"/>
+    <aura:attribute name="recordLoadError"  type="String"/>
+    <aura:attribute name="recordId"         type="String"/>
+    <aura:attribute name="caseRecord"       type="Object"/>
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <!--<aura:registerEvent name="openStoreFrontEvent" type="c:trac_OboAfterAccountCreated"/>-->
+    <aura:registerEvent name="OBONewAccount" type="c:trac_OBO_ComponentEvent"/>
+
+    <force:recordData   aura:id="recordLoader"
+                        recordId="{!v.recordId}"
+                        fields="Contact.Id, Business_Unit__c,
+                                Contact.FirstName, Contact.LastName,
+                                Contact.Phone, Contact.Email,
+                                Contact.MailingPostalCode, Contact.SFCC_Customer_Id__c,
+                                ContactId"
+                        targetFields="{!v.caseRecord}"
+                        targetError="{!v.recordLoadError}"
+    />
+
+
+    <lightning:button variant="brand"
+                      label="Create Account"
+                      iconName="utility:adduser"
+                      iconPosition="right"
+                      onclick="{!c.openModal}"
+                      disabled="{!v.buttonDisabled}" />
+
+    <aura:if isTrue="{!v.showModal}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                 aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate"> Create New Account</h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning:input type="text"
+                                             aura:id = "firstName"
+                                             name="input1"
+                                             label="First Name"
+                                             value = "{!v.caseRecord.Contact.FirstName}"
+                            />
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <lightning:input type="text"
+                                             aura:id = "lastName"
+                                             name="lastName"
+                                             required = "true"
+                                             label="Last Name"
+                                             value = "{!v.caseRecord.Contact.LastName}"
+                            />
+                        </div>
+                        <div class="slds-col slds-size_2-of-2 slds-p-bottom_small">
+                            <lightning:input type = "email"
+                                             aura:id = "email"
+                                             name = "email"
+                                             required = "true"
+                                             label = "Email"
+                                             value = "{!v.caseRecord.Contact.Email}"
+                            />
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_medium">
+                            <lightning:input type="text"
+                                             aura:id = "zipInputValue"
+                                             name="zip"
+                                             label="Zip Code"
+                            />
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                            <lightning:input type="text"
+                                             aura:id = "phoneInputValue"
+                                             name="phone"
+                                             label="Phone"
+                            />
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="Create" onclick="{!c.createAccount}" iconName="utility:adduser" iconPosition="right"/>
+                    <lightning:button variant="neutral" label="Cancel" onclick="{!c.closeModal}" />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+</aura:component>

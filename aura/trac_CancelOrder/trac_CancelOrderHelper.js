@@ -114,7 +114,8 @@
                orderLineItem.Status === 'Hold Risk' ||
                orderLineItem.Status === 'General Error' ||
                orderLineItem.Status === 'Created' ||
-               orderLineItem.Status === 'Open'
+               orderLineItem.Status === 'Open' ||
+               orderLineItem.Status === 'Scheduled'
            )
        )
        {
@@ -129,13 +130,22 @@
                 order.Status === 'Hold Risk' ||
                 order.Status === 'General Error' ||
                 order.Status === 'Created' ||
-                order.Status === 'Open'
+                order.Status === 'Open' ||
+                order.Status === 'Scheduled'
             )
         )
         {
             disabled = false;
         }
-
+        var businessUnit = component.get("v.businessUnit");
+        if(businessUnit == 'Off 5th' || businessUnit == 'Saks') {
+            if (!orderLineItem && order.Status === 'Released') {
+                disabled = true;
+            }
+            if (orderLineItem && orderLineItem.Status === 'Released') {
+                disabled = true;
+            }
+        }
         component.set("v.disabled", disabled);
     },
 
@@ -149,7 +159,6 @@
                 for (var i = quantity; i > 0; i--) {
                     options.push({'label': String(i), 'value': String(i)});
                 }
-                console.log('options',options);
                 component.set("v.quantityOptions", options);
                 component.set("v.quantityToCancel", quantity);
             }

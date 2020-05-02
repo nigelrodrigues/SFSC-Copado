@@ -21,9 +21,8 @@ public with sharing class trac_WS_WebServiceHelper {
      *  @author      Jeremy Horan, Traction on Demand.
      *  @date        2016-04-22
      */
-    public static HttpResponse sendPostRequest(String endpoint, Object requestWrapper) {
+    public static HttpResponse sendPostRequest(String endpoint, Object requestWrapper ) {
         return sendPostRequest(endpoint, requestWrapper, null);
-
     }
 
     /**
@@ -46,7 +45,7 @@ public with sharing class trac_WS_WebServiceHelper {
 
         if (additionalHeaders != null) {
             for (String key : additionalHeaders.keySet()) {
-                //req.setHeader(key, additionalHeaders.get(key));
+                req.setHeader(key, additionalHeaders.get(key));
             }
         }
 
@@ -165,8 +164,11 @@ public with sharing class trac_WS_WebServiceHelper {
         req.setEndpoint(endpoint);
         req.setTimeout(Integer.valueOf(webServiceSettings.Timeout__c));
         req.setMethod(GET_METHOD);
-        req.setHeader('Accept', 'application/json');
+        //TODO: handle this on a per API basis
+//        req.setHeader('Accept', 'application/json');
         req.setHeader('Content-Type', 'application/json');
+        req.setHeader('x-api-key', webServiceSettings.API_Key__c);
+        req.setHeader('x-source-app', DEFAULT_SOURCE_ID);
 
         if (additionalHeaders != null) {
             for (String key : additionalHeaders.keySet()) {
@@ -323,6 +325,10 @@ public with sharing class trac_WS_WebServiceHelper {
         jsonString = jsonString.replaceAll('"Currency":', '"Currency_x":');
         jsonString = jsonString.replaceAll('"Number":', '"Number_x":');
         jsonString = jsonString.replaceAll('"Date":', '"Date_x":');
+        // For Commerce cloud: Create new account fields:
+        jsonString = jsonString.replaceAll('"_v":', '"v":');
+        jsonString = jsonString.replaceAll('"_type":', '"type":');
+        jsonString = jsonString.replaceAll('"_resource_state":', '"resource_state":');
 
         return jsonString;
     }
@@ -348,4 +354,5 @@ public with sharing class trac_WS_WebServiceHelper {
 
         return jsonString;
     }
+
 }

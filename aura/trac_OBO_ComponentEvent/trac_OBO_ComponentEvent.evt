@@ -1,0 +1,7 @@
+<!--
+ - Created by nrodrigues on 3/24/2020.
+ -->
+
+<aura:event type="COMPONENT" description="trac_OBO_ComponentEvent">
+    <aura:attribute name="customerId"       type="Id"/>
+</aura:event>

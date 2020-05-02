@@ -4,8 +4,13 @@
 
 <aura:component description="trac_PaymentMethod">
     <aura:attribute name="paymentMethod" type="Object"/>
+    <aura:attribute name="count" type="string"/>
+    <aura:attribute name="showActions" type="Boolean" default="false"/>
 
-    <div>
+    <aura:registerEvent name="trac_NewPaymentMethodDeleteEvent" type="c:trac_NewPaymentMethodDeleteEvent"/>
+    <aura:registerEvent name="trac_NewPaymentMethodEditEvent" type="c:trac_NewPaymentMethodEditEvent"/>
+
+    <div class="slds-box_border slds-p-around_small slds-theme--default">
         <aura:if isTrue="{!not(empty(v.paymentMethod))}">
 
             <lightning:layout multipleRows="true">
@@ -35,15 +40,24 @@
 
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
-                                <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Credit Card</p>
+                                <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Credit
+                                    Card</p>
                                 <p>{!v.paymentMethod.DisplayCreditCardNo}</p>
                             </div>
                         </lightning:layoutItem>
 
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
-                                <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Gift Card</p>
+                                <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Gift
+                                    Card</p>
                                 <p>{!v.paymentMethod.DisplaySvcNo}</p>
+                            </div>
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Amount To Be Charged</p>
+                                <p>{!v.paymentMethod.RequestAmount}</p>
                             </div>
                         </lightning:layoutItem>
 
@@ -63,6 +77,49 @@
 
                     </lightning:layout>
                 </lightning:layoutItem>
+
+                <lightning:layoutItem padding="around-small">
+                    <div class="header-column">
+                        <p class="field-title slds-form-element__label slds-no-flex">Promo Code Used</p>
+                        <p>{!v.paymentMethod.Notes.NoteText}</p>
+                    </div>
+                </lightning:layoutItem>
+
+                <lightning:layoutItem padding="around-small">
+                    <div class="header-column">
+                        <p class="field-title slds-form-element__label slds-no-flex">Cancellation Reason</p>
+                        <p>{!v.paymentMethod.Notes.ReasonCode}</p>
+                    </div>
+                </lightning:layoutItem>
+
+                <lightning:layoutItem padding="around-small">
+                    <div class="header-column">
+                        <p class="field-title slds-form-element__label slds-no-flex">Billing Address</p>
+                        <p>{!v.paymentMethod.PersonInfoBillTo.FirstName + ' ' + v.paymentMethod.PersonInfoBillTo.LastName + ', ' + v.paymentMethod.PersonInfoBillTo.DayPhone}</p>
+                        <p>{!v.paymentMethod.PersonInfoBillTo.AddressLine1}</p>
+                        <p>{!v.paymentMethod.PersonInfoBillTo.City + ' ' + v.paymentMethod.PersonInfoBillTo.State + ' ' + v.paymentMethod.PersonInfoBillTo.ZipCode  + ', ' + v.paymentMethod.PersonInfoBillTo.Country}</p>
+                    </div>
+                </lightning:layoutItem>
+
+                <aura:if isTrue="{!v.showActions}">
+                    <lightning:layoutItem padding="around-small">
+                        <lightning:buttonIcon iconName="utility:edit" variant="bare" alternativeText="edit"
+                                              title="Edit Payment Method"
+                                              value="{!v.paymentMethod}"
+                                              name="{!v.count}"
+                                              size="medium"
+                                              onclick="{!c.onEdit}"
+                        />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small">
+                        <lightning:buttonIcon iconName="utility:delete" variant="bare" alternativeText="delete"
+                                              title="Delete Payment Method"
+                                              value="{!v.count}"
+                                              size="medium"
+                                              onclick="{!c.onDelete}"
+                        />
+                    </lightning:layoutItem>
+                </aura:if>
 
             </lightning:layout>
         </aura:if>

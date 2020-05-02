@@ -45,10 +45,15 @@ export default class TopicNavigator extends LightningElement {
     @api panel_08_Image;
 
     baseUrl;
+    off5thcommunity;
 
     connectedCallback() {
         let getUrl = window.location;
         this.baseUrl = getUrl.protocol + "//" + getUrl.host;
+
+        if((getUrl.pathname).indexOf('off5th')!=-1 || (getUrl.pathname).indexOf('SupportSaks')!=-1) {
+            this.off5thcommunity = 'off5th';
+        }
 
     }
 

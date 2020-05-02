@@ -1,0 +1,48 @@
+<!--
+ - Created by Jeremy on 3/18/2020.
+ -->
+
+<aura:component description="trac_OrderShipmentLine">
+
+    <aura:attribute name="shipmentLine" type="Object"/>
+
+    <aura:if isTrue="{!not(empty(v.shipmentLine.ShipmentTagSerials.ShipmentTagSerial))}">
+        <aura:iteration items="{!v.shipmentLine.ShipmentTagSerials.ShipmentTagSerial}" var="shipmentTagSerial">
+            <tr>
+                <td>
+                    <div class="slds-truncate">
+                        <label class="slds-form-element__label" for="select-01"> Electronic Merchandise Credit Number </label>
+                    </div>
+                    <div class="slds-truncate">
+                        {!shipmentTagSerial.SerialNo}
+                    </div>
+                </td>
+                <td>
+                    <div class="slds-truncate">
+                        <label class="slds-form-element__label" for="select-01"> Register </label>
+                    </div>
+                    <div class="slds-truncate">
+                        {!shipmentTagSerial.Extn.ExtnRegisterNo}
+                    </div>
+                </td>
+                <td>
+                    <div class="slds-truncate">
+                        <label class="slds-form-element__label" for="select-01"> Transaction Number </label>
+                    </div>
+                    <div class="slds-truncate">
+                        {!shipmentTagSerial.Extn.ExtnTransactionNo}
+                    </div>
+                </td>
+                <td>
+                    <div class="slds-truncate">
+                        <label class="slds-form-element__label" for="select-01"> Approval Code </label>
+                    </div>
+                    <div class="slds-truncate">
+                        {!shipmentTagSerial.Extn.ExtnApprovalCode}
+                    </div>
+                </td>
+            </tr>
+        </aura:iteration>
+    </aura:if>
+
+</aura:component>

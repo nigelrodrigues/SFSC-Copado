@@ -1,17 +1,17 @@
 /**
- * @Name trac_GetPromoCode
- * @Author Daniel Labonte, Traction on Demand
- * @Date June 28, 2019 
- * 
- * @Description ${DESCRIPTION}
- */
+* @Name trac_GetPromoCode
+* @Author Daniel Labonte, Traction on Demand
+* @Date June 28, 2019 
+* 
+* @Description ${DESCRIPTION}
+*/
 
 public with sharing class trac_GetPromoCode {
     /**
-     * @description method to retrieve available promo code records
-     * @param value query based on promo code amount
-     * @return list of available promo code records
-     */
+* @description method to retrieve available promo code records
+* @param value query based on promo code amount
+* @return list of available promo code records
+*/
     @AuraEnabled
     public static Object getPromoCode(String value) {
         String searchValue = '%' + value + '%';
@@ -20,13 +20,13 @@ public with sharing class trac_GetPromoCode {
     }
 
     /**
-     * @description method to associate promo code records with a case record and stamp the user who performed the action
-     * @param promoCodeRecords map of promo code record ids
-     * @param caseId string of the case record id
-     * @return boolean of if there was an error
-     */
+* @description method to associate promo code records with a case record and stamp the user who performed the action
+* @param promoCodeRecords map of promo code record ids
+* @param caseId string of the case record id
+* @return boolean of if there was an error
+*/
     @AuraEnabled
-    public static Boolean consumePromoCodes(Map<String,String> promoCodeRecords, String caseId) {
+    public static Boolean consumePromoCodes(Map<String, String> promoCodeRecords, String caseId) {
         Boolean success = true;
 
         try {
@@ -54,9 +54,8 @@ public with sharing class trac_GetPromoCode {
         } catch (Exception e) {
             throw new PromoCodeException(e.getMessage());
         }
-
         return success;
     }
-
-    private class PromoCodeException extends Exception {}
+    private class PromoCodeException extends Exception {
+    }
 }

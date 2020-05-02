@@ -3,6 +3,30 @@
     <active>true</active>
     <dataCategory>
         <dataCategory>
+            <label>Saks at your service</label>
+            <name>Saks_at_your_service</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Off5th</label>
+                <name>Off5thStorelocations</name>
+            </dataCategory>
+            <label>Store Locations</label>
+            <name>Store_Locations</name>
+        </dataCategory>
+        <dataCategory>
+            <dataCategory>
+                <label>Saks</label>
+                <name>SaksPricing</name>
+            </dataCategory>
+            <dataCategory>
+                <label>Off5th</label>
+                <name>Off5thPricing</name>
+            </dataCategory>
+            <label>Pricing</label>
+            <name>Pricing</name>
+        </dataCategory>
+        <dataCategory>
             <label>SE Team</label>
             <name>SE_Team</name>
         </dataCategory>

@@ -14,7 +14,7 @@
 
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
-                      fields="Id, Subject, AccountId, ContactId, Case_Type__c, Category__c, Subcategory__c, RecordTypeId, Business_Unit__c"
+                      fields="Id, Subject, AccountId, ContactId, Case_Type__c, Category__c, Subcategory__c, RecordTypeId, Business_Unit__c, Origin"
                       targetFields="{!v.caseRecord}"
                       targetError="{!v.recordLoadError}"
     />

@@ -2,7 +2,7 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>Team Assistance Needed</fullName>
+        <fullName>Team Lead Assistance Needed</fullName>
         <default>false</default>
         <label>Team Lead Assistance Needed</label>
         <closed>false</closed>
@@ -17,6 +17,12 @@
         <fullName>POS Team</fullName>
         <default>false</default>
         <label>POS Team</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalate ORC POS Review</fullName>
+        <default>false</default>
+        <label>Escalate ORC POS Review</label>
         <closed>false</closed>
     </standardValue>
     <standardValue>
@@ -77,6 +83,78 @@
         <fullName>MNR Review</fullName>
         <default>false</default>
         <label>MNR Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalate ORC MNR Review</fullName>
+        <default>false</default>
+        <label>Escalate ORC MNR Review</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Non Responsive Customer</fullName>
+        <default>false</default>
+        <label>Non Responsive Customer</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Transferred to Store Operations</fullName>
+        <default>false</default>
+        <label>Transferred to Store Operations</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Accommodation Gift Card Requests</fullName>
+        <default>false</default>
+        <label>Accommodation Gift Card Requests</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Transferred to Back Office</fullName>
+        <default>false</default>
+        <label>Transferred to Back Office</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Risk Support El Salvador Team</fullName>
+        <default>false</default>
+        <label>Risk Support El Salvador Team</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Risk Support Jackson Team</fullName>
+        <default>false</default>
+        <label>Risk Support Jackson Team</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalate Risk Support El Salvador Team</fullName>
+        <default>false</default>
+        <label>Escalate Risk Support El Salvador Team</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalate Risk Support Jackson Team</fullName>
+        <default>false</default>
+        <label>Escalate Risk Support Jackson Team</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Virtual Gift Card Processing</fullName>
+        <default>false</default>
+        <label>Virtual Gift Card Processing</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>POS Gift Card Processing</fullName>
+        <default>false</default>
+        <label>POS Gift Card Processing</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Team Assistance Needed</fullName>
+        <default>false</default>
+        <label>Team Assistance Needed</label>
         <closed>false</closed>
     </standardValue>
 </StandardValueSet>

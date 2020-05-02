@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, 
+        initial-scale=1.0">
+
+        <style type="text/css">
+        body, div, p, a, li, td {
+          -webkit-text-size-adjust: none;
+          -ms-text-size-adjust: none;
+          vertical-align: middle;
+        }
+        
+
+        /* Header CSS */
+        .logo{
+          padding-bottom: 50px;
+          padding-top:30px;
+          max-width: 600px;
+        }
+        /* End Header CSS */
+
+
+
+        .mainContent{
+          font-family: "Helvetica Neue", Helvetica, sans-serif;
+          max-width: 600px;
+          line-height: 1.5;
+        }
+
+
+        /* Footer CSS */
+        .footerContainer{
+          padding-top: 75px;
+          max-width: 620px;
+        }
+
+        .footer{
+          border-top: 1px solid #d1d1d1;
+          
+        }
+        /* End Footer CSS */
+
+        
+
+        </style>
+
+    </head>
+
+    <body bgcolor="#fff" leftmargin="0" topmargin="0" marginwidth="0" 
+    marginheight="0">
+              
+              <!-- Begin Header -->
+
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" 
+          align="center"  bgcolor="#FFFFFF" class="logo">
+                    <tr>
+                        <td align="center"><a 
+              href="https://www.saksfifthavenue.com/"><img 
+              src="https://image.s5a.com/is/image/saks/SAK_NAV_LOGO_HORIZ2?scl=1&qlt=100&fmt=png8" 
+              alt="{!Case.Business_Unit__c}"  /></a></td>
+                    </tr>
+              </table>
+
+              <!-- End Header -->
+             
+
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" 
+          align="center"  bgcolor="#FFFFFF" class="mainContent">
+                    <tr>
+                      <td width="10%">&nbsp;</td>
+                      <td>
+						  <br><br>
+						   <p>Bonjour {!Contact.FirstName},<br><br>Vous avez récemment communiqué avec nous à propos d’un problème, mais nous n’avons pas été en mesure de vous aider, car nous avions besoin de renseignements additionnels. Si vous avez toujours besoin d’aide, veuillez communiquer avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
+<br>
+<br>
+
+<a href="mailto:service@saks.com?subject=Nous avons besoin de plus de renseignements pour pouvoir vous aider-{!Case.Thread_Id}" > COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT </a><br><br><i>
+						  Sincères salutations <br>Service à la clientèle de {!Case.Business_Unit__c} </i></p>
+
+
+                        </td>
+                        <td width="10%">&nbsp;</td>
+                    </tr>
+              </table>
+
+
+
+             
+             <!-- Begin Footer -->
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" 
+            align="center" bgcolor="#FFFFFF" class="footerContainer">
+              <tr>
+                <td>
+              <table width="95%" border="0" cellspacing="0" cellpadding="0" 
+        align="center" bgcolor="#FFFFFF" 
+                class="footer">
+                <tr>
+                    <td height="80" align="center" bgcolor="#FFFFFF">
+                      <table width="100%" 
+                border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="28%">&nbsp;</td>
+                           <td width="8%"><a target="_blank" 
+                href="https://www.facebook.com/saks"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_facebook?scl=1&fmt=png"  width="8" height="18" border="0" 
+                /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://www.instagram.com/saks/"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_instagram?scl=1&fmt=png"   width="18" height="18" border="0" 
+                class="fbIcon" /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://twitter.com/saks"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_twitter?scl=1&fmt=png"   width="18" height="15" border="0" 
+                class="fbIcon" /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://www.youtube.com/saks"><img 
+                src="https://image.s5a.com/is/image/LordandTaylor/LT_CSemail_youtube?scl=1&fmt=png"   width="18" height="12" border="0" 
+                /></a></td>
+                          <td width="9%"><a target="_blank" 
+                href="https://www.pinterest.ca/saks/"><img 
+                src="https://image.s5a.com/is/image/TheBay/HB_Pinterest?scl=1&fmt=png" 
+                  width="18" height="18" border="0" 
+                /></a></td>
+                          <td width="28%">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+              </table>
+            
+
+              <table width="98%" border="0" cellspacing="0" cellpadding="0" 
+        align="center" bgcolor="#FFFFFF" class="footer">
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- End Footer -->
+
+    </body>
+</html>
+{!Case.Thread_Id}

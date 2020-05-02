@@ -5,6 +5,7 @@
     <queueMembers>
         <publicGroups>
             <publicGroup>MHF_Delivery</publicGroup>
+            <publicGroup>MHF_French</publicGroup>
         </publicGroups>
     </queueMembers>
     <queueRoutingConfig>All_Queues</queueRoutingConfig>

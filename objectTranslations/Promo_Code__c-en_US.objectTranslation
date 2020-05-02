@@ -189,10 +189,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Amount --></label>
-        <name>Amount__c</name>
-    </fields>
-    <fields>
         <label><!-- Business Unit --></label>
         <name>Business_Unit__c</name>
         <picklistValues>
@@ -227,8 +223,40 @@
         <relationshipLabel><!-- Promo Codes --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Consumed Date --></label>
+        <name>Consumed_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- Consumed --></label>
         <name>Consumed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promo Code Reason --></label>
+        <name>Promo_Code_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled order</masterLabel>
+            <translation><!-- Cancelled order --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Damaged merchandise</masterLabel>
+            <translation><!-- Damaged merchandise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incorrect merchandise</masterLabel>
+            <translation><!-- Incorrect merchandise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refund delay</masterLabel>
+            <translation><!-- Refund delay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping delay</masterLabel>
+            <translation><!-- Shipping delay --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Promo Code --></label>

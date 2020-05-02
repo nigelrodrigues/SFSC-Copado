@@ -1,0 +1,10 @@
+<!--
+ - Created by jhoran on 2/26/2020.
+ -->
+
+<aura:event type="APPLICATION" description="trac_PaymentMethodAddedEvent">
+    <aura:attribute name="paymentMethod" type="Object"/>
+    <aura:attribute name="mode" type="Boolean" description="Return True for Create Payment Method and false for edit"/>
+    <aura:attribute name="indexVar" type="String" description="Return the index of payment method to update"/>
+
+</aura:event>

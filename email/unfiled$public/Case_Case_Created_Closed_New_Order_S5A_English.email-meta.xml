@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Case opened and closed within 8 calendar hours and associate placed a new order on behalf of the customer</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Case Created &amp; Closed - New Order (S5A English)</name>
+    <style>none</style>
+    <subject>Thank you for shopping with</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you for contacting {!Case.Business_Unit__c}! We&apos;re glad we were able to assist you with placing your order today.
+Your Order Number: {!Case.Order_Number__c}
+
+All the best,
+
+Your {!Case.Business_Unit__c} Customer Service Team
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

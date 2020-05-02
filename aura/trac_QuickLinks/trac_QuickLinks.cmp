@@ -7,24 +7,66 @@
                 implements="force:hasRecordId,flexipage:availableForAllPageTypes"
                 controller="trac_QuickLinksController">
 
-    <aura:attribute name="externalLinks" type="External_Link_Setting__mdt[]"/>
+    <aura:attribute name="externalLinksTheBay" type="External_Link_Setting__mdt[]"/>
+    <aura:attribute name="externalLinksLT" type="External_Link_Setting__mdt[]"/>
+    <aura:attribute name="externalLinksSaks" type="External_Link_Setting__mdt[]"/>
+    <aura:attribute name="externalLinksOff5th" type="External_Link_Setting__mdt[]"/>
+    <aura:attribute name="externalLinksMHF" type="External_Link_Setting__mdt[]"/>
+    <aura:attribute name="defaultTab" type="String" default="Bay"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
     <div>
-        <br/>
-        <aura:if isTrue="{!v.externalLinks != null}">
-            <aura:iteration items="{!v.externalLinks}" var="item">
-                <span class="slds-text-link_faux slds-p-left_small slds-p-top_x-small" data-label="{!item.URL__c}"
-                      onclick="{!c.navigateToLink}" style="font-weight: bold; color: #006dcc;">
-                    {!item.Label}
-                </span>
-                <br/>
-            </aura:iteration>
-            <aura:set attribute="else">
-                No links to display.
-            </aura:set>
-        </aura:if>
-    </div>
+        <lightning:tabset selectedTabId="{!v.defaultTab}">
+            <aura:if isTrue="{!v.externalLinksTheBay.length > 0}">
+                <lightning:tab label="The Bay" id="Bay">
+                    <aura:iteration items="{!v.externalLinksTheBay}" var="item">
+                        <div class="slds-p-left_small slds-p-top_x-small">
+                            <a class="linkClass" href="{!item.URL__c}" target="_blank">{!item.Label}</a>
+                        </div>
+                    </aura:iteration>
+                </lightning:tab>
+            </aura:if>
 
+            <aura:if isTrue="{!v.externalLinksLT.length > 0}">
+                <lightning:tab label="LT" id="LT">
+                    <aura:iteration items="{!v.externalLinksLT}" var="item">
+                        <div class="slds-p-left_small slds-p-top_x-small">
+                            <a class="linkClass" href="{!item.URL__c}" target="_blank">{!item.Label}</a>
+                        </div>
+                    </aura:iteration>
+                </lightning:tab>
+            </aura:if>
+
+            <aura:if isTrue="{!v.externalLinksSaks.length > 0}">
+                <lightning:tab label="Saks" id="Saks">
+                    <aura:iteration items="{!v.externalLinksSaks}" var="item">
+                        <div class="slds-p-left_small slds-p-top_x-small">
+                            <a class="linkClass" href="{!item.URL__c}" target="_blank">{!item.Label}</a>
+                        </div>
+                    </aura:iteration>
+                </lightning:tab>
+            </aura:if>
+
+            <aura:if isTrue="{!v.externalLinksOff5th.length > 0}">
+                <lightning:tab label="Off 5th" id="Off5th">
+                    <aura:iteration items="{!v.externalLinksOff5th}" var="item">
+                        <div class="slds-p-left_small slds-p-top_x-small">
+                            <a class="linkClass" href="{!item.URL__c}" target="_blank">{!item.Label}</a>
+                        </div>
+                    </aura:iteration>
+                </lightning:tab>
+            </aura:if>
+
+            <aura:if isTrue="{!v.externalLinksMHF.length > 0}">
+                <lightning:tab label="MHF" id="MHF">
+                    <aura:iteration items="{!v.externalLinksMHF}" var="item">
+                        <div class="slds-p-left_small slds-p-top_x-small">
+                            <a class="linkClass" href="{!item.URL__c}" target="_blank">{!item.Label}</a>
+                        </div>
+                    </aura:iteration>
+                </lightning:tab>
+            </aura:if>
+        </lightning:tabset>
+    </div>
 </aura:component>

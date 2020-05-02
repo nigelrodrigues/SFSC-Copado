@@ -1,0 +1,17 @@
+<!--
+ - Created by pbansal on 1/28/2020.
+ -->
+
+<aura:component description="trac_OrderLineHistory">
+    <aura:attribute name="lineHistory" type="Object"/>
+
+    <tr>
+        <td>
+            <div class="slds-truncate">{!v.lineHistory.StatusDescription}</div>
+        </td>
+        <td>
+            <div class="slds-truncate">{!v.lineHistory.ReasonDescription}</div>
+        </td>
+
+    </tr>
+</aura:component>

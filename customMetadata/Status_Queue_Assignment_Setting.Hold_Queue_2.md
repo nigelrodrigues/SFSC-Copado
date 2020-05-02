@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Business_Unit__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">All</value>
     </values>
     <values>
         <field>Case_Status__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Ignore_Metadata_Mapping__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Ignore_on_Executive_Escalation__c</field>

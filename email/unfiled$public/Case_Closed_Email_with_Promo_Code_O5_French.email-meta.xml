@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent when a case is closed and has a promo code - O5 in French</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Closed Email with Promo Code (O5 French)</name>
+    <style>none</style>
+    <subject>Voici votre code promotionnel à usage unique</subject>
+    <textOnly>Dear {!Contact.FirstName},
+
+Thank you for contacting {!Case.Business_Unit__c}! We thank you for being a loyal customer, so on your next order, please use Promo Code: {!Case.Promo_Code__c}
+
+This code can only be used once and is subject to certain exclusions. If you need to contact us about your original issue or about this code, please click  here
+
+Your Case Number: {!Case.CaseNumber}
+
+All the best,
+
+Your {!Case.Business_Unit__c} Customer Service Team
+
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

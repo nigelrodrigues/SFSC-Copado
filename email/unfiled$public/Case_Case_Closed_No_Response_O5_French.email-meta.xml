@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email for when cases close because the customer does not respond for O5 in English</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Case Closed No Response (O5 French)</name>
+    <style>none</style>
+    <subject>Nous avons besoin de plus de renseignements pour pouvoir vous aider</subject>
+    <textOnly>Bonjour {!Contact.FirstName},
+
+Vous avez récemment communiqué avec nous à propos d’un problème, mais nous n’avons pas été en mesure de vous aider, car nous avions besoin de renseignements additionnels. Si vous avez toujours besoin d’aide, veuillez communiquer avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
+
+COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT
+
+Sincères salutations.
+Service à la clientèle {!Case.Business_Unit__c}
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

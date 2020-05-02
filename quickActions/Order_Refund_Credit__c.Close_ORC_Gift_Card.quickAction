@@ -4,6 +4,10 @@
         <field>ORC_Status__c</field>
         <literalValue>Closed</literalValue>
     </fieldOverrides>
+    <fieldOverrides>
+        <field>Reversal_Date_Time__c</field>
+        <formula>NOW()</formula>
+    </fieldOverrides>
     <label>Close ORC</label>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <quickActionLayout>

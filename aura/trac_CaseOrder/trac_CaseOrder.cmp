@@ -13,15 +13,20 @@
 
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
-                      fields="Id, ContactId, Order_Number__c, Business_Unit__c, Contact.Email, Contact.Phone"
+                      fields="Id, ContactId, Order_Number__c, Business_Unit__c, Contact.Email, Contact.Phone, Order_Billing_Postal_Code__c"
                       targetFields="{!v.caseRecord}"
                       targetError="{!v.recordLoadError}"
     />
 
     <div>
-        <!--Hello! Order No. - {!v.caseRecord.Order_Number__c}-->
         <aura:if isTrue="{!v.caseRecord.Order_Number__c != null}">
-            <c:trac_OrderSearch orderNumber="{!v.caseRecord.Order_Number__c}" caseRecord="{!v.caseRecord}"/>
+            <aura:if isTrue="{!v.caseRecord.Order_Billing_Postal_Code__c != null}">
+                <c:trac_OrderSearch orderNumber="{!v.caseRecord.Order_Number__c}" caseRecord="{!v.caseRecord}" postalCode="{!v.caseRecord.Order_Billing_Postal_Code__c}"/>
+                <aura:set attribute="else">
+                    <c:trac_OrderSearch orderNumber="{!v.caseRecord.Order_Number__c}" caseRecord="{!v.caseRecord}" />
+                </aura:set>
+            </aura:if>
+
             <aura:set attribute="else" >
                 <c:trac_OrderSearch caseRecord="{!v.caseRecord}"/>
             </aura:set>

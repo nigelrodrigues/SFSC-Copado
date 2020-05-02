@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent when a case is closed and has a promo code -O5 English</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case - Closed Email with Promo Code (O5 English)</name>
+    <style>none</style>
+    <subject>Your one-time promo code is waiting inside</subject>
+    <textOnly>Hi {!Contact.FirstName},
+
+We always want you to have a positive shopping experience. To show you how much we appreciate your business, please enjoy this one-time offer* using promo code {!Case.Promo_Code__c}. If you have any questions, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
+
+CONTACT US
+
+Sincerely,
+{!Case.Business_Unit__c} Customer Service
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

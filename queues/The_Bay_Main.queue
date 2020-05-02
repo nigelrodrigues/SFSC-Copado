@@ -4,6 +4,7 @@
     <name>The Bay - Main</name>
     <queueMembers>
         <publicGroups>
+            <publicGroup>La_Baie_El_Salvador</publicGroup>
             <publicGroup>La_Baie_Moncton</publicGroup>
             <publicGroup>LT_Bay_Main</publicGroup>
         </publicGroups>

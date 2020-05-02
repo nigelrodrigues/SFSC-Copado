@@ -1,0 +1,74 @@
+<!--
+ - Created by Jeremy on 2/2/2020.
+ -->
+
+<aura:component description="trac_CaseComplete" extends="c:trac_BaseComponent" controller="trac_CaseCompleteController"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,flexipage:availableForRecordHome">
+
+    <aura:attribute name="isClose" type="Boolean" default="true"/>
+    <aura:attribute name="caseRecTypeName" type="String" default=""/>
+    <aura:attribute name="isFollowUp" type="Boolean" default="false"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="caseRecord" type="Case" default="{'sObjectType':'Case'}"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="options" type="List" default="[
+    {'label': 'Change Status', 'value': 'Change Status'},
+    {'label': 'Close Case', 'value': 'Close Case'},
+    {'label': 'Follow Up', 'value': 'Follow Up'}
+    ]"/>
+    <aura:attribute name="selectedRadioVal" type="String" default="Change Status"/>
+
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Id, RecordTypeId, ContactId, Order_Number__c, ORC_Count__c, ORC_Closed_Count__c, ORC_POS_Gift_Card_Saks_O5__c, Business_Unit__c, ORC_Virtual_Gift_Card_Queue__c, ORC_MNR_El_Salvador_Follow_Up__c, ORC_Saks_O5_MNR_Review__c, ORC_El_Salvador_Review__c, ORC_Jackson_POS__c, Open_ORC__c, ORC_Submitted__c, ORC_Missing_Item_or_No_Order__c, ORC_Requiring_Approval_Count__c, PayPal_ORC__c"
+                      targetFields="{!v.caseRecord}"
+                      targetError="{!v.recordLoadError}"
+                      recordUpdated="{!c.handleRecordUpdated}"
+    />
+
+    <lightning:recordEditForm
+            onload="{!c.handleLoad}"
+            onsubmit="{!c.handleSubmit}"
+            onsuccess="{!c.handleSuccess}"
+            onerror="{!c.handleError}"
+            recordId="{!v.recordId}"
+            recordTypeId ="{!v.caseRecord.RecordTypeId}"
+            objectApiName="Case">
+        <!-- the messages component is for error messages -->
+        <lightning:messages/>
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1">
+                <lightning:radioGroup name="radioGroup"
+                                      label="Select Action"
+                                      options="{! v.options }"
+                                      value="{! v.selectedRadioVal }"
+                                      onchange="{!c.handleRadioChange}"
+                                      type="radio"/>
+                <div class="slds-m-top_large">
+                    <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true"/>
+                    <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c" required="true"/>
+                    <lightning:inputField aura:id="caseCaseType" fieldName="Case_Type__c" required="true"/>
+                    <lightning:inputField aura:id="caseCategory" fieldName="Category__c" required="true"/>
+                    <lightning:inputField aura:id="caseSubcategory" fieldName="Subcategory__c" required="true"/>
+                    <lightning:inputField aura:id="caseCandidateForKnowledgeArticle"
+                                          fieldName="Candidate_for_Knowledge_Article__c"/>
+                    <aura:if isTrue="{!v.isFollowUp}">
+                        <lightning:inputField aura:id="caseFollowUpDate" fieldName="Follow_Up_Date__c"
+                                              required="{!v.isFollowUp}"/>
+                        <lightning:inputField aura:id="caseFollowUpRequestedBy" fieldName="Follow_Up_Requested_By__c"
+                                              class="slds-hide"/>
+                        <lightning:inputField aura:id="caseNextSteps" fieldName="Next_Steps__c"/>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="slds-m-top_medium">
+            <lightning:button variant="brand" type="submit" name="save" label="Wrap Up" class="submit_button"/>
+        </div>
+    </lightning:recordEditForm>
+</aura:component>

@@ -1,0 +1,31 @@
+<!--
+  @Component Name     : modalComp.html
+  @Description        :
+  @Author             : Manu Mangal
+  @Group              :
+  @Last Modified By   : Manu Mangal
+  @Last Modified On   :
+  @Modification Log   :
+  ==============================================================================
+  Ver         Date                     Author      		      Modification
+  ==============================================================================
+-->
+<template>
+  <section role="dialog" tabindex="-1" aria-labelledby="directory-search" data-id="gu-modal" class="slds-modal">
+    <div class="slds-modal__container customModalSty">
+      <div class="slds-modal__header">
+
+        <h2 id="header43" class="slds-text-heading__medium">
+          <slot name="modalHeader">Unknown</slot>
+        </h2>
+      </div>
+      <div class="slds-modal__content slds-p-around__medium">
+        <slot name="modalBody">Unknown</slot>
+      </div>
+      <div class="slds-modal__footer">
+        <slot name="modalFooter">Unknown</slot>
+      </div>
+    </div>
+  </section>
+  <div data-id="backdrop" class="slds-backdrop"></div>
+</template>

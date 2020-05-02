@@ -3,6 +3,8 @@
  */
 ({
     updateCase: function (component, event, helper) {
+        component.find("Id_spinner").set("v.class" , 'slds-show');
+
         var action = component.get("c.updateCase");
         action.setParams({
             'con': component.get("v.con"),
@@ -10,13 +12,14 @@
         });
 
         action.setCallback(this, function(response) {
+            component.find("Id_spinner").set("v.class" , 'slds-hide');
+
             var state = response.getState();
             if (state === "SUCCESS") {
                 var result = response.getReturnValue();
                 if(!$A.util.isEmpty(result)){
                     helper.minimizeSearch(component);
-                    window.location.reload();
-                    //$A.get('e.force:refreshView').fire();
+                    $A.get('e.force:refreshView').fire();
                 }
 
             }else if (state === "INCOMPLETE") {
@@ -41,4 +44,4 @@
         cmpEvent.setParams({"closeModal" : false});
         cmpEvent.fire();
     }
-})
+});

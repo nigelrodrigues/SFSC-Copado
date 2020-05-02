@@ -1,0 +1,204 @@
+<!--
+ - Created by jhoran on 2/24/2020.
+ -->
+
+<aura:component description="trac_AddPaymentMethod" extends="c:trac_BaseComponent" controller="trac_PaymentCaptureCtlr">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="order" type="Object"/>
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="disabled" type="boolean" default="false"/>
+    <aura:attribute name="indexVal" type="string"/>
+
+    <aura:attribute name="paymentMethod" type="Object"/>
+    <aura:attribute name="giftCard" type="Object"/>
+    <aura:attribute name="creditCardNumber" type="String"/>
+    <aura:attribute name="maskedCCNumber" type="String"/>
+    <aura:attribute name="paymentRemaining" type="Decimal" default="0.00"/>
+    <aura:attribute name="useExistingBillingAddress" type="Boolean" default="false"/>
+    <aura:attribute name="giftCardBalance" type="String"/>
+    <aura:attribute name="isEdit" type="Boolean" default="false"/>
+    <aura:attribute name="displayWarning" type="Boolean" default="true"/>
+
+    <aura:method name="paymentRemainingUpdateCall" action="{!c.updatePaymentRemaining}">
+        <aura:attribute name="paymentRemaining" type="Decimal" default="0.00"/>
+    </aura:method>
+
+    <aura:attribute name="paymentMethodOptions" type="List" default="[
+        {'label':'CREDIT_CARD', 'value':'CREDIT_CARD'},
+        {'label':'CREDIT_CARD_HBC', 'value':'CREDIT_CARD_HBC'},
+        {'label':'CREDIT_CARD_PVT_HBC', 'value':'CREDIT_CARD_PVT_HBC'},
+        {'label':'GIFT_CARD', 'value':'GIFT_CARD'},
+        {'label':'HBGC', 'value':'HBGC'},
+        {'label':'HBRGC', 'value':'HBRGC'},
+        {'label':'PVT_CREDIT_CARD', 'value':'PVT_CREDIT_CARD'}
+    ]"/>
+
+    <aura:attribute name="creditOptions" type="List" default="[
+        {'label':'AMEX', 'value':'AMEX'},
+        {'label':'DISC', 'value':'DISC'},
+        {'label':'HBC', 'value':'HBC'},
+        {'label':'JCB', 'value':'JCB'},
+        {'label':'MAST', 'value':'MAST'},
+        {'label':'VISA', 'value':'VISA'}
+    ]"/>
+
+    <aura:registerEvent name="paymentMethodAdded" type="c:trac_PaymentMethodAddedEvent"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler event="c:trac_NewPaymentMethodEditEvent" action="{!c.handlePaymentEdit}"/>
+
+    <lightning:button onclick="{!c.handleOpenModal}"
+                      variant="brand"
+                      label="Add Payment"
+                      iconName="utility:currency"
+                      disabled="{!v.disabled}"/>
+
+    <aura:if isTrue="{!v.isModalOpen}">
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                 aria-describedby="modal-content-id-1"
+                 class="slds-modal slds-align_absolute-center slds-modal_medium slds-fade-in-open">
+            <div class="slds-modal__container">
+                <lightning:recordEditForm
+                        onload="{!c.handleLoad}"
+                        onsubmit="{!c.handleSubmit}"
+                        onsuccess="{!c.handleSuccess}"
+                        recordId="{!v.caseRecord.ContactId}"
+                        objectApiName="Contact">
+
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add Payment</h2>
+                    </header>
+
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium slds-scrollable" id="modal-content-id-1">
+                        <!-- the messages component is for error messages -->
+                        <lightning:messages/>
+
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2 slds-p-right_xx-small">
+                                <lightning:input type="number" aura:id="reqAmt" onchange="{!c.handleAmount}" name="input7"
+                                                 label="Amount" value="{!v.paymentMethod.RequestAmount}"
+                                                 formatter="currency" step="0.01" required="true"/>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-2 slds-p-left_xx-small">
+                                <lightning:combobox label="Payment Type" value="{!v.paymentMethod.PaymentType}"
+                                                    placeholder="Select Payment Type"
+                                                    options="{! v.paymentMethodOptions }"
+                                                    onchange="{! c.handlePaymentChange }" required="true"/>
+                            </div>
+
+                            <aura:if
+                                    isTrue="{!v.paymentMethod.PaymentType == 'GIFT_CARD' || v.paymentMethod.PaymentType == 'HBGC' || v.paymentMethod.PaymentType == 'HBRGC'}">
+
+                                <div class="slds-col slds-size_1-of-1">
+                                    <lightning:input type="text" name="giftCardNumber" label="Gift Card Number" aura:id="giftCardNumber" 
+                                                     value="{!v.paymentMethod.SvcNo}" required="true" pattern="[0-9]*"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning:input type="text" name="input1" label="Gift Card Pin"
+                                                     value="{!v.paymentMethod.GiftCardPin}" pattern="[0-9]*"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3 slds-text-align_center trac-balance_button">
+                                    <lightning:button variant="brand" name="checkBalance" label="Check Balance"
+                                                      onclick="{!c.handleCheckBalance}"/>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3 slds-p-left_xx-small">
+                                    <lightning:input type="text" name="input1" label="Balance" aura:id = 'checkBalance'
+                                                     value="{!(not(empty(v.giftCardBalance)) ? v.giftCardBalance : 'Unknown')}"
+                                                     disabled="true"/>
+                                </div>
+
+                                <aura:set attribute="else">
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning:combobox label="Credit Card Type"
+                                                            value="{!v.paymentMethod.CreditCardType}"
+                                                            placeholder="Select Credit Card"
+                                                            options="{! v.creditOptions }"
+                                                            onchange="{! c.handleCreditChange }"/>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning:input type="text" name="input1" label="Name As Printed On Card"
+                                                         value="{!v.paymentMethod.CreditCardName}" required="true"/>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning:input type="text" name="input1"
+                                                         aura:id="creditCardNum"
+                                                         label="Credit Card Number"
+                                                         onkeypress="{!c.onChangeCCHandler}"
+                                                         onblur="{! c.creditCardFormat }" value="{!v.creditCardNumber}"
+                                                         required="true"
+                                                         pattern="^([X 0-9]{4}[- ]){3}\d{4}|\d{16}$"
+                                                         messageWhenPatternMismatch="Not a validate credit card number"/>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2 slds-p-right_xx-small">
+                                        <lightning:input type="text" name="input1" aura:id="expiryDate"
+                                                         label="Expiry Date (MM/YYYY)"
+                                                         onkeypress="{!c.onChangeExpiryHandler}"
+                                                         onblur="{! c.validateExpiryDate }"
+                                                         value="{!v.paymentMethod.CreditCardExpDate}" required="true"
+                                                         pattern="^((0[1-9])|(1[0-2]))\/((2009)|(20[0-9][0-9]))$"
+                                                         messageWhenPatternMismatch="Entry must match label format (MM/YYYY)"/>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2 slds-p-left_xx-small">
+                                        <lightning:input type="text" name="input1" label="CVV"
+                                                         value="{!v.paymentMethod.CVVAuthCode}"/>
+                                    </div>
+                                </aura:set>
+
+                            </aura:if>
+
+                            <div class="slds-col slds-size_1-of-1">
+                                <lightning:input type="checkbox" name="input1" label="Use Existing Billing Address"
+                                                 value="{!v.useExistingBillingAddress}"
+                                                 onchange="{! c.useExistingAddressChange }"/>
+                            </div>
+
+                            <aura:if isTrue="{!not(v.useExistingBillingAddress)}">
+
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField aura:id="paymentFieldFirstName" fieldName="FirstName" required="{!not(v.useExistingBillingAddress)}" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField aura:id="paymentFieldLastName" fieldName="LastName" required="{!not(v.useExistingBillingAddress)}" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField aura:id="paymentFieldEmail" fieldName="Email" required="{!not(v.useExistingBillingAddress)}" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField aura:id="paymentFieldDayPhone" fieldName="Phone" required="{!not(v.useExistingBillingAddress)}" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-1">
+                                    <lightning:inputField aura:id="paymentFieldAddress" fieldName="OtherAddress" required="{!not(v.useExistingBillingAddress)}" />
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.useExistingBillingAddress}">
+                                <lightning:layoutItem padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Billing Address</p>
+                                        <p>{!v.order.PersonInfoBillTo.FirstName + ' ' + v.order.PersonInfoBillTo.LastName + ', ' + v.order.PersonInfoBillTo.DayPhone}</p>
+                                        <p>{!v.order.PersonInfoBillTo.AddressLine1}</p>
+                                        <p>{!v.order.PersonInfoBillTo.City + ' ' + v.order.PersonInfoBillTo.State + ' ' + v.order.PersonInfoBillTo.ZipCode  + ', ' + v.order.PersonInfoBillTo.Country}</p>
+                                    </div>
+                                </lightning:layoutItem>
+                            </aura:if>
+                        </div>
+                    </div>
+
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="brand" type="submit" name="save" label="Save"/>
+                        <lightning:button variant="neutral"
+                                          label="Close"
+                                          onclick="{!c.handleCloseModel}"/>
+                    </footer>
+                </lightning:recordEditForm>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

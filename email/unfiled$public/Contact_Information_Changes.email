@@ -1,0 +1,14 @@
+Hi {!Contact.Name},
+</br></br>
+
+The below details have been updated over your HBC Contact. Please revert if changes does not originate from you.
+</br></br>
+
+Last Name: {!Contact.LastName}</br>
+Email:  {!Contact.Email}</br>
+Phone: {!Contact.Phone}</br>
+Address: {!Contact.MailingAddress}</br>
+</br>
+
+Thank you,</br>
+HBC

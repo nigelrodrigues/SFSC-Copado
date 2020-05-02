@@ -4,7 +4,7 @@
     <name>MHF Leadership Hotline</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>MHF_Leadership_Hotline</publicGroup>
+            <publicGroup>MHF_Rewards</publicGroup>
         </publicGroups>
     </queueMembers>
     <queueRoutingConfig>All_Queues</queueRoutingConfig>

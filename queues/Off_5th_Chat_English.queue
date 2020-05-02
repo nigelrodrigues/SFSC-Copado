@@ -2,6 +2,11 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Off 5th Chat English</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Off_5th_Chat</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueRoutingConfig>Chat_English</queueRoutingConfig>
     <queueSobject>
         <sobjectType>Case</sobjectType>

@@ -1,0 +1,16 @@
+<!--
+ - Created by Jeremy on 2/2/2020.
+ -->
+
+<aura:component description="trac_ChatCaseActions" extends="c:trac_BaseComponent" controller="trac_LiveChatAuraCtlr"
+                implements="force:hasRecordId,flexipage:availableForRecordHome">
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="caseId" type="Object"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:if isTrue="{!not(empty(v.caseId))}">
+        <c:trac_CaseActions recordId="{!v.caseId}" />
+    </aura:if>
+</aura:component>

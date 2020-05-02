@@ -16,18 +16,33 @@ public with sharing class trac_WS_CreateOrder {
     }
 
     public Boolean send() {
-        res = trac_WS_WebServiceHelper.SendPostRequest(ENDPOINT, createOrderRequest);
+        Boolean success = false;
+
+        res = trac_WS_WebServiceHelper.sendPostRequest(getEndpoint(), createOrderRequest);
 
         if(trac_WS_WebServiceHelper.isValidResponse(res)) {
             createOrderResponse = parse(res.getBody());
-            return true;
+            success = true;
         }
         else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
         }
 
-        return false;
+        return success;
+    }
+
+    private String getEndpoint() {
+        String dynamicEndpoint = ENDPOINT;
+
+        if (createOrderRequest != null && createOrderRequest.Order != null) {
+
+            String businessUnit = trac_WS_OrderUtils.getBusinessUnitFromEnterpriseCode(createOrderRequest.Order.EnterpriseCode);
+
+            dynamicEndpoint = trac_WS_OrderUtils.getDynamicEndpoint(dynamicEndpoint, businessUnit);
+        }
+
+        return dynamicEndpoint;
     }
 
     public static CreateOrderResponse parse(String json) {

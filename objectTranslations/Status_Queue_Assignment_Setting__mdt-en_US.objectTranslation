@@ -58,6 +58,22 @@
             <translation><!-- Closed --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Escalate ORC MNR Review</masterLabel>
+            <translation><!-- Escalate ORC MNR Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalate ORC POS Review</masterLabel>
+            <translation><!-- Escalate ORC POS Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalate Risk Support El Salvador Team</masterLabel>
+            <translation><!-- Escalate Risk Support El Salvador Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalate Risk Support Jackson Team</masterLabel>
+            <translation><!-- Escalate Risk Support Jackson Team --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>In Progress</masterLabel>
             <translation><!-- In Progress --></translation>
         </picklistValues>
@@ -74,6 +90,10 @@
             <translation><!-- On Hold --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>POS Gift Card Processing</masterLabel>
+            <translation><!-- POS Gift Card Processing --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>POS Team</masterLabel>
             <translation><!-- POS Team --></translation>
         </picklistValues>
@@ -86,12 +106,32 @@
             <translation><!-- Response Received --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Risk Support El Salvador Team</masterLabel>
+            <translation><!-- Risk Support El Salvador Team --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Support Jackson Team</masterLabel>
+            <translation><!-- Risk Support Jackson Team --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>System Issue</masterLabel>
             <translation><!-- System Issue --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Team Assistance Needed</masterLabel>
-            <translation><!-- Team Assistance Needed --></translation>
+            <masterLabel>Team Lead Assistance Needed</masterLabel>
+            <translation><!-- Team Lead Assistance Needed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transferred to Back Office</masterLabel>
+            <translation><!-- Transferred to Back Office --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transferred to Store Operations</masterLabel>
+            <translation><!-- Transferred to Store Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual Gift Card Processing</masterLabel>
+            <translation><!-- Virtual Gift Card Processing --></translation>
         </picklistValues>
     </fields>
     <fields>

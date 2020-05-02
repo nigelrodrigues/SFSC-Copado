@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>O5 - Risk Support - Jackson</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>O5_Risk_Support_Jackson</publicGroup>
+        </publicGroups>
+        <users>
+            <user>darren.steeves@hbc.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>All_Queues</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

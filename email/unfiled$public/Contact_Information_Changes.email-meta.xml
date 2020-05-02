@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to contact upon contact info changes</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Contact - Information Changes</name>
+    <style>none</style>
+    <subject>Contact details have been updated</subject>
+    <textOnly>Hi {!Contact.Name},  
+
+The below details have been updated over your HBC Contact. Please revert if changes does not originate from you.  
+
+Last Name: {!Contact.LastName} 
+Email:  {!Contact.Email} 
+Phone: {!Contact.Phone} 
+Address: {!Contact.MailingAddress}  
+
+Thank you, 
+HBC</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -7,7 +7,7 @@
 
 import lblLanguage from '@salesforce/label/c.Language';
 import lblTitle from '@salesforce/label/c.Title';
-import lblSubtitle from '@salesforce/label/c.Subtitle';
+//import lblSubtitle from '@salesforce/label/c.Subtitle';
 import lblReceipt from '@salesforce/label/c.Attach_Receipt';
 import lblCreatedTitle from '@salesforce/label/c.Created_Title';
 import lblCreatedSubtitle from '@salesforce/label/c.Created_Subtitle';
@@ -37,7 +37,6 @@ import Description from '@salesforce/label/c.Case_Field_Description';
 const labels = {
     lblLanguage,
     lblTitle,
-    lblSubtitle,
     lblReceipt,
     lblCreatedTitle,
     lblCreatedSubtitle,

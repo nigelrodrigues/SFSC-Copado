@@ -9,6 +9,18 @@
         <value>Order Refunds/Credits</value>
     </caseValues>
     <fields>
+        <label><!-- Address is Serviceable? --></label>
+        <name>Address_is_Serviceable__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Adjusted Price --></label>
         <name>Adjusted_Price__c</name>
     </fields>
@@ -40,6 +52,10 @@
         <name>Amount_Charged_to_Gift_Card__c</name>
     </fields>
     <fields>
+        <label><!-- Amount of Reversal --></label>
+        <name>Amount_of_Reversal__c</name>
+    </fields>
+    <fields>
         <label><!-- ORC Amount to Refund --></label>
         <name>Amount_to_Refund__c</name>
     </fields>
@@ -55,6 +71,34 @@
         <label><!-- Approved By --></label>
         <name>Approved_By__c</name>
         <relationshipLabel><!-- Order Refunds/Credits --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Billing Name --></label>
+        <name>Billing_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+        <picklistValues>
+            <masterLabel>Hudson&apos;s Bay</masterLabel>
+            <translation><!-- Hudson&apos;s Bay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lord + Taylor</masterLabel>
+            <translation><!-- Lord + Taylor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MHF</masterLabel>
+            <translation><!-- MHF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Off 5th</masterLabel>
+            <translation><!-- Off 5th --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks</masterLabel>
+            <translation><!-- Saks --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- CC Amount Refund --></label>
@@ -95,6 +139,10 @@
         <name>Credit_Card_Alias__c</name>
     </fields>
     <fields>
+        <label><!-- Credit Card Number (last 4 digits) --></label>
+        <name>Credit_Card_Number_last_4_digits__c</name>
+    </fields>
+    <fields>
         <label><!-- Credit Shipping Fee --></label>
         <name>Credit_Shipping_Fee__c</name>
     </fields>
@@ -111,6 +159,32 @@
         <name>Date_of_Sale__c</name>
     </fields>
     <fields>
+        <help><!-- The amount that HBC is charging the customer --></help>
+        <label><!-- Debit Amount --></label>
+        <name>Debit_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Debit/Charge Reason --></label>
+        <name>Debit_Charge_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Customer Requests Expedited Delivery</masterLabel>
+            <translation><!-- Customer Requests Expedited Delivery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reverse a ORC Discount</masterLabel>
+            <translation><!-- Reverse a ORC Discount --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The percentage you are charging the customer --></help>
+        <label><!-- Debit Percentage --></label>
+        <name>Debit_Percentage__c</name>
+    </fields>
+    <fields>
         <label><!-- Reason (Required for Declines) --></label>
         <name>Decline_Reason__c</name>
     </fields>
@@ -119,8 +193,31 @@
         <name>Discount__c</name>
     </fields>
     <fields>
+        <help><!-- Field captures if the ORC was either approved or declined --></help>
+        <label><!-- Final Approval Status --></label>
+        <name>Final_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Final Gift Card Amount --></label>
         <name>Final_Gift_Card_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- The first requested mattress pickup date and time --></help>
+        <label><!-- First Mattress Pickup Date/Time --></label>
+        <name>First_Mattress_Pickup_Date_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- Represents the contact for the pick up&apos;s first name --></help>
+        <label><!-- First Name --></label>
+        <name>First_Name__c</name>
     </fields>
     <fields>
         <label><!-- Full Credit Card Number OLD --></label>
@@ -151,6 +248,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Gift Card Appeasement Reason --></label>
+        <name>Gift_Card_Appeasement_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gift Card Appeasement Value --></label>
+        <name>Gift_Card_Appeasement_Value__c</name>
+    </fields>
+    <fields>
         <label><!-- Initial Form Completed --></label>
         <name>Initial_Form_Completed__c</name>
     </fields>
@@ -161,6 +266,11 @@
     <fields>
         <label><!-- Item Name --></label>
         <name>Item_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Represents the contact for the pick up&apos;s last name --></help>
+        <label><!-- Last Name --></label>
+        <name>Last_Name__c</name>
     </fields>
     <fields>
         <label><!-- Loyalty Tier --></label>
@@ -237,6 +347,10 @@
     <fields>
         <label><!-- New Unit Price --></label>
         <name>New_Unit_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Mattresses for Pickup --></label>
+        <name>Number_of_Mattresses_for_Pickup__c</name>
     </fields>
     <fields>
         <label><!-- OMS Transaction Number --></label>
@@ -316,6 +430,36 @@
         <name>Other_Refund__c</name>
     </fields>
     <fields>
+        <help><!-- The number to reach the contact during pickup --></help>
+        <label><!-- Phone --></label>
+        <name>Phone__c</name>
+    </fields>
+    <fields>
+        <help><!-- The city that the mattress return is located in --></help>
+        <label><!-- Pickup City --></label>
+        <name>Pickup_City__c</name>
+    </fields>
+    <fields>
+        <help><!-- The country the mattress return is located --></help>
+        <label><!-- Pickup Country --></label>
+        <name>Pickup_Country__c</name>
+    </fields>
+    <fields>
+        <help><!-- The postal code that the mattress return is located in --></help>
+        <label><!-- Pickup Postal Code --></label>
+        <name>Pickup_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- The province that the mattress return is located in --></help>
+        <label><!-- Pickup Province --></label>
+        <name>Pickup_Province__c</name>
+    </fields>
+    <fields>
+        <help><!-- The street that the mattress return is located in --></help>
+        <label><!-- Pickup Street --></label>
+        <name>Pickup_Street__c</name>
+    </fields>
+    <fields>
         <label><!-- Price Override Reason --></label>
         <name>Price_Override_Reason__c</name>
         <picklistValues>
@@ -334,6 +478,10 @@
     <fields>
         <label><!-- Price Override --></label>
         <name>Price_Override__c</name>
+    </fields>
+    <fields>
+        <label><!-- Promo Code Gift Card Amount --></label>
+        <name>Promo_Code_Gift_Card_Amount__c</name>
     </fields>
     <fields>
         <label><!-- Promo Code --></label>
@@ -356,8 +504,24 @@
         <label><!-- Reason --></label>
         <name>Reason__c</name>
         <picklistValues>
+            <masterLabel>Charge Customer</masterLabel>
+            <translation><!-- Charge Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debit Category</masterLabel>
+            <translation><!-- Debit Category --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Defective Item</masterLabel>
             <translation><!-- Defective Item --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EGC to Account</masterLabel>
+            <translation><!-- EGC to Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gift Card (Appeasement)</masterLabel>
+            <translation><!-- Gift Card (Appeasement) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Gift Card (Refund)</masterLabel>
@@ -366,6 +530,10 @@
         <picklistValues>
             <masterLabel>Gift Card to Original Tender</masterLabel>
             <translation><!-- Gift Card to Original Tender --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mattress</masterLabel>
+            <translation><!-- Mattress --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Missing Items</masterLabel>
@@ -388,6 +556,10 @@
             <translation><!-- Price Override --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Promo Code Gift Card</masterLabel>
+            <translation><!-- Promo Code Gift Card --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Promo Questions/Problem</masterLabel>
             <translation><!-- Promo Questions/Problem --></translation>
         </picklistValues>
@@ -396,12 +568,20 @@
             <translation><!-- Return Problem --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Returns Not Received</masterLabel>
+            <translation><!-- Returns Not Received --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Shipping Fee</masterLabel>
             <translation><!-- Shipping Fee --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Tax Exclusion</masterLabel>
             <translation><!-- Tax Exclusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tax Exempt</masterLabel>
+            <translation><!-- Tax Exempt --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Wrong Item Received</masterLabel>
@@ -477,12 +657,21 @@
         <name>Replacement_Gift_Card_Amount__c</name>
     </fields>
     <fields>
+        <label><!-- Reversal Date/Time --></label>
+        <name>Reversal_Date_Time__c</name>
+    </fields>
+    <fields>
         <label><!-- SKU# Received --></label>
         <name>SKU_Received__c</name>
     </fields>
     <fields>
         <label><!-- SKU# --></label>
         <name>SKU__c</name>
+    </fields>
+    <fields>
+        <help><!-- The second requested mattress pickup date and time --></help>
+        <label><!-- Second Mattress Pick Up Date/Time --></label>
+        <name>Second_Mattress_Pick_Up_Date_Time__c</name>
     </fields>
     <fields>
         <help><!-- Full order shipping fee --></help>
@@ -555,6 +744,16 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- The third requested mattress pickup date and time --></help>
+        <label><!-- Third Mattress Pickup Date/Time --></label>
+        <name>Third_Mattress_Pickup_Date_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- The final amount to be charged to the customer --></help>
+        <label><!-- Total Debit Amount --></label>
+        <name>Total_Debit_Amount__c</name>
+    </fields>
+    <fields>
         <label><!-- Total ORC Amount --></label>
         <name>Total_ORC_Amount__c</name>
     </fields>
@@ -567,9 +766,33 @@
         <name>Transaction_Number__c</name>
     </fields>
     <fields>
+        <label><!-- Type of Gift Card --></label>
+        <name>Type_of_Gift_Card__c</name>
+        <picklistValues>
+            <masterLabel>Physical</masterLabel>
+            <translation><!-- Physical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virtual</masterLabel>
+            <translation><!-- Virtual --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help><!-- Universal Product Code --></help>
         <label><!-- UPC --></label>
         <name>UPC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Where the Mattress was Purchased --></label>
+        <name>Where_the_Mattress_was_Purchased__c</name>
+        <picklistValues>
+            <masterLabel>In-Store</masterLabel>
+            <translation><!-- In-Store --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online</masterLabel>
+            <translation><!-- Online --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- The Zip/Postal Code from the Order&apos;s Billing Address --></help>
@@ -577,8 +800,18 @@
         <name>Zip_Postal_Code__c</name>
     </fields>
     <recordTypes>
+        <description><!-- Record type used to display fields to charge the customer --></description>
+        <label><!-- Debit Category --></label>
+        <name>Debit_Category</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Gift Card --></label>
         <name>Gift_Card</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type used to display fields relevant to Mattress Returns --></description>
+        <label><!-- Mattress Return --></label>
+        <name>Mattress_Return</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Price Adjustment --></label>

@@ -4,5 +4,5 @@
     <isAttributeBased>false</isAttributeBased>
     <label>Chat English</label>
     <routingModel>MOST_AVAILABLE</routingModel>
-    <routingPriority>4</routingPriority>
+    <routingPriority>5</routingPriority>
 </QueueRoutingConfig>

@@ -12,9 +12,11 @@
         var orderNo = event.getSource().get("v.value");
         var caseRecord = component.get("v.caseRecord");
         var action = component.get("c.getOrderDetails");
+        var postalCode = component.get("v.postalCode");
         action.setParams({
             "businessUnit": businessUnit,
-            "orderNo": orderNo
+            "orderNo": orderNo,
+            "postalCode" : postalCode
         });
 
         action.setCallback(this, function (response) {
@@ -51,7 +53,8 @@
 
         action.setParams({
             "caseId": caseRecord.Id,
-            "orderNo": order.OrderNo
+            "orderNo": order.OrderNo,
+            "orderZipCode": (order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : null
         });
 
         action.setCallback(this, function (response) {

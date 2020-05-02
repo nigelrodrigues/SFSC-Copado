@@ -195,7 +195,7 @@
                 isError = true;
                 component.set("v.errorMsg", 'The Bay only accepts US, Canada and UK billing countries');
             }
-            else if (businessUnit !== 'Hudson\'s Bay' && businessUnit !== 'Lord + Taylor') {
+            else if (!businessUnit) {
                 isError = true;
                 component.set("v.errorMsg", 'A valid business unit is required to place an order');
             }

@@ -1,0 +1,100 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @description To view and modify the customer's account status in Commerce Cloud
+ - @date 28-Jan-2020
+ -->
+
+<aura:component description="trac_HandleCustomerAccountStatus"
+                controller="trac_HandleCommerceCloudAccount"
+                extends="c:trac_BaseComponent"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,force:lightningQuickAction"
+                access="global">
+
+    <ltng:require scripts="/resource/JQuery2_2_4/jquery/jquery-2.2.4.min.js" />
+
+    <aura:attribute name="showModal"        type="Boolean"/>
+    <aura:attribute name="caseRecord"       type="Object"/>
+    <aura:attribute name="recordId"         type="String"/>
+    <aura:attribute name="isAccountActive"  type="Boolean" default="true"/>
+    <aura:attribute name="recordLoadError"  type="String"/>
+    <aura:attribute name="storeSessionURL"  type="String"/>
+    <aura:attribute name="storeFrontURL"    type="String"/>
+    <aura:attribute name="errorMsg"         type="String"/>
+    <aura:attribute name="isError"          type="Boolean" />
+    <aura:attribute name="isLoading"        type="Boolean"/>
+
+
+
+    <force:recordData   aura:id      = "recordLoader"
+                        recordId     = "{!v.recordId}"
+                        fields       = "Contact.FirstName, Contact.LastName, Business_Unit__c, Id,
+                                        Contact.Phone, Contact.Email, Contact.SFCC_Customer_Id__c, Contact.Name"
+                        targetFields = "{!v.caseRecord}"
+                        targetError  = "{!v.recordLoadError}"
+    />
+
+    <aura:if isTrue="{!v.showModal}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                 aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+
+
+            <div class="slds-modal__container">
+
+                <aura:if isTrue="{!v.isLoading}">
+                    <div aura:id="spinnerId" class="slds-spinner_container">
+                        <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                            <span class="slds-assistive-text">Loading...</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </aura:if>
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                        Current Account Status
+                    </h2>
+                    <aura:if isTrue="{!v.isAccountActive}">
+                        <lightning:icon iconName="action:approval" alternativeText="Active" size="xx-small"/> Active
+                        <aura:set attribute="else">
+                            <lightning:icon iconName="action:close" alternativeText="Inactive" size="xx-small"/> Inactive
+                        </aura:set>
+                    </aura:if>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-text-title slds-p-bottom_medium slds-p-left_x-large">
+                        To update the status, select an option from below and click Apply.
+                    </div>
+                        <div class="slds-form_horizontal slds-p-left_x-large">
+                            <lightning:select aura:id="customerStatus" name="customerStatus" label="Update the status to" >
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </lightning:select>
+                        </div>
+
+                            <lightning:input aura:id="hiddenFieldBU"
+                                             name="name"
+                                             label="BU"
+                                             value="{!v.caseRecord.Business_Unit__c}"
+                                             class="slds-hidden" />
+                </div>
+
+                <footer class="slds-modal__footer">
+
+                    <lightning:button variant="brand" label="Apply" onclick="{!c.updateAccount}" />
+                    <lightning:button variant="neutral" label="Cancel" onclick="{!c.closeModal}" />
+                </footer>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+    <lightning:button variant="brand" label="Status" onclick="{!c.displayAccountStatus}" iconName="standard:client" iconPosition="left" />
+
+    
+
+</aura:component>

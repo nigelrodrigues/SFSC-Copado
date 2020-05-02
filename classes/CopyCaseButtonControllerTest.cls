@@ -6,7 +6,7 @@
 @isTest
 private class CopyCaseButtonControllerTest {
 
-    private static final Id caseRecTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Support Case').getRecordTypeId();
+    private static final Id caseRecTypeId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get(trac_CaseConstants.RECORD_TYPE_DEVNAME_SUPPORT_CASE).getRecordTypeId();
 
     @isTest
     static void testCloneCase() {

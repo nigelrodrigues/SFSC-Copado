@@ -3,12 +3,10 @@
  * @author      Abhishek Solanki, Traction on Demand
  * @date        2019-12-09
  */
-trigger trac_CaseTimeLogTrigger on Case_Time_Log__c (before update, before insert) {
+trigger trac_CaseTimeLogTrigger on Case_Time_Log__c (before insert) {
     try {
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
-                trac_CaseTimeLogTriggerHelper.updateTeamLeadAndLocation(Trigger.new);
-            } else if (Trigger.isUpdate) {
                 trac_CaseTimeLogTriggerHelper.updateTeamLeadAndLocation(Trigger.new);
             }
         }

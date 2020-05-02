@@ -104,19 +104,6 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Social Media</caseOrigin>
-            <caseOwner>Social_Media</caseOwner>
-            <caseOwnerType>Queue</caseOwnerType>
-            <casePriority>Medium</casePriority>
-            <createTask>false</createTask>
-            <emailAddress>baysocialmedia@hbc.com</emailAddress>
-            <emailServicesAddress>baysocialmedia@f-9e6tqvpsu6quv95pfct8rau6imgfexw36idqahjdkg8vit14i.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
-            <isVerified>true</isVerified>
-            <routingName>Bay Social Media</routingName>
-            <saveEmailHeaders>false</saveEmailHeaders>
-        </routingAddresses>
-        <routingAddresses>
-            <addressType>EmailToCase</addressType>
             <caseOrigin>Email - The Bay</caseOrigin>
             <caseOwner>The_Bay_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
@@ -421,8 +408,8 @@
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
-            <emailAddress>customercare.other@lordandtaylor.com</emailAddress>
-            <emailServicesAddress>customercare.other@w-1qbaq8e57c2mtrijtdk3snuwkynjz3vd9et7oumzxz6foc2fra.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <emailAddress>customercare@lordandtaylor.com</emailAddress>
+            <emailServicesAddress>customercare@n-1clso8cqi8ytif1x4bb40cehdz5m9cq49tmtb5mjwscfpmr8sj.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>LT Digital Customer Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -434,8 +421,8 @@
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
-            <emailAddress>customercare@lordandtaylor.com</emailAddress>
-            <emailServicesAddress>customercare@n-1clso8cqi8ytif1x4bb40cehdz5m9cq49tmtb5mjwscfpmr8sj.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
+            <emailAddress>customercare.other@lordandtaylor.com</emailAddress>
+            <emailServicesAddress>customercare.other@w-1qbaq8e57c2mtrijtdk3snuwkynjz3vd9et7oumzxz6foc2fra.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>LT Digital Customer Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -451,19 +438,6 @@
             <emailServicesAddress>ltservicefirst@y-1x4qgr07vkauiji7ai87w1dprlq3lix1jux7ufzc00andyaoxg.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>LT Service First</routingName>
-            <saveEmailHeaders>false</saveEmailHeaders>
-        </routingAddresses>
-        <routingAddresses>
-            <addressType>EmailToCase</addressType>
-            <caseOrigin>Social Media</caseOrigin>
-            <caseOwner>Social_Media</caseOwner>
-            <caseOwnerType>Queue</caseOwnerType>
-            <casePriority>Medium</casePriority>
-            <createTask>false</createTask>
-            <emailAddress>ltsocialmedia@hbc.com</emailAddress>
-            <emailServicesAddress>ltsocialmedia@1tqhu6hsdfmru9v5cox5b8bxrrzk0xdkf3qx4u4ncm9t5ty5hi.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
-            <isVerified>true</isVerified>
-            <routingName>LT Social Media</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
         </routingAddresses>
         <routingAddresses>
@@ -579,7 +553,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Off 5th</caseOrigin>
             <caseOwner>Off_5th_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -592,7 +566,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Off 5th</caseOrigin>
             <caseOwner>Off_5th_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -644,7 +618,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -657,7 +631,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -670,7 +644,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Email - The Bay</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -683,7 +657,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -696,7 +670,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -709,7 +683,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -722,7 +696,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>
@@ -735,7 +709,7 @@
         </routingAddresses>
         <routingAddresses>
             <addressType>EmailToCase</addressType>
-            <caseOrigin>Phone</caseOrigin>
+            <caseOrigin>Email - Saks</caseOrigin>
             <caseOwner>Saks_Main</caseOwner>
             <caseOwnerType>Queue</caseOwnerType>
             <casePriority>Medium</casePriority>

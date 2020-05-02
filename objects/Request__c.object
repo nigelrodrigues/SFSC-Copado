@@ -1,0 +1,1712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Request_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Request_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Business_Unit__c</fullName>
+        <description>The business unit of the case that the request was made on</description>
+        <externalId>false</externalId>
+        <label>Business Unit</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hudson&apos;s Bay</fullName>
+                    <default>false</default>
+                    <label>Hudson&apos;s Bay</label>
+                </value>
+                <value>
+                    <fullName>MHF</fullName>
+                    <default>false</default>
+                    <label>MHF</label>
+                </value>
+                <value>
+                    <fullName>Lord + Taylor</fullName>
+                    <default>false</default>
+                    <label>Lord + Taylor</label>
+                </value>
+                <value>
+                    <fullName>Saks</fullName>
+                    <default>false</default>
+                    <label>Saks</label>
+                </value>
+                <value>
+                    <fullName>Off 5th</fullName>
+                    <default>false</default>
+                    <label>Off 5th</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_Contact_Phone_Number__c</fullName>
+        <description>The phone number of the case contact</description>
+        <externalId>false</externalId>
+        <label>Case Contact Phone Number</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Case_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The contact on the case at the time the request was made</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field contains the contact of the case at the time of the request</inlineHelpText>
+        <label>Case Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Requests</relationshipLabel>
+        <relationshipName>Requests</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Case_Number__c</fullName>
+        <description>The number of the case the request was made on</description>
+        <externalId>false</externalId>
+        <label>Case Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case_Origin__c</fullName>
+        <description>The origin of the case related to the request</description>
+        <externalId>false</externalId>
+        <label>Case Origin</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email - Executive Escalation</fullName>
+                    <default>false</default>
+                    <label>Email - Executive Escalation</label>
+                </value>
+                <value>
+                    <fullName>Email - LT</fullName>
+                    <default>false</default>
+                    <label>Email - LT</label>
+                </value>
+                <value>
+                    <fullName>Email - Service Excellence</fullName>
+                    <default>false</default>
+                    <label>Email - Service Excellence</label>
+                </value>
+                <value>
+                    <fullName>Email - Service Excellence MHF</fullName>
+                    <default>false</default>
+                    <label>Email - Service Excellence MHF</label>
+                </value>
+                <value>
+                    <fullName>Email - Store Operation</fullName>
+                    <default>false</default>
+                    <label>Email - Store Operation</label>
+                </value>
+                <value>
+                    <fullName>Email - The Bay</fullName>
+                    <default>false</default>
+                    <label>Email - The Bay</label>
+                </value>
+                <value>
+                    <fullName>Internal</fullName>
+                    <default>false</default>
+                    <label>Internal</label>
+                </value>
+                <value>
+                    <fullName>Live Agent</fullName>
+                    <default>false</default>
+                    <label>Live Agent</label>
+                </value>
+                <value>
+                    <fullName>Marketing - LT</fullName>
+                    <default>false</default>
+                    <label>Marketing - LT</label>
+                </value>
+                <value>
+                    <fullName>Marketing - Off 5th</fullName>
+                    <default>false</default>
+                    <label>Marketing - Off 5th</label>
+                </value>
+                <value>
+                    <fullName>Marketing - Saks</fullName>
+                    <default>false</default>
+                    <label>Marketing - Saks</label>
+                </value>
+                <value>
+                    <fullName>Marketing - The Bay</fullName>
+                    <default>false</default>
+                    <label>Marketing - The Bay</label>
+                </value>
+                <value>
+                    <fullName>Phone</fullName>
+                    <default>false</default>
+                    <label>Phone</label>
+                </value>
+                <value>
+                    <fullName>Social Media</fullName>
+                    <default>false</default>
+                    <label>Social Media</label>
+                </value>
+                <value>
+                    <fullName>Support Community</fullName>
+                    <default>false</default>
+                    <label>Support Community</label>
+                </value>
+                <value>
+                    <fullName>OMS</fullName>
+                    <default>false</default>
+                    <label>OMS</label>
+                </value>
+                <value>
+                    <fullName>Email - Saks</fullName>
+                    <default>false</default>
+                    <label>Email - Saks</label>
+                </value>
+                <value>
+                    <fullName>Email - Off 5th</fullName>
+                    <default>false</default>
+                    <label>Email - Off 5th</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The case owner at the time the request was made</description>
+        <externalId>false</externalId>
+        <label>Case Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Requests</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Case_Status__c</fullName>
+        <description>The status of the case at the time the request was made</description>
+        <externalId>false</externalId>
+        <label>Case Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Team Lead Assistance Needed</fullName>
+                    <default>false</default>
+                    <label>Team Lead Assistance Needed</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Service Excellence Review</fullName>
+                    <default>false</default>
+                    <label>Awaiting Service Excellence Review</label>
+                </value>
+                <value>
+                    <fullName>POS Team</fullName>
+                    <default>false</default>
+                    <label>POS Team</label>
+                </value>
+                <value>
+                    <fullName>Pending Fraud Team</fullName>
+                    <default>false</default>
+                    <label>Pending Fraud Team</label>
+                </value>
+                <value>
+                    <fullName>Follow Up</fullName>
+                    <default>false</default>
+                    <label>Follow Up</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+                <value>
+                    <fullName>System Issue</fullName>
+                    <default>false</default>
+                    <label>System Issue</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Internal Response</fullName>
+                    <default>false</default>
+                    <label>Awaiting Internal Response</label>
+                </value>
+                <value>
+                    <fullName>Awaiting Customer Response</fullName>
+                    <default>false</default>
+                    <label>Awaiting Customer Response</label>
+                </value>
+                <value>
+                    <fullName>Response Received</fullName>
+                    <default>false</default>
+                    <label>Response Received</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>MNR Review</fullName>
+                    <default>false</default>
+                    <label>MNR Review</label>
+                </value>
+                <value>
+                    <fullName>Call Tag</fullName>
+                    <default>false</default>
+                    <label>Call Tag</label>
+                </value>
+                <value>
+                    <fullName>Non Responsive Customer</fullName>
+                    <default>false</default>
+                    <label>Non Responsive Customer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_Type__c</fullName>
+        <description>The case type of the case for the request</description>
+        <externalId>false</externalId>
+        <label>Case Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Account</fullName>
+                    <default>false</default>
+                    <label>Account</label>
+                </value>
+                <value>
+                    <fullName>BTO - Big Ticket Order (New Purchases)</fullName>
+                    <default>false</default>
+                    <label>BTO - Big Ticket Order (New Purchases)</label>
+                </value>
+                <value>
+                    <fullName>Credit Hold</fullName>
+                    <default>false</default>
+                    <label>Credit Hold</label>
+                </value>
+                <value>
+                    <fullName>Delivery</fullName>
+                    <default>false</default>
+                    <label>Delivery</label>
+                </value>
+                <value>
+                    <fullName>Delivery (WISMO)</fullName>
+                    <default>false</default>
+                    <label>Delivery (WISMO)</label>
+                </value>
+                <value>
+                    <fullName>Delivery Resolution</fullName>
+                    <default>false</default>
+                    <label>Delivery Resolution</label>
+                </value>
+                <value>
+                    <fullName>Exchange / Return / Allowance (ERA)</fullName>
+                    <default>false</default>
+                    <label>Exchange / Return / Allowance (ERA)</label>
+                </value>
+                <value>
+                    <fullName>Gift Card(s)</fullName>
+                    <default>false</default>
+                    <label>Gift Card(s)</label>
+                </value>
+                <value>
+                    <fullName>Gift Registry</fullName>
+                    <default>false</default>
+                    <label>Gift Registry</label>
+                </value>
+                <value>
+                    <fullName>In Store Experience</fullName>
+                    <default>false</default>
+                    <label>In Store Experience</label>
+                </value>
+                <value>
+                    <fullName>Major Home Fashion</fullName>
+                    <default>false</default>
+                    <label>Major Home Fashion</label>
+                </value>
+                <value>
+                    <fullName>Order Inquiry</fullName>
+                    <default>false</default>
+                    <label>Order Inquiry</label>
+                </value>
+                <value>
+                    <fullName>Order placed</fullName>
+                    <default>false</default>
+                    <label>Order placed</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                    <label>Outbound</label>
+                </value>
+                <value>
+                    <fullName>Place an order</fullName>
+                    <default>false</default>
+                    <label>Place an order</label>
+                </value>
+                <value>
+                    <fullName>Product Information</fullName>
+                    <default>false</default>
+                    <label>Product Information</label>
+                </value>
+                <value>
+                    <fullName>Refunds/Credits</fullName>
+                    <default>false</default>
+                    <label>Refunds/Credits</label>
+                </value>
+                <value>
+                    <fullName>Returns</fullName>
+                    <default>false</default>
+                    <label>Returns</label>
+                </value>
+                <value>
+                    <fullName>Rewards</fullName>
+                    <default>false</default>
+                    <label>Rewards</label>
+                </value>
+                <value>
+                    <fullName>Special Projects</fullName>
+                    <default>false</default>
+                    <label>Special Projects</label>
+                </value>
+                <value>
+                    <fullName>Store Experience</fullName>
+                    <default>false</default>
+                    <label>Store Experience</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>VIP</fullName>
+                    <default>false</default>
+                    <label>VIP</label>
+                </value>
+                <value>
+                    <fullName>Warranty</fullName>
+                    <default>false</default>
+                    <label>Warranty</label>
+                </value>
+                <value>
+                    <fullName>Executive Escalation Only</fullName>
+                    <default>false</default>
+                    <label>Executive Escalation Only</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field captures the case that the request was for</description>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Requests (Case)</relationshipLabel>
+        <relationshipName>Requests</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cause_of_the_issue__c</fullName>
+        <description>The cause of the issue</description>
+        <externalId>false</externalId>
+        <label>Cause of the issue</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>User Error</fullName>
+                    <default>false</default>
+                    <label>User Error</label>
+                </value>
+                <value>
+                    <fullName>Network Issue</fullName>
+                    <default>false</default>
+                    <label>Network Issue</label>
+                </value>
+                <value>
+                    <fullName>UAD Bug</fullName>
+                    <default>false</default>
+                    <label>UAD Bug</label>
+                </value>
+                <value>
+                    <fullName>Commerce Cloud Bug</fullName>
+                    <default>false</default>
+                    <label>Commerce Cloud Bug</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IVR_Log__c</fullName>
+        <description>The IVR Log of the call that created the Case</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The IVR Log of the call that created the Case</inlineHelpText>
+        <label>IVR Log</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Issue_Description__c</fullName>
+        <description>The description of the issue being raised by the agent</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please describe the issue you are having. Place a screenshot if you have one.</inlineHelpText>
+        <label>Issue Description</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Issue_Location__c</fullName>
+        <description>The location of the agent associated with the case.</description>
+        <externalId>false</externalId>
+        <label>Issue Location</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Jackson</fullName>
+                    <default>false</default>
+                    <label>Jackson</label>
+                </value>
+                <value>
+                    <fullName>Cebu</fullName>
+                    <default>false</default>
+                    <label>Cebu</label>
+                </value>
+                <value>
+                    <fullName>El Salvador</fullName>
+                    <default>false</default>
+                    <label>El Salvador</label>
+                </value>
+                <value>
+                    <fullName>Moncton</fullName>
+                    <default>false</default>
+                    <label>Moncton</label>
+                </value>
+                <value>
+                    <fullName>Davao</fullName>
+                    <default>false</default>
+                    <label>Davao</label>
+                </value>
+                <value>
+                    <fullName>All Locations</fullName>
+                    <default>false</default>
+                    <label>All Locations</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Issue_Type__c</fullName>
+        <description>The type of issue the agent is experiencing</description>
+        <externalId>false</externalId>
+        <label>Issue Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Technical</fullName>
+                    <default>false</default>
+                    <label>Technical</label>
+                </value>
+                <value>
+                    <fullName>Network</fullName>
+                    <default>false</default>
+                    <label>Network</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Order_Number__c</fullName>
+        <description>This captures the order that may be causing the request</description>
+        <externalId>false</externalId>
+        <label>Order Number</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Request_Initiator__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The person who initiated the request</description>
+        <externalId>false</externalId>
+        <label>Request Initiator</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Requests1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Request_Status__c</fullName>
+        <description>The status of the request</description>
+        <externalId>false</externalId>
+        <label>Request Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>In Progress</fullName>
+                    <default>false</default>
+                    <label>In Progress</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Resolution_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Resolution Notes</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Request</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Case__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Issue_Description__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Cebu_Open_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Status__c</columns>
+        <columns>Request_Initiator__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Request_Status__c</field>
+            <operation>equals</operation>
+            <value>New,In Progress</value>
+        </filters>
+        <filters>
+            <field>Issue_Location__c</field>
+            <operation>equals</operation>
+            <value>Cebu</value>
+        </filters>
+        <label>Cebu Open Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>Closed_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Initiator__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </filters>
+        <label>Closed Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>Davao_Open_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Status__c</columns>
+        <columns>Request_Initiator__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Request_Status__c</field>
+            <operation>equals</operation>
+            <value>New,In Progress</value>
+        </filters>
+        <filters>
+            <field>Issue_Location__c</field>
+            <operation>equals</operation>
+            <value>Davao</value>
+        </filters>
+        <label>Davao Open Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>El_Salvador_Open_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Status__c</columns>
+        <columns>Request_Initiator__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Request_Status__c</field>
+            <operation>equals</operation>
+            <value>New,In Progress</value>
+        </filters>
+        <filters>
+            <field>Issue_Location__c</field>
+            <operation>equals</operation>
+            <value>El Salvador</value>
+        </filters>
+        <label>El Salvador Open Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>Jackson_Open_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Status__c</columns>
+        <columns>Request_Initiator__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Request_Status__c</field>
+            <operation>equals</operation>
+            <value>New,In Progress</value>
+        </filters>
+        <filters>
+            <field>Issue_Location__c</field>
+            <operation>equals</operation>
+            <value>Jackson</value>
+        </filters>
+        <label>Jackson Open Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>Moncton_Open_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Status__c</columns>
+        <columns>Request_Initiator__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Request_Status__c</field>
+            <operation>equals</operation>
+            <value>New,In Progress</value>
+        </filters>
+        <filters>
+            <field>Issue_Location__c</field>
+            <operation>equals</operation>
+            <value>Moncton</value>
+        </filters>
+        <label>Moncton Open Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Requests</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Status__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Requests</label>
+    </listViews>
+    <listViews>
+        <fullName>Open_Requests_affecting_all_locations</fullName>
+        <columns>NAME</columns>
+        <columns>Business_Unit__c</columns>
+        <columns>Case__c</columns>
+        <columns>Issue_Type__c</columns>
+        <columns>Request_Status__c</columns>
+        <columns>Request_Initiator__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Request_Status__c</field>
+            <operation>equals</operation>
+            <value>New,In Progress</value>
+        </filters>
+        <filters>
+            <field>Issue_Location__c</field>
+            <operation>equals</operation>
+            <value>All Locations</value>
+        </filters>
+        <label>Open Requests Affecting All Locations</label>
+    </listViews>
+    <nameField>
+        <displayFormat>REQ-{000}</displayFormat>
+        <label>Request Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Requests</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Case_Specific_Requests</fullName>
+        <active>true</active>
+        <description>Record Type for requests that are related to a case</description>
+        <label>Case Specific Requests</label>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Case_Origin__c</picklist>
+            <values>
+                <fullName>Email - Executive Escalation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Saks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Store Operation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Agent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Saks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Support Community</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Case_Status__c</picklist>
+            <values>
+                <fullName>Awaiting Customer Response</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Internal Response</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Service Excellence Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call Tag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MNR Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non Responsive Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POS Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Fraud Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Response Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Team Lead Assistance Needed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Case_Type__c</picklist>
+            <values>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BTO - Big Ticket Order %28New Purchases%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Credit Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery %28WISMO%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery Resolution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exchange %2F Return %2F Allowance %28ERA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Executive Escalation Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card%28s%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Registry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Store Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major Home Fashion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order placed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Place an order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refunds%2FCredits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rewards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Projects</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Store Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transfer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warranty</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cause_of_the_issue__c</picklist>
+            <values>
+                <fullName>Commerce Cloud Bug</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UAD Bug</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User Error</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Issue_Location__c</picklist>
+            <values>
+                <fullName>All Locations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cebu</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Davao</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>El Salvador</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jackson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moncton</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Issue_Type__c</picklist>
+            <values>
+                <fullName>Network</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technical</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Request_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>General_Technical_Requests</fullName>
+        <active>true</active>
+        <description>Requests specific to issues on a case</description>
+        <label>General Technical Requests</label>
+        <picklistValues>
+            <picklist>Business_Unit__c</picklist>
+            <values>
+                <fullName>Hudson%27s Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lord %2B Taylor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Saks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Case_Origin__c</picklist>
+            <values>
+                <fullName>Email - Executive Escalation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Saks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Store Operation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Agent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Off 5th</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - Saks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Support Community</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Case_Status__c</picklist>
+            <values>
+                <fullName>Awaiting Customer Response</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Internal Response</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Awaiting Service Excellence Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Call Tag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MNR Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non Responsive Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>POS Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Fraud Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Response Received</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Team Lead Assistance Needed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Case_Type__c</picklist>
+            <values>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BTO - Big Ticket Order %28New Purchases%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Credit Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery %28WISMO%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delivery Resolution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Exchange %2F Return %2F Allowance %28ERA%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Executive Escalation Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Card%28s%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gift Registry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Store Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major Home Fashion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Inquiry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order placed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Place an order</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Information</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Refunds%2FCredits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rewards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Special Projects</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Store Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transfer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warranty</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cause_of_the_issue__c</picklist>
+            <values>
+                <fullName>Commerce Cloud Bug</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Network Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UAD Bug</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User Error</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Issue_Location__c</picklist>
+            <values>
+                <fullName>All Locations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cebu</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Davao</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>El Salvador</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jackson</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Moncton</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Issue_Type__c</picklist>
+            <values>
+                <fullName>Network</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Technical</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Request_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Request_01_Cannot_Change_Historical_Info</fullName>
+        <active>true</active>
+        <description>This validation rule prevents the changing of fields that are stamped on its creation.</description>
+        <errorConditionFormula>NOT( $Profile.Name = &apos;System Administrator&apos;) &amp;&amp;  RecordType.DeveloperName = &apos;Case_Specific_Requests&apos; &amp;&amp;
+  OR(ISCHANGED( Business_Unit__c ),ISCHANGED( Case_Number__c ),ISCHANGED(Case_Origin__c), ISCHANGED( Case_Owner__c ),ISCHANGED( Case_Status__c ),ISCHANGED( Case_Type__c ),ISCHANGED( Order_Number__c ),ISCHANGED( Request_Initiator__c ),ISCHANGED( 	Issue_Location__c),ISCHANGED( 	IVR_Log__c ))</errorConditionFormula>
+        <errorMessage>You cannot change case information after a request is made.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

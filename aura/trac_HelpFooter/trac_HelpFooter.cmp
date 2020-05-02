@@ -3,28 +3,69 @@
  - @author      Thiago Santos, Traction on Demand
  - @date        2019-07-18
  -->
-<aura:component implements="forceCommunity:availableForAllPageTypes" description="trac_HelpFooter">
+<aura:component implements="forceCommunity:availableForAllPageTypes" description="trac_HelpFooter"
+                controller="trac_ContactSupportFormController">
     <!-- ATTRIBUTES -->
     <aura:attribute name="headingLabel" type="String"/>
     <aura:attribute name="linkLabel" type="String"/>
-    <aura:attribute name="linkUrl" type="String" />
+    <aura:attribute name="linkUrl" type="String"/>
+    <aura:attribute name="languageUrl" type="String"/>
+    <aura:attribute name="englishUrl" type="String"/>
+    <aura:attribute name="frenchUrl" type="String"/>
+    <aura:attribute name="showContactUs" type="boolean" default="true"/>
+    <aura:attribute name="showLanguageSelect" type="boolean" default="false"/>
+    <aura:attribute name="showFooterBottom" type="boolean" default="false"/>
+    <aura:attribute name="showInFrench" type="boolean" default="false"/>
+    <aura:attribute name="homeURL" type="String"/>
 
     <!-- MARKUP -->
     <div class="slds-grid slds-wrap">
-        <div class="hbc-help-footer slds-size_2-of-2 slds-p-around_xx-large">
-            <div class="slds-align_absolute-center">
-                <div class="slds-grid slds-grid_vertical">
-                    <div class="slds-col hbc-help-footer-cloud"></div>
-                    <div class="slds-col">
-                        <h3 class="slds-align_absolute-center">{!v.headingLabel}</h3>
-                    </div>
-                    <div class="slds-col slds-p-top_x-small">
-                        <ul class="slds-align_absolute-center">
-                            <li><a href="{!v.linkUrl}">{!v.linkLabel}</a></li>
-                        </ul>
+
+        <div class="hbc-help-footer slds-size_2-of-2 slds-p-around_x-large">
+            <aura:if isTrue="{!v.showContactUs}">
+                <div class="slds-align_absolute-center">
+                    <div class="slds-grid slds-grid_vertical">
+                        <div class="slds-col hbc-help-footer-cloud"></div>
+                        <div class="slds-col">
+                            <h3>
+                                <center>{!v.headingLabel}</center>
+                            </h3>
+                        </div>
+                        <div class="slds-col slds-p-top_x-small">
+                            <ul class="slds-align_absolute-center">
+                                <li><a href="{!v.linkUrl}">{!v.linkLabel}</a></li>
+                            </ul>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+            </aura:if>
+            <aura:if isTrue="{!v.showFooterBottom}">
+                <div class="slds-grid slds-p-top_x-large slds-p-bottom_x-large">
+                    <div aura:id="footId" class="slds-col slds-size_1-of-2 slds-p-left_xx-large">
+                        <hr/>
+                        <aura:if isTrue="{!v.showInFrench}">
+                            <p class="slds-text-heading_small"><a href="{!v.homeURL}"><b>ACCUEIL DU CENTRE
+                                        D'AIDE</b></a></p>
+                            <aura:set attribute="else">
+                                <p class="slds-text-heading_small"><a href="{!v.homeURL}"><b>HELP CENTER HOME</b></a>
+                                </p>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div aura:id="footId" class="slds-col slds-size_1-of-2 slds-p-right_xx-large">
+                        <hr/>
+                        <aura:if isTrue="{!v.showLanguageSelect}">
+                            <span class="right slds-text-heading_small">
+                                <span aura:id="english-footer" class="text-bold pointer"
+                                      onclick="{!c.navigateToEnglish}">EN</span>
+                                |  <span aura:id="french-footer" class="text-bold pointer"
+                                         onclick="{!c.navigateToFrench}">FR</span>
+                            </span>
+                        </aura:if>
+                    </div>
+                </div>
+            </aura:if>
         </div>
     </div>
 </aura:component>
