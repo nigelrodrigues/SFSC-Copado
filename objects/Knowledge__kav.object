@@ -62,19 +62,9 @@
             <value>2</value>
         </filters>
         <filters>
-            <field>LANGUAGE</field>
-            <operation>equals</operation>
-            <value>en_US</value>
-        </filters>
-        <filters>
             <field>IS_CHANNEL_PKB</field>
             <operation>equals</operation>
             <value>1</value>
-        </filters>
-        <filters>
-            <field>TITLE</field>
-            <operation>contains</operation>
-            <value>pick</value>
         </filters>
         <label>Public Published Articles</label>
     </listViews>
@@ -89,6 +79,26 @@
             <value>2</value>
         </filters>
         <label>Recently Published</label>
+    </listViews>
+    <listViews>
+        <fullName>Saks_OFF_Fifth_Public_Articles</fullName>
+        <columns>ARTICLE_NUMBER</columns>
+        <columns>TITLE</columns>
+        <columns>VALIDATION_STATUS_ENUM</columns>
+        <columns>PUBLISH_STATUS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>LANGUAGE</columns>
+        <columns>LAST_PUBLISHED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>contains</operation>
+            <value>Rodney</value>
+        </filters>
+        <label>Saks OFF Fifth Public Articles</label>
+        <sharedTo>
+            <role>HBC_Corporate</role>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>Training_Articles</fullName>
