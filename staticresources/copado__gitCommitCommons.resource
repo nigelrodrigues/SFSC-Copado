@@ -247,6 +247,11 @@ var operationTypeAttachmentName;
                 unlockScreen();
                 return;
             }
+            
+            app.grid.selectedMetadata.forEach(function(selectedItem) {
+                selectedItem.n = selectedItem.n.trim();
+            });
+            
             app.conf.jsonData.selectedMetadata = app.grid.selectedMetadata;
             app.variant.startCommit(function(message,orgId,snapshotId,operationName){
                 deleteUSMetadata();

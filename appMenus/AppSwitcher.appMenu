@@ -140,4 +140,8 @@
         <name>HBC_OMS</name>
         <type>ConnectedApp</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>standard__PublicSector</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>
