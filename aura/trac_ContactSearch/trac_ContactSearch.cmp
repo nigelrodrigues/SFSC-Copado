@@ -20,7 +20,7 @@
     <aura:attribute name="createNewContact"  type="boolean" default="false"/>
     <aura:attribute name="showError"         type="boolean" default="false"/>
     <aura:attribute name="isPartial"         type="boolean" default="false"/>
-    <aura:attribute name="isNewOrder"        type="boolean" default="false"/>
+    <aura:attribute name="isNewOrder"        type="boolean" default="false" description="true if displaying component in SFCC cart"/>
     <aura:attribute name="showSearchFilters" type="boolean" default="true"/>
     <aura:attribute name="Message"           type="boolean" default="false" description="use for display no record found message"/>
 
@@ -122,7 +122,7 @@
                                               alternativeText="close"
                                               variant="bare-inverse"
                                               class="slds-modal__close"/>
-                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Search Results</h2>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!if(v.isNewOrder,'Select Website Account','Search Results')}</h2>
                     </header>
                     <!--Modal/Popup Box Body Starts here-->
                     <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
@@ -161,14 +161,15 @@
                                             <div>Address</div>
                                         </th>
                                         <th scope="col">
-                                            <div>Create/Import Case</div>
+                                            <div class="{!if(v.isNewOrder,'slds-hide','')}">Create/Import Case</div>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <aura:iteration items="{!v.searchResult}" var="con" indexVar="count">
                                         <c:trac_DisplaySearchResults con="{!con}" index="{!count}"
-                                                                     recordId="{!v.recordId}" caseContactExtKey="{!v.caseContactExtKey}"/>
+                                                                     recordId="{!v.recordId}" caseContactExtKey="{!v.caseContactExtKey}"
+                                                                     isNewOrder="{!v.isNewOrder}"/>
                                     </aura:iteration>
                                 </tbody>
                             </table>
@@ -187,7 +188,7 @@
                             </div>
                             
                         </aura:if>
-                        <div class="slds-align--absolute-center">
+                        <div class="{!if(v.isNewOrder,'slds-hide ','') + 'slds-align--absolute-center'}">
                             <lightning:button onclick="{!c.newContact}"
                                               variant="brand"
                                               label="Create New Contact"

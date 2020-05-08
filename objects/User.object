@@ -477,6 +477,17 @@
         <type>LongTextArea</type>
         <visibleLines>2</visibleLines>
     </fields>
+    <fields>
+        <fullName>icAgentConsole__incCustomScreenpop__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Value of this field to be updated from inContact Agent Console app, use this field to get the value of inContact script variables.</description>
+        <externalId>false</externalId>
+        <label>inContact Custom Screenpop</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
     <listViews>
         <fullName>ActiveUsers</fullName>
         <columns>FULL_NAME</columns>
@@ -525,6 +536,30 @@
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All Users</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Bay_Digital</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USER_ROLE.NAME</field>
+            <operation>equals</operation>
+            <value>L+T &amp; Bay Digital - Cebu</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Bay Digital</label>
         <language>en_US</language>
     </listViews>
     <listViews>

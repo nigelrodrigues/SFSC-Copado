@@ -354,6 +354,80 @@ public without sharing class SCCCommerceCloudConnect {
         return res.getBody();
 
     }
+
+    /**
+    * This method used for pulling selected customer profile details from commerce cloud.
+    * @param email: String
+    * @param accessToken: String
+    * @return String.
+    */
+    public static String searchCustomerByEmailWithDetails(String email, String accessToken) {
+
+        if(String.isEmpty(email)){
+            throw new CalloutException('Empty mandatory parameters');
+        }
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint(siteBaseUrl + '/s/-/dw/data/v20_4/customer_lists/' + listId + '/customer_search');
+        req.setMethod('POST');
+        req.setTimeout(Integer.valueOf(trac_WS_WebServiceHelper.webServiceSettings.Timeout__c));
+        req.setHeader('Authorization', 'Bearer ' + accessToken);
+        req.setHeader('Content-Type', 'application/json; charset=UTF-8');
+        String body = '{"select":"(**)","expand":[],"query":{"text_query":{"fields":["email"],"search_phrase":"' + email + '"}}}';
+        req.setBody(body);
+        System.debug('req.getEndPoint(): ' + req.getEndpoint());
+        System.debug('req.getMethod(): ' + req.getMethod());
+        System.debug('req.getBody(): ' + req.getBody());
+        Http h = new Http();
+        HttpResponse res = h.send(req);
+
+        return res.getBody();
+
+    }
+
+    public static List<Contact> getContactsFromSearchResponse(String respBody) {
+        List<Contact> contacts = new List<Contact>();
+
+        if (String.isNotBlank(respBody)) {
+            CustomerSearchResponse searchResponse = (CustomerSearchResponse)JSON.deserialize(respBody, CustomerSearchResponse.class);
+            if (Integer.valueOf(searchResponse.total) > 0) {
+                for (CustomerSearchResponseHit customerHit : searchResponse.hits) {
+                    contacts.add(getContactFromSearchResponse(customerHit.data));
+                }
+            }
+        }
+
+        return contacts;
+    }
+
+    public static Contact getContactFromSearchResponse(CustomerSearchResponseHitData customerRecord) {
+        Contact contact = new Contact();
+
+        if (customerRecord != null) {
+            if (customerRecord.email != null) {
+                contact.Email = customerRecord.email;
+            }
+            if (customerRecord.first_name != null) {
+                contact.FirstName = customerRecord.first_name;
+            }
+            if (customerRecord.last_name != null) {
+                contact.LastName = customerRecord.last_name;
+            }
+            if (customerRecord.phone_home != null) {
+                contact.Phone = customerRecord.phone_home;
+            }
+            if (customerRecord.customer_id != null) {
+                contact.SFCC_Customer_Id__c = customerRecord.customer_id;
+            }
+            if (customerRecord.customer_no != null) {
+                contact.SFCC_Customer_Number__c = customerRecord.customer_no;
+            }
+            if (customerRecord.c_ucidNo != null) {
+                contact.UCID_Number__c = String.valueOf(customerRecord.c_ucidNo);
+            }
+        }
+
+        return contact;
+    }
     
     /**
     * This method used for pushing selected customer profile to update to commerce cloud.
@@ -414,5 +488,29 @@ public without sharing class SCCCommerceCloudConnect {
         ];
 
         return (!users.isEmpty()) ? users[0] : null;
+    }
+
+    public class CustomerSearchResponse {
+        Integer total                           { get; set; }
+        Integer start                           { get; set; }
+        List<CustomerSearchResponseHit> hits    { get; set; }
+
+    }
+
+    public class CustomerSearchResponseHit {
+        Decimal relevance                       { get; set; }
+        CustomerSearchResponseHitData data      { get; set; }
+    }
+
+    public class CustomerSearchResponseHitData {
+        String last_name                        { get; set; }
+        String first_name                       { get; set; }
+        String email                            { get; set; }
+        String phone_home                       { get; set; }
+        String phone_business                   { get; set; }
+        String phone_mobile                     { get; set; }
+        String customer_no                      { get; set; }
+        String customer_id                      { get; set; }
+        Decimal c_ucidNo                        { get; set; }
     }
 }

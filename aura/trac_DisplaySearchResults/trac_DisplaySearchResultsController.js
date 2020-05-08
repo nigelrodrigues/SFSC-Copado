@@ -14,6 +14,36 @@
         }
     },
 
+    stampSFCCData: function (component, event, helper) {
+        var action = component.get("c.stampSFCCCustomerNoAndId");
+        action.setParams({
+            'caseId' : component.get('v.recordId'),
+            'cnt': component.get("v.con")
+        });
+        console.log('action.getParams: ', action.getParams());
+        action.setCallback(this, function (response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                var sfccCustomerId = response.getReturnValue();
+                helper.showToast('Website account connected to contact.', 'success', '');
+                $A.get('e.force:refreshView').fire();
+                helper.minimizeSearch(component);
+            } else if (state === "INCOMPLETE") {
+                helper.showToast('Response is Incomplete', 'error', 'Error');
+            } else if (state === "ERROR") {
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        helper.showToast("Error message: " + errors[0].message, 'error', 'Error');
+                    }
+                } else {
+                    helper.showToast("Unknown error", 'error', 'Error');
+                }
+            }
+        });
+        $A.enqueueAction(action);
+    },
+
     createOrImportCase: function (component, event, helper) {
         var action = component.get("c.upsertContact");
         action.setParams({

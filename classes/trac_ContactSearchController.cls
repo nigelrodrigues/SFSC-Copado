@@ -7,34 +7,54 @@ public without sharing class trac_ContactSearchController {
 
     /**
      * @description Get the contact records
-     * @param
+     *   UP3-38 - 2020-05-06 - AKong - new sfccSearch param, diverts search to Commerce Cloud OCAPI
+     * @param       contact Contact; the contact record holding the search params
+     * @param       sfccSearch Boolean; SFCC OCAPI search versus UCID API search
      * @return      list of contact records found
      */
     @AuraEnabled
-    public static List<Contact> getContacts(Contact contact) {
+    public static List<Contact> getContacts(Contact contact, Boolean sfccSearch) {
         List<Contact> contacts = new List<Contact>();
-
+        System.debug('trac_ContactSearchController::getContacts(): search contact: ' + contact);
         if (contact == null) {
             return contacts;
         }
-        if (contact.Order_Number__c == null) {
+        if (contact.Order_Number__c == null && !sfccSearch) {
             contacts.addAll(getSalesforceContacts(contact));
         }
+        System.debug('trac_ContactSearchController::getContacts(): contacts A: ' + contacts);
+        System.debug('trac_ContactSearchController::getContacts(): contacts A size: ' + contacts.size());
 
-        if (isUcidSearch(contact)) {
-            trac_WS_GetCustomerDetails.GetCustomerDetailsResponse response = trac_WS_CustomerUtils.searchContact(contact);
-            List<Contact> ucidContacts = new List<Contact>();
-            if( response != null ) {
-                ucidContacts = trac_WS_CustomerUtils.getContactsFromSearchResponse(response);
+        if (isSearch(contact)) {
 
-                for (Contact ucidContact : ucidContacts) {
-                    ucidContact.System_Origin__c = trac_ContactConstants.ORIGIN_UCID;
-                    ucidContact.Channel_Origin__c = 'Search';
-                    ucidContact.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
-                    ucidContact.UCID_Update_Date__c = Datetime.now();
+            if (sfccSearch) {
+                System.debug('trac_ContactSearchController::getContacts(): SFCC OCAPI search');
+                // SFCC OCAPI search
+                String businessUnit = contact.Business_Unit__c;
+                String sfccToken = SCCCommerceCloudConnect.connectToCommerceCloud(businessUnit);
+                String searchResponseJSON = SCCCommerceCloudConnect.searchCustomerByEmailWithDetails(contact.Email, sfccToken);
+                List<Contact> sfccContacts = SCCCommerceCloudConnect.getContactsFromSearchResponse(searchResponseJSON);
+                System.debug('trac_ContactSearchController::getContacts(): sfccContacts: ' + sfccContacts);
+                contacts.addAll(sfccContacts);
+            } else {
+                System.debug('trac_ContactSearchController::getContacts(): UCID search');
+                // UCID search
+                trac_WS_GetCustomerDetails.GetCustomerDetailsResponse response = trac_WS_CustomerUtils.searchContact(contact);
+                List<Contact> ucidContacts = new List<Contact>();
+                    if (response != null) {
+                    ucidContacts = trac_WS_CustomerUtils.getContactsFromSearchResponse(response);
+
+                    for (Contact ucidContact : ucidContacts) {
+                        ucidContact.System_Origin__c = trac_ContactConstants.ORIGIN_UCID;
+                        ucidContact.Channel_Origin__c = 'Search';
+                        ucidContact.Latest_System_Update__c = trac_ContactConstants.ORIGIN_UCID;
+                        ucidContact.UCID_Update_Date__c = Datetime.now();
+                    }
                 }
+                contacts.addAll(ucidContacts);
             }
-            contacts.addAll(ucidContacts);
+            System.debug('trac_ContactSearchController::getContacts(): contacts B: ' + contacts);
+            System.debug('trac_ContactSearchController::getContacts(): contacts B size: ' + contacts.size());
         }
 
         if (contact.Order_Number__c != null && contact.Business_Unit__c != null) {
@@ -47,10 +67,14 @@ public without sharing class trac_ContactSearchController {
             }
         }
 
+        System.debug('trac_ContactSearchController::getContacts(): contacts C: ' + contacts);
+        System.debug('trac_ContactSearchController::getContacts(): contacts C size: ' + contacts.size());
+
         contacts = filterContactsByUcidNumber(contacts);
         contacts = sortContacts(contacts);
 
-
+        System.debug('trac_ContactSearchController::getContacts(): contacts D: ' + contacts);
+        System.debug('trac_ContactSearchController::getContacts(): contacts D size: ' + contacts.size());
         return contacts;
     }
 
@@ -93,6 +117,31 @@ public without sharing class trac_ContactSearchController {
     }
 
     @AuraEnabled
+    public static String stampSFCCCustomerNoAndId(Id caseId, Contact cnt) {
+        System.debug('Inside aura method trac_ContactSearchController::stampSFCCCustomerNoAndId');
+        System.debug('caseId: ' + caseId);
+        System.debug('cnt: ' + cnt);
+        String retval = null;
+        Contact stampContact = new Contact();
+        if (caseId != null) {
+            try {
+                Case cse = [SELECT Id, ContactId FROM Case WHERE Id =: caseId][0];
+                if (String.isNotBlank(cse.ContactId)) {
+                    stampContact.Id = cse.ContactId;
+                    stampContact.Is_UCID_Update__c = true;
+                    stampContact.SFCC_Customer_Number__c = cnt.SFCC_Customer_Number__c;
+                    stampContact.SFCC_Customer_Id__c = cnt.SFCC_Customer_Id__c;
+                    update stampContact;
+                    retval = stampContact.SFCC_Customer_Id__c;
+                }
+            } catch (Exception e) {
+                throw new AuraHandledException(e.getMessage());
+            }
+        }
+        return retval;
+    }
+
+    @AuraEnabled
     public static Id updateCase(Contact con, Id caseId) {
         Case aCase = getCaseById(caseId);
         if (caseId != null && con != null) {
@@ -114,6 +163,8 @@ public without sharing class trac_ContactSearchController {
 
     @AuraEnabled
     public static Id linkContactWithCase(Id contactId, Id caseId) {
+        System.debug('trac_ContactSearchController::linkContactWithCase: contactId: ' + contactId);
+        System.debug('trac_ContactSearchController::linkContactWithCase: caseId: ' + caseId);
         Contact contact = new Contact(Id = contactId);
         Case cs = new Case(
                 Id = caseId,
@@ -122,21 +173,23 @@ public without sharing class trac_ContactSearchController {
 
         try {
             update cs;
+            System.debug('trac_ContactSearchController::linkContactWithCase: update successful: ' + cs);
             return cs.Id;
         } catch (Exception e) {
+            System.debug('trac_ContactSearchController::linkContactWithCase: update failed: ' + e.getMessage());
             throw new AuraHandledException(e.getMessage());
         }
     }
 
-    private static Boolean isUcidSearch(Contact contact) {
-        Boolean isUcidSearch = false;
+    private static Boolean isSearch(Contact contact) {
+        Boolean isSearch = false;
 
         if (!String.isBlank(contact.Email) || !String.isBlank(contact.Phone) || !String.isBlank(contact.FirstName) || !String.isBlank(contact.LastName)
                 || !String.isBlank(contact.MailingCity) || !String.isBlank(contact.MailingStateCode) || !String.isBlank(contact.MailingPostalCode)) {
-            isUcidSearch = true;
+            isSearch = true;
         }
 
-        return isUcidSearch;
+        return isSearch;
     }
 
     public static List<String> genericNumbers = new List<String>();

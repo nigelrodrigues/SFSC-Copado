@@ -136,8 +136,23 @@
         <visible>false</visible>
     </applicationVisibilities>
     <categoryGroupVisibilities>
+        <dataCategories>MHF</dataCategories>
+        <dataCategories>The_Bay</dataCategories>
+        <dataCategories>The_Bay_Delivery</dataCategories>
+        <dataCategories>The_Bay_Gift_Card</dataCategories>
+        <dataCategories>The_Bay_Gift_Registry</dataCategories>
+        <dataCategories>The_Bay_Order_Inquiry</dataCategories>
+        <dataCategories>The_Bay_Place_an_Order</dataCategories>
+        <dataCategories>The_Bay_Product_Info</dataCategories>
+        <dataCategories>The_Bay_QA</dataCategories>
+        <dataCategories>The_Bay_Refund</dataCategories>
+        <dataCategories>The_Bay_Return</dataCategories>
+        <dataCategories>The_Bay_Rewards</dataCategories>
+        <dataCategories>The_Bay_Risk_Management</dataCategories>
+        <dataCategories>The_Bay_Systems</dataCategories>
+        <dataCategories>The_Bay_Other</dataCategories>
         <dataCategoryGroup>Support</dataCategoryGroup>
-        <visibility>ALL</visibility>
+        <visibility>CUSTOM</visibility>
     </categoryGroupVisibilities>
     <classAccesses>
         <apexClass>AppConstants</apexClass>
@@ -2897,6 +2912,162 @@
     </classAccesses>
     <classAccesses>
         <apexClass>fflib_SecurityUtilsTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__AgentController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__AgentControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__AppConfig</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__Authenticate2Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__Authenticate2ControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__CustomLogger</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__CustomLoggerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__DataModels</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__HttpUtil</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__HttpUtilTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__MockAccessTokenResponse</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__OpenCTIController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__OpenCTIControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__RequestMock</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__TestData</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__UserSettings</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__UserSettingsTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__authCallBackController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__authenticateController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__authenticateControllerUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__inContactAgentConfigController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__inContactAgentConfigControllerUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__inContactAgentConfigInstaller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__inContactAgentConfigInstallerUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__inContactControlledSearch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__inContactControlledSearchUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__inContactUserSettings</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incAgentConsoleController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incAgentConsoleControllerUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incAppConfig</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incAuthenticationController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incAuthenticationControllerUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incCustomLogger</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incCustomLoggerUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incDataModels</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incEmailTranscriptController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incEmailTranscriptControllerUnitTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incHttpUnitTestResponse</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>icAgentConsole__incUtils</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -8742,6 +8913,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>User.icAgentConsole__incCustomScreenpop__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>copado__Apex_Test_Result__c.copado__Details__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -13583,6 +13759,54 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>copado__viewOrg</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__agent</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__authCallback</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__authenticate</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__authenticate2</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__emptyPage</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__inContactAgentConfigPage</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__inContactAgentConsole</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__inContactAgentConsolePopout</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__inContactCommitmentReminder</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__inContactCustomSearch</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__inContactEmailTranscript</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>icAgentConsole__wfo</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>

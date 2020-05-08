@@ -10,6 +10,7 @@
     <aura:attribute name="isCase" type="Boolean" default="false"/>
     <aura:attribute name="caseContactExtKey" type="String"/>
     <aura:attribute name="disableLinkToCase" type="Boolean" default="false"/>
+    <aura:attribute name="isNewOrder" type="boolean" default="false" description="true if displaying component in SFCC cart"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
@@ -64,7 +65,13 @@
                                       variant="brand"
                                       label="Link to Case"
                                       iconName="utility:record_update"
-                                      disabled="{!v.disableLinkToCase}"/>
+                                      disabled="{!v.disableLinkToCase}"
+                                      class="{!v.isNewOrder?'slds-hide':''}"/>
+                    <lightning:button onclick="{!c.stampSFCCData}"
+                                      variant="brand"
+                                      label="Select"
+                                      iconName="utility:record_update"
+                                      class="{!v.isNewOrder?'':'slds-hide'}"/>
                     <aura:set attribute="else">
                         <lightning:button onclick="{!c.createOrImportCase}"
                                           variant="brand"

@@ -43,5 +43,15 @@
         var cmpEvent = component.getEvent("closeModalEvent");
         cmpEvent.setParams({"closeModal" : false});
         cmpEvent.fire();
-    }
+    },
+
+    showToast: function(message, type, title) {
+        var resultsToast = $A.get("e.force:showToast");
+        resultsToast.setParams({
+            "title": title,
+            "message": message,
+            "type" : type
+        });
+        resultsToast.fire();
+    },
 });

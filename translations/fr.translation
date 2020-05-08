@@ -8293,6 +8293,2694 @@ Donnez-nous tous les détails dans le formulaire ci-dessous.</label>
         <label><!-- InSuffPriv --></label>
         <name>copado__inSuffPriv</name>
     </customLabels>
+    <customLabels>
+        <label><!-- Enable Visual Notification Confirmation --></label>
+        <name>icAgentConsole__EnableVisualNotificationConfirmation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- End chat or call --></label>
+        <name>icAgentConsole__EndChatOrCall</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Insufficientaccess --></label>
+        <name>icAgentConsole__Insufficientaccess</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New Agent message --></label>
+        <name>icAgentConsole__NewAgentMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New Chat Message --></label>
+        <name>icAgentConsole__NewChatMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New Contacts --></label>
+        <name>icAgentConsole__NewContacts</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New message from Contact --></label>
+        <name>icAgentConsole__VisualNoticeAgentMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- abc --></label>
+        <name>icAgentConsole__abc</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Accept Button in Confirmation Dialog box --></label>
+        <name>icAgentConsole__accept</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Account --></label>
+        <name>icAgentConsole__account</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- call contact is in Active state --></label>
+        <name>icAgentConsole__active</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The active call should be put on hold in order to place an outbound call. Do you --></label>
+        <name>icAgentConsole__activeCallShouldBePutOnHold</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- acw --></label>
+        <name>icAgentConsole__acw</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for Add Call button - Adding new call --></label>
+        <name>icAgentConsole__addCall</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for the Add call button to make conference call --></label>
+        <name>icAgentConsole__addCalltoConference</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for Add Chat button - Adding New chat contact --></label>
+        <name>icAgentConsole__addChat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message for Unable to add the chat --></label>
+        <name>icAgentConsole__addChatErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Button label in the Agent configuration page to the add a new entity --></label>
+        <name>icAgentConsole__addEntity</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Button label in the Agent configuration page to the add a new field --></label>
+        <name>icAgentConsole__addField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Add Presence Mapping --></label>
+        <name>icAgentConsole__addPresenceMapping</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- addTags --></label>
+        <name>icAgentConsole__addTags</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error to submit the feedback form --></label>
+        <name>icAgentConsole__addfeedbackAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Additional Disposition for Option --></label>
+        <name>icAgentConsole__additionalDisp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label of the second field of the Hyper link dialog box --></label>
+        <name>icAgentConsole__address</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The Address Book provides a single location to quickly access internal contact. --></label>
+        <name>icAgentConsole__addressBook</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Displays all custom address books assigned to your user account in Central. You --></label>
+        <name>icAgentConsole__addressBookTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The Address Book provides a single location to quickly access internal contacts. --></label>
+        <name>icAgentConsole__addressBooks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A person who is handling contacts being delivered by the ACD. --></label>
+        <name>icAgentConsole__agent</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Salesforce custom object. --></label>
+        <name>icAgentConsole__agentConfigEntity</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Salesforce custom object. --></label>
+        <name>icAgentConsole__agentConfigField</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Salesforce custom object. --></label>
+        <name>icAgentConsole__agentConfiguration</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Console Configuration --></label>
+        <name>icAgentConsole__agentConsoleConfiguration</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Call delivery failed. --></label>
+        <name>icAgentConsole__agentDeliverInboundCall</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message if not able to dial the agent leg --></label>
+        <name>icAgentConsole__agentDialLegErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message if not able to end the agent leg --></label>
+        <name>icAgentConsole__agentEndLegErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId0</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId10</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId11</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId12</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId13</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId14</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId15</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId3</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId4</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId5</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId6</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId7</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId8</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback category combobox value --></label>
+        <name>icAgentConsole__agentFeedbackCategoryId9</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The agent has left the chat. --></label>
+        <name>icAgentConsole__agentHasLeftTheChat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The unique number assigned to an agent by the inContact system which they use to --></label>
+        <name>icAgentConsole__agentID</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Information related to an agent --></label>
+        <name>icAgentConsole__agentInfo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Displays basic information about you (the agent). At the bottom of the panel is --></label>
+        <name>icAgentConsole__agentInfoToolitipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent leg icon shows tooltip when the agent leg is connected state --></label>
+        <name>icAgentConsole__agentLegConnected</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent leg icon shows tooltip when the agent leg is dialing state --></label>
+        <name>icAgentConsole__agentLegDialing</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent leg icon shows Tooltip when the agent leg is in disconnected state --></label>
+        <name>icAgentConsole__agentLegDisconnected</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Extension --></label>
+        <name>icAgentConsole__agentLegID</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Displays a list of agents and their availability state. You can filter the list --></label>
+        <name>icAgentConsole__agentListTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enable Visual Notification Confirmation --></label>
+        <name>icAgentConsole__agentMessageNotify</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Name of the agent --></label>
+        <name>icAgentConsole__agentName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Performance Report is a panel --></label>
+        <name>icAgentConsole__agentPerformanceReport</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Reports --></label>
+        <name>icAgentConsole__agentReports</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Display how many contacts you (the agent) handled in a day, how many of those we --></label>
+        <name>icAgentConsole__agentReportsTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message if not able to set the agent state in State panel --></label>
+        <name>icAgentConsole__agentStateChangeErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Available productivity time --></label>
+        <name>icAgentConsole__agentTimeAvailable</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Unavailable productivity time --></label>
+        <name>icAgentConsole__agentTimeUnavailable</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Working productivity time --></label>
+        <name>icAgentConsole__agentTimeWorking</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A person who is handling contacts being delivered by the ACD. --></label>
+        <name>icAgentConsole__agents</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message when the inbound mail is not received to the agent --></label>
+        <name>icAgentConsole__alertMessageEmailNotDelivered</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message when the agent ends the inbound email contact without replyin --></label>
+        <name>icAgentConsole__alertMessageEndContact</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message when the agent try to transfer the contact to a skill which h --></label>
+        <name>icAgentConsole__alertMessageHOP</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message when the agent tries to logout the session without completing --></label>
+        <name>icAgentConsole__alertMessageLogout</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message when the agent not able to initiate an outbound mail contact --></label>
+        <name>icAgentConsole__alertMessageNotInitMail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message when the agent try to send the mail without the subject line --></label>
+        <name>icAgentConsole__alertMessageSendMail1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message when the agent try to send the mail without the subject line --></label>
+        <name>icAgentConsole__alertMessageSendMail2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Align Center for the align center selection button in the email ed --></label>
+        <name>icAgentConsole__alignCenter</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Align Left for the align left selection button in the email editor --></label>
+        <name>icAgentConsole__alignLeft</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Align Right for the align right selection button in the email edit --></label>
+        <name>icAgentConsole__alignRight</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Logs all the information. --></label>
+        <name>icAgentConsole__all</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- To display all the agents list --></label>
+        <name>icAgentConsole__allAgents</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Shows error message in feedback form when click the submit button without select --></label>
+        <name>icAgentConsole__allFieldsAreRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- All Skills is displaying in the agent list filter box --></label>
+        <name>icAgentConsole__allSkills</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- All Teams is displaying in the agent list filter box --></label>
+        <name>icAgentConsole__allTeams</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Set this property to always create new activity from inContact agent console app --></label>
+        <name>icAgentConsole__alwaysCreateNewTask</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ANI --></label>
+        <name>icAgentConsole__ani</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Call state in personal connection call. When the agent lands to an answerig mach --></label>
+        <name>icAgentConsole__answeringMachine</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in the contact result panel, when an salesforce api call fails --></label>
+        <name>icAgentConsole__apexDefaultErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in the contact result panel, when an salesforce api call fails --></label>
+        <name>icAgentConsole__apexErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message displayed in user setting, when the application id for the busines --></label>
+        <name>icAgentConsole__appErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Approved time off request message subject --></label>
+        <name>icAgentConsole__approvedTimeOffRequestSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for April --></label>
+        <name>icAgentConsole__apr</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Confirmation text in the contact transfer Dialog box --></label>
+        <name>icAgentConsole__areYouSure</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Assign to is a label to create promise for me or skill --></label>
+        <name>icAgentConsole__assignTo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Assigned to is a label to filter promises for me or skill on Commitment Manager --></label>
+        <name>icAgentConsole__assignedTo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Attachment in the email editor panel --></label>
+        <name>icAgentConsole__attachment</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Validation for the files size of the attachments in the email contact --></label>
+        <name>icAgentConsole__attachmentError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Validation for the number of files to be attached in the email to be sent --></label>
+        <name>icAgentConsole__attachmentError1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Attachment section header label in Email Transcript --></label>
+        <name>icAgentConsole__attachments</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for August --></label>
+        <name>icAgentConsole__aug</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- authenticateErrorAttempt --></label>
+        <name>icAgentConsole__authenticateErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Available --></label>
+        <name>icAgentConsole__available</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback priority	combobox value --></label>
+        <name>icAgentConsole__average</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Away Label in Dynamic Address book Agent State --></label>
+        <name>icAgentConsole__away</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- tooltip for the backspace button in bottom of the dial pad --></label>
+        <name>icAgentConsole__backSpace</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Call state. When the agent dialed number is invalid. --></label>
+        <name>icAgentConsole__badNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- To drop the contact the badnumber icon will be display while ringing the pc call --></label>
+        <name>icAgentConsole__badNumberTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the blind carbon copy address field of the emial contact --></label>
+        <name>icAgentConsole__bcc</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- hidden div contains the beginning of dialog for screen reader --></label>
+        <name>icAgentConsole__begin</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Beginning of Agent reports --></label>
+        <name>icAgentConsole__beginAgentReports</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Bold for the bold selection button in the email editor tools --></label>
+        <name>icAgentConsole__bold</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Bulleted List for the bulleted list selection button in the email --></label>
+        <name>icAgentConsole__bulletedList</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Contact State --></label>
+        <name>icAgentConsole__busy</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Call --></label>
+        <name>icAgentConsole__call</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Represent an Call state. When the call contact placed in hold is disconnected by --></label>
+        <name>icAgentConsole__callAbandoned</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Contact Status --></label>
+        <name>icAgentConsole__callBack</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Field displayed in Agent Configuration. Representing the contact direction. --></label>
+        <name>icAgentConsole__callDirection</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Field displayed in Agent Configuration. Total duration spend by the agent for an --></label>
+        <name>icAgentConsole__callDurationInSec</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Mappable CallInfo field in the Salesforce Agent Settings --></label>
+        <name>icAgentConsole__callEndDateTime</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Call in progress, could not reauthenticate. Please do a manual log out and log b --></label>
+        <name>icAgentConsole__callInProgressNotReauthenticate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Object name displayed in Agent Configuration. Represent call related information --></label>
+        <name>icAgentConsole__callInfo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in the contact result panel, on error occurred while processin --></label>
+        <name>icAgentConsole__callProcessErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Call Ringing --></label>
+        <name>icAgentConsole__callRinging</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in the contact result panel, when custom search fails for a ca --></label>
+        <name>icAgentConsole__callSearchErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Mappable CallInfo field in the Salesforce Agent Settings --></label>
+        <name>icAgentConsole__callStartDateTime</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Warning message displays in commitement manager - Do you want to cancel changes? --></label>
+        <name>icAgentConsole__callbackCancelChanges</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Field displayed in Agent Configuration. --></label>
+        <name>icAgentConsole__callbackTime</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The phone number an incoming call is originated from (Caller ID). --></label>
+        <name>icAgentConsole__callerID</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Calls Ringing --></label>
+        <name>icAgentConsole__callsRinging</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Campaign --></label>
+        <name>icAgentConsole__campaign</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Cancel Button Label --></label>
+        <name>icAgentConsole__cancel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Cancelled time off request message subject --></label>
+        <name>icAgentConsole__cancelledTimeOffRequestSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Case --></label>
+        <name>icAgentConsole__case</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Category --></label>
+        <name>icAgentConsole__category</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the carbon copy address field of the email contact --></label>
+        <name>icAgentConsole__cc</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Chat --></label>
+        <name>icAgentConsole__chat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- dialog box shows message, when the chat contact is waiting --></label>
+        <name>icAgentConsole__chatContactWaiting</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Object name displayed in Agent Configuration. Represent Chat contact related inf --></label>
+        <name>icAgentConsole__chatInfo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Chat Notes --></label>
+        <name>icAgentConsole__chatNotes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Ended the chat contact --></label>
+        <name>icAgentConsole__chatSessionEnded</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Chat history for an single contact. --></label>
+        <name>icAgentConsole__chatTranscript</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- city --></label>
+        <name>icAgentConsole__city</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- When hovering on the attachment file name in Email transcript we show this this --></label>
+        <name>icAgentConsole__clicktodownload</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Close --></label>
+        <name>icAgentConsole__close</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Coaching Notification Message --></label>
+        <name>icAgentConsole__coachingMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Coaching Reminder Notification Message --></label>
+        <name>icAgentConsole__coachingReminderMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Coaching Reminder Notification Subject --></label>
+        <name>icAgentConsole__coachingReminderSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Coaching Notification Subject --></label>
+        <name>icAgentConsole__coachingSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- List of combo items --></label>
+        <name>icAgentConsole__comboboxItems</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Comment --></label>
+        <name>icAgentConsole__comment</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Comments --></label>
+        <name>icAgentConsole__comments</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for the Commit button displayed in the call contact control panel --></label>
+        <name>icAgentConsole__commit</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Field displayed in Agent Configuration. --></label>
+        <name>icAgentConsole__commitmentAmount</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- When we attempt to close the commitment reminder window we will be showing this --></label>
+        <name>icAgentConsole__commitmentAutoPostpone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- widget name: Commitment - Date --></label>
+        <name>icAgentConsole__commitmentDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Commitment Details --></label>
+        <name>icAgentConsole__commitmentDetails</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Commitment Manager --></label>
+        <name>icAgentConsole__commitmentManager</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AgentState - CommitmentPending --></label>
+        <name>icAgentConsole__commitmentPending</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Commitment will be refused in :  {0} : {1} --></label>
+        <name>icAgentConsole__commitmentRefusedTime</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Commitment Reminder --></label>
+        <name>icAgentConsole__commitmentReminder</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Allows you to create new commitments and displays a list of current commitments. --></label>
+        <name>icAgentConsole__commitmentTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- complianceRequired --></label>
+        <name>icAgentConsole__complianceRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The two existing calls must be conferenced before a new call can be placed. Do y --></label>
+        <name>icAgentConsole__confTheExistingCalls</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Conference --></label>
+        <name>icAgentConsole__conference</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message. Unable to Conference the contacts. --></label>
+        <name>icAgentConsole__conferenceErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Configure Org-Wide Settings --></label>
+        <name>icAgentConsole__configOrgWideSettings</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- displays a success message once we save the configuration page --></label>
+        <name>icAgentConsole__configSuccessfullySaved</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Only Salesforce.com fields with the &apos;update&apos; property may be selected for data m --></label>
+        <name>icAgentConsole__configWarning</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Configure the search based on the external ID for PC call --></label>
+        <name>icAgentConsole__configurableSearch</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- configurationDetail --></label>
+        <name>icAgentConsole__configurationDetail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Configuration settings that controls the behaviour of inContact agent console ap --></label>
+        <name>icAgentConsole__configurationSettings</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- configure --></label>
+        <name>icAgentConsole__configure</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- confirmationRequired --></label>
+        <name>icAgentConsole__confirmationRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Consult Request --></label>
+        <name>icAgentConsole__consultRequest</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- There is a Consult Request waiting from --></label>
+        <name>icAgentConsole__consultRequestWaiting</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Contact --></label>
+        <name>icAgentConsole__contact</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to disposition the contact. --></label>
+        <name>icAgentConsole__contactDispErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to end the contact. --></label>
+        <name>icAgentConsole__contactEndErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Contact History --></label>
+        <name>icAgentConsole__contactHistory</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Displays your contact history. You can filter the list or search for a specific --></label>
+        <name>icAgentConsole__contactHistoryTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unique id to each contact --></label>
+        <name>icAgentConsole__contactId</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Number entered does not match contact&apos;s number --></label>
+        <name>icAgentConsole__contactNumberErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in the contact result panel, on error occurred while processin --></label>
+        <name>icAgentConsole__contactProcessErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- This contact requires confirmation. Do you accept it? --></label>
+        <name>icAgentConsole__contactRequiresConfirmation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error in performing contact custom search. --></label>
+        <name>icAgentConsole__contactSearchErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- First line of copy right info --></label>
+        <name>icAgentConsole__copyRightInfo1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Second line of copy right info --></label>
+        <name>icAgentConsole__copyRightInfo2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Third line of copy right info --></label>
+        <name>icAgentConsole__copyRightInfo3</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Create Task --></label>
+        <name>icAgentConsole__createTask</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CheckBox in Salesforce Agent Settings to Create Task For Refused Contacts --></label>
+        <name>icAgentConsole__createTaskForRefused</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback priority	combobox value --></label>
+        <name>icAgentConsole__critical</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for chat copy text - Press CTRL-C to copy --></label>
+        <name>icAgentConsole__ctrl_C_ToCopy</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You need to complete the current contact to initiate another --></label>
+        <name>icAgentConsole__currentContactErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Current Contacts --></label>
+        <name>icAgentConsole__currentContacts</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Current Time --></label>
+        <name>icAgentConsole__currentTime</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Custom --></label>
+        <name>icAgentConsole__custom</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Custom Search --></label>
+        <name>icAgentConsole__customSearch</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Custom url pop --></label>
+        <name>icAgentConsole__customUrlPop</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CustomValue1 --></label>
+        <name>icAgentConsole__customVal1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CustomValue2 --></label>
+        <name>icAgentConsole__customVal2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- customerField1 --></label>
+        <name>icAgentConsole__customerField1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- customerField2 --></label>
+        <name>icAgentConsole__customerField2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Date --></label>
+        <name>icAgentConsole__date</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Date Range --></label>
+        <name>icAgentConsole__dateRange</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Date and Time --></label>
+        <name>icAgentConsole__dateTime</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- sorting the email inbox in ascending order based on Date and time --></label>
+        <name>icAgentConsole__dateTimeAsc</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- sorting the email inbox in descending order based on Date and time --></label>
+        <name>icAgentConsole__dateTimeDesc</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- duration for the parked emails --></label>
+        <name>icAgentConsole__days</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DEBUG in log level --></label>
+        <name>icAgentConsole__debug</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for December --></label>
+        <name>icAgentConsole__dec</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Declined time off request message subject --></label>
+        <name>icAgentConsole__declinedTimeOffRequestSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- def --></label>
+        <name>icAgentConsole__def</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- default --></label>
+        <name>icAgentConsole__default</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- delete is a button label in commitment page --></label>
+        <name>icAgentConsole__delete</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Confirmation prompt will be display when trying delete the commitment --></label>
+        <name>icAgentConsole__deleteCommitmentConfirmation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message will be display if the notes area is empty while deleting the comm --></label>
+        <name>icAgentConsole__deleteCommitmentErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Dial --></label>
+        <name>icAgentConsole__dial</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to dial the agent. --></label>
+        <name>icAgentConsole__dialAgentErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to dial the call. --></label>
+        <name>icAgentConsole__dialErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Dial pad --></label>
+        <name>icAgentConsole__dialPad</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Displays a dial pad to initiate an outbound call using the keypad. Your availabi --></label>
+        <name>icAgentConsole__dialPadTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error for Unable to dial the skill. --></label>
+        <name>icAgentConsole__dialSkillErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Login to Dialer. --></label>
+        <name>icAgentConsole__dialerLoginErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Logout from Dialer. --></label>
+        <name>icAgentConsole__dialerLogoutErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Dialing --></label>
+        <name>icAgentConsole__dialing</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Button tooltip label denotes discard the contact --></label>
+        <name>icAgentConsole__discard</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the agent contact status when the contact ends --></label>
+        <name>icAgentConsole__discarded</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Disconnect --></label>
+        <name>icAgentConsole__disconnect</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Disconnected --></label>
+        <name>icAgentConsole__disconnected</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Dismiss button in commitment reminder popout --></label>
+        <name>icAgentConsole__dismiss</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Disposition Submit Button --></label>
+        <name>icAgentConsole__dispSubmitBtn</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Disposition --></label>
+        <name>icAgentConsole__disposition</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Disposition Value --></label>
+        <name>icAgentConsole__dispositionValue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DNIS --></label>
+        <name>icAgentConsole__dnis</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Do Not Disturb Label in Dynamic Address book Agent State --></label>
+        <name>icAgentConsole__doNotDisturb</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Do you accept it? --></label>
+        <name>icAgentConsole__doYouAcceptIt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Done --></label>
+        <name>icAgentConsole__done</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Download Log --></label>
+        <name>icAgentConsole__downloadLog</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DurationInSeconds --></label>
+        <name>icAgentConsole__durationInSec</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Edit --></label>
+        <name>icAgentConsole__edit</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Email when mouse over on the email icon --></label>
+        <name>icAgentConsole__email</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Object name displayed in Agent Configuration. Represent Emai contact related inf --></label>
+        <name>icAgentConsole__emailInfo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for Email Notes button --></label>
+        <name>icAgentConsole__emailNotes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Initiates an outbound email. If no email skill assigned to you, the email icon w --></label>
+        <name>icAgentConsole__emailTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Mappable EmailInfo field in the Salesforce Agent Settings --></label>
+        <name>icAgentConsole__emailTranscript</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &quot;Emails Selected&quot; is a label, which will be display while selecting multi emails --></label>
+        <name>icAgentConsole__emailsSelected</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label in Salesforce Agent settings page for Omni channel mappings --></label>
+        <name>icAgentConsole__enableAgentPresenceSync</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enable Automatic Login --></label>
+        <name>icAgentConsole__enableAutoLogin</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label for Enable NICE inContact routing check box --></label>
+        <name>icAgentConsole__enableCxOneRoutingLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &quot;Enable Tooltips&quot; is a label in option panel --></label>
+        <name>icAgentConsole__enableTooltips</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- hidden div contains the ending of dialog for screen reader --></label>
+        <name>icAgentConsole__end</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Ending of Agent reports --></label>
+        <name>icAgentConsole__endAgentReports</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for the End Conference button --></label>
+        <name>icAgentConsole__endConference</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- End Date --></label>
+        <name>icAgentConsole__endDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in Schedule Panel --></label>
+        <name>icAgentConsole__endShift</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enter amount --></label>
+        <name>icAgentConsole__enterAmount</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enter Comments here --></label>
+        <name>icAgentConsole__enterComments</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message --></label>
+        <name>icAgentConsole__enterFirstName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message - Enter Last Name --></label>
+        <name>icAgentConsole__enterLastName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enter message here --></label>
+        <name>icAgentConsole__enterMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Place holder for the promise keeper text area --></label>
+        <name>icAgentConsole__enterNotes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message - Enter Phone number --></label>
+        <name>icAgentConsole__enterPhoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- enterPhoneNumberHere --></label>
+        <name>icAgentConsole__enterPhoneNumberHere</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enter the Amount --></label>
+        <name>icAgentConsole__enterTheAmount</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Enter a Valid Date --></label>
+        <name>icAgentConsole__enterValidDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Please enter a valid phone number --></label>
+        <name>icAgentConsole__enterValidPhoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- notification text which is displaying in the chat content panel, when patron typ --></label>
+        <name>icAgentConsole__enteredTheText</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Multiple Entity Mappings Tooltip --></label>
+        <name>icAgentConsole__entityMapMultiTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Single Entity Mappings Tooltip --></label>
+        <name>icAgentConsole__entityMapSingleTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Entity Mappings for Who and What Fields Header in Salesforce Agent Settings Tab --></label>
+        <name>icAgentConsole__entityMappingType</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Multiple Entity Mappings --></label>
+        <name>icAgentConsole__entityMappingTypeMulti</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Single Entity Mappings --></label>
+        <name>icAgentConsole__entityMappingTypeSingle</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ERROR in log level --></label>
+        <name>icAgentConsole__error</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error displayed when the user enters invalid email address --></label>
+        <name>icAgentConsole__errorMsgBadMailId</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message when the user try to send the mail with no TO address --></label>
+        <name>icAgentConsole__errorMsgReqToAddr</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Alert this message in the agent console when an unexpected error occurred --></label>
+        <name>icAgentConsole__errorMsgUnexpected</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch quick reply for the agent --></label>
+        <name>icAgentConsole__errorToFetchQuickReply</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to get script list --></label>
+        <name>icAgentConsole__errorToGetScriptList</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- errorToGetSkillTags --></label>
+        <name>icAgentConsole__errorToGetSkillTags</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to pause voice mail --></label>
+        <name>icAgentConsole__errorToPauseVoiceMail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to play voice mail --></label>
+        <name>icAgentConsole__errorToPlayVoiceMail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to signal script --></label>
+        <name>icAgentConsole__errorToSignalScript</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to spawn script --></label>
+        <name>icAgentConsole__errorToSpawnScript</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Evaluation Acknowledge Message --></label>
+        <name>icAgentConsole__evaluationAcknowledgeMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Evaluation Completed Or Acknowledge Subject --></label>
+        <name>icAgentConsole__evaluationCompletedOrAcknowledgeSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Evaluation Completed Or Dispute Message --></label>
+        <name>icAgentConsole__evaluationCompletedOrDisputeMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Evalution Dispute Subject --></label>
+        <name>icAgentConsole__evaluationDisputeSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Event --></label>
+        <name>icAgentConsole__event</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- externalID --></label>
+        <name>icAgentConsole__externalID</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- FATAL in log level --></label>
+        <name>icAgentConsole__fatal</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Fax --></label>
+        <name>icAgentConsole__fax</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for February --></label>
+        <name>icAgentConsole__feb</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Feedback --></label>
+        <name>icAgentConsole__feedback</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A Salesforce.com field {0}. {1} was mapped to an Salesforce Agent value {2}. {3} --></label>
+        <name>icAgentConsole__fieldMappingRemoved</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A Salesforce.com field {0}. {1} was previously mapped to an inContact value {2}. --></label>
+        <name>icAgentConsole__fieldMappingRemovedonSave</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- One or More Fields are Empty --></label>
+        <name>icAgentConsole__fieldsEmpty</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Mappable VoicemailInfo field in the Salesforce Agent Settings --></label>
+        <name>icAgentConsole__fileDuration</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Mappable VoicemailInfo field in the Salesforce Agent Settings --></label>
+        <name>icAgentConsole__fileName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Filter --></label>
+        <name>icAgentConsole__filter</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- First Name --></label>
+        <name>icAgentConsole__first</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- First Name in Promise Keeper --></label>
+        <name>icAgentConsole__firstName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Font for the font selection button in the email editor tools --></label>
+        <name>icAgentConsole__font</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Font Size for the font size selection button in the email editor t --></label>
+        <name>icAgentConsole__fontSize</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Form --></label>
+        <name>icAgentConsole__form</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Forward label in the menu of the inbound email contact --></label>
+        <name>icAgentConsole__forward</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- FW text in the subject line when the agent forward the inbound mail contact --></label>
+        <name>icAgentConsole__forwardShortForm</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label of the To field when the agent click on the Forward option of the inbound --></label>
+        <name>icAgentConsole__forwardTo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- short form of &quot;Friday&quot; --></label>
+        <name>icAgentConsole__fri</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Day in a Week --></label>
+        <name>icAgentConsole__friday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the from address field of the mail contact --></label>
+        <name>icAgentConsole__from</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Forward Email Details Section header label in email  transcript. --></label>
+        <name>icAgentConsole__fwdEmailDetail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetAddressBookByAgent. --></label>
+        <name>icAgentConsole__getAddressBookByAgentErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetAddressBookByTeam. --></label>
+        <name>icAgentConsole__getAddressBookByTeamErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetAgentInfo. --></label>
+        <name>icAgentConsole__getAgentInfoErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetAgentSkillAssignments. --></label>
+        <name>icAgentConsole__getAgentSkillAssignmentsErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message displayed when the API call to get agent state cache fails --></label>
+        <name>icAgentConsole__getAgentStateCacheError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetAgentsSkills. --></label>
+        <name>icAgentConsole__getAgentsSkillsErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetAllSkills. --></label>
+        <name>icAgentConsole__getAllSkillsErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetAllUnavailableCodes. --></label>
+        <name>icAgentConsole__getAllUnavailableCodesErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Connection failed. Attempting to reconnect. If the error continues contact your --></label>
+        <name>icAgentConsole__getNextErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- warning message for getnext API failure --></label>
+        <name>icAgentConsole__getNextErrorAttemptWarn</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetTeamUnavailableCodes. --></label>
+        <name>icAgentConsole__getTeamUnavailableCodesErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch GetTeams. --></label>
+        <name>icAgentConsole__getTeamsErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ghi --></label>
+        <name>icAgentConsole__ghi</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You are handling contacts, could not logout from inContact platform. --></label>
+        <name>icAgentConsole__handlingContactErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Represent an Agent State. When the call contact placed in hold is disconnected b --></label>
+        <name>icAgentConsole__heldPartyAbandoned</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help --></label>
+        <name>icAgentConsole__help</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Redirects to the inContact help page. --></label>
+        <name>icAgentConsole__helpTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent feedback priority	combobox value --></label>
+        <name>icAgentConsole__high</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Highlight Color for the highlight color selection button in the em --></label>
+        <name>icAgentConsole__highlightColor</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Hold --></label>
+        <name>icAgentConsole__hold</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You must place your current Work Item contact on hold before attempting to dial --></label>
+        <name>icAgentConsole__holdCurrentWorkItemContact</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to place the contact on hold. --></label>
+        <name>icAgentConsole__holdErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Holding --></label>
+        <name>icAgentConsole__holding</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Hour --></label>
+        <name>icAgentConsole__hour</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the time of the agent state in a contact --></label>
+        <name>icAgentConsole__hours</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Hyperlink in the email editor panel --></label>
+        <name>icAgentConsole__hyperlink</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Inbound Email Details Section header label in email  transcript. --></label>
+        <name>icAgentConsole__ibEmailDetail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ID --></label>
+        <name>icAgentConsole__id</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- InContact --></label>
+        <name>icAgentConsole__inContact</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- inContact Agent Password --></label>
+        <name>icAgentConsole__inContactAgentPassword</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- inContact Agent Phone --></label>
+        <name>icAgentConsole__inContactAgentPhone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- inContact Agent Station ID --></label>
+        <name>icAgentConsole__inContactAgentStationID</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- inContact Data Storage --></label>
+        <name>icAgentConsole__inContactDataStorage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- inContact Status --></label>
+        <name>icAgentConsole__inContactStatus</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message - when the call back date/time you entered has already passed for --></label>
+        <name>icAgentConsole__inValidDateTimeErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Salesforce PushTopic Name is not Valid --></label>
+        <name>icAgentConsole__inValidPushTopicName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message - When we provide invalid time format in promise keeper --></label>
+        <name>icAgentConsole__inValidTimeFormatErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Phone Number must have at least 10 digits --></label>
+        <name>icAgentConsole__inValidphoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Inbound --></label>
+        <name>icAgentConsole__inbound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- InboundConsult --></label>
+        <name>icAgentConsole__inboundConsult</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- InboundContact --></label>
+        <name>icAgentConsole__inboundContact</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Inbox is a tab name which is displaying in the popout --></label>
+        <name>icAgentConsole__inbox</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- warning msg will be display  when email inbox exceeded the maximum size --></label>
+        <name>icAgentConsole__inboxSizeExceeded</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Incoming --></label>
+        <name>icAgentConsole__incoming</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Incoming Work Item --></label>
+        <name>icAgentConsole__incomingWorkItem</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- inContact Agent Name --></label>
+        <name>icAgentConsole__incontactAgentName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- INFO in log level --></label>
+        <name>icAgentConsole__info</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Information --></label>
+        <name>icAgentConsole__information</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Insert label of the button to insert quick response text --></label>
+        <name>icAgentConsole__insert</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Title of the Hyper link dialog box --></label>
+        <name>icAgentConsole__insertHyperLink</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Integrated Softphone --></label>
+        <name>icAgentConsole__integratedSoftphone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Interrupted --></label>
+        <name>icAgentConsole__interrupted</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Invalid SFDC origin --></label>
+        <name>icAgentConsole__invalidSFDCOrigin</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip lable Italic for the italic selection button in the email editor tools --></label>
+        <name>icAgentConsole__italic</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for January --></label>
+        <name>icAgentConsole__jan</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- jkl --></label>
+        <name>icAgentConsole__jkl</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Joined --></label>
+        <name>icAgentConsole__joined</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You have joined a session already in progress.  Your agent station/phone number --></label>
+        <name>icAgentConsole__joinedSessionAlreadyInProgress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for July --></label>
+        <name>icAgentConsole__jul</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for June --></label>
+        <name>icAgentConsole__jun</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Justify for the justify selection button in the email editor tools --></label>
+        <name>icAgentConsole__justify</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Keypad Tones --></label>
+        <name>icAgentConsole__keypadTones</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Last Name --></label>
+        <name>icAgentConsole__last</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Last 7 is a date range which is displaying in agent reports performance --></label>
+        <name>icAgentConsole__last7days</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Last Name in Promise Keeper --></label>
+        <name>icAgentConsole__lastName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Lead --></label>
+        <name>icAgentConsole__lead</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Trying to load again --></label>
+        <name>icAgentConsole__loadAgainErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Loading --></label>
+        <name>icAgentConsole__loading</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Log Level --></label>
+        <name>icAgentConsole__logLevel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Logged In --></label>
+        <name>icAgentConsole__loggedIn</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Logged out --></label>
+        <name>icAgentConsole__loggedOut</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Logging in --></label>
+        <name>icAgentConsole__loggingIn</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Login --></label>
+        <name>icAgentConsole__login</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Login failed with error: --></label>
+        <name>icAgentConsole__loginFailedError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message to be displayed on login failure. --></label>
+        <name>icAgentConsole__loginFailedErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Logout --></label>
+        <name>icAgentConsole__logout</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- confirmation message will be display when logout the agent console --></label>
+        <name>icAgentConsole__logoutConfirmation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- it shows confirmation when we have contacts in inbox, if we try to logout --></label>
+        <name>icAgentConsole__logoutConfirmationForInbox</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Confirmation message on logout when contacts present in agent&apos;s personal queue --></label>
+        <name>icAgentConsole__logoutRequeueInterruptedContactsConfirmation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Machine --></label>
+        <name>icAgentConsole__machine</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for March --></label>
+        <name>icAgentConsole__mar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Mask --></label>
+        <name>icAgentConsole__mask</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Masking --></label>
+        <name>icAgentConsole__masking</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- show help message in the question mark --></label>
+        <name>icAgentConsole__maxMappingsCanAdd</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- show warning message once the maximum number of presence mapping has been added --></label>
+        <name>icAgentConsole__maxPresenceMappingAdded</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Display text for May month --></label>
+        <name>icAgentConsole__may</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Create promise keeper for me --></label>
+        <name>icAgentConsole__me</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message --></label>
+        <name>icAgentConsole__message</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for Message Home Panel Icon --></label>
+        <name>icAgentConsole__messageTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Minutes in short --></label>
+        <name>icAgentConsole__min</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Minute --></label>
+        <name>icAgentConsole__minute</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- mno --></label>
+        <name>icAgentConsole__mno</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- short form of &quot;Monday&quot; --></label>
+        <name>icAgentConsole__mon</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Day in a Week --></label>
+        <name>icAgentConsole__monday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &quot;More&quot; is a link that displaying in custom tooltip, if click that &quot;More&quot; its re --></label>
+        <name>icAgentConsole__more</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Mute --></label>
+        <name>icAgentConsole__mute</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Mute. --></label>
+        <name>icAgentConsole__muteErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Navigate to Agent performance report panel while click the right arrow from agen --></label>
+        <name>icAgentConsole__navigateToAgentPerf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Navigate to Agent Productivity report panel while click the right arrow from age --></label>
+        <name>icAgentConsole__navigateToAgentProd</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New button label in Promise keeper --></label>
+        <name>icAgentConsole__new</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Create new commitment from commitment manager --></label>
+        <name>icAgentConsole__newCommitment</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New Schedule Message --></label>
+        <name>icAgentConsole__newScheduleMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New Schedule Message Subject --></label>
+        <name>icAgentConsole__newScheduleSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New Self Assessment Notification Subject --></label>
+        <name>icAgentConsole__newSelfAssessmentSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- New Time off request message subject --></label>
+        <name>icAgentConsole__newTimeOffRequestSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes what state you will be in when when the call is over, --></label>
+        <name>icAgentConsole__nextNextStateLabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- After the {0} state, you will be in the {1} state --></label>
+        <name>icAgentConsole__nextStateTooltip</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No --></label>
+        <name>icAgentConsole__no</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- NoAnswer --></label>
+        <name>icAgentConsole__noAnswer</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No Data Found --></label>
+        <name>icAgentConsole__noDataFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No Objects found --></label>
+        <name>icAgentConsole__noObjectsFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No Ports --></label>
+        <name>icAgentConsole__noPorts</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You have no promises. --></label>
+        <name>icAgentConsole__noPromises</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No commitments assigned to you --></label>
+        <name>icAgentConsole__noPromisesAgent</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No commitments assigned to skill --></label>
+        <name>icAgentConsole__noPromisesSkill</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in Schedule Panel if no schedules available --></label>
+        <name>icAgentConsole__noSchedule</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- When Email Transcript is not avaliable for the contact --></label>
+        <name>icAgentConsole__noTranscript</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- None option for who and what fields in notes and disposition --></label>
+        <name>icAgentConsole__none</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Notes --></label>
+        <name>icAgentConsole__notes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for November --></label>
+        <name>icAgentConsole__nov</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Outbound Email Details Section header label in email  transcript. --></label>
+        <name>icAgentConsole__obEmailDetail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A Salesforce.com object {0} was mapped and it appears that object no longer exis --></label>
+        <name>icAgentConsole__objectMappingRemoved</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A Salesforce.com object {0} was previously mapped and it appears that object no --></label>
+        <name>icAgentConsole__objectMappingRemovedonSave</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for October --></label>
+        <name>icAgentConsole__oct</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OFF --></label>
+        <name>icAgentConsole__off</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Offline Label in Dynamic Address book Agent State --></label>
+        <name>icAgentConsole__offline</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OK --></label>
+        <name>icAgentConsole__ok</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Omni is a tooltip for the media tab --></label>
+        <name>icAgentConsole__omni</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Exterally Routed workitem contact widget label --></label>
+        <name>icAgentConsole__omniChannel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Omni channel is not available to receive agent work --></label>
+        <name>icAgentConsole__omniChannelBusy</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message displayed when OpenID Connect Config not validated in Central --></label>
+        <name>icAgentConsole__openIDConnectConfigurationNotValidated</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- open WFM button text --></label>
+        <name>icAgentConsole__openWFM</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Opportunity --></label>
+        <name>icAgentConsole__opportunity</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Options --></label>
+        <name>icAgentConsole__options</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Outbound --></label>
+        <name>icAgentConsole__outbound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OutboundConsult --></label>
+        <name>icAgentConsole__outboundConsult</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OutboundContact --></label>
+        <name>icAgentConsole__outboundContact</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &quot;Overall&quot; is a label which is displaying in agent performance reports --></label>
+        <name>icAgentConsole__overall</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Overall Contacts Handled is a label in agent reports --></label>
+        <name>icAgentConsole__overallContactsHandled</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip will be display while hover the park email button in email contact panel --></label>
+        <name>icAgentConsole__parkEmail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Parked is tab name which is displaying in popout window, if we have parked email --></label>
+        <name>icAgentConsole__parked</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label which is displaying in agent console parked email panel header --></label>
+        <name>icAgentConsole__parkedEmail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for the Parked Emails icon in the Home Panel --></label>
+        <name>icAgentConsole__parkedEmailTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- label for password placeholder --></label>
+        <name>icAgentConsole__password</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Password is required --></label>
+        <name>icAgentConsole__passwordRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for voice mail pause button --></label>
+        <name>icAgentConsole__pause</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Paused --></label>
+        <name>icAgentConsole__paused</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Payload --></label>
+        <name>icAgentConsole__payload</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Performance is label which is displaying in agent reports panel --></label>
+        <name>icAgentConsole__performance</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Personal Connection --></label>
+        <name>icAgentConsole__personalConnection</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Personal Connection Pending --></label>
+        <name>icAgentConsole__personalConnectionPending</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Personal Queue --></label>
+        <name>icAgentConsole__personalQueue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Phone --></label>
+        <name>icAgentConsole__phone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Phone Call --></label>
+        <name>icAgentConsole__phoneCall</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Invalid Station or Phone Number. --></label>
+        <name>icAgentConsole__phoneErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Phone Number --></label>
+        <name>icAgentConsole__phoneNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Phone number is not valid. Please enter only + (at the beginning), digits, *, #, --></label>
+        <name>icAgentConsole__phoneNumberIsNotValid</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Phone number or station id is required --></label>
+        <name>icAgentConsole__phoneNumberOrStationIDRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Phone number or station ID is in use --></label>
+        <name>icAgentConsole__phoneStationIDUse</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for voice mail play button --></label>
+        <name>icAgentConsole__play</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- When Login is in progress that time we will show this status in Email transcript --></label>
+        <name>icAgentConsole__pleaseWait</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Point of Contact ID field is required --></label>
+        <name>icAgentConsole__pocIdRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label for Point of Contact ID field --></label>
+        <name>icAgentConsole__pointOfContactId</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to pop the screen --></label>
+        <name>icAgentConsole__popScreen</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to pop the screen for Contact Result --></label>
+        <name>icAgentConsole__popScreenContactResult</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to pop the screen for Contact Search --></label>
+        <name>icAgentConsole__popScreenContactSearch</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to pop the screen for Indicator --></label>
+        <name>icAgentConsole__popScreenIndicator</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to pop the screen for Runapp --></label>
+        <name>icAgentConsole__popScreenRunapp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to pop Task. Due to page in edit mode. --></label>
+        <name>icAgentConsole__popScreenTask</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Pop Task --></label>
+        <name>icAgentConsole__popTask</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Popin --></label>
+        <name>icAgentConsole__popin</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Popout --></label>
+        <name>icAgentConsole__popout</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- pqrs --></label>
+        <name>icAgentConsole__pqrs</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label in Salesforce Agent settings page for Omni channel mappings --></label>
+        <name>icAgentConsole__presenceMaster</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label in Salesforce Agent settings page for Omni channel mappings --></label>
+        <name>icAgentConsole__presenceSyncSettings</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Preview --></label>
+        <name>icAgentConsole__preview</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Priority --></label>
+        <name>icAgentConsole__priority</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Proceed button in commitment reminder popout --></label>
+        <name>icAgentConsole__proceed</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Processing --></label>
+        <name>icAgentConsole__processing</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Productivity is a label which is displaying in agentreports --></label>
+        <name>icAgentConsole__productivity</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- profile --></label>
+        <name>icAgentConsole__profile</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Profiles --></label>
+        <name>icAgentConsole__profiles</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Salesforce PushTopic Name for PendingServiceRouting field is required --></label>
+        <name>icAgentConsole__pushTopicNameRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message displayed in user setting, when the agent enter invalid username/p --></label>
+        <name>icAgentConsole__pwdErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message while try to login with the expired password --></label>
+        <name>icAgentConsole__pwdExpired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Queue --></label>
+        <name>icAgentConsole__queue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Quick Response in the email editor panel --></label>
+        <name>icAgentConsole__quickResponse</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Could not dial the agent leg because it is an invalid number.  Verify your stati --></label>
+        <name>icAgentConsole__readyAgentLegBadNumber</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Could not dial the Agent Leg because it was busy.  Hang up your phone and try ag --></label>
+        <name>icAgentConsole__readyAgentLegBusy</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent leg was disconnected before call was delivered. The call has been re-queue --></label>
+        <name>icAgentConsole__readyAgentLegDropped</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Could not dial the Agent Leg. --></label>
+        <name>icAgentConsole__readyAgentLegError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You did not answer your Agent Leg.  Verify your station ID or station phone numb --></label>
+        <name>icAgentConsole__readyAgentLegNoAnswer</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Record --></label>
+        <name>icAgentConsole__record</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Record inventory for skill is running low. --></label>
+        <name>icAgentConsole__recordInventoryLow</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Recording in progress --></label>
+        <name>icAgentConsole__recordingInProgress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Refused --></label>
+        <name>icAgentConsole__refused</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reject --></label>
+        <name>icAgentConsole__reject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Contact state. When an agent rejects an incoming contact. --></label>
+        <name>icAgentConsole__rejected</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You have at least one promise to complete within the next hour. Are you sure you --></label>
+        <name>icAgentConsole__reminderWarning</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message displayed in user setting, when the api url is not added in the sa --></label>
+        <name>icAgentConsole__remoteErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Remove --></label>
+        <name>icAgentConsole__remove</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Title of the replace variables dialog box to replace the strings in quick reply --></label>
+        <name>icAgentConsole__replaceVariables</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reply label in the menu of the inbound email contact --></label>
+        <name>icAgentConsole__reply</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Reply Action when mouse over on the reply arrow --></label>
+        <name>icAgentConsole__replyAction</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reply All label in the menu of the inbound email contact --></label>
+        <name>icAgentConsole__replyAll</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reply Email Details Section header label in email  transcript. --></label>
+        <name>icAgentConsole__replyEmailDetail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- RE text in the subject line when the agent reply to the inbound mail contact --></label>
+        <name>icAgentConsole__replyShortForm</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Requeue Is a tooltip for &quot;Requeue&quot; button in email inbox --></label>
+        <name>icAgentConsole__requeue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Reschedule --></label>
+        <name>icAgentConsole__reschedule</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Contact state --></label>
+        <name>icAgentConsole__reskill</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for results and notes --></label>
+        <name>icAgentConsole__resultNotes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Results --></label>
+        <name>icAgentConsole__results</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Resume --></label>
+        <name>icAgentConsole__resume</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to resume the contact. --></label>
+        <name>icAgentConsole__resumeErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Return Call --></label>
+        <name>icAgentConsole__returnCall</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Ringing --></label>
+        <name>icAgentConsole__ringing</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label in Salesforce Agent settings page for Omni channel mappings --></label>
+        <name>icAgentConsole__salesforce</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Salesforce Agent --></label>
+        <name>icAgentConsole__salesforceAgent</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label for salesforce password field --></label>
+        <name>icAgentConsole__salesforcePassword</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label for Salesforce PushTopic Name field --></label>
+        <name>icAgentConsole__salesforcePushTopicName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label for salesforce username field --></label>
+        <name>icAgentConsole__salesforceUsername</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- short form of &quot;Saturday&quot; --></label>
+        <name>icAgentConsole__sat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Day in a Week --></label>
+        <name>icAgentConsole__saturday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- save button in user settings option panel --></label>
+        <name>icAgentConsole__save</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error  in the agent configuration page --></label>
+        <name>icAgentConsole__saveError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Saving - Button label in the Agent configuration page --></label>
+        <name>icAgentConsole__saving</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Header Text for Schedule Panel --></label>
+        <name>icAgentConsole__schedule</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Schedule Between Date message --></label>
+        <name>icAgentConsole__scheduleBetweenDateMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip for Schedule Home Panel Icon --></label>
+        <name>icAgentConsole__scheduleTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- score --></label>
+        <name>icAgentConsole__score</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Object name displayed in Agent Configuration. Represent script variable supplied --></label>
+        <name>icAgentConsole__scriptVariable</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Search - to find the agent or Team or skills etc --></label>
+        <name>icAgentConsole__search</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Secondary Disposition Value --></label>
+        <name>icAgentConsole__secondaryDispositionValue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select --></label>
+        <name>icAgentConsole__select</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select a Date Range --></label>
+        <name>icAgentConsole__selectDateRange</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select Disposition --></label>
+        <name>icAgentConsole__selectDisposition</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select Outbound Skills --></label>
+        <name>icAgentConsole__selectOutboundSkills</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select Skill --></label>
+        <name>icAgentConsole__selectSkill</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select the Disposition --></label>
+        <name>icAgentConsole__selectTheDisposition</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message - Select the skill --></label>
+        <name>icAgentConsole__selectTheSkill</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- selectWhat --></label>
+        <name>icAgentConsole__selectWhat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select Who --></label>
+        <name>icAgentConsole__selectWho</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the label for the send button --></label>
+        <name>icAgentConsole__send</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to send the DTMF Tones. --></label>
+        <name>icAgentConsole__sendDTMFTonesError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the sent field of the inbound mail contact --></label>
+        <name>icAgentConsole__sent</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Short form for September --></label>
+        <name>icAgentConsole__sep</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Your session has ended --></label>
+        <name>icAgentConsole__sessionEnded</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Your session has ended. Please click OK to relog --></label>
+        <name>icAgentConsole__sessionErrorEnd</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Session ID --></label>
+        <name>icAgentConsole__sessionID</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Page header text for Login page of Email Transcript --></label>
+        <name>icAgentConsole__sfAgentAccountLogin</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Page header text for Email Transcript --></label>
+        <name>icAgentConsole__sfAgentEmailTranscript</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Salesforce Omnichannel Status --></label>
+        <name>icAgentConsole__sfOmniChannelStatus</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SFDC CASE --></label>
+        <name>icAgentConsole__sfdcCase</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SFDC QUERY --></label>
+        <name>icAgentConsole__sfdcQuery</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Shift Bid Status Changed Message --></label>
+        <name>icAgentConsole__shiftBidStatusChangedMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Shift Bid Status Changed Subject --></label>
+        <name>icAgentConsole__shiftBidStatusChangedSubject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Show All Items --></label>
+        <name>icAgentConsole__showAllTimes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- label for Sign In button --></label>
+        <name>icAgentConsole__signIn</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Skill --></label>
+        <name>icAgentConsole__skill</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to fetch RealTime event from Skill Queue Cache. If the error continues co --></label>
+        <name>icAgentConsole__skillCacheErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Skill List --></label>
+        <name>icAgentConsole__skillList</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Displays a list of skills for your business unit, the number of contacts in queu --></label>
+        <name>icAgentConsole__skillListTooltipTxt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Name of the skill --></label>
+        <name>icAgentConsole__skillName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message - Skill is not open, still you want continue --></label>
+        <name>icAgentConsole__skillNotOpenError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SkillQueue --></label>
+        <name>icAgentConsole__skillQueue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A category of agent abilities. --></label>
+        <name>icAgentConsole__skills</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- snooze --></label>
+        <name>icAgentConsole__snooze</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent Leg Call Failed --></label>
+        <name>icAgentConsole__softphoneAgentLegCallFailed</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Connecting Agent Leg --></label>
+        <name>icAgentConsole__softphoneAgentLegConnect</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in the contact result panel, when an softphone layout setting --></label>
+        <name>icAgentConsole__softphoneErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Initializing Softphone --></label>
+        <name>icAgentConsole__softphoneInitialize</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- WebRTC Server Login Failed --></label>
+        <name>icAgentConsole__softphoneLoginFailed</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Provide Access to Media Device --></label>
+        <name>icAgentConsole__softphoneMediaAccessDenied</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Both Speaker and Mic are Required --></label>
+        <name>icAgentConsole__softphoneMediaDeviceMissing</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Softphone Volume --></label>
+        <name>icAgentConsole__softphoneVolume</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Start Date --></label>
+        <name>icAgentConsole__startDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Message displayed in Schedule Panel --></label>
+        <name>icAgentConsole__startShift</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A state refers to the current condition of your call center agent --></label>
+        <name>icAgentConsole__state</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label in Salesforce Agent settings page for Omni channel mappings --></label>
+        <name>icAgentConsole__stateMappings</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A station is both the physical location where an agent will work and the relatio --></label>
+        <name>icAgentConsole__station</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- stationID --></label>
+        <name>icAgentConsole__stationID</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Your configured station ID or phone number is different from the station ID/phon --></label>
+        <name>icAgentConsole__stationIDErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Store inContact Script Variables --></label>
+        <name>icAgentConsole__storeIncontactScriptVar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the subject field of the mail contact --></label>
+        <name>icAgentConsole__subject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Submit --></label>
+        <name>icAgentConsole__submit</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Submit Feedback --></label>
+        <name>icAgentConsole__submitFeedback</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- short form of &quot;Sunday&quot; --></label>
+        <name>icAgentConsole__sun</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Day in a Week --></label>
+        <name>icAgentConsole__sunday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- System --></label>
+        <name>icAgentConsole__system</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Please contact your System Administrator --></label>
+        <name>icAgentConsole__systemAdmin</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- tags --></label>
+        <name>icAgentConsole__tags</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Task --></label>
+        <name>icAgentConsole__task</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Its label in Agent configuration page to create a new task --></label>
+        <name>icAgentConsole__taskCreation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A team is an organizational group of Agents --></label>
+        <name>icAgentConsole__team</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- percentage of team which is displaying in agent reports performance --></label>
+        <name>icAgentConsole__teamPercentage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Text Color for the text color selection button in the email editor --></label>
+        <name>icAgentConsole__textColor</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label of the first field of the Hyper link dialog box --></label>
+        <name>icAgentConsole__textToDisplay</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- This Week --></label>
+        <name>icAgentConsole__thisWeek</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- short form of &quot;Thursday&quot; --></label>
+        <name>icAgentConsole__thu</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Day in a Week --></label>
+        <name>icAgentConsole__thursday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Time --></label>
+        <name>icAgentConsole__time</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Time and Date --></label>
+        <name>icAgentConsole__timeAndDate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Time off request message --></label>
+        <name>icAgentConsole__timeOffRequestMessage</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- timeout --></label>
+        <name>icAgentConsole__timeout</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message displayed in Options Panel --></label>
+        <name>icAgentConsole__timeoutError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Timezone is a label display in promise keeper - Date and Time --></label>
+        <name>icAgentConsole__timezone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Denotes the to address field of the email contact --></label>
+        <name>icAgentConsole__to</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- To transfer, select an agent or skill --></label>
+        <name>icAgentConsole__toTransferSelectAnAgentOrSkill</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Today --></label>
+        <name>icAgentConsole__today</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Tools in the email editor panel --></label>
+        <name>icAgentConsole__tools</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TRACE in log level --></label>
+        <name>icAgentConsole__trace</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Transfer --></label>
+        <name>icAgentConsole__transfer</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Transfer chat to agent. --></label>
+        <name>icAgentConsole__transferChatAgentErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Transfer chat to skill. --></label>
+        <name>icAgentConsole__transferChatSkillErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Contact state. When the transfer complete --></label>
+        <name>icAgentConsole__transferComplete</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Transfer Email Details Section header label in email  transcript. --></label>
+        <name>icAgentConsole__transferEmailDetail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Transfer the contact. --></label>
+        <name>icAgentConsole__transferErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Transfer workitem to agent. --></label>
+        <name>icAgentConsole__transferWIAgentErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Transfer workitem to skill. --></label>
+        <name>icAgentConsole__transferWISkillErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- short form of &quot;Tuesday&quot; --></label>
+        <name>icAgentConsole__tue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Day in a Week --></label>
+        <name>icAgentConsole__tuesday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- tuv --></label>
+        <name>icAgentConsole__tuv</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Type --></label>
+        <name>icAgentConsole__type</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- notification text which is displaying in the chat content panel while patron typ --></label>
+        <name>icAgentConsole__typingMsg</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip text will be display when hover the unpark email button in email contact --></label>
+        <name>icAgentConsole__unParkEmail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- when the agent is not on the phone --></label>
+        <name>icAgentConsole__unavailable</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tooltip label Underline for the underline selection button in the email editor t --></label>
+        <name>icAgentConsole__underline</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Text displayed when the consult agentname is not available --></label>
+        <name>icAgentConsole__unknownAgent</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unmask --></label>
+        <name>icAgentConsole__unmask</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unmute --></label>
+        <name>icAgentConsole__unmute</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unable to Unmute. --></label>
+        <name>icAgentConsole__unmuteErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Unpark working now is a button which is displaying in email control panel --></label>
+        <name>icAgentConsole__unparkNow</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Display Unpark to queue icon in email control panel when the agent state is Avai --></label>
+        <name>icAgentConsole__unparkToQueue</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label in the Agent configuration page --></label>
+        <name>icAgentConsole__useDefault</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- User --></label>
+        <name>icAgentConsole__user</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Error message displayed in user setting, when any error occurs on saving the use --></label>
+        <name>icAgentConsole__userSettingErrorAttempt</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Placeholder for salesforce username field --></label>
+        <name>icAgentConsole__username</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Username is not valid --></label>
+        <name>icAgentConsole__usernameIsNotValid</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Username is required --></label>
+        <name>icAgentConsole__usernameRequired</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- value in the personal connection outbound skill panel --></label>
+        <name>icAgentConsole__valueOne</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- value in the personal connection outbound skill panel --></label>
+        <name>icAgentConsole__valueTwo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Label for the version displayed in info panel --></label>
+        <name>icAgentConsole__version</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- VoiceMail --></label>
+        <name>icAgentConsole__voicemail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Object name displayed in Agent Configuration. Represent Voicemail related info --></label>
+        <name>icAgentConsole__voicemailInfo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Wait --></label>
+        <name>icAgentConsole__wait</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Agent spends waiting for a call --></label>
+        <name>icAgentConsole__waitTime</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Use of deprecated APIs, poor use of API, &apos;almost&apos; errors, other runtime situatio --></label>
+        <name>icAgentConsole__warn</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- one of the label in Agent information panel --></label>
+        <name>icAgentConsole__webServer</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- short form of &quot;Wednesday&quot; --></label>
+        <name>icAgentConsole__wed</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Day in a Week --></label>
+        <name>icAgentConsole__wednesday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- label in the disposition panel --></label>
+        <name>icAgentConsole__what</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- label in the disposition panel --></label>
+        <name>icAgentConsole__who</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Work Item --></label>
+        <name>icAgentConsole__workItem</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A work item is a generic task that can be routed through the system and assigned --></label>
+        <name>icAgentConsole__workItemInfo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &quot;Working&quot; is a label which is displaying in agent reports productivity --></label>
+        <name>icAgentConsole__working</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- wxyz --></label>
+        <name>icAgentConsole__wxyz</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- yes button in dialog box --></label>
+        <name>icAgentConsole__yes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- yesterday is a date range which is displaying in agent reports performance --></label>
+        <name>icAgentConsole__yesterday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &quot;You&quot; is the default label in chat --></label>
+        <name>icAgentConsole__you</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- zip --></label>
+        <name>icAgentConsole__zip</name>
+    </customLabels>
     <customTabs>
         <label><!-- Custom Metadata Migrator --></label>
         <name>CMT_Migrator</name>

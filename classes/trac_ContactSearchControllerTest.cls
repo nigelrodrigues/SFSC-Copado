@@ -26,7 +26,7 @@ private class trac_ContactSearchControllerTest {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
         List<Contact> contacts = new List<Contact>();
         Contact con = new Contact(LastName = 'Test',Order_Number__c='1234',Business_Unit__c='MHF');
-        contacts = trac_ContactSearchController.getContacts(con);
+        contacts = trac_ContactSearchController.getContacts(con, false);
         System.assert(contacts.size() > 0, 'Contacts not found.');
     }
 
@@ -68,7 +68,7 @@ private class trac_ContactSearchControllerTest {
         Case updatedCase = [SELECT Id, ContactId FROM Case WHERE Id =: caseId];
         System.assertEquals(con.id, updatedCase.ContactId, 'Contact not linked with Case.');
         System.assertEquals(false, String.isBlank(trac_ContactSearchController.buildQuery(con)));
-        trac_ContactSearchController.getContacts(con);
+        trac_ContactSearchController.getContacts(con, false);
 
     }
 

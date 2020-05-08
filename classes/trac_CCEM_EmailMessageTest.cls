@@ -38,7 +38,7 @@ private class trac_CCEM_EmailMessageTest {
     @IsTest static void test_closedCaseWithSetting() {
 
         Closed_Case_Email_Handler_Settings__c closedCaseEmailHandlerSettings = new Closed_Case_Email_Handler_Settings__c(
-                Hours_Since_Closed__c = -10
+                Hours_Since_Closed_Internal__c = -10
         );
         insert closedCaseEmailHandlerSettings;
 
@@ -69,7 +69,8 @@ private class trac_CCEM_EmailMessageTest {
     @IsTest static void test_closedCaseWithSettingNoReparent() {
 
         Closed_Case_Email_Handler_Settings__c closedCaseEmailHandlerSettings = new Closed_Case_Email_Handler_Settings__c(
-                Hours_Since_Closed__c = 10
+                Hours_Since_Closed_Internal__c = 10,
+                Hours_Since_Closed_External__c = 10
         );
         insert closedCaseEmailHandlerSettings;
 
