@@ -118,6 +118,10 @@
                 <behavior>Readonly</behavior>
                 <field>Case_Owner_Supervisor__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Tech_Escalation__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

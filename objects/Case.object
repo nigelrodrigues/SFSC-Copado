@@ -6210,6 +6210,16 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Tech_Escalation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Tech Escalation</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Time_With_Customer__c</fullName>
         <defaultValue>0</defaultValue>
         <description>The time in business hours that this case spent in the hands of the customer. Part of time in business hours package</description>

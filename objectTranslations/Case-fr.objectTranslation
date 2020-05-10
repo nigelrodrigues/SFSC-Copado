@@ -2222,6 +2222,10 @@
         <name>TL_Review_Required__c</name>
     </fields>
     <fields>
+        <label><!-- Tech Escalation --></label>
+        <name>Tech_Escalation__c</name>
+    </fields>
+    <fields>
         <help><!-- The time in business hours that this case spent in the hands of the customer. --></help>
         <label><!-- Time With Customer --></label>
         <name>Time_With_Customer__c</name>

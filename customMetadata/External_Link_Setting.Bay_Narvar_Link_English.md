@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">https://returns-qa01.narvar.qa/thebay/returns?locale=en_CA&amp;usertype=BAY081017</value>
+        <value xsi:type="xsd:string">https://returns.narvar.com/thebay/returns?locale=en_CA&amp;usertype=BAY081017</value>
     </values>
 </CustomMetadata>

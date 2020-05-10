@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>Link_to_Narvar__c</field>
-        <value xsi:type="xsd:string">https://returns-qa01.narvar.qa/off5th/returns?order={ORDERNUMBER}&amp;bzip={ZIPCODE}&amp;init=true&amp;usertype=OFF5081017</value>
+        <value xsi:type="xsd:string">https://returns.narvar.com/off5th/returns?order={ORDERNUMBER}&amp;bzip={ZIPCODE}&amp;init=true&amp;usertype=OFF5081017</value>
     </values>
 </CustomMetadata>

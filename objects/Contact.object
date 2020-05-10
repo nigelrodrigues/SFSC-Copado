@@ -1130,7 +1130,6 @@ BEGINS(Phone, &quot;855&quot;)))</formula>
     </fields>
     <fields>
         <fullName>SFCC_Customer_Id__c</fullName>
-        <caseSensitive>false</caseSensitive>
         <description>This field holds Salesforce Commerce Cloud Customer ID.</description>
         <externalId>false</externalId>
         <inlineHelpText>This field holds Salesforce Commerce Cloud Customer ID.</inlineHelpText>
@@ -1140,11 +1139,10 @@ BEGINS(Phone, &quot;855&quot;)))</formula>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Text</type>
-        <unique>true</unique>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SFCC_Customer_Number__c</fullName>
-        <caseSensitive>false</caseSensitive>
         <description>This field holds Salesforce Commerce Cloud customer number.</description>
         <externalId>false</externalId>
         <inlineHelpText>This field holds Salesforce Commerce Cloud customer number.</inlineHelpText>
@@ -1154,7 +1152,7 @@ BEGINS(Phone, &quot;855&quot;)))</formula>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Text</type>
-        <unique>true</unique>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Store_Alpha__c</fullName>

@@ -141,7 +141,7 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__PublicSector</name>
-        <type>CustomApplication</type>
+        <name>inContact</name>
+        <type>ConnectedApp</type>
     </appMenuItems>
 </AppMenu>

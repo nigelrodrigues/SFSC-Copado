@@ -91,6 +91,10 @@
                 <behavior>Edit</behavior>
                 <field>Transfer_Stewardship__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Tech_Escalation__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
