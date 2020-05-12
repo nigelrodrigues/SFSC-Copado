@@ -15,7 +15,7 @@
     <cspUpgradeInsecureRequests>true</cspUpgradeInsecureRequests>
     <customWebAddresses>
         <domainName>support.saksoff5th.com</domainName>
-        <primary>false</primary>
+        <primary>true</primary>
     </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
