@@ -1,3 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ManagedTopics xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<ManagedTopics xmlns="http://soap.sforce.com/2006/04/metadata">
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Featured:Assistance Au Compte</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Assistance Au Compte</name>
+        <parentName></parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Featured:Assistance Au Magasinage</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Assistance Au Magasinage</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Featured:Cartes-cadeaux</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Cartes-cadeaux</name>
+        <parentName></parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Featured:Commandes Et Expédition</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Commandes Et Expédition</name>
+        <parentName></parentName>
+        <position>3</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Featured:Retours Et Échanges</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Retours Et Échanges</name>
+        <parentName></parentName>
+        <position>4</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Navigational:Assistance Au Compte</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Assistance Au Compte</name>
+        <parentName></parentName>
+        <position>4</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Navigational:Assistance Au Magasinage</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Assistance Au Magasinage</name>
+        <parentName></parentName>
+        <position>3</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Navigational:Assistance En Magasin</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Assistance En Magasin</name>
+        <parentName></parentName>
+        <position>5</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Navigational:Cartes-cadeaux</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Cartes-cadeaux</name>
+        <parentName></parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Navigational:Commandes Et Expédition</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Commandes Et Expédition</name>
+        <parentName></parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Service Saks Off 5th.Navigational:Retours Et Échanges</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Retours Et Échanges</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+</ManagedTopics>

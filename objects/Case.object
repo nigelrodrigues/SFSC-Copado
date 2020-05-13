@@ -6543,11 +6543,6 @@
         <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
         <columns>Business_Unit__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
         <label>All Open Cases</label>
     </listViews>
     <listViews>

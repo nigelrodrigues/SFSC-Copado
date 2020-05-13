@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>OMS_API_Version__c</field>
-        <value xsi:type="xsd:string">/orders/v5</value>
+        <value xsi:type="xsd:string">/orders/v2</value>
     </values>
 </CustomMetadata>

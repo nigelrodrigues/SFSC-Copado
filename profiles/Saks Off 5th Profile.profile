@@ -130,6 +130,26 @@
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
+    <categoryGroupVisibilities>
+        <dataCategories>Off5thStorelocations</dataCategories>
+        <dataCategories>Off5thPricing</dataCategories>
+        <dataCategories>Off5th</dataCategories>
+        <dataCategories>Off5th_Delivery</dataCategories>
+        <dataCategories>Off5th_Gift_Card</dataCategories>
+        <dataCategories>Off5th_Gift_Registry</dataCategories>
+        <dataCategories>Off5th_Order_Inquiry</dataCategories>
+        <dataCategories>Off5th_Place_an_Order</dataCategories>
+        <dataCategories>Off5th_Product_Info</dataCategories>
+        <dataCategories>Off5th_QA</dataCategories>
+        <dataCategories>Off5th_Refund</dataCategories>
+        <dataCategories>Off5th_Return</dataCategories>
+        <dataCategories>Off5th_Rewards</dataCategories>
+        <dataCategories>Off5th_Risk_Management</dataCategories>
+        <dataCategories>Off5th_Systems</dataCategories>
+        <dataCategories>Off5th_Other</dataCategories>
+        <dataCategoryGroup>Support</dataCategoryGroup>
+        <visibility>CUSTOM</visibility>
+    </categoryGroupVisibilities>
     <classAccesses>
         <apexClass>AppConstants</apexClass>
         <enabled>false</enabled>

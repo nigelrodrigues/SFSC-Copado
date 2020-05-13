@@ -77,6 +77,10 @@
         <name>Case_Field_Order_Number</name>
     </customLabels>
     <customLabels>
+        <label>Code Postal</label>
+        <name>Case_Field_Postal_Code</name>
+    </customLabels>
+    <customLabels>
         <label>Objet</label>
         <name>Case_Field_Subject</name>
     </customLabels>

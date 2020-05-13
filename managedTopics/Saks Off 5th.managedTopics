@@ -1,3 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ManagedTopics xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<ManagedTopics xmlns="http://soap.sforce.com/2006/04/metadata">
+    <managedTopic>
+        <fullName>Saks Off 5th.Featured:Account Assistance</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Account Assistance</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Featured:Gift Cards</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Gift Cards</name>
+        <parentName></parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Featured:Orders &amp; Shipping</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Orders &amp; Shipping</name>
+        <parentName></parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Featured:Returns &amp; Exchanges</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Returns &amp; Exchanges</name>
+        <parentName></parentName>
+        <position>4</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Featured:Shopping Assistance</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Shopping Assistance</name>
+        <parentName></parentName>
+        <position>3</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Featured:Store Assistance</fullName>
+        <managedTopicType>Featured</managedTopicType>
+        <name>Store Assistance</name>
+        <parentName></parentName>
+        <position>5</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Navigational:Account Assistance</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Account Assistance</name>
+        <parentName></parentName>
+        <position>4</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Navigational:Gift Cards</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Gift Cards</name>
+        <parentName></parentName>
+        <position>2</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Navigational:Orders &amp; Shipping</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Orders &amp; Shipping</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Navigational:Returns &amp; Exchanges</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Returns &amp; Exchanges</name>
+        <parentName></parentName>
+        <position>0</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Navigational:Shopping Assistance</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Shopping Assistance</name>
+        <parentName></parentName>
+        <position>3</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
+        <fullName>Saks Off 5th.Navigational:Store Assistance</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Store Assistance</name>
+        <parentName></parentName>
+        <position>5</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+</ManagedTopics>

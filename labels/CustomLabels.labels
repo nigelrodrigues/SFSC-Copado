@@ -97,6 +97,14 @@
         <value>Order Number</value>
     </labels>
     <labels>
+        <fullName>Case_Field_Postal_Code</fullName>
+        <categories>Contact Support Form</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case Field Postal Code</shortDescription>
+        <value>Postal Code</value>
+    </labels>
+    <labels>
         <fullName>Case_Field_Subject</fullName>
         <categories>Contact Support Form</categories>
         <language>en_US</language>
