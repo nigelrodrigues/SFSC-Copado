@@ -36,6 +36,10 @@
         <label><!-- System --></label>
         <name>System__c</name>
         <picklistValues>
+            <masterLabel>Blue Martini</masterLabel>
+            <translation><!-- Blue Martini --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Finesse</masterLabel>
             <translation><!-- Finesse --></translation>
         </picklistValues>

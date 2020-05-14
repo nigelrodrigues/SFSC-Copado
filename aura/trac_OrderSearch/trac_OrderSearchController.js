@@ -5,6 +5,7 @@
     doInit: function (component, event, helper) {
         helper.fetchPickListVal(component, 'Business_Unit__c', 'businessUnit');
         var orderNo = component.get("v.orderNumber");
+        var postalCode = component.get("v.postalCode");
         var cs = component.get("v.caseRecord");
 
         if(cs && (cs.Business_Unit__c == 'Off 5th'|| cs.Business_Unit__c == 'Saks')){
@@ -19,6 +20,10 @@
             }
             if (component.find("emailInput") && cs.Contact) {
                 component.find("emailInput").set("v.value", cs.Contact.Email);
+            }
+            if(postalCode)
+            {
+                component.find("postalInput").set("v.value", postalCode);
             }
             helper.searchByOrderNumber(component, event, helper, orderNo);
         }

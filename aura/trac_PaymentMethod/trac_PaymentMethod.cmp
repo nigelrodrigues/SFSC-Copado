@@ -80,20 +80,6 @@
 
                 <lightning:layoutItem padding="around-small">
                     <div class="header-column">
-                        <p class="field-title slds-form-element__label slds-no-flex">Promo Code Used</p>
-                        <p>{!v.paymentMethod.Notes.NoteText}</p>
-                    </div>
-                </lightning:layoutItem>
-
-                <lightning:layoutItem padding="around-small">
-                    <div class="header-column">
-                        <p class="field-title slds-form-element__label slds-no-flex">Cancellation Reason</p>
-                        <p>{!v.paymentMethod.Notes.ReasonCode}</p>
-                    </div>
-                </lightning:layoutItem>
-
-                <lightning:layoutItem padding="around-small">
-                    <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Billing Address</p>
                         <p>{!v.paymentMethod.PersonInfoBillTo.FirstName + ' ' + v.paymentMethod.PersonInfoBillTo.LastName + ', ' + v.paymentMethod.PersonInfoBillTo.DayPhone}</p>
                         <p>{!v.paymentMethod.PersonInfoBillTo.AddressLine1}</p>

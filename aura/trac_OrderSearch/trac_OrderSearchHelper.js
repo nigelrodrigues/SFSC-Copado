@@ -21,7 +21,8 @@
 
     searchByOrderNumber : function(component, event, helper, orderNo) {
         var businessUnit = component.find("businessUnit").get("v.value");
-        var postalCode = component.get("v.postalCode");
+        var postalCode = component.find("postalInput").get("v.value");
+
         if (!businessUnit) {
             var cs = component.get("v.caseRecord");
             businessUnit = cs.Business_Unit__c;
@@ -53,7 +54,7 @@
                             if(component.get("v.orderNumber")){
                                 component.set("v.order", result.returnValuesMap['orderDetails']);
                             }else{
-                                helper.linkToCase(component, orderNo);
+                                helper.linkToCase(component, orderNo, postalCode);
                             }
                         }
                     } else {
@@ -63,7 +64,7 @@
                 }
             }
             else {
-                console.log("failed with state: " + state);
+                console.error("failed with state: " + state);
             }
             component.set("v.isLoading", false);
         });
@@ -198,7 +199,7 @@
                 }
             }
             else {
-                console.log("failed with state: " + state);
+                console.error("failed with state: " + state);
             }
             component.set("v.isLoading", false);
         });
@@ -221,16 +222,22 @@
         component.set("v.order", null);
     },
 
-    linkToCase : function (component, orderNo) {
+    linkToCase : function (component, orderNo, postalCode) {
         var action = component.get("c.updateCase");
         var caseRecord = component.get("v.caseRecord");
         var order = component.get("v.order");
 
         if (caseRecord && !caseRecord.Order_Number__c) {
+
+            if(!postalCode)
+                postalCode = null;
+
+            var zipCode = (order && order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : postalCode;
+
             action.setParams({
                 "caseId": caseRecord.Id,
                 "orderNo": orderNo,
-                "orderZipCode": (order && order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : null
+                "orderZipCode": zipCode
             });
 
             action.setCallback(this, function (response) {
@@ -238,7 +245,7 @@
                 if (component.isValid() && state === "SUCCESS") {
                     $A.get('e.force:refreshView').fire();
                 } else {
-                    console.log("failed with state: " + state);
+                    console.error("failed with state: " + state);
                 }
             });
 

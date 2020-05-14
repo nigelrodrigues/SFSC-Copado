@@ -99,6 +99,15 @@
 
                                         <div class="slds-grid slds-wrap slds-gutters_small cols-1">
                                             <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
+                                                <lightning-input name="Order_Billing_Postal_Code__c"
+                                                                 label={placeholders.postalCode.optional}
+                                                                 class={postalCodeFieldClassList}>
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-grid slds-wrap slds-gutters_small cols-1">
+                                            <div class="slds-col slds-size_1-of-1 slds-is-editing slds-has-flexi-truncate">
                                                 <lightning-input name="Subject"
                                                                  label={placeholders.description}
                                                                  class="custom-input-field"
@@ -106,6 +115,8 @@
                                                 </lightning-input>
                                             </div>
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>

@@ -6,6 +6,9 @@
         <publicGroups>
             <publicGroup>Off_5th_Main</publicGroup>
         </publicGroups>
+        <roles>
+            <role>Off_5th_Digital_Cebu</role>
+        </roles>
     </queueMembers>
     <queueRoutingConfig>All_Queues</queueRoutingConfig>
     <queueSobject>

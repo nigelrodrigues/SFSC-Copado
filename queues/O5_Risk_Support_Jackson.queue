@@ -7,7 +7,9 @@
             <publicGroup>O5_Risk_Support_Jackson</publicGroup>
         </publicGroups>
         <users>
+            <user>belinda.pigg@hbc.com</user>
             <user>darren.steeves@hbc.com</user>
+            <user>jen.clinton@hbc.com</user>
         </users>
     </queueMembers>
     <queueRoutingConfig>All_Queues</queueRoutingConfig>

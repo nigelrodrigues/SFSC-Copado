@@ -48,10 +48,11 @@ export default class TopicNavigator extends LightningElement {
     off5thcommunity;
 
     connectedCallback() {
+        debugger;
         let getUrl = window.location;
         this.baseUrl = getUrl.protocol + "//" + getUrl.host;
 
-        if((getUrl.pathname).indexOf('off5th')!=-1 || (getUrl.pathname).indexOf('SupportSaks')!=-1) {
+        if((getUrl.pathname).indexOf('off5th')!=-1 || (getUrl.pathname).indexOf('SupportSaks')!=-1 || (getUrl.origin).indexOf('off5th')!=-1) {
             this.off5thcommunity = 'off5th';
         }
 

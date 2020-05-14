@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>Customer_List_ID__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">SaksOff5th</value>
     </values>
     <values>
         <field>Default_Customer_Id__c</field>
-        <value xsi:type="xsd:string">abQvoWTMAOL615nbHVUeRxFZ28</value>
+        <value xsi:type="xsd:string">adPf0jGxagh6jRRJ0bGfXUdOP8</value>
     </values>
     <values>
         <field>Store_ID__c</field>

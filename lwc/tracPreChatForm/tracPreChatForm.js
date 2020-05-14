@@ -21,6 +21,7 @@ import CASETYPE_FIELD from '@salesforce/schema/Case.Community_Case_Type__c';
 
 
 const ORDER_CLASS = 'order-number custom-input-field';
+const POSTAL_CODE_CLASS = 'postal-code custom-input-field';
 const REQUIRED_CLASS = 'custom-required';
 
 
@@ -74,6 +75,10 @@ export default class PreChatForm extends LightningElement {
             optional: fieldLabels.OrderNumber + ' ' + labels.lblOptional,
             required: fieldLabels.OrderNumber
         },
+        postalCode : {
+            optional : fieldLabels.PostalCode + ' ' + labels.lblOptional,
+            required : fieldLabels.PostalCode
+        },
         description: fieldLabels.Description + ' ' + labels.lblOptional
     };
 
@@ -82,6 +87,7 @@ export default class PreChatForm extends LightningElement {
     @track editMode = true; // Boolean value for DOM to either render the edit page or the view page
     @track fieldCaseType; // String value set by the Case field "Case_Type__c" on the UI
     @track orderClass = ORDER_CLASS; // String value of the css class to identify the Order_Number__c field
+    @track postalCodeClass = POSTAL_CODE_CLASS;
 
     get isEditMode() {
         return this.editMode;
@@ -89,6 +95,10 @@ export default class PreChatForm extends LightningElement {
 
     get orderFieldClassList() {
         return this.orderClass;
+    }
+
+    get postalCodeFieldClassList() {
+        return this.postalCodeClass;
     }
 
     caseTypes = getCaseTypeValidations().then(result => {
@@ -105,6 +115,7 @@ export default class PreChatForm extends LightningElement {
         this.fieldCaseType = event.target.value;
         const typeSelect = this.template.querySelector('.slds-select');
         const orderInputDiv = this.template.querySelector('.order-number');
+        const postalCodeInputDiv = this.template.querySelector('.postal-code');
 
         typeSelect.classList.remove('select-error');
         typeSelect.classList.remove('slds-has-error');
@@ -118,11 +129,17 @@ export default class PreChatForm extends LightningElement {
         }
         if (orderRequired) {
             this.orderClass = ORDER_CLASS + ' ' + REQUIRED_CLASS;
+            this.postalCodeClass = POSTAL_CODE_CLASS + ' ' + REQUIRED_CLASS;
             orderInputDiv.label = this.placeholders.order.required;
+            postalCodeInputDiv.label = this.placeholders.postalCode.required;
         } else {
             this.orderClass = ORDER_CLASS;
+            this.postalCodeClass = POSTAL_CODE_CLASS;
             orderInputDiv.classList.remove('slds-has-error');
             orderInputDiv.label = this.placeholders.order.optional;
+            postalCodeInputDiv.classList.remove('slds-has-error');
+            postalCodeInputDiv.label = this.placeholders.postalCode.optional;
+
         }
 
 

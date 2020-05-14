@@ -22,12 +22,9 @@
     setUnresolvedHolds: function (component, event, helper) {
         var order = component.get("v.order");
         var hasUnresolvedHolds = false;
-
         if (order && order.OrderHoldTypes && order.OrderHoldTypes.OrderHoldType) {
-            console.log('order.OrderHoldTypes.OrderHoldType', order.OrderHoldTypes.OrderHoldType);
             var i;
             for (i = 0; i < order.OrderHoldTypes.OrderHoldType.length; i++) {
-                console.log('order.OrderHoldTypes.OrderHoldType[i]', order.OrderHoldTypes.OrderHoldType[i]);
                 if (order.OrderHoldTypes.OrderHoldType[i].StatusDescription !== "Resolved") {
                     hasUnresolvedHolds = true;
                     break;

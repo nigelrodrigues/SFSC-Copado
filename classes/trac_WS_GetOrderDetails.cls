@@ -176,6 +176,7 @@ public with sharing class trac_WS_GetOrderDetails {
                 for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
                     if (orderLineWrapper.Extn != null) {
                         orderLineWrapper.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(orderLineWrapper.Extn.ExtnBlueMartiniStatus);
+                        orderLineWrapper.customBlueMartiniCancelCode = getBlueMartiniDisplayCancelCode(orderLineWrapper.Extn.ExtnBlueMartiniCancellationCode);
                     }
                 }
             }
@@ -213,6 +214,22 @@ public with sharing class trac_WS_GetOrderDetails {
         return displayStatus;
     }
 
+    private static String getBlueMartiniDisplayCancelCode(String blueMartiniStatusCode) {
+        String displayStatus = blueMartiniStatusCode;
+
+        Map<String, Map<String, Reference_Data__mdt>> referenceDataBySystemValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('Blue Martini', 'System_Value__c');
+
+        if (referenceDataBySystemValueByType.containsKey('Cancel Code')) {
+            Map<String, Reference_Data__mdt> referenceDataByStatus = referenceDataBySystemValueByType.get('Cancel Code');
+
+            if (referenceDataByStatus.containsKey(blueMartiniStatusCode)) {
+                displayStatus = referenceDataByStatus.get(blueMartiniStatusCode).Salesforce_Value__c;
+            }
+        }
+
+        return displayStatus;
+    }
+
     public class GetOrderDetailsRequest {
         public req_OrderWrapper Order;
     }
@@ -234,7 +251,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ContainersWrapper Containers;
         @AuraEnabled public String OrderDate;
         @AuraEnabled public String SellerOrganizationCode;
-        //@AuraEnabled public res_PromotionsWrapper Promotions;
+        @AuraEnabled public res_PromotionsWrapper Promotions;
         @AuraEnabled public res_PaymentMethodsWrapper PaymentMethods;
         @AuraEnabled public res_HeaderTaxesWrapper HeaderTaxes;
         @AuraEnabled public String Status;
@@ -293,6 +310,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ShipmentLineWrapper customShipmentLine;
         @AuraEnabled public String customUPC;
         @AuraEnabled public String customBlueMartiniStatus;
+        @AuraEnabled public String customBlueMartiniCancelCode;
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
@@ -592,6 +610,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnReturnTrackingURL;
         @AuraEnabled public String ExtnAssociateName;
         @AuraEnabled public String ExtnBlueMartiniStatus;
+        @AuraEnabled public String ExtnBlueMartiniCancellationCode;
         @AuraEnabled public String ExtnEstimatedShipDate;
         @AuraEnabled public String ExtnFirstEstimatedShipDate;
     }

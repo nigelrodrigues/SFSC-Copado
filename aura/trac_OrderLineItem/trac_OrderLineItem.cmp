@@ -91,6 +91,15 @@
                                     </lightning:layoutItem>
                                 </aura:if>
 
+                                <aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniCancelCode))}">
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Blue Martini Cancellation Code</p>
+                                            <p>{!v.orderLineItem.customBlueMartiniCancelCode}</p>
+                                        </div>
+                                    </lightning:layoutItem>
+                                </aura:if>
+
                                 <aura:if isTrue="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute != null}" >
                                     <aura:iteration items="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute}" var="attribute" >
                                         <lightning:layoutItem padding="around-small">

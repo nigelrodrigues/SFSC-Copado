@@ -84,6 +84,11 @@
                     <default>false</default>
                     <label>Finesse</label>
                 </value>
+                <value>
+                    <fullName>Blue Martini</fullName>
+                    <default>false</default>
+                    <label>Blue Martini</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

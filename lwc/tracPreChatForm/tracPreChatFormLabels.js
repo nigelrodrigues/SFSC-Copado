@@ -32,6 +32,7 @@ import Type from '@salesforce/label/c.Case_Field_Type';
 import OrderNumber from '@salesforce/label/c.Case_Field_Order_Number';
 import Subject from '@salesforce/label/c.Case_Field_Subject';
 import Description from '@salesforce/label/c.Case_Field_Description';
+import PostalCode from '@salesforce/label/c.Case_Field_Postal_Code';
 
 
 const labels = {
@@ -63,7 +64,8 @@ const fieldLabels = {
     Type,
     OrderNumber,
     Subject,
-    Description
+    Description,
+    PostalCode
 };
 
 export { labels, fieldLabels };

@@ -30,6 +30,7 @@ import CASETYPE_FIELD from '@salesforce/schema/Case.Case_Type__c';
 
 
 const ORDER_CLASS = 'order-number custom-input-field';
+const POSTAL_CODE_CLASS = 'postal-code custom-input-field';
 const REQUIRED_CLASS = 'custom-required';
 
 
@@ -55,6 +56,10 @@ export default class trac_ContactSupportForm extends LightningElement {
         order : {
             optional : fieldLabels.OrderNumber + ' ' + labels.lblOptional,
             required : fieldLabels.OrderNumber
+        },
+        postalCode : {
+            optional : fieldLabels.PostalCode + ' ' + labels.lblOptional,
+            required : fieldLabels.PostalCode
         },
         subject : fieldLabels.Subject,
         description : fieldLabels.Description + ' ' + labels.lblOptional,
@@ -87,6 +92,7 @@ export default class trac_ContactSupportForm extends LightningElement {
     //guest = isGuest; // Boolean value used to decipher logged in user from guest user
     @track fieldCaseType; // String value set by the Case field "Case_Type__c" on the UI
     @track orderClass = ORDER_CLASS; // String value of the css class to identify the Order_Number__c field
+    @track postalCodeClass = POSTAL_CODE_CLASS;
     defaultOrigin = 'Support Community';
 
     get isEditMode() {
@@ -95,6 +101,10 @@ export default class trac_ContactSupportForm extends LightningElement {
 
     get orderFieldClassList() {
         return this.orderClass;
+    }
+
+    get postalCodeFieldClassList() {
+        return this.postalCodeClass;
     }
 
     caseTypes = getCaseTypeValidations().then(result => {
@@ -111,6 +121,7 @@ export default class trac_ContactSupportForm extends LightningElement {
         this.handleTopicChange(event, 'Subject');
         this.fieldCaseType = event.detail.value;
         const orderInputDiv = this.template.querySelector('.order-number');
+        const postalCodeInputDiv = this.template.querySelector('.postal-code');
 
         let orderRequired = false;
         for (let i = 0; i < this.caseTypes.length; i++) {
@@ -121,13 +132,18 @@ export default class trac_ContactSupportForm extends LightningElement {
         }
         if (orderRequired) {
             this.orderClass = ORDER_CLASS + ' ' + REQUIRED_CLASS;
+            this.postalCodeClass = POSTAL_CODE_CLASS + ' ' + REQUIRED_CLASS;
             orderInputDiv.label = this.placeholders.order.required;
+            postalCodeInputDiv.label = this.placeholders.postalCode.required;
             // orderErrorDiv.classList.add('custom-message');
         } else {
             this.orderClass = ORDER_CLASS;
+            this.postalCodeClass = POSTAL_CODE_CLASS;
             // orderErrorDiv.classList.remove('custom-message');
             orderInputDiv.classList.remove('slds-has-error');
+            postalCodeInputDiv.classList.remove('slds-has-error');
             orderInputDiv.label = this.placeholders.order.optional;
+            postalCodeInputDiv.label = this.placeholders.postalCode.optional;
             // orderErrorDiv.classList.add('custom-hidden');
         }
 
@@ -286,6 +302,7 @@ export default class trac_ContactSupportForm extends LightningElement {
      */
     handleFormSuccess(event) {
         this.caseId = event.detail.id;
+        console.log('SUCCESS');
 
         if(this.uploadedFiles != null && this.uploadedFiles.length > 0) {
             attachFilesToCase({caseId: this.caseId, uploadedFileIds: this.uploadedFiles})

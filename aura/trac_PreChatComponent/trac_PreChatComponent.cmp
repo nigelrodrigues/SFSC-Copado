@@ -18,7 +18,7 @@
     <!-- Contains methods for getting pre-chat fields, starting a chat, and validating fields -->
     <lightningsnapin:prechatAPI aura:id="prechatAPI"/>
 
-    <div class="prechatUI">
+    <div class="prechatUI" style="height:100%;overflow-y: auto;">
         <div class="prechatContent">
             <ul class="fieldsList">
                 <aura:if isTrue="{!v.showForm}">

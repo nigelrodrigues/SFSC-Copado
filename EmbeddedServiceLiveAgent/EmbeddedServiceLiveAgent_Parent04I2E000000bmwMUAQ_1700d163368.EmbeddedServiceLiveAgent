@@ -4,13 +4,13 @@
     <embeddedServiceQuickActions>
         <embeddedServiceLiveAgent>EmbeddedServiceLiveAgent_Parent04I2E000000bmwMUAQ_1700d163368</embeddedServiceLiveAgent>
         <order>1</order>
-        <quickActionDefinition>Snapins_Contact_PrechatQuickAction_08h2E000000blxY_1581506734567</quickActionDefinition>
+        <quickActionDefinition>Snapins_Contact_PrechatQuickAction_08h2E000000blxY_1589374881493</quickActionDefinition>
         <quickActionType>Prechat</quickActionType>
     </embeddedServiceQuickActions>
     <embeddedServiceQuickActions>
         <embeddedServiceLiveAgent>EmbeddedServiceLiveAgent_Parent04I2E000000bmwMUAQ_1700d163368</embeddedServiceLiveAgent>
         <order>2</order>
-        <quickActionDefinition>Snapins_Case_PrechatQuickAction_08h2E000000blxY_1581506734708</quickActionDefinition>
+        <quickActionDefinition>Snapins_Case_PrechatQuickAction_08h2E000000blxY_1589374881666</quickActionDefinition>
         <quickActionType>Prechat</quickActionType>
     </embeddedServiceQuickActions>
     <enabled>true</enabled>

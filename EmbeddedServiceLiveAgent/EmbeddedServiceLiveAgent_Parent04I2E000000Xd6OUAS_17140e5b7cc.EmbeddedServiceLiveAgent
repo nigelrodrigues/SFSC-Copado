@@ -4,22 +4,22 @@
     <embeddedServiceQuickActions>
         <embeddedServiceLiveAgent>EmbeddedServiceLiveAgent_Parent04I2E000000Xd6OUAS_17140e5b7cc</embeddedServiceLiveAgent>
         <order>1</order>
-        <quickActionDefinition>Snapins_Contact_PrechatQuickAction_08h2E000000XaTF_1585931729060</quickActionDefinition>
+        <quickActionDefinition>Snapins_Contact_PrechatQuickAction_08h2E000000XaTF_1589375491512</quickActionDefinition>
         <quickActionType>Prechat</quickActionType>
     </embeddedServiceQuickActions>
     <embeddedServiceQuickActions>
         <embeddedServiceLiveAgent>EmbeddedServiceLiveAgent_Parent04I2E000000Xd6OUAS_17140e5b7cc</embeddedServiceLiveAgent>
         <order>2</order>
-        <quickActionDefinition>Snapins_Case_PrechatQuickAction_08h2E000000XaTF_1585931729572</quickActionDefinition>
+        <quickActionDefinition>Snapins_Case_PrechatQuickAction_08h2E000000XaTF_1589375491646</quickActionDefinition>
         <quickActionType>Prechat</quickActionType>
     </embeddedServiceQuickActions>
-    <enabled>true</enabled>
+    <enabled>false</enabled>
     <fontSize>Medium</fontSize>
     <isOfflineCaseEnabled>false</isOfflineCaseEnabled>
     <isQueuePositionEnabled>true</isQueuePositionEnabled>
     <liveChatButton>Off_5th_Chat_English</liveChatButton>
     <liveChatDeployment>Support_Deployment</liveChatDeployment>
     <masterLabel>EmbeddedServiceLiveAgent_Parent04I2E000000Xd6OUAS_17140e5b7cc</masterLabel>
-    <prechatEnabled>true</prechatEnabled>
+    <prechatEnabled>false</prechatEnabled>
     <scenario>Service</scenario>
 </EmbeddedServiceLiveAgent>

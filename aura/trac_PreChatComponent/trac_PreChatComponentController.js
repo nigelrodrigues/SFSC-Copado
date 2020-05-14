@@ -42,7 +42,8 @@
             "Origin_Is_Chat__c": "Origin Is Chat",
             "Case_Language__c": "Case Language",
             "SuppliedEmail": "Web Email",
-            "Language__c": "Language"
+            "Language__c": "Language",
+            "Order_Billing_Postal_Code__c": "Order Billing Postal Code"
         };
 
         if (fieldsEvent['Case_Language__c'] === 'French') {
@@ -54,6 +55,7 @@
             nameToFieldLabel["SuppliedName"] = "Nom Web";
             nameToFieldLabel["Order_Number__c"] = "Numéro de commande";
             nameToFieldLabel["SuppliedEmail"] = "E-mail Web";
+            //nameToFieldLabel["Order_Billing_Postal_Code__c"] = "Code Postal";
         }
 
         let fields = [];
@@ -72,6 +74,7 @@
             name: "Language__c"
         });
         fields.push({label: nameToFieldLabel["Origin_Is_Chat__c"], value: "True", name: "Origin_Is_Chat__c"});
+
         if (cmp.find("prechatAPI").validateFields(fields).valid) {
             cmp.find("prechatAPI").startChat(fields);
             window.dispatchEvent(new CustomEvent('serviceChatStart', {}));

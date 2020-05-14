@@ -114,6 +114,8 @@
             var orderAmount = parseFloat(order.PriceInfo.TotalAmount);
 
             var paymentRemaining = orderAmount - sumOfPayments - allExistingPayments;
+            if(paymentRemaining < 0 )
+                paymentRemaining = 0;
             component.set("v.paymentRemaining", paymentRemaining);
             var addPaymentCmp = component.find('trac_AddPaymentMethodCmp');
             if(addPaymentCmp){

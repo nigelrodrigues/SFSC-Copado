@@ -12471,10 +12471,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-HBC Case Feed Layout</layout>
-        <recordType>Case.Off_5th_Support_Case</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Case-HBC Case Feed Layout</layout>
         <recordType>Case.Saks_Support_Case</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -12484,6 +12480,10 @@
     <layoutAssignments>
         <layout>Case-Marketing Case Layout</layout>
         <recordType>Case.Marketing_Emails</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Case-Saks%2FOff5th Case Feed Layout</layout>
+        <recordType>Case.Off_5th_Support_Case</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>CaseClose-Close Case Layout</layout>
