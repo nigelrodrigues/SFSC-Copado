@@ -8,14 +8,12 @@
 <aura:component description="trac_ContactSupportComponent" implements="forceCommunity:availableForAllPageTypes">
     <aura:attribute name="businessUnit" type="String" />
     <aura:attribute name="language" type="String" />
+    <aura:attribute name="caseRecordTypeId" type="String" />
     <aura:attribute name="englishCommunityUserId" type="String" />
     <aura:attribute name="frenchCommunityUserId" type="String" />
 
-    <aura:attribute name="refresh" type="Boolean" default="true"/>
-
     <c:trac_contactsupportform ontopicchange="{!c.handleTopicChange}"
                                businessUnit="{!v.businessUnit}"
-                               englishCommunityUser="{!v.englishCommunityUserId}"
-                               frenchCommunityUser="{!v.frenchCommunityUserId}"
-                               language="{!v.language}"/>
+                               language="{!v.language}"
+                               caseRecordTypeId="{!v.caseRecordTypeId}"/>
 </aura:component>

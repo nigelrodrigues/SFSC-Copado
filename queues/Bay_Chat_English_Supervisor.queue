@@ -4,7 +4,11 @@
     <name>Bay Chat - English Supervisor</name>
     <queueMembers>
         <users>
+            <user>jamaica.laborada@hbc.com</user>
             <user>jhoran@tractionondemand.com.hbc</user>
+            <user>kyla.leyson@hbc.com</user>
+            <user>mary.capuyan@hbc.com</user>
+            <user>richard.panal@hbc.com</user>
         </users>
     </queueMembers>
     <queueRoutingConfig>Chat_English</queueRoutingConfig>
