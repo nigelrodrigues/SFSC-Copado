@@ -357,29 +357,32 @@ public without sharing class SCCCommerceCloudConnect {
 
     /**
     * This method used for pulling selected customer profile details from commerce cloud.
-    * @param email: String
-    * @param accessToken: String
+    * @param searchFields: List<String>, the fields to search (e.g. email,
+    * @param searchPhrase: String, the search phrase
+    * @param accessToken: String, the authentication bearer token
     * @return String.
     */
-    public static String searchCustomerByEmailWithDetails(String email, String accessToken) {
+    public static String searchCustomerWithDetails(List<String> searchFields, String searchPhrase, String accessToken) {
 
-        if(String.isEmpty(email)){
+        if(searchFields == null || searchFields.isEmpty() || String.isBlank(searchPhrase)){
             throw new CalloutException('Empty mandatory parameters');
         }
+        String jsonSearchFields = JSON.serialize(searchFields);
+        String escapedSearchPhrase = JSON.serialize(searchPhrase);
         HttpRequest req = new HttpRequest();
         req.setEndpoint(siteBaseUrl + '/s/-/dw/data/v20_4/customer_lists/' + listId + '/customer_search');
         req.setMethod('POST');
         req.setTimeout(Integer.valueOf(trac_WS_WebServiceHelper.webServiceSettings.Timeout__c));
         req.setHeader('Authorization', 'Bearer ' + accessToken);
         req.setHeader('Content-Type', 'application/json; charset=UTF-8');
-        String body = '{"select":"(**)","expand":[],"query":{"text_query":{"fields":["email"],"search_phrase":"' + email + '"}}}';
+        String body = '{"select":"(**)","expand":["primary_address"],"query":{"text_query":{"fields":'+jsonSearchFields+',"search_phrase":"' + escapedSearchPhrase + '"}}}';
         req.setBody(body);
         System.debug('req.getEndPoint(): ' + req.getEndpoint());
         System.debug('req.getMethod(): ' + req.getMethod());
         System.debug('req.getBody(): ' + req.getBody());
         Http h = new Http();
         HttpResponse res = h.send(req);
-
+        System.debug('res.getBody: ' + res.getBody());
         return res.getBody();
 
     }
