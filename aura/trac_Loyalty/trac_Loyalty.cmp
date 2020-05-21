@@ -5,7 +5,7 @@
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Loyalty Number</p>
-                <p>{!v.loyalty.loyalty_id}</p>
+                <p>{!v.loyalty.external_customer_id}</p>
             </div>
         </lightning:layoutItem>
 
@@ -26,8 +26,8 @@
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Tier</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.tier_name))}">
-                    <p>{!v.loyalty.tier_name}</p>
+                <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
+                    <p>{!v.loyalty.top_tier_name}</p>
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -38,15 +38,15 @@
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
-                <p><lightning:formattedPhone value="{!v.loyalty.phone_no}"/></p>
+                <p><lightning:formattedPhone value="{!v.loyalty.home_phone}"/></p>
             </div>
         </lightning:layoutItem>
 
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.loyalty_status))}">
-                    <p>{!v.loyalty.loyalty_status}</p>
+                <aura:if isTrue="{!not(empty(v.loyalty.status))}">
+                    <p>{!v.loyalty.status}</p>
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -57,8 +57,8 @@
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Last Point Activity</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.last_known_points))}">
-                    <p>{!v.loyalty.last_known_points}</p>
+                <aura:if isTrue="{!not(empty(v.loyalty.last_activity))}">
+                    <p><lightning:formattedDateTime value="{!v.loyalty.last_activity}" year="numeric" month="long" day="2-digit"/></p>
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -69,9 +69,9 @@
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.points_available))}">
-                    <p>{!v.loyalty.points_available}
-                        (<lightning:formattedNumber value="{!v.loyalty.points_available_value}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>)
+                <aura:if isTrue="{!not(empty(v.loyalty.authorized_points_balance))}">
+                    <p>{!v.loyalty.authorized_points_balance}
+                        (<lightning:formattedNumber value="{!v.loyalty.balance_in_dollars}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>)
                         </p>
                     <aura:set attribute="else">
                         <p>N/A</p>
@@ -92,8 +92,9 @@
                 <p class="field-title slds-form-element__label slds-no-flex">Badges</p>
                 <div>
                     <ul class="slds-list_horizontal slds-has-dividers_right">
-                        <li class="slds-item"><lightning:badge label="Label"/></li>
-                        <li class="slds-item"><lightning:badge label="Label"/></li>
+                        <aura:iteration items="{!v.loyalty.customer_badges}" var="badge">
+                            <li class="slds-item"><lightning:badge label="{!badge.display_name}"/></li>
+                        </aura:iteration>
                     </ul>
                 </div>
             </div>
@@ -115,10 +116,10 @@
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Year Spend</p>
-                        <aura:if isTrue="{!not(empty(v.loyalty.points_available_value))}">
+                        <aura:if isTrue="{!not(empty(v.loyalty.member_attributes.ytd_spend))}">
                             <p>
                                 <lightning:formattedNumber
-                                        value="{!v.loyalty.points_available_value}"
+                                        value="{!v.loyalty.member_attributes.ytd_spend}"
                                         style="currency"
                                         currencyCode="CAD"
                                         currencyDisplayAs="symbol"/>
@@ -145,8 +146,8 @@
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Next Tier</p>
-                        <aura:if isTrue="{!not(empty(v.loyalty.tier_name))}">
-                            <p>{!v.loyalty.tier_name}</p>
+                        <aura:if isTrue="{!not(empty(v.loyalty.next_tier_name))}">
+                            <p>{!v.loyalty.next_tier_name}</p>
                             <p>Place holder information about tier and expiry</p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
@@ -158,8 +159,8 @@
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier Expires</p>
-                        <aura:if isTrue="{!not(empty(v.loyalty.loyaltyExpDate))}">
-                            <p>{!v.loyalty.loyaltyExpDate}</p>
+                        <aura:if isTrue="{!not(empty(v.loyalty.top_tier_expiration_date))}">
+                            <p><lightning:formattedDateTime value="{!v.loyalty.top_tier_expiration_date}" year="numeric" month="long" day="2-digit"/></p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
                             </aura:set>
@@ -170,8 +171,8 @@
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Lifetime Points Earned</p>
-                        <aura:if isTrue="{!not(empty(v.loyalty.points_available))}">
-                            <p>{!v.loyalty.points_available}</p>
+                        <aura:if isTrue="{!not(empty(v.loyalty.lifetime_balance))}">
+                            <p>{!v.loyalty.lifetime_balance}</p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
                             </aura:set>
@@ -182,8 +183,9 @@
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Spend To Qualify</p>
-                        <aura:if isTrue="{!not(empty(v.loyalty.points_available))}">
-                            <p>{!v.loyalty.points_available}</p>
+                        <aura:if isTrue="{!not(empty(v.loyalty.actions_needed_for_next_tier))}">
+                            <p><lightning:formattedNumber value="{!v.loyalty.actions_needed_for_next_tier}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>
+                                Before 'Placeholder'</p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
                             </aura:set>
@@ -194,8 +196,8 @@
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Last Year's Tier</p>
-                        <aura:if isTrue="{!not(empty(v.loyalty.tier_name))}">
-                            <p>{!v.loyalty.tier_name}</p>
+                        <aura:if isTrue="{!not(empty(v.loyalty.member_attributes.ly_tier))}">
+                            <p>{!v.loyalty.member_attributes.ly_tier}</p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
                             </aura:set>

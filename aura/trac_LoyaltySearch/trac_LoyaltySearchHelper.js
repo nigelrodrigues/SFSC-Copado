@@ -4,12 +4,11 @@
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
 
-        var action = component.get("c.getLoyalty");
+        var action = component.get("c.getLoyaltyMerkle");
 
         action.setParams({
             'email': email,
-            'loyaltyId': loyaltyId,
-            'phoneNum': phoneNum
+            'loyaltyId': loyaltyId
         });
 
         action.setCallback(this, function (response) {
@@ -23,7 +22,7 @@
                 } else {
 
                     if(result.isSuccess) {
-                        var returnVal = result.returnValuesMap['loyalty']['customerLookupResponse'][0];
+                        var returnVal = result.returnValuesMap['loyalty']['data'];
                         component.set('v.loyalty', returnVal);
                     } else if ( result.returnValuesMap['statusCode'] == 404) {
                         component.set("v.noLoyaltyFound", true);
