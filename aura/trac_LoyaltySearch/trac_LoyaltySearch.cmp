@@ -47,7 +47,7 @@
         <lightning:layout horizontalAlign="space">
             <div>
                 <lightning:layoutItem padding="around-small">
-                    <lightning:button label="Search" variant="brand" onclick="{!c.testingApi}"/>
+                    <lightning:button label="Search" variant="brand" onclick="{!c.loyaltySearch}"/>
                 </lightning:layoutItem>
             </div>
         </lightning:layout>
