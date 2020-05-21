@@ -1,0 +1,27 @@
+<aura:component description="trac_CaseLoyalty" extends="c:trac_BaseComponent" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="loyalty" type="Map" />
+
+    <div class="slds-box slds-theme_default">
+        <lightning:layout verticalAlign="center">
+            <lightning:layoutItem padding="around-small">
+                <lightning:icon iconName="action:share_thanks" alternativeText="Loyalty" size="small" title="loyalty" />
+            </lightning:layoutItem>
+
+            <lightning:layoutItem >
+                <p><b>Hudson's Bay Loyalty</b></p>
+            </lightning:layoutItem>
+        </lightning:layout>
+
+
+        <div class="slds-is-relative">
+            <c:trac_LoyaltySearch loyalty="{!v.loyalty}" />
+        </div>
+        <div class="slds-is-relative">
+            <aura:if isTrue="{!not(empty(v.loyalty))}">
+                <c:trac_Loyalty loyalty="{!v.loyalty}" />
+            </aura:if>
+        </div>
+    </div>
+
+
+</aura:component>
