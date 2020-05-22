@@ -14,6 +14,8 @@ public without sharing class trac_ContactSearchController {
      */
     @AuraEnabled
     public static List<Contact> getContacts(Contact contact, Boolean sfccSearch) {
+        
+        //this is a comment to test
         List<Contact> contacts = new List<Contact>();
         System.debug('trac_ContactSearchController::getContacts(): search contact: ' + contact);
         if (contact == null) {
