@@ -6,11 +6,14 @@
 
     handleRecordUpdated: function(component, event, helper) {
         helper.getCaseRecordType(component, helper);
+        helper.setCaseStatus(component, event, helper);
     },
 
     handleLoad: function (component, event, helper) {
         component.set("v.isSpinner", false);
         component.set("v.isLoading", false);
+        console.log('v.recordLoadError: ' + component.get('v.recordLoadError'));
+
 
     },
 
@@ -31,7 +34,7 @@
             component.set("v.isFollowUp", false);
             component.find("caseStatus").set("v.value", "Closed");
 
-            helper.setCriteriaBasedStatus(component, helper);
+            helper.setCaseStatus(component, helper);
         }
         if (step === "Follow Up") {
             component.set("v.isClose", false);
@@ -44,7 +47,7 @@
             component.set("v.isClose", false);
             component.set("v.isFollowUp", false);
 
-            helper.setCriteriaBasedStatus(component, helper);
+            helper.setCaseStatus(component, helper);
         }
     },
 
