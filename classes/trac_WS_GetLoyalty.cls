@@ -7,6 +7,7 @@ public class trac_WS_GetLoyalty {
     public String loyaltyId;
     public String email;
     
+    //TODO put in custom settings
     private final String SECRET_KEY = '93c45a6f0bdce2a9941ab54d7680f7fb';
     private final String UUID = '6368bf5842b80d';
 
@@ -31,6 +32,7 @@ public class trac_WS_GetLoyalty {
         additionalHeaders.put('x-apigw-api-id', 'pcdkqq8k73');
 
         res = trac_WS_WebServiceHelper.sendGetRequest(url,params, false, additionalHeaders);
+        System.debug(res);
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             loyaltyResponse = parse(res.getBody());
             success = true;
