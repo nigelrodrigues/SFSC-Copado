@@ -26,6 +26,83 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Loyalty_API_Version__c</fullName>
+        <description>Merkle API Version (e.g. 2019-01-01)</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty API Version</label>
+        <length>32</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_Base_Endpoint__c</fullName>
+        <description>The Merkle base endpoint, right up to (but not including) the Loyalty Version (e.g. https://api-stage.500friends.com/)</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Base Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_Record_Event_Endpoint__c</fullName>
+        <description>The Merkle Record Event API endpoint</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Record Event Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_Secret_Key__c</fullName>
+        <description>Merkle Secret Key</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Secret Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_UUID__c</fullName>
+        <description>Merkle API UUID</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty UUID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_X_APIGW_API_ID__c</fullName>
+        <description>The x-apigw-api-id header value</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty X APIGW API ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_X_API_Key__c</fullName>
+        <description>The x-api-key header value</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty X API Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CNS_Email_Search_Endpoint__c</fullName>
         <description>Relative endpoint for the email search API</description>
         <externalId>false</externalId>
