@@ -1,0 +1,64 @@
+<aura:component description="trac_LoyaltySearch" extends="c:trac_BaseComponent" controller="trac_LoyaltySearchController" >
+    <aura:attribute name="loyalty" type="Object"/>
+    <aura:attribute name="noLoyaltyFound" type="Boolean" default="false"/>
+    <aura:attribute name="showError" type="boolean" default="false"/>
+    <aura:attribute name="errorMessage" type="String" default="Please specify a valid input." />
+
+    <aura:attribute name="options" type="List" access="PRIVATE"/>
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <div onkeyup="{!c.formPress}" >
+        <div class="slds-text-color_destructive">
+            <aura:if isTrue="{!v.showError}">
+                {!v.errorMessage}
+            </aura:if>
+        </div>
+
+        <lightning:layout horizontalAlign="space" multipleRows="true" class="slds-border_bottom">
+            <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
+                <lightning:select label="Find Account By" aura:id="loyaltySearchType" value="{!v.selectedValue}">
+                    <aura:iteration items="{!v.options}" var="option">
+                        <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"></option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
+                <aura:if isTrue="{!v.selectedValue=='1'}">
+                    <lightning:input label="Email" type="email" aura:id="emailInput" placeholder="example@hbc.com" />
+                </aura:if>
+                <aura:if isTrue="{!v.selectedValue=='2'}">
+                    <lightning:input label="Number" type="text" aura:id="loyaltyNumberInput"
+                                     messageWhenPatternMismatch="Invalid Loyalty Number."
+                                     pattern="[0-9]*"
+                                     placeholder="123456789"/>
+                </aura:if>
+                <aura:if isTrue="{!v.selectedValue=='3'}">
+                    <lightning:input label="Phone Number" type="tel" aura:id="phoneNumberInput"
+                                     messageWhenPatternMismatch="Invalid Phone Number."
+                                     pattern="[0-9]*"
+                                     placeholder="5555555555"/>
+                </aura:if>
+            </lightning:layoutItem>
+
+        </lightning:layout>
+
+        <lightning:layout horizontalAlign="space">
+            <div>
+                <lightning:layoutItem padding="around-small">
+                    <lightning:button label="Search" variant="brand" onclick="{!c.loyaltySearch}"/>
+                </lightning:layoutItem>
+            </div>
+        </lightning:layout>
+
+        <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
+
+        <aura:if isTrue="{!v.noLoyaltyFound}">
+            <div class="slds-text-align_center slds-text-heading_medium slds-text-color_destructive">
+                No loyalty account found.
+            </div>
+        </aura:if>
+    </div>
+
+</aura:component>
