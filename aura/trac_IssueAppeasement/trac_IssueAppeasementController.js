@@ -21,7 +21,9 @@
         var action = cmp.get('c.submitAppeasement');
 
         var params = {
-            contactId: cmp.get('v.contactId'),
+            //contactId: cmp.get('v.contactId'),
+            loyaltyNumber: cmp.get('v.loyaltyNumber'),
+            email: cmp.get('v.email'),
             points: cmp.get('v.selectedAmount'),
             pointsAvailable: cmp.get('v.pointsAvailable')
         };
