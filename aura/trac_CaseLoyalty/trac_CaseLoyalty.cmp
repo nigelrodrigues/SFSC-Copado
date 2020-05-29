@@ -1,16 +1,24 @@
 <aura:component description="trac_CaseLoyalty" extends="c:trac_BaseComponent" implements="flexipage:availableForAllPageTypes">
     <aura:attribute name="loyalty" type="Map" />
+    <aura:attribute name="isEditable" type="Boolean" default="false" />
+    <aura:attribute name="editButtonText" type="String" default="Edit" />
 
     <div class="slds-box slds-theme_default">
-        <lightning:layout verticalAlign="center">
-            <lightning:layoutItem padding="around-small">
+        <div style="overflow:auto" class="slds-align_absolute-center">
+            <lightning:layoutItem padding="around-small" class="slds-float_left">
                 <lightning:icon iconName="action:share_thanks" alternativeText="Loyalty" size="small" title="loyalty" />
             </lightning:layoutItem>
 
-            <lightning:layoutItem >
+            <lightning:layoutItem class="slds-align-content-center slds-float_left">
                 <p><b>Hudson's Bay Loyalty</b></p>
             </lightning:layoutItem>
-        </lightning:layout>
+            
+            <aura:if isTrue="{!not(empty(v.loyalty))}">
+                <lightning:layoutItem padding="around-small" class="slds-float_right">
+                    <lightning:button iconName="utility:edit" label="{!v.editButtonText}" variant="brand" onclick="{!c.isEditableChange}"/>
+                </lightning:layoutItem>
+            </aura:if>
+        </div>
 
 
         <div class="slds-is-relative">
@@ -18,7 +26,7 @@
         </div>
         <div class="slds-is-relative">
             <aura:if isTrue="{!not(empty(v.loyalty))}">
-                <c:trac_Loyalty loyalty="{!v.loyalty}" />
+                <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}" />
             </aura:if>
         </div>
     </div>

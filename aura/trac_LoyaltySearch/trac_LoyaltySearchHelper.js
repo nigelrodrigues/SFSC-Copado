@@ -4,7 +4,7 @@
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
 
-        var action = component.get("c.getLoyaltyMerkle");
+        var action = component.get("c.getLoyalty");
 
         action.setParams({
             'email': email,

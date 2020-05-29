@@ -59,7 +59,7 @@ public class trac_WS_GetLoyalty {
     }
     
     private String generateHash(String loyaltyId, String email, String include) {
-        String loyaltyIdString = 'external_customer_id' + loyaltyid;
+        String loyaltyIdString = 'external_customer_id' + loyaltyId;
         String uuid = 'uuid' + UUID;
         String includeString = 'include' + include;
         String emailString = 'email' + email;
