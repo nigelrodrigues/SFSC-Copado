@@ -11,7 +11,8 @@
                 access="global">
 
     <aura:attribute name="contactId" type="Id" description="The customer contact ID" />
-<!--    <aura:attribute name="lib" type="Object" description="overlayLib passed in from parent" />-->
+    <aura:attribute name="loyaltyNumber" type="String" description="The customer loyalty number" />
+    <aura:attribute name="email" type="String" description="The customer loyalty email address" />
     <aura:attribute name="selectedAmount" type="Integer" description="The amount of points to award" />
     <aura:attribute name="selectedLabel" type="String" />
     <aura:attribute name="displayAmount" type="String" />
