@@ -6,20 +6,16 @@ public class trac_WS_GetLoyalty {
     public String jsonError;
     public String loyaltyId;
     public String email;
-    
     //TODO put in custom settings
     private final String SECRET_KEY = '93c45a6f0bdce2a9941ab54d7680f7fb';
     private final String UUID = '6368bf5842b80d';
-
     public Boolean send() {
         Boolean success = false;
         String url = 'https://api-gateway.hbc.io/dev/v1/uad/customer/show';
         String include = 'purchase_stats,reward_stats,detail,badges,badge_groups,rewards,reward_groups,offers,coupons,redemption_limits,tier_stats,referrals,member_attributes,identities,points_expiration_schedule,points_summary';
-
         Map<String, String> params =  new Map<String, String>();
         Map<String, String> additionalHeaders = new Map<String, String>();
         String sig = generateHash(loyaltyId, email, include);
-        
         if(loyaltyId != null)
         	params.put('external_customer_id', loyaltyId);
         if(email != null)
@@ -27,10 +23,8 @@ public class trac_WS_GetLoyalty {
         params.put('include', include);
         params.put('uuid', UUID);
         params.put('sig', sig);
-        
         additionalHeaders.put('x-api-key', 'UyKvFXvTRIaGmZks0a03a2w4LwbJHrED4ahMPF58');
         additionalHeaders.put('x-apigw-api-id', 'pcdkqq8k73');
-
         res = trac_WS_WebServiceHelper.sendGetRequest(url,params, false, additionalHeaders);
         System.debug(res);
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
@@ -40,48 +34,37 @@ public class trac_WS_GetLoyalty {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
         }
-
         return success;
     }
-
     public Boolean isNotFound() {
         return res.getStatusCode() == 404 ? true : false;
     }
-
     public Integer getStatusCode() {
         return res.getStatusCode();
     }
-
     private String getEndpoint() {
         String dynamicEndpoint = ENDPOINT;
-
         return dynamicEndpoint;
     }
-    
     private String generateHash(String loyaltyId, String email, String include) {
-        String loyaltyIdString = 'external_customer_id' + loyaltyid;
+        String loyaltyIdString = 'external_customer_id' + loyaltyId;
         String uuid = 'uuid' + UUID;
         String includeString = 'include' + include;
         String emailString = 'email' + email;
         String sig = SECRET_Key;
-        
         if(email != null && loyaltyId == null)
             sig = sig + emailString + includeString + uuid;
         else if(email == null && loyaltyId != null)
             sig =  sig + loyaltyIdString + includeString + uuid;
         else 
         	sig = sig + uuid;
-        
         Blob requestBlob = Blob.valueOf(sig);
         Blob hash = Crypto.generateDigest('MD5', requestBlob);
-
         return EncodingUtil.convertToHex(hash);
     }
-
     public static LoyaltyResponse parse(String json) {
         return (LoyaltyResponse) System.JSON.deserialize(json, LoyaltyResponse.class);
     }
-
     public class res_LoyaltyWrapper {
         @AuraEnabled public String channel;
         @AuraEnabled public String created_at;
@@ -141,7 +124,6 @@ public class trac_WS_GetLoyalty {
         @AuraEnabled public List<res_BadgeWrapper> customer_badges;
         @AuraEnabled public res_MemberAttributesWrapper member_attributes;
     }
-    
     public class res_MemberAttributesWrapper {
         @AuraEnabled public Long actions_needed_to_keep_tier;
         @AuraEnabled public String card_open_date;
@@ -159,14 +141,12 @@ public class trac_WS_GetLoyalty {
         @AuraEnabled public String ly_tier;
         @AuraEnabled public String charity_gl_code;
     }
-
     public class res_PointsWrapper {
         @AuraEnabled public Long points_earned_total;
         @AuraEnabled public Long points_redeemed_total;
         @AuraEnabled public Long points_returned_total;
         @AuraEnabled public Long points_expired_total;
     }
-
     public class res_BadgeWrapper {
         @AuraEnabled public Integer id;
         @AuraEnabled public String badge_url;
@@ -178,12 +158,9 @@ public class trac_WS_GetLoyalty {
         @AuraEnabled public Boolean enabled;
         @AuraEnabled public Boolean active;
     }
-
     public class LoyaltyResponse {
         @AuraEnabled public res_LoyaltyWrapper data;
         @AuraEnabled public Boolean success;
         @AuraEnabled public String response_code;
     }
-
-
 }
