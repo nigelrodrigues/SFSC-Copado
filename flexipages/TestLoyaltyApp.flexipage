@@ -12,9 +12,6 @@
         <componentInstances>
             <componentName>trac_CaseLoyalty</componentName>
         </componentInstances>
-        <componentInstances>
-            <componentName>DemoComponent</componentName>
-        </componentInstances>
         <name>region3</name>
         <type>Region</type>
     </flexiPageRegions>
