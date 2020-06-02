@@ -5,26 +5,32 @@
  */
 ({
     doInit: function(cmp, event, helper) {
-        cmp.set('v.isSpinner', true);
-        cmp.set('v.isLoading', false);
-        helper.calculateDisplayAmounts(cmp);
+        //cmp.set('v.isSpinner', false); // don't use the base component spinner
+        cmp.set('v.showSpinner', false);
+        var pointsAvailable = cmp.get('v.loyalty.balance'); //cmp.get('v.loyalty.authorized_points_balance');
+        console.log('v.loyalty: ', cmp.get('v.loyalty'));
+        console.log('pointsAvailable A: ', pointsAvailable);
+        pointsAvailable = $A.util.isEmpty(pointsAvailable) ? 0 : parseInt(pointsAvailable);
+        cmp.set('v.pointsAvailable', pointsAvailable);
+        console.log('pointsAvailable B: ', pointsAvailable);
+        helper.calculateAmounts(cmp);
     },
     selectAmount: function(cmp, event, helper) {
-        helper.calculateDisplayAmounts(cmp);
+        helper.calculateAmounts(cmp);
     },
     submitAppeasementForm: function(cmp, event, helper) {
-        cmp.set('v.isLoading', true);
-        var selectedAmount = cmp.get("v.selectedAmount");
-        console.log("Submitting appeasement of " + selectedAmount + " points");
+        cmp.set('v.showSpinner', true);
+        var appeasePoints = cmp.get("v.appeasePoints");
+        console.log("Submitting appeasement of " + appeasePoints + " points");
 
         // submit to server
         var action = cmp.get('c.submitAppeasement');
 
         var params = {
             //contactId: cmp.get('v.contactId'),
-            loyaltyNumber: cmp.get('v.loyaltyNumber'),
-            email: cmp.get('v.email'),
-            points: cmp.get('v.selectedAmount'),
+            loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
+            email: cmp.get('v.loyalty.email'),
+            points: cmp.get('v.appeasePoints'),
             pointsAvailable: cmp.get('v.pointsAvailable')
         };
         console.log('params: ', params);
@@ -32,7 +38,7 @@
 
         action.setCallback(this, function (response) {
             console.log('inside action setCallback; response: ', response);
-            cmp.set('v.isLoading', false);
+            cmp.set('v.showSpinner', false);
             var state = response.getState();
 
             console.log('cmp.isValid: ' + cmp.isValid() + '; state: ' + state);
