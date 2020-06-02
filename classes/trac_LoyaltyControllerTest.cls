@@ -28,9 +28,9 @@ public with sharing class trac_LoyaltyControllerTest {
     static void testUpdateLoyaltyPointsFailRequest() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty(null));
         String email = null;
-        String loyaltyId = '1200657659';
+        String loyaltyId = null;
         Integer points = -100;
-        String eventType = 'closed_account';
+        String eventType = null;
         trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_LoyaltyController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('response');
         System.assert(res == null, 'could not update loyalty points successfully.');
     }
