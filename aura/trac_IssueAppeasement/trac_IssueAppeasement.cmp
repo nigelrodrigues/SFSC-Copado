@@ -12,10 +12,7 @@
 
     <aura:attribute name="loyalty" type="Object" />
     <aura:attribute name="contactId" type="Id" description="The customer contact ID" />
-<!--    <aura:attribute name="loyaltyNumber" type="String" description="The customer loyalty number" />-->
-<!--    <aura:attribute name="email" type="String" description="The customer loyalty email address" />-->
     <aura:attribute name="appeasePoints" type="Integer" description="The amount of points to award" />
-<!--    <aura:attribute name="selectedLabel" type="String" />-->
     <aura:attribute name="appeaseValue" type="String" />
     <aura:attribute name="pointsAvailable" type="Integer" default="0" />
     <aura:attribute name="finalPointBalance" type="String" />
@@ -36,14 +33,14 @@
                 <lightning:spinner aura:id="spinner" variant="brand" class="{!v.showSpinner ? '' : 'slds-hide' }" size="large" alternativeText="Please wait..."/>
             </div>
 
-            <form class="slds-form--stacked">
+            <div class="slds-form--stacked" onkeyup="{!c.formPress}">
                 <lightning:input aura:id="amount" label="Points Amount"
                                  name="amount"
                                  value="{!v.appeasePoints}"
                                  type="text"
                                  pattern="[0-9]+"
                                  required="true"/>
-            </form>
+            </div>
         </div>
 
         <p class="{!(and(v.appeasePoints != null, v.appeasePoints > 0) ? 'slds-show' : 'slds-hide') + ' slds-m-top--large'}">
