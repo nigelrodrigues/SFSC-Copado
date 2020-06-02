@@ -20,8 +20,7 @@
       // Set isModalOpen attribute to false
       //Add your code to call apex method or do some processing
       var loyalty = component.get('v.loyalty')
-      console.log(loyalty)
-      helper.closeAccount(component, event, helper, loyalty)
-      //helper.decrementPoints(component, event, helper)
+      helper.updateLoyaltyPoints(component, event, helper, loyalty, -Math.abs(loyalty.balance), 'closed_account')
+      helper.pauseAccount(component, event, helper, loyalty)
    }
 })

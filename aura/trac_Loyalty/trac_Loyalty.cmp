@@ -75,8 +75,8 @@
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.authorized_points_balance))}">
-                    <p>{!v.loyalty.authorized_points_balance}
+                <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
+                    <p>{!v.loyalty.balance}
                         (<lightning:formattedNumber value="{!v.loyalty.balance_in_dollars}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>)
                         </p>
                     <aura:set attribute="else">
