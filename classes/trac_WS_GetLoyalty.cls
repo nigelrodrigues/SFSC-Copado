@@ -1,38 +1,47 @@
 public class trac_WS_GetLoyalty {
-    public final String ENDPOINT = (trac_WS_WebServiceHelper.webServiceSettings.Base_Url__c != null) ?
-            null : trac_WS_WebServiceHelper.webServiceSettings.Get_Order_List_Endpoint__c;
+    public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Base_Endpoint__c
+            + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_API_Version__c
+            + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Customer_Show_Endpoint__c;
+
+    private final String SECRET_KEY = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Secret_Key__c;
+    private final String UUID = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_UUID__c;
+
     private HttpResponse res = new HttpResponse();
     public LoyaltyResponse loyaltyResponse;
     public String jsonError;
     public String loyaltyId;
     public String email;
-    
-    //TODO put in custom settings
-    private final String SECRET_KEY = '93c45a6f0bdce2a9941ab54d7680f7fb';
-    private final String UUID = '6368bf5842b80d';
+    public String include;
 
     public Boolean send() {
         Boolean success = false;
-        String url = 'https://api-gateway.hbc.io/dev/v1/uad/customer/show';
-        String include = 'purchase_stats,reward_stats,detail,badges,badge_groups,rewards,reward_groups,offers,coupons,redemption_limits,tier_stats,referrals,member_attributes,identities,points_expiration_schedule,points_summary';
 
         Map<String, String> params =  new Map<String, String>();
         Map<String, String> additionalHeaders = new Map<String, String>();
-        String sig = generateHash(loyaltyId, email, include);
-        
-        if(loyaltyId != null)
-        	params.put('external_customer_id', loyaltyId);
-        if(email != null)
-        	params.put('email', email);
-        params.put('include', include);
-        params.put('uuid', UUID);
-        params.put('sig', sig);
-        
-        additionalHeaders.put('x-api-key', 'UyKvFXvTRIaGmZks0a03a2w4LwbJHrED4ahMPF58');
-        additionalHeaders.put('x-apigw-api-id', 'pcdkqq8k73');
 
-        res = trac_WS_WebServiceHelper.sendGetRequest(url,params, false, additionalHeaders);
-        System.debug(res);
+        if(loyaltyId != null){
+        	params.put('external_customer_id', loyaltyId);
+        }
+        if(email != null) {
+        	params.put('email', email);
+        }
+        if(include != null) {
+            params.put('include', include);
+        }
+        
+        params.put('uuid', UUID);
+
+        String sig = trac_WS_LoyaltyUtils.generateHash(SECRET_KEY, params);
+
+        params.put('sig', sig);
+        System.debug('params: ' + params);
+
+        additionalHeaders.put('x-api-key', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_API_Key__c);
+        additionalHeaders.put('x-apigw-api-id', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_APIGW_API_ID__c);
+
+        res = trac_WS_WebServiceHelper.sendGetRequest(ENDPOINT, params, false, additionalHeaders);
+        System.debug('res: ' + res);
+        System.debug('res.getBody(): ' + res.getBody());
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             loyaltyResponse = parse(res.getBody());
             success = true;
@@ -56,26 +65,6 @@ public class trac_WS_GetLoyalty {
         String dynamicEndpoint = ENDPOINT;
 
         return dynamicEndpoint;
-    }
-    
-    private String generateHash(String loyaltyId, String email, String include) {
-        String loyaltyIdString = 'external_customer_id' + loyaltyid;
-        String uuid = 'uuid' + UUID;
-        String includeString = 'include' + include;
-        String emailString = 'email' + email;
-        String sig = SECRET_Key;
-        
-        if(email != null && loyaltyId == null)
-            sig = sig + emailString + includeString + uuid;
-        else if(email == null && loyaltyId != null)
-            sig =  sig + loyaltyIdString + includeString + uuid;
-        else 
-        	sig = sig + uuid;
-        
-        Blob requestBlob = Blob.valueOf(sig);
-        Blob hash = Crypto.generateDigest('MD5', requestBlob);
-
-        return EncodingUtil.convertToHex(hash);
     }
 
     public static LoyaltyResponse parse(String json) {
@@ -141,7 +130,7 @@ public class trac_WS_GetLoyalty {
         @AuraEnabled public List<res_BadgeWrapper> customer_badges;
         @AuraEnabled public res_MemberAttributesWrapper member_attributes;
     }
-    
+
     public class res_MemberAttributesWrapper {
         @AuraEnabled public Long actions_needed_to_keep_tier;
         @AuraEnabled public String card_open_date;
