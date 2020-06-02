@@ -1,6 +1,5 @@
 @IsTest
 public with sharing class trac_LoyaltyControllerTest {
-
     @IsTest
     static void testUpdateLoyaltyPoints() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('update'));
@@ -11,7 +10,6 @@ public with sharing class trac_LoyaltyControllerTest {
         trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_LoyaltyController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('response');
         System.assert(res.success == true, 'update loyalty points successfully.');
     }
-
     @IsTest
     static void testUpdateLoyaltyPointsFail() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('update.fail'));
@@ -23,18 +21,16 @@ public with sharing class trac_LoyaltyControllerTest {
         System.assert(res.success == false, 'failed to update loyalty points successfully.');
         System.assert(res.data.code == 601, 'failed to update loyalty points successfully.');
     }
-
     @IsTest
     static void testUpdateLoyaltyPointsFailRequest() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty(null));
         String email = null;
-        String loyaltyId = '1200657659';
+        String loyaltyId = null;
         Integer points = -100;
-        String eventType = 'closed_account';
+        String eventType = null;
         trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_LoyaltyController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('response');
         System.assert(res == null, 'could not update loyalty points successfully.');
     }
-
     @IsTest
     static void testPauseLoyalty() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('pause'));
@@ -44,7 +40,6 @@ public with sharing class trac_LoyaltyControllerTest {
         System.assert(res.success == true, 'paused loyalty successfully.');
         System.assert(res.data == null, 'paused loyalty successfully.');
     }
-
     @IsTest
     static void testPauseLoyaltyFail() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('pause.fail'));
@@ -54,7 +49,6 @@ public with sharing class trac_LoyaltyControllerTest {
         System.assert(res.success == false, 'failed to pause loyalty successfully.');
         System.assert(res.data.code == 201, 'failed to pause loyalty successfully.');
     }
-
     @IsTest
     static void testPauseLoyaltyFailRequest() {
         Test.setMock(HttpCalloutMock.class, null);

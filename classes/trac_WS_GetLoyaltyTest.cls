@@ -3,6 +3,7 @@ public class trac_WS_GetLoyaltyTest {
     private static final String ENDPOINT = 'https://api-gateway.hbc.io/dev/v1/uad/customer/show?external_customer_id=1200657659&include=purchase_stats,reward_stats,detail,badges,badge_groups,rewards,reward_groups,offers,coupons,redemption_limits,tier_stats,referrals,member_attributes,identities,points_expiration_schedule,points_summary&uuid=6368bf5842b80d&sig=edc5a2661ba97b5756f6cc6b501ce41c';
         //trac_WS_WebServiceHelper.webServiceSettings.Base_Url__c + trac_WS_WebServiceHelper.webServiceSettings.Get_Order_Details_Endpoint__c;
     private static final String RESOURCE = 'trac_GetLoyalty';
+
     @IsTest static void test_SendingWebService() {
         trac_WS_GetLoyalty webServiceClass = new trac_WS_GetLoyalty();
         webServiceClass.loyaltyId = '1200657659';
