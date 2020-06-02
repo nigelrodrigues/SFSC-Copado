@@ -1,5 +1,6 @@
 <aura:component description="trac_Loyalty" extends="c:trac_BaseComponent">
     <aura:attribute name="loyalty" type="Object" />
+    <aura:attribute name="isEditable" type="Boolean" default="false" />
 
     <lightning:layout multipleRows="true">
         <lightning:layoutItem padding="around-small" size="6">
@@ -46,7 +47,12 @@
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.status))}">
-                    <p>{!v.loyalty.status}</p>
+                    <aura:if isTrue="{!v.loyalty.status == 'paused'}">
+                        <p>closed</p>
+                        <aura:set attribute="else">
+                            <p>{!v.loyalty.status}</p>
+                        </aura:set>
+                    </aura:if>
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -69,8 +75,8 @@
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.authorized_points_balance))}">
-                    <p>{!v.loyalty.authorized_points_balance}
+                <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
+                    <p>{!v.loyalty.balance}
                         (<lightning:formattedNumber value="{!v.loyalty.balance_in_dollars}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>)
                         </p>
                     <aura:set attribute="else">
@@ -99,6 +105,15 @@
                 </div>
             </div>
         </lightning:layoutItem>
+        
+        <aura:if isTrue="{!v.isEditable}">
+            <lightning:layout>
+                <c:trac_CloseLoyaltyAccount loyalty="{!v.loyalty}"/>
+                <lightning:layoutItem padding="around-small">
+                    <lightning:button label="Save Changes" variant="brand" onclick=""/>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:if>
 
     </lightning:layout>
 
