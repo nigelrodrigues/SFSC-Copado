@@ -26,6 +26,29 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Loyalty_Customer_Show_Endpoint__c</fullName>
+        <defaultValue>&quot;/uad/customer/show&quot;</defaultValue>
+        <description>Endpoint for getting loyalty account information</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Customer Show Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_Pause_Endpoint__c</fullName>
+        <description>Enpoint to Merkle&apos;s pause loyalty API</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Pause Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CNS_Email_Search_Endpoint__c</fullName>
         <description>Relative endpoint for the email search API</description>
         <externalId>false</externalId>
