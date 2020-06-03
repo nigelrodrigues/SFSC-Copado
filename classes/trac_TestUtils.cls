@@ -32,7 +32,14 @@ public class trac_TestUtils {
                 Tokenex_Token_Scheme__c = '9996',
                 SPA_Get_Adjustment_Endpoint__c = 'https://www.spatestget.com',
                 SPA_Update_Adjustment_Endpoint__c  = 'https://www.spatestupdate.com',
-                SPA_Get_Order_Adjustments_Endpoint__c  = 'https://www.spatestgetlist.com'
+                SPA_Get_Order_Adjustments_Endpoint__c  = 'https://www.spatestgetlist.com',
+                Bay_Loyalty_API_Version__c = '2019-01-01',
+                Bay_Loyalty_Base_Endpoint__c = 'https://merkle.base.endpoint/',
+                Bay_Loyalty_Record_Event_Endpoint__c = '/api/record.json',
+                Bay_Loyalty_Secret_Key__c = 'merklesecretkey',
+                Bay_Loyalty_UUID__c = 'merkleuuid',
+                Bay_Loyalty_X_API_Key__c = 'merklexapikey',
+                Bay_Loyalty_X_APIGW_API_ID__c = 'merklexapigwapiid'
         );
 
         return webServiceSettings;
