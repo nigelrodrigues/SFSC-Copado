@@ -23,6 +23,8 @@
 
                     if(result.isSuccess) {
                         var returnVal = result.returnValuesMap['loyalty']['data'];
+                        returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance / 200
+                        returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
                         component.set('v.loyalty', returnVal);
                     } else if ( result.returnValuesMap['statusCode'] == 404) {
                         component.set("v.noLoyaltyFound", true);
