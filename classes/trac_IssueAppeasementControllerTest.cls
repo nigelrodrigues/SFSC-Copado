@@ -33,7 +33,7 @@ private class trac_IssueAppeasementControllerTest {
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock());
         Test.startTest();
-        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10, 0);
+        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10);
         Test.stopTest();
 
         System.assertEquals(true, resp.isSuccess);
@@ -45,7 +45,7 @@ private class trac_IssueAppeasementControllerTest {
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock('fail'));
         Test.startTest();
-        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10, 0);
+        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10);
         Test.stopTest();
 
         System.assertEquals(false, resp.isSuccess);
@@ -57,7 +57,7 @@ private class trac_IssueAppeasementControllerTest {
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock('error'));
         Test.startTest();
-        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10, 0);
+        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10);
         Test.stopTest();
 
         System.assertEquals(false, resp.isSuccess);
@@ -73,15 +73,15 @@ private class trac_IssueAppeasementControllerTest {
         Test.startTest();
 
         // null loyaltyNumber
-        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(null, null, 10, 0);
+        TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(null, null, 10);
         System.assertEquals(false, resp.isSuccess);
 
         // null email
-        resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, null, 10, 0);
+        resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, null, 10);
         System.assertEquals(false, resp.isSuccess);
 
         // zero points
-        resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 0, 0);
+        resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 0);
         System.assertEquals(false, resp.isSuccess);
 
         Test.stopTest();
