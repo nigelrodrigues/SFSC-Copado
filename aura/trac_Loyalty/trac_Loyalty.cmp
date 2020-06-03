@@ -1,7 +1,6 @@
 <aura:component description="trac_Loyalty" extends="c:trac_BaseComponent">
     <aura:attribute name="loyalty" type="Object" />
     <aura:attribute name="isEditable" type="Boolean" default="false" />
-
     <lightning:layout multipleRows="true">
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
@@ -9,7 +8,6 @@
                 <p>{!v.loyalty.external_customer_id}</p>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Primary Account Contact</p>
@@ -23,7 +21,6 @@
                 </p>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Tier</p>
@@ -35,14 +32,12 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
                 <p><lightning:formattedPhone value="{!v.loyalty.home_phone}"/></p>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
@@ -59,7 +54,6 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Last Point Activity</p>
@@ -71,7 +65,6 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
@@ -85,14 +78,12 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
                 <p>Cobranded MasterCard</p>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem padding="around-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Badges</p>
@@ -105,7 +96,6 @@
                 </div>
             </div>
         </lightning:layoutItem>
-        
         <aura:if isTrue="{!v.isEditable}">
             <lightning:layout>
                 <c:trac_CloseLoyaltyAccount loyalty="{!v.loyalty}"/>
@@ -114,9 +104,7 @@
                 </lightning:layoutItem>
             </lightning:layout>
         </aura:if>
-
     </lightning:layout>
-
     <lightning:accordion aura:id="accordion" activeSectionName="points">
         <lightning:accordionSection name="points" label="Recent Points Transaction">
             <aura:set attribute="body">
@@ -145,7 +133,6 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier</p>
@@ -157,7 +144,6 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Next Tier</p>
@@ -170,7 +156,6 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier Expires</p>
@@ -182,7 +167,6 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Spend To Qualify</p>
@@ -195,7 +179,6 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Lifetime Points Earned</p>
@@ -207,7 +190,6 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Last Year's Tier</p>
@@ -219,9 +201,7 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
             </lightning:layout>
         </lightning:accordionSection>
     </lightning:accordion>
-
 </aura:component>
