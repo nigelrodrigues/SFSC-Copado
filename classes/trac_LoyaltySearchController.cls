@@ -1,9 +1,11 @@
 public with sharing class trac_LoyaltySearchController {
     
     @AuraEnabled
-    public static TLAuraResponse getLoyaltyMerkle(String loyaltyId, String email) {
+    public static TLAuraResponse getLoyalty(String loyaltyId, String email) {
         TLAuraResponse response = new TLAuraResponse(true);
         trac_WS_GetLoyalty request = new trac_WS_GetLoyalty();
+
+        request.include = 'purchase_stats,reward_stats,detail,badges,badge_groups,rewards,reward_groups,offers,coupons,redemption_limits,tier_stats,referrals,member_attributes,identities,points_expiration_schedule,points_summary';
         
         if(loyaltyId != null)
         	request.loyaltyId = loyaltyId;
