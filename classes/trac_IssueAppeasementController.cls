@@ -4,8 +4,15 @@
 
 public with sharing class trac_IssueAppeasementController {
 
+    /**
+    * @description Callout to Merkle API to record gift event
+    * @param loyaltyNumber String, the customer's Loyalty Number
+    * @param email String, the customer's email address
+    * @param points Integer, the number of points to award
+    * @return TLAuraResponse
+    */
     @AuraEnabled
-    public static TLAuraResponse submitAppeasement(String loyaltyNumber, String email, Integer points, Integer pointsAvailable) {
+    public static TLAuraResponse submitAppeasement(String loyaltyNumber, String email, Integer points) {
         TLAuraResponse response = new TLAuraResponse(true);
 
         if (String.isBlank(loyaltyNumber)) {
@@ -18,21 +25,6 @@ public with sharing class trac_IssueAppeasementController {
             response.isSuccess = false;
             response.message = 'Points must be a positive integer';
         }
-
-//        // query for Contact
-//        List<Contact> cnts = [SELECT Id, Email, Loyalty_Number__c FROM Contact WHERE Id =: contactId];
-//        Contact cnt;
-//        if (!cnts.isEmpty()) {
-//            cnt = cnts[0];
-//        }
-//
-//        if (cnt == null) {
-//            response.isSuccess = false;
-//            response.message = 'Unable to find contact record';
-//        } else if (String.isBlank(cnt.Loyalty_Number__c)) {
-//            response.isSuccess = false;
-//            response.message = 'Contact record missing loyalty number';
-//        }
 
         // callout to Merkle API to award points
         try {
