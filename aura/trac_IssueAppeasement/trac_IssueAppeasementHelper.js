@@ -24,8 +24,65 @@
             cmp.set('v.finalPointBalance', finalBalance);
         }
     },
+    checkDisableButton: function(cmp) {
+        var maxAppeasement = cmp.get('v.maxAppeasement');
+        var allowUnlimited = cmp.get('v.allowUnlimited');
+        var disableButton = (!allowUnlimited && maxAppeasement <= 0);
+        cmp.set('v.disableButton', disableButton);
+    },
+    getProfileLimit: function(cmp) {
+        var action = cmp.get('c.getProfileAppeasementLimit');
+        action.setCallback(this, function (response) {
+            var state = response.getState();
+
+            if (cmp.isValid() && state === "SUCCESS") {
+                var result = response.getReturnValue();
+
+                if (typeof result !== undefined && result != null) {
+                    cmp.set('v.profileName', result.profileName);
+                    if (result.maxAppeasement === 'Unlimited') {
+                        cmp.set('v.allowUnlimited', true);
+                        cmp.set('v.maxAppeasement', 99999999);
+                    } else {
+                        cmp.set('v.allowUnlimited', false);
+                        cmp.set('v.maxAppeasement', parseInt(result.maxAppeasement));
+                    }
+                    // enable / disable submit button appropriately
+                    this.checkDisableButton(cmp);
+                } else {
+                    // unexpected error
+                    cmp.set("v.isError", true);
+                    cmp.set("v.errorMsg", "Unknown user profile");
+                }
+            }
+        });
+        $A.enqueueAction(action);
+    },
+    checkAppeasementValue: function(cmp) {
+        var retval = true;
+        var maxAppeasement = cmp.get('v.maxAppeasement');
+        var allowUnlimited = cmp.get('v.allowUnlimited');
+        var appeasePoints = cmp.get('v.appeasePoints');
+        var inputCmp = cmp.find("amount");
+        inputCmp.setCustomValidity("");
+        // check < 0
+        if (appeasePoints <= 0) {
+            inputCmp.setCustomValidity("Invalid appeasement amount: " + appeasePoints);
+            retval = false;
+        }
+        // check > max
+        else if (!allowUnlimited) {
+            if (appeasePoints > maxAppeasement) {
+                inputCmp.setCustomValidity("Maximum appeasement is " + maxAppeasement);
+                retval = false;
+            }
+        }
+        inputCmp.reportValidity();
+        return retval;
+    },
     submitAppeasement: function(cmp, event, helper) {
         cmp.set('v.showSpinner', true);
+        //this.checkDisableButton(cmp);
         var appeasePoints = cmp.get("v.appeasePoints");
 
         // submit to server
@@ -41,6 +98,7 @@
 
         action.setCallback(this, function (response) {
             cmp.set('v.showSpinner', false);
+            //this.checkDisableButton(cmp);
             var state = response.getState();
 
             if (cmp.isValid() && state === "SUCCESS") {
