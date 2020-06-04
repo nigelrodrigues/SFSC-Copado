@@ -171,6 +171,26 @@
             <field>Time_Since__c</field>
             <table>Case_Time_Log__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Parent_Owner_User__c.Agent_ID__c</field>
+            <table>Case_Time_Log__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agent_Tenure__c</field>
+            <table>Case_Time_Log__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agent_Location__c</field>
+            <table>Case_Time_Log__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agent_Team_Lead__c</field>
+            <table>Case_Time_Log__c</table>
+        </columns>
         <masterLabel>Case Time Logs</masterLabel>
     </sections>
 </ReportType>
