@@ -11,22 +11,34 @@
                 access="global">
 
     <aura:attribute name="loyalty" type="Object" />
-    <aura:attribute name="contactId" type="Id" description="The customer contact ID" />
+    <aura:attribute name="profileName" type="String" />
+    <aura:attribute name="maxAppeasement" type="Integer" default="0" />
+    <aura:attribute name="allowUnlimited" type="Boolean" default="true" />
     <aura:attribute name="appeasePoints" type="Integer" description="The amount of points to award" />
-    <aura:attribute name="appeaseValue" type="String" />
-    <aura:attribute name="pointsAvailable" type="Integer" default="0" />
-    <aura:attribute name="finalPointBalance" type="String" />
+    <aura:attribute name="appeaseValue" type="String" description="The monetary value of appeasePoints" />
+    <aura:attribute name="pointsAvailable" type="Integer" default="0" description="Current point balance" />
+    <aura:attribute name="finalPointBalance" type="String" description="Final point balance after adding appeasePoints"/>
     <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="disableButton" type="Boolean" default="true" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    <aura:handler name="change" value="{!v.appeasePoints}" action="{!c.selectAmount}"/>
+    <aura:handler name="change" value="{!v.appeasePoints}" action="{!c.changeAmount}"/>
 
     <aura:registerEvent name="closeModalEvent" type="c:trac_CloseModalApplicationEvent"/>
 
     <div>
-        <p class="slds-text-heading--medium slds-m-bottom--large">Points to Award</p>
-
         <lightning:messages/>
+
+        <aura:if isTrue="{!not(v.allowUnlimited)}">
+            <lightning:card
+                    class="profile-warning slds-align--absolute-center slds-p-horizontal--medium slds-p-vertical--small slds-m-bottom--medium"
+                    iconName="utility:warning">
+                Your profile {!v.profileName} is limited to issuing appeasements of
+                <lightning:formattedNumber value="{!v.maxAppeasement}"/> points or less.
+                If you need to issue a larger appeasement, please escalate the case and write a description
+                of the amount requested and why in the case feed.
+            </lightning:card>
+        </aura:if>
 
         <div>
             <div class="slds-is-relative">
@@ -34,7 +46,7 @@
             </div>
 
             <div class="slds-form--stacked" onkeyup="{!c.formPress}">
-                <lightning:input aura:id="amount" label="Points Amount"
+                <lightning:input aura:id="amount" label="Appeasement Points"
                                  name="amount"
                                  value="{!v.appeasePoints}"
                                  type="text"
@@ -51,7 +63,7 @@
         </p>
 
         <div class="slds-m-top--large slds-align--absolute-center">
-            <lightning:button label="Submit Appeasement" disabled="{!v.showSpinner}" onclick="{!c.submitAppeasementForm}" />
+            <lightning:button label="Submit Appeasement" disabled="{!v.showSpinner || v.disableButton}" onclick="{!c.submitAppeasementForm}" />
         </div>
 
     </div>
