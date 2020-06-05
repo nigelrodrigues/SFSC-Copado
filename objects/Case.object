@@ -7471,10 +7471,10 @@
         <columns>NAME</columns>
         <columns>CASES.SUBJECT</columns>
         <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
         <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CASES.RECORDTYPE</columns>
-        <columns>CASES.ORIGIN</columns>
         <filterScope>Queue</filterScope>
         <label>Off 5th- Main</label>
         <queue>Off_5th_Main</queue>

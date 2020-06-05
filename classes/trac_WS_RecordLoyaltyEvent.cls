@@ -19,6 +19,12 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
     public String eventId;
     public String eventType;
     public Decimal value;
+    public String originatedAt;
+    public String eventChannel;
+    public String subChannel;
+    public String subChannelDetail;
+    public String detail;
+    public String include;
 
     public Boolean send() {
         Boolean success = false;

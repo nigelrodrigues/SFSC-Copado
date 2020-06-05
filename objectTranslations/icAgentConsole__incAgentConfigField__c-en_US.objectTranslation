@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- FieldType --></label>
+        <name>icAgentConsole__FieldType__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field / property of the object, specified in ValueObject field, to get the value for this field --></help>
+        <label><!-- Value Field --></label>
+        <name>icAgentConsole__ValueField__c</name>
+    </fields>
+    <fields>
+        <help><!-- Object to get value for this field, i.e. either ScriptVariable or CallInfo or WorkItemInfo --></help>
+        <label><!-- Value Object --></label>
+        <name>icAgentConsole__ValueObject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agent Configuration Entity --></label>
+        <name>icAgentConsole__incAgentConfigurationEntity__c</name>
+        <relationshipLabel><!-- Agent Configuration Fields --></relationshipLabel>
+    </fields>
+</CustomObjectTranslation>

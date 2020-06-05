@@ -4,7 +4,7 @@
     <label>inContact</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9ZF4bs_.MKuiHsEPeIOb6OYZ1_0Z5kd.jJ0iQU81NgLit6SYirA8vMF21u3lqTaylrAcC2pXuNtugFsjV</consumerKey>
+        <consumerKey>3MVG9Eroh42Z9.iVTbBn_0eoVnsy4nmRjpRL.ZxpYA53OzPVgkGm2wFT3ebQ2R4c7vCjfdcmIO3U4hq_uTDFu</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <scopes>Basic</scopes>
         <scopes>Web</scopes>

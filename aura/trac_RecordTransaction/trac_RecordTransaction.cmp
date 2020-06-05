@@ -1,0 +1,68 @@
+<!--
+ - @description Award points for Unmarked Transaction
+ - @author      Glauber Torres, Traction on Demand
+ - @date        2020-05-21
+ -->
+
+<aura:component description="trac_RecordTransaction"
+                extends="c:trac_BaseComponent"
+                implements="force:hasRecordId,flexipage:availableForAllPageTypes"
+                access="global">
+
+    <aura:attribute name="loyalty" type="Object" />
+    <aura:attribute name="openButton" type="Object" />
+    <aura:attribute name="spinner" type="Boolean" default="FALSE"/>
+    <aura:attribute name="showError" type="Boolean" default="FALSE"/>
+
+    <lightning:card title="Award Points for Unmarked Transaction" class="slds-box slds-theme--default slds-container--small">
+
+        <div class="slds-p-horizontal--medium">
+            <form aura:id="memberForm" class="slds-form--stacked">
+                <fieldset aura:id="memberFieldset">
+
+
+
+                    <lightning:buttonGroup>
+                        <lightning:button label="Website" />
+                        <lightning:button label="MHF" />
+                        <lightning:button label="Store" />
+                    </lightning:buttonGroup>
+
+                    <lightning:input aura:id="OrderNumber" label="Order Number" required="true" />
+                    <lightning:input aura:id="TransactionSubtotal" label="Transaction Subtotal" required="true" />
+                    <lightning:input aura:id="TransactionNumber" type="text" maxlength="19" required="true"
+                                     label="Transaction Number (AAAABBBBCCCMMDDYYYY)" pattern="^\d{19}$"
+                                     messageWhenPatternMismatch="Transaction Number should be numeric and 19 digits long" />
+                    <lightning:input aura:id="SubtotalExcludedItems" label="Subtotal of Excluded Items (e.g. giftcards)"/>
+                    <lightning:input aura:id="CurrentTier" label="Current tier" readonly="true" value="Hudson's Bay VIP" style="margin-top:15px;" />
+                    <lightning:input aura:id="TotalEarn" label="Total Earn" readonly="true" value="4,000 points ($20.00 CAD)" />
+
+                    <div style="margin-top:15px;">
+                        <lightning:button label="Submit" variant="brand" />
+                        <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+                    </div>
+
+
+
+
+                    <aura:if isTrue="{!v.spinner}">
+                        <div aura:id="spinnerId" class="slds-spinner_container">
+                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                <span class="slds-assistive-text">Loading...</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </aura:if>
+
+                </fieldset>
+            </form>
+            <aura:if isTrue="{!v.showError}">
+                <div class="slds-box slds-theme_error" style="margin-top: 10px;">
+                    <p class="slds-align_absolute-center">{!v.errorMessage}</p>
+                </div>
+            </aura:if>
+        </div>
+
+    </lightning:card>
+</aura:component>

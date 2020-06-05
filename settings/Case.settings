@@ -32,7 +32,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>aide.modemaison@hbc.com</emailAddress>
-            <emailServicesAddress>aide.modemaison@i-lv8j26xy528qokrb90du0zp2xuqbf509l8210iuf3vzbl5fb6.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Aide Maison</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -45,7 +44,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>associatediscount.adjustmentrequests@hbc.com</emailAddress>
-            <emailServicesAddress>associatediscount.adjustmentrequests@kjhu8v7xhl793uxn82hr2v7szojvdshj2fbs888t74541c1tt.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Associated Discount Adjustment Requests</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -58,7 +56,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>callcenterauthorizationholdremovals@hbc.com</emailAddress>
-            <emailServicesAddress>callcenterauthorizationholdremovals@2oxofr8zt7vyjjdnz2t447vvtdji9gtfiaozn8njtv9rknubjx.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Authorization Removal</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -71,7 +68,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>customer.service@hbc.com</emailAddress>
-            <emailServicesAddress>customer.service@i-1qemn8j1y9autpbl2nkghbuxtdng3pez1p5hkho3ynthpmaetn.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Bay Digital Customer Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -84,7 +80,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>gift.registry@hbc.com</emailAddress>
-            <emailServicesAddress>gift.registry@9-2y67i36c1a3j7blozr7mpd24ffqibankkm9lgtaatn34a8684t.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Bay Digital Gift Registry</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -97,7 +92,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>customercare.storeexperience@hbc.com</emailAddress>
-            <emailServicesAddress>customercare.storeexperience@1ixsllb0xtcp5jqkg8ujx0gox6ul2cf0svsh4sybba0yof0zj7.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Bay Digital Store Requests</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -110,7 +104,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>customercare.other@hbc.com</emailAddress>
-            <emailServicesAddress>customercare.other@1lm5wfxdzmabh7zzedqsquqjohzq9u20nfzebkdyipty58t8xw.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Bay_Digital_Customer_Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -123,7 +116,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>callcenterborderfree@hbc.com</emailAddress>
-            <emailServicesAddress>callcenterborderfree@r-1wvz65qwjyhw2royn0pqd9qre4odk5xe3kriyn6wndm5a4awkw.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Border Free</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -136,7 +128,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>caps.deliverysupport@hbc.com</emailAddress>
-            <emailServicesAddress>caps.deliverysupport@a-2ljnl7mluapljzsdl1kkw6bv7huzmiha2k47am6nqbz4bezn5i.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Casper Delivery Support</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -149,7 +140,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>caps.returns@hbc.com</emailAddress>
-            <emailServicesAddress>caps.returns@26ishzw8aopxblqmghtstci0r3sqpe8k0xtd5byipfymjp5uv9.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Casper Returns</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -162,7 +152,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>desincription@hbc.com</emailAddress>
-            <emailServicesAddress>desincription@r-3410h9yr728mc5qacco4fyeb86zv2vl18dzlf8bxkxwdli4mn7.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Desinscription HBC</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -175,7 +164,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>digital.followup@hbc.com</emailAddress>
-            <emailServicesAddress>digital.followup@gtkdm4vedbyk5h55rfxo3crk6as9t63a0bchk580zkzgqdibh.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Digital Follow Up</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -188,7 +176,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>hbcdigitalmanagement@hbc.com</emailAddress>
-            <emailServicesAddress>hbcdigitalmanagement@x-1jz7l8byyofi7jenrzgx4orxvg296jwsqjvsfa4xsrul27tafr.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Digital Management</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -201,7 +188,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>executiveservices.lt-bay@hbc.com</emailAddress>
-            <emailServicesAddress>executiveservices.lt-bay@m-32q6zoqla6qv9gjqvqt5q8vi8ry41r2hxig3tqomdy30wrqluh.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Executive Sevices</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -214,7 +200,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>labaie@hbc.com</emailAddress>
-            <emailServicesAddress>labaie@g-sf5kf3dprijxdv8h7mx7moxd2in3hlnij81tkzapak993iglh.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French DSG Customer Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -227,7 +212,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>gift.registry2@hbc.com</emailAddress>
-            <emailServicesAddress>gift.registry2@1-23n2to7069pzko4126yq66htb1ltu7fkwyp0tnmom7fffr2xld.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French DSG Gift Registry</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -240,7 +224,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>bay.frstoreexperience@hbc.com</emailAddress>
-            <emailServicesAddress>bay.frstoreexperience@2-2zge6dd854g0lmwubsny7pnke5picanvuehw00hij4d6hh8sgk.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French DSG Store Experience</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -253,7 +236,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>centred&apos;appels.8662563125@hbc.com</emailAddress>
-            <emailServicesAddress>centred&apos;appels.8662563125@1qvamh9deismx3mm20yvgpjvbpt3fd6ipykj84s3so8y6f7xu6.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French Fax 866-256-3125</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -266,7 +248,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>mtldemande.speciale@hbc.com</emailAddress>
-            <emailServicesAddress>mtldemande.speciale@2-2csakkajxrv65fiu2rgrt1q1kurof60zu51kssh30hp0tk5lqc.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French SUP-ALL Demande Spéciale</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -279,7 +260,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>unsubscribe@hbc.com</emailAddress>
-            <emailServicesAddress>unsubscribe@izqo466dbolszdn67c1yymgc7359u8taumfxvpuorkgc4eh6t.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French Unsubscribe</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -292,7 +272,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>customercare.other.french@hbc.com</emailAddress>
-            <emailServicesAddress>customercare.other.french@2jj4kdjdg4ogwyez0tpeu982jkuct0683tosywwiyv2tilpqxw.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French Website Inquiries</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -305,7 +284,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>risksupportbay-french@hbc.com</emailAddress>
-            <emailServicesAddress>risksupportbay-french@436rfarrldjvjx7sbqvsronibt5mm7q0ihtszdqjsemh8qrbv.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>French_ Risk Support Bay</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -318,7 +296,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>furniture.service@hbc.com</emailAddress>
-            <emailServicesAddress>furniture.service@q-2p5acvj36ks70kt8neee59uy8j4iyzbyhqe2p6y2mdsgblu1cd.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Furniture Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -331,7 +308,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>giftcard.support@hbc.com</emailAddress>
-            <emailServicesAddress>giftcard.support@158zwcrtd6cor42yowrhvgjljkail27rlei7qs5r4s6a1h0ku3.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Gift Card Support</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -344,7 +320,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>hbfollowup@hbc.com</emailAddress>
-            <emailServicesAddress>hbfollowup@x-ubo5fdn49mtp36zulq6qeyhj855qqameo5a3a0tzfm1qg1af0.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>HB Follow-Up</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -357,7 +332,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>ltfollowup@hbc.com</emailAddress>
-            <emailServicesAddress>ltfollowup@8-24mxlr4hnrw2dz38kv21yc2b4n9fkc2kc4cd9lyycrx6aaxmej.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>HB Follow-up</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -370,7 +344,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>hbcrewards@hbc.com</emailAddress>
-            <emailServicesAddress>hbcrewards@22x0hvie4bpp7xbcqgo6mblbxuux89gw61pbke4ai8mpr7w9xi.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>HBC Rewards</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -383,7 +356,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>helpandhomesolutions@hbc.com</emailAddress>
-            <emailServicesAddress>helpandhomesolutions@1iipul8jmfjkiilzxqfb6kraxuewb2mzpjg1jiotwdfunug5qv.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Help and Home Solutions</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -396,7 +368,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>ibp.misseddelivery@hbc.com</emailAddress>
-            <emailServicesAddress>ibp.misseddelivery@j-2jjvs520lycc2do27wyamtwcbvyspc2tmouxqiz5lcq5tdxxk.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>IBP Missed Delivery</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -409,7 +380,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>customercare@lordandtaylor.com</emailAddress>
-            <emailServicesAddress>customercare@n-1clso8cqi8ytif1x4bb40cehdz5m9cq49tmtb5mjwscfpmr8sj.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>LT Digital Customer Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -422,7 +392,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>customercare.other@lordandtaylor.com</emailAddress>
-            <emailServicesAddress>customercare.other@w-1qbaq8e57c2mtrijtdk3snuwkynjz3vd9et7oumzxz6foc2fra.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>LT Digital Customer Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -435,7 +404,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>ltservicefirst@hbc.com</emailAddress>
-            <emailServicesAddress>ltservicefirst@y-1x4qgr07vkauiji7ai87w1dprlq3lix1jux7ufzc00andyaoxg.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>LT Service First</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -448,7 +416,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>labaie.demandedeservice@hbc.com</emailAddress>
-            <emailServicesAddress>labaie.demandedeservice@n-28mcxpctcu26n6f1shddhcje6wq8calzpjc262x2ix4es2354z.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>La Baie Demande de Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -461,7 +428,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>leadership.hotline.fr@hbc.com</emailAddress>
-            <emailServicesAddress>leadership.hotline.fr@1bl97a31622y1mymq22pqtqr1k1k4rvf7gjhdne3twwelwlxpv.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Leadership Hotlie French</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -474,7 +440,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>leadership.hotline@hbc.com</emailAddress>
-            <emailServicesAddress>leadership.hotline@2vz3ji1oz92f76bkjiey5dc0fmp3zb0lub1td2n7a60n7pm5h2.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Leadership Hotline</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -487,7 +452,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>serviceexcellence.team@hbc.com</emailAddress>
-            <emailServicesAddress>serviceexcellence.team@l-1hb7bjsxazx4ouqw8g9s6qqgcdreotva821n489ftkcmwee14k.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>MHF Service Excellence</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -500,7 +464,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>mhfservicefirst@hbc.com</emailAddress>
-            <emailServicesAddress>mhfservicefirst@i-df0zxfdl3hipmbub4jtnd9uzpwbiaqvixdz1k2nc56f3tydg.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>MHF Service First</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -513,7 +476,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>ccmarketingsf-hb@hbc.com</emailAddress>
-            <emailServicesAddress>ccmarketingsf-hb@k-21pig0ponoeerqivoxqc6n1arqthkmq6po2hof68bkpw30qf5d.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Marketing Hudson&apos;s Bay</routingName>
             <saveEmailHeaders>true</saveEmailHeaders>
@@ -524,7 +486,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>ccmarketingsf-lt@hbc.com</emailAddress>
-            <emailServicesAddress>ccmarketingsf-lt@3347b6u4po9ka07pqk4pw5vbx7paf8bl7jozgb0rkv5al6uxjn.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Marketing Lord + Taylor</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -535,7 +496,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>ccmarketingsf-o5@hbc.com</emailAddress>
-            <emailServicesAddress>ccmarketingsf-o5@2zkqz36bkgynl2oj139dwwvei7pvqhdzebsfavi2f30fg6mf3m.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Marketing Off 5th</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -546,7 +506,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>ccmarketingsf-saks@hbc.com</emailAddress>
-            <emailServicesAddress>ccmarketingsf-saks@l-1mt2nc6pgt9z56lnw01fq6vpilg5rbi13qi1njik6djg6ug7dj.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Marketing Saks</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -559,7 +518,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>service@off5th.com</emailAddress>
-            <emailServicesAddress>service@2mx7x6edfffirw23csr06kxvrx4f26u69bhrl97xuqb9568v43.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Off 5th More! Program</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -572,7 +530,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>orders@saksoff5th.com</emailAddress>
-            <emailServicesAddress>orders@s-1nh7hoxg62xnzyhstb0uepu7dygq6watk9tk9f3toat97j0qop.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Off 5th Order Status</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -585,7 +542,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>pos.corporate.escalation@hbc.com</emailAddress>
-            <emailServicesAddress>pos.corporate.escalation@22ubdqvz5cpd9azd3b4lfbm8g77zg10w11pj6ye9d4k1dl846m.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>POS Corporate Escalation</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -598,7 +554,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>primeshbc@hbc.com</emailAddress>
-            <emailServicesAddress>primeshbc@hamogdupg9upweckcm3itmowvhe0kbmlicxdkdcetqcvyvoz9.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Primes HBC</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -611,7 +566,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>callcenterproductdiscrepancies@hbc.com</emailAddress>
-            <emailServicesAddress>callcenterproductdiscrepancies@z-z6q0ir27xbxdk37f251dniwtphhroijqit28s1khc4ahsbnvv.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Product Discrepancies</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -624,7 +578,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>comments@saksfifthavenue.com</emailAddress>
-            <emailServicesAddress>comments@m-53iw3tpv7n3i8jmksdaks9l5qpc40mzw228jp3ye0pot5pixi.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A Comments</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -637,7 +590,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>internationalshipment@saks.com</emailAddress>
-            <emailServicesAddress>internationalshipment@2r48es9804e6zi8455zs8ooepodlmq1vnb9rz441vbvx7alx0d.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A International Shipping</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -650,7 +602,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>orders@saksfifthavenue.com</emailAddress>
-            <emailServicesAddress>orders@1-1uie6j0g3ypozhj2aslggs9jiifm6gr6z5fjh0jnwln5c0g8ci.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A Order Status</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -663,7 +614,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>service@saks.com</emailAddress>
-            <emailServicesAddress>service@1-3537krttchlv4qyh8ynjt5m5ieq40h5ses9gsujiir5dbici1n.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A Other Assistance</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -676,7 +626,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>productinfo@saks.com</emailAddress>
-            <emailServicesAddress>productinfo@1log129jqe8llg65xwziaces3cgt9ldpq3fspogis26hc001ca.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A Product Information</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -689,7 +638,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>saksfirst@saksfifthavenue.com</emailAddress>
-            <emailServicesAddress>saksfirst@tr8q1lbslxjthnepqd6gccqjbgygwiw91umyiddrxakih2c6w.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A SAKSFIRST</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -702,7 +650,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>sitehelp@saksfifthavenue.com</emailAddress>
-            <emailServicesAddress>sitehelp@o-p34khujlk6oos3su115ipca9xpnnno652zdugvcvhjxgzsiq7.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A Site Assistance</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -715,7 +662,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>stores@saksfifthavenue.com</emailAddress>
-            <emailServicesAddress>stores@h-2t4ucmnk78he8mnl0b1mcznlgndpflsybinasku18h9g1b5ri3.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>S5A Store Information</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -728,7 +674,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>sedigital@hbc.com</emailAddress>
-            <emailServicesAddress>sedigital@12wqyh95frse03ox966t9gfwr8xm5wqm6igzwf96wsynhu90rk.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Service Excellence</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -741,7 +686,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>hbccallcentersocialmedia@hbc.com</emailAddress>
-            <emailServicesAddress>hbccallcentersocialmedia@c1qxpdybmbjopz7396feixpefzky2192dh966mhfz8uyrzr9l.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Social Media</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -754,7 +698,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>storeonlinecallcenterescalations@hbc.com</emailAddress>
-            <emailServicesAddress>storeonlinecallcenterescalations@1nbp15lpdmb7qw60yhl4rh8xefa29h67gmuva5aomfz0fjijf9.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>Store Escalations</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -767,7 +710,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>hbccallcenterbaybulkorders@hbc.com</emailAddress>
-            <emailServicesAddress>hbccallcenterbaybulkorders@1bmyqp410brkul4obj3mgs4m3emikv3tiusu6h3mx6czl2oxdm.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>The Bay Bulk Orders</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
@@ -780,7 +722,6 @@
             <casePriority>Medium</casePriority>
             <createTask>false</createTask>
             <emailAddress>vip.customerservice@hbc.com</emailAddress>
-            <emailServicesAddress>vip.customerservice@7-119plj3vs40da7ku4epiqsetvn5dzbisksglwugylyh9fa8l29.2e-ol0ruae.na91.case.salesforce.com</emailServicesAddress>
             <isVerified>true</isVerified>
             <routingName>VIP Customer Service</routingName>
             <saveEmailHeaders>false</saveEmailHeaders>
