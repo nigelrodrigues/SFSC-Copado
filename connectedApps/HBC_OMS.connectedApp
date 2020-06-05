@@ -4,7 +4,7 @@
     <label>HBC OMS</label>
     <oauthConfig>
         <callbackUrl>https://test.salesforce.com/services/oauth2/success</callbackUrl>
-        <consumerKey>3MVG9ZF4bs_.MKuiHsEPeIOb6ORQzxi3McKdKHdfFqU1xcmLTGgO.yTZlbZ28LAiXhtu3nG_M2nNQVwxAVbic</consumerKey>
+        <consumerKey>3MVG9Fy_1ZngbXqO6ZyUdcmUe1Xy5R0KizX6TU2e.5qDSiK7qI7C5Tn6.2u8gLAN4lRvxtY0NpgjD8qEDTS9j</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>

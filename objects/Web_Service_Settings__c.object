@@ -26,6 +26,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Event_History__c</fullName>
+        <externalId>false</externalId>
+        <label>Bay Customer Event History</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Bay_Loyalty_API_Version__c</fullName>
         <description>Merkle API Version (e.g. 2019-01-01)</description>
         <externalId>false</externalId>

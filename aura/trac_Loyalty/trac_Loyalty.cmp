@@ -74,7 +74,7 @@
                 <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
                     <p><lightning:formattedNumber value="{!v.loyalty.balance}"/>
                         (<lightning:formattedNumber value="{!v.loyalty.balance_in_dollars}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>)
-                        </p>
+                    </p>
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -195,7 +195,7 @@
                 <lightning:layoutItem padding="around-small" size="6">
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Qualifying Purchase Visits (purchases on separate days)</p>
-                            <p>Unknown</p>
+                        <p>Unknown</p>
                     </div>
                 </lightning:layoutItem>
                 <lightning:layoutItem padding="around-small" size="6">
@@ -222,6 +222,11 @@
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:accordionSection>
+
+        <lightning:accordionSection name="TH" title="Transaction History" label="Transaction History">
+            <c:trac_LoyaltyTransactionHistory customerIdInput="{!v.loyalty.external_customer_id}" />
+        </lightning:accordionSection>
+
     </lightning:accordion>
     <lightning:layout multipleRows="true">
         <lightning:layoutItem padding="around-small" size="6">

@@ -5,9 +5,11 @@
  */
 
 public with sharing class trac_WS_RecordLoyaltyEvent {
-    public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Base_Endpoint__c
+    /*public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Base_Endpoint__c
                                     + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_API_Version__c
-                                    + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Record_Event_Endpoint__c;
+                                    + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Record_Event_Endpoint__c;*/
+    private final String ENDPOINT = 'https://api-stage.500friends.com'
+            + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Record_Event_Endpoint__c;
     private final String SECRET_KEY = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Secret_Key__c;
     private final String UUID = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_UUID__c;
 
@@ -34,7 +36,6 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
         params.put('value', String.valueOf(value));
 
         String sig = trac_WS_LoyaltyUtils.generateHash(SECRET_KEY, params);
-
         params.put('sig', sig);
         System.debug('params: ' + params);
 

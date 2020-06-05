@@ -24,5 +24,6 @@
                 <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}" />
             </aura:if>
         </div>
+
     </div>
 </aura:component>
