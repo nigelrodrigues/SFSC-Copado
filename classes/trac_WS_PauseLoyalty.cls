@@ -13,7 +13,6 @@ public with sharing class trac_WS_PauseLoyalty {
 
     public Boolean send() {
         Boolean success = false;
-
         Map<String, String> params =  new Map<String, String>();
         Map<String, String> additionalHeaders = new Map<String, String>();
 
@@ -33,7 +32,8 @@ public with sharing class trac_WS_PauseLoyalty {
         additionalHeaders.put('x-api-key', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_API_Key__c);
         additionalHeaders.put('x-apigw-api-id', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_APIGW_API_ID__c);
 
-        res = trac_WS_WebServiceHelper.sendGetRequest(ENDPOINT, params, false, additionalHeaders);
+        Integer timeout = 5000;
+        res = trac_WS_WebServiceHelper.sendGetRequest(ENDPOINT, params, false, additionalHeaders, timeout);
         System.debug('res: ' + res);
         System.debug('res.getBody(): ' + res.getBody());
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
@@ -48,6 +48,10 @@ public with sharing class trac_WS_PauseLoyalty {
 
     public Integer getStatusCode() {
         return res.getStatusCode();
+    }
+
+    public String getBody() {
+        return res.getBody();
     }
 
     public static PauseResponse parse(String json) {

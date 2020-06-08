@@ -1,5 +1,5 @@
 ({
-    pauseAccount: function(component, event, helper, loyalty) {
+    pauseAccount: function(component, event, helper, loyalty)  {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         var action = component.get("c.pauseLoyalty");
         action.setParams({
@@ -7,47 +7,44 @@
             'loyaltyId': loyalty.external_customer_id
         });
 
-        action.setCallback(this, function (response) {
-            component.find("Id_spinner").set("v.class" , 'slds-hide');
-            var state = response.getState();
-            if (component.isValid() && state === "SUCCESS") {
-
-                var result =  response.getReturnValue();
-                if (result == null) {
-                    component.set("v.errorMsg", "Connection Error");
-                } else {
-
-                    if(result.isSuccess) {
-                        var returnVal = result.returnValuesMap['response'];
-                        component.set('v.isSuccess', true)
-                        component.set('v.isClose', true);
-                        loyalty.status = 'paused'
-                        component.set('v.loyalty', loyalty);
-                        component.set('v.message', 'Successfully closed loyalty account');
-                    } else if ( !result.isSuccess && result.returnValuesMap['response'] ) {
-                        var returnVal = result.returnValuesMap['response'];
-                        component.set('v.message', 'Something went wrong, please contact support');
+        return new Promise(function(resolve, reject) {
+            action.setCallback(this, function (response) {
+                component.find("Id_spinner").set("v.class" , 'slds-hide');
+                var state = response.getState();
+                if (component.isValid() && state === "SUCCESS") {
+                    var result =  response.getReturnValue();
+                    if (result == null) {
+                        reject(new Error("Connection Error"));
                     } else {
-                        component.set("v.isError", true);
-                        component.set("v.errorMsg", result.message);
-                        console.log('in failed')
-                        component.set('v.message', 'Something went wrong, please contact support');
-
+                        if(result.isSuccess) {
+                            var returnVal = result.returnValuesMap['body'];
+                            component.set('v.isSuccess', true)
+                            component.set('v.isClose', true);
+                            loyalty.status = 'paused'
+                            component.set('v.loyalty', loyalty);
+                            component.set('v.message', 'Successfully closed loyalty account');
+                            resolve(true)
+                        } else {
+                            var error = new Error(response.getError())
+                            error.result = result
+                            reject(error)
+                        }
                     }
                 }
-            }
-            else {
-                console.log("failed with state: " + state);
-            }
-        });
+                else {
+                    reject(new Error(response.getError()));
+                }
+            });
 
-        $A.enqueueAction(action);
+            $A.enqueueAction(action);
+        });
     },
 
     updateLoyaltyPoints: function(component, event, helper, loyalty, points, eventType) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
+        component.set("v.isMerkleError", false);
+
         var action = component.get("c.updateLoyaltyPoints");
-        console.log(loyalty.external_customer_id)
         action.setParams({
             'email': loyalty.email,
             'loyaltyId': loyalty.external_customer_id,
@@ -55,38 +52,53 @@
             'eventType': eventType,
         });
 
-        action.setCallback(this, function (response) {
-                    component.find("Id_spinner").set("v.class" , 'slds-hide');
-                    var state = response.getState();
-                    if (component.isValid() && state === "SUCCESS") {
-
-                        var result =  response.getReturnValue();
-                        console.log(result)
-                        if (result == null) {
-                            component.set("v.errorMsg", "Connection Error");
+        return new Promise(function(resolve, reject) {
+            action.setCallback(this, function (response) {
+                component.find("Id_spinner").set("v.class" , 'slds-hide');
+                var state = response.getState();
+                if (component.isValid() && state === "SUCCESS") {
+                    var result =  response.getReturnValue();
+                    if (result == null) {
+                        reject(new Error("Connection Error"));
+                    } else {
+                        if(result.isSuccess) {
+                            loyalty.balance = 0
+                            loyalty.balance_in_dollars = 0
+                            component.set('v.loyalty', loyalty);
+                            resolve(loyalty)
                         } else {
-
-                            if(result.isSuccess) {
-                                loyalty.balance = 0
-                                loyalty.balance_in_dollars = 0
-                                component.set('v.loyalty', loyalty);
-                            } /*else if ( !result.isSuccess && result.returnValuesMap['response'] ) {
-
-                            }*/ else {
-                                component.set("v.isError", true);
-                                component.set("v.errorMsg", result.message);
-                                console.log('in failed')
-                                component.set('v.message', 'Something went wrong, please contact support');
-
-                            }
+                            var error = new Error(response.getError())
+                            error.result = result
+                            reject(error)
                         }
                     }
-                    else {
-                        console.log("failed with state: " + state);
-                    }
-                });
+                } else {
+                    reject(new Error(response.getError()));
+                }
+            });
 
-                $A.enqueueAction(action);
+            $A.enqueueAction(action);
+        });
     },
+
+    isValidResponse: function (res) {
+        return res != null && (res == 200 || res == 201 || res == 204);
+    },
+
+    handleError : function(component, error) {
+        component.set("v.isModalOpen", false);
+        var result = error.result
+        if(typeof result === 'object' && result != null) {
+            var statusCode = result.returnValuesMap['statusCode']
+             if ( statusCode && !this.isValidResponse(statusCode) ) {
+                component.set("v.responseCode", statusCode);
+                component.set("v.bodyMsg", result.returnValuesMap['body']);
+                component.set("v.isMerkleError", true);
+             }
+        } else {
+            component.set("v.isError", true);
+            component.set("v.errorMsg", error.message);
+        }
+    }
 
 });
