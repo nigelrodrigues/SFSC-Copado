@@ -1,7 +1,6 @@
 /**
  * Created by akong on 6/1/2020.
  */
-
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         console.log("Inside handleShowAppeasementModal");
@@ -24,16 +23,13 @@
                 }
             });
     },
-
     handleCloseModalApplicationEvent: function(cmp) {
-        console.log('*** handleCloseModalApplicationEvent');
         cmp.get('v.appeasementModalPromise').then(
             function (modal) {
                 modal.close();
             }
         );
     },
-
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
         let container = cmp.find("divRecordTransaction");
@@ -52,5 +48,4 @@
                 }
             });
     },
-
 });
