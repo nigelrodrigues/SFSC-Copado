@@ -135,11 +135,20 @@ public with sharing class trac_WS_WebServiceHelper {
     }
 
     /**
+ *  @description Overloaded method for ease of use and backwards compatibility
+ *  @author      Bryan Cantos, HBC.
+ *  @date        6/8/2020
+ */
+    public static HttpResponse sendGetRequest(String endpoint, Map<String, String> parameters, Boolean fixString, Map<String, String> additionalHeaders) {
+        return sendGetRequest(endpoint, parameters, fixString, additionalHeaders, null);
+    }
+
+    /**
      *  @description Creates GET request and sends it with additional parameters passed into URL
      *  @author      Jeremy Horan, Traction on Demand.
      *  @date        2016-04-22
      */
-    public static HttpResponse sendGetRequest(String endpoint, Map<String, String> parameters, Boolean fixString, Map<String, String> additionalHeaders) {
+    public static HttpResponse sendGetRequest(String endpoint, Map<String, String> parameters, Boolean fixString, Map<String, String> additionalHeaders, Integer timeout) {
         HttpRequest req = new HttpRequest();
         HttpResponse res = new HttpResponse();
         Http http = new Http();
@@ -162,7 +171,11 @@ public with sharing class trac_WS_WebServiceHelper {
         }
 
         req.setEndpoint(endpoint);
-        req.setTimeout(Integer.valueOf(webServiceSettings.Timeout__c));
+        if(timeout == null) {
+            req.setTimeout(Integer.valueOf(webServiceSettings.Timeout__c)) ;
+        } else {
+            req.setTimeout(timeout);
+        }
         req.setMethod(GET_METHOD);
         //TODO: handle this on a per API basis
 //        req.setHeader('Accept', 'application/json');
