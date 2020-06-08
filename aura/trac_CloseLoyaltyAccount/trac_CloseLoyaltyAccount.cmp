@@ -6,7 +6,10 @@
     <aura:attribute name="message" type="string" default="Close loyalty account? All points associated with this account will be removed. Continue?"/>
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
 
-
+    <aura:attribute type="Integer"  name="responseCode"  default=""/>
+    <aura:attribute type="String"  name="bodyMsg"  default=""/>
+    <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
+    <c:trac_MerkleErrorComponent reattempt="{!c.closeAccount}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
 
     <div>
         <lightning:layoutItem padding="around-small">

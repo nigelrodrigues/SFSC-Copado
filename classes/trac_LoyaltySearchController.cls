@@ -7,20 +7,22 @@ public with sharing class trac_LoyaltySearchController {
 
         request.include = 'purchase_stats,reward_stats,detail,badges,badge_groups,rewards,reward_groups,offers,coupons,redemption_limits,tier_stats,referrals,member_attributes,identities,points_expiration_schedule,points_summary';
         
-        if(loyaltyId != null)
+        if(loyaltyId != null) {
         	request.loyaltyId = loyaltyId;
-        
-        if(email != null)
+        }
+
+        if(email != null) {
         	request.email = email;
-        
+        }
+
         try {
             if(request.send()) {
-                response.returnValuesMap.put('loyalty', request.loyaltyResponse);
-            } else if (!request.send() && request.isNotFound()) {
-                response = new TLAuraResponse(false, 'loyalty not found');
+                response.returnValuesMap.put('body', request.loyaltyResponse);
             } else {
-                throw new LoyaltySearchException(request.jsonError);
+                response = new TLAuraResponse(false, 'communication error with merkle');
+                response.returnValuesMap.put('body', request.getBody());
             }
+            response.returnValuesMap.put('statusCode', request.getStatusCode());
         } catch (Exception e) {
             Integration_Error__c integrationError = trac_IntegrationError.addError(new Integration_Error__c(
                     Description__c = e.getMessage() + '\n' + e.getStackTraceString(),
@@ -33,8 +35,6 @@ public with sharing class trac_LoyaltySearchController {
 
             response = new TLAuraResponse(false, errorMessage);
         }
-
-        response.returnValuesMap.put('statusCode', request.getStatusCode());
 
         return response;
     }
