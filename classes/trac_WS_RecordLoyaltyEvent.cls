@@ -55,6 +55,10 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
         return success;
     }
 
+    public String getBody() {
+        return res.getBody();
+    }
+
     public Boolean isNotFound() {
         return res.getStatusCode() == 404 ? true : false;
     }
