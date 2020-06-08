@@ -1,0 +1,7 @@
+<!--
+ - Created by nrodrigues on 6/4/2020.
+ -->
+
+<aura:event type="COMPONENT" description="trac_TransactionHistoryEvent">
+    <aura:attribute name="count" type="String" />
+</aura:event>
