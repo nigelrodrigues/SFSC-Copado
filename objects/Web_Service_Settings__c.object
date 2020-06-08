@@ -26,6 +26,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Event_History__c</fullName>
+        <externalId>false</externalId>
+        <label>Bay Customer Event History</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CNS_Email_Search_Endpoint__c</fullName>
         <description>Relative endpoint for the email search API</description>
         <externalId>false</externalId>
