@@ -22,7 +22,7 @@
             phoneNum = component.find('phoneNumberInput').get("v.value");
         }
 
-        helper.getLoyalty(component, email, loyaltyId, phoneNum)
-    },
+        helper.getLoyalty(component, email, loyaltyId, phoneNum).catch(error => helper.handleError(component, error))
+    }
 
 });
