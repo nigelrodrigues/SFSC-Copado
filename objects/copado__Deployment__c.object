@@ -977,10 +977,15 @@ copado__SUM_Deployed__c / copado__Deployment_Jobs_Count__c,
         <columns>copado__Deployed__c</columns>
         <columns>copado__Completed__c</columns>
         <columns>copado__From_Org__c</columns>
+        <columns>LAST_UPDATE</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>copado__From_Org__c</field>
+            <operation>equals</operation>
+            <value>qa1</value>
+        </filters>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Deployment Name</label>
