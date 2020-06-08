@@ -1,0 +1,67 @@
+<aura:component description="trac_CloseLoyaltyAccount" extends="c:trac_BaseComponent" controller="trac_LoyaltyController" >
+    <aura:attribute name="loyalty" type="Object"/>
+	<aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="isSuccess" type="boolean" default="false"/>
+    <aura:attribute name="isClose" type="boolean" default="false"/>
+    <aura:attribute name="message" type="string" default="Close loyalty account? All points associated with this account will be removed. Continue?"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <aura:attribute type="Integer"  name="responseCode"  default=""/>
+    <aura:attribute type="String"  name="bodyMsg"  default=""/>
+    <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
+    <c:trac_MerkleErrorComponent reattempt="{!c.closeAccount}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
+
+    <div>
+        <lightning:layoutItem padding="around-small">
+            <lightning:button label="Close Account" 
+                              variant="destructive-text"
+                              disabled="{!v.isClose}"
+                              onclick="{!c.openModel}"/>
+        </lightning:layoutItem>
+        <aura:if isTrue="{!v.isModalOpen}">
+             
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open ">
+                <div class="slds-modal__container">
+                    <div class="slds-is-relative">
+                    <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{! c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Close Loyalty Account</h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p class="slds-text-align_center">{!v.message}</p>
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <aura:if isTrue="{!v.isSuccess == false}">
+                                <lightning:button variant="neutral"
+                                                  label="Cancel"
+                                                  title="Cancel"
+                                                  onclick="{! c.closeModel }"/>
+                                <lightning:button variant="destructive-text"
+                                                  label="Close Account"
+                                                  title="Close Account"
+                                                  onclick="{!c.closeAccount}"/>
+                                <aura:set attribute="else">
+                                    <lightning:button variant="neutral"
+                                                      label="Close"
+                                                      title="Close"
+                                                      onclick="{! c.closeModel }"/>
+                                </aura:set>
+                            </aura:if>
+                        </footer>
+                        <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+
+</aura:component>
