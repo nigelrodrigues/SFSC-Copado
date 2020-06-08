@@ -16,30 +16,8 @@ public with sharing class trac_LoyaltyController {
         }
 
         try {
-            if (response.isSuccess) {
-                // no errors so far; callout to endpoint
-                trac_WS_RecordLoyaltyEvent evt = new trac_WS_RecordLoyaltyEvent();
-                evt.loyaltyId = loyaltyId;
-                evt.email = email;
-                evt.eventType = eventType;
-                evt.value = points;
-
-                if (evt.send()) {
-                    // successful callout
-                    response.message = 'Successfully updated points to ' + points + ' to Loyalty Number ' + loyaltyId;
-                    response.returnValuesMap.put('response', evt.eventResponse);
-                } else {
-                    // unsuccessful callout
-                    response.isSuccess = false;
-                    if (evt.eventResponse != null) {
-                        response.message  = evt.eventResponse.data.message;
-                    } else {
-                        response.message = evt.jsonError;
-                        System.debug('JSON error response: ' + evt.jsonError);
-                    }
-                    response.returnValuesMap.put('response', evt.eventResponse);
-                }
-            }
+            String message = 'Successfully updated points to ' + points + ' to Loyalty Number ' + loyaltyId;
+            handleResponse(response, loyaltyId, email, eventType, points, message);
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
@@ -47,26 +25,61 @@ public with sharing class trac_LoyaltyController {
         return response;
     }
 
+    private static void handleResponse(TLAuraResponse response, String loyaltyId, String email, String eventType, Integer points, String successMessage) {
+        if (response.isSuccess) {
+            // no errors so far; callout to endpoint
+            trac_WS_RecordLoyaltyEvent evt = new trac_WS_RecordLoyaltyEvent();
+            evt.loyaltyId = loyaltyId;
+            evt.email = email;
+            evt.eventType = eventType;
+            evt.value = points;
+
+            if (evt.send()) {
+                // successful callout
+                response.message = successMessage;
+                response.returnValuesMap.put('body', evt.eventResponse);
+            } else {
+                // unsuccessful callout
+                response.isSuccess = false;
+                if (evt.eventResponse != null) {
+                    response.message = evt.eventResponse.data.message;
+                    response.returnValuesMap.put('body', evt.eventResponse);
+                } else {
+                    response.message = evt.jsonError;
+                    System.debug('JSON error response: ' + evt.jsonError);
+                    response.returnValuesMap.put('body', evt.getBody());
+                }
+            }
+            response.returnValuesMap.put('statusCode', evt.getStatusCode());
+
+        }
+    }
+
     @AuraEnabled
     public static TLAuraResponse pauseLoyalty(String loyaltyId, String email) {
         TLAuraResponse response = new TLAuraResponse(true);
         trac_WS_PauseLoyalty request = new trac_WS_PauseLoyalty();
 
-        if(loyaltyId != null)
+        if(loyaltyId != null) {
             request.loyaltyId = loyaltyId;
+        }
 
-        if(email != null)
+        if(email != null) {
             request.email = email;
+        }
 
         try {
-            if(request.send() && request.pauseResponse.success) {
-                response.returnValuesMap.put('response', request.pauseResponse);
-            } else if (!request.pauseResponse.success) {
+            Boolean isSuccess = request.send();
+            if(isSuccess && request.pauseResponse.success) {
+                response.returnValuesMap.put('body', request.pauseResponse);
+            } else if (isSuccess && !request.pauseResponse.success) {
                 response = new TLAuraResponse(false);
-                response.returnValuesMap.put('response', request.pauseResponse);
-            } else if (!request.send()) {
-                response = new TLAuraResponse(false, 'Something went wrong, please contact support');
+                response.returnValuesMap.put('body', request.pauseResponse);
+            } else {
+                response = new TLAuraResponse(false, 'communication error with merkle');
+                response.returnValuesMap.put('body', request.getBody());
             }
+            response.returnValuesMap.put('statusCode', request.getStatusCode());
         } catch (Exception e) {
             System.debug(e.getMessage());
             Integration_Error__c integrationError = trac_IntegrationError.addError(new Integration_Error__c(
@@ -81,7 +94,6 @@ public with sharing class trac_LoyaltyController {
             response = new TLAuraResponse(false, errorMessage);
         }
 
-        response.returnValuesMap.put('statusCode', request.getStatusCode());
 
         return response;
     }

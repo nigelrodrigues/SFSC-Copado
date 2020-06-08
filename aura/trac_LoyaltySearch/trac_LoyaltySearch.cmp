@@ -8,6 +8,11 @@
     <aura:attribute name="selectedValue" type="String" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
 
+    <aura:attribute type="Integer"  name="responseCode"  default=""/>
+    <aura:attribute type="String"  name="bodyMsg"  default=""/>
+    <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
+    <c:trac_MerkleErrorComponent reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
+
     <div onkeyup="{!c.formPress}" >
         <div class="slds-text-color_destructive">
             <aura:if isTrue="{!v.showError}">
