@@ -109,11 +109,7 @@
         </aura:if>
     </lightning:layout>
     <lightning:accordion aura:id="accordion" activeSectionName="points">
-        <lightning:accordionSection name="points" label="Recent Points Transaction">
-            <aura:set attribute="body">
-                <p>No activity within the last 12 months.</p>
-            </aura:set>
-        </lightning:accordionSection>
+        
         <lightning:accordionSection name="partnerships" label="Linked Partnerships">
             <p>No activity within the last 12 months.</p>
         </lightning:accordionSection>
