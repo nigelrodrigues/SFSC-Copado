@@ -26,9 +26,8 @@
 
       var loyalty = component.get('v.loyalty')
       helper.updateLoyaltyPoints(component, event, helper, loyalty, -Math.abs(loyalty.balance), 'closed_account')
-//      .then(() => helper.pauseAccount(component, event, helper, loyalty))
+      .then(() => helper.pauseAccount(component, event, helper, loyalty))
       .catch(error => helper.handleError(component, error))
 
-//      helper.pauseAccount(component, event, helper, loyalty).catch(error => helper.handleError(component, error))
    }
 })

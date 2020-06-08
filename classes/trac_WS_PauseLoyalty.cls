@@ -38,8 +38,7 @@ public with sharing class trac_WS_PauseLoyalty {
         System.debug('res.getBody(): ' + res.getBody());
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             pauseResponse = parse(res.getBody());
-            success = false;
-            jsonError = trac_WS_WebServiceHelper.getError(res);
+            success = true;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
         }
