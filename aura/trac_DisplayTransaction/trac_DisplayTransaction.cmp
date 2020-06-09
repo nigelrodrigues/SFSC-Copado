@@ -18,11 +18,13 @@
             </td>
             <td>
                 <div class="slds-truncate">
-                    <lightning:formattedDateTime value="{!transactionData.created_at}" year="numeric" month="long" day="2-digit" />
+                    <lightning:formattedDateTime value="{!transactionData.created_at}" year="2-digit" month="long" day="2-digit" />
                 </div>
             </td>
             <td class="slds-hyphenate">
-                {!transactionData.event_type} : {!transactionData.event_id} <br/> <i>{!transactionData.detail} </i>
+                {!transactionData.event_id}<br/>
+                {!transactionData.display_detail}<br/>
+                <i style="text-transform:uppercase">{!transactionData.channel}</i>
             </td>
             <td>
                 <div class="slds-clearfix">
