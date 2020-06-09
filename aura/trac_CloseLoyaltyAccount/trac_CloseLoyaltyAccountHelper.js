@@ -90,11 +90,18 @@
         var result = error.result
         if(typeof result === 'object' && result != null) {
             var statusCode = result.returnValuesMap['statusCode']
-             if ( statusCode && !this.isValidResponse(statusCode) ) {
+            if (statusCode && this.isValidResponse(statusCode) ) {
+                var body = result.returnValuesMap['body']
+                component.set("v.canRetry", false);
+                component.set("v.responseCode", body.data.code);
+                component.set("v.bodyMsg", body.data.message);
+                component.set("v.isMerkleError", true);
+            } else if ( statusCode && !this.isValidResponse(statusCode) ) {
+                component.set("v.canRetry", true);
                 component.set("v.responseCode", statusCode);
                 component.set("v.bodyMsg", result.returnValuesMap['body']);
                 component.set("v.isMerkleError", true);
-             }
+            }
         } else {
             component.set("v.isError", true);
             component.set("v.errorMsg", error.message);
