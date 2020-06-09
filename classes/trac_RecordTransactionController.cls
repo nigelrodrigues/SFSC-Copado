@@ -29,9 +29,7 @@ public with sharing class trac_RecordTransactionController {
     @AuraEnabled
     public static TLAuraResponse recordTransaction(RecordTransactionParameters params) {
         TLAuraResponse response = new TLAuraResponse(true);
-
         validateParams(params, response);
-
         // any validation errors?
         if (response.isSuccess) {
             // no errors so far; callout to endpoint
@@ -121,14 +119,23 @@ public with sharing class trac_RecordTransactionController {
     }
 
     public class RecordTransactionParameters {
-        public String loyaltyNumber;
-        public String email;
-        public String transactionOrigin;
-        public String orderNumber;
-        public String transactionNumber;
-        public String transactionDate;
+        @AuraEnabled
+        public String loyaltyNumber {get; set;}
+        @AuraEnabled
+        public String email {get; set;}
+        @AuraEnabled
+        public String transactionOrigin {get; set;}
+        @AuraEnabled
+        public String orderNumber {get; set;}
+        @AuraEnabled
+        public String transactionNumber {get; set;}
+        @AuraEnabled
+        public String transactionDate {get; set;}
+
         public Datetime transactionDateObj;
-        public Decimal transactionSubtotal;
-        public Decimal exclusionSubtotal;
+        @AuraEnabled
+        public Decimal transactionSubtotal {get; set;}
+        @AuraEnabled
+        public Decimal exclusionSubtotal {get; set;}
     }
 }
