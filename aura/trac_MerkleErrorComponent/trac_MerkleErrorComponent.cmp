@@ -1,0 +1,54 @@
+<aura:component description="trac_MerkleErrorComponent">
+    <!-- Attributes -->
+    <aura:attribute name="reattempt" type="Aura.Action" required="true"/>
+    <aura:attribute type="Integer"  name="responseCode"  default="" required="true" access="public"/>
+    <aura:attribute type="String"  name="bodyMsg"  default="" required="true" access="public"/>
+    <aura:attribute type="Boolean" name="isMerkleError" required="true" default="false" access="public"/>
+    <aura:attribute type="String"  name="heading"   default="Error Communicating With Merkle" access="public"/>
+
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <!-- Markup -->
+
+    <div>
+        {!v.body}
+    </div>
+
+    <aura:if isTrue="{!v.isMerkleError}">
+        <div>
+            <div aria-hidden="false" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" role="alertdialog" class="slds-modal slds-modal--prompt slds-fade-in-open">
+                <div class="slds-modal__container slds-modal--prompt" role="document" id="prompt-message-wrapper" tabindex="0">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium" id="prompt-heading-id">{!v.heading}</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium slds-wrap">
+                        <div>
+                            <p>There was an error communicating with Merkle. Merkle returned the following error:</p>
+                        </div>
+                        <br/>
+                        <div>
+                            <p>Response Code: {!v.responseCode}</p>
+                        </div>
+                        <div>
+                            <p>Body:</p>
+                            <br/>
+                            <p>{!v.bodyMsg}</p>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer slds-theme--default">
+                        <lightning:button label="Reattempt" variant="brand" onclick="{!v.reattempt}"/>
+                        <lightning:button label="Cancel" onclick="{!c.errorClose}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop--open"></div>
+        </div>
+    </aura:if>
+
+    <div>
+        <aura:if isTrue="{!v.isSpinner}">
+            <lightning:spinner aura:id="spinner" variant="brand" class="{!v.isLoading ? '' : 'slds-hide' }" size="large" alternativeText="Please wait..."/>
+        </aura:if>
+    </div>
+</aura:component>

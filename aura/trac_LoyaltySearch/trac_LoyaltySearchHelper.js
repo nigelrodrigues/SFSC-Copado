@@ -1,8 +1,9 @@
 ({
-    getLoyalty: function (component, email, loyaltyId, phoneNum) {
+    getLoyalty: function(component, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
+        component.set("v.isMerkleError", false);
 
         var action = component.get("c.getLoyalty");
 
@@ -11,35 +12,34 @@
             'loyaltyId': loyaltyId
         });
 
-        action.setCallback(this, function (response) {
-            component.find("Id_spinner").set("v.class" , 'slds-hide');
-            var state = response.getState();
-            if (component.isValid() && state === "SUCCESS") {
-
-                var result =  response.getReturnValue();
-                if (result == null) {
-                    component.set("v.errorMsg", "Connection Error");
-                } else {
-
-                    if(result.isSuccess) {
-                        var returnVal = result.returnValuesMap['loyalty']['data'];
-                        returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance / 200
-                        returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
-                        component.set('v.loyalty', returnVal);
-                    } else if ( result.returnValuesMap['statusCode'] == 404) {
-                        component.set("v.noLoyaltyFound", true);
+        return new Promise(function(resolve, reject) {
+            action.setCallback(this,function(response) {
+                component.find("Id_spinner").set("v.class" , 'slds-hide');
+                var state = response.getState();
+                if (state === "SUCCESS") {
+                    var result = response.getReturnValue();
+                    if (result == null) {
+                        reject(new Error("Connection Error"));
                     } else {
-                        component.set("v.isError", true);
-                        component.set("v.errorMsg", result.message);
+                        var isSuccess = result.returnValuesMap['body']['success']
+                        if(result.isSuccess && isSuccess) {
+                            var returnVal = result.returnValuesMap['body']['data'];
+                            returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance / 200
+                            returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
+                            component.set('v.loyalty', returnVal);
+                            resolve(returnVal)
+                        } else {
+                            var error = new Error(response.getError())
+                            error.result = result
+                            reject(error)
+                        }
                     }
+                } else {
+                   reject(new Error(response.getError()));
                 }
-            }
-            else {
-                console.log("failed with state: " + state);
-            }
+            });
+            $A.enqueueAction(action);
         });
-
-        $A.enqueueAction(action);
     },
 
     isNotBlank: function(component, field) {
@@ -50,4 +50,22 @@
             return true;
         }
     },
+
+    isValidResponse: function (res) {
+        return res != null && (res == 200 || res == 201 || res == 204);
+    },
+
+    handleError : function(component, error) {
+        var result = error.result
+        if(typeof result === 'object' && result != null) {
+             if ( !result.isSuccess ) {
+                component.set("v.responseCode", result.returnValuesMap['statusCode']);
+                component.set("v.bodyMsg", result.returnValuesMap['body']);
+                component.set("v.isMerkleError", true);
+             }
+        } else {
+            component.set("v.isError", true);
+            component.set("v.errorMsg", error.message);
+        }
+    }
 });
