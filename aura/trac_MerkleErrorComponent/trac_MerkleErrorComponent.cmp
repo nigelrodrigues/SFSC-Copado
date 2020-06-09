@@ -3,8 +3,8 @@
     <aura:attribute name="reattempt" type="Aura.Action" required="true"/>
     <aura:attribute type="Integer"  name="responseCode"  default="" required="true" access="public"/>
     <aura:attribute type="String"  name="bodyMsg"  default="" required="true" access="public"/>
+    <aura:attribute type="Boolean" name="canRetry" required="true" default="false" access="public"/>
     <aura:attribute type="Boolean" name="isMerkleError" required="true" default="false" access="public"/>
-    <aura:attribute type="String"  name="heading"   default="Error Communicating With Merkle" access="public"/>
 
     <!-- Handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
@@ -15,12 +15,12 @@
         {!v.body}
     </div>
 
-    <aura:if isTrue="{!v.isMerkleError}">
+    <aura:if isTrue="{!and(v.isMerkleError, v.canRetry)}">
         <div>
             <div aria-hidden="false" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" role="alertdialog" class="slds-modal slds-modal--prompt slds-fade-in-open">
                 <div class="slds-modal__container slds-modal--prompt" role="document" id="prompt-message-wrapper" tabindex="0">
                     <div class="slds-modal__header">
-                        <h2 class="slds-text-heading--medium" id="prompt-heading-id">{!v.heading}</h2>
+                        <h2 class="slds-text-heading--medium" id="prompt-heading-id">Error Communicating With Merkle</h2>
                     </div>
                     <div class="slds-modal__content slds-p-around--medium slds-wrap">
                         <div>
@@ -45,10 +45,36 @@
             <div class="slds-backdrop slds-backdrop--open"></div>
         </div>
     </aura:if>
+    <aura:if isTrue="{!and(v.isMerkleError, not(v.canRetry))}">
+        <div>
+            <div aria-hidden="false" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" role="alertdialog" class="slds-modal slds-modal--prompt slds-fade-in-open">
+                <div class="slds-modal__container slds-modal--prompt" role="document" id="prompt-message-wrapper" tabindex="0">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium" id="prompt-heading-id"><b>Request Rejected by Loyalty System</b></h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium slds-wrap">
+                        <div>
+                            <p>The request was rejected by the loyalty system. The loyalty system responded with the following error:</p>
+                        </div>
+                        <br/>
+                        <div>
+                            <p>Error Code: {!v.responseCode}</p>
+                        </div>
+                        <div>
+                            <p>Reason: {!v.bodyMsg}</p>
+                        </div>
+                        <br/>
 
-    <div>
-        <aura:if isTrue="{!v.isSpinner}">
-            <lightning:spinner aura:id="spinner" variant="brand" class="{!v.isLoading ? '' : 'slds-hide' }" size="large" alternativeText="Please wait..."/>
-        </aura:if>
-    </div>
+                        <div>
+                            <p>Verify all fields are filled out correctly and that the account is in active status. The request may succeed if you make a change.</p>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer slds-theme--default">
+                        <lightning:button label="Back" onclick="{!c.errorClose}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop--open"></div>
+        </div>
+    </aura:if>
 </aura:component>
