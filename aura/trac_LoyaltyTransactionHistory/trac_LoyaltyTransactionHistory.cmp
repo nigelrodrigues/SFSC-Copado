@@ -27,13 +27,13 @@
                     <div></div>
                 </th>
                 <th scope="col">
-                    <div class="slds-truncate">Process Date</div>
+                    <div class="slds-truncate">Processed</div>
                 </th>
                 <th scope="col">
                     <div class="slds-truncate slds-grid slds-truncate_container_33">Description</div>
                 </th>
                 <th scope="col">
-                    <div class="slds-truncate">Net Points</div>
+                    <div class="slds-truncate slds-float_right">Value</div>
                 </th>
             </tr>
             </thead>
