@@ -58,9 +58,18 @@
     handleError : function(component, error) {
         var result = error.result
         if(typeof result === 'object' && result != null) {
-             if ( !result.isSuccess ) {
-                component.set("v.responseCode", result.returnValuesMap['statusCode']);
-                component.set("v.bodyMsg", result.returnValuesMap['body']);
+            var statusCode = result.returnValuesMap['statusCode']
+            var str = result.returnValuesMap['body']
+            if ( statusCode && this.isValidResponse(statusCode)  ) {
+                var body = JSON.parse(str)
+                component.set("v.canRetry", false);
+                component.set("v.responseCode", body.data.code);
+                component.set("v.bodyMsg", body.data.message);
+                component.set("v.isMerkleError", true);
+            } else {
+                component.set("v.canRetry", true);
+                component.set("v.responseCode",  statusCode);
+                component.set("v.bodyMsg", str);
                 component.set("v.isMerkleError", true);
              }
         } else {

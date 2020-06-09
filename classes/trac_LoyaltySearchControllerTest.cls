@@ -7,7 +7,7 @@ public with sharing class trac_LoyaltySearchControllerTest {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty());
         String email = 'wassim1002@hbc.com';
         String loyaltyId = null;
-        trac_WS_GetLoyalty.LoyaltyResponse res = (trac_WS_GetLoyalty.LoyaltyResponse) trac_LoyaltySearchController.getLoyalty(email, loyaltyId).returnValuesMap.get('loyalty');
+        trac_WS_GetLoyalty.LoyaltyResponse res = (trac_WS_GetLoyalty.LoyaltyResponse) trac_LoyaltySearchController.getLoyalty(email, loyaltyId).returnValuesMap.get('body');
         System.assert(res != null, 'Loyalty retrived successfully.');
     }
     
@@ -16,7 +16,7 @@ public with sharing class trac_LoyaltySearchControllerTest {
         Test.setMock(HttpCalloutMock.class, null);
         String email = 'wassim1002@hbc.com';
         String loyaltyId = null;
-        trac_WS_GetLoyalty.LoyaltyResponse res = (trac_WS_GetLoyalty.LoyaltyResponse) trac_LoyaltySearchController.getLoyalty(email, loyaltyId).returnValuesMap.get('loyalty');
-        System.assert(res == null, 'Loyalty not retrived successfully.');
+        String res = (String) trac_LoyaltySearchController.getLoyalty(email, loyaltyId).returnValuesMap.get('body');
+        System.assert(res == '', 'Loyalty not retrived successfully.');
     }
 }

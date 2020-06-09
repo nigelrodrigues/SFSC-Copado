@@ -78,14 +78,14 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
     }
 
     public class RecordLoyaltyEventResponse {
-        public res_Data data;
-        public Boolean success;
+        @AuraEnabled public res_Data data;
+        @AuraEnabled public Boolean success;
     }
 
     public class res_Data {
-        public Integer id;
-        public Integer points;
-        public Integer code;
-        public String message;
+        @AuraEnabled public Integer id;
+        @AuraEnabled public Integer points;
+        @AuraEnabled public Integer code;
+        @AuraEnabled public String message;
     }
 }
