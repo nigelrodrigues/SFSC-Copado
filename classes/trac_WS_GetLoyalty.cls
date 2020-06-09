@@ -45,7 +45,7 @@ public class trac_WS_GetLoyalty {
         System.debug('res.getBody(): ' + res.getBody());
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             loyaltyResponse = parse(res.getBody());
-            success = true;
+            success = loyaltyResponse.success;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
