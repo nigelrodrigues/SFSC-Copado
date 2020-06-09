@@ -17,7 +17,6 @@
    },
   
    closeAccount: function(component, event, helper) {
-       console.log('in close account')
 
       if(component.get('v.isMerkleError') == true) {
           component.set("v.isMerkleError", false);
@@ -25,7 +24,8 @@
       }
 
       var loyalty = component.get('v.loyalty')
-      helper.updateLoyaltyPoints(component, event, helper, loyalty, -Math.abs(loyalty.balance), 'closed_account')
+
+      helper.updateLoyaltyPoints(component, event, helper, loyalty, -Math.abs(loyalty.balance), 'close_member')
       .then(() => helper.pauseAccount(component, event, helper, loyalty))
       .catch(error => helper.handleError(component, error))
 
