@@ -54,9 +54,9 @@ public with sharing class trac_WS_LoyaltyEvent {
     
     public class res_dataWrapper {
         
-        res_dataWrapper() {
-            display_line = channel + ': ' + sub_channel;
-        }
+//        res_dataWrapper() {
+//            display_line = channel + ': ' + sub_channel;
+//        }
         
         @AuraEnabled public Boolean showDetails = false;
         @AuraEnabled public Integer id;
@@ -77,18 +77,18 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public Integer tier_id;
         @AuraEnabled public String display_detail;
         @AuraEnabled public res_ruleWrapper rule;
-        @AuraEnabled public String display_line;
+//        @AuraEnabled public String display_line;
         
-        @AuraEnabled
-        public String getDisplayLine() {
-            String output = display_detail;
-            if ('pos'.equals(channel)) {
-                output += ', Store ' + sub_channel + ', ' + channel;
-            } else if (channel != null) {
-                output += ', ' + channel;
-            }
-            return output;
-        }
+//        @AuraEnabled
+//        public String getDisplayLine() {
+//            String output = display_detail;
+//            if ('pos'.equals(channel)) {
+//                output += ', Store ' + sub_channel + ', ' + channel;
+//            } else if (channel != null) {
+//                output += ', ' + channel;
+//            }
+//            return output;
+//        }
     }
     public class res_ruleWrapper {
         @AuraEnabled public Integer id;
