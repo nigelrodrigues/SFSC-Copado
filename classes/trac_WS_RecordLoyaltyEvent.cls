@@ -17,6 +17,15 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
     public String eventId;
     public String eventType;
     public Decimal value;
+
+    public String originatedAt;
+    public String eventChannel;
+    public String subChannel;
+    public String subChannelDetail;
+    public String detail;
+    public String include;
+
+
     public Boolean send() {
         Boolean success = false;
         Map<String, String> params =  new Map<String, String>();
@@ -27,8 +36,30 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
         params.put('type', eventType);
         params.put('uuid', UUID);
         params.put('value', String.valueOf(value));
+
+
+        // optional parameters
+        if (String.isNotBlank(originatedAt)) {
+            params.put('originated_at', originatedAt);
+        }
+        if (String.isNotBlank(detail)) {
+            params.put('detail', detail);
+        }
+        if (String.isNotBlank(eventChannel)) {
+            params.put('channel', eventChannel);
+        }
+        if (String.isNotBlank(subChannel)) {
+            params.put('sub_channel', subChannel);
+        }
+        if (String.isNotBlank(subChannelDetail)) {
+            params.put('sub_channel_detail', subChannelDetail);
+        }
+
+        // generate signature from the SECRET_KEY and params
         String sig = trac_WS_LoyaltyUtils.generateHash(SECRET_KEY, params);
         params.put('sig', sig);
+
+
         System.debug('params: ' + params);
         additionalHeaders.put('x-api-key', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_API_Key__c);
         additionalHeaders.put('x-apigw-api-id', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_APIGW_API_ID__c);
@@ -62,6 +93,7 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
         return (RecordLoyaltyEventResponse) System.JSON.deserialize(json, RecordLoyaltyEventResponse.class);
     }
     public class RecordLoyaltyEventResponse {
+
         @AuraEnabled public res_Data data;
         @AuraEnabled public Boolean success;
     }
@@ -70,5 +102,6 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
         @AuraEnabled public Integer points;
         @AuraEnabled public Integer code;
         @AuraEnabled public String message;
+
     }
 }
