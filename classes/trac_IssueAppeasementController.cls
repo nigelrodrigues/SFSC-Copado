@@ -4,8 +4,15 @@
 
 public with sharing class trac_IssueAppeasementController {
 
+    /**
+    * @description Callout to Merkle API to record gift event
+    * @param loyaltyNumber String, the customer's Loyalty Number
+    * @param email String, the customer's email address
+    * @param points Integer, the number of points to award
+    * @return TLAuraResponse
+    */
     @AuraEnabled
-    public static TLAuraResponse submitAppeasement(String loyaltyNumber, String email, Integer points, Integer pointsAvailable) {
+    public static TLAuraResponse submitAppeasement(String loyaltyNumber, String email, Integer points) {
         TLAuraResponse response = new TLAuraResponse(true);
 
         if (String.isBlank(loyaltyNumber)) {
@@ -18,21 +25,6 @@ public with sharing class trac_IssueAppeasementController {
             response.isSuccess = false;
             response.message = 'Points must be a positive integer';
         }
-
-//        // query for Contact
-//        List<Contact> cnts = [SELECT Id, Email, Loyalty_Number__c FROM Contact WHERE Id =: contactId];
-//        Contact cnt;
-//        if (!cnts.isEmpty()) {
-//            cnt = cnts[0];
-//        }
-//
-//        if (cnt == null) {
-//            response.isSuccess = false;
-//            response.message = 'Unable to find contact record';
-//        } else if (String.isBlank(cnt.Loyalty_Number__c)) {
-//            response.isSuccess = false;
-//            response.message = 'Contact record missing loyalty number';
-//        }
 
         // callout to Merkle API to award points
         try {
@@ -66,5 +58,27 @@ public with sharing class trac_IssueAppeasementController {
         }
 
         return response;
+    }
+
+    /**
+    * @description Returns the maximum appeasement allowed for current profile
+    * @return Map<String,String>, keys are profileName and maxAppeasement
+    */
+    @AuraEnabled
+    public static Map<String,String> getProfileAppeasementLimit() {
+        Map<String,String> retMap = new Map<String,String>{'profileName' => null, 'maxAppeasement' => '0'};
+
+        Profile p = [SELECT Id, Name FROM Profile WHERE Id = :UserInfo.getProfileId()];
+        retMap.put('profileName', p.Name);
+
+        // query custom metadata type with this profile name
+        List<Bay_Loyalty_Profile_Appeasement_Cap__mdt> profileCaps = [SELECT Id, Label, Max_Appeasement__c
+                                                                        FROM Bay_Loyalty_Profile_Appeasement_Cap__mdt
+                                                                        WHERE Label = :p.Name];
+        String maxAppeasement = profileCaps.isEmpty() ? '0' : profileCaps[0].Max_Appeasement__c;
+        retMap.put('maxAppeasement', maxAppeasement);
+        //retMap.put('maxAppeasement', 'Unlimited'); // for testing
+
+        return retMap;
     }
 }
