@@ -5,60 +5,31 @@
  */
 ({
     doInit: function(cmp, event, helper) {
-        cmp.set('v.isSpinner', true);
-        cmp.set('v.isLoading', false);
-        helper.calculateDisplayAmounts(cmp);
+        var pointsAvailable = cmp.get('v.loyalty.balance');
+        pointsAvailable = $A.util.isEmpty(pointsAvailable) ? 0 : parseInt(pointsAvailable);
+        cmp.set('v.pointsAvailable', pointsAvailable);
+        helper.calculateAmounts(cmp);
+        helper.getProfileLimit(cmp);
     },
-    selectAmount: function(cmp, event, helper) {
-        helper.calculateDisplayAmounts(cmp);
+    changeAmount: function(cmp, event, helper) {
+        helper.calculateAmounts(cmp);
+        var inputCmp = cmp.find("amount");
+        inputCmp.setCustomValidity("");
+        inputCmp.reportValidity();
     },
     submitAppeasementForm: function(cmp, event, helper) {
-        cmp.set('v.isLoading', true);
-        var selectedAmount = cmp.get("v.selectedAmount");
-        console.log("Submitting appeasement of " + selectedAmount + " points");
-
-        // submit to server
-        var action = cmp.get('c.submitAppeasement');
-
-        var params = {
-            //contactId: cmp.get('v.contactId'),
-            loyaltyNumber: cmp.get('v.loyaltyNumber'),
-            email: cmp.get('v.email'),
-            points: cmp.get('v.selectedAmount'),
-            pointsAvailable: cmp.get('v.pointsAvailable')
-        };
-        console.log('params: ', params);
-        action.setParams(params);
-
-        action.setCallback(this, function (response) {
-            console.log('inside action setCallback; response: ', response);
-            cmp.set('v.isLoading', false);
-            var state = response.getState();
-
-            console.log('cmp.isValid: ' + cmp.isValid() + '; state: ' + state);
-            if (cmp.isValid() && state === "SUCCESS") {
-                var result = response.getReturnValue();
-                console.log('result: ', result);
-
-                if (typeof result !== undefined && result != null) {
-                    if (result.isSuccess) {
-                        // success, show success toast
-                        helper.showToast(result.message, 'success', 'Appeasement Submitted');
-
-                        // fire event to close the modal
-                        helper.fireCloseModalEvent();
-                    } else {
-                        // failure, show error message
-                        cmp.set("v.isError", true);
-                        cmp.set("v.errorMsg", result.message);
-                    }
-                } else {
-                    // unexpected error
-                    cmp.set("v.isError", true);
-                    cmp.set("v.errorMsg", "Connection Error");
-                }
+        // check validity
+        if (cmp.find('amount').get('v.validity').valid) {
+            // form field is valid, do one final check on max appeasement amount
+            if (helper.checkAppeasementValue(cmp)) {
+                // all good, submit the appeasement
+                helper.submitAppeasement(cmp, event, helper);
             }
-        });
-        $A.enqueueAction(action);
-    }
+        }
+    },
+    formPress: function (cmp, event, helper) {
+        if (event.key === 'Enter') {
+            $A.enqueueAction(cmp.get('c.submitAppeasementForm'));
+        }
+    },
 });
