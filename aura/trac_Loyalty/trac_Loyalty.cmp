@@ -108,7 +108,9 @@
             </lightning:layout>
         </aura:if>
     </lightning:layout>
+
     <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
+
         <lightning:accordionSection name="tier" label="Tier Qualification">
             <lightning:layout multipleRows="true">
                 <lightning:layoutItem padding="around-small" size="6">
@@ -222,5 +224,13 @@
         <lightning:layoutItem padding="around-small" size="6">
             <lightning:button name="issueAppeasement" label="Issue Appeasement" onclick="{!c.handleShowAppeasementModal}"/>
         </lightning:layoutItem>
+
+        <lightning:layoutItem padding="around-small" size="6">
+            <lightning:button aura:id="btnRecordTransaction" name="recordTransaction" label="Record Transaction" onclick="{!c.handleShowRecordTransaction}"/>
+        </lightning:layoutItem>
     </lightning:layout>
+    <div aura:id="divRecordTransaction">
+        {!v.body}
+    </div>
+
 </aura:component>
