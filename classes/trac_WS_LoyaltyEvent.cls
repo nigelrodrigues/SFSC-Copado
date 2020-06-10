@@ -32,7 +32,6 @@ public with sharing class trac_WS_LoyaltyEvent {
         String sig = trac_WS_LoyaltyUtils.generateHash(SECRET_KEY, params);
         params.put('sig', sig);
 
-
         res = trac_WS_WebServiceHelper.SendGetRequest(ENDPOINT, params, false, additionalHeaders);
         if(trac_WS_WebServiceHelper.isValidResponse(res)) {
             System.debug('Event response: ' + res.getBody());
@@ -45,13 +44,20 @@ public with sharing class trac_WS_LoyaltyEvent {
         }
         return false;
     }
+    
     public static EventResponse parse(String json) {
         return (EventResponse) System.JSON.deserialize(json, EventResponse.class);
     }
 
     public class EventRequest {
     }
+    
     public class res_dataWrapper {
+        
+//        res_dataWrapper() {
+//            display_line = channel + ': ' + sub_channel;
+//        }
+        
         @AuraEnabled public Boolean showDetails = false;
         @AuraEnabled public Integer id;
         @AuraEnabled public String event_id;
@@ -61,14 +67,28 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public Integer status;
         @AuraEnabled public String detail;
         @AuraEnabled public String created_at;
+        @AuraEnabled public String originated_at;
         @AuraEnabled public String updated_at;
         @AuraEnabled public String value;
         @AuraEnabled public Decimal points;
         @AuraEnabled public String external_customer_id;
         @AuraEnabled public String channel;
+        @AuraEnabled public String sub_channel;
         @AuraEnabled public Integer tier_id;
         @AuraEnabled public String display_detail;
         @AuraEnabled public res_ruleWrapper rule;
+//        @AuraEnabled public String display_line;
+        
+//        @AuraEnabled
+//        public String getDisplayLine() {
+//            String output = display_detail;
+//            if ('pos'.equals(channel)) {
+//                output += ', Store ' + sub_channel + ', ' + channel;
+//            } else if (channel != null) {
+//                output += ', ' + channel;
+//            }
+//            return output;
+//        }
     }
     public class res_ruleWrapper {
         @AuraEnabled public Integer id;
