@@ -3,7 +3,7 @@
 	<aura:attribute name="isModalOpen" type="boolean" default="false"/>
     <aura:attribute name="isSuccess" type="boolean" default="false"/>
     <aura:attribute name="isClose" type="boolean" default="false"/>
-    <aura:attribute name="message" type="string" default="Close loyalty account? All points associated with this account will be removed. Continue?"/>
+    <aura:attribute name="message" type="string" default="All points associated with a Loyalty account will be removed when the account is closed. Are you sure you want to close this Loyalty account?"/>
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
 
     <aura:attribute type="Integer"  name="responseCode"  default=""/>
