@@ -36,6 +36,7 @@ public with sharing class trac_WS_LoyaltyEvent {
         if(trac_WS_WebServiceHelper.isValidResponse(res)) {
             System.debug('Event response: ' + res.getBody());
             eventResponse = parse(res.getBody());
+            eventResponse.populateDisplayFields();
             return true;
         }
         else {
@@ -53,10 +54,6 @@ public with sharing class trac_WS_LoyaltyEvent {
     }
     
     public class res_dataWrapper {
-        
-//        res_dataWrapper() {
-//            display_line = channel + ': ' + sub_channel;
-//        }
         
         @AuraEnabled public Boolean showDetails = false;
         @AuraEnabled public Integer id;
@@ -76,19 +73,10 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public String sub_channel;
         @AuraEnabled public Integer tier_id;
         @AuraEnabled public String display_detail;
+        @AuraEnabled public String display_sub_detail;
         @AuraEnabled public res_ruleWrapper rule;
-//        @AuraEnabled public String display_line;
-        
-//        @AuraEnabled
-//        public String getDisplayLine() {
-//            String output = display_detail;
-//            if ('pos'.equals(channel)) {
-//                output += ', Store ' + sub_channel + ', ' + channel;
-//            } else if (channel != null) {
-//                output += ', ' + channel;
-//            }
-//            return output;
-//        }
+        @AuraEnabled public String display_points_redeemed;
+        @AuraEnabled public String display_points_earned;
     }
     public class res_ruleWrapper {
         @AuraEnabled public Integer id;
@@ -100,7 +88,8 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public String ledger_type;
         @AuraEnabled public String title;
         @AuraEnabled public Decimal points;
-        @AuraEnabled public res_dataWrapper data;
+        @AuraEnabled public String display_points;
+        //@AuraEnabled public res_dataWrapper data; // this is not the correct "data" specification, need to use a dedicated ledgerData subclass
     }
     public class res_event_paramsWrapper {
         @AuraEnabled public String event_type;
@@ -110,5 +99,35 @@ public with sharing class trac_WS_LoyaltyEvent {
     public class EventResponse {
         @AuraEnabled public List<res_dataWrapper> data;
         @AuraEnabled public Boolean success;
+
+        /**
+        * @description Loops through data and populates display fields based on current instantiated values
+        */
+        private void populateDisplayFields() {
+            if (!data.isEmpty()) {
+                for (res_dataWrapper row : data) {
+                    // populate display_sub_detail
+                    if (row.channel == 'pos') {
+                        row.display_sub_detail = 'Store ' + row.sub_channel + ' - ' + row.channel.toUpperCase();
+                    } else {
+                        row.display_sub_detail = String.isBlank(row.channel) ? row.channel : row.channel.capitalize();
+                    }
+
+                    // populate display_points_redeemed
+                    row.display_points_redeemed = ((row.points != null && row.points < 0) ? String.valueOf(row.points) : '0' );
+
+                    // populate display_points_earned
+                    row.display_points_earned = ((row.points != null && row.points > 0) ? '+' + row.points : '0');
+
+                    // populate rule.ledger.display_points_earned
+                    if (row.rule != null && row.rule.ledger != null) {
+                        for (res_ledgerWrapper ledger : row.rule.ledger) {
+                            Decimal ledgerPoints = ledger.points != null ? ledger.points : 0;
+                            ledger.display_points = ( ledgerPoints >= 0 ? '+' : '') + Integer.valueOf(ledger.points);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
