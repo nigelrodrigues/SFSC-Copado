@@ -861,7 +861,19 @@
         <columns>copado__Release__c</columns>
         <columns>copado__Source_Environment__c</columns>
         <columns>copado__Status__c</columns>
+        <columns>copado__Back_Promotion__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>copado__Back_Promotion__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>copado__Destination_Environment__c</field>
+            <operation>equals</operation>
+            <value>dev2</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
