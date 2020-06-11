@@ -27,13 +27,13 @@
                     <div></div>
                 </th>
                 <th scope="col">
-                    <div class="slds-truncate">Process Date</div>
+                    <div class="slds-truncate">Processed</div>
                 </th>
                 <th scope="col">
                     <div class="slds-truncate slds-grid slds-truncate_container_33">Description</div>
                 </th>
                 <th scope="col">
-                    <div class="slds-truncate">Net Points</div>
+                    <div class="slds-truncate slds-float_right">Value</div>
                 </th>
             </tr>
             </thead>
@@ -58,7 +58,7 @@
                 <header class="slds-modal__header">
                     <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate slds-p-right_xx-small">
                         <lightning:icon iconName="standard:timesheet" alternativeText="Transactions" title="Transactions" />
-                        Transaction History : Displaying {!v.recordsToDisplay} of {!v.totalRecords} records
+                        Transaction History: Displaying {!v.recordsToDisplay} of {!v.totalRecords} records
                     </h2>
                 </header>
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
@@ -67,8 +67,11 @@
                             <lightning:layoutItem padding="around-small" size="1">
                                 <div class="custom-box"></div>
                             </lightning:layoutItem>
-                            <lightning:layoutItem padding="around-small" size="2">
+                            <lightning:layoutItem padding="around-small" size="1">
                                 <div class="custom-box"><b>Process Date</b></div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="custom-box"><b>Origination Date</b></div>
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small" size="4">
                                 <div class="custom-box"><b>Description</b></div>
@@ -77,95 +80,26 @@
                                 <div class="custom-box"><b>Points Redeemed</b></div>
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small" size="1">
-                                <div class="custom-box">
-                                    <div class="slds-clearfix">
-                                        <div class="slds-float_right">
-                                            <b>Points Earned</b>
-                                        </div>
+                                <div class="custom-box"><b>Points Earned</b> </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="slds-clearfix">
+                                    <div class="slds-float_right">
+                                        <b>Net Points</b>
                                     </div>
                                 </div>
                             </lightning:layoutItem>
-                            <lightning:layoutItem padding="around-small" size="1">
-                                    <div class="slds-clearfix">
-                                        <div class="slds-float_right">
-                                            <b>Total Points Available</b>
-                                        </div>
-                                    </div>
+                            <lightning:layoutItem padding="around-small" size="2">
+                                <div class="custom-box"></div>
                             </lightning:layoutItem>
                         </lightning:layout>
 
                         <aura:iteration items="{!v.transactions.data}" var="transactionData" indexVar="variableIndex">
                             <aura:if isTrue="{!lessthan(variableIndex,v.recordsToDisplay)}">
-                                <lightning:layout>
-                                    <lightning:layoutItem padding="around-small" size="1">
-                                        <lightning:buttonIcon value="{!variableIndex}" onclick="{!c.toggleData}" iconName="{!transactionData.showDetails?'utility:chevrondown':'utility:chevronright'}" />
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem padding="around-small" size="2">
-                                        <div class="custom-box"><lightning:formattedDateTime value="{!transactionData.created_at}" year="numeric" month="long" day="2-digit" /><br/>
-                                            <aura:if isTrue="{!transactionData.showDetails}"><i>
-                                                <aura:if isTrue="{!transactionData.event_type == 'purchase'}"> Purchased on
-                                                    <aura:set attribute="else">Returned on </aura:set>
-                                                </aura:if>
-                                                <lightning:formattedDateTime value="{!transactionData.created_at}" year="numeric" month="long" day="2-digit" /></i>
-                                            </aura:if>
-                                        </div>
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem padding="around-small" size="4">
-                                        <div class="custom-box">{!transactionData.event_type} : {!transactionData.event_id} <br/> <i>{!transactionData.detail} </i></div>
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem padding="around-small" size="1"> <b>
-                                        <div class="custom-box">
-                                            <aura:if isTrue="{!lessthan(transactionData.points,0)}">
-                                                {!transactionData.points}
-                                                <aura:set attribute="else">
-                                                    0
-                                                </aura:set>
-                                            </aura:if>
-                                        </div></b>
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem padding="around-small" size="1">
-                                        <div class="custom-box"> <b>
-                                            <aura:if isTrue="{!greaterthanorequal(transactionData.points,0)}">
-                                                <div class="slds-clearfix">
-                                                    <div class="slds-float_right">
-                                                        <p>+{!transactionData.points}</p>
-                                                    </div>
-                                                </div>
-                                                <aura:set attribute="else">
-                                                    <div class="slds-clearfix">
-                                                        <div class="slds-float_right">
-                                                            <p>0</p>
-                                                        </div>
-                                                    </div>
-                                                </aura:set>
-                                            </aura:if> </b><br/>
-                                            <aura:if isTrue="{!transactionData.showDetails}">
-                                                <aura:iteration items="{!transactionData.rule.ledger}" var="ledger" ><i>
-                                                        <div class="slds-clearfix">
-                                                            <div class="slds-float_right">
-                                                                <aura:if isTrue="{!ledger.ledger_type == 'base'}"> Base   </aura:if>
-                                                                <aura:if isTrue="{!ledger.ledger_type == 'tier'}"> Tier   </aura:if>
-                                                                <aura:if isTrue="{!ledger.ledger_type == 'base_bonus'}"> Tender </aura:if>
-                                                                            <aura:if isTrue="{!not(lessthan(ledger.points,0))}"> + </aura:if> {!ledger.points}
-                                                            </div>
-                                                        </div><br/></i>
-                                                </aura:iteration>
-                                            </aura:if>
-                                        </div>
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem padding="around-small" size="1">
-                                        <div class="slds-clearfix">
-                                            <div class="slds-float_right">
-                                                <p><b> {!transactionData.points}</b></p><br/>
-                                            </div>
-                                        </div>
-                                    </lightning:layoutItem>
-                                </lightning:layout>
+                                <c:trac_LoyaltyTransactionHistoryRow transactionData="{!transactionData}" />
                             </aura:if>
                         </aura:iteration>
-
                     </div>
-
                 </div>
                 <footer class="slds-modal__footer">
                     <lightning:button label="View More" variant="brand" onclick="{!c.displayMoreRecords}"/>
