@@ -108,9 +108,9 @@ public with sharing class trac_WS_LoyaltyEvent {
                 for (res_dataWrapper row : data) {
                     // populate display_sub_detail
                     if (row.channel == 'pos') {
-                        row.display_sub_detail = 'Store ' + row.sub_channel + '&nbsp;-&nbsp;POS'; // Store {transactionData.sub_channel}&nbsp;–&nbsp; <span style="text-transform:uppercase">{transactionData.channel}</span>
+                        row.display_sub_detail = 'Store ' + row.sub_channel + ' - ' + row.channel.toUpperCase();
                     } else {
-                        row.display_sub_detail = String.isBlank(row.channel) ? row.channel : row.channel.capitalize(); //<span style="text-transform:capitalize">{transactionData.channel}</span>
+                        row.display_sub_detail = String.isBlank(row.channel) ? row.channel : row.channel.capitalize();
                     }
 
                     // populate display_points_redeemed
