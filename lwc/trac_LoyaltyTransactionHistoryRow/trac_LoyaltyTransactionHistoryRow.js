@@ -8,12 +8,12 @@ export default class TracLoyaltyTransactionHistoryRow extends LightningElement {
     @api transactionData;
     @track showDetails;
 
+    // component init
     connectedCallback() {
         this.showDetails = this.transactionData.showDetails;
     }
 
     toggleData(event) {
-        console.log('Inside toggleData');
         this.showDetails = !this.showDetails;
     }
 

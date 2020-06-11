@@ -1,9 +1,9 @@
 <aura:component description="trac_CaseLoyalty" extends="c:trac_BaseComponent" implements="flexipage:availableForAllPageTypes">
     <aura:attribute name="loyalty" type="Map" />
 
-
     <aura:attribute name="editButtonText" type="String" default="Edit" />
     <aura:attribute name="isEditable" type="Boolean" default="false" />
+
     <div class="slds-box slds-theme_default">
         <div style="overflow:auto" class="slds-align_absolute-center">
             <lightning:layoutItem padding="around-small" class="slds-float_left">
@@ -26,18 +26,14 @@
             </aura:if>
         </div>
         <div class="slds-is-relative">
-
             <aura:if isTrue="{!empty(v.loyalty)}">
                 <c:trac_LoyaltySearch loyalty="{!v.loyalty}" />
             </aura:if>
-
         </div>
         <div class="slds-is-relative">
             <aura:if isTrue="{!not(empty(v.loyalty))}">
                 <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}" />
             </aura:if>
         </div>
-
-
     </div>
 </aura:component>
