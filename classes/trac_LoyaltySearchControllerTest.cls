@@ -21,6 +21,15 @@ public with sharing class trac_LoyaltySearchControllerTest {
     }
 
     @IsTest
+    static void testGetLoyaltyException() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('customer/show.exception'));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = null;
+        String res = (String) trac_LoyaltySearchController.getLoyalty(email, loyaltyId).message;
+        System.assert(res != null, 'exception thrown.');
+    }
+
+    @IsTest
     static void testGetLoyaltyUAD() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('loyaltyUAD'));
         String email = null;
@@ -38,5 +47,15 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String phoneNum = null;
         String res = (String) trac_LoyaltySearchController.getLoyaltyUAD(loyaltyId, email, phoneNum).returnValuesMap.get('body');
         System.assert(res == '', 'LoyaltyUAD not retrived successfully.');
+    }
+
+    @IsTest
+    static void testGetLoyaltyUADException() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('customer/show.exception'));
+        String email = null;
+        String loyaltyId = '600294999992297';
+        String phoneNum = null;
+        String res = (String) trac_LoyaltySearchController.getLoyaltyUAD(loyaltyId, email, phoneNum).message;
+        System.assert(res != null, 'exception thrown.');
     }
 }
