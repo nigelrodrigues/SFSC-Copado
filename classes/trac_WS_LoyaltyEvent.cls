@@ -77,6 +77,7 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public res_ruleWrapper rule;
         @AuraEnabled public String display_points_redeemed;
         @AuraEnabled public String display_points_earned;
+        @AuraEnabled public Integer net_points;
     }
     public class res_ruleWrapper {
         @AuraEnabled public Integer id;
@@ -105,7 +106,20 @@ public with sharing class trac_WS_LoyaltyEvent {
         */
         private void populateDisplayFields() {
             if (!data.isEmpty()) {
-                for (res_dataWrapper row : data) {
+
+                // use netPoints to record running tally
+                Integer netPoints = 0;
+
+                // iterate through list in reverse order, updating and stashing netPoints as we go
+                for (Integer i=data.size()-1; i>=0; i--) {
+                    // current row
+                    res_dataWrapper row = data[i];
+
+                    // netPoints
+                    netPoints += Integer.valueOf(row.points);
+                    row.net_points = netPoints;
+
+
                     // populate display_sub_detail
                     if (row.channel == 'pos') {
                         row.display_sub_detail = 'Store ' + row.sub_channel + ' - ' + row.channel.toUpperCase();
