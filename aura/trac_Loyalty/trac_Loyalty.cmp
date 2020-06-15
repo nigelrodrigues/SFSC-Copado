@@ -1,7 +1,10 @@
 <aura:component description="trac_Loyalty" extends="c:trac_BaseComponent">
-    <aura:attribute name="loyalty" type="Object" />
-    <aura:attribute name="isEditable" type="Boolean" default="false" />
+
+    <aura:attribute name="loyalty"                 type="Object" />
+    <aura:attribute name="isEditable"              type="Boolean" default="false" />
     <aura:attribute name="appeasementModalPromise" type="Aura.Action"/>
+    <aura:attribute name="caseRecordId"            type="String" />
+
     <aura:handler event="c:trac_CloseModalApplicationEvent" action="{!c.handleCloseModalApplicationEvent}"/>
 
     <lightning:overlayLibrary aura:id="overlayLib"/>
@@ -241,11 +244,14 @@
 
     </lightning:accordion>
     <lightning:layout multipleRows="true">
-        <lightning:layoutItem padding="around-small" size="6">
+        <lightning:layoutItem padding="around-small" size="4">
             <lightning:button name="issueAppeasement" label="Issue Appeasement" onclick="{!c.handleShowAppeasementModal}"/>
         </lightning:layoutItem>
-        <lightning:layoutItem padding="around-small" size="6">
+        <lightning:layoutItem padding="around-small" size="4">
             <lightning:button aura:id="btnRecordTransaction" name="recordTransaction" label="Record Transaction" onclick="{!c.handleShowRecordTransaction}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small" size="4">
+            <c:trac_EscalateToLoyaltyTeam recordId="{!v.caseRecordId}" />
         </lightning:layoutItem>
     </lightning:layout>
     <div aura:id="divRecordTransaction">

@@ -18,9 +18,163 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
         res.setStatusCode(200);
 
         String body = null;
+        System.debug('CALLOUT TYPE: ' + callouttype);
 
         if(callouttype == 'customer/show'){
-            body = '{"customerLookupResponse":[{"email":"MANIRKRISH@OPTONLINE.NET","city":null,"loyaltyExpDate":null,"enrollTS":1581710911079,"enrollLastUpdatedSource":"SFCC","enrolllastUpdateTS":1581710911079,"externalIdDetails":[{"id":null,"lastModDate":1578614400000,"lastModId":"12345","token_value":null,"token_type":"capone1234567"}],"loyalty_id":"123456999999830","account_holder_flag":null,"banner_id":"4","first_name":"VLADANA","last_name":"ZARUBINA","phone_no":"9173451234","secondary_phone_no":null,"address_line_1":null,"address_line_2":null,"state_province":null,"postal_code":"11235","language_pref":null,"consent_date":null,"consent_source":null,"casl_email":true,"casl_phone":false,"casl_address":false,"points_expired":null,"last_known_points":null,"points_available_value":null,"associate_flag":false,"discount_eligible_flag":false,"enroll_type":null,"channel":"SFCC","tier_name":null,"phone_no_type":"H","loyalty_status":null,"points_available":null,"account_holder_indicator":null,"minimum_points":null}],"response_code":"01","success":true}';
+            body = '{' +
+                    '    "data": {' +
+                    '        "channel": null,' +
+                    '        "created_at": "2020-06-02T11:27:26-07:00",' +
+                    '        "email": "enroll2@test.com",' +
+                    '        "enrolled_at": "2020-06-02T11:27:26-07:00",' +
+                    '        "external_customer_id": "600294999999002",' +
+                    '        "id": 73402484,' +
+                    '        "last_activity": "2020-06-02T11:43:36-07:00",' +
+                    '        "last_reward_date": null,' +
+                    '        "last_reward_event_id": null,' +
+                    '        "status": "paused",' +
+                    '        "sub_channel": null,' +
+                    '        "sub_channel_detail": null,' +
+                    '        "subscription_type": null,' +
+                    '        "unsubscribed": false,' +
+                    '        "unsubscribed_sms": true,' +
+                    '        "updated_at": "2020-06-02T11:47:35-07:00",' +
+                    '        "name": "enroll test",' +
+                    '        "balance": 0,' +
+                    '        "lifetime_balance": 0,' +
+                    '        "image_url": null,' +
+                    '        "top_tier_name": "Hudson’s Bay Rewards VIP",' +
+                    '        "top_tier_expiration_date": "2020-12-31T23:59:59-08:00",' +
+                    '        "authorized_points_balance": null,' +
+                    '        "pending_points_balance": 0,' +
+                    '        "balance_in_dollars": "0.00",' +
+                    '        "locale": null,' +
+                    '        "redeemed_rewards_count": 0,' +
+                    '        "redeemed_rewards_points": 0,' +
+                    '        "purchase_count": 3,' +
+                    '        "last_purchase_date": "2020-06-02T11:41:26-07:00",' +
+                    '        "lifetime_revenue": "299999999.97",' +
+                    '        "birthdate": null,' +
+                    '        "city": null,' +
+                    '        "country": null,' +
+                    '        "first_name": "enroll",' +
+                    '        "home_phone": null,' +
+                    '        "home_store": null,' +
+                    '        "last_name": "test",' +
+                    '        "last_visit_date": null,' +
+                    '        "middle_name": null,' +
+                    '        "mobile_phone": null,' +
+                    '        "postal_code": null,' +
+                    '        "state": null,' +
+                    '        "work_phone": null,' +
+                    '        "address_line_1": null,' +
+                    '        "address_line_2": null,' +
+                    '        "top_tier_join_date": "2020-06-02T11:41:18-07:00",' +
+                    '        "top_tier_description": "Hudson\'s Bay Rewards VIP",' +
+            '        "actions_needed_for_next_tier": null,' +
+            '        "actions_needed_to_keep_tier": 0,' +
+            '        "top_tier_image": "https://s3.amazonaws.com/loyalty-cdn-stage.500friends.com/merchant/09d423e6cfb3bda2323b668a80c9ee73.jpg",' +
+            '        "next_tier_name": null,' +
+            '        "next_tier_description": null,' +
+            '        "next_tier_image": null,' +
+            '        "member_attributes": {' +
+            '            "actions_needed_to_keep_tier": 0,' +
+            '            "card_open_date": null,' +
+            '            "card_close_date": null,' +
+            '            "employee_flag": null,' +
+            '            "gender": null,' +
+            '            "card_spend": null,' +
+            '            "visit_count": 2,' +
+            '            "petro_bonus_flag": null,' +
+            '            "actions_needed_for_next_tier": null,' +
+            '            "partner_balance_transfer_optin": null,' +
+            '            "card_billing_cycle": null,' +
+            '            "charity_flag": null,' +
+            '            "partner_balance_transfer_optin_date": null,' +
+            '            "ytd_spend": "299999999.97",' +
+            '            "ly_tier": null,' +
+            '            "charity_gl_code": null' +
+            '        },' +
+            '        "identities": [],' +
+            '        "points_expiration_schedule": [],' +
+            '        "points_summary": {' +
+            '            "points_earned_total": 0,' +
+            '            "points_redeemed_total": 0,' +
+            '            "points_returned_total": 0,' +
+            '            "points_expired_total": 0,' +
+            '            "years": [' +
+            '                {' +
+            '                    "year": 2020,' +
+            '                    "points_earned_year": 0,' +
+            '                    "points_redeemed_year": 0,' +
+            '                    "points_returned_year": 0,' +
+            '                    "points_expired_year": 0,' +
+            '                    "months": [' +
+            '                        {' +
+            '                            "month": 6,' +
+            '                            "points_earned": 0,' +
+            '                            "points_redeemed": 0,' +
+            '                            "points_returned": 0,' +
+            '                            "points_expired": 0' +
+            '                        }' +
+            '                    ]' +
+            '                }' +
+            '            ]' +
+            '        },' +
+            '        "customer_badges": [' +
+            '            {' +
+            '                "id": 38726,' +
+            '                "badge_url": "https://s3.amazonaws.com/loyalty-cdn-stage.500friends.com/merchant/5b417c4612ec36f28566eb48ffdca73f.PNG",' +
+            '                "description": "Signup Gift Registry",' +
+            '                "display_name": "Signup Gift Registry",' +
+            '                "earned_at": null,' +
+            '                "featured": false,' +
+            '                "name": "Signup Gift Registry",' +
+            '                "enabled": true,' +
+            '                "active": true,' +
+            '                "eligibility": {' +
+            '                    "eligible": true,' +
+            '                    "action_text": null,' +
+            '                    "action_description": null,' +
+            '                    "action_url": null' +
+            '                },' +
+            '                "media": [' +
+            '                    {' +
+            '                        "default": true,' +
+            '                        "display_name": "key1",' +
+            '                        "key": "key1",' +
+            '                        "url": "https://s3.amazonaws.com/loyalty-cdn-stage.500friends.com/merchant/5b417c4612ec36f28566eb48ffdca73f.PNG"' +
+            '                    }' +
+            '                ],' +
+            '                "redeemables": {' +
+            '                    "rewards": [],' +
+            '                    "deals": []' +
+            '                },' +
+            '                "points": 250,' +
+            '                "instructions": ""' +
+            '            }' +
+            '        ],' +
+            '        "customer_offers": [],' +
+            '        "customer_rewards": [],' +
+            '        "customer_coupons": [],' +
+            '        "customer_reward_groups": [],' +
+            '        "customer_badge_groups": [],' +
+            '        "customer_referrals": {' +
+            '            "referral_codes": [' +
+            '                {' +
+            '                    "referral_code": "nx7nfg9f",' +
+            '                    "channel": "global",' +
+            '                    "handle": null,' +
+            '                    "status": "active",' +
+            '                    "created_at": "2020-06-02T11:43:11-07:00",' +
+            '                    "last_shared": null,' +
+            '                    "referrals": []' +
+            '                }' +
+            '            ]' +
+            '        }' +
+            '    },' +
+            '    "success": true' +
+            '}';
         } else if(callouttype == 'update') {
             body = '{"success":true,"data":{"id":295788481,"points":0}}';
         } else if (callouttype == 'update.fail') {

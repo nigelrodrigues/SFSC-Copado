@@ -276,6 +276,9 @@
                 </criteria>
             </visibilityRule>
         </componentInstances>
+        <componentInstances>
+            <componentName>trac_CaseLoyalty</componentName>
+        </componentInstances>
         <name>Facet-9e454d46-1f74-4ff0-b0d3-5720d6bca1c4</name>
         <type>Facet</type>
     </flexiPageRegions>
