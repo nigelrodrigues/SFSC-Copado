@@ -1,17 +1,22 @@
 <aura:component description="trac_Loyalty" extends="c:trac_BaseComponent">
-    <aura:attribute name="loyalty" type="Object" />
-    <aura:attribute name="isEditable" type="Boolean" default="false" />
+
+    <aura:attribute name="loyalty"                 type="Object" />
+    <aura:attribute name="isEditable"              type="Boolean" default="false" />
     <aura:attribute name="appeasementModalPromise" type="Aura.Action"/>
+    <aura:attribute name="caseRecordId"            type="String" />
     <aura:handler event="c:trac_CloseModalApplicationEvent" action="{!c.handleCloseModalApplicationEvent}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Loyalty Number</p>
                 <p>{!v.loyalty.external_customer_id}</p>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Primary Account Contact</p>
                 <p>
@@ -24,7 +29,9 @@
                 </p>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Tier</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
@@ -35,13 +42,17 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
                 <p><lightning:formattedPhone value="{!v.loyalty.home_phone}"/></p>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.status))}">
@@ -57,7 +68,9 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Last Point Activity</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.last_activity))}">
@@ -68,7 +81,9 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
@@ -81,13 +96,17 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
                 <p>Cobranded MasterCard</p>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Badges</p>
                 <div>
@@ -99,6 +118,8 @@
                 </div>
             </div>
         </lightning:layoutItem>
+
+
         <aura:if isTrue="{!v.isEditable}">
             <lightning:layout>
                 <c:trac_CloseLoyaltyAccount loyalty="{!v.loyalty}"/>
@@ -214,21 +235,26 @@
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:accordionSection>
-
         <lightning:accordionSection name="TH" title="Transaction History" label="Transaction History">
             <c:trac_LoyaltyTransactionHistory customerIdInput="{!v.loyalty.external_customer_id}" />
         </lightning:accordionSection>
-
     </lightning:accordion>
     <lightning:layout multipleRows="true">
-        <lightning:layoutItem padding="around-small" size="6">
+
+        <lightning:layoutItem padding="around-small" size="4">
             <lightning:button name="issueAppeasement" label="Issue Appeasement" onclick="{!c.handleShowAppeasementModal}"/>
         </lightning:layoutItem>
-        <lightning:layoutItem padding="around-small" size="6">
+        <lightning:layoutItem padding="around-small" size="4">
             <lightning:button aura:id="btnRecordTransaction" name="recordTransaction" label="Record Transaction" onclick="{!c.handleShowRecordTransaction}"/>
         </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small" size="4">
+            <c:trac_EscalateToLoyaltyTeam recordId="{!v.caseRecordId}" />
+        </lightning:layoutItem>
+
     </lightning:layout>
     <div aura:id="divRecordTransaction">
         {!v.body}
     </div>
+
+
 </aura:component>
