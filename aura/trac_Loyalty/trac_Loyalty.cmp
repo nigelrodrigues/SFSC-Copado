@@ -16,10 +16,10 @@
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.handleSaveChanges}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
+
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Loyalty Number</p>
                 <p>{!v.loyalty.external_customer_id}</p>
@@ -27,8 +27,8 @@
         </lightning:layoutItem>
 
         <aura:if isTrue="{!not(v.isEditable)}">
-            <lightning:layoutItem class="slds-p-around_xx-small" size="6">
 
+            <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Primary Account Contact</p>
                 <p>
@@ -94,8 +94,8 @@
                 </div>
             </lightning:layoutItem>
         </aura:if>
-        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
 
+        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Tier</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
@@ -106,8 +106,8 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.home_phone))}">
@@ -118,8 +118,8 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-        <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
 
+        <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.status))}">
@@ -135,9 +135,7 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
-
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Last Point Activity</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.last_activity))}">
@@ -148,9 +146,7 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
@@ -163,9 +159,7 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
-
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
                 <p>Cobranded MasterCard</p>
@@ -326,6 +320,7 @@
                 </lightning:layoutItem>
             </lightning:layout>
         </lightning:accordionSection>
+
         <lightning:accordionSection name="TH" title="Transaction History" label="Transaction History">
             <c:trac_LoyaltyTransactionHistory customerIdInput="{!v.loyalty.external_customer_id}" />
         </lightning:accordionSection>
@@ -342,10 +337,9 @@
             <c:trac_EscalateToLoyaltyTeam recordId="{!v.caseRecordId}" />
         </lightning:layoutItem>
 
+
     </lightning:layout>
     <div aura:id="divRecordTransaction">
         {!v.body}
     </div>
-
-
 </aura:component>
