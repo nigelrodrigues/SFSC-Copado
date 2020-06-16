@@ -3,6 +3,7 @@
     <aura:attribute name="editButtonText" type="String" default="Edit" />
     <aura:attribute name="isEditable" type="Boolean" default="false" />
 
+
     <div class="slds-box slds-theme_default">
         <div style="overflow:auto" class="slds-align_absolute-center">
             <lightning:layoutItem padding="around-small" class="slds-float_left">
