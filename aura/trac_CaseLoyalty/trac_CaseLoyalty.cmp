@@ -1,9 +1,10 @@
-<aura:component description="trac_CaseLoyalty" extends="c:trac_BaseComponent" implements="flexipage:availableForAllPageTypes,force:hasRecordId">
 
-    <aura:attribute name="loyalty"         type="Map" />
-    <aura:attribute name="editButtonText"  type="String"  default="Edit" />
-    <aura:attribute name="isEditable"      type="Boolean" default="false" />
-    
+<aura:component description="trac_CaseLoyalty" extends="c:trac_BaseComponent" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="loyalty" type="Map" />
+    <aura:attribute name="editButtonText" type="String" default="Edit" />
+    <aura:attribute name="isEditable" type="Boolean" default="false" />
+    <aura:handler name="change" value="{!v.isEditable}" action="{!c.handleValueChange}"/>
+
     <div class="slds-box slds-theme_default">
         <div style="overflow:auto" class="slds-align_absolute-center">
             <lightning:layoutItem padding="around-small" class="slds-float_left">
@@ -23,12 +24,16 @@
         </div>
         <div class="slds-is-relative">
             <aura:if isTrue="{!empty(v.loyalty)}">
+
                 <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" />
+
             </aura:if>
         </div>
         <div class="slds-is-relative">
             <aura:if isTrue="{!not(empty(v.loyalty))}">
+
                 <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}"  caseRecordId="{!v.recordId}" />
+
             </aura:if>
         </div>
     </div>
