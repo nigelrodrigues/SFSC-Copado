@@ -45,7 +45,7 @@
                 <lightning:spinner aura:id="spinner" variant="brand" class="{!v.showSpinner ? '' : 'slds-hide' }" size="large" alternativeText="Please wait..."/>
             </div>
 
-            <div class="slds-form--stacked" onkeyup="{!c.formPress}">
+            <div class="slds-form--stacked" style="min-height:70px;" onkeyup="{!c.formPress}">
                 <lightning:input aura:id="amount" label="Appeasement Points"
                                  name="amount"
                                  value="{!v.appeasePoints}"

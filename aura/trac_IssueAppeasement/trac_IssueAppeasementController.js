@@ -12,6 +12,7 @@
         helper.getProfileLimit(cmp);
     },
     changeAmount: function(cmp, event, helper) {
+        console.log('Inside changeAmount');
         helper.calculateAmounts(cmp);
         var inputCmp = cmp.find("amount");
         inputCmp.setCustomValidity("");
