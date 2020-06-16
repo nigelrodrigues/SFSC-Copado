@@ -5857,6 +5857,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Didn&apos;t receive when expected</controllingFieldValue>
+                <controllingFieldValue>Estimated delivery date inquiry</controllingFieldValue>
                 <valueName>Vendor drop-ship</valueName>
             </valueSettings>
             <valueSettings>
