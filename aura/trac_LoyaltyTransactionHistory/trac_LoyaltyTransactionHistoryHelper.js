@@ -51,5 +51,5 @@
         });
 
         $A.enqueueAction(action);
-    }
+    },
 });

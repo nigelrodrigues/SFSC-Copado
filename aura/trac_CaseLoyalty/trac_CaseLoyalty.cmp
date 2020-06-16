@@ -11,6 +11,8 @@
                 <lightning:icon iconName="action:share_thanks" alternativeText="Loyalty" size="small" title="loyalty" />
             </lightning:layoutItem>
             <lightning:layoutItem class="slds-align-content-center slds-float_left">
+
+
                 <p><span class="slds-text-heading_small slds-card__header-link">Hudson's Bay Loyalty</span></p>
             </lightning:layoutItem>
             <aura:if isTrue="{!not(empty(v.loyalty))}">
@@ -19,22 +21,22 @@
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-float_right slds-p-around_xx-small">
                     <lightning:button label="{!v.editButtonText}" onclick="{!c.isEditableToggle}"/>
+
+
                 </lightning:layoutItem>
             </aura:if>
         </div>
         <div class="slds-is-relative">
+
             <aura:if isTrue="{!empty(v.loyalty)}">
-
                 <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" />
-
             </aura:if>
         </div>
         <div class="slds-is-relative">
             <aura:if isTrue="{!not(empty(v.loyalty))}">
-
                 <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}"  caseRecordId="{!v.recordId}" />
-
             </aura:if>
         </div>
+
     </div>
 </aura:component>
