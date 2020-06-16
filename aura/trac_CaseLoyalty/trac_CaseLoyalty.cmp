@@ -2,6 +2,7 @@
     <aura:attribute name="loyalty" type="Map" />
     <aura:attribute name="editButtonText" type="String" default="Edit" />
     <aura:attribute name="isEditable" type="Boolean" default="false" />
+    <aura:handler name="change" value="{!v.isEditable}" action="{!c.handleValueChange}"/>
 
     <div class="slds-box slds-theme_default">
         <div style="overflow:auto" class="slds-align_absolute-center">

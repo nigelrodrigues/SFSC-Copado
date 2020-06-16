@@ -5857,6 +5857,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Didn&apos;t receive when expected</controllingFieldValue>
+                <controllingFieldValue>Estimated delivery date inquiry</controllingFieldValue>
                 <valueName>Vendor drop-ship</valueName>
             </valueSettings>
             <valueSettings>
@@ -6543,6 +6544,16 @@
         <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
         <columns>Business_Unit__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.ORIGIN</field>
+            <operation>equals</operation>
+            <value>Support Community</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ALIAS</field>
+            <operation>equals</operation>
+            <value>guest</value>
+        </filters>
         <label>All Open Cases</label>
     </listViews>
     <listViews>
@@ -6740,6 +6751,11 @@
             <field>Case_Type__c</field>
             <operation>equals</operation>
             <value>Credit Hold</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>New</value>
         </filters>
         <label>Credit Hold</label>
     </listViews>
