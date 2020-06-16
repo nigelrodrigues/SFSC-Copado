@@ -26,6 +26,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Loyalty_Update_Info_Endpoint__c</fullName>
+        <description>The Merkle Update Customer Info API endpoint</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Update Info Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CNS_Email_Search_Endpoint__c</fullName>
         <description>Relative endpoint for the email search API</description>
         <externalId>false</externalId>
