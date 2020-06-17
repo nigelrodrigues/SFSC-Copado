@@ -3,7 +3,9 @@ public with sharing class trac_LoyaltySearchController {
     @AuraEnabled
 
 
+
     public static TLAuraResponse getLoyalty(String loyaltyId, String email, String recordId) {
+
 
 
         TLAuraResponse response = new TLAuraResponse(true);
@@ -24,7 +26,9 @@ public with sharing class trac_LoyaltySearchController {
                 response.returnValuesMap.put('body', request.loyaltyResponse);
 
 
+
                 updateLoyaltyIdOnCase(recordId, request.loyaltyResponse.data.external_customer_id);
+
 
 
             } else {
@@ -86,6 +90,8 @@ public with sharing class trac_LoyaltySearchController {
 
 
 
+
+
     private static void updateLoyaltyIdOnCase(String recordId, String loyaltyId)
     {
         if(recordId != null) {
@@ -94,6 +100,8 @@ public with sharing class trac_LoyaltySearchController {
             update aCase;
         }
     }
+
+
 
 
 
