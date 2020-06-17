@@ -1,4 +1,3 @@
-
 <aura:component description="trac_Loyalty" extends="c:trac_BaseComponent" controller="trac_LoyaltyController">
     <aura:attribute name="loyalty" type="Object" />
     <aura:attribute name="firstName" type="String" />
@@ -41,17 +40,6 @@
                     </p>
                 </div>
             </lightning:layoutItem>
-            <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-                <div class="header-column">
-                    <p class="field-title slds-form-element__label slds-no-flex">Email</p>
-                    <aura:if isTrue="{!not(empty(v.loyalty.email))}">
-                        <p><lightning:formattedEmail value="{!v.loyalty.email}" hideIcon="true"/></p>
-                        <aura:set attribute="else">
-                            <p>N/A</p>
-                        </aura:set>
-                    </aura:if>
-                </div>
-            </lightning:layoutItem>
         </aura:if>
         <aura:if isTrue="{!v.isEditable}">
             <lightning:layoutItem class="slds-p-around_xx-small" size="3">
@@ -80,6 +68,35 @@
                             onchange="{!c.handleChange}"/>
                 </div>
             </lightning:layoutItem>
+        </aura:if>
+
+        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+            <div class="header-column">
+                <p class="field-title slds-form-element__label slds-no-flex">Account Tier</p>
+                <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
+                    <p>{!v.loyalty.top_tier_name}</p>
+                    <aura:set attribute="else">
+                        <p>N/A</p>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </lightning:layoutItem>
+
+        <aura:if isTrue="{!not(v.isEditable)}">
+            <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Email</p>
+                    <aura:if isTrue="{!not(empty(v.loyalty.email))}">
+                        <p><lightning:formattedEmail value="{!v.loyalty.email}" hideIcon="true"/></p>
+                        <aura:set attribute="else">
+                            <p>N/A</p>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </lightning:layoutItem>
+        </aura:if>
+
+        <aura:if isTrue="{!v.isEditable}">
             <lightning:layoutItem class="slds-p-around_xx-small" size="6">
                 <div class="header-column">
                     <lightning:input
@@ -94,30 +111,6 @@
                 </div>
             </lightning:layoutItem>
         </aura:if>
-
-        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-            <div class="header-column">
-                <p class="field-title slds-form-element__label slds-no-flex">Account Tier</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
-                    <p>{!v.loyalty.top_tier_name}</p>
-                    <aura:set attribute="else">
-                        <p>N/A</p>
-                    </aura:set>
-                </aura:if>
-            </div>
-        </lightning:layoutItem>
-        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
-            <div class="header-column">
-                <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.home_phone))}">
-                    <p><lightning:formattedPhone value="{!v.loyalty.home_phone}"/></p>
-                    <aura:set attribute="else">
-                        <p>N/A</p>
-                    </aura:set>
-                </aura:if>
-            </div>
-        </lightning:layoutItem>
 
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
@@ -135,6 +128,20 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
+        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
+            <div class="header-column">
+                <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
+                <aura:if isTrue="{!not(empty(v.loyalty.home_phone))}">
+                    <p><lightning:formattedPhone value="{!v.loyalty.home_phone}"/></p>
+                    <aura:set attribute="else">
+                        <p>N/A</p>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Last Point Activity</p>
@@ -144,6 +151,12 @@
                         <p>N/A</p>
                     </aura:set>
                 </aura:if>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
+            <div class="header-column">
+                <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
+                <p>Cobranded MasterCard</p>
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
@@ -157,12 +170,6 @@
                         <p>N/A</p>
                     </aura:set>
                 </aura:if>
-            </div>
-        </lightning:layoutItem>
-        <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
-            <div class="header-column">
-                <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
-                <p>Cobranded MasterCard</p>
             </div>
         </lightning:layoutItem>
 
@@ -250,7 +257,8 @@
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier Expires</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.top_tier_expiration_date))}">
-                            <p><lightning:formattedDateTime value="{!v.loyalty.top_tier_expiration_date}" year="numeric" month="long" day="2-digit"/></p>
+                            <p><lightning:formattedDateTime value="{!v.loyalty.top_tier_expiration_date}" year="numeric" month="long" day="2-digit"
+                                                            hour="2-digit" minute="2-digit" timeZoneName="short" timeZone="America/Los_Angeles"/></p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
                             </aura:set>
