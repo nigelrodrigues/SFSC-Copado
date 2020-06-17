@@ -1,11 +1,24 @@
 ({
     init: function (component, event, helper) {
         component.set('v.options', [
-                                 { id: 1, label: 'Email', selected: true },
-                                 { id: 2, label: 'Loyalty Account Number' }
-                                // { id: 3, label: 'Phone Number' }
-                             ]);
-        component.set('v.selectedValue', '1');
+            {id: 1, label: 'Email', selected: true},
+            {id: 2, label: 'Loyalty Account Number'}
+            // { id: 3, label: 'Phone Number' }
+        ]);
+
+        let customerLoyaltyId = component.get('v.customerLoyaltyId');
+        console.log('ID: ' + customerLoyaltyId);
+        if( customerLoyaltyId )
+        {
+            component.set("v.selectedValue", "2");
+            component.find("loyaltyNumberInput").set("v.value", customerLoyaltyId);
+            helper.getLoyalty(component, null, customerLoyaltyId, null);
+        }
+        else
+            {
+            component.set('v.selectedValue', '1');
+        }
+
     },
 
     loyaltySearch: function (component, event, helper) {
