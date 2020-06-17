@@ -20,10 +20,17 @@
     },
 
     handleSubmit: function(cmp, event, helper) {
-        helper.submitRecordTransaction(cmp);
+        if (helper.validateForm(cmp)) {
+            helper.submitRecordTransaction(cmp);
+        }
     },
 
     handleCancel: function(cmp, event, helper) {
         helper.close(cmp);
+    },
+
+    doneRendering: function(cmp, event, helper) {
+        //window.scrollTo(0,480);
+        //scrollTo({top: 480, behavior: "smooth"});
     }
 });
