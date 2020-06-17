@@ -1,0 +1,91 @@
+<!--
+ - Created by akong on 6/17/2020.
+ -->
+
+<!-- Trac Order Loyalty -->
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item size="12">
+            <lightning-layout>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-layout>
+                        <lightning-layout-item padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Total Points Earned</p>
+                                <p>{order.Extn.ExtnPointsEarned}</p>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+
+<!--                <lightning-layout-item size="6" padding="around-small">-->
+<!--                    <div class="header-column">-->
+<!--                    </div>-->
+<!--                </lightning-layout-item>-->
+
+            </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <template for:each={order.Shipments.Shipment} for:item="shipment">
+        <div key={shipment.ShipmentNo}>
+            <div class="slds-p-around_xxx-small">
+                <div class="slds-text-title slds-p-around_xxx-small">
+                    <h3> > Shipment {shipment.ShipmentNo}</h3>
+
+                    <div class="slds-box_border slds-p-around_small slds-theme--shade">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="12">
+                                <lightning-layout>
+                                    <lightning-layout-item padding="around-small">
+                                    <div class="header-column">
+                                        <p class="field-title slds-form-element__label slds-no-flex">Ship Node</p>
+                                        <p>{shipment.ShipNode.ShipNode}</p>
+                                    </div>
+                                </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
+                                            <p>{shipment.Extn.ExtnLoyaltyNo}</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Loyalty Tier</p>
+                                            <p>{shipment.Extn.ExtnLoyaltyTier}</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Item Description</p>
+                                            <p>Satin Ballerina Slippers</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Status</p>
+                                            <p>Shipped</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Points Earned</p>
+                                            <p>{shipment.Extn.ExtnPointsEarned}</p>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</template>
