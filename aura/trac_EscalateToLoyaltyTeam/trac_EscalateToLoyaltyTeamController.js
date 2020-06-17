@@ -40,6 +40,8 @@
         component.set("v.isLoading", false);
         component.set("v.showPopup", false);
 
+        helper.showToast('Success','The Case will be transferred to the Loyalty Team','success');
+
         const workspaceAPI = component.find("workspace");
         workspaceAPI.getEnclosingTabId().then(function (tabId) {
             workspaceAPI.closeTab({tabId});

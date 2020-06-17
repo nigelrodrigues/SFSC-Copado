@@ -49,13 +49,17 @@
                                     <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true" disabled="true"/>
                                     <lightning:inputField aura:id="caseType" fieldName="Case_Type__c" required="true" />
                                     <lightning:inputField aura:id="caseCategory" fieldName="Category__c" required="true"/>
+                                    <lightning:inputField aura:id="caseSubCategory" fieldName="Subcategory__c" required="true"/>
                                     <label for="caseIssueDescription">Issue Description</label>
                                     <lightning:inputField aura:id="caseIssueDescription"
                                                           fieldName="Loyalty_Issue_Description__c" variant="label-hidden"/>
                                     <lightning:input aura:id="fileUpload" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload File" multiple="false" accept="image/png, .zip"/>
                                     <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
                                     <br/>
-                                    <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c" class="slds-hidden"/>
+                                    <!--<lightning:inputField aura:id="caseType" fieldName="Case_Type__c" required="true" class="slds-hide"/>
+                                    <lightning:inputField aura:id="caseCategory" fieldName="Category__c" required="true" class="slds-hide"/>
+                                    <lightning:inputField aura:id="caseSubCategory" fieldName="Subcategory__c" required="true" class="slds-hide"/>-->
+                                    <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c" class="slds-hide"/>
                                 </div>
                             </div>
                         </div>
