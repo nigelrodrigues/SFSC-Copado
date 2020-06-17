@@ -7,12 +7,12 @@
 
         var caseRecordId = component.get("v.recordId");
         var action = component.get("c.getLoyalty");
+
         action.setParams({
             'email':     email,
             'loyaltyId': loyaltyId,
             'recordId':  caseRecordId
         });
-
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
@@ -53,9 +53,7 @@
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
-
         var action = component.get("c.getLoyaltyUAD");
-
         action.setParams({
             'email': email,
             'loyaltyId': loyaltyId,
@@ -104,11 +102,9 @@
             return true;
         }
     },
-
     isValidResponse: function (res) {
         return res != null && (res == 200 || res == 201 || res == 204);
     },
-
     handleError : function(component, error) {
         var result = error.result
         if(typeof result === 'object' && result != null) {
