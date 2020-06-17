@@ -21,6 +21,19 @@ public with sharing class trac_WS_GetOrderDetails {
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderDetailsResponse = parse(res.getBody());
 
+            // test new Extn loyalty data point (UP3-97)
+            System.debug('akong: getOrderDetailsResponse.Extn: ' + getOrderDetailsResponse.Extn);
+            if (getOrderDetailsResponse.Extn == null) {
+                getOrderDetailsResponse.Extn = new res_ExtnWrapper();
+            }
+            getOrderDetailsResponse.Extn.ExtnPointsEarned = 100;
+            System.debug('getOrderDetailsResponse.Shipments.Shipment[0]: ' + getOrderDetailsResponse.Shipments.Shipment[0]);
+            getOrderDetailsResponse.Shipments.Shipment[0].Extn = new res_ExtnWrapper();
+            getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnPointsEarned = 100;
+            getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnLoyaltyNo = '1000142';
+            getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnLoyaltyTier = '3836';
+            System.debug('akong: getOrderDetailsResponse: ' + getOrderDetailsResponse);
+
             updateDataFormat();
 
             success = true;
@@ -594,6 +607,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnIsReturnable;
         @AuraEnabled public String ExtnIsOrgPmtRefund;
         @AuraEnabled public String ExtnLoyaltyNo;
+        @AuraEnabled public String ExtnLoyaltyTier;
         @AuraEnabled public String ExtnCommLang;
         @AuraEnabled public String ExtnIsFiftyOne;
         @AuraEnabled public String ExtnFiftyOneOrderNo;
@@ -613,6 +627,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnBlueMartiniCancellationCode;
         @AuraEnabled public String ExtnEstimatedShipDate;
         @AuraEnabled public String ExtnFirstEstimatedShipDate;
+        @AuraEnabled public Integer ExtnPointsEarned;
+        @AuraEnabled public Integer ExtnPointsLost;
     }
 
     public class res_OrderStatusesWrapper {
@@ -763,6 +779,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_AddressWrapper ToAddress;
         @AuraEnabled public String ExpectedDeliveryDate;
         @AuraEnabled public res_OrderInvoiceListWrapper OrderInvoiceList;
+        @AuraEnabled public res_ExtnWrapper Extn;
     }
 
     public class res_OrderInvoiceListWrapper {
