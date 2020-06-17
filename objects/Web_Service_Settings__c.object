@@ -114,6 +114,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Loyalty_Update_Info_Endpoint__c</fullName>
+        <description>The Merkle Update Customer Info API endpoint</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Update Info Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Bay_Loyalty_X_APIGW_API_ID__c</fullName>
         <description>The x-apigw-api-id header value</description>
         <externalId>false</externalId>
