@@ -1344,6 +1344,11 @@
                     <default>false</default>
                     <label>Tier Change</label>
                 </value>
+                <value>
+                    <fullName>Goodwill Points</fullName>
+                    <default>false</default>
+                    <label>Goodwill Points</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

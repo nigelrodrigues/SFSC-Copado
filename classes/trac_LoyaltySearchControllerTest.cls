@@ -9,8 +9,10 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String loyaltyId = null;
 
 
+
         String recordId = null;
         trac_WS_GetLoyalty.LoyaltyResponse res = (trac_WS_GetLoyalty.LoyaltyResponse) trac_LoyaltySearchController.getLoyalty(email, loyaltyId, recordId).returnValuesMap.get('body');
+
 
 
         System.assert(res != null, 'Loyalty retrived successfully.');
@@ -23,8 +25,10 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String loyaltyId = null;
 
 
+
         String recordId = '50005000000b8IzAAI';
         String res = (String) trac_LoyaltySearchController.getLoyalty(email, loyaltyId, recordId).returnValuesMap.get('body');
+
 
 
         System.assert(res == '', 'Loyalty not retrived successfully.');
@@ -37,8 +41,10 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String loyaltyId = null;
 
 
+
         String recordId = '50005000000b8IzAAI';
         String res = (String) trac_LoyaltySearchController.getLoyalty(email, loyaltyId, recordId).message;
+
 
 
         System.assert(res != null, 'exception thrown.');
