@@ -54,6 +54,7 @@
                 }
             });
     },
+
     handleSaveChanges: function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var firstName = component.get('v.firstName')
@@ -82,4 +83,5 @@
         component.set('v.lastName', loyalty.last_name)
         component.set('v.email', loyalty.email)
     },
+
 });
