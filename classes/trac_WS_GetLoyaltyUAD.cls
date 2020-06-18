@@ -47,6 +47,7 @@ public with sharing class trac_WS_GetLoyaltyUAD {
 
     public class LoyaltyUADRequest {
         public String loyalty_id;
+        public String email;
         public String banner_id;
     }
 
@@ -83,10 +84,10 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String email;
         @AuraEnabled public String name;
         @AuraEnabled public String channel;
-        @AuraEnabled public List<String> customer_rewards;
+//        @AuraEnabled public List<String> customer_rewards;
         @AuraEnabled public List<res_CustomerBadgeWrapper> customer_badges;
         @AuraEnabled public List<res_CustomerOffersWrapper> customer_offers;
-        @AuraEnabled public List<String> customer_coupons;
+//        @AuraEnabled public List<String> customer_coupons;
         @AuraEnabled public String purchase_stats;
         @AuraEnabled public String reward_stats;
         @AuraEnabled public String reward_groups;
