@@ -4,14 +4,14 @@
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
-
         var caseRecordId = component.get("v.recordId");
-        var action = component.get("c.getLoyalty");
 
+        var action = component.get("c.getLoyalty");
         action.setParams({
             'email':     email,
             'loyaltyId': loyaltyId,
             'recordId':  caseRecordId
+
         });
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
