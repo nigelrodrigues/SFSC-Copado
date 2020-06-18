@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <footer class="slds-modal__footer">
-                    <lightning:button label="View More" variant="brand" onclick="{!c.displayMoreRecords}"/>
+                    <lightning:button label="View More" variant="brand" disabled="{!v.recordsToDisplay >= v.totalRecords}" onclick="{!c.displayMoreRecords}"/>
                     <lightning:button label="Close" variant="neutral" onclick="{!c.closeModal}"/>
                 </footer>
             </div>
