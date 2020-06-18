@@ -3,6 +3,7 @@
     <aura:attribute name="noLoyaltyFound" type="Boolean" default="false"/>
     <aura:attribute name="showError" type="boolean" default="false"/>
     <aura:attribute name="errorMessage" type="String" default="Please specify a valid input." />
+
     <aura:attribute name="options" type="List" access="PRIVATE"/>
     <aura:attribute name="selectedValue" type="String" />
     <aura:attribute name="refreshSearch" type="Boolean" default="false" />
@@ -12,11 +13,13 @@
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
 
+
     <aura:attribute type="String"  name="recordId" />
     <aura:attribute type="String"  name="customerLoyaltyId" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
-
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
+
+
     <div onkeyup="{!c.formPress}" class="slds-border_bottom" >
         <div class="slds-text-color_destructive">
             <aura:if isTrue="{!v.showError}">
@@ -52,7 +55,9 @@
                                      placeholder="5555555555"/>
                 </aura:if>
             </lightning:layoutItem>
+
         </lightning:layout>
+
         <lightning:layout horizontalAlign="space">
             <div>
                 <lightning:layoutItem padding="around-small">
@@ -60,7 +65,9 @@
                 </lightning:layoutItem>
             </div>
         </lightning:layout>
+
         <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
+
         <aura:if isTrue="{!v.noLoyaltyFound}">
             <div class="slds-text-align_center slds-text-heading_medium slds-text-color_destructive">
                 No loyalty account found.
