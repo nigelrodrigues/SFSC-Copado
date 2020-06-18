@@ -5,11 +5,12 @@
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
 
+        var caseRecordId = component.get("v.recordId");
         var action = component.get("c.getLoyalty");
-
         action.setParams({
-            'email': email,
-            'loyaltyId': loyaltyId
+            'email':     email,
+            'loyaltyId': loyaltyId,
+            'recordId':  caseRecordId
         });
 
         return new Promise(function(resolve, reject) {
@@ -46,6 +47,7 @@
         });
     },
 
+
     getLoyaltyUAD: function(component, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.loyalty", null);
@@ -59,6 +61,7 @@
             'loyaltyId': loyaltyId,
             'phoneNum': phoneNum
         });
+
 
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
@@ -91,6 +94,7 @@
             $A.enqueueAction(action);
         });
     },
+
 
     isNotBlank: function(component, field) {
         if (component.find(field).get("v.value") == null || component.find(field).get("v.value") == '') {

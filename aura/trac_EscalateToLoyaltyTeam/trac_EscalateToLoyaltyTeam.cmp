@@ -1,0 +1,85 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @date 10-June-2020
+ - @description To escalate and transfer the Case to a Loyalty Queue.
+ -->
+
+<aura:component description="trac_EscalateToLoyaltyTeam"
+                controller="trac_CaseLoyaltyEscalation"
+                extends="c:trac_BaseComponent"
+                implements="flexipage:availableForRecordHome">
+
+    <aura:attribute name="fileName"          type="String" default="Please select a file" />
+    <aura:attribute name="recordId"          type="String" />
+    <aura:attribute name="showPopup"         type="Boolean" />
+    <aura:attribute name="customerLoyaltyId" type="String"  />
+
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+    <lightning:button variant="neutral"
+                      label="Escalate Case"
+                      title="Escalate Case to Loyalty Team"
+                      onclick="{! c.displayPopup }"
+    />
+
+    <aura:if isTrue="{!v.showPopup}" >
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                        <lightning:icon iconName="standard:high_velocity_sales" alternativeText="" title="Escalate Case" size="small"/>
+                        Escalate Case</h2>
+                    <p class="slds-m-top_x-small">This operation will assign the case to the Loyalty Team.</p>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                    <lightning:recordEditForm
+                            recordId="{!v.recordId}"
+                            onsuccess="{!c.handleSuccess}"
+                            onload="{!c.handleLoad}"
+                            onsubmit="{!c.handleSubmit}"
+                            onerror="{!c.handleError}"
+                            objectApiName="Case">
+
+                        <lightning:messages/>
+
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-1">
+                                <div class="slds-m-top_large">
+                                    <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true" disabled="true"/>
+                                    <lightning:inputField aura:id="caseType" fieldName="Case_Type__c" required="true" />
+                                    <lightning:inputField aura:id="caseCategory" fieldName="Category__c" required="true"/>
+                                    <lightning:inputField aura:id="caseSubCategory" fieldName="Subcategory__c" required="true"/>
+                                    <label for="caseIssueDescription">Issue Description</label>
+                                    <lightning:inputField aura:id="caseIssueDescription"
+                                                          fieldName="Loyalty_Issue_Description__c" variant="label-hidden"/>
+                                    <lightning:input aura:id="fileUpload" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload File" multiple="false" accept="image/png, .zip"/>
+                                    <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
+                                    <br/>
+                                    <!--<lightning:inputField aura:id="caseType" fieldName="Case_Type__c" required="true" class="slds-hide"/>
+                                    <lightning:inputField aura:id="caseCategory" fieldName="Category__c" required="true" class="slds-hide"/>
+                                    <lightning:inputField aura:id="caseSubCategory" fieldName="Subcategory__c" required="true" class="slds-hide"/>-->
+                                    <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c" class="slds-hide"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="slds-m-top_medium">
+                            <lightning:button variant="brand" type="submit" label="Escalate" class="submit_button"/>
+                        </div>
+                    </lightning:recordEditForm>
+
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.closePopup }" />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+</aura:component>

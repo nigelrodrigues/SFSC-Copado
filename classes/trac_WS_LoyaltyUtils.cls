@@ -7,6 +7,7 @@
 public with sharing class trac_WS_LoyaltyUtils {
 
 
+
     public static final Map<String,Integer> mapMonthShortNameToInteger = new Map<String,Integer>{
         'Jan' => 1, 'Feb' => 2, 'Mar' => 3, 'Apr' => 4, 'May' => 5, 'Jun' => 6, 'Jul' => 7, 'Aug' => 8, 'Sep' => 9, 'Oct' => 10, 'Nov' => 11, 'Dec' => 12
     };
@@ -17,6 +18,7 @@ public with sharing class trac_WS_LoyaltyUtils {
     * @param params Map<String,String>, all of the request parameters
     * @return String, the generated md5 hash
     */
+
 
     public static String generateHash(String secretKey, Map<String,String> params) {
 
@@ -39,6 +41,7 @@ public with sharing class trac_WS_LoyaltyUtils {
     }
 
 
+
     /**
     * @description Parses datetime strings according to regex matches, and returns the
     *   resulting Datetime object
@@ -46,6 +49,14 @@ public with sharing class trac_WS_LoyaltyUtils {
     * @return Datetime, the resulting datetime object
     */
     public static Datetime parseDateString(String dtString) {
+
+        Datetime dt = getDateFromExtendedFormat(dtString);
+        dt = (dt == null) ? getDateFromStandardFormat(dtString) : dt;
+        return dt;
+    }
+
+    private static Datetime getDateFromExtendedFormat(String dtString) {
+
         Datetime dt;
 
         // Check for Order Date pattern (e.g. Mar. 04, 2020, 06:31 a.m.)
@@ -67,6 +78,25 @@ public with sharing class trac_WS_LoyaltyUtils {
             dt = Datetime.newInstance(year, month, day, hour, minute, 0);
         }
 
+        return dt;
+    }
+
+
+    private static Datetime getDateFromStandardFormat(String dtString) {
+        Datetime dt;
+        dtString = dtString.contains('.') ? dtString.split('\\.')[0] : dtString;
+
+        // Check for Order Date pattern (e.g. 12/15/2020)
+        String regexString = '^\\d{1,2}\\/\\d{1,2}\\/\\d{4}'; //date (no time)
+        Pattern orderPattern = Pattern.compile(regexString);
+        Matcher regexMatch = orderPattern.matcher(dtString);
+        if (regexMatch.matches()) {
+            String[] dateSplit =  dtString.split('/');
+            Integer month = Integer.valueOf(dateSplit[0]);
+            Integer day = Integer.valueOf(dateSplit[1]);
+            Integer year = Integer.valueOf(dateSplit[2].split(' ')[0]);
+            dt = Datetime.newInstance(year, month, day, 0, 0, 0);
+        }
         return dt;
     }
 
