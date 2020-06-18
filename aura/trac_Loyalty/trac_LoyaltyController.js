@@ -1,8 +1,6 @@
 /**
  * Created by akong on 6/1/2020.
  */
-
-
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         console.log("Inside handleShowAppeasementModal");
@@ -25,14 +23,14 @@
                 }
             });
     },
-
-
     handleCloseModalApplicationEvent: function(cmp) {
         cmp.get('v.appeasementModalPromise').then(
             function (modal) {
                 modal.close();
             }
         );
+
+
     },
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();

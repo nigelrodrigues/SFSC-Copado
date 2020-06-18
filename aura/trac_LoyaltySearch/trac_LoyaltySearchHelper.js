@@ -4,31 +4,32 @@
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
-
         var caseRecordId = component.get("v.recordId");
-
         var action = component.get("c.getLoyalty");
         action.setParams({
             'email': email,
-
             'loyaltyId': loyaltyId,
             'recordId':  caseRecordId
-
         });
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
                 var state = response.getState();
-                if (state === "SUCCESS") {
+
+                if (component.isValid() && state === "SUCCESS") {
+
                     var result = response.getReturnValue();
                     if (result == null) {
                         reject(new Error("Connection Error"));
                     } else {
-                        var isSuccess = result.returnValuesMap['body']['success']
-                        if(result.isSuccess && isSuccess) {
+
+                        if(result.isSuccess && result.returnValuesMap['body']['success']) {
                             var returnVal = result.returnValuesMap['body']['data'];
                             returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance / 200
                             returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
+                            var linked_partnerships = component.get('v.linked_partnerships')
+                            returnVal.linked_partnerships = linked_partnerships
+
                             component.set('v.loyalty', returnVal);
                             resolve(returnVal)
                         } else {
@@ -41,8 +42,10 @@
                             reject(error)
                         }
                     }
-                } else {
-                   reject(new Error(response.getError()));
+
+                }
+                else {
+                   reject(response);
                 }
             });
             $A.enqueueAction(action);
@@ -50,15 +53,14 @@
     },
     getLoyaltyUAD: function(component, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
-        component.set("v.loyalty", null);
-        component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
         var action = component.get("c.getLoyaltyUAD");
         action.setParams({
-            'email': email,
             'loyaltyId': loyaltyId,
+            'email': email,
             'phoneNum': phoneNum
         });
+
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
@@ -68,10 +70,12 @@
                     if (result == null) {
                         reject(new Error("Connection Error"));
                     } else {
-                        var isSuccess = result.returnValuesMap['body']['success']
-                        if(result.isSuccess && isSuccess) {
+
+                        if(result.isSuccess && result.returnValuesMap['body']['success']) {
                             var returnVal = result.returnValuesMap['body'];
-                            console.log(returnVal)
+                            if(returnVal.linked_partnerships === 'Airmiles')
+                                component.set('v.linked_partnerships', true)
+
                             resolve(returnVal)
                         } else {
                             var error = new Error(response.getError())
@@ -84,7 +88,9 @@
                         }
                     }
                 } else {
-                   reject(new Error(response.getError()));
+
+                   reject(new Error(response.getError()[0].message));
+
                 }
             });
             $A.enqueueAction(action);
@@ -120,7 +126,9 @@
              }
         } else {
             component.set("v.isError", true);
-            component.set("v.errorMsg", error.message);
+
+            component.set("v.errorMsg", error);
+
         }
     }
 });
