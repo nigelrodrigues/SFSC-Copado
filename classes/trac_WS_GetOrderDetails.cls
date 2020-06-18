@@ -27,11 +27,13 @@ public with sharing class trac_WS_GetOrderDetails {
                 getOrderDetailsResponse.Extn = new res_ExtnWrapper();
             }
             getOrderDetailsResponse.Extn.ExtnPointsEarned = 100;
-            System.debug('getOrderDetailsResponse.Shipments.Shipment[0]: ' + getOrderDetailsResponse.Shipments.Shipment[0]);
-            getOrderDetailsResponse.Shipments.Shipment[0].Extn = new res_ExtnWrapper();
-            getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnPointsEarned = 100;
-            getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnLoyaltyNo = '1000142';
-            getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnLoyaltyTier = '3836';
+            if (getOrderDetailsResponse.Shipments != null && getOrderDetailsResponse.Shipments.Shipment != null) {
+                System.debug('getOrderDetailsResponse.Shipments.Shipment[0]: ' + getOrderDetailsResponse.Shipments.Shipment[0]);
+                getOrderDetailsResponse.Shipments.Shipment[0].Extn = new res_ExtnWrapper();
+                getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnPointsEarned = 100;
+                getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnLoyaltyNo = '1000142';
+                getOrderDetailsResponse.Shipments.Shipment[0].Extn.ExtnLoyaltyTier = '3836';
+            }
             System.debug('akong: getOrderDetailsResponse: ' + getOrderDetailsResponse);
 
             updateDataFormat();
