@@ -11,7 +11,7 @@
         var errorValuesMap = {};
         if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
             result = false;
-            errorValuesMap['TransactionSubtotal'] = 'Subtotal is invalid';
+            errorValuesMap['TransactionSubtotal'] = 'Transaction Subtotal is invalid';
         }
         if (isNaN(exclusionSubtotal) || exclusionSubtotal=='') {
             result = false;
@@ -84,6 +84,7 @@
         });
 
         cmp.set("v.showError", false);
+        cmp.set("v.isMerkleError", false);
 
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
@@ -94,9 +95,6 @@
                 if (typeof result !== undefined && result != null) {
                     if (result.isSuccess) {
                         this.showToast(result.message, 'success', 'Transaction Submitted');
-                        //$A.get('e.c:trac_LoyaltyRefreshEvent2').fire();
-                        //this.close(cmp);
-                        //cmp.getEvent("trac_LoyaltyRefreshEvent2").fire();
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
                         appEvent.fire();
