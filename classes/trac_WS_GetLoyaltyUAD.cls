@@ -1,9 +1,6 @@
 public with sharing class trac_WS_GetLoyaltyUAD {
-/*    public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Base_Endpoint__c
-            + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_API_Version__c
-            + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Customer_Show_Endpoint__c;*/
-
-    public String ENDPOINT = 'https://api-gateway.hbc.io/dev/v1/customer-lookup-uad';
+    public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_GW_Endpoint__c
+            + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_UAD_Lookup_Endpoint__c;
 
     private final String SECRET_KEY = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Secret_Key__c;
     private final String UUID = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_UUID__c;
