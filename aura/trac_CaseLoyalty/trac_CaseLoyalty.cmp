@@ -4,6 +4,7 @@
     <aura:attribute name="isEditable"      type="Boolean" default="false" />
     <aura:attribute name="caseRecord"      type="Object"/>
     <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="refreshSearch" type="Boolean" default="false" />
     <aura:handler event="c:trac_LoyaltyRefreshEvent" action="{!c.handleLoyaltyRefreshEvent}"/>
 
     <force:recordData aura:id="recordLoader"
@@ -35,11 +36,11 @@
             </aura:if>
         </div>
         <div class="slds-is-relative">
-            <aura:if isTrue="{!empty(v.loyalty)}">
+            <aura:if isTrue="{!empty(v.loyalty) || v.refreshSearch==true}">
                 <aura:if isTrue="{!empty(v.caseRecord.Customer_Loyalty_Id__c)}">
-                    <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}"/>
+                    <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" refreshSearch="{!v.refreshSearch}"/>
                     <aura:set attribute="else">
-                        <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" customerLoyaltyId="{!v.caseRecord.Customer_Loyalty_Id__c}"/>
+                        <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" customerLoyaltyId="{!v.caseRecord.Customer_Loyalty_Id__c}" refreshSearch="{!v.refreshSearch}"/>
                     </aura:set>
                 </aura:if>
             </aura:if>
