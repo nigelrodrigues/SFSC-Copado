@@ -88,7 +88,7 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String channel;
         @AuraEnabled public List<String> customer_rewards;
         @AuraEnabled public List<res_CustomerBadgeWrapper> customer_badges;
-        @AuraEnabled public List<String> customer_offers;
+        @AuraEnabled public List<res_CustomerOffersWrapper> customer_offers;
         @AuraEnabled public List<String> customer_coupons;
         @AuraEnabled public String purchase_stats;
         @AuraEnabled public String reward_stats;
@@ -106,14 +106,14 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String actions_needed_for_next_tier;
         @AuraEnabled public String actions_needed_to_keep_tier;
         @AuraEnabled public String unsubscribed_sms;
-        @AuraEnabled public Long created_at;
-        @AuraEnabled public Long enrolled_at;
-        @AuraEnabled public Long last_activity;
-        @AuraEnabled public Long updated_at;
-        @AuraEnabled public Integer lifetime_balance;
+        @AuraEnabled public String created_at;
+        @AuraEnabled public String enrolled_at;
+        @AuraEnabled public String last_activity;
+        @AuraEnabled public String updated_at;
+        @AuraEnabled public Long lifetime_balance;
         @AuraEnabled public String subscription_type;
         @AuraEnabled public String top_tier_name;
-        @AuraEnabled public Integer balance;
+        @AuraEnabled public Long balance;
         @AuraEnabled public String external_customer_id;
         @AuraEnabled public String sub_channel;
         @AuraEnabled public String sub_channel_detail;
@@ -143,5 +143,23 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String attrib1;
         @AuraEnabled public String attribute2;
     }
+
+    public class res_CustomerOffersWrapper {
+        @AuraEnabled public String created_at;
+        @AuraEnabled public String description;
+        @AuraEnabled public String destination_url;
+        @AuraEnabled public String id;
+        @AuraEnabled public String name;
+        @AuraEnabled public String start_date;
+        @AuraEnabled public String updated_at;
+        @AuraEnabled public String promotion_type;
+        @AuraEnabled public String status;
+        @AuraEnabled public String image_url;
+        @AuraEnabled public String target;
+        @AuraEnabled public String terms_and_conditions;
+        @AuraEnabled public String display_name;
+    }
+
+
 
 }

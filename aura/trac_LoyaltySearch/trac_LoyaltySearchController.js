@@ -9,7 +9,6 @@
     },
 
     loyaltySearch: function (component, event, helper) {
-        var loyalty = null;
         var email = null;
         var loyaltyId = null;
         var phoneNum = null;
@@ -22,8 +21,8 @@
             phoneNum = component.find('phoneNumberInput').get("v.value");
         }
 
-        helper.getLoyalty(component, email, loyaltyId, phoneNum)
-        //.then(() => helper.getLoyaltyUAD(component, email, loyaltyId, phoneNum))
+        helper.getLoyaltyUAD(component, email, loyaltyId, phoneNum)
+        .then(() => helper.getLoyalty(component, email, loyaltyId, phoneNum))
         .catch(error => helper.handleError(component, error))
     },
 

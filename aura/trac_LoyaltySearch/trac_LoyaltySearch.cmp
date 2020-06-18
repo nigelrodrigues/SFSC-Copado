@@ -8,6 +8,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <aura:attribute type="Integer"  name="responseCode"  default=""/>
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
+    <aura:attribute type="Boolean"  name="linked_partnerships" default="false" />
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
 
