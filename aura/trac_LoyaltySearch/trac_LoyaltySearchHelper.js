@@ -1,5 +1,7 @@
 ({
-    getLoyalty: function(component, email, loyaltyId, phoneNum) {
+
+    getLoyalty: function(component, helper, email, loyaltyId, phoneNum) {
+
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
@@ -11,9 +13,9 @@
         action.setParams({
             'email':     email,
 
-
             'loyaltyId': loyaltyId,
             'recordId':  caseRecordId
+
         });
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
@@ -27,8 +29,11 @@
                         reject(new Error("Connection Error"));
                     } else {
 
+                        var statusCode = result.returnValuesMap['statusCode']
+                        var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
-                            var returnVal = result.returnValuesMap['body']['data'];
+                            var returnVal = str['data'];
+
                             returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance / 200
                             returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
                             var linked_partnerships = component.get('v.linked_partnerships')
@@ -36,13 +41,19 @@
 
                             component.set('v.loyalty', returnVal);
                             resolve(returnVal)
-                        } else {
+                        } else if (helper.isValidResponse(statusCode)) {
                             var error = new Error(response.getError())
-                            var str = result.returnValuesMap['body']
                             var body = JSON.parse(str)
-                            error.result = result
+                            error.isMerkleError = true
                             error.code = body.data.code
                             error.message = body.data.message
+                            error.statusCode = statusCode
+                            reject(error)
+                        } else {
+                            var error = new Error(response.getError())
+                            error.statusCode = statusCode
+                            error.str = str
+                            error.isMerkleError = true
                             reject(error)
                         }
                     }
@@ -53,20 +64,21 @@
                 }
             });
 
+
             $A.enqueueAction(action);
         });
     },
 
-    getLoyaltyUAD: function(component, email, loyaltyId, phoneNum) {
+    getLoyaltyUAD: function(component, helper, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.isMerkleError", false);
         var action = component.get("c.getLoyaltyUAD");
+
         action.setParams({
             'loyaltyId': loyaltyId,
             'email': email,
             'phoneNum': phoneNum
         });
-
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
@@ -77,19 +89,27 @@
                         reject(new Error("Connection Error"));
                     } else {
 
+                        var statusCode = result.returnValuesMap['statusCode']
+                        var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
-                            var returnVal = result.returnValuesMap['body'];
+                            var returnVal = str;
                             if(returnVal.linked_partnerships === 'Airmiles')
                                 component.set('v.linked_partnerships', true)
-
                             resolve(returnVal)
-                        } else {
+                        } else if (helper.isValidResponse(statusCode))  {
                             var error = new Error(response.getError())
-                            var str = result.returnValuesMap['body']
                             var body = JSON.parse(str)
-                            error.result = result
+                            error.isMerkleError = true
                             error.code = body.response_code
                             error.message = body.error_message
+                            error.statusCode = statusCode
+                            reject(error)
+                        } else {
+                            var error = new Error(response.getError())
+                            error.statusCode = statusCode
+                            error.str = str
+                            error.isMerkleError = true
+
                             reject(error)
                         }
                     }
@@ -112,16 +132,15 @@
             return true;
         }
     },
+
     isValidResponse: function (res) {
         return res != null && (res == 200 || res == 201 || res == 204);
     },
-    handleError : function(component, error) {
-        var result = error.result
-        if(typeof result === 'object' && result != null) {
-            var statusCode = result.returnValuesMap['statusCode']
-            var str = result.returnValuesMap['body']
-            if ( statusCode && this.isValidResponse(statusCode)  ) {
-                var body = JSON.parse(str)
+    handleError : function(component, helper, error) {
+        if(error.isMerkleError) {
+            var statusCode = error.statusCode
+            if ( statusCode && helper.isValidResponse(statusCode) ) {
+
                 component.set("v.canRetry", false);
                 component.set("v.responseCode", error.code);
                 component.set("v.bodyMsg", error.message);
@@ -129,7 +148,9 @@
             } else {
                 component.set("v.canRetry", true);
                 component.set("v.responseCode",  statusCode);
-                component.set("v.bodyMsg", str);
+
+                component.set("v.bodyMsg", error.str);
+
                 component.set("v.isMerkleError", true);
              }
         } else {
