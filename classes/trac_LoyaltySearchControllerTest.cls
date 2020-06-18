@@ -37,6 +37,7 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String loyaltyId = null;
 
 
+
         String recordId = '50005000000b8IzAAI';
         try{
             String res = (String) trac_LoyaltySearchController.getLoyalty(email, loyaltyId, recordId).message;
@@ -44,6 +45,7 @@ public with sharing class trac_LoyaltySearchControllerTest {
         } catch (Exception e) {
             System.assert(e.getMessage() != null, 'exception thrown.');
         }
+
 
 
     }
@@ -75,6 +77,7 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String loyaltyId = '600294999992297';
         String phoneNum = null;
 
+
         try {
             String res = (String) trac_LoyaltySearchController.getLoyaltyUAD(loyaltyId, email, phoneNum).message;
 
@@ -82,6 +85,7 @@ public with sharing class trac_LoyaltySearchControllerTest {
             System.assert(e.getMessage() != null, 'exception thrown.');
 
         }
+
 
     }
 }
