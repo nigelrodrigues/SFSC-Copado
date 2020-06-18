@@ -4,7 +4,9 @@ public with sharing class trac_LoyaltySearchController {
 
 
 
+
     public static TLAuraResponse getLoyalty(String loyaltyId, String email, String recordId) {
+
 
 
 
@@ -27,7 +29,9 @@ public with sharing class trac_LoyaltySearchController {
 
 
 
+
                 updateLoyaltyIdOnCase(recordId, request.loyaltyResponse.data.external_customer_id);
+
 
 
 
@@ -46,7 +50,9 @@ public with sharing class trac_LoyaltySearchController {
 
             String errorMessage = trac_WS_WebServiceHelper.DEFAULT_ERROR + integrationError.Id;
 
-            response = new TLAuraResponse(false, errorMessage);
+
+            throw new LoyaltySearchException(errorMessage);
+
         }
 
         return response;
@@ -71,6 +77,8 @@ public with sharing class trac_LoyaltySearchController {
             }
             response.returnValuesMap.put('statusCode', request.getStatusCode());
         } catch (Exception e) {
+
+
             Integration_Error__c integrationError = trac_IntegrationError.addError(new Integration_Error__c(
                     Description__c = e.getMessage() + '\n' + e.getStackTraceString(),
                     Endpoint__c = request.ENDPOINT,
@@ -80,11 +88,15 @@ public with sharing class trac_LoyaltySearchController {
 
             String errorMessage = trac_WS_WebServiceHelper.DEFAULT_ERROR + integrationError.Id;
 
-            response = new TLAuraResponse(false, errorMessage);
+
+            throw new LoyaltySearchException(errorMessage);
+
         }
 
         return response;
     }
+
+
 
 
 
@@ -100,6 +112,8 @@ public with sharing class trac_LoyaltySearchController {
             update aCase;
         }
     }
+
+
 
 
 
