@@ -70,6 +70,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Loyalty_GW_Endpoint__c</fullName>
+        <description>Loyalty middleware gateway enpoint</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty GW Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Bay_Loyalty_Pause_Endpoint__c</fullName>
         <description>Enpoint to Merkle&apos;s pause loyalty API</description>
         <externalId>false</externalId>
@@ -96,6 +107,16 @@
         <description>Merkle Secret Key</description>
         <externalId>false</externalId>
         <label>Bay Loyalty Secret Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bay_Loyalty_UAD_Lookup_Endpoint__c</fullName>
+        <externalId>false</externalId>
+        <label>Bay Loyalty UAD Lookup Endpoint</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
