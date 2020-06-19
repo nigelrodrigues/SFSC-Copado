@@ -3652,6 +3652,18 @@
         <type>Time</type>
     </fields>
     <fields>
+        <fullName>Customer_Loyalty_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Loyalty Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Date_Time_First_Closed__c</fullName>
         <description>Stamped the first time the case is closed. To be used in reporting</description>
         <externalId>false</externalId>
@@ -4153,6 +4165,17 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loyalty_Issue_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Loyalty Issue Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Loyalty_Tier__c</fullName>
