@@ -30,7 +30,7 @@
                     <div class="slds-truncate">Processed</div>
                 </th>
                 <th scope="col">
-                    <div class="slds-truncate slds-grid slds-truncate_container_33">Description</div>
+                    <div class="slds-truncate slds-grid">Description</div>
                 </th>
                 <th scope="col">
                     <div class="slds-truncate slds-float_right">Value</div>
