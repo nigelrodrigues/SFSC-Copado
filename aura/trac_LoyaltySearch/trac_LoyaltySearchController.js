@@ -10,7 +10,6 @@
             component.set('v.refreshSearch', false);
             component.set('v.customerLoyaltyId', component.get('v.loyalty.external_customer_id'));
         }
-
         let customerLoyaltyId = component.get('v.customerLoyaltyId');
         console.log('ID: ' + customerLoyaltyId);
         if( customerLoyaltyId )
@@ -24,10 +23,8 @@
             component.set('v.selectedValue', '1');
         }
     },
-
-
     loyaltySearch: function (component, event, helper) {
-        var loyalty = null;
+
         var email = null;
         var loyaltyId = null;
         var phoneNum = null;
@@ -41,11 +38,9 @@
             phoneNum = component.find('phoneNumberInput').get("v.value");
         }
 
-
-        helper.getLoyalty(component, email, loyaltyId, phoneNum)
-            //.then(() => helper.getLoyaltyUAD(component, email, loyaltyId, phoneNum))
-            .catch(error => helper.handleError(component, error))
+        helper.getLoyaltyUAD(component, email, loyaltyId, phoneNum)
+        .then(() => helper.getLoyalty(component, email, loyaltyId, phoneNum))
+        .catch(error => helper.handleError(component, error))
     },
-
 
 });
