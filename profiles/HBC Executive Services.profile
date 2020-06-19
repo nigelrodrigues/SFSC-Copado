@@ -712,6 +712,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>UpdateOff5</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UserStoryHandler</apexClass>
         <enabled>false</enabled>
     </classAccesses>
