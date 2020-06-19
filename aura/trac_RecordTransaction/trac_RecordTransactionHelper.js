@@ -1,32 +1,38 @@
 /**
  * Created by gtorres on 6/5/2020.
  */
+
 ({
 
     validateForm: function(cmp) {
         var result = true;
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
+
         var errorValuesMap = {};
         if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
             result = false;
-            errorValuesMap['TransactionSubtotal'] = 'Subtotal is invalid';
+            errorValuesMap['TransactionSubtotal'] = 'Transaction Subtotal is invalid';
+
         }
         if (isNaN(exclusionSubtotal) || exclusionSubtotal=='') {
             result = false;
             errorValuesMap['SubtotalExcludedItems'] = 'Subtotal of Excluded Items is invalid';
         }
+
+
         if (!result) {
             this.showErrorSummary(cmp, 'You have errors in your form submission.', errorValuesMap);
         }
         return result;
     },
-
     close: function(cmp) {
         cmp.get('v.openButton').set('v.disabled', false);
         cmp.set('v.openButton', null);
         cmp.destroy();
     },
+
+
     showToast: function(message, type, title) {
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
@@ -36,6 +42,8 @@
         });
         resultsToast.fire();
     },
+
+
     showErrorSummary: function(cmp, message, returnValuesMap) {
         cmp.set("v.showError", true);
         cmp.set("v.errorMessage", message);
@@ -48,6 +56,7 @@
             cmp.set("v.errorDetails", details);
         }
     },
+
     submitRecordTransaction: function(cmp) {
         cmp.set('v.spinner', true);
 
@@ -83,17 +92,11 @@
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
             var state = response.getState();
-
-
             if (cmp.isValid() && state === "SUCCESS") {
                 var result = response.getReturnValue();
                 if (typeof result !== undefined && result != null) {
                     if (result.isSuccess) {
                         this.showToast(result.message, 'success', 'Transaction Submitted');
-
-                        //$A.get('e.c:trac_LoyaltyRefreshEvent2').fire();
-                        //this.close(cmp);
-                        //cmp.getEvent("trac_LoyaltyRefreshEvent2").fire();
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
                         appEvent.fire();
