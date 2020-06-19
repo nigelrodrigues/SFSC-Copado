@@ -11,11 +11,10 @@
         }
         let customerLoyaltyId = component.get('v.customerLoyaltyId');
         console.log('ID: ' + customerLoyaltyId);
-        if( customerLoyaltyId )
-        {
+        if( customerLoyaltyId ) {
             component.set("v.selectedValue", "2");
             component.find("loyaltyNumberInput").set("v.value", customerLoyaltyId);
-            helper.getLoyalty(component, null, customerLoyaltyId, null);
+            helper.getLoyalty(component, helper, null, customerLoyaltyId, null);
         }
         else
         {

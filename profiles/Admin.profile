@@ -708,6 +708,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>UpdateOff5</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UserStoryHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>

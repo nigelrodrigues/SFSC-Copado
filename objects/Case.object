@@ -6744,8 +6744,9 @@
         <columns>NAME</columns>
         <columns>CASES.SUBJECT</columns>
         <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
+        <columns>Business_Unit__c</columns>
         <columns>CORE.USERS.ALIAS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Case_Type__c</field>
@@ -6756,6 +6757,11 @@
             <field>CASES.STATUS</field>
             <operation>equals</operation>
             <value>New</value>
+        </filters>
+        <filters>
+            <field>CASES.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Case.Support_Case</value>
         </filters>
         <label>Credit Hold</label>
     </listViews>

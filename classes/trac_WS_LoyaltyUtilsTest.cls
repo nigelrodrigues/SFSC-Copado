@@ -39,5 +39,13 @@ private class trac_WS_LoyaltyUtilsTest {
         System.assertEquals(2020, dt.year());
         System.assertEquals(12, dt.month());
         System.assertEquals(31, dt.day());
+
+        String invalidDtString = '12/32/2020';
+        dt = trac_WS_LoyaltyUtils.parseDateString(invalidDtString);
+        System.assertEquals(null, dt, invalidDtString + ' should be considered as invalid date');
+
+        String invalidLeapYearDtString = '02/29/2019';
+        dt = trac_WS_LoyaltyUtils.parseDateString(invalidLeapYearDtString);
+        System.assertEquals(null, dt, invalidLeapYearDtString + ' should be considered as invalid leap year');
     }
 }
