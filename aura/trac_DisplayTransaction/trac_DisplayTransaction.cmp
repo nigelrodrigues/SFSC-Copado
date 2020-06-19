@@ -12,7 +12,7 @@
     <aura:iteration items="{!v.transactionValues}" var="transactionData" indexVar="count">
         <aura:if isTrue="{!lessthan(count,6)}">
         <tr class="slds-hint-parent">
-            <td class="slds-cell-wrap">
+            <td class="slds-cell-wrap slds-p-left--none">
                 <lightning:buttonIcon value="{!count}" onclick="{!c.fireEvent}" iconName="utility:search" />
             </td>
             <td>
@@ -20,7 +20,7 @@
                     <lightning:formattedDateTime value="{!transactionData.created_at}" year="numeric" month="short" day="2-digit" />
                 </div>
             </td>
-            <td class="slds-hyphenate">
+            <td class="slds-hyphenate slds-truncate" title="{!transactionData.event_id + ' - ' + transactionData.display_detail + ' (from ' + transactionData.channel + ')'}">
                 {!transactionData.event_id}<br/>
                 {!transactionData.display_detail}&nbsp;<i>(from <span style="text-transform:uppercase">{!transactionData.channel}</span>)</i>
             </td>
