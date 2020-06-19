@@ -11,7 +11,8 @@ private class trac_WS_LoyaltyUtilsTest {
 
 
     @IsTest
-    static void testParseDateString() {
+    static void testParseDateStringExtendedFormat() {
+
 
         String dtString = 'Jul. 04, 2020, 06:31 p.m.';
 
@@ -23,6 +24,24 @@ private class trac_WS_LoyaltyUtilsTest {
         System.assertEquals(2020, dt.year());
         System.assertEquals(7, dt.month());
         System.assertEquals(4, dt.day());
+
+        System.assertEquals(18, dt.hour());
+        System.assertEquals(31, dt.minute());
+    }
+
+    @IsTest
+    static void testParseDateStringStandardFormat() {
+
+        String dtString = '12/31/2020';
+
+        Test.startTest();
+        Datetime dt = trac_WS_LoyaltyUtils.parseDateString(dtString);
+        Test.stopTest();
+
+        System.assertNotEquals(null, dt, 'Datetime string ' + dtString + ' failed to parse.');
+        System.assertEquals(2020, dt.year());
+        System.assertEquals(12, dt.month());
+        System.assertEquals(31, dt.day());
     }
 
 }
