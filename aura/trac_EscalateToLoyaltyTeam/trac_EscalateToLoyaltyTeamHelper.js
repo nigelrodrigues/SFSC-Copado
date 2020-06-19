@@ -53,8 +53,10 @@
     uploadInChunk: function(component, file, fileContents, startPosition, endPosition, attachId) {
         var getchunk = fileContents.substring(startPosition, endPosition);
         var action = component.get("c.attachToCase");
+        var caseRecord = component.get("v.caseRecord");
+
         action.setParams({
-            parentId: component.get("v.recordId"),
+            parentId: caseRecord.Id,
             contentType: file.type,
             fileName: file.name,
             fileContentsToEncode: encodeURIComponent(getchunk)
@@ -93,6 +95,8 @@
 
             }
             else {
+                component.set("v.isError", true);
+                component.set("v.errorMsg", 'Please try again.');
                 console.error("failed with state: " + state);
             }
 

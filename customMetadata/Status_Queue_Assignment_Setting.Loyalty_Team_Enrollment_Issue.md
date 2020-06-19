@@ -28,7 +28,7 @@
     </values>
     <values>
         <field>Queue__c</field>
-        <value xsi:type="xsd:string">Loyalty_Team</value>
+        <value xsi:type="xsd:string">Loyalty_Operations_Team</value>
     </values>
     <values>
         <field>Sub_Category__c</field>

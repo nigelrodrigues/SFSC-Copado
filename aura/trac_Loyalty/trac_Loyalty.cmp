@@ -6,7 +6,7 @@
     <aura:attribute name="isEditable" type="Boolean" default="false" />
     <aura:attribute name="isDisabled" type="Boolean" default="false" />
     <aura:attribute name="appeasementModalPromise" type="Aura.Action"/>
-    <aura:attribute name="caseRecordId"            type="String" />
+    <aura:attribute name="caseRecord"            type="Object" />
     <aura:handler event="c:trac_CloseModalApplicationEvent" action="{!c.handleCloseModalApplicationEvent}"/>
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
@@ -341,7 +341,7 @@
             <lightning:button aura:id="btnRecordTransaction" name="recordTransaction" label="Record Transaction" onclick="{!c.handleShowRecordTransaction}"/>
         </lightning:layoutItem>
         <lightning:layoutItem padding="around-small" size="4">
-            <c:trac_EscalateToLoyaltyTeam recordId="{!v.caseRecordId}" />
+            <c:trac_EscalateToLoyaltyTeam caseRecord="{!v.caseRecord}" />
         </lightning:layoutItem>
 
 
