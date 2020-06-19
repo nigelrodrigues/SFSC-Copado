@@ -3,6 +3,8 @@
  - @date 4-June-2020
  - @description To display the customer's transaction history (Event History)
  -->
+
+
 <aura:component description="trac_LoyaltyTransactionHistory"
                 controller="trac_EventController"
                 extends="c:trac_BaseComponent"
@@ -14,8 +16,10 @@
     <aura:attribute name="showDetails"       type="Boolean" default="false"/>
     <aura:attribute name="recordsToDisplay"  type="Integer" default="20" />
     <aura:attribute name="totalRecords"      type="Integer" />
+
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
     <aura:handler name="TractionComponentEvent" event="c:trac_TransactionHistoryEvent" action="{!c.openModal}"/>
+
     <lightning:accordion aura:id="accordion">
         <table class="slds-table slds-table_bordered slds-table_cell-buffer">
             <thead>
@@ -27,7 +31,9 @@
                     <div class="slds-truncate">Processed</div>
                 </th>
                 <th scope="col">
-                    <div class="slds-truncate slds-grid slds-truncate_container_33">Description</div>
+
+                    <div class="slds-truncate slds-grid">Description</div>
+
                 </th>
                 <th scope="col">
                     <div class="slds-truncate slds-float_right">Value</div>
@@ -48,6 +54,8 @@
             </tbody>
         </table>
     </lightning:accordion>
+
+
     <aura:if isTrue="{!v.showModal}">
         <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
             <div class="slds-modal__container">
@@ -89,6 +97,8 @@
                                 <div class="custom-box"></div>
                             </lightning:layoutItem>
                         </lightning:layout>
+
+
                         <aura:iteration items="{!v.transactions.data}" var="transactionData" indexVar="variableIndex">
                             <aura:if isTrue="{!lessthan(variableIndex,v.recordsToDisplay)}">
                                 <c:trac_LoyaltyTransactionHistoryRow transactionData="{!transactionData}" />
@@ -106,4 +116,6 @@
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
     </aura:if>
+
+
 </aura:component>
