@@ -7162,8 +7162,8 @@
     <listViews>
         <fullName>Loyalty_Team_Case</fullName>
         <filterScope>Queue</filterScope>
-        <label>Loyalty Team</label>
-        <queue>Loyalty_Team</queue>
+        <label>Loyalty Operations Team</label>
+        <queue>Loyalty_Operations_Team</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
