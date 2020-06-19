@@ -83,7 +83,9 @@ public with sharing class trac_RecordTransactionController {
             response.isSuccess = false;
             response.returnValuesMap.put('transactionOrigin', 'Transaction Origin missing');
         }
-        if (String.isBlank(params.orderNumber)) {
+
+        if (String.isBlank(params.orderNumber) && params.transactionOrigin == 'Website') {
+
             response.isSuccess = false;
             response.returnValuesMap.put('orderNumber', 'Order Number missing');
         }
