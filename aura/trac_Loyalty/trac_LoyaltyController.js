@@ -1,6 +1,8 @@
 /**
  * Created by akong on 6/1/2020.
  */
+
+
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         console.log("Inside handleShowAppeasementModal");
@@ -23,12 +25,16 @@
                 }
             });
     },
+
+
     handleCloseModalApplicationEvent: function(cmp) {
         cmp.get('v.appeasementModalPromise').then(
             function (modal) {
                 modal.close();
             }
         );
+
+
     },
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
@@ -48,7 +54,6 @@
                 }
             });
     },
-
     handleSaveChanges: function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var firstName = component.get('v.firstName')
@@ -77,5 +82,4 @@
         component.set('v.lastName', loyalty.last_name)
         component.set('v.email', loyalty.email)
     },
-
 });
