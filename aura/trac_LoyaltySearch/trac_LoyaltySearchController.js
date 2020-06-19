@@ -10,9 +10,10 @@
             component.set('v.customerLoyaltyId', component.get('v.loyalty.external_customer_id'));
         }
         let customerLoyaltyId = component.get('v.customerLoyaltyId');
-        console.log('customerLoyaltyId: ' + customerLoyaltyId);
-        if( customerLoyaltyId )
-        {
+
+        console.log('ID: ' + customerLoyaltyId);
+        if( customerLoyaltyId ) {
+
             component.set("v.selectedValue", "2");
             component.find("loyaltyNumberInput").set("v.value", customerLoyaltyId);
             helper.getLoyalty(component, helper, null, customerLoyaltyId, null);
@@ -22,8 +23,8 @@
             component.set('v.selectedValue', '1');
         }
     },
-    loyaltySearch: function (component, event, helper) {
 
+    loyaltySearch: function (component, event, helper) {
         var email = null;
         var loyaltyId = null;
         var phoneNum = null;
@@ -35,7 +36,8 @@
         } else if (component.get('v.selectedValue') == '3' && helper.isNotBlank(component, 'phoneNumberInput')) {
             phoneNum = component.find('phoneNumberInput').get("v.value");
         }
-        console.log('loyaltyInput: ' + loyaltyId);
+
+
         helper.getLoyaltyUAD(component, helper, email, loyaltyId, phoneNum)
         .then(() => helper.getLoyalty(component, helper, email, loyaltyId, phoneNum))
         .catch(error => helper.handleError(component, helper, error))
