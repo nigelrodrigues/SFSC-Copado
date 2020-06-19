@@ -10,6 +10,7 @@ public with sharing class trac_WS_PauseLoyalty {
     public String jsonError;
     public String loyaltyId;
     public String email;
+    public String close_member;
 
     public Boolean send() {
         Boolean success = false;
@@ -21,6 +22,9 @@ public with sharing class trac_WS_PauseLoyalty {
         }
         if(email != null) {
             params.put('email', email);
+        }
+        if(close_member != null) {
+            params.put('close_member', close_member);
         }
         params.put('uuid', UUID);
 
@@ -38,7 +42,7 @@ public with sharing class trac_WS_PauseLoyalty {
         System.debug('res.getBody(): ' + res.getBody());
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             pauseResponse = parse(res.getBody());
-            success = true;
+            success = pauseResponse.success;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
         }
