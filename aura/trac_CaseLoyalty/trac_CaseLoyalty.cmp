@@ -6,13 +6,17 @@
     <aura:attribute name="recordLoadError" type="String"/>
     <aura:attribute name="refreshSearch" type="Boolean" default="false" />
     <aura:handler event="c:trac_LoyaltyRefreshEvent" action="{!c.handleLoyaltyRefreshEvent}"/>
+
+
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
                       fields="Id, Customer_Loyalty_Id__c"
                       targetFields="{!v.caseRecord}"
                       targetError="{!v.recordLoadError}"
     />
-   <aura:handler name="change" value="{!v.isEditable}" action="{!c.handleValueChange}"/>
+
+    <aura:handler name="change" value="{!v.isEditable}" action="{!c.handleValueChange}"/>
+
     <div class="slds-box slds-theme_default">
         <div style="overflow:auto" class="slds-align_absolute-center">
             <lightning:layoutItem padding="around-small" class="slds-float_left">
@@ -42,7 +46,7 @@
         </div>
         <div class="slds-is-relative">
             <aura:if isTrue="{!not(empty(v.loyalty))}">
-                <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}"  caseRecordId="{!v.recordId}" />
+                <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}"  caseRecord="{!v.caseRecord}" />
             </aura:if>
         </div>
     </div>
