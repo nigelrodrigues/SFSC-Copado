@@ -5,6 +5,9 @@
  */
 
 public with sharing class trac_WS_LoyaltyEvent {
+
+    public static final String LEDGER_TITLE_TIER_VISIT_COUNTER = 'Tier Visit Counter';
+
     public final String ENDPOINT = ''+trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Base_Endpoint__c
             + trac_WS_WebServiceHelper.webServiceSettings.Bay_Event_History__c;
     private final String SECRET_KEY = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Secret_Key__c;
@@ -107,6 +110,7 @@ public with sharing class trac_WS_LoyaltyEvent {
         private void populateDisplayFields() {
             if (!data.isEmpty()) {
 
+
                 // use netPoints to record running tally
                 Integer netPoints = 0;
 
@@ -118,6 +122,7 @@ public with sharing class trac_WS_LoyaltyEvent {
                     // netPoints
                     netPoints += Integer.valueOf(row.points);
                     row.net_points = netPoints;
+
 
 
                     // populate display_sub_detail
@@ -135,10 +140,18 @@ public with sharing class trac_WS_LoyaltyEvent {
 
                     // populate rule.ledger.display_points_earned
                     if (row.rule != null && row.rule.ledger != null) {
-                        for (res_ledgerWrapper ledger : row.rule.ledger) {
-                            Decimal ledgerPoints = ledger.points != null ? ledger.points : 0;
-                            ledger.display_points = ( ledgerPoints >= 0 ? '+' : '') + Integer.valueOf(ledger.points);
+
+                        List<res_ledgerWrapper> newLedger = new List<res_ledgerWrapper>();
+                        for (res_ledgerWrapper ledgerRow : row.rule.ledger) {
+                            // filter out Tier Visit Counter ledger rows
+                            if (ledgerRow.title != LEDGER_TITLE_TIER_VISIT_COUNTER) {
+                                Decimal ledgerPoints = ledgerRow.points != null ? ledgerRow.points : 0;
+                                ledgerRow.display_points = (ledgerPoints >= 0 ? '+' : '') + Integer.valueOf(ledgerRow.points);
+                                newLedger.add( ledgerRow );
+                            }
                         }
+                        row.rule.ledger = newLedger;
+
                     }
                 }
             }
