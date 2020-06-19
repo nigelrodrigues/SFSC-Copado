@@ -101,9 +101,6 @@ public with sharing class trac_RecordTransactionController {
             // parse transactionDate using trac_WS_LoyaltyUtils.parseDateString()
             trnDatetime = trac_WS_LoyaltyUtils.parseDateString(params.transactionDate);
             Date trnDate = trnDatetime == null ? null : Date.newinstance(trnDatetime.year(), trnDatetime.month(), trnDatetime.day());
-            System.debug('Dates:');
-            System.debug('trnDate       :' + trnDate);
-            System.debug('System.today():' + System.today());
             if (trnDatetime == null) {
                 // failed to parse transactionDate
                 response.isSuccess = false;
