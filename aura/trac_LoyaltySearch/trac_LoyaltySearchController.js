@@ -5,12 +5,10 @@
             { id: 2, label: 'Loyalty Account Number' }
             // { id: 3, label: 'Phone Number' }
         ]);
-
         if (component.get('v.refreshSearch')) {
             component.set('v.refreshSearch', false);
             component.set('v.customerLoyaltyId', component.get('v.loyalty.external_customer_id'));
         }
-
         let customerLoyaltyId = component.get('v.customerLoyaltyId');
         console.log('ID: ' + customerLoyaltyId);
         if( customerLoyaltyId )
@@ -25,9 +23,8 @@
         }
     },
 
-
     loyaltySearch: function (component, event, helper) {
-        var loyalty = null;
+
         var email = null;
         var loyaltyId = null;
         var phoneNum = null;
@@ -41,11 +38,9 @@
             phoneNum = component.find('phoneNumberInput').get("v.value");
         }
 
+        helper.getLoyaltyUAD(component, helper, email, loyaltyId, phoneNum)
+        .then(() => helper.getLoyalty(component, helper, email, loyaltyId, phoneNum))
+        .catch(error => helper.handleError(component, helper, error))
 
-        helper.getLoyalty(component, email, loyaltyId, phoneNum)
-            //.then(() => helper.getLoyaltyUAD(component, email, loyaltyId, phoneNum))
-            .catch(error => helper.handleError(component, error))
     },
-
-
 });

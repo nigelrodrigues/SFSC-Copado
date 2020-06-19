@@ -1,9 +1,7 @@
 public with sharing class trac_LoyaltySearchController {
     
     @AuraEnabled
-
     public static TLAuraResponse getLoyalty(String loyaltyId, String email, String recordId) {
-
         TLAuraResponse response = new TLAuraResponse(true);
         trac_WS_GetLoyalty request = new trac_WS_GetLoyalty();
 
@@ -20,9 +18,7 @@ public with sharing class trac_LoyaltySearchController {
         try {
             if(request.send()) {
                 response.returnValuesMap.put('body', request.loyaltyResponse);
-
                 updateLoyaltyIdOnCase(recordId, request.loyaltyResponse.data.external_customer_id);
-
             } else {
                 response = new TLAuraResponse(false, 'communication error with merkle');
                 response.returnValuesMap.put('body', request.getBody());
@@ -38,7 +34,7 @@ public with sharing class trac_LoyaltySearchController {
 
             String errorMessage = trac_WS_WebServiceHelper.DEFAULT_ERROR + integrationError.Id;
 
-            response = new TLAuraResponse(false, errorMessage);
+            throw new LoyaltySearchException(errorMessage);
         }
 
         return response;
@@ -52,6 +48,7 @@ public with sharing class trac_LoyaltySearchController {
 
         loyaltyUADRequest.banner_id = '4';
         loyaltyUADRequest.loyalty_id = loyaltyId;
+        loyaltyUADRequest.email = email;
         request.loyaltyUADRequest = loyaltyUADRequest;
 
         try {
@@ -72,13 +69,11 @@ public with sharing class trac_LoyaltySearchController {
 
             String errorMessage = trac_WS_WebServiceHelper.DEFAULT_ERROR + integrationError.Id;
 
-            response = new TLAuraResponse(false, errorMessage);
+            throw new LoyaltySearchException(errorMessage);
         }
 
         return response;
     }
-
-
 
     private static void updateLoyaltyIdOnCase(String recordId, String loyaltyId)
     {
@@ -88,7 +83,6 @@ public with sharing class trac_LoyaltySearchController {
             update aCase;
         }
     }
-
 
     public class LoyaltySearchException extends Exception {}
 }
