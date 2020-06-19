@@ -1,8 +1,6 @@
 public with sharing class trac_WS_GetLoyaltyUAD {
-
     public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_GW_Endpoint__c
             + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_UAD_Lookup_Endpoint__c;
-
 
     private final String SECRET_KEY = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_Secret_Key__c;
     private final String UUID = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_UUID__c;
@@ -49,6 +47,7 @@ public with sharing class trac_WS_GetLoyaltyUAD {
 
     public class LoyaltyUADRequest {
         public String loyalty_id;
+        public String email;
         public String banner_id;
     }
 
@@ -85,12 +84,10 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String email;
         @AuraEnabled public String name;
         @AuraEnabled public String channel;
-        //@AuraEnabled public List<String> customer_rewards;
+//        @AuraEnabled public List<String> customer_rewards;
         @AuraEnabled public List<res_CustomerBadgeWrapper> customer_badges;
-
         @AuraEnabled public List<res_CustomerOffersWrapper> customer_offers;
-
-        //@AuraEnabled public List<String> customer_coupons;
+//        @AuraEnabled public List<String> customer_coupons;
         @AuraEnabled public String purchase_stats;
         @AuraEnabled public String reward_stats;
         @AuraEnabled public String reward_groups;
@@ -107,7 +104,6 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String actions_needed_for_next_tier;
         @AuraEnabled public String actions_needed_to_keep_tier;
         @AuraEnabled public String unsubscribed_sms;
-
         @AuraEnabled public String created_at;
         @AuraEnabled public String enrolled_at;
         @AuraEnabled public String last_activity;
@@ -116,7 +112,6 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String subscription_type;
         @AuraEnabled public String top_tier_name;
         @AuraEnabled public Long balance;
-
         @AuraEnabled public String external_customer_id;
         @AuraEnabled public String sub_channel;
         @AuraEnabled public String sub_channel_detail;
@@ -147,7 +142,6 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String attribute2;
     }
 
-
     public class res_CustomerOffersWrapper {
         @AuraEnabled public String created_at;
         @AuraEnabled public String description;
@@ -163,7 +157,6 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String terms_and_conditions;
         @AuraEnabled public String display_name;
     }
-
 
 
 
