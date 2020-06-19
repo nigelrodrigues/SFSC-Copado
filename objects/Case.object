@@ -7160,15 +7160,6 @@
         <queue>La_Baie</queue>
     </listViews>
     <listViews>
-        <fullName>Loyalty_Team_Case</fullName>
-        <filterScope>Queue</filterScope>
-        <label>Loyalty Team</label>
-        <queue>Loyalty_Team</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>MHF_Case</fullName>
         <filterScope>Queue</filterScope>
         <label>MHF</label>
