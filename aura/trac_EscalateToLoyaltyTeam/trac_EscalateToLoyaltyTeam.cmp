@@ -73,7 +73,7 @@
                                     <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true" disabled="true" class="slds-hide"/>
 
                                     <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c"  class="slds-hide"/> <!-- class="slds-hide" -->
-                                    <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      />
+                                    <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      class="slds-hide"/>
 
                                     <aura:if isTrue="{!v.enableCategory}" >
                                         <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="true" />
