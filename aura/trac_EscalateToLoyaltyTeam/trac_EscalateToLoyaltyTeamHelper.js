@@ -3,29 +3,20 @@
  */
 
 ({
-    MAX_FILE_SIZE: 4500000,
-    CHUNK_SIZE: 750000,
-
-    showToast: function (title,message, type) {
-        var resultsToast = $A.get("e.force:showToast");
-        resultsToast.setParams({
-            "title": title,
-            "message": message,
-            "type": type
-        });
-        resultsToast.fire();
-    },
+    MAX_FILE_SIZE: 25000000,
 
     attachFile : function (component, event, helper) {
 
         var fileInput = component.find("fileUpload").get("v.files");
+        var createCase = component.get("v.selectedForCaseClose");
 
-        if( fileInput ) {
+        if( fileInput )
+        {
             var file = fileInput[0];
             var self = this;
 
             if (file.size > self.MAX_FILE_SIZE) {
-                component.set("v.fileName", 'Selected file size is too large. Maximum allowed file size is ' + (self.MAX_FILE_SIZE/1000000) + ' MB.\n' + ' Selected file size: ' + (file.size/1000000) + 'MB.');
+                component.set("v.fileName", 'Maximum size of the file is 25 MB.\n' + ' Selected file size: ' + (file.size/1000000) + 'MB.');
                 return;
             }
 
@@ -35,32 +26,50 @@
                 var base64 = 'base64,';
                 var dataStart = fileContents.indexOf(base64) + base64.length;
                 fileContents = fileContents.substring(dataStart);
-                self.uploadProcess(component, file, fileContents);
+                self.processCaseAndAttachment(component, file, fileContents);
             });
 
             objFileReader.readAsDataURL(file);
         }
+        else if( createCase === "yes" )
+        {
+            this.processCaseAndAttachment(component, null, null);
+        }
+
     },
 
-    uploadProcess: function(component, file, fileContents) {
+    processCaseAndAttachment: function(component, file, fileContents)
+    {
+        let fileContent = fileContents.substring(0, fileContents.length);
+        let caseRecord = component.get("v.caseRecord");
+        let newCaseCreation = component.get("v.selectedForCaseClose");
+        let createCase = false;
 
-        var startPosition = 0;
-        var endPosition = Math.min(fileContents.length, startPosition + this.CHUNK_SIZE);
-        this.uploadInChunk(component, file, fileContents, startPosition, endPosition, '');
-    },
+        if( newCaseCreation === "yes")
+            createCase = true;
 
+        let action = component.get("c.createCaseAndAttachFile");
 
-    uploadInChunk: function(component, file, fileContents, startPosition, endPosition, attachId) {
-        var getchunk = fileContents.substring(startPosition, endPosition);
-        var action = component.get("c.attachToCase");
-        var caseRecord = component.get("v.caseRecord");
-
-        action.setParams({
-            parentId: caseRecord.Id,
-            contentType: file.type,
-            fileName: file.name,
-            fileContentsToEncode: encodeURIComponent(getchunk)
-        });
+        if( file )
+        {
+            action.setParams({
+                caseRecord: caseRecord,
+                contentType: file.type,
+                fileName: file.name,
+                fileContentsToEncode: encodeURIComponent(fileContent),
+                cloneCase: createCase
+            });
+        }
+        else
+        {
+            action.setParams({
+                caseRecord: caseRecord,
+                contentType: null,
+                fileName: null,
+                fileContentsToEncode: null,
+                cloneCase: createCase
+            });
+        }
 
         action.setCallback(this, function(response) {
 
@@ -77,13 +86,13 @@
                     {
                         if(result.isSuccess)
                         {
-                            startPosition = endPosition;
-                            endPosition = Math.min(fileContents.length, startPosition + this.CHUNK_SIZE);
-
-                            if (startPosition < endPosition)
+                            var retrievedCase = result.returnValuesMap['caseRecord'];
+                            if ( retrievedCase )
                             {
-                                this.uploadInChunk(component, file, fileContents, startPosition, endPosition, attachId);
+                                this.showToast('Success', 'New Case created and transferred to Loyalty Escalations Team', 'success');
+                                component.set("v.openLightningForm", false);
                             }
+
                         }
                         else
                             {
@@ -99,10 +108,23 @@
                 component.set("v.errorMsg", 'Please try again.');
                 console.error("failed with state: " + state);
             }
+            component.set("v.isSpinner", false);
+            component.set("v.isLoading", false);
+
 
         });
 
         $A.enqueueAction(action);
 
+    },
+
+    showToast: function (title,message, type) {
+        var resultsToast = $A.get("e.force:showToast");
+        resultsToast.setParams({
+            "title": title,
+            "message": message,
+            "type": type
+        });
+        resultsToast.fire();
     }
 });

@@ -10,33 +10,26 @@
 
     closeForm : function(component, event, helper)
     {
-        component.set("v.openLightningForm", false);
-    },
-
-    openLightningForm : function (component, event, helper)
-    {
         component.set("v.isSpinner", false);
         component.set("v.isLoading", false);
         component.set("v.openLightningForm", false);
+
     },
 
     handleLoad: function (component, event, helper)
     {
         component.find("caseStatus").set("v.value", "Open");
-        var selectedRadioValue = component.get("v.selectedRadioVal");
-        if( selectedRadioValue === 'operations')
+        var selectedTeamue = component.get("v.selectedTeam");
+        if( selectedTeamue === 'operations')
         {
             component.find("caseType").set("v.value", "Rewards Escalation");
-            component.find("caseCategory").set("v.value", null);
+            component.set("v.enableCategory", true);
         }
         else
         {
-            component.find("caseType").set("v.value", "Rewards");
-            component.find("caseCategory").set("v.value", "Goodwill Points");
-            component.set("v.rewardsSelected", true);
-            component.set("v.disableCategory", true);
+            component.set("v.enableCategory", false);
+            component.set("v.showEscalationOptions", true);
         }
-
     },
     handleError: function (component, event, helper) {
         component.set("v.isSpinner", false);
@@ -46,10 +39,43 @@
 
     handleSubmit: function (component, event, helper)
     {
+        let selectedTeam = component.get("v.selectedTeam");
+        let closeCase = component.get("v.selectedForCaseClose");
 
-        var fileUploaded = component.find("fileUpload");
-        if ( fileUploaded && fileUploaded.get("v.files") && fileUploaded.get("v.files").length > 0) {
-            helper.attachFile(component, event);
+        if ( selectedTeam === "operations")
+        {
+            console.log('OPERATIONS ');
+            component.find("caseType").set("v.value", "Rewards Escalation");
+            component.set("v.showEscalationOptions", false);
+            component.set("v.createNewCase",   false);
+
+            var fileUploaded = component.find("fileUpload");
+            if ( fileUploaded && fileUploaded.get("v.files") && fileUploaded.get("v.files").length > 0) {
+                helper.attachFile(component, event);
+            }
+        }
+        if ( selectedTeam === "escalation")
+        {
+            event.preventDefault(); // stop form submission
+
+            console.log('IN ESCALATION');
+            if( closeCase==="no" )
+            {
+                console.log('ESCLATION NO ');
+                component.set("v.enableCategory", true);
+                var eventFields = event.getParam("fields");
+                eventFields["Case_Type__c"] = "Rewards";
+                eventFields["Category__c"] = "Goodwill Points";
+                eventFields["Subcategory__c"] = "Requires Approval";
+                component.find('escalateForm').submit(eventFields);
+            }
+            else
+            {
+                console.log('ESCLATION YES ');
+                event.preventDefault();
+
+                helper.attachFile(component, event, helper);
+            }
         }
 
         component.set("v.isSpinner", true);
@@ -62,18 +88,42 @@
         component.set("v.isLoading", false);
         component.set("v.openLightningForm", false);
         var errorEncountered = component.get("v.isError");
+        console.log('=================== HANDLE SUCCESS ==========');
 
         if( !errorEncountered )
         {
-            helper.showToast('Success', 'The Case will be transferred to the Loyalty Team', 'success');
+            console.log('no error encountered');
+            let selectedTeam = component.get("v.selectedTeam");
+            let closeCase = component.get("v.selectedForCaseClose");
 
-            const workspaceAPI = component.find("workspace");
-            workspaceAPI.getEnclosingTabId().then(function (tabId) {
-                workspaceAPI.closeTab({tabId});
-            })
-                .catch(function (error) {
-                    console.error('Error in closing tab:' + error);
-                });
+            if( selectedTeam === "operations" )
+            {
+                helper.showToast('Success', 'The Case will be transferred to the Loyalty Operations Team', 'success');
+                const workspaceAPI = component.find("workspace");
+                workspaceAPI.getEnclosingTabId().then(function (tabId) {
+                    workspaceAPI.closeTab({tabId});
+                })
+                    .catch(function (error) {
+                        console.error('Error in closing tab:' + error);
+                    });
+            }
+
+            if ( selectedTeam === "escalation")
+            {
+                console.log('in escalation');
+                if( closeCase==="no" )
+                {
+                    helper.showToast('Success', 'Case transferred to Loyalty Escalations Team', 'success');
+                    const workspaceAPI = component.find("workspace");
+                    workspaceAPI.getEnclosingTabId().then(function (tabId) {
+                        workspaceAPI.closeTab({tabId});
+                    })
+                        .catch(function (error) {
+                            console.error('Error in closing tab:' + error);
+                        });
+                }
+            }
+
         }
     },
 
@@ -90,20 +140,23 @@
     handleRadioChange: function (component, event, helper)
     {
         const step = event.getSource().get("v.value");
-        console.log('step: ' + step);
 
-        if (step === "operations")
+        let selectedTeam = component.get("v.selectedTeam");
+        let closeCase = component.get("v.selectedForCaseClose");
+
+        if ( selectedTeam === "operations")
         {
+            component.set("v.enableCategory", true);
             component.find("caseType").set("v.value", "Rewards Escalation");
-            component.set("v.rewardsSelected", false);
-            component.set("v.disableCategory", false);
+            component.find("caseCategory").set("v.value", null);
+            component.set("v.showEscalationOptions", false);
+            component.set("v.createNewCase",   false);
         }
-        if (step === "escalation")
+        if ( selectedTeam === "escalation" )
         {
-            component.find("caseType").set("v.value", "Rewards");
-            component.find("caseCategory").set("v.value", "Goodwill Points");
-            component.set("v.disableCategory", true);
-            component.set("v.rewardsSelected", true);
+            component.set("v.enableCategory", false);
+            component.set("v.showEscalationOptions", true);
         }
+
     }
 });

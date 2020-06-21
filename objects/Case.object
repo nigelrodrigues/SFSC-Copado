@@ -364,6 +364,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>POS Team</fullName>
             <default>false</default>
         </values>
@@ -1877,6 +1881,11 @@
                     <label>Archived Accounts</label>
                 </value>
                 <value>
+                    <fullName>Associate Loyalty Issue</fullName>
+                    <default>false</default>
+                    <label>Associate Loyalty Issue</label>
+                </value>
+                <value>
                     <fullName>Back Ordered Report</fullName>
                     <default>false</default>
                     <label>Back Ordered Report</label>
@@ -1925,6 +1934,11 @@
                     <fullName>Can you reactivate my gift card?</fullName>
                     <default>false</default>
                     <label>Can you reactivate my gift card?</label>
+                </value>
+                <value>
+                    <fullName>CASL Issue</fullName>
+                    <default>false</default>
+                    <label>CASL Issue</label>
                 </value>
                 <value>
                     <fullName>Casper Mattress</fullName>
@@ -2037,6 +2051,11 @@
                     <label>Employee Discount</label>
                 </value>
                 <value>
+                    <fullName>Enrollment Issue</fullName>
+                    <default>false</default>
+                    <label>Enrollment Issue</label>
+                </value>
+                <value>
                     <fullName>ERA Request - In Policy</fullName>
                     <default>false</default>
                     <label>ERA Request - In Policy</label>
@@ -2115,6 +2134,11 @@
                     <fullName>Gift card to Original Tender</fullName>
                     <default>false</default>
                     <label>Gift Card to Original Tender</label>
+                </value>
+                <value>
+                    <fullName>Goodwill Points</fullName>
+                    <default>false</default>
+                    <label>Goodwill Points</label>
                 </value>
                 <value>
                     <fullName>Have you received my return?</fullName>
@@ -2267,9 +2291,19 @@
                     <label>MHF_Ret_Exch_Diff Report</label>
                 </value>
                 <value>
+                    <fullName>Missing Bonus Points</fullName>
+                    <default>false</default>
+                    <label>Missing Bonus Points</label>
+                </value>
+                <value>
                     <fullName>Missing Items</fullName>
                     <default>false</default>
                     <label>Missing Items</label>
+                </value>
+                <value>
+                    <fullName>Missing Partner Points</fullName>
+                    <default>false</default>
+                    <label>Missing Partner Points</label>
                 </value>
                 <value>
                     <fullName>Missing Points from Online Order</fullName>
@@ -2387,6 +2421,16 @@
                     <label>POD POST Call Queue</label>
                 </value>
                 <value>
+                    <fullName>Point Conversion Issue</fullName>
+                    <default>false</default>
+                    <label>Point Conversion Issue</label>
+                </value>
+                <value>
+                    <fullName>Point Redemption Fraud</fullName>
+                    <default>false</default>
+                    <label>Point Redemption Fraud</label>
+                </value>
+                <value>
                     <fullName>Points Inquire</fullName>
                     <default>false</default>
                     <label>Points Inquire</label>
@@ -2487,6 +2531,16 @@
                     <label>Promo code technical error</label>
                 </value>
                 <value>
+                    <fullName>Promo Opt In</fullName>
+                    <default>false</default>
+                    <label>Promo Opt In</label>
+                </value>
+                <value>
+                    <fullName>Promo Opt Out</fullName>
+                    <default>false</default>
+                    <label>Promo Opt Out</label>
+                </value>
+                <value>
                     <fullName>Promo Questions/Problem</fullName>
                     <default>false</default>
                     <label>Promo Questions/Problem</label>
@@ -2550,6 +2604,11 @@
                     <fullName>Rewards Points</fullName>
                     <default>false</default>
                     <label>Rewards Points</label>
+                </value>
+                <value>
+                    <fullName>Rewards Promo Not Working</fullName>
+                    <default>false</default>
+                    <label>Rewards Promo Not Working</label>
                 </value>
                 <value>
                     <fullName>RI - Risk</fullName>
@@ -2625,6 +2684,11 @@
                     <fullName>Tax Exclusion</fullName>
                     <default>false</default>
                     <label>Tax Exclusion</label>
+                </value>
+                <value>
+                    <fullName>Tier Change</fullName>
+                    <default>false</default>
+                    <label>Tier Change</label>
                 </value>
                 <value>
                     <fullName>TIME STOP Alert</fullName>
@@ -2893,6 +2957,50 @@
             <valueSettings>
                 <controllingFieldValue>Order System Error</controllingFieldValue>
                 <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Associate Loyalty Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>CASL Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Enrollment Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Missing Bonus Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Missing Partner Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Point Conversion Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Point Redemption Fraud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Promo Opt In</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Promo Opt Out</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Rewards Promo Not Working</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Tier Change</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Major Home Fashion</controllingFieldValue>
@@ -3172,6 +3280,10 @@
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Credit Points Dispute</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Goodwill Points</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
@@ -5503,6 +5615,11 @@
                     <label>Request for smaller delivery window</label>
                 </value>
                 <value>
+                    <fullName>Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Requires Approval</label>
+                </value>
+                <value>
                     <fullName>Reschedule Delivery</fullName>
                     <default>false</default>
                     <label>Reschedule Delivery</label>
@@ -5880,7 +5997,6 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Didn&apos;t receive when expected</controllingFieldValue>
-                <controllingFieldValue>Estimated delivery date inquiry</controllingFieldValue>
                 <valueName>Vendor drop-ship</valueName>
             </valueSettings>
             <valueSettings>
@@ -6166,6 +6282,10 @@
             <valueSettings>
                 <controllingFieldValue>Not Placed</controllingFieldValue>
                 <valueName>Store Pick-Up</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Goodwill Points</controllingFieldValue>
+                <valueName>Requires Approval</valueName>
             </valueSettings>
         </valueSet>
     </fields>

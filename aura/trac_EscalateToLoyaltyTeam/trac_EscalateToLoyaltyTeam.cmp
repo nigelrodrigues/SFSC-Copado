@@ -13,8 +13,8 @@
     <aura:attribute name="caseRecord"             type="Object" />
     <aura:attribute name="openLightningForm"      type="Boolean" />
     <aura:attribute name="customerLoyaltyId"      type="String"  />
-    <aura:attribute name="rewardsSelected"        type="Boolean" />
-    <aura:attribute name="disableCategory"        type="Boolean" default="false"/>
+    <aura:attribute name="showEscalationOptions"        type="Boolean" />
+    <aura:attribute name="enableCategory"        type="Boolean" default="false"/>
     <aura:attribute name="options"                type="List" default="[
                                                         {'label': 'Loyalty Escalation', 'value': 'escalation'},
                                                         {'label': 'Loyalty Operations', 'value': 'operations'}
@@ -23,8 +23,9 @@
                                                         {'label': ' Yes, keep current case open', 'value': 'yes'},
                                                         {'label': 'No, close current case', 'value': 'no'}
                                                         ]"/>
-    <aura:attribute name="selectedRadioVal"       type="String" default="escalation"/>
+    <aura:attribute name="selectedTeam"           type="String" default="escalation"/>
     <aura:attribute name="selectedForCaseClose"   type="String" default="no"/>
+    <aura:attribute name="createNewCase"          type="Boolean" default="false"/>
 
     <lightning:workspaceAPI aura:id="workspace"/>
 
@@ -47,6 +48,7 @@
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
 
                     <lightning:recordEditForm
+                            aura:id="escalateForm"
                             recordId="{!v.caseRecord.Id}"
                             onsuccess="{!c.handleSuccess}"
                             onload="{!c.handleLoad}"
@@ -63,7 +65,7 @@
                                                       label="Select Team"
                                                       aura:id="radioGrp"
                                                       options="{! v.options }"
-                                                      value="{! v.selectedRadioVal }"
+                                                      value="{! v.selectedTeam }"
                                                       onchange="{!c.handleRadioChange}"
                                                       type="radio"/>
 
@@ -71,10 +73,11 @@
                                     <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true" disabled="true" class="slds-hide"/>
 
                                     <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c"  class="slds-hide"/> <!-- class="slds-hide" -->
-                                    <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      class="slds-hide"/>
-                                    <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="true" disabled="{!v.disableCategory}"/>
-                                    <aura:if isTrue="{!v.rewardsSelected}" >
-                                        <lightning:inputField aura:id="caseSubCategory"  fieldName="Subcategory__c"   required="true" />
+                                    <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      />
+
+                                    <aura:if isTrue="{!v.enableCategory}" >
+                                        <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="true" />
+                                        <lightning:inputField aura:id="caseSubCategory"  fieldName="Subcategory__c"   required="true" class="slds-hide"/>
                                     </aura:if>
                                     <label for="caseIssueDescription">Issue Description</label>
                                     <lightning:inputField aura:id="caseIssueDescription"
@@ -83,7 +86,7 @@
                                     <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
                                     <br/>
                                     
-                                    <aura:if isTrue="{!v.rewardsSelected}" >
+                                    <aura:if isTrue="{!v.showEscalationOptions}" >
 
                                     <br/><br/>
                                         <lightning:radioGroup name="closeCaseRadioGroup"
