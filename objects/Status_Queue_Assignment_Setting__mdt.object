@@ -2048,6 +2048,11 @@
                     <default>false</default>
                     <label>Wrong Order Received - Refund</label>
                 </value>
+                <value>
+                    <fullName>Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Requires Approval</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
