@@ -1,8 +1,6 @@
 /**
  * Created by akong on 6/1/2020.
  */
-
-
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         console.log("Inside handleShowAppeasementModal");
@@ -25,8 +23,6 @@
                 }
             });
     },
-
-
     handleCloseModalApplicationEvent: function(cmp) {
         cmp.get('v.appeasementModalPromise').then(
             function (modal) {
@@ -41,6 +37,7 @@
             "c:trac_RecordTransaction",
             {
                 loyalty: cmp.get('v.loyalty'),
+                caseRecordId: cmp.get('v.caseRecordId'),
                 openButton: openButton
             },
             function(newComponent, status) {
@@ -58,11 +55,11 @@
         var lastName = component.get('v.lastName')
         var email = component.get('v.email')
         helper.handleSaveChangesHelper(component, loyalty, firstName, lastName, email)
-        .then(() => {
-            helper.showToast("Saved successfully!", 'success', 'Changes Submitted')
-            component.set('v.isEditable', false)
-        })
-        .catch(error => helper.handleError(component, error))
+            .then(() => {
+                helper.showToast("Saved successfully!", 'success', 'Changes Submitted')
+                component.set('v.isEditable', false)
+            })
+            .catch(error => helper.handleError(component, error))
     },
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
@@ -74,12 +71,12 @@
             component.set('v.isDisabled', true)
         }
     },
-
-    init: function (component, event, helper) {
-        var loyalty = component.get('v.loyalty')
-        component.set('v.firstName', loyalty.first_name)
-        component.set('v.lastName', loyalty.last_name)
-        component.set('v.email', loyalty.email)
-
+    handleEditLoyaltyApplicationEvent: function (component, event, helper) {
+        var firstName = event.getParam("firstName");
+        var lastName = event.getParam("lastName");
+        var email = event.getParam("email");
+        component.set('v.firstName', firstName)
+        component.set('v.lastName', lastName)
+        component.set('v.email', email)
     },
 });
