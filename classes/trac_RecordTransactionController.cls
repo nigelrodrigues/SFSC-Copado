@@ -6,11 +6,6 @@
 
 public with sharing class trac_RecordTransactionController {
 
-    private static final Map<String,String> mapTransactionOriginToChannel = new Map<String,String>{
-            'website' => 'online',
-            'pos' => 'pos'
-    };
-
     private static final String DATETIME_FORMAT = 'yyyy-MM-dd HH:mm:ss z';
 
     /**
@@ -41,12 +36,24 @@ public with sharing class trac_RecordTransactionController {
                 evt.value = params.transactionSubtotal - params.exclusionSubtotal;
                 evt.eventId = params.transactionNumber;
                 evt.originatedAt = params.transactionDateObj.formatGmt(DATETIME_FORMAT);
-                evt.detail = params.orderNumber;
-                evt.eventChannel = mapTransactionOriginToChannel.get( params.transactionOrigin );
-
+                switch on params.transactionOrigin.toLowerCase() {
+                    when 'website' {
+                        evt.detail = 'Manual points award for order ' + params.orderNumber;
+                    }
+                    when 'store' {
+                        evt.detail = 'Manual points award for in-store purchase';
+                    }
+                    when 'mhf' {
+                        evt.detail = 'Manual points award for MHF purchase';
+                    }
+                }
+                evt.eventChannel = 'UAD';
+                Case aCase = getCase(params.caseRecordId);
+                evt.subChannel = aCase != null ? aCase.CaseNumber : '';
+                User aUser = getUser(UserInfo.getUserId());
+                evt.subChannelDetail = aUser != null ? aUser.Email : '';
                 if (evt.send()) {
                     // successful callout
-                    System.debug('evt.eventResponse: ' + evt.eventResponse);
                     response.message = 'Successfully recorded transaction ' + params.transactionNumber;
                     response.returnValuesMap.put('id', evt.eventResponse.data.id);
                     response.returnValuesMap.put('points', evt.eventResponse.data.points);
@@ -57,7 +64,6 @@ public with sharing class trac_RecordTransactionController {
                         response.message = evt.eventResponse.data.message;
                     } else {
                         response.message = evt.jsonError;
-                        System.debug('JSON error response: ' + evt.jsonError);
                     }
                 }
             } catch (Exception e) {
@@ -68,6 +74,24 @@ public with sharing class trac_RecordTransactionController {
         }
 
         return response;
+    }
+
+    private static User getUser(Id userId) {
+        List<User> users = [
+                SELECT Id, Email
+                FROM User
+                WHERE Id = :userId
+        ];
+        return (!users.isEmpty()) ? users[0] : null;
+    }
+
+    private static Case getCase(Id caseId) {
+        List<Case> cases = [
+                SELECT CaseNumber
+                FROM Case
+                WHERE Id = :caseId
+        ];
+        return (!cases.isEmpty()) ? cases[0] : null;
     }
 
     private static Boolean validateParams(RecordTransactionParameters params, TLAuraResponse response) {
@@ -131,6 +155,8 @@ public with sharing class trac_RecordTransactionController {
     }
 
     public class RecordTransactionParameters {
+        @AuraEnabled
+        public String caseRecordId {get; set;}
         @AuraEnabled
         public String loyaltyNumber {get; set;}
         @AuraEnabled

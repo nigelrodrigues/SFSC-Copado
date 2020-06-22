@@ -14,6 +14,7 @@
     <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
 
     <aura:attribute name="loyalty" type="Object" />
+    <aura:attribute name="caseRecordId" type="String" />
     <aura:attribute name="openButton" type="Object" />
     <aura:attribute name="spinner" type="Boolean" default="FALSE"/>
     <aura:attribute name="showError" type="Boolean" default="FALSE"/>
