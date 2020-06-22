@@ -19,20 +19,18 @@
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
-
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.handleSaveChanges}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
 
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Loyalty Number</p>
                 <p>{!v.loyalty.external_customer_id}</p>
             </div>
         </lightning:layoutItem>
-
         <aura:if isTrue="{!not(v.isEditable)}">
+
             <lightning:layoutItem class="slds-p-around_xx-small" size="6">
 
                 <div class="header-column">
@@ -43,10 +41,10 @@
                                 lastName="{!v.loyalty.last_name}"
                                 format="short"
                         />
-
                     </p>
                 </div>
             </lightning:layoutItem>
+
 
         </aura:if>
         <aura:if isTrue="{!v.isEditable}">
@@ -107,8 +105,8 @@
             </div>
         </lightning:layoutItem>
 
-        </aura:if>
 
+        </aura:if>
         <aura:if isTrue="{!v.isEditable}">
             <lightning:layoutItem class="slds-p-around_xx-small" size="6">
                 <div class="header-column">
@@ -124,8 +122,8 @@
                 </div>
             </lightning:layoutItem>
         </aura:if>
-
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
+
 
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
@@ -142,8 +140,8 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
             <div class="header-column">
 
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
@@ -155,9 +153,9 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
+
 
                 <p class="field-title slds-form-element__label slds-no-flex">Last Point Activity</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.last_activity))}">
@@ -191,10 +189,11 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
 <!--            Place Holder to keep air miles on the left side-->
         </lightning:layoutItem>
+
+
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">AirMiles Link</p>
@@ -206,7 +205,6 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
     </lightning:layout>
     <lightning:layout >
         <lightning:layoutItem class="slds-p-around_xx-small">
@@ -223,17 +221,13 @@
                 </div>
             </div>
         </lightning:layoutItem>
-
     </lightning:layout>
     <lightning:layout>
-
         <aura:if isTrue="{!v.isEditable}">
             <lightning:layout>
                 <c:trac_CloseLoyaltyAccount loyalty="{!v.loyalty}"/>
                 <lightning:layoutItem padding="around-small">
-
                     <lightning:button label="Save Changes" variant="brand" onclick="{!c.handleSaveChanges}" aura:id="saveButton" disabled="{!v.isDisabled}"/>
-
                 </lightning:layoutItem>
             </lightning:layout>
         </aura:if>
@@ -262,9 +256,7 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
@@ -275,9 +267,7 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Next Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.next_tier_name))}">
@@ -288,9 +278,7 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier Expires</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.top_tier_expiration_date))}">
@@ -304,9 +292,7 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Spend To Qualify for Next Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.actions_needed_for_next_tier))}">
@@ -317,9 +303,7 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Lifetime Points Earned</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.lifetime_balance))}">
@@ -331,17 +315,13 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Qualifying Purchase Visits (purchases on separate days)</p>
                         <p>Unknown</p>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Last Year's Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.member_attributes.ly_tier))}">
@@ -352,9 +332,7 @@
                         </aura:if>
                     </div>
                 </lightning:layoutItem>
-
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Start Date of Current Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.top_tier_join_date))}">
@@ -368,10 +346,10 @@
             </lightning:layout>
         </lightning:accordionSection>
 
-
         <lightning:accordionSection name="TH" title="Transaction History" label="Transaction History">
             <c:trac_LoyaltyTransactionHistory customerIdInput="{!v.loyalty.external_customer_id}" />
         </lightning:accordionSection>
+
     </lightning:accordion>
     <lightning:layout multipleRows="true">
         <lightning:layoutItem padding="around-small" size="4">
@@ -382,9 +360,9 @@
         </lightning:layoutItem>
         <lightning:layoutItem padding="around-small" size="4">
 
+
             <c:trac_EscalateToLoyaltyTeam recordId="{!v.caseRecordId}" />
         </lightning:layoutItem>
-
     </lightning:layout>
     <div aura:id="divRecordTransaction">
         {!v.body}
