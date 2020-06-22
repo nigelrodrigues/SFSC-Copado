@@ -4,6 +4,7 @@
     <aura:attribute name="showError" type="boolean" default="false"/>
     <aura:attribute name="errorMessage" type="String" default="Please specify a valid input." />
 
+
     <aura:attribute name="options" type="List" access="PRIVATE"/>
     <aura:attribute name="selectedValue" type="String" />
     <aura:attribute name="refreshSearch" type="Boolean" default="false" />
@@ -13,6 +14,7 @@
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
     <aura:attribute type="String"  name="recordId" />
+
     <aura:attribute type="String"  name="customerLoyaltyId" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
