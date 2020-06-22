@@ -20,36 +20,38 @@
     <aura:handler name="TractionComponentEvent" event="c:trac_TransactionHistoryEvent" action="{!c.openModal}"/>
 
     <lightning:accordion aura:id="accordion">
-        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
-            <thead>
-            <tr>
-                <th scope="col">
-                    <div></div>
-                </th>
-                <th scope="col">
-                    <div class="slds-truncate">Processed</div>
-                </th>
-                <th scope="col">
-                    <div class="slds-truncate slds-grid slds-truncate_container_33">Description</div>
-                </th>
-                <th scope="col">
-                    <div class="slds-truncate slds-float_right">Value</div>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <aura:if isTrue="{!not(empty(v.transactions.data))}">
-                    <c:trac_DisplayTransaction transactionValues="{!v.transactions.data}" />
-                <aura:set attribute="else">
-                    <tr>
-                        <td colspan="4" style="text-align:center;">
-                            No Transaction History available
-                        </td>
-                    </tr>
-                </aura:set>
-            </aura:if>
-            </tbody>
-        </table>
+        <div class="slds">
+            <table class="slds-table slds-table_bordered" style="table-layout: fixed;">
+                <thead>
+                <tr>
+                    <th scope="col" class="slds-size--1-of-12">
+                        <div></div>
+                    </th>
+                    <th scope="col" class="slds-size--3-of-12">
+                        <div class="slds-truncate">Processed</div>
+                    </th>
+                    <th scope="col" class="slds-size--6-of-12">
+                        <div class="slds-truncate slds-grid">Description</div>
+                    </th>
+                    <th scope="col" class="slds-size--2-of-12">
+                        <div class="slds-truncate slds-float_right">Value</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <aura:if isTrue="{!not(empty(v.transactions.data))}">
+                        <c:trac_DisplayTransaction transactionValues="{!v.transactions.data}" />
+                    <aura:set attribute="else">
+                        <tr>
+                            <td colspan="4" style="text-align:center;">
+                                No Transaction History available
+                            </td>
+                        </tr>
+                    </aura:set>
+                </aura:if>
+                </tbody>
+            </table>
+        </div>
     </lightning:accordion>
 
     <aura:if isTrue="{!v.showModal}">
@@ -102,7 +104,7 @@
                     </div>
                 </div>
                 <footer class="slds-modal__footer">
-                    <lightning:button label="View More" variant="brand" onclick="{!c.displayMoreRecords}"/>
+                    <lightning:button label="View More" variant="brand" disabled="{!v.recordsToDisplay >= v.totalRecords}" onclick="{!c.displayMoreRecords}"/>
                     <lightning:button label="Close" variant="neutral" onclick="{!c.closeModal}"/>
                 </footer>
             </div>
