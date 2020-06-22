@@ -37,7 +37,7 @@
             "c:trac_RecordTransaction",
             {
                 loyalty: cmp.get('v.loyalty'),
-                caseRecordId: cmp.get('v.caseRecordId'),
+                caseRecordId: cmp.get('v.caseRecord.Id'),
                 openButton: openButton
             },
             function(newComponent, status) {

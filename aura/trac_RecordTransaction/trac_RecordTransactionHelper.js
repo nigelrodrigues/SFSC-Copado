@@ -100,25 +100,9 @@
                         this.showToast(result.message, 'success', 'Transaction Submitted');
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
-                        var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
-                        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
-                        var actions_needed_for_next_tier = cmp.get('v.loyalty.actions_needed_for_next_tier');
-                        var extendendDelay = false;
-                        if (!isNaN(totalSpent) && !isNaN(actions_needed_for_next_tier)) {
-                            extendendDelay = totalSpent >= actions_needed_for_next_tier;
-                        }
-                        if (extendendDelay) {
-                            cmp.set('v.spinner', true);
-                            setTimeout(function() {
-                                cmp.set('v.spinner', false);
-                                appEvent.fire();
-                                this.close(cmp);
-                            },10000);
-                        }
-                        else {
-                            appEvent.fire();
-                            this.close(cmp);
-                        }
+                        appEvent.fire();
+
+                        this.close(cmp);
                     }
                     else {
                         this.showErrorSummary(cmp, result.message, result.returnValuesMap);
