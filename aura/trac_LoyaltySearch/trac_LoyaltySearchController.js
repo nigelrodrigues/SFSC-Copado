@@ -5,6 +5,8 @@
                                  { id: 2, label: 'Loyalty Account Number' }
                                 // { id: 3, label: 'Phone Number' }
                              ]);
+
+
         if (component.get('v.refreshSearch')) {
             component.set('v.refreshSearch', false);
             component.set('v.customerLoyaltyId', component.get('v.loyalty.external_customer_id'));
@@ -13,10 +15,10 @@
 
         console.log('ID: ' + customerLoyaltyId);
         if( customerLoyaltyId ) {
-
             component.set("v.selectedValue", "2");
             component.find("loyaltyNumberInput").set("v.value", customerLoyaltyId);
             helper.getLoyalty(component, helper, null, customerLoyaltyId, null);
+
         }
         else
             {
@@ -24,10 +26,12 @@
         }
     },
 
+
     loyaltySearch: function (component, event, helper) {
         var email = null;
         var loyaltyId = null;
         var phoneNum = null;
+
 
         if(component.get('v.selectedValue') == '1' && helper.isNotBlank(component, 'emailInput')) {
             email = component.find('emailInput').get("v.value");
@@ -42,6 +46,6 @@
         .then(() => helper.getLoyalty(component, helper, email, loyaltyId, phoneNum))
         .catch(error => helper.handleError(component, helper, error))
 
-
     },
+
 });

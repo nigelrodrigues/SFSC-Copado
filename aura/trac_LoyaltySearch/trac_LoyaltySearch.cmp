@@ -11,13 +11,13 @@
     <aura:attribute type="Integer"  name="responseCode"  default=""/>
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
     <aura:attribute type="Boolean"  name="linked_partnerships" default="false" />
-
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
     <aura:attribute type="String"  name="recordId" />
+
+
     <aura:attribute type="String"  name="customerLoyaltyId" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
-
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <div onkeyup="{!c.formPress}" class="slds-border_bottom" >
         <div class="slds-text-color_destructive">
@@ -25,6 +25,8 @@
                 {!v.errorMessage}
             </aura:if>
         </div>
+
+
         <lightning:layout horizontalAlign="space" multipleRows="true">
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <lightning:select label="Find Account By" aura:id="loyaltySearchType" value="{!v.selectedValue}">
@@ -33,6 +35,8 @@
                     </aura:iteration>
                 </lightning:select>
             </lightning:layoutItem>
+
+
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <aura:if isTrue="{!v.selectedValue=='1'}">
                     <lightning:input label="Email" type="email" aura:id="emailInput" placeholder="example@hbc.com" />
@@ -65,4 +69,6 @@
             </div>
         </aura:if>
     </div>
+
+
 </aura:component>
