@@ -1,18 +1,18 @@
 /**
  * Created by gtorres on 6/5/2020.
  */
-
 ({
+
 
     validateForm: function(cmp) {
         var result = true;
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
-
         var errorValuesMap = {};
         if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
             result = false;
             errorValuesMap['TransactionSubtotal'] = 'Transaction Subtotal is invalid';
+
 
         }
         if (isNaN(exclusionSubtotal) || exclusionSubtotal=='') {
@@ -26,6 +26,8 @@
         }
         return result;
     },
+
+
     close: function(cmp) {
         cmp.get('v.openButton').set('v.disabled', false);
         cmp.set('v.openButton', null);
@@ -56,15 +58,19 @@
             cmp.set("v.errorDetails", details);
         }
     },
-
     submitRecordTransaction: function(cmp) {
         cmp.set('v.spinner', true);
+
 
         var action = cmp.get('c.recordTransaction');
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
         var orderNumber = '';
         var transactionNumber = '';
         var transactionDate = cmp.find("TransactionDate").get("v.value");
+
+        var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
+        var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
+
         if (transactionOrigin === 'Website') {
             orderNumber = cmp.find("OrderNumber").get("v.value");
             transactionNumber = cmp.find("TransactionNumber").get("v.value");
@@ -75,32 +81,37 @@
                                 cmp.find("TerminalNumberMhfStore").get("v.value");
         }
         var myRecordTransactionParameters = {
+
+            caseRecordId: cmp.get('v.caseRecordId'),
+
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
             transactionOrigin: transactionOrigin,
             orderNumber: orderNumber,
             transactionNumber: transactionNumber,
             transactionDate: transactionDate,
-            transactionSubtotal: cmp.find("TransactionSubtotal").get("v.value").trim(),
-            exclusionSubtotal: cmp.find("SubtotalExcludedItems").get("v.value").trim()
-        };
 
+            transactionSubtotal: transactionSubtotal,
+            exclusionSubtotal: exclusionSubtotal
+        };
         action.setParams({
             "params": myRecordTransactionParameters
         });
         cmp.set("v.showError", false);
+
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
             var state = response.getState();
             if (cmp.isValid() && state === "SUCCESS") {
                 var result = response.getReturnValue();
+
+
                 if (typeof result !== undefined && result != null) {
                     if (result.isSuccess) {
                         this.showToast(result.message, 'success', 'Transaction Submitted');
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
                         appEvent.fire();
-
                         this.close(cmp);
                     }
                     else {
