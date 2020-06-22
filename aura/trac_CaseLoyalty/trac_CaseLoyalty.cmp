@@ -5,19 +5,18 @@
     <aura:attribute name="caseRecord"      type="Object"/>
     <aura:attribute name="recordLoadError" type="String"/>
     <aura:attribute name="refreshSearch" type="Boolean" default="false" />
-
     <aura:registerEvent name="editLoyaltyEvent" type="c:trac_EditLoyaltyApplicationEvent"/>
     <aura:handler event="c:trac_LoyaltyRefreshEvent" action="{!c.handleLoyaltyRefreshEvent}"/>
 
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
-                      fields="Id, Customer_Loyalty_Id__c"
+                      fields="Id, Customer_Loyalty_Id__c, Business_Unit__c, Order_Number__c,
+                                Subject, Loyalty_Tier__c, Loyalty_Issue_Description__c"
+
                       targetFields="{!v.caseRecord}"
                       targetError="{!v.recordLoadError}"
     />
     <aura:handler name="change" value="{!v.isEditable}" action="{!c.handleValueChange}"/>
-
-
     <div class="slds-box slds-theme_default">
         <div style="overflow:auto" class="slds-align_absolute-center">
             <lightning:layoutItem padding="around-small" class="slds-float_left">
@@ -32,14 +31,10 @@
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-float_right slds-p-around_xx-small">
                     <lightning:button label="{!v.editButtonText}" onclick="{!c.isEditableToggle}"/>
-
-
                 </lightning:layoutItem>
             </aura:if>
         </div>
         <div class="slds-is-relative">
-
-
             <aura:if isTrue="{!empty(v.loyalty) || v.refreshSearch==true}">
                 <aura:if isTrue="{!empty(v.caseRecord.Customer_Loyalty_Id__c)}">
                     <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" refreshSearch="{!v.refreshSearch}"/>
@@ -47,16 +42,12 @@
                         <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" customerLoyaltyId="{!v.caseRecord.Customer_Loyalty_Id__c}" refreshSearch="{!v.refreshSearch}"/>
                     </aura:set>
                 </aura:if>
-
-
             </aura:if>
         </div>
         <div class="slds-is-relative">
             <aura:if isTrue="{!not(empty(v.loyalty))}">
-
                 <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}"  caseRecord="{!v.caseRecord}" />
             </aura:if>
         </div>
-
     </div>
 </aura:component>
