@@ -50,12 +50,14 @@ public with sharing class trac_WS_LoyaltyUtils {
     */
     public static Datetime parseDateString(String dtString) {
 
+
         Datetime dt = getDateFromExtendedFormat(dtString);
         dt = (dt == null) ? getDateFromStandardFormat(dtString) : dt;
         return dt;
     }
 
     private static Datetime getDateFromExtendedFormat(String dtString) {
+
 
         Datetime dt;
 
@@ -82,12 +84,15 @@ public with sharing class trac_WS_LoyaltyUtils {
     }
 
 
+
     private static Datetime getDateFromStandardFormat(String dtString) {
         Datetime dt;
         dtString = dtString.contains('.') ? dtString.split('\\.')[0] : dtString;
 
         // Check for Order Date pattern (e.g. 12/15/2020)
-        String regexString = '^\\d{1,2}\\/\\d{1,2}\\/\\d{4}'; //date (no time)
+
+        String regexString = '((0[13578]|1[02])[\\/.](0[1-9]|[12][0-9]|3[01])[\\/.](18|19|20)[0-9]{2})|((0[469]|11)[\\/.](0[1-9]|[12][0-9]|30)[\\/.](18|19|20)[0-9]{2})|((02)[\\/.](0[1-9]|1[0-9]|2[0-8])[\\/.](18|19|20)[0-9]{2})|((02)[\\/.]29[\\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))';
+
         Pattern orderPattern = Pattern.compile(regexString);
         Matcher regexMatch = orderPattern.matcher(dtString);
         if (regexMatch.matches()) {
@@ -99,5 +104,6 @@ public with sharing class trac_WS_LoyaltyUtils {
         }
         return dt;
     }
+
 
 }
