@@ -100,6 +100,7 @@ public with sharing class trac_RecordTransactionController {
         } else {
             // parse transactionDate using trac_WS_LoyaltyUtils.parseDateString()
             trnDatetime = trac_WS_LoyaltyUtils.parseDateString(params.transactionDate);
+
             Date trnDate = trnDatetime == null ? null : Date.newinstance(trnDatetime.year(), trnDatetime.month(), trnDatetime.day());
             if (trnDatetime == null) {
                 // failed to parse transactionDate
@@ -108,6 +109,7 @@ public with sharing class trac_RecordTransactionController {
             } else if (trnDate > System.today()) {
                 response.isSuccess = false;
                 response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be future: ' + params.transactionDate);
+
             } else {
                 // successfully parsed transactionDate
                 params.transactionDateObj = trnDatetime;
@@ -116,11 +118,13 @@ public with sharing class trac_RecordTransactionController {
         if (params.transactionSubtotal == null || params.transactionSubtotal <= 0) {
             response.isSuccess = false;
 
+
             response.returnValuesMap.put('transactionSubtotal', 'Transaction Subtotal is invalid');
         }
         if (params.exclusionSubtotal < 0) {
             response.isSuccess = false;
             response.returnValuesMap.put('exclusionSubtotal', 'Subtotal of Excluded Items is invalid');
+
 
         }
         if (params.exclusionSubtotal == null) {
