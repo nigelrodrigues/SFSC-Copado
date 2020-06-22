@@ -10,9 +10,9 @@
     <aura:attribute name="appeasementModalPromise" type="Aura.Action"/>
 
     <aura:attribute name="caseRecordId"            type="String" />
-
     <aura:handler event="c:trac_CloseModalApplicationEvent" action="{!c.handleCloseModalApplicationEvent}"/>
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
     <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
     <aura:attribute type="Integer"  name="responseCode"  default=""/>
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
@@ -189,6 +189,8 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
+
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
 <!--            Place Holder to keep air miles on the left side-->
         </lightning:layoutItem>
@@ -205,6 +207,8 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
+
     </lightning:layout>
     <lightning:layout >
         <lightning:layoutItem class="slds-p-around_xx-small">
@@ -279,8 +283,6 @@
                     </div>
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier Expires</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.top_tier_expiration_date))}">
