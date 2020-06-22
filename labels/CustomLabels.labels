@@ -142,7 +142,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Community Url SaksOff5th</shortDescription>
-        <value>https://support.saksoff5th.com</value>
+        <value>https://qa-hbc.cs40.force.com/saksoff5th</value>
     </labels>
     <labels>
         <fullName>Community_Url_ServiceSaksOff5th</fullName>
@@ -150,7 +150,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Community Url ServiceSaksOff5th</shortDescription>
-        <value>https://service.saksoff5th.com</value>
+        <value>https://qa-hbc.cs40.force.com/servicesaksoff5th</value>
     </labels>
     <labels>
         <fullName>Created_Subtitle</fullName>
@@ -691,7 +691,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Saks Off 5th CommunityName</shortDescription>
-        <value>https://support.saksoff5th.com</value>
+        <value>saksoff5th</value>
     </labels>
     <labels>
         <fullName>Search</fullName>
@@ -723,7 +723,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ServiceSaksOff5th CommunityName</shortDescription>
-        <value>https://service.saksoff5th.com</value>
+        <value>servicesaksoff5th</value>
     </labels>
     <labels>
         <fullName>Submit</fullName>
@@ -756,7 +756,7 @@ Give us all the details in the form below.</value>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Support Saks CommunityName</shortDescription>
-        <value>https://support.saksfifthavenue.com</value>
+        <value>SupportSaks</value>
     </labels>
     <labels>
         <fullName>TYPE_OPTION_NOT_SELECTED</fullName>

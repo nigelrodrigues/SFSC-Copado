@@ -23,8 +23,6 @@
     setCriteriaBasedStatus: function (component, helper) {
         const caseRec = component.get("v.caseRecord");
         var recTypeName = component.get("v.caseRecTypeName");
-        console.log('recTypeName: ' + recTypeName);
-        console.log('caseRec.ORC_MNR_El_Salvador_Follow_Up__c: ' + caseRec.ORC_MNR_El_Salvador_Follow_Up__c);
 
         if(caseRec && recTypeName) {
             if (caseRec.ORC_Virtual_Gift_Card_Queue__c > 0) {
@@ -44,7 +42,6 @@
             }
             else if (recTypeName === 'saksoff5th') {
                 if (caseRec.ORC_POS_Gift_Card_Saks_O5__c > 0) {
-                    console.log('caseRec.ORC_MNR_El_Salvador_Follow_Up__c: ' + caseRec.ORC_MNR_El_Salvador_Follow_Up__c);
                     component.find("caseStatus").set("v.value", "POS Gift Card Processing");
                 } else if (caseRec.ORC_Saks_O5_MNR_Review__c > 0) {
                     component.find("caseStatus").set("v.value", "MNR Review");
@@ -83,33 +80,6 @@
             }
         });
         
-        $A.enqueueAction(action);
-    },
-
-    setCaseStatus : function(component, event, helper){
-        console.log('HERE:');
-        var action = component.get("c.getCaseDetails");
-        action.setParams({recordId: component.get("v.recordId")});
-
-        action.setCallback(this, function (response) {
-            var state = response.getState();
-            if (state === "SUCCESS") {
-                component.set("v.caseRecord", response.getReturnValue());
-                helper.setCriteriaBasedStatus(component, helper);
-
-            } else if (state === "ERROR") {
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.error("Error message: " +
-                            errors[0].message);
-                    }
-                } else {
-                    console.error("Unknown error");
-                }
-            }
-        });
-
         $A.enqueueAction(action);
     }
 });

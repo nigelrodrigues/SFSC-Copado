@@ -55,7 +55,7 @@ public with sharing class trac_CloseLoyaltyAccountController {
     }
 
     @AuraEnabled
-    public static TLAuraResponse pauseLoyalty(String loyaltyId, String email, String close_member) {
+    public static TLAuraResponse pauseLoyalty(String loyaltyId, String email) {
         TLAuraResponse response = new TLAuraResponse(true);
         trac_WS_PauseLoyalty request = new trac_WS_PauseLoyalty();
 
@@ -67,23 +67,20 @@ public with sharing class trac_CloseLoyaltyAccountController {
             request.email = email;
         }
 
-        if(close_member != null) {
-            request.close_member = close_member;
-        }
-
         try {
             Boolean isSuccess = request.send();
             if(isSuccess && request.pauseResponse.success) {
                 response.returnValuesMap.put('body', request.pauseResponse);
             } else if (isSuccess && !request.pauseResponse.success) {
                 response = new TLAuraResponse(false);
-                response.returnValuesMap.put('body', request.getBody());
+                response.returnValuesMap.put('body', request.pauseResponse);
             } else {
                 response = new TLAuraResponse(false, 'communication error with merkle');
                 response.returnValuesMap.put('body', request.getBody());
             }
             response.returnValuesMap.put('statusCode', request.getStatusCode());
         } catch (Exception e) {
+            System.debug(e.getMessage());
             Integration_Error__c integrationError = trac_IntegrationError.addError(new Integration_Error__c(
                     Description__c = e.getMessage() + '\n' + e.getStackTraceString(),
                     Endpoint__c = request.ENDPOINT,
@@ -93,7 +90,7 @@ public with sharing class trac_CloseLoyaltyAccountController {
 
             String errorMessage = trac_WS_WebServiceHelper.DEFAULT_ERROR + integrationError.Id;
 
-            throw new CloseLoyaltyAccountException(errorMessage);
+            response = new TLAuraResponse(false, errorMessage);
         }
 
 

@@ -153,11 +153,6 @@
             <operation>equals</operation>
             <value>en_US,fr</value>
         </filters>
-        <filters>
-            <field>UPDATEDBY_USER</field>
-            <operation>contains</operation>
-            <value>Rodney</value>
-        </filters>
         <label>Draft Articles</label>
     </listViews>
     <listViews>

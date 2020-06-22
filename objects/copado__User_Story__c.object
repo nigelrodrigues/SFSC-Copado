@@ -7637,7 +7637,7 @@ IMAGE(&quot;/img/samples/color_yellow.gif&quot;, &quot;white&quot;, 15,
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>copado__Cancellation_reason_required</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AND(
   TEXT(copado__Status__c)==&quot;Cancelled&quot;,
   ISBLANK(copado__Cancellation_Reason__c)

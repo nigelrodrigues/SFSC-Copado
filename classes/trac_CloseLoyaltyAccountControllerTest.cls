@@ -39,8 +39,7 @@ public with sharing class trac_CloseLoyaltyAccountControllerTest {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('pause'));
         String email = 'wassim1002@hbc.com';
         String loyaltyId = '1200657659';
-        String close_member = '1';
-        trac_WS_PauseLoyalty.PauseResponse res = (trac_WS_PauseLoyalty.PauseResponse) trac_CloseLoyaltyAccountController.pauseLoyalty(loyaltyId, email, close_member).returnValuesMap.get('body');
+        trac_WS_PauseLoyalty.PauseResponse res = (trac_WS_PauseLoyalty.PauseResponse) trac_CloseLoyaltyAccountController.pauseLoyalty(loyaltyId, email).returnValuesMap.get('body');
         System.assert(res.success == true, 'paused loyalty successfully.');
         System.assert(res.data == null, 'paused loyalty successfully.');
     }
@@ -50,9 +49,9 @@ public with sharing class trac_CloseLoyaltyAccountControllerTest {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('pause.fail'));
         String email = 'wassim1002@hbc.com';
         String loyaltyId = '1200657659';
-        String close_member = '1';
-        String res = (String) trac_CloseLoyaltyAccountController.pauseLoyalty(email, loyaltyId, close_member).returnValuesMap.get('body');
-        System.assert(res != null, 'failed to pause loyalty.');
+        trac_WS_PauseLoyalty.PauseResponse res = (trac_WS_PauseLoyalty.PauseResponse) trac_CloseLoyaltyAccountController.pauseLoyalty(email, loyaltyId).returnValuesMap.get('body');
+        System.assert(res.success == false, 'failed to pause loyalty successfully.');
+        System.assert(res.data.code == 201, 'failed to pause loyalty successfully.');
     }
 
     @IsTest
@@ -60,8 +59,7 @@ public with sharing class trac_CloseLoyaltyAccountControllerTest {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty(null));
         String email = 'wassim1002@hbc.com';
         String loyaltyId = '1200657659';
-        String close_member = '1';
-        String res = (String) trac_CloseLoyaltyAccountController.pauseLoyalty(loyaltyId, email, close_member).returnValuesMap.get('body');
+        String res = (String) trac_CloseLoyaltyAccountController.pauseLoyalty(loyaltyId, email).returnValuesMap.get('body');
         System.assert(res == '', 'failed to send request.');
     }
 }

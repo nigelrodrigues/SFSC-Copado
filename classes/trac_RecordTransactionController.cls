@@ -83,9 +83,7 @@ public with sharing class trac_RecordTransactionController {
             response.isSuccess = false;
             response.returnValuesMap.put('transactionOrigin', 'Transaction Origin missing');
         }
-
-        if (String.isBlank(params.orderNumber) && params.transactionOrigin == 'Website') {
-
+        if (String.isBlank(params.orderNumber)) {
             response.isSuccess = false;
             response.returnValuesMap.put('orderNumber', 'Order Number missing');
         }
@@ -100,16 +98,10 @@ public with sharing class trac_RecordTransactionController {
         } else {
             // parse transactionDate using trac_WS_LoyaltyUtils.parseDateString()
             trnDatetime = trac_WS_LoyaltyUtils.parseDateString(params.transactionDate);
-
-            Date trnDate = trnDatetime == null ? null : Date.newinstance(trnDatetime.year(), trnDatetime.month(), trnDatetime.day());
             if (trnDatetime == null) {
                 // failed to parse transactionDate
                 response.isSuccess = false;
-                response.returnValuesMap.put('transactionDate', 'Invalid Transaction Date: ' + params.transactionDate);
-            } else if (trnDate > System.today()) {
-                response.isSuccess = false;
-                response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be future: ' + params.transactionDate);
-
+                response.returnValuesMap.put('transactionDate', 'Invalid Transaction Date ' + params.transactionDate);
             } else {
                 // successfully parsed transactionDate
                 params.transactionDateObj = trnDatetime;
@@ -117,13 +109,7 @@ public with sharing class trac_RecordTransactionController {
         }
         if (params.transactionSubtotal == null || params.transactionSubtotal <= 0) {
             response.isSuccess = false;
-
-            response.returnValuesMap.put('transactionSubtotal', 'Transaction Subtotal is invalid');
-        }
-        if (params.exclusionSubtotal < 0) {
-            response.isSuccess = false;
-            response.returnValuesMap.put('exclusionSubtotal', 'Subtotal of Excluded Items is invalid');
-
+            response.returnValuesMap.put('transactionSubtotal', 'Subtotal is invalid');
         }
         if (params.exclusionSubtotal == null) {
             params.exclusionSubtotal = 0.00;

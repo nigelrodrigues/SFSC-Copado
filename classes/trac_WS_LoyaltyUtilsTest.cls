@@ -11,8 +11,7 @@ private class trac_WS_LoyaltyUtilsTest {
 
 
     @IsTest
-    static void testParseDateStringExtendedFormat() {
-
+    static void testParseDateString() {
 
         String dtString = 'Jul. 04, 2020, 06:31 p.m.';
 
@@ -24,34 +23,6 @@ private class trac_WS_LoyaltyUtilsTest {
         System.assertEquals(2020, dt.year());
         System.assertEquals(7, dt.month());
         System.assertEquals(4, dt.day());
-
-
-        System.assertEquals(18, dt.hour());
-        System.assertEquals(31, dt.minute());
-    }
-
-    @IsTest
-    static void testParseDateStringStandardFormat() {
-
-        String dtString = '12/31/2020';
-
-        Test.startTest();
-        Datetime dt = trac_WS_LoyaltyUtils.parseDateString(dtString);
-        Test.stopTest();
-
-        System.assertNotEquals(null, dt, 'Datetime string ' + dtString + ' failed to parse.');
-        System.assertEquals(2020, dt.year());
-        System.assertEquals(12, dt.month());
-        System.assertEquals(31, dt.day());
-
-
-        String invalidDtString = '12/32/2020';
-        dt = trac_WS_LoyaltyUtils.parseDateString(invalidDtString);
-        System.assertEquals(null, dt, invalidDtString + ' should be considered as invalid date');
-
-        String invalidLeapYearDtString = '02/29/2019';
-        dt = trac_WS_LoyaltyUtils.parseDateString(invalidLeapYearDtString);
-        System.assertEquals(null, dt, invalidLeapYearDtString + ' should be considered as invalid leap year');
     }
 
 }

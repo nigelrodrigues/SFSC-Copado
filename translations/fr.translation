@@ -10997,12 +10997,10 @@ Donnez-nous tous les détails dans le formulaire ci-dessous.</label>
         <label><!-- SPA --></label>
         <name>SPA</name>
     </customTabs>
-    <prompts>
-        <name>ContactInformationUpdate</name>
-        <promptVersions>
-            <name>Contact Information Update</name>
-        </promptVersions>
-    </prompts>
+    <customTabs>
+        <label><!-- Test - Loyalty App --></label>
+        <name>Test_Loyalty_App</name>
+    </customTabs>
     <quickActions>
         <label><!-- Aggregate Case Time Logs --></label>
         <name>Aggregate_Case_Time_Logs</name>

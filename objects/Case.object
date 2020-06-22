@@ -5880,7 +5880,6 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Didn&apos;t receive when expected</controllingFieldValue>
-                <controllingFieldValue>Estimated delivery date inquiry</controllingFieldValue>
                 <valueName>Vendor drop-ship</valueName>
             </valueSettings>
             <valueSettings>
@@ -6567,16 +6566,6 @@
         <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
         <columns>Business_Unit__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.ORIGIN</field>
-            <operation>equals</operation>
-            <value>Support Community</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.ALIAS</field>
-            <operation>equals</operation>
-            <value>guest</value>
-        </filters>
         <label>All Open Cases</label>
     </listViews>
     <listViews>
@@ -6767,24 +6756,13 @@
         <columns>NAME</columns>
         <columns>CASES.SUBJECT</columns>
         <columns>CASES.STATUS</columns>
-        <columns>Business_Unit__c</columns>
+        <columns>CASES.PRIORITY</columns>
         <columns>CORE.USERS.ALIAS</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Case_Type__c</field>
             <operation>equals</operation>
             <value>Credit Hold</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>New</value>
-        </filters>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Support_Case</value>
         </filters>
         <label>Credit Hold</label>
     </listViews>
@@ -7467,13 +7445,6 @@
     </listViews>
     <listViews>
         <fullName>O5_Risk_Support_El_Salvador_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>Open_ORC__c</columns>
         <filterScope>Queue</filterScope>
         <label>O5 - Risk Support - El Salvador</label>
         <queue>O5_Risk_Support_El_Salvador</queue>
@@ -7532,10 +7503,10 @@
         <columns>NAME</columns>
         <columns>CASES.SUBJECT</columns>
         <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
         <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CASES.RECORDTYPE</columns>
-        <columns>CASES.ORIGIN</columns>
         <filterScope>Queue</filterScope>
         <label>Off 5th- Main</label>
         <queue>Off_5th_Main</queue>

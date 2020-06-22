@@ -17,6 +17,46 @@
         <name>Base_Url__c</name>
     </fields>
     <fields>
+        <label><!-- Bay Customer Event History --></label>
+        <name>Bay_Event_History__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty API Version --></label>
+        <name>Bay_Loyalty_API_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty Base Endpoint --></label>
+        <name>Bay_Loyalty_Base_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty Customer Show Endpoint --></label>
+        <name>Bay_Loyalty_Customer_Show_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty Pause Endpoint --></label>
+        <name>Bay_Loyalty_Pause_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty Record Event Endpoint --></label>
+        <name>Bay_Loyalty_Record_Event_Endpoint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty Secret Key --></label>
+        <name>Bay_Loyalty_Secret_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty UUID --></label>
+        <name>Bay_Loyalty_UUID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty X APIGW API ID --></label>
+        <name>Bay_Loyalty_X_APIGW_API_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bay Loyalty X API Key --></label>
+        <name>Bay_Loyalty_X_API_Key__c</name>
+    </fields>
+    <fields>
         <label><!-- CNS Email Search Endpoint --></label>
         <name>CNS_Email_Search_Endpoint__c</name>
     </fields>

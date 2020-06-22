@@ -1313,6 +1313,10 @@
         <name>Create_Time__c</name>
     </fields>
     <fields>
+        <label><!-- Customer Loyalty Id --></label>
+        <name>Customer_Loyalty_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Date/Time First Closed --></label>
         <name>Date_Time_First_Closed__c</name>
     </fields>
@@ -1469,6 +1473,10 @@
         <help><!-- The extension of the agent who most recently answered a call for this case --></help>
         <label><!-- Latest Agent Extension --></label>
         <name>Latest_Agent_Extension__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Issue Description --></label>
+        <name>Loyalty_Issue_Description__c</name>
     </fields>
     <fields>
         <label><!-- Loyalty Tier --></label>

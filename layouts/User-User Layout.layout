@@ -10,10 +10,6 @@
                 <behavior>Edit</behavior>
                 <field>SFCC_Username__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Agent_ID__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
