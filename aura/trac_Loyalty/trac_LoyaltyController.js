@@ -67,6 +67,7 @@
         })
         .catch(error => helper.handleError(component, error))
     },
+
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
         var lastNameValid = component.find('lastNameInput').get("v.validity")
@@ -77,11 +78,15 @@
             component.set('v.isDisabled', true)
         }
     },
-    init: function (component, event, helper) {
-        var loyalty = component.get('v.loyalty')
-        component.set('v.firstName', loyalty.first_name)
-        component.set('v.lastName', loyalty.last_name)
-        component.set('v.email', loyalty.email)
+
+    handleEditLoyaltyApplicationEvent: function (component, event, helper) {
+        var firstName = event.getParam("firstName");
+        var lastName = event.getParam("lastName");
+        var email = event.getParam("email");
+
+        component.set('v.firstName', firstName)
+        component.set('v.lastName', lastName)
+        component.set('v.email', email)
     },
 
 });
