@@ -70,7 +70,7 @@
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
         var lastNameValid = component.find('lastNameInput').get("v.validity")
-        var emailValid = component.find('firstNameInput').get("v.validity")
+        var emailValid = component.find('emailInput').get("v.validity")
         if(firstNameValid.valid && lastNameValid.valid && emailValid.valid) {
             component.set('v.isDisabled', false)
         } else {
