@@ -6,9 +6,7 @@
     <aura:attribute name="isEditable" type="Boolean" default="false" />
     <aura:attribute name="isDisabled" type="Boolean" default="false" />
     <aura:attribute name="appeasementModalPromise" type="Aura.Action"/>
-
     <aura:attribute name="caseRecord"            type="Object" />
-    <aura:attribute name="caseRecordId"            type="String" />
     <aura:handler event="c:trac_CloseModalApplicationEvent" action="{!c.handleCloseModalApplicationEvent}"/>
     <aura:handler event="c:trac_EditLoyaltyApplicationEvent" action="{!c.handleEditLoyaltyApplicationEvent}"/>
 
@@ -361,7 +359,7 @@
         <lightning:layoutItem padding="around-small" size="4">
 
 
-            <c:trac_EscalateToLoyaltyTeam recordId="{!v.caseRecordId}" />
+            <c:trac_EscalateToLoyaltyTeam caseRecord="{!v.caseRecord}" />
         </lightning:layoutItem>
     </lightning:layout>
     <div aura:id="divRecordTransaction">

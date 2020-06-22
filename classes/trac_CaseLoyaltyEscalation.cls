@@ -12,6 +12,8 @@ public with sharing class trac_CaseLoyaltyEscalation {
         TLAuraResponse response = new TLAuraResponse(true);
 
         try {
+            System.debug('cloneCase: ' + cloneCase);
+
             if( cloneCase )
             {
                 Case newCase = caseRecord.clone(false, true, false, false);
@@ -32,6 +34,7 @@ public with sharing class trac_CaseLoyaltyEscalation {
             }
             else
             {
+                System.debug('HEREEEEEE');
                 response = attachToCase( caseRecord, fileName, fileContentsToEncode, contentType);
             }
 
@@ -49,6 +52,7 @@ public with sharing class trac_CaseLoyaltyEscalation {
         TLAuraResponse response = new TLAuraResponse(true);
 
         try {
+            System.debug('HEREEattach');
             fileContentsToEncode = EncodingUtil.urlDecode(fileContentsToEncode, 'UTF-8');
 
             Attachment newAttachment = new Attachment();
@@ -57,6 +61,7 @@ public with sharing class trac_CaseLoyaltyEscalation {
             newAttachment.ContentType = contentType;
             newAttachment.Body = EncodingUtil.base64Decode(fileContentsToEncode);
             insert newAttachment;
+            System.debug('attachment Id: ' + newAttachment.ID);
         }
         catch(Exception e)
         {

@@ -44,7 +44,6 @@
 
         if ( selectedTeam === "operations")
         {
-            console.log('OPERATIONS ');
             component.find("caseType").set("v.value", "Rewards Escalation");
             component.set("v.showEscalationOptions", false);
             component.set("v.createNewCase",   false);
@@ -58,20 +57,18 @@
         {
             event.preventDefault(); // stop form submission
 
-            console.log('IN ESCALATION');
             if( closeCase==="no" )
             {
-                console.log('ESCLATION NO ');
                 component.set("v.enableCategory", true);
                 var eventFields = event.getParam("fields");
                 eventFields["Case_Type__c"] = "Rewards";
                 eventFields["Category__c"] = "Goodwill Points";
                 eventFields["Subcategory__c"] = "Requires Approval";
                 component.find('escalateForm').submit(eventFields);
+                helper.attachFile(component, event, helper);
             }
             else
             {
-                console.log('ESCLATION YES ');
                 event.preventDefault();
 
                 helper.attachFile(component, event, helper);
@@ -88,11 +85,9 @@
         component.set("v.isLoading", false);
         component.set("v.openLightningForm", false);
         var errorEncountered = component.get("v.isError");
-        console.log('=================== HANDLE SUCCESS ==========');
 
         if( !errorEncountered )
         {
-            console.log('no error encountered');
             let selectedTeam = component.get("v.selectedTeam");
             let closeCase = component.get("v.selectedForCaseClose");
 
@@ -110,7 +105,7 @@
 
             if ( selectedTeam === "escalation")
             {
-                console.log('in escalation');
+
                 if( closeCase==="no" )
                 {
                     helper.showToast('Success', 'Case transferred to Loyalty Escalations Team', 'success');

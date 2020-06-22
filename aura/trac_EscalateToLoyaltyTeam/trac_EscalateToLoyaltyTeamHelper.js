@@ -10,6 +10,7 @@
         var fileInput = component.find("fileUpload").get("v.files");
         var createCase = component.get("v.selectedForCaseClose");
 
+
         if( fileInput )
         {
             var file = fileInput[0];
@@ -40,10 +41,10 @@
 
     processCaseAndAttachment: function(component, file, fileContents)
     {
-        let fileContent = fileContents.substring(0, fileContents.length);
         let caseRecord = component.get("v.caseRecord");
         let newCaseCreation = component.get("v.selectedForCaseClose");
         let createCase = false;
+
 
         if( newCaseCreation === "yes")
             createCase = true;
@@ -52,6 +53,8 @@
 
         if( file )
         {
+            let fileContent = fileContents.substring(0, fileContents.length);
+
             action.setParams({
                 caseRecord: caseRecord,
                 contentType: file.type,
@@ -106,7 +109,7 @@
             else {
                 component.set("v.isError", true);
                 component.set("v.errorMsg", 'Please try again.');
-                console.error("failed with state: " + state);
+
             }
             component.set("v.isSpinner", false);
             component.set("v.isLoading", false);
