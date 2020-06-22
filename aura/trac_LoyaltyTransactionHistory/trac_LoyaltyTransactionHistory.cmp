@@ -24,17 +24,13 @@
                     <div></div>
                 </th>
                 <th scope="col">
-
                     <div class="slds-truncate">Processed</div>
-
                 </th>
                 <th scope="col">
-                    <div class="slds-truncate slds-grid slds-truncate_container_33">Description</div>
+                    <div class="slds-truncate slds-grid">Description</div>
                 </th>
                 <th scope="col">
-
                     <div class="slds-truncate slds-float_right">Value</div>
-
                 </th>
             </tr>
             </thead>
@@ -67,14 +63,12 @@
                             <lightning:layoutItem padding="around-small" size="1">
                                 <div class="custom-box"></div>
                             </lightning:layoutItem>
-
                             <lightning:layoutItem padding="around-small" size="1">
                                 <div class="custom-box"><b>Process Date</b></div>
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small" size="1">
                                 <div class="custom-box"><b>Origination Date</b></div>
                             </lightning:layoutItem>
-
                             <lightning:layoutItem padding="around-small" size="4">
                                 <div class="custom-box"><b>Description</b></div>
                             </lightning:layoutItem>
@@ -82,14 +76,11 @@
                                 <div class="custom-box"><b>Points Redeemed</b></div>
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small" size="1">
-
                                 <div class="custom-box"><b>Points Earned</b> </div>
-
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small" size="1">
                                     <div class="slds-clearfix">
                                         <div class="slds-float_right">
-
                                         <b>Net Points</b>
                                     </div>
                                 </div>
@@ -97,11 +88,9 @@
                             <lightning:layoutItem padding="around-small" size="2">
                                 <div class="custom-box"></div>
                             </lightning:layoutItem>
-
                         </lightning:layout>
                         <aura:iteration items="{!v.transactions.data}" var="transactionData" indexVar="variableIndex">
                             <aura:if isTrue="{!lessthan(variableIndex,v.recordsToDisplay)}">
-
                                 <c:trac_LoyaltyTransactionHistoryRow transactionData="{!transactionData}" />
                             </aura:if>
                         </aura:iteration>
@@ -109,7 +98,6 @@
                 </div>
                 <footer class="slds-modal__footer">
                     <lightning:button label="View More" variant="brand" disabled="{!v.recordsToDisplay >= v.totalRecords}" onclick="{!c.displayMoreRecords}"/>
-
                     <lightning:button label="Close" variant="neutral" onclick="{!c.closeModal}"/>
                 </footer>
             </div>
