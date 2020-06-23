@@ -1344,6 +1344,11 @@
                     <default>false</default>
                     <label>Tier Change</label>
                 </value>
+                <value>
+                    <fullName>Goodwill Points</fullName>
+                    <default>false</default>
+                    <label>Goodwill Points</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -2042,6 +2047,11 @@
                     <fullName>Wrong Order Received - Refund</fullName>
                     <default>false</default>
                     <label>Wrong Order Received - Refund</label>
+                </value>
+                <value>
+                    <fullName>Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Requires Approval</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
