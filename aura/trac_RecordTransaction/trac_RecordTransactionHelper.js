@@ -30,13 +30,18 @@
         cmp.destroy();
     },
 
-    showToast: function(message, type, title) {
+    showToast: function(message, type, title, duration) {
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
             "title": title,
             "message": message,
             "type" : type
         });
+        if (duration != null) {
+            resultsToast.setParams({
+                "duration": duration
+            });
+        }
         resultsToast.fire();
     },
 
@@ -97,11 +102,24 @@
 
                 if (typeof result !== undefined && result != null) {
                     if (result.isSuccess) {
-                        this.showToast(result.message, 'success', 'Transaction Submitted');
+
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+                        var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
+                        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+                        var actions_needed_for_next_tier = cmp.get('v.loyalty.actions_needed_for_next_tier');
+                        var tierUpgrade = false;
+                        if (!isNaN(totalSpent) && !isNaN(actions_needed_for_next_tier)) {
+                            tierUpgrade = totalSpent >= actions_needed_for_next_tier;
+                        }
+                        if (tierUpgrade){
+                            this.showToast(result.message, 'success', 'Transaction Submitted', 8000);
+                            this.showToast('The new account tier might take a couple of minutes to be processed', 'info', 'Account Tier', 8000);
+                        }
+                        else {
+                            this.showToast(result.message, 'success', 'Transaction Submitted');
+                        }
                         appEvent.fire();
-
                         this.close(cmp);
                     }
                     else {

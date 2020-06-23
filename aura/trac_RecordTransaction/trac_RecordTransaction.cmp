@@ -84,7 +84,7 @@
 
                     <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Total Earn</p>
                     <p>
-                        <lightning:formattedNumber style="currency" value="{!v.totalEarnValue}"/> CAD
+                        <lightning:formattedNumber value="{!v.totalEarnValue}"/> points
                     </p>
 
                     <div style="margin-top:15px;">
