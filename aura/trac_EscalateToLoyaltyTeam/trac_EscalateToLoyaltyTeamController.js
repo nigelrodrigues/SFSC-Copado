@@ -56,21 +56,25 @@
         if ( selectedTeam === "escalation")
         {
             event.preventDefault(); // stop form submission
+            let eventFields = event.getParam("fields");
 
+            // For option - No, close case.
             if( closeCase==="no" )
             {
                 component.set("v.enableCategory", true);
-                var eventFields = event.getParam("fields");
                 eventFields["Case_Type__c"] = "Rewards";
                 eventFields["Category__c"] = "Goodwill Points";
                 eventFields["Subcategory__c"] = "Requires Approval";
+                eventFields["Loyalty_Issue_Description__c"]  = component.find("caseIssueDescription").get("v.value");
                 component.find('escalateForm').submit(eventFields);
                 helper.attachFile(component, event, helper);
             }
             else
             {
-                event.preventDefault();
-
+                let issueEntered = component.find("caseIssueDescription").get("v.value");
+                eventFields["Loyalty_Issue_Description__c"]  = issueEntered;
+                component.find('escalateForm').submit(eventFields);
+                component.set("v.issue", issueEntered);
                 helper.attachFile(component, event, helper);
             }
         }

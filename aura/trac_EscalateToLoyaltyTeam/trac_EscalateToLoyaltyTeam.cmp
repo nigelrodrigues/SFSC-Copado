@@ -26,6 +26,7 @@
     <aura:attribute name="selectedTeam"           type="String" default="escalation"/>
     <aura:attribute name="selectedForCaseClose"   type="String" default="no"/>
     <aura:attribute name="createNewCase"          type="Boolean" default="false"/>
+    <aura:attribute name="issue"                  type="String"  />
 
     <lightning:workspaceAPI aura:id="workspace"/>
 

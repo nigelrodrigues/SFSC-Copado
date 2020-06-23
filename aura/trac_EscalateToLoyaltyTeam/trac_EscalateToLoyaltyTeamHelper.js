@@ -44,6 +44,7 @@
         let caseRecord = component.get("v.caseRecord");
         let newCaseCreation = component.get("v.selectedForCaseClose");
         let createCase = false;
+        let issueEntered = component.get("v.issue");
 
 
         if( newCaseCreation === "yes")
@@ -60,7 +61,8 @@
                 contentType: file.type,
                 fileName: file.name,
                 fileContentsToEncode: encodeURIComponent(fileContent),
-                cloneCase: createCase
+                cloneCase: createCase,
+                loyaltyIssue : issueEntered
             });
         }
         else
@@ -70,7 +72,8 @@
                 contentType: null,
                 fileName: null,
                 fileContentsToEncode: null,
-                cloneCase: createCase
+                cloneCase: createCase,
+                loyaltyIssue : issueEntered
             });
         }
 
