@@ -19,12 +19,12 @@
         var totalEarnValue = ((TransactionSubtotal - SubtotalExcludedItems) * tier_multiplier).toFixed(2);
         cmp.set('v.totalEarnValue', totalEarnValue);
     },
-
     handleSubmit: function(cmp, event, helper) {
         if (helper.validateForm(cmp)) {
             helper.submitRecordTransaction(cmp);
         }
     },
+
     handleCancel: function(cmp, event, helper) {
         helper.close(cmp);
     },
