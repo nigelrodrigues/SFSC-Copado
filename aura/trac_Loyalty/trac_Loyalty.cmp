@@ -7,6 +7,7 @@
     <aura:attribute name="isDisabled" type="Boolean" default="false" />
     <aura:attribute name="appeasementModalPromise" type="Aura.Action"/>
     <aura:attribute name="caseRecord"            type="Object" />
+    <aura:attribute name="conversionRate" type="Integer" required="true"/>
     <aura:handler event="c:trac_CloseModalApplicationEvent" action="{!c.handleCloseModalApplicationEvent}"/>
     <aura:handler event="c:trac_EditLoyaltyApplicationEvent" action="{!c.handleEditLoyaltyApplicationEvent}"/>
     <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
@@ -162,7 +163,7 @@
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-            <!--            Place Holder to keep air miles on the left side-->
+<!--            Place Holder to keep air miles on the left side-->
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">

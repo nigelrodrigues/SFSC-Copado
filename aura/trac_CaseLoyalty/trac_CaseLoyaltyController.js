@@ -1,4 +1,9 @@
 ({
+
+    init : function(component, event, helper) {
+        helper.getConversionRateHelper(component, helper)
+        .catch(error => helper.handleError(component, helper, error))
+    },
     isEditableToggle : function(component, event, helper) {
 
         var loyalty = component.get('v.loyalty')
@@ -9,22 +14,23 @@
             'email' : loyalty.email
         });
         appEvent.fire();
+
         var isEditable = !component.get('v.isEditable')
         component.set('v.isEditable', isEditable)
     },
     goBack : function(component, event, helper) {
         component.set('v.refreshSearch', false);
+
         component.set('v.loyalty', null)
         component.set('v.isEditable', false)
     },
-
     handleValueChange : function (component, event, helper) {
         var isEditable = component.get('v.isEditable')
         var displayButtonText = (isEditable) ? "Cancel" : "Edit"
         component.set('v.editButtonText', displayButtonText)
 
-    },
 
+    },
     handleLoyaltyRefreshEvent : function(component, event) {
         var LoyaltyNumberFromParam = event.getParam("LoyaltyNumber");
         var LoyaltyNumberFromRecord = component.get('v.loyalty.external_customer_id');
