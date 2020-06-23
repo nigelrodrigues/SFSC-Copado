@@ -1,4 +1,3 @@
-
 <aura:component description="trac_CaseLoyalty" controller="trac_CaseLoyaltyController" extends="c:trac_BaseComponent" implements="flexipage:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome">
 
     <aura:attribute name="loyalty"         type="Map" />
