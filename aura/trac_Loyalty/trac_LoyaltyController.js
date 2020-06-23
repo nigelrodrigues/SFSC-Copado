@@ -10,7 +10,8 @@
         $A.createComponent(
             "c:trac_IssueAppeasement",
             {
-                loyalty: cmp.get('v.loyalty')
+                loyalty: cmp.get('v.loyalty'),
+                conversionRate: cmp.get('v.conversionRate')
             },
             function(content, status) {
                 if (status === "SUCCESS") {

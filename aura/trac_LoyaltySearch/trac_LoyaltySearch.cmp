@@ -5,15 +5,14 @@
     <aura:attribute name="errorMessage" type="String" default="Please specify a valid input." />
     <aura:attribute name="options" type="List" access="PRIVATE"/>
     <aura:attribute name="selectedValue" type="String" />
-
     <aura:attribute name="refreshSearch" type="Boolean" default="false" />
     <aura:attribute type="Integer"  name="responseCode"  default=""/>
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
     <aura:attribute type="Boolean"  name="linked_partnerships" default="false" />
-
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
     <aura:attribute type="String"  name="recordId" />
+    <aura:attribute name="conversionRate" type="Integer" required="true"/>
 
     <aura:attribute type="String"  name="customerLoyaltyId" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />

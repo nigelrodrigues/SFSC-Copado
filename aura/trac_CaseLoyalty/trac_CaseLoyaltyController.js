@@ -1,4 +1,10 @@
 ({
+
+    init : function(component, event, helper) {
+        helper.getConversionRateHelper(component, helper)
+        .catch(error => helper.handleError(component, helper, error))
+    },
+
     isEditableToggle : function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var appEvent = $A.get("e.c:trac_EditLoyaltyApplicationEvent");

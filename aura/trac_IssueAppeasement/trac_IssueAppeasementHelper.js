@@ -17,7 +17,8 @@
         if (!$A.util.isEmpty(appeasePoints)) {
             appeasePoints = parseInt(appeasePoints);
 
-            var appeaseValue = (appeasePoints / 200).toFixed(2);
+            var conversionRate = cmp.get('v.conversionRate')
+            var appeaseValue = (appeasePoints * conversionRate).toFixed(2);
             cmp.set('v.appeaseValue', appeaseValue);
 
             var finalBalance = parseInt(cmp.get('v.pointsAvailable')) + appeasePoints;
