@@ -4,11 +4,13 @@
  - @date        2020-05-21
  -->
 
+
 <aura:component description="trac_IssueAppeasement"
                 extends="c:trac_BaseComponent"
                 implements="force:hasRecordId,flexipage:availableForAllPageTypes"
                 controller="trac_IssueAppeasementController"
                 access="global">
+
 
     <aura:attribute name="loyalty" type="Object" />
     <aura:attribute name="profileName" type="String" />
@@ -21,11 +23,10 @@
     <aura:attribute name="showSpinner" type="Boolean" default="false" />
     <aura:attribute name="disableButton" type="Boolean" default="true" />
 
+    <aura:attribute name="conversionRate" type="Integer" required="true"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.appeasePoints}" action="{!c.changeAmount}"/>
-
     <aura:registerEvent name="closeModalEvent" type="c:trac_CloseModalApplicationEvent"/>
-
     <div>
         <lightning:messages/>
 
@@ -40,12 +41,14 @@
             </lightning:card>
         </aura:if>
 
+
         <div>
             <div class="slds-is-relative">
                 <lightning:spinner aura:id="spinner" variant="brand" class="{!v.showSpinner ? '' : 'slds-hide' }" size="large" alternativeText="Please wait..."/>
             </div>
 
-            <div class="slds-form--stacked" onkeyup="{!c.formPress}">
+            <div class="slds-form--stacked" style="min-height:70px;" onkeyup="{!c.formPress}">
+
                 <lightning:input aura:id="amount" label="Appeasement Points"
                                  name="amount"
                                  value="{!v.appeasePoints}"
@@ -54,6 +57,7 @@
                                  required="true"/>
             </div>
         </div>
+
 
         <p class="{!(and(v.appeasePoints != null, v.appeasePoints > 0) ? 'slds-show' : 'slds-hide') + ' slds-m-top--large'}">
             The customer will be awarded <lightning:formattedNumber value="{!v.appeasePoints}" maximumFractionDigits="0"/> points,
@@ -65,7 +69,6 @@
         <div class="slds-m-top--large slds-align--absolute-center">
             <lightning:button label="Submit Appeasement" disabled="{!v.showSpinner || v.disableButton}" onclick="{!c.submitAppeasementForm}" />
         </div>
-
     </div>
 
 </aura:component>

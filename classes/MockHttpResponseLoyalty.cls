@@ -20,6 +20,7 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
         String body = null;
 
 
+
         System.debug('CALLOUT TYPE: ' + callouttype);
 
         if(callouttype == 'customer/show'){
@@ -179,6 +180,7 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
             '}';
 
 
+
         } else if(callouttype == 'update') {
             body = '{"success":true,"data":{"id":295788481,"points":0}}';
         } else if (callouttype == 'update.fail') {
@@ -198,6 +200,10 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
         } else if(callouttype == 'update_customer_info.fail') {
             body = '{"success":false,"data":{"code":201,"message":"Authentication failed, invalid or missing signature."}}';
 
+        } else if(callouttype == 'pointValue') {
+            body = '{"success":true,"conversion_rate":"0.005"}';
+        } else if(callouttype == 'pointValue.fail') {
+            body = '{"success":false,"data":{"code":101,"message":"Invalid or missing UUID."}}';
 
         }
 

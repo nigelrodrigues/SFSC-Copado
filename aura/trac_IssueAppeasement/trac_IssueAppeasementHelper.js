@@ -1,7 +1,6 @@
 /**
  * Created by akong on 5/21/2020.
  */
-
 ({
     showToast: function(message, type, title) {
         var resultsToast = $A.get("e.force:showToast");
@@ -16,10 +15,9 @@
         var appeasePoints = cmp.get('v.appeasePoints');
         if (!$A.util.isEmpty(appeasePoints)) {
             appeasePoints = parseInt(appeasePoints);
-
-            var appeaseValue = (appeasePoints / 200).toFixed(2);
+            var conversionRate = cmp.get('v.conversionRate')
+            var appeaseValue = (appeasePoints * conversionRate).toFixed(2);
             cmp.set('v.appeaseValue', appeaseValue);
-
             var finalBalance = parseInt(cmp.get('v.pointsAvailable')) + appeasePoints;
             cmp.set('v.finalPointBalance', finalBalance);
         }
@@ -34,10 +32,8 @@
         var action = cmp.get('c.getProfileAppeasementLimit');
         action.setCallback(this, function (response) {
             var state = response.getState();
-
             if (cmp.isValid() && state === "SUCCESS") {
                 var result = response.getReturnValue();
-
                 if (typeof result !== undefined && result != null) {
                     cmp.set('v.profileName', result.profileName);
                     if (result.maxAppeasement === 'Unlimited') {
@@ -84,10 +80,8 @@
         cmp.set('v.showSpinner', true);
         //this.checkDisableButton(cmp);
         var appeasePoints = cmp.get("v.appeasePoints");
-
         // submit to server
         var action = cmp.get('c.submitAppeasement');
-
         var params = {
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
@@ -95,20 +89,16 @@
             pointsAvailable: cmp.get('v.pointsAvailable')
         };
         action.setParams(params);
-
         action.setCallback(this, function (response) {
             cmp.set('v.showSpinner', false);
             //this.checkDisableButton(cmp);
             var state = response.getState();
-
             if (cmp.isValid() && state === "SUCCESS") {
                 var result = response.getReturnValue();
-
                 if (typeof result !== undefined && result != null) {
                     if (result.isSuccess) {
                         // success, show success toast
                         helper.showToast(result.message, 'success', 'Appeasement Submitted');
-
                         // fire event to close the modal
                         helper.fireCloseModalEvent();
                     } else {
