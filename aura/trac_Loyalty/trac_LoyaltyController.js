@@ -40,6 +40,9 @@
             "c:trac_RecordTransaction",
             {
                 loyalty: cmp.get('v.loyalty'),
+
+                caseRecordId: cmp.get('v.caseRecord.Id'),
+
                 openButton: openButton
             },
             function(newComponent, status) {
@@ -80,6 +83,7 @@
         }
     },
 
+
     handleEditLoyaltyApplicationEvent: function (component, event, helper) {
         var firstName = event.getParam("firstName");
         var lastName = event.getParam("lastName");
@@ -87,6 +91,7 @@
         component.set('v.firstName', firstName)
         component.set('v.lastName', lastName)
         component.set('v.email', email)
+
 
     },
 });
