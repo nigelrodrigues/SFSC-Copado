@@ -100,10 +100,14 @@ public with sharing class trac_RecordTransactionController {
         } else {
             // parse transactionDate using trac_WS_LoyaltyUtils.parseDateString()
             trnDatetime = trac_WS_LoyaltyUtils.parseDateString(params.transactionDate);
+            Date trnDate = trnDatetime == null ? null : Date.newinstance(trnDatetime.year(), trnDatetime.month(), trnDatetime.day());
             if (trnDatetime == null) {
                 // failed to parse transactionDate
                 response.isSuccess = false;
-                response.returnValuesMap.put('transactionDate', 'Invalid Transaction Date ' + params.transactionDate);
+                response.returnValuesMap.put('transactionDate', 'Invalid Transaction Date: ' + params.transactionDate);
+            } else if (trnDate > System.today()) {
+                response.isSuccess = false;
+                response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be future: ' + params.transactionDate);
             } else {
                 // successfully parsed transactionDate
                 params.transactionDateObj = trnDatetime;
