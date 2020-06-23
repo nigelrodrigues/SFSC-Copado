@@ -241,7 +241,98 @@
     "Shipment": [
         {
             "CarrierServiceCode":"Express",
-            "Containers":{},
+            "Containers":{
+                 "Container" : [ {
+                   "URL" : "http://www.canadapost.ca/cpotools/apps/track/personal/findByTrackNumber?trackingNumber=1015943100017471",
+                   "TrackingNo" : "1015943100017471",
+                   "Shipment" : null,
+                   "SCAC" : "CanadaPost",
+                   "IsManifested" : "Y",
+                   "ContainerScm" : "00000000001000080740",
+                   "ContainerNo" : "100009384",
+                   "ContainerDetails" : {
+                     "TotalNumberOfRecords" : "2",
+                     "ContainerDetail" : [ {
+                       "UnitOfMeasure" : "EACH",
+                       "ShipmentLineKey" : null,
+                       "ShipmentLine" : {
+                         "ShipmentTagSerials" : null,
+                         "Quantity" : "1",
+                         "PrimeLineNo" : "1",
+                         "ItemID" : "89988814",
+                         "customUnitPrice" : null,
+                         "customStatus" : null,
+                         "customShortDescription" : null,
+                         "customIdx" : null
+                       },
+                       "ShipmentKey" : null,
+                       "ShipmentContainerKey" : null,
+                       "QuantityPlaced" : null,
+                       "Quantity" : "1",
+                       "ProductClass" : null,
+                       "OrigOrderLineScheduleKey" : null,
+                       "OrderReleaseStatusKey" : null,
+                       "OrderReleaseKey" : null,
+                       "OrderLineKey" : null,
+                       "OrderHeaderKey" : null,
+                       "Modifyuserid" : null,
+                       "Modifyts" : null,
+                       "Modifyprogid" : null,
+                       "Lockid" : null,
+                       "ItemID" : "89988814",
+                       "isHistory" : null,
+                       "FifoNo" : null,
+                       "EnterpriseKey" : null,
+                       "customItemName" : "David Suzuki Graphic Socks",
+                       "Createuserid" : null,
+                       "Createts" : null,
+                       "Createprogid" : null,
+                       "CountryOfOrigin" : null,
+                       "ContainerDetailsKey" : null,
+                       "Action" : null
+                     }, {
+                       "UnitOfMeasure" : "EACH",
+                       "ShipmentLineKey" : null,
+                       "ShipmentLine" : {
+                         "ShipmentTagSerials" : null,
+                         "Quantity" : "1",
+                         "PrimeLineNo" : "2",
+                         "ItemID" : "90150935",
+                         "customUnitPrice" : null,
+                         "customStatus" : null,
+                         "customShortDescription" : null,
+                         "customIdx" : null
+                       },
+                       "ShipmentKey" : null,
+                       "ShipmentContainerKey" : null,
+                       "QuantityPlaced" : null,
+                       "Quantity" : "1",
+                       "ProductClass" : null,
+                       "OrigOrderLineScheduleKey" : null,
+                       "OrderReleaseStatusKey" : null,
+                       "OrderReleaseKey" : null,
+                       "OrderLineKey" : null,
+                       "OrderHeaderKey" : null,
+                       "Modifyuserid" : null,
+                       "Modifyts" : null,
+                       "Modifyprogid" : null,
+                       "Lockid" : null,
+                       "ItemID" : "90150935",
+                       "isHistory" : null,
+                       "FifoNo" : null,
+                       "EnterpriseKey" : null,
+                       "customItemName" : "Orchidee Imperiale The Rich Foam",
+                       "Createuserid" : null,
+                       "Createts" : null,
+                       "Createprogid" : null,
+                       "CountryOfOrigin" : null,
+                       "ContainerDetailsKey" : null,
+                       "Action" : null
+                     } ]
+                   },
+                   "CarrierServiceCode" : "Standard"
+                 } ]
+            },
             "SCAC":"Purolator",
             "ShipmentNo":"100032356",
             "OrderInvoiceList":{
@@ -475,12 +566,16 @@
                "ShippingNode":"Y",
                "ShipNode":"DC-963-565"
             },
+            "Status": {
+               "Status": "1600.002.15",
+               "Description": "No Show Returned"
+            },
             "Extn": {
                 "ExtnPointsEarned": 100,
                 "ExtnLoyaltyNo": "",
                 "ExtnLoyaltyTier": "1"
             }
-         }
+        }
     ]
   },
   "HeaderCharges": {},
