@@ -55,6 +55,7 @@
             });
     },
 
+
     handleSaveChanges: function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var firstName = component.get('v.firstName')
@@ -67,16 +68,21 @@
         })
         .catch(error => helper.handleError(component, error))
     },
+
+
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
         var lastNameValid = component.find('lastNameInput').get("v.validity")
-        var emailValid = component.find('firstNameInput').get("v.validity")
+        var emailValid = component.find('emailInput').get("v.validity")
+
+
         if(firstNameValid.valid && lastNameValid.valid && emailValid.valid) {
             component.set('v.isDisabled', false)
         } else {
             component.set('v.isDisabled', true)
         }
     },
+
     init: function (component, event, helper) {
         var loyalty = component.get('v.loyalty')
         component.set('v.firstName', loyalty.first_name)
