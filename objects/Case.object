@@ -7763,6 +7763,30 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>S05_Main_Email_Cases_Backlog</fullName>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CASES.ORIGIN</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.ORIGIN</field>
+            <operation>notEqual</operation>
+            <value>Phone</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed,Awaiting Customer Response</value>
+        </filters>
+        <label>S05 - Main Email Cases Backlog</label>
+        <queue>Off_5th_Main</queue>
+    </listViews>
+    <listViews>
         <fullName>SE_MNR_Case</fullName>
         <filterScope>Queue</filterScope>
         <label>HBC SE-MNR</label>
@@ -11317,10 +11341,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Place an order</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Pricing</fullName>
                 <default>false</default>
             </values>
@@ -13005,10 +13025,6 @@
             </values>
             <values>
                 <fullName>Outbound</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Place an order</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14701,10 +14717,6 @@
             </values>
             <values>
                 <fullName>Outbound</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Place an order</fullName>
                 <default>false</default>
             </values>
             <values>
