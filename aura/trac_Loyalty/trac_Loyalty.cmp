@@ -8,7 +8,7 @@
     <aura:attribute name="appeasementModalPromise" type="Aura.Action"/>
     <aura:attribute name="caseRecordId"            type="String" />
     <aura:handler event="c:trac_CloseModalApplicationEvent" action="{!c.handleCloseModalApplicationEvent}"/>
-    <aura:handler event="c:trac_EditLoyaltyApplicationEvent" action="{!c.handleEditLoyaltyApplicationEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
     <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
     <aura:attribute type="Integer"  name="responseCode"  default=""/>
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
