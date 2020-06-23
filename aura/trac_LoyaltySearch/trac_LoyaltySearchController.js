@@ -17,7 +17,9 @@
         if( customerLoyaltyId ) {
             component.set("v.selectedValue", "2");
             component.find("loyaltyNumberInput").set("v.value", customerLoyaltyId);
-            helper.getLoyalty(component, helper, null, customerLoyaltyId, null);
+            helper.getLoyaltyUAD(component, helper, null, customerLoyaltyId, null)
+            .then(() => helper.getLoyalty(component, helper, null, customerLoyaltyId, null))
+            .catch(error => helper.handleError(component, helper, error))
 
         }
         else

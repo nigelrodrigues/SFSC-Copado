@@ -1486,6 +1486,11 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
                     <default>false</default>
                     <label>EGC to Account</label>
                 </value>
+                <value>
+                    <fullName>Return Not Received</fullName>
+                    <default>false</default>
+                    <label>Return Not Received</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
