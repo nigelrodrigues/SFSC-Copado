@@ -1,27 +1,25 @@
 ({
-
     getLoyalty: function(component, helper, email, loyaltyId, phoneNum) {
-
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
         var caseRecordId = component.get("v.recordId");
         var action = component.get("c.getLoyalty");
+
+
         action.setParams({
             'email': email,
             'loyaltyId': loyaltyId,
             'recordId':  caseRecordId
 
-
         });
+
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
                 var state = response.getState();
-
                 if (component.isValid() && state === "SUCCESS") {
-
                     var result = response.getReturnValue();
                     if (result == null) {
                         reject(new Error("Connection Error"));
@@ -30,7 +28,10 @@
                         var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
                             var returnVal = str['data'];
-                            returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance / 200
+
+                            var conversionRate = component.get('v.conversionRate')
+                            returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance * conversionRate
+
                             returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
                             var linked_partnerships = component.get('v.linked_partnerships')
                             returnVal.linked_partnerships = linked_partnerships
@@ -60,10 +61,10 @@
             $A.enqueueAction(action);
         });
     },
-
     getLoyaltyUAD: function(component, helper, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.isMerkleError", false);
+
         var action = component.get("c.getLoyaltyUAD");
 
         action.setParams({
@@ -71,6 +72,8 @@
             'email': email,
             'phoneNum': phoneNum
         });
+
+
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
