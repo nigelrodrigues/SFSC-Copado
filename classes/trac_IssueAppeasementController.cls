@@ -33,7 +33,7 @@ public with sharing class trac_IssueAppeasementController {
                 trac_WS_RecordLoyaltyEvent evt = new trac_WS_RecordLoyaltyEvent();
                 evt.loyaltyId = loyaltyNumber;
                 evt.email = email;
-                evt.eventType = 'gift';
+                evt.eventType = 'hb_lp_cs_appeasement';
                 evt.value = points;
 
                 if (evt.send()) {
