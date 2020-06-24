@@ -37,7 +37,6 @@ public with sharing class trac_WS_LoyaltyEvent {
 
 
 
-
         res = trac_WS_WebServiceHelper.SendGetRequest(ENDPOINT, params, false, additionalHeaders);
         if(trac_WS_WebServiceHelper.isValidResponse(res)) {
             System.debug('Event response: ' + res.getBody());
@@ -54,7 +53,7 @@ public with sharing class trac_WS_LoyaltyEvent {
         return false;
     }
 
-    
+
 
     public static EventResponse parse(String json) {
         return (EventResponse) System.JSON.deserialize(json, EventResponse.class);
@@ -63,7 +62,7 @@ public with sharing class trac_WS_LoyaltyEvent {
     public class EventRequest {
     }
 
-    
+
     public class res_dataWrapper {
         
 
@@ -85,6 +84,7 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public String external_customer_id;
         @AuraEnabled public String channel;
 
+
         @AuraEnabled public String sub_channel;
         @AuraEnabled public Integer tier_id;
         @AuraEnabled public String display_detail;
@@ -93,6 +93,7 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public String display_points_redeemed;
         @AuraEnabled public String display_points_earned;
         @AuraEnabled public Integer net_points;
+
 
     }
     public class res_ruleWrapper {
@@ -120,11 +121,16 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public Boolean success;
 
 
+
         /**
         * @description Loops through data and populates display fields based on current instantiated values
         */
         private void populateDisplayFields() {
             if (!data.isEmpty()) {
+
+
+
+
                 // use netPoints to record running tally
                 Integer netPoints = 0;
 
@@ -136,6 +142,10 @@ public with sharing class trac_WS_LoyaltyEvent {
                     // netPoints
                     netPoints += Integer.valueOf(row.points);
                     row.net_points = netPoints;
+
+
+
+
 
                     // populate display_sub_detail
                     if (row.channel == 'pos') {
@@ -152,20 +162,30 @@ public with sharing class trac_WS_LoyaltyEvent {
 
                     // populate rule.ledger.display_points_earned
                     if (row.rule != null && row.rule.ledger != null) {
+
+
+
                         List<res_ledgerWrapper> newLedger = new List<res_ledgerWrapper>();
                         for (res_ledgerWrapper ledgerRow : row.rule.ledger) {
                             // filter out Tier Visit Counter ledger rows
                             if (ledgerRow.title != LEDGER_TITLE_TIER_VISIT_COUNTER) {
+
+                                ledgerRow.title = (ledgerRow.title.equalsIgnoreCase('Enrollment - $1.0')) ? 'Enrollment' : ledgerRow.title;
+
                                 Decimal ledgerPoints = ledgerRow.points != null ? ledgerRow.points : 0;
                                 ledgerRow.display_points = (ledgerPoints >= 0 ? '+' : '') + Integer.valueOf(ledgerRow.points);
                                 newLedger.add( ledgerRow );
                             }
                         }
                         row.rule.ledger = newLedger;
+
+
+
                     }
                 }
             }
         }
+
 
     }
 }
