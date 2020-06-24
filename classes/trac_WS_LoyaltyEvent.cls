@@ -145,6 +145,7 @@ public with sharing class trac_WS_LoyaltyEvent {
                         for (res_ledgerWrapper ledgerRow : row.rule.ledger) {
                             // filter out Tier Visit Counter ledger rows
                             if (ledgerRow.title != LEDGER_TITLE_TIER_VISIT_COUNTER) {
+                                ledgerRow.title = (ledgerRow.title.equalsIgnoreCase('Enrollment - $1.0')) ? 'Enrollment' : ledgerRow.title;
                                 Decimal ledgerPoints = ledgerRow.points != null ? ledgerRow.points : 0;
                                 ledgerRow.display_points = (ledgerPoints >= 0 ? '+' : '') + Integer.valueOf(ledgerRow.points);
                                 newLedger.add( ledgerRow );
