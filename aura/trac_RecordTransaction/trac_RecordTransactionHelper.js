@@ -1,13 +1,15 @@
 /**
  * Created by gtorres on 6/5/2020.
  */
-({
 
+({
 
     validateForm: function(cmp) {
         var result = true;
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
+
+
         var errorValuesMap = {};
         if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
             result = false;
@@ -34,17 +36,22 @@
         cmp.destroy();
     },
 
+    showToast: function(message, type, title, duration) {
 
-    showToast: function(message, type, title) {
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
             "title": title,
             "message": message,
             "type" : type
         });
+
+        if (duration != null) {
+            resultsToast.setParams({
+                "duration": duration
+            });
+        }
         resultsToast.fire();
     },
-
 
     showErrorSummary: function(cmp, message, returnValuesMap) {
         cmp.set("v.showError", true);
@@ -58,9 +65,9 @@
             cmp.set("v.errorDetails", details);
         }
     },
+
     submitRecordTransaction: function(cmp) {
         cmp.set('v.spinner', true);
-
 
         var action = cmp.get('c.recordTransaction');
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
@@ -68,9 +75,9 @@
         var transactionNumber = '';
         var transactionDate = cmp.find("TransactionDate").get("v.value");
 
+
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
-
         if (transactionOrigin === 'Website') {
             orderNumber = cmp.find("OrderNumber").get("v.value");
             transactionNumber = cmp.find("TransactionNumber").get("v.value");
@@ -91,26 +98,41 @@
             transactionNumber: transactionNumber,
             transactionDate: transactionDate,
 
+
             transactionSubtotal: transactionSubtotal,
             exclusionSubtotal: exclusionSubtotal
         };
         action.setParams({
             "params": myRecordTransactionParameters
         });
-        cmp.set("v.showError", false);
 
+
+        cmp.set("v.showError", false);
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
             var state = response.getState();
             if (cmp.isValid() && state === "SUCCESS") {
                 var result = response.getReturnValue();
 
-
                 if (typeof result !== undefined && result != null) {
                     if (result.isSuccess) {
-                        this.showToast(result.message, 'success', 'Transaction Submitted');
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+                        var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
+                        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+                        var actions_needed_for_next_tier = cmp.get('v.loyalty.actions_needed_for_next_tier');
+                        var tierUpgrade = false;
+                        if (!isNaN(totalSpent) && !isNaN(actions_needed_for_next_tier)) {
+                            tierUpgrade = totalSpent >= actions_needed_for_next_tier;
+                        }
+                        if (tierUpgrade){
+                            this.showToast(result.message, 'success', 'Transaction Submitted', 8000);
+                            this.showToast('The new account tier might take a couple of minutes to be processed', 'info', 'Account Tier', 8000);
+                        }
+                        else {
+                            this.showToast(result.message, 'success', 'Transaction Submitted');
+                        }
+
                         appEvent.fire();
                         this.close(cmp);
                     }
