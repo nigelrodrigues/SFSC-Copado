@@ -60,6 +60,7 @@
     getLoyaltyUAD: function(component, helper, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.isMerkleError", false);
+        component.set("v.loyalty", null);
 
         var action = component.get("c.getLoyaltyUAD");
         action.setParams({
