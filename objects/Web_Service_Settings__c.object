@@ -92,6 +92,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_Loyalty_Point_Value_Endpoint__c</fullName>
+        <description>Merkle Point Value endpoint</description>
+        <externalId>false</externalId>
+        <label>Bay Loyalty Point Value Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Bay_Loyalty_Record_Event_Endpoint__c</fullName>
         <description>The Merkle Record Event API endpoint</description>
         <externalId>false</externalId>
