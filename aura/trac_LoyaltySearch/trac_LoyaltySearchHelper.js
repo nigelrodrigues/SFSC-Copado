@@ -2,7 +2,6 @@
 
     getLoyalty: function(component, helper, loyalty) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
-
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
         var caseRecordId = component.get("v.recordId");
@@ -28,13 +27,11 @@
                         var statusCode = result.returnValuesMap['statusCode']
                         var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
-
                             var merkle = str['data'];
                             loyalty.next_tier_name = merkle.next_tier_name
                             loyalty.member_attributes.ytd_spend = merkle.member_attributes.ytd_spend
                             loyalty.member_attributes.ly_tier = merkle.member_attributes.ly_tier
                             resolve(loyalty)
-
                         } else if (helper.isValidResponse(statusCode)) {
                             var error = new Error(response.getError())
                             var body = JSON.parse(str)
@@ -71,7 +68,6 @@
             'email': email,
             'phoneNum': phoneNum
         });
-
 
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
@@ -129,7 +125,6 @@
         return res != null && (res == 200 || res == 201 || res == 204);
     },
 
-
     handleError : function(component, helper, error) {
         if(error.isMerkleError) {
             var statusCode = error.statusCode
@@ -148,5 +143,12 @@
             component.set("v.isError", true);
             component.set("v.errorMsg", error);
         }
+    },
+
+    normalize: function(phone) {
+        if (!phone) return "";
+        phone = phone.replace(/[^\d]/g, "");
+        return (phone.length != 10) ? phone :
+            phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
     }
 });
