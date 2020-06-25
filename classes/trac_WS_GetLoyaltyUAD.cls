@@ -77,6 +77,7 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String rbc_airmiles_opt_in_date;
         @AuraEnabled public res_DataWrapper data;
         @AuraEnabled public String offline_flag;
+        @AuraEnabled public List<res_CardDetailsWrapper> card_details;
     }
 
     public class res_DataWrapper {
@@ -159,6 +160,8 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public String display_name;
     }
 
-
+    public class res_CardDetailsWrapper {
+        @AuraEnabled public String card_type;
+    }
 
 }
