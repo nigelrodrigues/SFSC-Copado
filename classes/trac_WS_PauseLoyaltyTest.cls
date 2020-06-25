@@ -28,7 +28,7 @@ public with sharing class trac_WS_PauseLoyaltyTest {
         mock.setStatusCode(200);
         mock.setStaticResource(FAILED_RESOURCE);
         Test.setMock(HttpCalloutMock.class, mock);
-        System.assertEquals(true, webServiceClass.send());
+        System.assertEquals(false, webServiceClass.send());
         System.assertEquals(false, webServiceClass.pauseResponse.success);
         System.assertEquals(201, webServiceClass.pauseResponse.data.code);
         Test.stopTest();
