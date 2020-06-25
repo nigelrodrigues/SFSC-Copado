@@ -25,7 +25,6 @@
             </aura:if>
         </div>
 
-
         <lightning:layout horizontalAlign="space" multipleRows="true">
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <lightning:select label="Find Account By" aura:id="loyaltySearchType" value="{!v.selectedValue}">
@@ -34,8 +33,6 @@
                     </aura:iteration>
                 </lightning:select>
             </lightning:layoutItem>
-
-
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <aura:if isTrue="{!v.selectedValue=='1'}">
                     <lightning:input label="Email" type="email" aura:id="emailInput" placeholder="example@hbc.com" />
@@ -47,7 +44,9 @@
                                      placeholder="123456789"/>
                 </aura:if>
                 <aura:if isTrue="{!v.selectedValue=='3'}">
-                    <lightning:input label="Phone Number" type="tel" aura:id="phoneNumberInput"
+                    <lightning:input label="Phone Number"
+                                     type="tel"
+                                     aura:id="phoneNumberInput"
                                      messageWhenPatternMismatch="Invalid Phone Number."
                                      pattern="[0-9]*"
                                      placeholder="5555555555"/>
@@ -68,6 +67,4 @@
             </div>
         </aura:if>
     </div>
-
-
 </aura:component>
