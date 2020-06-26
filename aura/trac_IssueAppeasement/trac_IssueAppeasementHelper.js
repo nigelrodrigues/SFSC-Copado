@@ -86,7 +86,10 @@
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
             points: cmp.get('v.appeasePoints'),
-            pointsAvailable: cmp.get('v.pointsAvailable')
+
+            pointsAvailable: cmp.get('v.pointsAvailable'),
+            retrievedCase: cmp.get('v.caseRecord')
+
         };
         action.setParams(params);
         action.setCallback(this, function (response) {
