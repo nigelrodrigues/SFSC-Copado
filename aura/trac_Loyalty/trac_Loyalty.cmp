@@ -18,10 +18,12 @@
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
 
+
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.handleSaveChanges}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
 
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Loyalty Number</p>
@@ -144,8 +146,8 @@
             <div class="header-column">
 
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.home_phone))}">
-                    <p><lightning:formattedPhone value="{!v.loyalty.home_phone}"/></p>
+                <aura:if isTrue="{!not(empty(v.loyalty.phone_no))}">
+                    <p><lightning:formattedPhone value="{!v.loyalty.phone_no}"/></p>
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -189,11 +191,9 @@
             </div>
         </lightning:layoutItem>
 
-
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-<!--            Place Holder to keep air miles on the left side-->
+            <!--            Place Holder to keep air miles on the left side-->
         </lightning:layoutItem>
-
 
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
@@ -207,11 +207,9 @@
             </div>
         </lightning:layoutItem>
 
-
     </lightning:layout>
     <lightning:layout >
         <lightning:layoutItem class="slds-p-around_xx-small">
-
 
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Badges</p>

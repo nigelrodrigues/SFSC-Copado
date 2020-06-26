@@ -2,8 +2,8 @@
     init: function (component, event, helper) {
         component.set('v.options', [
                                  { id: 1, label: 'Email', selected: true },
-                                 { id: 2, label: 'Loyalty Account Number' }
-                                // { id: 3, label: 'Phone Number' }
+                                 { id: 2, label: 'Loyalty Account Number' },
+                                 { id: 3, label: 'Phone Number' }
                              ]);
 
 
@@ -18,7 +18,8 @@
             component.set("v.selectedValue", "2");
             component.find("loyaltyNumberInput").set("v.value", customerLoyaltyId);
             helper.getLoyaltyUAD(component, helper, null, customerLoyaltyId, null)
-            .then(() => helper.getLoyalty(component, helper, null, customerLoyaltyId, null))
+            .then(loyalty => helper.getLoyalty(component, helper, loyalty))
+            .then(loyalty => component.set('v.loyalty', loyalty))
             .catch(error => helper.handleError(component, helper, error))
 
         }
@@ -43,7 +44,8 @@
             phoneNum = component.find('phoneNumberInput').get("v.value");
         }
         helper.getLoyaltyUAD(component, helper, email, loyaltyId, phoneNum)
-        .then(() => helper.getLoyalty(component, helper, email, loyaltyId, phoneNum))
+        .then(loyalty => helper.getLoyalty(component, helper, loyalty))
+        .then(loyalty => component.set('v.loyalty', loyalty))
         .catch(error => helper.handleError(component, helper, error))
 
     },
