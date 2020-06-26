@@ -17,9 +17,9 @@
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
     <aura:attribute type="String"  name="recordId" />
     <aura:attribute name="conversionRate" type="Integer" required="true"/>
+
     <aura:attribute type="String"  name="customerLoyaltyId" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
-
 
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <div onkeyup="{!c.formPress}" class="slds-border_bottom" >
@@ -40,23 +40,35 @@
             </lightning:layoutItem>
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <aura:if isTrue="{!v.selectedValue=='1'}">
-                    <lightning:input label="Email" type="email" aura:id="emailInput" placeholder="example@hbc.com" />
+
+                    <lightning:input label="Email"
+                                     type="email"
+                                     aura:id="emailInput"
+                                     placeholder="example@hbc.com"
+                                     messageWhenValueMissing="Email cannot be empty"
+                                     required="true"/>
                 </aura:if>
                 <aura:if isTrue="{!v.selectedValue=='2'}">
-                    <lightning:input label="Number" type="text" aura:id="loyaltyNumberInput"
+                    <lightning:input label="Number"
+                                     type="text"
+                                     aura:id="loyaltyNumberInput"
                                      messageWhenPatternMismatch="Invalid Loyalty Number."
+                                     messageWhenValueMissing="Loyalty number cannot be empty"
                                      pattern="[0-9]*"
-                                     placeholder="123456789"/>
+                                     placeholder="123456789"
+                                     required="true"/>
                 </aura:if>
                 <aura:if isTrue="{!v.selectedValue=='3'}">
-
                     <lightning:input label="Phone Number"
                                      type="tel"
                                      aura:id="phoneNumberInput"
-
                                      messageWhenPatternMismatch="Invalid Phone Number."
-                                     pattern="[0-9]*"
-                                     placeholder="5555555555"/>
+                                     messageWhenValueMissing="Phone number cannot be empty"
+                                     pattern="^(?=.*[0-9])[- +()0-9]+$"
+                                     placeholder="(555)-555-5555"
+                                     onchange="{!c.handleChange}"
+                                     required="true" />
+
                 </aura:if>
             </lightning:layoutItem>
         </lightning:layout>
