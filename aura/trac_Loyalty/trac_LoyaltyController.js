@@ -10,8 +10,8 @@
         $A.createComponent(
             "c:trac_IssueAppeasement",
             {
-                loyalty: cmp.get('v.loyalty'),
 
+                loyalty: cmp.get('v.loyalty'),
                 conversionRate: cmp.get('v.conversionRate'),
                 caseRecord: cmp.get('v.caseRecord')
 
@@ -38,8 +38,8 @@
             }
         );
 
-
     },
+
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
         let container = cmp.find("divRecordTransaction");
@@ -47,7 +47,9 @@
             "c:trac_RecordTransaction",
             {
                 loyalty: cmp.get('v.loyalty'),
+
                 caseRecordId: cmp.get('v.caseRecord.Id'),
+
                 openButton: openButton
             },
             function(newComponent, status) {
@@ -59,6 +61,8 @@
                 }
             });
     },
+
+
     handleSaveChanges: function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var firstName = component.get('v.firstName')
