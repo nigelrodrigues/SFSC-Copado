@@ -1486,6 +1486,11 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
                     <default>false</default>
                     <label>EGC to Account</label>
                 </value>
+                <value>
+                    <fullName>Return Not Received</fullName>
+                    <default>false</default>
+                    <label>Return Not Received</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
@@ -2105,12 +2110,10 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
         <columns>NAME</columns>
         <columns>Case__c</columns>
         <columns>Case_Owner__c</columns>
-        <columns>Case_Owner_Role__c</columns>
-        <columns>Case_Owner_Profile__c</columns>
         <columns>Order_Number__c</columns>
         <columns>Reason__c</columns>
         <columns>ORC_Status__c</columns>
-        <columns>Status_in_OMS__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>ORC_Status__c</field>
@@ -2118,6 +2121,58 @@ NOT(ISPICKVAL(ORC_Status__c, &apos;Approved&apos;) || ISPICKVAL(ORC_Status__c, &
             <value>Closed</value>
         </filters>
         <label>All Open ORC</label>
+    </listViews>
+    <listViews>
+        <fullName>O5_Gift_Card_Appeasements</fullName>
+        <columns>NAME</columns>
+        <columns>Case__c</columns>
+        <columns>Case_Owner__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Reason__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Business_Unit__c</field>
+            <operation>equals</operation>
+            <value>Off 5th</value>
+        </filters>
+        <filters>
+            <field>Reason__c</field>
+            <operation>equals</operation>
+            <value>Gift Card (Appeasement),Gift Card (Refund),Gift Card to Original Tender,Promo Code Gift Card,EGC to Account</value>
+        </filters>
+        <filters>
+            <field>ORC_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed,Cancelled</value>
+        </filters>
+        <label>O5 Gift Card Appeasements</label>
+    </listViews>
+    <listViews>
+        <fullName>Open_O5_MNR_ORCs</fullName>
+        <columns>NAME</columns>
+        <columns>Case__c</columns>
+        <columns>Case_Owner__c</columns>
+        <columns>Order_Number__c</columns>
+        <columns>Reason__c</columns>
+        <columns>ORC_Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ORC_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </filters>
+        <filters>
+            <field>Business_Unit__c</field>
+            <operation>equals</operation>
+            <value>Off 5th</value>
+        </filters>
+        <filters>
+            <field>Reason__c</field>
+            <operation>equals</operation>
+            <value>Missing Items,Order Not Received</value>
+        </filters>
+        <label>Open O5 MNR ORCs</label>
     </listViews>
     <nameField>
         <displayFormat>ORC-{0000000}</displayFormat>
