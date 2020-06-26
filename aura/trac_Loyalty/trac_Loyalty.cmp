@@ -146,10 +146,10 @@
 
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
+
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.phone_no))}">
                     <p><lightning:formattedPhone value="{!v.loyalty.phone_no}"/></p>
-
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -173,6 +173,7 @@
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
+
                 <aura:if isTrue="{!not(empty(v.loyalty.card_details))}">
                     <div>
                         <ul class="slds-list_horizontal slds-has-dividers_right">
@@ -185,6 +186,7 @@
                         <p>N/A</p>
                     </aura:set>
                 </aura:if>
+
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">

@@ -1,6 +1,8 @@
 /**
  * Created by akong on 6/1/2020.
  */
+
+
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         console.log("Inside handleShowAppeasementModal");
@@ -8,9 +10,10 @@
         $A.createComponent(
             "c:trac_IssueAppeasement",
             {
-
                 loyalty: cmp.get('v.loyalty'),
-                conversionRate: cmp.get('v.conversionRate')
+
+                conversionRate: cmp.get('v.conversionRate'),
+                caseRecord: cmp.get('v.caseRecord')
 
             },
             function(content, status) {
@@ -27,14 +30,16 @@
             });
     },
 
+
     handleCloseModalApplicationEvent: function(cmp) {
         cmp.get('v.appeasementModalPromise').then(
             function (modal) {
                 modal.close();
             }
         );
-    },
 
+
+    },
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
         let container = cmp.find("divRecordTransaction");
@@ -42,9 +47,7 @@
             "c:trac_RecordTransaction",
             {
                 loyalty: cmp.get('v.loyalty'),
-
                 caseRecordId: cmp.get('v.caseRecord.Id'),
-
                 openButton: openButton
             },
             function(newComponent, status) {
@@ -56,8 +59,6 @@
                 }
             });
     },
-
-
     handleSaveChanges: function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var firstName = component.get('v.firstName')
@@ -71,10 +72,12 @@
         .catch(error => helper.handleError(component, error))
     },
 
+
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
         var lastNameValid = component.find('lastNameInput').get("v.validity")
         var emailValid = component.find('emailInput').get("v.validity")
+
 
         if(firstNameValid.valid && lastNameValid.valid && emailValid.valid) {
             component.set('v.isDisabled', false)
@@ -83,12 +86,17 @@
         }
     },
 
+
     handleEditLoyaltyApplicationEvent: function (component, event, helper) {
         var firstName = event.getParam("firstName");
         var lastName = event.getParam("lastName");
         var email = event.getParam("email");
+
+
         component.set('v.firstName', firstName)
         component.set('v.lastName', lastName)
         component.set('v.email', email)
     },
+
+
 });
