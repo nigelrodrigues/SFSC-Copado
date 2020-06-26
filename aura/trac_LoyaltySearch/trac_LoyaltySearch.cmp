@@ -12,15 +12,15 @@
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
     <aura:attribute type="Boolean"  name="linked_partnerships" default="false" />
 
+
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
     <aura:attribute type="String"  name="recordId" />
     <aura:attribute name="conversionRate" type="Integer" required="true"/>
-
     <aura:attribute type="String"  name="customerLoyaltyId" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
-    <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
 
+    <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
 
     <div onkeyup="{!c.formPress}" class="slds-border_bottom" >
         <div class="slds-text-color_destructive">
@@ -28,6 +28,8 @@
                 {!v.errorMessage}
             </aura:if>
         </div>
+
+
         <lightning:layout horizontalAlign="space" multipleRows="true">
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <lightning:select label="Find Account By" aura:id="loyaltySearchType" value="{!v.selectedValue}">
@@ -47,7 +49,11 @@
                                      placeholder="123456789"/>
                 </aura:if>
                 <aura:if isTrue="{!v.selectedValue=='3'}">
-                    <lightning:input label="Phone Number" type="tel" aura:id="phoneNumberInput"
+
+                    <lightning:input label="Phone Number"
+                                     type="tel"
+                                     aura:id="phoneNumberInput"
+
                                      messageWhenPatternMismatch="Invalid Phone Number."
                                      pattern="[0-9]*"
                                      placeholder="5555555555"/>

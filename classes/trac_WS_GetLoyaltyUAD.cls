@@ -48,6 +48,7 @@ public with sharing class trac_WS_GetLoyaltyUAD {
     public class LoyaltyUADRequest {
         public String loyalty_id;
         public String email;
+        public String phone_no;
         public String banner_id;
     }
 
