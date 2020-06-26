@@ -8,18 +8,18 @@
                 implements="force:hasRecordId,flexipage:availableForAllPageTypes"
                 controller="trac_IssueAppeasementController"
                 access="global">
-    <aura:attribute name="loyalty" type="Object" />
-    <aura:attribute name="profileName" type="String" />
-    <aura:attribute name="maxAppeasement" type="Integer" default="0" />
-    <aura:attribute name="allowUnlimited" type="Boolean" default="true" />
-    <aura:attribute name="appeasePoints" type="Integer" description="The amount of points to award" />
-    <aura:attribute name="appeaseValue" type="String" description="The monetary value of appeasePoints" />
-    <aura:attribute name="pointsAvailable" type="Integer" default="0" description="Current point balance" />
-    <aura:attribute name="finalPointBalance" type="String" description="Final point balance after adding appeasePoints"/>
-    <aura:attribute name="showSpinner" type="Boolean" default="false" />
-    <aura:attribute name="disableButton" type="Boolean" default="true" />
-
-    <aura:attribute name="conversionRate" type="Integer" required="true"/>
+    <aura:attribute name="loyalty"            type="Object" />
+    <aura:attribute name="profileName"        type="String" />
+    <aura:attribute name="maxAppeasement"     type="Integer" default="0" />
+    <aura:attribute name="allowUnlimited"     type="Boolean" default="true" />
+    <aura:attribute name="appeasePoints"      type="Integer" description="The amount of points to award" />
+    <aura:attribute name="appeaseValue"       type="String" description="The monetary value of appeasePoints" />
+    <aura:attribute name="pointsAvailable"    type="Integer" default="0" description="Current point balance" />
+    <aura:attribute name="finalPointBalance"  type="String" description="Final point balance after adding appeasePoints"/>
+    <aura:attribute name="showSpinner"        type="Boolean" default="false" />
+    <aura:attribute name="disableButton"      type="Boolean" default="true" />
+    <aura:attribute name="conversionRate"     type="Integer" required="true"/>
+    <aura:attribute name="caseRecord"         type="Object" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.appeasePoints}" action="{!c.changeAmount}"/>

@@ -12,7 +12,8 @@
             {
 
                 loyalty: cmp.get('v.loyalty'),
-                conversionRate: cmp.get('v.conversionRate')
+                conversionRate: cmp.get('v.conversionRate'),
+                caseRecord: cmp.get('v.caseRecord')
 
             },
             function(content, status) {
