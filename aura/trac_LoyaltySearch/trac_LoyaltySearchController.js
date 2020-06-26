@@ -2,8 +2,8 @@
     init: function (component, event, helper) {
         component.set('v.options', [
                                  { id: 1, label: 'Email', selected: true },
-                                 { id: 2, label: 'Loyalty Account Number' }
-                                // { id: 3, label: 'Phone Number' }
+                                 { id: 2, label: 'Loyalty Account Number' },
+                                 { id: 3, label: 'Phone Number' }
                              ]);
 
 
@@ -18,7 +18,8 @@
             component.set("v.selectedValue", "2");
             component.find("loyaltyNumberInput").set("v.value", customerLoyaltyId);
             helper.getLoyaltyUAD(component, helper, null, customerLoyaltyId, null)
-            .then(() => helper.getLoyalty(component, helper, null, customerLoyaltyId, null))
+            .then(loyalty => helper.getLoyalty(component, helper, loyalty))
+            .then(loyalty => component.set('v.loyalty', loyalty))
             .catch(error => helper.handleError(component, helper, error))
 
         }
@@ -34,18 +35,29 @@
         var loyaltyId = null;
         var phoneNum = null;
 
+        var emailInput = component.find('emailInput')
+        var loyaltyNumberInput = component.find('loyaltyNumberInput')
+        var phoneNumberInput = component.find('phoneNumberInput')
 
-        if(component.get('v.selectedValue') == '1' && helper.isNotBlank(component, 'emailInput')) {
+        if(component.get('v.selectedValue') == '1' && emailInput.get("v.validity").valid) {
             email = component.find('emailInput').get("v.value");
-        } else if (component.get('v.selectedValue') == '2' && helper.isNotBlank(component, 'loyaltyNumberInput')) {
+        } else if (component.get('v.selectedValue') == '2' && loyaltyNumberInput.get("v.validity").valid) {
             loyaltyId = component.find('loyaltyNumberInput').get("v.value");
-        } else if (component.get('v.selectedValue') == '3' && helper.isNotBlank(component, 'phoneNumberInput')) {
-            phoneNum = component.find('phoneNumberInput').get("v.value");
+        } else if (component.get('v.selectedValue') == '3' && phoneNumberInput.get("v.validity").valid) {
+            phoneNum = component.find('phoneNumberInput').get("v.value").replace(/[^\d]/g, "");
         }
-        helper.getLoyaltyUAD(component, helper, email, loyaltyId, phoneNum)
-        .then(() => helper.getLoyalty(component, helper, email, loyaltyId, phoneNum))
-        .catch(error => helper.handleError(component, helper, error))
 
+        helper.getLoyaltyUAD(component, helper, email, loyaltyId, phoneNum)
+        .then(loyalty => helper.getLoyalty(component, helper, loyalty))
+        .then(loyalty => component.set('v.loyalty', loyalty))
+        .catch(error => helper.handleError(component, helper, error))
+    },
+
+    handleChange: function(component, event, helper) {
+        var phoneNumberInput = component.find('phoneNumberInput')
+
+        var phone = helper.normalize(phoneNumberInput.get('v.value'))
+        phoneNumberInput.set('v.value', phone)
     },
 
 });
