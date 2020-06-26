@@ -114,7 +114,7 @@
                     <lightning:input
                             label="Email"
                             type="email"
-                            aura:id="phoneNumberInput"
+                            aura:id="emailInput"
                             value="{!v.email}"
                             placeholder="example@hbc.com"
                             messageWhenValueMissing="Email cannot be empty"
@@ -200,10 +200,6 @@
                     </aura:set>
                 </aura:if>
             </div>
-        </lightning:layoutItem>
-
-        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-            <!--            Place Holder to keep air miles on the left side-->
         </lightning:layoutItem>
 
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
@@ -339,14 +335,6 @@
                                 <p>N/A</p>
                             </aura:set>
                         </aura:if>
-                    </div>
-                </lightning:layoutItem>
-
-                <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
-                    <div class="header-column">
-                        <p class="field-title slds-form-element__label slds-no-flex">Qualifying Purchase Visits (purchases on separate days)</p>
-                        <p>Unknown</p>
                     </div>
                 </lightning:layoutItem>
 
