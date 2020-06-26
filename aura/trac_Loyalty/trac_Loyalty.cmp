@@ -96,7 +96,9 @@
                     <lightning:input
                             label="Email"
                             type="email"
-                            aura:id="emailInput"
+
+                            aura:id="phoneNumberInput"
+
                             value="{!v.email}"
                             placeholder="example@hbc.com"
                             messageWhenValueMissing="Email cannot be empty"
@@ -123,9 +125,11 @@
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
+
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
-                <aura:if isTrue="{!not(empty(v.loyalty.home_phone))}">
-                    <p><lightning:formattedPhone value="{!v.loyalty.home_phone}"/></p>
+                <aura:if isTrue="{!not(empty(v.loyalty.phone_no))}">
+                    <p><lightning:formattedPhone value="{!v.loyalty.phone_no}"/></p>
+
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
@@ -146,7 +150,20 @@
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
-                <p>Cobranded MasterCard</p>
+
+                <aura:if isTrue="{!not(empty(v.loyalty.card_details))}">
+                    <div>
+                        <ul class="slds-list_horizontal slds-has-dividers_right">
+                            <aura:iteration items="{!v.loyalty.card_details}" var="card">
+                                <li class="slds-item"><p>{!card.card_type}</p></li>
+                            </aura:iteration>
+                        </ul>
+                    </div>
+                    <aura:set attribute="else">
+                        <p>N/A</p>
+                    </aura:set>
+                </aura:if>
+
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
@@ -163,7 +180,7 @@
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-<!--            Place Holder to keep air miles on the left side-->
+            <!--            Place Holder to keep air miles on the left side-->
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
