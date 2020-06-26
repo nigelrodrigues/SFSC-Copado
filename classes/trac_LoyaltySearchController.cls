@@ -49,6 +49,7 @@ public with sharing class trac_LoyaltySearchController {
         loyaltyUADRequest.banner_id = '4';
         loyaltyUADRequest.loyalty_id = loyaltyId;
         loyaltyUADRequest.email = email;
+        loyaltyUADRequest.phone_no = phoneNum;
         request.loyaltyUADRequest = loyaltyUADRequest;
 
         try {

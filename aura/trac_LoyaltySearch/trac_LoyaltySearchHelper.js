@@ -1,21 +1,16 @@
 ({
-
-    getLoyalty: function(component, helper, email, loyaltyId, phoneNum) {
-
+    getLoyalty: function(component, helper, loyalty) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
-        component.set("v.loyalty", null);
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
         var caseRecordId = component.get("v.recordId");
-
         var action = component.get("c.getLoyalty");
 
+
         action.setParams({
-            'email': email,
-            'loyaltyId': loyaltyId,
+            'email': loyalty.email,
+            'loyaltyId': loyalty.external_customer_id,
             'recordId':  caseRecordId
-
-
         });
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
@@ -31,16 +26,15 @@
                         var statusCode = result.returnValuesMap['statusCode']
                         var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
-                            var returnVal = str['data'];
 
-                            var conversionRate = component.get('v.conversionRate')
-                            returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance * conversionRate
 
-                            returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
-                            var linked_partnerships = component.get('v.linked_partnerships')
-                            returnVal.linked_partnerships = linked_partnerships
-                            component.set('v.loyalty', returnVal);
-                            resolve(returnVal)
+                            var merkle = str['data'];
+                            loyalty.next_tier_name = merkle.next_tier_name
+                            loyalty.member_attributes.ytd_spend = merkle.member_attributes.ytd_spend
+                            loyalty.member_attributes.ly_tier = merkle.member_attributes.ly_tier
+                            resolve(loyalty)
+
+
                         } else if (helper.isValidResponse(statusCode)) {
                             var error = new Error(response.getError())
                             var body = JSON.parse(str)
@@ -66,13 +60,12 @@
             $A.enqueueAction(action);
         });
     },
-
     getLoyaltyUAD: function(component, helper, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.isMerkleError", false);
+        component.set("v.loyalty", null);
         var action = component.get("c.getLoyaltyUAD");
         action.setParams({
-
 
             'loyaltyId': loyaltyId,
             'email': email,
@@ -93,8 +86,17 @@
                         var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
                             var returnVal = str;
+
+
+                            for(var k in returnVal.data) returnVal[k] = returnVal.data[k];
                             if(returnVal.linked_partnerships === 'Airmiles')
                                 component.set('v.linked_partnerships', true)
+                            var conversionRate = component.get('v.conversionRate')
+                            returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance * conversionRate
+                            returnVal.balance_in_dollars = returnVal.balance * conversionRate
+                            returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
+
+
                             resolve(returnVal)
                         } else if (helper.isValidResponse(statusCode))  {
                             var error = new Error(response.getError())
@@ -152,5 +154,13 @@
             component.set("v.isError", true);
             component.set("v.errorMsg", error);
         }
+
+    },
+    normalize: function(phone) {
+        if (!phone) return "";
+        phone = phone.replace(/[^\d]/g, "");
+        return (phone.length != 10) ? phone :
+            phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+
     }
 });

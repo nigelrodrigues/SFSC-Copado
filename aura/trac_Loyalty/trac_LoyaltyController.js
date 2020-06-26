@@ -26,6 +26,7 @@
                 }
             });
     },
+
     handleCloseModalApplicationEvent: function(cmp) {
         cmp.get('v.appeasementModalPromise').then(
             function (modal) {
@@ -33,6 +34,7 @@
             }
         );
     },
+
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
         let container = cmp.find("divRecordTransaction");
@@ -40,6 +42,9 @@
             "c:trac_RecordTransaction",
             {
                 loyalty: cmp.get('v.loyalty'),
+
+                caseRecordId: cmp.get('v.caseRecord.Id'),
+
                 openButton: openButton
             },
             function(newComponent, status) {
@@ -66,12 +71,10 @@
         .catch(error => helper.handleError(component, error))
     },
 
-
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
         var lastNameValid = component.find('lastNameInput').get("v.validity")
         var emailValid = component.find('emailInput').get("v.validity")
-
 
         if(firstNameValid.valid && lastNameValid.valid && emailValid.valid) {
             component.set('v.isDisabled', false)
@@ -87,6 +90,5 @@
         component.set('v.firstName', firstName)
         component.set('v.lastName', lastName)
         component.set('v.email', email)
-
     },
 });
