@@ -5,19 +5,26 @@
  */
 ({
     doInit: function(cmp, event, helper) {
-        cmp.set('v.showSpinner', false);
         var pointsAvailable = cmp.get('v.loyalty.balance');
         pointsAvailable = $A.util.isEmpty(pointsAvailable) ? 0 : parseInt(pointsAvailable);
         cmp.set('v.pointsAvailable', pointsAvailable);
         helper.calculateAmounts(cmp);
+        helper.getProfileLimit(cmp);
     },
-    selectAmount: function(cmp, event, helper) {
+    changeAmount: function(cmp, event, helper) {
         helper.calculateAmounts(cmp);
+        var inputCmp = cmp.find("amount");
+        inputCmp.setCustomValidity("");
+        inputCmp.reportValidity();
     },
     submitAppeasementForm: function(cmp, event, helper) {
         // check validity
         if (cmp.find('amount').get('v.validity').valid) {
-            helper.submitAppeasement(cmp, event, helper);
+            // form field is valid, do one final check on max appeasement amount
+            if (helper.checkAppeasementValue(cmp)) {
+                // all good, submit the appeasement
+                helper.submitAppeasement(cmp, event, helper);
+            }
         }
     },
     formPress: function (cmp, event, helper) {

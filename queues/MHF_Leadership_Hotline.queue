@@ -3,9 +3,9 @@
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>MHF Leadership Hotline</name>
     <queueMembers>
-        <publicGroups>
-            <publicGroup>MHF_Rewards</publicGroup>
-        </publicGroups>
+        <roles>
+            <role>MHF_Rewards_Moncton</role>
+        </roles>
     </queueMembers>
     <queueRoutingConfig>All_Queues</queueRoutingConfig>
     <queueSobject>
