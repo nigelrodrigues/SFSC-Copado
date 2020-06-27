@@ -15,6 +15,7 @@
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
+    <aura:handler name="trac_MerkleErrorEvent" event="c:trac_MerkleErrorEvent" action="{!c.handleMerkleErrorEvent}"/>
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.handleSaveChanges}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
@@ -331,7 +332,7 @@
             <c:trac_EscalateToLoyaltyTeam caseRecord="{!v.caseRecord}" />
         </lightning:layoutItem>
     </lightning:layout>
-    <div aura:id="divRecordTransaction">
+    <div aura:id="divBody">
         {!v.body}
     </div>
 </aura:component>

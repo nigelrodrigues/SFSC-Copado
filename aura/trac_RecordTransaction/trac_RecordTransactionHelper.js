@@ -51,14 +51,15 @@
         if (returnValuesMap != null) {
             var details = '';
             Object.keys(returnValuesMap).forEach(function(key) {
-                console.log(key, returnValuesMap[key]);
-                details += '<li>' + returnValuesMap[key] + '</li>';
+                if(key != 'validForm') {
+                    details += '<li>' + returnValuesMap[key] + '</li>';
+                }
             });
             cmp.set("v.errorDetails", details);
         }
     },
-
-    submitRecordTransaction: function(cmp) {
+/*
+    submitRecordTransaction: function(cmp, helper) {
         cmp.set('v.spinner', true);
         var action = cmp.get('c.recordTransaction');
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
@@ -97,43 +98,123 @@
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
             var state = response.getState();
-            if (cmp.isValid() && state === "SUCCESS") {
-                var result = response.getReturnValue();
 
-                if (typeof result !== undefined && result != null) {
-                    if (result.isSuccess) {
+            if ( !cmp.isValid() || state !== "SUCCESS") {
+                // merkle modal error handler
+                helper.handleError(cmp, new Error(response.getError()[0].message));
+                return;
+            }
 
-                        var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
-                        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
-                        var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
-                        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
-                        var actions_needed_for_next_tier = cmp.get('v.loyalty.actions_needed_for_next_tier');
-                        var tierUpgrade = false;
-                        if (!isNaN(totalSpent) && !isNaN(actions_needed_for_next_tier)) {
-                            tierUpgrade = totalSpent >= actions_needed_for_next_tier;
-                        }
-                        if (tierUpgrade){
-                            this.showToast(result.message, 'success', 'Transaction Submitted', 8000);
-                            this.showToast('The new account tier might take a couple of minutes to be processed', 'info', 'Account Tier', 8000);
-                        }
-                        else {
-                            this.showToast(result.message, 'success', 'Transaction Submitted');
-                        }
-                        appEvent.fire();
-                        this.close(cmp);
-                    }
-                    else {
-                        this.showErrorSummary(cmp, result.message, result.returnValuesMap);
-                    }
-                }
-                else {
-                    this.showErrorSummary(cmp, 'Connection Error', null);
-                }
+            var result = response.getReturnValue();
+
+            if (typeof result === undefined || result == null) {
+                // merkle modal error handler
+                helper.handleError(cmp, new Error('Connection Error'));
+                return;
+            }
+
+            if(result.isSuccess && result.returnValuesMap['body']['success']) {
+                this.proceedWithSuccessfulTransaction(cmp, transactionSubtotal, exclusionSubtotal, result);
+            }
+            else if (result.returnValuesMap['validForm'] !=null && !result.returnValuesMap['validForm'])  {
+                this.showErrorSummary(cmp, result.message, result.returnValuesMap);
             }
             else {
-
+                // merkle modal error handler
+                var statusCode = result.returnValuesMap['statusCode'];
+                var error = new Error(response.getError());
+                var str = result.returnValuesMap['body'];
+                error.isMerkleError = true;
+                error.statusCode = statusCode;
+                if (helper.isValidResponse(statusCode))  {
+                    var body = JSON.parse(str);
+                    error.code = body.data.code;
+                    error.message = body.data.message;
+                }
+                else {
+                    error.str = str;
+                }
+                helper.handleError(cmp, error, cmp.getReference("c.handleSubmit"));
             }
         });
         $A.enqueueAction(action);
     },
+*/
+
+    submitRecordTransaction: function(cmp, helper) {
+        cmp.set('v.spinner', true);
+        var action = cmp.get('c.recordTransaction');
+        var transactionOrigin =  cmp.get('v.TransactionOriginValue');
+        var orderNumber = '';
+        var transactionNumber = '';
+        var transactionDate = cmp.find("TransactionDate").get("v.value");
+        var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
+        var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
+
+        if (transactionOrigin === 'Website') {
+            orderNumber = cmp.find("OrderNumber").get("v.value");
+            transactionNumber = cmp.find("TransactionNumber").get("v.value");
+        }
+        else {
+            transactionNumber = cmp.find("TransactionNumberMhfStore").get("v.value") +
+                cmp.find("StoreNumberMhfStore").get("v.value") +
+                cmp.find("TerminalNumberMhfStore").get("v.value");
+        }
+        var myRecordTransactionParameters = {
+            caseRecordId: cmp.get('v.caseRecordId'),
+            loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
+            email: cmp.get('v.loyalty.email'),
+            transactionOrigin: transactionOrigin,
+            orderNumber: orderNumber,
+            transactionNumber: transactionNumber,
+            transactionDate: transactionDate,
+            transactionSubtotal: transactionSubtotal,
+            exclusionSubtotal: exclusionSubtotal
+        };
+        action.setParams({
+            "params": myRecordTransactionParameters
+        });
+
+        cmp.set("v.showError", false);
+
+        action.setCallback(this, function (response) {
+            cmp.set('v.spinner', false);
+
+            var result = response.getReturnValue();
+
+            if (!helper.isMerkleErrorHandled(cmp, cmp.getReference("c.handleSubmit"), response) ) {
+                if(result.isSuccess && result.returnValuesMap['body']['success']) {
+                    this.proceedWithSuccessfulTransaction(cmp, transactionSubtotal, exclusionSubtotal, result);
+                }
+                else if (result.returnValuesMap['validForm'] !=null && !result.returnValuesMap['validForm'])  {
+                    this.showErrorSummary(cmp, result.message, result.returnValuesMap);
+                }
+            }
+
+
+        });
+        $A.enqueueAction(action);
+    },
+
+    proceedWithSuccessfulTransaction: function(cmp, transactionSubtotal, exclusionSubtotal, result) {
+        var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
+        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+        var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
+        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+        var actions_needed_for_next_tier = cmp.get('v.loyalty.actions_needed_for_next_tier');
+        var tierUpgrade = false;
+        if (!isNaN(totalSpent) && !isNaN(actions_needed_for_next_tier)) {
+            tierUpgrade = totalSpent >= actions_needed_for_next_tier;
+        }
+        if (tierUpgrade){
+            this.showToast(result.message, 'success', 'Transaction Submitted', 8000);
+            this.showToast('The new account tier might take a couple of minutes to be processed', 'info', 'Account Tier', 8000);
+        }
+        else {
+            this.showToast(result.message, 'success', 'Transaction Submitted');
+        }
+        appEvent.fire();
+        this.close(cmp);
+    }
+
 });

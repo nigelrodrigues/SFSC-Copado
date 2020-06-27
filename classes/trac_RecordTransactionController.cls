@@ -54,18 +54,21 @@ public with sharing class trac_RecordTransactionController {
                 evt.subChannelDetail = aUser != null ? aUser.Email : '';
                 if (evt.send()) {
                     // successful callout
+                    response.returnValuesMap.put('body', evt.eventResponse);
                     response.message = 'Successfully recorded transaction ' + params.transactionNumber;
                     response.returnValuesMap.put('id', evt.eventResponse.data.id);
                     response.returnValuesMap.put('points', evt.eventResponse.data.points);
                 } else {
                     // unsuccessful callout
                     response.isSuccess = false;
+                    response.returnValuesMap.put('body', evt.getBody());
                     if (evt.eventResponse != null) {
                         response.message = evt.eventResponse.data.message;
                     } else {
                         response.message = evt.jsonError;
                     }
                 }
+                response.returnValuesMap.put('statusCode', evt.getStatusCode());
             } catch (Exception e) {
                 throw new AuraHandledException(e.getMessage());
             }
@@ -150,6 +153,8 @@ public with sharing class trac_RecordTransactionController {
         if (params.exclusionSubtotal == null) {
             params.exclusionSubtotal = 0.00;
         }
+
+        response.returnValuesMap.put('validForm', response.isSuccess);
 
         return response.isSuccess;
     }
