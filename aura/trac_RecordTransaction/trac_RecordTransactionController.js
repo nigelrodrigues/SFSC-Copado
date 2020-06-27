@@ -20,20 +20,20 @@
         var totalEarnValue = ((TransactionSubtotal - SubtotalExcludedItems) * tier_multiplier);
         cmp.set('v.totalEarnValue', totalEarnValue);
     },
-    handleSubmit: function(cmp, event, helper) {
 
+    handleSubmit: function(cmp, event, helper) {
         if (helper.validateForm(cmp)) {
-            helper.submitRecordTransaction(cmp);
+            helper.submitRecordTransaction(cmp, helper);
+
         }
     },
-
     handleCancel: function(cmp, event, helper) {
         helper.close(cmp);
     },
+
     doneRendering: function(cmp, event, helper) {
         //window.scrollTo(0,480);
         //scrollTo({top: 480, behavior: "smooth"});
-
 
     }
 });

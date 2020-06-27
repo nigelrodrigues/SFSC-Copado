@@ -1,8 +1,8 @@
 /**
  * Created by gtorres on 6/5/2020.
  */
-({
 
+({
 
     validateForm: function(cmp) {
         var result = true;
@@ -35,8 +35,8 @@
         cmp.set('v.openButton', null);
         cmp.destroy();
     },
-    showToast: function(message, type, title, duration) {
 
+    showToast: function(message, type, title, duration) {
 
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
@@ -53,6 +53,8 @@
         }
         resultsToast.fire();
     },
+
+
     showErrorSummary: function(cmp, message, returnValuesMap) {
         cmp.set("v.showError", true);
         cmp.set("v.errorMessage", message);
@@ -68,9 +70,9 @@
             cmp.set("v.errorDetails", details);
         }
     },
-
     submitRecordTransaction: function(cmp, helper) {
         cmp.set('v.spinner', true);
+
 
         var action = cmp.get('c.recordTransaction');
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
@@ -78,9 +80,9 @@
         var transactionNumber = '';
         var transactionDate = cmp.find("TransactionDate").get("v.value");
 
+
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
-
         if (transactionOrigin === 'Website') {
             orderNumber = cmp.find("OrderNumber").get("v.value");
             transactionNumber = cmp.find("TransactionNumber").get("v.value");
@@ -108,11 +110,12 @@
         action.setParams({
             "params": myRecordTransactionParameters
         });
-
         cmp.set("v.showError", false);
+
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
             var result = response.getReturnValue();
+
             if (!helper.isMerkleErrorHandled(cmp, cmp.getReference("c.handleSubmit"), response) ) {
                 if(result.isSuccess && result.returnValuesMap['body']['success']) {
                     this.proceedWithSuccessfulTransaction(cmp, transactionSubtotal, exclusionSubtotal, result);
@@ -121,6 +124,7 @@
                     this.showErrorSummary(cmp, result.message, result.returnValuesMap);
                 }
             }
+
         });
         $A.enqueueAction(action);
     },
@@ -143,8 +147,8 @@
                             this.showToast(result.message, 'success', 'Transaction Submitted');
                         }
 
+
         appEvent.fire();
         this.close(cmp);
     }
-
 });
