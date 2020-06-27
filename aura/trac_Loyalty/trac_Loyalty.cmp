@@ -15,6 +15,9 @@
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
+
+    <aura:handler name="trac_MerkleErrorEvent" event="c:trac_MerkleErrorEvent" action="{!c.handleMerkleErrorEvent}"/>
+
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.handleSaveChanges}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
@@ -96,9 +99,7 @@
                     <lightning:input
                             label="Email"
                             type="email"
-
                             aura:id="emailInput"
-
                             value="{!v.email}"
                             placeholder="example@hbc.com"
                             messageWhenValueMissing="Email cannot be empty"
@@ -163,11 +164,9 @@
                     </aura:set>
                 </aura:if>
 
-
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
 
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
@@ -182,8 +181,6 @@
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
-
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">AirMiles Link</p>
                 <aura:if isTrue="{!v.loyalty.linked_partnerships}">
@@ -299,6 +296,7 @@
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
                     <div class="header-column">
 
+
                         <p class="field-title slds-form-element__label slds-no-flex">Last Year's Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.member_attributes.ly_tier))}">
                             <p>{!v.loyalty.member_attributes.ly_tier}</p>
@@ -336,7 +334,9 @@
             <c:trac_EscalateToLoyaltyTeam caseRecord="{!v.caseRecord}" />
         </lightning:layoutItem>
     </lightning:layout>
-    <div aura:id="divRecordTransaction">
+
+    <div aura:id="divBody">
+
         {!v.body}
     </div>
 </aura:component>

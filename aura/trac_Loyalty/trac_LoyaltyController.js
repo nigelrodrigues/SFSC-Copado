@@ -10,8 +10,8 @@
         $A.createComponent(
             "c:trac_IssueAppeasement",
             {
-
                 loyalty: cmp.get('v.loyalty'),
+
                 conversionRate: cmp.get('v.conversionRate'),
                 caseRecord: cmp.get('v.caseRecord')
 
@@ -38,18 +38,18 @@
             }
         );
 
-    },
 
+    },
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
-        let container = cmp.find("divRecordTransaction");
+
+        let container = cmp.find("divBody");
+
         $A.createComponent(
             "c:trac_RecordTransaction",
             {
                 loyalty: cmp.get('v.loyalty'),
-
                 caseRecordId: cmp.get('v.caseRecord.Id'),
-
                 openButton: openButton
             },
             function(newComponent, status) {
@@ -61,8 +61,6 @@
                 }
             });
     },
-
-
     handleSaveChanges: function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var firstName = component.get('v.firstName')
@@ -102,5 +100,34 @@
         component.set('v.email', email)
     },
 
+    handleMerkleErrorEvent : function(cmp, event) {
+        var modalId = 'merkleCommonErrorModal';
+        var canRetry = event.getParam('canRetry');
+        var reattempt = event.getParam('reattempt');
+        var bodyMsg = event.getParam('bodyMsg');
+        var responseCode = event.getParam('responseCode');
+        var container = cmp.find('divBody');
+        var currentModal = cmp.find(modalId);
+        if (currentModal != null) {
+            currentModal.destroy();
+        }
+        $A.createComponent(
+            'c:trac_MerkleErrorComponent',
+            {
+                'aura:id': modalId,
+                canRetry: canRetry,
+                reattempt: reattempt,
+                bodyMsg: bodyMsg,
+                responseCode: responseCode,
+                isMerkleError: true
+            },
+            function(newComponent, status) {
+                if (status === 'SUCCESS') {
+                    let body = container.get('v.body');
+                    body.push(newComponent);
+                    container.set('v.body', body);
+                }
+            });
+    },
 
 });
