@@ -39,7 +39,7 @@
                         }
                     }
                 } else {
-                    reject(new Error(response.getError()));
+                   reject(new Error(response.getError()));
                 }
             });
             $A.enqueueAction(action);
@@ -66,7 +66,7 @@
                 component.set("v.responseCode",  statusCode);
                 component.set("v.bodyMsg", str);
                 component.set("v.isMerkleError", true);
-            }
+             }
         } else {
             component.set("v.isError", true);
             component.set("v.errorMsg", error.message);
