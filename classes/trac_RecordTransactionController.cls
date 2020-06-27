@@ -8,6 +8,8 @@ public with sharing class trac_RecordTransactionController {
 
 
 
+
+
     private static final String DATETIME_FORMAT = 'yyyy-MM-dd HH:mm:ss z';
 
     /**
@@ -39,6 +41,8 @@ public with sharing class trac_RecordTransactionController {
                 evt.eventId = params.transactionNumber;
                 evt.originatedAt = params.transactionDateObj.formatGmt(DATETIME_FORMAT);
 
+
+
                 switch on params.transactionOrigin.toLowerCase() {
                     when 'website' {
                         evt.detail = 'Manual points award for order ' + params.orderNumber;
@@ -58,20 +62,26 @@ public with sharing class trac_RecordTransactionController {
                 if (evt.send()) {
                     // successful callout
 
+                    response.returnValuesMap.put('body', evt.eventResponse);
+
                     response.message = 'Successfully recorded transaction ' + params.transactionNumber;
                     response.returnValuesMap.put('id', evt.eventResponse.data.id);
                     response.returnValuesMap.put('points', evt.eventResponse.data.points);
                 } else {
                     // unsuccessful callout
                     response.isSuccess = false;
+
+                    response.returnValuesMap.put('body', evt.getBody());
+
                     if (evt.eventResponse != null) {
                         response.message = evt.eventResponse.data.message;
                     } else {
                         response.message = evt.jsonError;
 
-
                     }
                 }
+                response.returnValuesMap.put('statusCode', evt.getStatusCode());
+
             } catch (Exception e) {
                 throw new AuraHandledException(e.getMessage());
             }
@@ -81,6 +91,8 @@ public with sharing class trac_RecordTransactionController {
 
         return response;
     }
+
+
 
 
     private static User getUser(Id userId) {
@@ -100,6 +112,8 @@ public with sharing class trac_RecordTransactionController {
         ];
         return (!cases.isEmpty()) ? cases[0] : null;
     }
+
+
 
 
     private static Boolean validateParams(RecordTransactionParameters params, TLAuraResponse response) {
@@ -134,6 +148,8 @@ public with sharing class trac_RecordTransactionController {
             trnDatetime = trac_WS_LoyaltyUtils.parseDateString(params.transactionDate);
 
 
+
+
             Date trnDate = trnDatetime == null ? null : Date.newinstance(trnDatetime.year(), trnDatetime.month(), trnDatetime.day());
             if (trnDatetime == null) {
                 // failed to parse transactionDate
@@ -142,6 +158,8 @@ public with sharing class trac_RecordTransactionController {
             } else if (trnDate > System.today()) {
                 response.isSuccess = false;
                 response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be future: ' + params.transactionDate);
+
+
 
 
             } else {
@@ -163,14 +181,20 @@ public with sharing class trac_RecordTransactionController {
             params.exclusionSubtotal = 0.00;
         }
 
+
+        response.returnValuesMap.put('validForm', response.isSuccess);
+
+
         return response.isSuccess;
     }
 
     public class RecordTransactionParameters {
         @AuraEnabled
 
+
         public String caseRecordId {get; set;}
         @AuraEnabled
+
 
         public String loyaltyNumber {get; set;}
         @AuraEnabled
