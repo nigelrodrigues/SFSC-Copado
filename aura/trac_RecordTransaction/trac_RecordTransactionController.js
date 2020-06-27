@@ -19,19 +19,6 @@
     },
 
     handleSubmit: function(cmp, event, helper) {
-        /*
-        cmp.getEvent('trac_MerkleErrorEvent')
-            .setParams({
-                'canRetry': true,
-                'reattempt': cmp.getReference("c.handleRetry"),
-                'bodyMsg': 'body message',
-                'responseCode': 1234
-            })
-            .fire();
-
-        alert(helper.isValidResponse(200));
-
-         */
         if (helper.validateForm(cmp)) {
             helper.submitRecordTransaction(cmp, helper);
         }
