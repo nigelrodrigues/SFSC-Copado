@@ -1,0 +1,116 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @date 4-June-2020
+ - @description To display the customer's transaction history (Event History)
+ -->
+
+<aura:component description="trac_LoyaltyTransactionHistory"
+                controller="trac_EventController"
+                extends="c:trac_BaseComponent"
+>
+    <aura:attribute name="emailInput"        type="String" />
+    <aura:attribute name="customerIdInput"   type="String" />
+    <aura:attribute name="transactions"      type="Object" />
+    <aura:attribute name="showModal"         type="Boolean" default="false"/>
+    <aura:attribute name="showDetails"       type="Boolean" default="false"/>
+    <aura:attribute name="recordsToDisplay"  type="Integer" default="20" />
+    <aura:attribute name="totalRecords"      type="Integer" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:handler name="TractionComponentEvent" event="c:trac_TransactionHistoryEvent" action="{!c.openModal}"/>
+
+    <lightning:accordion aura:id="accordion">
+        <div class="slds">
+            <table class="slds-table slds-table_bordered" style="table-layout: fixed;">
+                <thead>
+                <tr>
+                    <th scope="col" class="slds-size--1-of-12">
+                        <div></div>
+                    </th>
+                    <th scope="col" class="slds-size--3-of-12">
+                        <div class="slds-truncate">Processed</div>
+                    </th>
+                    <th scope="col" class="slds-size--6-of-12">
+                        <div class="slds-truncate slds-grid">Description</div>
+                    </th>
+                    <th scope="col" class="slds-size--2-of-12">
+                        <div class="slds-truncate slds-float_right">Value</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <aura:if isTrue="{!not(empty(v.transactions.data))}">
+                        <c:trac_DisplayTransaction transactionValues="{!v.transactions.data}" />
+                    <aura:set attribute="else">
+                        <tr>
+                            <td colspan="4" style="text-align:center;">
+                                No Transaction History available
+                            </td>
+                        </tr>
+                    </aura:set>
+                </aura:if>
+                </tbody>
+            </table>
+        </div>
+    </lightning:accordion>
+
+    <aura:if isTrue="{!v.showModal}">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate slds-p-right_xx-small">
+                        <lightning:icon iconName="standard:timesheet" alternativeText="Transactions" title="Transactions" />
+                        Transaction History: Displaying {!v.recordsToDisplay} of {!v.totalRecords} records
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="c-container">
+                        <lightning:layout>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="custom-box"></div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="custom-box"><b>Process Date</b></div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="custom-box"><b>Origination Date</b></div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="4">
+                                <div class="custom-box"><b>Description</b></div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="custom-box"><b>Points Redeemed</b></div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="custom-box"><b>Points Earned</b> </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="1">
+                                <div class="slds-clearfix">
+                                    <div class="slds-float_right">
+                                        <b>Net Points</b>
+                                    </div>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="2">
+                                <div class="custom-box"></div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+
+                        <aura:iteration items="{!v.transactions.data}" var="transactionData" indexVar="variableIndex">
+                            <aura:if isTrue="{!lessthan(variableIndex,v.recordsToDisplay)}">
+                                <c:trac_LoyaltyTransactionHistoryRow transactionData="{!transactionData}" />
+                            </aura:if>
+                        </aura:iteration>
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="View More" variant="brand" disabled="{!v.recordsToDisplay >= v.totalRecords}" onclick="{!c.displayMoreRecords}"/>
+                    <lightning:button label="Close" variant="neutral" onclick="{!c.closeModal}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+
+</aura:component>

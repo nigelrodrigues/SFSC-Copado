@@ -1,12 +1,16 @@
-<aura:component description="trac_CloseLoyaltyAccount" extends="c:trac_BaseComponent" controller="trac_LoyaltyController" >
+<aura:component description="trac_CloseLoyaltyAccount" extends="c:trac_BaseComponent" controller="trac_CloseLoyaltyAccountController" >
     <aura:attribute name="loyalty" type="Object"/>
 	<aura:attribute name="isModalOpen" type="boolean" default="false"/>
     <aura:attribute name="isSuccess" type="boolean" default="false"/>
     <aura:attribute name="isClose" type="boolean" default="false"/>
-    <aura:attribute name="message" type="string" default="Close loyalty account? All points associated with this account will be removed. Continue?"/>
+    <aura:attribute name="message" type="string" default="All points associated with a Loyalty account will be removed when the account is closed. Are you sure you want to close this Loyalty account?"/>
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
 
-
+    <aura:attribute type="Integer"  name="responseCode"  default=""/>
+    <aura:attribute type="String"  name="bodyMsg"  default=""/>
+    <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
+    <aura:attribute type="Boolean" name="canRetry"   default="false"/>
+    <c:trac_MerkleErrorComponent reattempt="{!c.closeAccount}" isMerkleError="{!v.isMerkleError}" canRetry="{!v.canRetry}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
 
     <div>
         <lightning:layoutItem padding="around-small">

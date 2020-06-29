@@ -71,6 +71,11 @@
         <visible>true</visible>
     </applicationVisibilities>
     <applicationVisibilities>
+        <application>guar__GUAR_Admin</application>
+        <default>false</default>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>standard__Chatter</application>
         <default>false</default>
         <visible>true</visible>
@@ -696,6 +701,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TestIntegration</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>UpdateOff5</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -2892,6 +2901,26 @@
     </classAccesses>
     <classAccesses>
         <apexClass>fflib_SecurityUtilsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>guar__GuestAccessReportController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>guar__GuestAccessReportControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>guar__GuestAccessReportHelperWS</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>guar__guarAdminController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>guar__guarAdminControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -8658,6 +8687,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>User.Agent_Hire_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>User.Agent_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14924,6 +14958,10 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>copado__viewOrg</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>guar__GuestAccessReport</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
