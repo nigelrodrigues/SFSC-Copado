@@ -2936,9 +2936,6 @@ var copadoGitMetadataStep = {
             }, {
                 name: 't',
                 type: 'string'
-            },{
-                name: 'vk',
-                type: 'string'
             }],
             datatype: 'array',
             updaterow: function(rowid, rowdata, commit) {
@@ -3367,7 +3364,6 @@ rock.getSelectedObj = function() {
         data[len].s && rock.selectedNames.push({
             t: data[len].t,
             n: data[len].n,
-            vk: data[len].vk,
             s: true
         });
     }
@@ -5509,19 +5505,21 @@ dw.qb.testQuery = function(e) {
         return false;
     }
     var idCount = queryFields.match(/\b(id)\b/gim);
-    if (!idCount) {
+    var attachmentOptionsValue = dw.qb.ui.attachmentOptions.val();
+    var matchOwnerFieldVal = dw.qb.ui.matchOwner.prop('checked');
+    var recordTypeFieldVal = dw.qb.ui.matchRecordType.prop('checked');
+    
+    if (!idCount && (matchOwnerFieldVal || recordTypeFieldVal || (attachmentOptionsValue && attachmentOptionsValue != "none"))) {
         copadoApp.showMessage('ERROR', copadoLabels.SOQL_HASNOT_ID_ERROR);
         return false;
     }
 
-    var matchOwnerFieldVal = dw.qb.ui.matchOwner.prop('checked');
     //check query has ownerId
     if (matchOwnerFieldVal && queryFields.indexOf('OwnerId') === -1) {
         copadoApp.showMessage('ERROR', copadoLabels.MATCH_OWNER_WARNING);
         return false;
     }
 
-    var recordTypeFieldVal = dw.qb.ui.matchRecordType.prop('checked');
     //check query has ownerId
     if (recordTypeFieldVal && queryFields.indexOf('RecordTypeId') === -1) {
         copadoApp.showMessage('ERROR', copadoLabels.MATCH_RECORD_TYPE_WARNING);

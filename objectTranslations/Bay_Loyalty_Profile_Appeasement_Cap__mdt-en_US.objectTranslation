@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bay Loyalty Profile Appeasement Cap</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bay Loyalty Profile Appeasement Caps</value>
+    </caseValues>
+    <fields>
+        <help></help>
+        <label></label>
+        <name>Max_Appeasement__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,119 @@
+@IsTest
+public with sharing class trac_CloseLoyaltyAccountControllerTest {
+    @IsTest
+    static void testUpdateLoyaltyPoints() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('update'));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = '1200657659';
+        Integer points = -100;
+        String eventType = 'closed_account';
+        trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_CloseLoyaltyAccountController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('body');
+        System.assert(res.success == true, 'update loyalty points successfully.');
+    }
+
+    @IsTest
+    static void testUpdateLoyaltyPointsFail() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('update.fail'));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = '1200657659';
+        Integer points = -100;
+        String eventType = 'close_member';
+        trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_CloseLoyaltyAccountController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('body');
+        System.assert(res.success == false, 'failed to update loyalty points successfully.');
+        System.assert(res.data.code == 601, 'failed to update loyalty points successfully.');
+    }
+
+    @IsTest
+    static void testUpdateLoyaltyPointsFailRequest() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty(null));
+        String email = null;
+        String loyaltyId = null;
+        Integer points = -100;
+        String eventType = null;
+        trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_CloseLoyaltyAccountController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('body');
+        System.assert(res == null, 'could not update loyalty points successfully.');
+    }
+
+    @IsTest
+    static void testUpdateLoyaltyPointsFailRequestEmail() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty(null));
+        String email = null;
+        String loyaltyId = '124234567';
+        Integer points = -100;
+        String eventType = null;
+        trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_CloseLoyaltyAccountController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('body');
+        System.assert(res == null, 'could not update loyalty points successfully.');
+    }
+
+    @IsTest
+    static void testUpdateLoyaltyPointsFailRequestEvent() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty(null));
+        String email = 'someemail@hbc.com';
+        String loyaltyId = '124234567';
+        Integer points = -100;
+        String eventType = null;
+        trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_CloseLoyaltyAccountController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('body');
+        System.assert(res == null, 'could not update loyalty points successfully.');
+    }
+
+    @IsTest
+    static void testUpdateLoyaltyPointsException() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('customer/show.exception'));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = '1200657659';
+        Integer points = -100;
+        String eventType = 'close_member';
+        try{
+            trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse res = (trac_WS_RecordLoyaltyEvent.RecordLoyaltyEventResponse) trac_CloseLoyaltyAccountController.updateLoyaltyPoints(loyaltyId, email, points, eventType).returnValuesMap.get('body');
+
+        } catch (Exception e) {
+            System.assert(e.getMessage() != null, 'exception thrown.');
+        }
+    }
+
+    @IsTest
+    static void testPauseLoyalty() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('pause'));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = '1200657659';
+        String close_member = '1';
+        trac_WS_PauseLoyalty.PauseResponse res = (trac_WS_PauseLoyalty.PauseResponse) trac_CloseLoyaltyAccountController.pauseLoyalty(loyaltyId, email, close_member).returnValuesMap.get('body');
+        System.assert(res.success == true, 'paused loyalty successfully.');
+        System.assert(res.data == null, 'paused loyalty successfully.');
+    }
+
+    @IsTest
+    static void testPauseLoyaltyFail() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('pause.fail'));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = '1200657659';
+        String close_member = '1';
+        String res = (String) trac_CloseLoyaltyAccountController.pauseLoyalty(email, loyaltyId, close_member).returnValuesMap.get('body');
+        System.assert(res != null, 'failed to pause loyalty.');
+    }
+
+    @IsTest
+    static void testPauseLoyaltyFailRequest() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty(null));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = '1200657659';
+        String close_member = '1';
+        String res = (String) trac_CloseLoyaltyAccountController.pauseLoyalty(loyaltyId, email, close_member).returnValuesMap.get('body');
+        System.assert(res == '', 'failed to send request.');
+    }
+
+    @IsTest
+    static void testPauseLoyaltyException() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('customer/show.exception'));
+        String email = 'wassim1002@hbc.com';
+        String loyaltyId = '1200657659';
+        String close_member = '1';
+
+        try{
+            String res = (String) trac_CloseLoyaltyAccountController.pauseLoyalty(loyaltyId, email, close_member).returnValuesMap.get('body');
+
+        } catch (Exception e) {
+            System.assert(e.getMessage() != null, 'exception thrown.');
+        }
+    }
+}

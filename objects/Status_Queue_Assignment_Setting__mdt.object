@@ -176,6 +176,11 @@
                     <label>POS Gift Card Processing</label>
                 </value>
                 <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
                     <fullName>Borderfree Transfer</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -389,6 +394,11 @@
                     <fullName>Call Tag</fullName>
                     <default>false</default>
                     <label>Call Tag</label>
+                </value>
+                <value>
+                    <fullName>Rewards Escalation</fullName>
+                    <default>false</default>
+                    <label>Rewards Escalation</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1279,6 +1289,66 @@
                     <default>false</default>
                     <label>Did not receive gift with purchase</label>
                 </value>
+                <value>
+                    <fullName>Associate Loyalty Issue</fullName>
+                    <default>false</default>
+                    <label>Associate Loyalty Issue</label>
+                </value>
+                <value>
+                    <fullName>CASL Issue</fullName>
+                    <default>false</default>
+                    <label>CASL Issue</label>
+                </value>
+                <value>
+                    <fullName>Enrollment Issue</fullName>
+                    <default>false</default>
+                    <label>Enrollment Issue</label>
+                </value>
+                <value>
+                    <fullName>Missing Bonus Points</fullName>
+                    <default>false</default>
+                    <label>Missing Bonus Points</label>
+                </value>
+                <value>
+                    <fullName>Missing Partner Points</fullName>
+                    <default>false</default>
+                    <label>Missing Partner Points</label>
+                </value>
+                <value>
+                    <fullName>Point Conversion Issue</fullName>
+                    <default>false</default>
+                    <label>Point Conversion Issue</label>
+                </value>
+                <value>
+                    <fullName>Point Redemption Fraud</fullName>
+                    <default>false</default>
+                    <label>Point Redemption Fraud</label>
+                </value>
+                <value>
+                    <fullName>Promo Opt In</fullName>
+                    <default>false</default>
+                    <label>Promo Opt In</label>
+                </value>
+                <value>
+                    <fullName>Promo Opt Out</fullName>
+                    <default>false</default>
+                    <label>Promo Opt Out</label>
+                </value>
+                <value>
+                    <fullName>Rewards Promo Not Working</fullName>
+                    <default>false</default>
+                    <label>Rewards Promo Not Working</label>
+                </value>
+                <value>
+                    <fullName>Tier Change</fullName>
+                    <default>false</default>
+                    <label>Tier Change</label>
+                </value>
+                <value>
+                    <fullName>Goodwill Points</fullName>
+                    <default>false</default>
+                    <label>Goodwill Points</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1977,6 +2047,11 @@
                     <fullName>Wrong Order Received - Refund</fullName>
                     <default>false</default>
                     <label>Wrong Order Received - Refund</label>
+                </value>
+                <value>
+                    <fullName>Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Requires Approval</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
