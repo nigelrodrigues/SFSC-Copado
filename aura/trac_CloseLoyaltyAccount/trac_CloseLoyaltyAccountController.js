@@ -17,10 +17,17 @@
    },
   
    closeAccount: function(component, event, helper) {
-      // Set isModalOpen attribute to false
-      //Add your code to call apex method or do some processing
+
+      if(component.get('v.isMerkleError') == true) {
+          component.set("v.isMerkleError", false);
+          component.set("v.isModalOpen", true);
+      }
+
       var loyalty = component.get('v.loyalty')
-      helper.updateLoyaltyPoints(component, event, helper, loyalty, -Math.abs(loyalty.balance), 'closed_account')
-      helper.pauseAccount(component, event, helper, loyalty)
+      var points = loyalty.balance <= 0 ? 0 : -Math.abs(loyalty.balance)
+
+      helper.pauseAccount(component, event, helper, loyalty, '1')
+      .catch(error => helper.handleError(component, helper, error))
+
    }
 })

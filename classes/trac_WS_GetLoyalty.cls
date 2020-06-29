@@ -39,12 +39,15 @@ public class trac_WS_GetLoyalty {
         additionalHeaders.put('x-api-key', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_API_Key__c);
         additionalHeaders.put('x-apigw-api-id', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_APIGW_API_ID__c);
 
-        res = trac_WS_WebServiceHelper.sendGetRequest(ENDPOINT, params, false, additionalHeaders);
+        Integer timeout = 5000;
+        res = trac_WS_WebServiceHelper.sendGetRequest(ENDPOINT, params, false, additionalHeaders, timeout);
+
         System.debug('res: ' + res);
+
         System.debug('res.getBody(): ' + res.getBody());
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             loyaltyResponse = parse(res.getBody());
-            success = true;
+            success = loyaltyResponse.success;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
             System.debug('Error: ' + trac_WS_WebServiceHelper.getError(res));
@@ -53,12 +56,12 @@ public class trac_WS_GetLoyalty {
         return success;
     }
 
-    public Boolean isNotFound() {
-        return res.getStatusCode() == 404 ? true : false;
-    }
-
     public Integer getStatusCode() {
         return res.getStatusCode();
+    }
+
+    public String getBody() {
+        return res.getBody();
     }
 
     private String getEndpoint() {
@@ -72,6 +75,8 @@ public class trac_WS_GetLoyalty {
     }
 
     public class res_LoyaltyWrapper {
+        @AuraEnabled public Integer code;
+        @AuraEnabled public String message;
         @AuraEnabled public String channel;
         @AuraEnabled public String created_at;
         @AuraEnabled public String email;
