@@ -8,6 +8,7 @@
         var TransactionSubtotal = cmp.find("TransactionSubtotal").get("v.value");
         var SubtotalExcludedItems = cmp.find("SubtotalExcludedItems").get("v.value");
 
+
         var tier = cmp.get('v.loyalty.top_tier_name').toLowerCase();
         var tier_multiplier = 1;
         if (tier === 'hudson\'s bay rewards plus') {
@@ -22,7 +23,8 @@
 
     handleSubmit: function(cmp, event, helper) {
         if (helper.validateForm(cmp)) {
-            helper.submitRecordTransaction(cmp);
+            helper.submitRecordTransaction(cmp, helper);
+
         }
     },
     handleCancel: function(cmp, event, helper) {
