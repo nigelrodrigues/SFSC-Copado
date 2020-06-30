@@ -4,11 +4,16 @@
     <name>Bay Chat - English Supervisor</name>
     <queueMembers>
         <users>
+            <user>evamie.villasola@hbc.com</user>
             <user>jamaica.laborada@hbc.com</user>
             <user>jhoran@tractionondemand.com.hbc</user>
+            <user>jhade.simbajon@hbc.com</user>
+            <user>karyl.deiparine-vendor@hbc.com</user>
             <user>kyla.leyson@hbc.com</user>
+            <user>mariell.lebodego@hbc.com</user>
             <user>mary.capuyan@hbc.com</user>
             <user>richard.panal@hbc.com</user>
+            <user>rodiel.martinez-vendor@hbc.com</user>
         </users>
     </queueMembers>
     <queueRoutingConfig>Chat_English</queueRoutingConfig>
