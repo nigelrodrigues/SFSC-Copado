@@ -2,12 +2,15 @@
     getConversionRateHelper: function(component, helper) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.isMerkleError", false);
+
         var action = component.get("c.getConversionRate");
+
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
                 var state = response.getState();
                 if (component.isValid() && state === "SUCCESS") {
+
                     var result = response.getReturnValue();
                     if (result == null) {
                         reject(new Error("Connection Error"));
@@ -34,6 +37,8 @@
                             reject(error)
                         }
                     }
+
+
                 }
                 else {
                    reject(response);
@@ -43,10 +48,10 @@
         });
     },
 
-
     isValidResponse: function (res) {
         return res != null && (res == 200 || res == 201 || res == 204);
     },
+
     handleError : function(component, helper, error) {
         if(error.isMerkleError) {
             var statusCode = error.statusCode
