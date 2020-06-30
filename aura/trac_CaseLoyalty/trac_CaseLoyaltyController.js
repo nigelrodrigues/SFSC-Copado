@@ -1,11 +1,13 @@
 ({
+
+
     init : function(component, event, helper) {
         helper.getConversionRateHelper(component, helper)
         .catch(error => helper.handleError(component, helper, error))
     },
 
-    isEditableToggle : function(component, event, helper) {
 
+    isEditableToggle : function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var appEvent = $A.get("e.c:trac_EditLoyaltyApplicationEvent");
         appEvent.setParams({
@@ -14,20 +16,31 @@
             'email' : loyalty.email
         });
         appEvent.fire();
+
+
         var isEditable = !component.get('v.isEditable')
         component.set('v.isEditable', isEditable)
     },
     goBack : function(component, event, helper) {
-        component.set('v.refreshSearch', false);
-        component.set('v.loyalty', null)
-        component.set('v.isEditable', false)
+        component.find("Id_spinner").set("v.class" , 'slds-show');
+        var caseRecord = component.get('v.caseRecord');
+        var action = component.get('c.unsetCustomerLoyaltyId');
+        action.setParams({caseId: caseRecord.Id});
+        action.setCallback(this, function (response) {
+            component.find("Id_spinner").set("v.class" , 'slds-hide');
+            component.set('v.refreshSearch', false);
+            component.set('v.loyalty', null)
+            component.set('v.isEditable', false)
+        });
+        $A.enqueueAction(action);
     },
-
 
     handleValueChange : function (component, event, helper) {
         var isEditable = component.get('v.isEditable')
         var displayButtonText = (isEditable) ? "Cancel" : "Edit"
         component.set('v.editButtonText', displayButtonText)
+
+
     },
     handleLoyaltyRefreshEvent : function(component, event) {
         var LoyaltyNumberFromParam = event.getParam("LoyaltyNumber");
@@ -37,4 +50,6 @@
             component.set('v.refreshSearch', true);
         }
     },
+
+
 })

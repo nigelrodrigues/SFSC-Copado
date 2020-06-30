@@ -3,9 +3,9 @@
  */
 ({
     addPaymentMethod: function (component, event, helper) {
-        let fields = event.getParam('fields');
+        let fields        = event.getParam('fields');
         let paymentMethod = component.get("v.paymentMethod");
-        let order = component.get("v.order");
+        let order         = component.get("v.order");
 
         if (paymentMethod && fields && order) {
             paymentMethod.ChargeType = "AUTHORIZATION";
@@ -16,16 +16,15 @@
             if (!component.get("v.useExistingBillingAddress")) {
                 paymentMethod.PersonInfoBillTo.FirstName = fields.FirstName;
                 paymentMethod.PersonInfoBillTo.LastName = fields.LastName;
-                paymentMethod.PersonInfoBillTo.EMailID = fields.Email;
-                paymentMethod.PersonInfoBillTo.DayPhone = fields.Phone;
+                paymentMethod.PersonInfoBillTo.EMailID = order.PersonInfoBillTo.EMailID;
+                paymentMethod.PersonInfoBillTo.DayPhone = order.PersonInfoBillTo.MobilePhone;
 
                 paymentMethod.PersonInfoBillTo.Country = fields.OtherCountryCode;
                 paymentMethod.PersonInfoBillTo.State = fields.OtherStateCode;
                 paymentMethod.PersonInfoBillTo.ZipCode = fields.OtherPostalCode;
                 paymentMethod.PersonInfoBillTo.City = fields.OtherCity;
                 paymentMethod.PersonInfoBillTo.AddressLine1 = fields.OtherStreet;
-            }
-            else {
+            } else {
                 paymentMethod.PersonInfoBillTo.FirstName = order.PersonInfoBillTo.FirstName;
                 paymentMethod.PersonInfoBillTo.LastName = order.PersonInfoBillTo.LastName;
                 paymentMethod.PersonInfoBillTo.EMailID = order.PersonInfoBillTo.EMailID;
@@ -42,20 +41,17 @@
             if (creditCardNumber && creditCardNumber.length >= 4) {
                 creditCardNumber = creditCardNumber.replace(/ +?/g, '');
                 paymentMethod.DisplayCreditCardNo = creditCardNumber.substr(creditCardNumber.length - 4);
-            }
-            else
-            {
+            } else {
                 paymentMethod.DisplayCreditCardNo = '';
             }
 
-            var paymentType = component.get('v.paymentMethod.PaymentType');
-            if(paymentType === 'GIFT_CARD') {
-                var giftCardNumber = component.find('giftCardNumber').get('v.value');
-                if(giftCardNumber) {
+            const paymentType = component.get('v.paymentMethod.PaymentType');
+            if (paymentType === 'GIFT_CARD') {
+                const giftCardNumber = component.find('giftCardNumber').get('v.value');
+                if (giftCardNumber) {
                     paymentMethod.DisplaySvcNo = giftCardNumber.substr(giftCardNumber.length - 4);
                 }
-            }
-            else{
+            } else {
                 paymentMethod.DisplaySvcNo = '';
             }
 
@@ -66,8 +62,7 @@
 
             if (giftCardTypes.includes(paymentMethod.PaymentType)) {
                 helper.addPaymentMethodEvent(component, event, helper);
-            }
-            else {
+            } else {
                 helper.tokenizeAndAddPaymentMethod(component, event, helper, paymentMethod);
             }
         }
@@ -75,17 +70,15 @@
 
     tokenizeAndAddPaymentMethod: function (component, event, helper) {
 
-        let paymentMethod = component.get("v.paymentMethod");
+        let paymentMethod    = component.get("v.paymentMethod");
         let creditCardNumber = component.get("v.creditCardNumber");
-        let maskedCC = component.get("v.maskedCCNumber");
-        let isEditMode = component.get("v.isEdit");
+        let maskedCC         = component.get("v.maskedCCNumber");
+        let isEditMode       = component.get("v.isEdit");
         if (!isEditMode) {
             helper.callApexToTokenize(component, event, helper, paymentMethod, creditCardNumber);
-        }
-        else if (maskedCC && creditCardNumber !== maskedCC) {
+        } else if (maskedCC && creditCardNumber !== maskedCC) {
             helper.callApexToTokenize(component, event, helper, paymentMethod, creditCardNumber);
-        }
-        else if (paymentMethod.CreditCardNo) {
+        } else if (paymentMethod.CreditCardNo) {
             helper.addPaymentMethodEvent(component, event, helper);
         }
     },
@@ -127,12 +120,10 @@
     },
 
     getGiftCardBalanceApex: function (component, event, helper) {
-        let apexAction = component.get("c.getGiftCardBalance");
-
-        const order = component.get("v.order");
-        const paymentMethod = component.get("v.paymentMethod");
-
-        let giftCard = component.get("v.giftCard");
+        let apexAction    = component.get("c.getGiftCardBalance");
+        let order         = component.get("v.order");
+        let paymentMethod = component.get("v.paymentMethod");
+        let giftCard      = component.get("v.giftCard");
 
         giftCard.number_x = paymentMethod.SvcNo;
         giftCard.pin = paymentMethod.GiftCardPin;
@@ -174,11 +165,10 @@
     addPaymentMethodEvent: function (component, event, helper) {
 
         let paymentMethod = component.get("v.paymentMethod");
-        let isEditMode = component.get("v.isEdit");
+        let isEditMode    = component.get("v.isEdit");
+        let appEvent      = $A.get("e.c:trac_PaymentMethodAddedEvent");
 
-        let appEvent = $A.get("e.c:trac_PaymentMethodAddedEvent");
-
-        if(isEditMode) {
+        if (isEditMode) {
             component.set("v.isEdit",false);
             let indexVal = component.get("v.indexVal");
             appEvent.setParams({
@@ -186,8 +176,7 @@
                 "mode": false,
                 "indexVar": indexVal
             });
-        }
-        else {
+        } else {
             component.set("v.isEdit",false);
             appEvent.setParams({
                 "paymentMethod": paymentMethod,
@@ -212,8 +201,5 @@
         component.set("v.paymentMethod.CVVAuthCode", "");
         component.find("paymentFieldFirstName").set("v.value", "");
         component.find("paymentFieldLastName").set("v.value", "");
-        component.find("paymentFieldEmail").set("v.value", "");
-        component.find("paymentFieldDayPhone").set("v.value", "");
-
     }
-})
+});
