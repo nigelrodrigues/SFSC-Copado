@@ -31,6 +31,9 @@
                             loyalty.next_tier_name = merkle.next_tier_name
                             loyalty.member_attributes.ytd_spend = merkle.member_attributes.ytd_spend
                             loyalty.member_attributes.ly_tier = merkle.member_attributes.ly_tier
+                            loyalty.first_name = merkle.first_name
+                            loyalty.last_name = merkle.last_name
+                            loyalty.email = merkle.email
                             resolve(loyalty)
                         } else if (helper.isValidResponse(statusCode)) {
                             var error = new Error(response.getError())
