@@ -41,7 +41,9 @@ public class trac_WS_GetLoyalty {
 
         Integer timeout = 5000;
         res = trac_WS_WebServiceHelper.sendGetRequest(ENDPOINT, params, false, additionalHeaders, timeout);
+
         System.debug('res: ' + res);
+
         System.debug('res.getBody(): ' + res.getBody());
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             loyaltyResponse = parse(res.getBody());

@@ -1,7 +1,9 @@
 public with sharing class trac_LoyaltySearchController {
     
     @AuraEnabled
+
     public static TLAuraResponse getLoyalty(String loyaltyId, String email, String recordId) {
+
         TLAuraResponse response = new TLAuraResponse(true);
         trac_WS_GetLoyalty request = new trac_WS_GetLoyalty();
 
@@ -31,10 +33,9 @@ public with sharing class trac_LoyaltySearchController {
                     Service__c = 'Loyalty Lookup'
             ));
             insert integrationError;
-
             String errorMessage = trac_WS_WebServiceHelper.DEFAULT_ERROR + integrationError.Id;
-
             throw new LoyaltySearchException(errorMessage);
+
         }
 
         return response;
@@ -50,6 +51,7 @@ public with sharing class trac_LoyaltySearchController {
         loyaltyUADRequest.loyalty_id = loyaltyId;
         loyaltyUADRequest.email = email;
         loyaltyUADRequest.phone_no = phoneNum;
+
         request.loyaltyUADRequest = loyaltyUADRequest;
 
         try {
@@ -67,9 +69,7 @@ public with sharing class trac_LoyaltySearchController {
                     Service__c = 'Loyalty Lookup'
             ));
             insert integrationError;
-
             String errorMessage = trac_WS_WebServiceHelper.DEFAULT_ERROR + integrationError.Id;
-
             throw new LoyaltySearchException(errorMessage);
         }
 
