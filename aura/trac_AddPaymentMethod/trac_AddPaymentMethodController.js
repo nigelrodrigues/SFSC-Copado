@@ -4,7 +4,6 @@
 ({
     handleInit: function (component, event, helper) {
         const order = component.get("v.order");
-
         let paymentMethod = {};
         let giftCard = {};
 
@@ -21,16 +20,18 @@
         component.set("v.isLoading", false);
         component.find("paymentFieldFirstName").set("v.value", "");
         component.find("paymentFieldLastName").set("v.value", "");
-        component.find("paymentFieldEmail").set("v.value", "");
         component.find("paymentFieldDayPhone").set("v.value", "");
-        },
+        component.find("paymentFieldEmail").set("v.value", "");
+    },
 
     handleAmount: function (component, event, helper) {
         let paymentRemaining = component.get("v.paymentRemaining");
-        var amt = component.get("v.paymentMethod.RequestAmount");
-        let amountError = component.find("reqAmt");
+        let amt              = component.get("v.paymentMethod.RequestAmount");
+        let amountError      = component.find("reqAmt");
+        let parseNum = (n) => !isNaN(n) ? parseFloat(n).toFixed(2).toString() : '0.00';
         if (amt > paymentRemaining) {
-            amountError.setCustomValidity("Amount cannot be greater than outstanding balance.");
+            amountError.setCustomValidity(
+                `Amount ($${parseNum(amt)}) cannot be greater than outstanding balance ($${parseNum(paymentRemaining)})`);
         } else {
             amountError.setCustomValidity("");
         }
@@ -41,24 +42,18 @@
         event.preventDefault();
         component.set("v.isLoading", true);
 
-        var paymentType = component.get('v.paymentMethod.PaymentType');
-        if(paymentType === 'GIFT_CARD') {
-            var amountDue = component.find('reqAmt').get('v.value');
-            var giftCardBalance = component.get("v.giftCardBalance");
+        let paymentType = component.get('v.paymentMethod.PaymentType');
+        if (paymentType === 'GIFT_CARD') {
+            let checkBalance    = component.find('checkBalance').get('v.value');
+            let amountDue       = component.find('reqAmt').get('v.value');
+            let giftCardBalance = component.get("v.giftCardBalance");
+            let displayWarning  = component.get('v.displayWarning');
+            let difference      = giftCardBalance ? amountDue - giftCardBalance : 0;
 
-            var difference = 0;
-            if (giftCardBalance) {
-                difference = amountDue - giftCardBalance;
-            }
-            var displayWarning = component.get('v.displayWarning');
-
-            var checkBalance = component.find('checkBalance').get('v.value');
-            if(checkBalance === 'Unknown')
-            {
+            if (checkBalance === 'Unknown') {
                 component.set("v.isError", true);
                 component.set("v.errorMsg", 'Please check the balance of gift card before saving.');
-            }
-            else if (difference > 0 && displayWarning) {
+            } else if (difference > 0 && displayWarning) {
                 component.set("v.isError", true);
                 component.set("v.heading", 'Notification: Balance Amount');
                 component.set("v.errorMsg", 'Gift card will be applied. Balance amount is ' + difference.toFixed(2).toString());
@@ -84,11 +79,21 @@
     },
 
     handlePaymentChange: function (component, event, helper) {
-
+        let paymentType = component.get('v.paymentMethod.PaymentType');
+        let cardType    = component.get('v.paymentMethod.CreditCardType');
+        console.log('p: ' + paymentType + ' and c: ' + cardType);
+        if (paymentType === 'GIFT_CARD') {
+            cardType = 'EGC';
+        } else if (paymentType === 'PVT_CREDIT_CARD') {
+            cardType = 'SAKS';
+        } else if (['EGC', 'SAKS', undefined].includes(cardType)) {
+            cardType = 'VISA';
+        }
+        console.log('p: ' + paymentType + ' and c: ' + cardType);
+        component.set('v.paymentMethod.CreditCardType', cardType);
     },
 
     handleCreditChange: function (component, event, helper) {
-
     },
 
     handleCheckBalance: function (component, event, helper) {
@@ -97,9 +102,9 @@
     },
 
     creditCardFormat: function (component, event, helper) {
-        let creditCardNo = component.get("v.creditCardNumber");
+        let creditCardNo   = component.get("v.creditCardNumber");
         let creditCardComp = component.find("creditCardNum");
-        let maskedCC = component.get("v.maskedCCNumber");
+        let maskedCC       = component.get("v.maskedCCNumber");
 
         if (creditCardNo && creditCardComp) {
             let creditCardNoWithoutSpaces = creditCardNo.split(" ").join("");
@@ -111,8 +116,8 @@
 
             let ccNumberWithSpaces = parts.join(" ");
 
-            if (ccNumberWithSpaces.length != 19 || ccNumberWithSpaces.includes("X")) {
-                creditCardComp.setCustomValidity("Credit Card number should be equals to 16 digits!");
+            if (ccNumberWithSpaces.length < 10|| ccNumberWithSpaces.includes("X")) {
+                creditCardComp.setCustomValidity("Credit Card number must be a valid length");
             } else {
                 component.set("v.creditCardNumber", ccNumberWithSpaces);
                 creditCardComp.setCustomValidity("");
@@ -140,16 +145,16 @@
     },
 
     onChangeCCHandler: function (component, event, helper) {
-        var ccNumber = component.get("v.creditCardNumber");
-        if (ccNumber.length == 4 || ccNumber.length == 9 || ccNumber.length == 14) {
+        let ccNumber = component.get("v.creditCardNumber");
+        if (ccNumber && [4, 9, 14].includes(ccNumber.length)) {
             ccNumber += ' ';
             component.set("v.creditCardNumber", ccNumber);
         }
     },
 
     onChangeExpiryHandler: function (component, event, helper) {
-        var ccExpiry = component.get("v.paymentMethod.CreditCardExpDate");
-        if (ccExpiry.length == 2) {
+        let ccExpiry = component.get("v.paymentMethod.CreditCardExpDate");
+        if (ccExpiry.length === 2) {
             ccExpiry += '/';
             component.set("v.paymentMethod.CreditCardExpDate", ccExpiry);
         }
@@ -166,7 +171,7 @@
                 let expiryComparison = new Date(enteredYear, enteredMonth);
 
                 if (expiryComparison < new Date()) {
-                    expiryError.setCustomValidity("Expiry date must be in the future!");
+                    expiryError.setCustomValidity("Expiration date must be in the future");
                 } else {
                     expiryError.setCustomValidity("");
                 }
@@ -177,7 +182,6 @@
 
     useExistingAddressChange: function (component, event, helper) {
         let useExisting = component.get("v.useExistingBillingAddress");
-        useExisting = !useExisting;
         component.set("v.useExistingBillingAddress", useExisting);
     },
 
@@ -187,10 +191,10 @@
     },
 
     updatePaymentRemaining: function (component, event, helper) {
-        var params = event.getParam('arguments');
+        let params = event.getParam('arguments');
         if (params) {
-            var paymentRemaining = params.paymentRemaining;
-            var paymentMethod = component.get("v.paymentMethod");
+            const paymentRemaining = params.paymentRemaining;
+            const paymentMethod    = component.get("v.paymentMethod");
 
             paymentMethod.RequestAmount = paymentRemaining.toFixed(2).toString();
 
@@ -199,7 +203,7 @@
     },
 
     handlePaymentEdit: function (component, event, helper) {
-        var paymentMethod = event.getParam("paymentMethod");
+        const paymentMethod = event.getParam("paymentMethod");
         component.set("v.indexVal", event.getParam("indexVal"));
 
         component.set("v.isModalOpen", true);
@@ -208,9 +212,9 @@
 
         component.find("paymentFieldFirstName").set("v.value", paymentMethod.PersonInfoBillTo.FirstName);
         component.find("paymentFieldLastName").set("v.value", paymentMethod.PersonInfoBillTo.LastName);
-        component.find("paymentFieldEmail").set("v.value", paymentMethod.PersonInfoBillTo.EMailID);
         component.find("paymentFieldDayPhone").set("v.value", paymentMethod.PersonInfoBillTo.DayPhone);
         component.find("paymentFieldAddress").set("v.value", "");
+        component.find("paymentFieldEmail").set("v.value", paymentMethod.PersonInfoBillTo.EMailID);
 
         let maskedCC = "XXXXXXXXXXXX" + paymentMethod.DisplayCreditCardNo;
         let maskedCCWithSpaces = "XXXX XXXX XXXX " + paymentMethod.DisplayCreditCardNo;
