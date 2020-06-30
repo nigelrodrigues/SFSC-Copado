@@ -28,6 +28,7 @@
         action.setParams({caseId: caseRecord.Id});
         action.setCallback(this, function (response) {
             component.find("Id_spinner").set("v.class" , 'slds-hide');
+            component.set('v.forceSearchRestart', true);
             component.set('v.refreshSearch', false);
             component.set('v.loyalty', null)
             component.set('v.isEditable', false)
