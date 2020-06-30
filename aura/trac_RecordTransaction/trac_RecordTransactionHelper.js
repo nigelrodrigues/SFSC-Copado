@@ -1,13 +1,15 @@
 /**
  * Created by gtorres on 6/5/2020.
  */
-
 ({
+
 
     validateForm: function(cmp) {
         var result = true;
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
+
+
         var errorValuesMap = {};
         if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
             result = false;
@@ -17,18 +19,22 @@
             result = false;
             errorValuesMap['SubtotalExcludedItems'] = 'Subtotal of Excluded Items is invalid';
         }
+
+
         if (!result) {
             this.showErrorSummary(cmp, 'You have errors in your form submission.', errorValuesMap);
         }
         return result;
     },
+
+
     close: function(cmp) {
         cmp.get('v.openButton').set('v.disabled', false);
         cmp.set('v.openButton', null);
         cmp.destroy();
     },
-
     showToast: function(message, type, title, duration) {
+
 
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
@@ -58,9 +64,9 @@
             cmp.set("v.errorDetails", details);
         }
     },
-
     submitRecordTransaction: function(cmp, helper) {
         cmp.set('v.spinner', true);
+
 
         var action = cmp.get('c.recordTransaction');
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
@@ -68,9 +74,9 @@
         var transactionNumber = '';
         var transactionDate = cmp.find("TransactionDate").get("v.value");
 
+
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
-
         if (transactionOrigin === 'Website') {
             orderNumber = cmp.find("OrderNumber").get("v.value");
             transactionNumber = cmp.find("TransactionNumber").get("v.value");
@@ -94,12 +100,12 @@
         action.setParams({
             "params": myRecordTransactionParameters
         });
-
         cmp.set("v.showError", false);
+
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
-            var result = response.getReturnValue();
 
+            var result = response.getReturnValue();
             if (!helper.isMerkleErrorHandled(cmp, cmp.getReference("c.handleSubmit"), response) ) {
                 if(result.isSuccess && result.returnValuesMap['body']['success']) {
                     this.proceedWithSuccessfulTransaction(cmp, transactionSubtotal, exclusionSubtotal, result);
@@ -108,11 +114,11 @@
                     this.showErrorSummary(cmp, result.message, result.returnValuesMap);
                 }
             }
-
-
         });
         $A.enqueueAction(action);
     },
+
+
     proceedWithSuccessfulTransaction: function(cmp, transactionSubtotal, exclusionSubtotal, result) {
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
@@ -131,8 +137,8 @@
                             this.showToast(result.message, 'success', 'Transaction Submitted');
                         }
 
+
         appEvent.fire();
         this.close(cmp);
     }
-
 });
