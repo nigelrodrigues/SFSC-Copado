@@ -22,10 +22,23 @@
         component.set('v.isEditable', isEditable)
     },
     goBack : function(component, event, helper) {
-        component.set('v.refreshSearch', false);
 
-        component.set('v.loyalty', null)
-        component.set('v.isEditable', false)
+
+        component.find("Id_spinner").set("v.class" , 'slds-show');
+        var caseRecord = component.get('v.caseRecord');
+        var action = component.get('c.unsetCustomerLoyaltyId');
+        action.setParams({caseId: caseRecord.Id});
+        action.setCallback(this, function (response) {
+            component.find("Id_spinner").set("v.class" , 'slds-hide');
+
+            component.set('v.forceSearchRestart', true);
+
+            component.set('v.refreshSearch', false);
+            component.set('v.loyalty', null)
+            component.set('v.isEditable', false)
+        });
+        $A.enqueueAction(action);
+
     },
 
     handleValueChange : function (component, event, helper) {

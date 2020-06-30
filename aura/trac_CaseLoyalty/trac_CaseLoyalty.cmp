@@ -5,6 +5,7 @@
     <aura:attribute name="caseRecord"      type="Object"/>
     <aura:attribute name="recordLoadError" type="String"/>
     <aura:attribute name="refreshSearch" type="Boolean" default="false" />
+    <aura:attribute name="forceSearchRestart" type="Boolean" default="false" />
     <aura:attribute name="conversionRate" type="Integer" />
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
@@ -49,7 +50,7 @@
         <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
         <div class="slds-is-relative">
             <aura:if isTrue="{!empty(v.loyalty) || v.refreshSearch==true}">
-                <aura:if isTrue="{!empty(v.caseRecord.Customer_Loyalty_Id__c)}">
+                <aura:if isTrue="{!empty(v.caseRecord.Customer_Loyalty_Id__c) || v.forceSearchRestart}">
                     <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" conversionRate="{!v.conversionRate}" refreshSearch="{!v.refreshSearch}"/>
                     <aura:set attribute="else">
                         <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" conversionRate="{!v.conversionRate}" customerLoyaltyId="{!v.caseRecord.Customer_Loyalty_Id__c}" refreshSearch="{!v.refreshSearch}"/>
