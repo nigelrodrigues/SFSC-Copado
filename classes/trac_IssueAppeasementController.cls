@@ -12,7 +12,11 @@ public with sharing class trac_IssueAppeasementController {
     * @return TLAuraResponse
     */
     @AuraEnabled
+
+
     public static TLAuraResponse submitAppeasement(String loyaltyNumber, String email, Integer points, Case retrievedCase) {
+
+
         TLAuraResponse response = new TLAuraResponse(true);
 
         if (String.isBlank(loyaltyNumber)) {
@@ -33,12 +37,18 @@ public with sharing class trac_IssueAppeasementController {
                 trac_WS_RecordLoyaltyEvent evt = new trac_WS_RecordLoyaltyEvent();
                 evt.loyaltyId = loyaltyNumber;
                 evt.email = email;
+
+
+
                 evt.eventType = 'hb_lp_cs_appeasement';
                 evt.value = points;
                 evt.detail = 'appeasement from CSR';
                 evt.eventChannel = 'uad';
                 evt.subChannel = retrievedCase.CaseNumber;
                 evt.subChannelDetail = UserInfo.getUserEmail();
+
+
+
 
                 if (evt.send()) {
                     // successful callout

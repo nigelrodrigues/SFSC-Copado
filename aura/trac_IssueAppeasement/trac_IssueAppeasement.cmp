@@ -18,9 +18,10 @@
     <aura:attribute name="finalPointBalance"  type="String" description="Final point balance after adding appeasePoints"/>
     <aura:attribute name="showSpinner"        type="Boolean" default="false" />
     <aura:attribute name="disableButton"      type="Boolean" default="true" />
+
+
     <aura:attribute name="conversionRate"     type="Integer" required="true"/>
     <aura:attribute name="caseRecord"         type="Object" />
-
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.appeasePoints}" action="{!c.changeAmount}"/>
     <aura:registerEvent name="closeModalEvent" type="c:trac_CloseModalApplicationEvent"/>

@@ -87,9 +87,11 @@ public with sharing class trac_RecordTransactionController {
                         response.message = evt.jsonError;
 
 
+
                     }
                 }
                 response.returnValuesMap.put('statusCode', evt.getStatusCode());
+
 
 
             } catch (Exception e) {
@@ -213,8 +215,10 @@ public with sharing class trac_RecordTransactionController {
 
 
 
+
         public String caseRecordId {get; set;}
         @AuraEnabled
+
 
 
 
