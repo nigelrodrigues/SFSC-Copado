@@ -29,4 +29,24 @@ public with sharing class trac_CaseLoyaltyControllerTest {
         }
 
     }
+
+    @IsTest
+    static void testUnsetCustomerLoyaltyId() {
+        TLTestFactory factory = new TLTestFactory();
+        Case bayCase = (Case) factory.createSObject(
+                new Case(
+                        RecordTypeId = TLSObj.getRecordTypeIdForName(Case.SObjectType, trac_CaseConstants.RECORD_TYPE_DEVNAME_SUPPORT_CASE),
+                        Status = trac_CaseConstants.STATUS_NEW,
+                        Customer_Loyalty_Id__c = '1000142'),
+                true);
+
+        Test.startTest();
+
+        trac_CaseLoyaltyController.unsetCustomerLoyaltyId(bayCase.Id);
+
+        Test.stopTest();
+
+        Case c = [SELECT Id, Customer_Loyalty_Id__c FROM Case WHERE Id = :bayCase.Id];
+        System.assertEquals(null, c.Customer_Loyalty_Id__c);
+    }
 }
