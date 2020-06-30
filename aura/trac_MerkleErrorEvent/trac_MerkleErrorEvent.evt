@@ -1,0 +1,10 @@
+<!--
+ - Created by gtorres on 6/23/2020.
+ -->
+
+<aura:event type="COMPONENT" description="trac_MerkleErrorEvent">
+    <aura:attribute name="canRetry"     type="Boolean"/>
+    <aura:attribute name="reattempt"    type="Aura.Action"/>
+    <aura:attribute name="bodyMsg"      type="String"/>
+    <aura:attribute name="responseCode" type="Integer"/>
+</aura:event>

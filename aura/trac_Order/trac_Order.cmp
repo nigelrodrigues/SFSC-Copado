@@ -355,6 +355,12 @@
                 </lightning:tab>
             </aura:if>
 
+            <aura:if isTrue="{!not(empty(v.order.Extn))}">
+                <lightning:tab label="Loyalty" id="loyalty">
+                    <c:trac_OrderLoyalty order="{!v.order}" />
+                </lightning:tab>
+            </aura:if>
+
         </lightning:tabset>
 
     </div>

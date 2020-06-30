@@ -3172,6 +3172,22 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_CaseLoyaltyController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyEscalation</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyEscalationTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_CasePopController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3217,6 +3233,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_CaseTriggerHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CloseLoyaltyAccountController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CloseLoyaltyAccountControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3496,6 +3520,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_RecordTransactionController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_RecordTransactionControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_ReferenceData</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3616,6 +3648,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_GetLoyaltyUAD</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_GetOrderAdjustments</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3665,6 +3701,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_WS_LoyaltyEventTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyPointValue</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyPointValueTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3760,6 +3804,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_UpdateLoyaltyEvent</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_UpdateLoyaltyEventTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_UpdateOrder</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3773,6 +3825,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_WS_WebServiceHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_getLoyaltyUADTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
@@ -4922,6 +4978,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.Customer_Loyalty_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.Date_Time_First_Closed__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5118,6 +5179,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.Latest_Agent_Extension__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Loyalty_Issue_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -12702,14 +12768,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-HBC Case Feed Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Case-HBC Case Feed Layout</layout>
-        <recordType>Case.Click_to_Call</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Case-HBC Case Feed Layout</layout>
-        <recordType>Case.Saks_Support_Case</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-HBC Case Feed Layout</layout>

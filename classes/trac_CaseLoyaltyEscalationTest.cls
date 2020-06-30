@@ -15,7 +15,11 @@ private class trac_CaseLoyaltyEscalationTest {
         String fileName = 'Test File';
         String fileContents = 'Test File Contents';
         String fileType ='png';
+
+
         TLAuraResponse response = trac_CaseLoyaltyEscalation.createCaseAndAttachFile(testCase, fileName, fileContents, fileType, false, 'test issue');
+
+
 
         List<Attachment> attachmentList = [SELECT Id, ParentId FROM Attachment LIMIT 100];
         System.assertEquals(1, attachmentList.size());
@@ -34,7 +38,11 @@ private class trac_CaseLoyaltyEscalationTest {
         String fileName = 'Test File';
         String fileContents = 'Test File Contents';
         String fileType ='png';
+
+
         TLAuraResponse response = trac_CaseLoyaltyEscalation.createCaseAndAttachFile(testCase, fileName, fileContents, fileType, true, null);
+
+
 
         // Retrieve cloned case
         Case newCase = [SELECT Id FROM Case WHERE Id!=:testCase.Id LIMIT 1];

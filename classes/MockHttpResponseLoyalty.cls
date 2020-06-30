@@ -19,6 +19,10 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
 
         String body = null;
 
+
+
+
+
         System.debug('CALLOUT TYPE: ' + callouttype);
 
         if(callouttype == 'customer/show'){
@@ -176,6 +180,10 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
             '    },' +
             '    "success": true' +
             '}';
+
+
+
+
 
         } else if(callouttype == 'update') {
             body = '{"success":true,"data":{"id":295788481,"points":0}}';

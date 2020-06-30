@@ -1,8 +1,8 @@
 /**
  * Created by gtorres on 6/5/2020.
  */
-
 ({
+
 
     validateForm: function(cmp) {
         var result = true;
@@ -14,8 +14,6 @@
         if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
             result = false;
             errorValuesMap['TransactionSubtotal'] = 'Transaction Subtotal is invalid';
-
-
         }
         if (isNaN(exclusionSubtotal) || exclusionSubtotal=='') {
             result = false;
@@ -35,8 +33,8 @@
         cmp.set('v.openButton', null);
         cmp.destroy();
     },
-
     showToast: function(message, type, title, duration) {
+
 
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
@@ -44,7 +42,6 @@
             "message": message,
             "type" : type
         });
-
         if (duration != null) {
             resultsToast.setParams({
                 "duration": duration
@@ -53,21 +50,23 @@
         resultsToast.fire();
     },
 
+
     showErrorSummary: function(cmp, message, returnValuesMap) {
         cmp.set("v.showError", true);
         cmp.set("v.errorMessage", message);
         if (returnValuesMap != null) {
             var details = '';
             Object.keys(returnValuesMap).forEach(function(key) {
-                console.log(key, returnValuesMap[key]);
-                details += '<li>' + returnValuesMap[key] + '</li>';
+                if(key != 'validForm') {
+                    details += '<li>' + returnValuesMap[key] + '</li>';
+                }
             });
             cmp.set("v.errorDetails", details);
         }
     },
-
-    submitRecordTransaction: function(cmp) {
+    submitRecordTransaction: function(cmp, helper) {
         cmp.set('v.spinner', true);
+
 
         var action = cmp.get('c.recordTransaction');
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
@@ -88,34 +87,39 @@
                                 cmp.find("TerminalNumberMhfStore").get("v.value");
         }
         var myRecordTransactionParameters = {
-
             caseRecordId: cmp.get('v.caseRecordId'),
-
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
             transactionOrigin: transactionOrigin,
             orderNumber: orderNumber,
             transactionNumber: transactionNumber,
             transactionDate: transactionDate,
-
-
             transactionSubtotal: transactionSubtotal,
             exclusionSubtotal: exclusionSubtotal
         };
         action.setParams({
             "params": myRecordTransactionParameters
         });
-
-
         cmp.set("v.showError", false);
+
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
-            var state = response.getState();
-            if (cmp.isValid() && state === "SUCCESS") {
-                var result = response.getReturnValue();
 
-                if (typeof result !== undefined && result != null) {
-                    if (result.isSuccess) {
+            var result = response.getReturnValue();
+            if (!helper.isMerkleErrorHandled(cmp, cmp.getReference("c.handleSubmit"), response) ) {
+                if(result.isSuccess && result.returnValuesMap['body']['success']) {
+                    this.proceedWithSuccessfulTransaction(cmp, transactionSubtotal, exclusionSubtotal, result);
+                }
+                else if (result.returnValuesMap['validForm'] !=null && !result.returnValuesMap['validForm'])  {
+                    this.showErrorSummary(cmp, result.message, result.returnValuesMap);
+                }
+            }
+        });
+        $A.enqueueAction(action);
+    },
+
+
+    proceedWithSuccessfulTransaction: function(cmp, transactionSubtotal, exclusionSubtotal, result) {
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
                         var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
@@ -133,22 +137,8 @@
                             this.showToast(result.message, 'success', 'Transaction Submitted');
                         }
 
-                        appEvent.fire();
-                        this.close(cmp);
-                    }
-                    else {
-                        this.showErrorSummary(cmp, result.message, result.returnValuesMap);
-                    }
-                }
-                else {
-                    this.showErrorSummary(cmp, 'Connection Error', null);
-                }
-            }
 
-            else {
-            }
-
-        });
-        $A.enqueueAction(action);
-    },
+        appEvent.fire();
+        this.close(cmp);
+    }
 });

@@ -10,6 +10,9 @@
     <!-- Handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
 
+    <!-- Events -->
+    <aura:registerEvent name="trac_MerkleErrorEvent" type="c:trac_MerkleErrorEvent" access="public"/>
+
     <!-- Markup -->
 
     <div>

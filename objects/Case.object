@@ -1648,6 +1648,11 @@
                     <default>false</default>
                     <label>Order System Error</label>
                 </value>
+                <value>
+                    <fullName>Rewards Escalation</fullName>
+                    <default>false</default>
+                    <label>Rewards Escalation</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
@@ -1775,6 +1780,10 @@
                 <controllingFieldValue>Saks</controllingFieldValue>
                 <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Executive Escalation Only</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <valueName>Rewards Escalation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MHF</controllingFieldValue>
@@ -14548,36 +14557,6 @@
         <description>This Record Type is used for Support Cases for Bay and LT cases</description>
         <label>Bay/LT Support Case</label>
         <picklistValues>
-            <picklist>Auto_Email_Status__c</picklist>
-            <values>
-                <fullName>Customer Day 5</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Customer Day 7</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Internal Day 1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Internal Day 2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Not Set</fullName>
-                <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Automatic_Case_Close_Reason__c</picklist>
-            <values>
-                <fullName>Unresponsive Customer</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Business_Unit__c</picklist>
             <values>
                 <fullName>Hudson%27s Bay</fullName>
@@ -14597,54 +14576,6 @@
             </values>
             <values>
                 <fullName>Saks</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Call_Status__c</picklist>
-            <values>
-                <fullName>Answered</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ended</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Transferred</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Can_Re_Order__c</picklist>
-            <values>
-                <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Yes</fullName>
-                <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Cancellation_Type__c</picklist>
-            <values>
-                <fullName>HBC_MC_CC_001</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HBC_MC_CC_002</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Case_Language__c</picklist>
-            <values>
-                <fullName>English</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>French</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -14711,6 +14642,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Place an order</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Product Information</fullName>
                 <default>false</default>
             </values>
@@ -14724,6 +14659,10 @@
             </values>
             <values>
                 <fullName>Rewards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rewards Escalation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14782,6 +14721,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Associate Loyalty Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>BTO</fullName>
                 <default>false</default>
             </values>
@@ -14799,6 +14742,10 @@
             </values>
             <values>
                 <fullName>CA - Cancellation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CASL Issue</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14902,6 +14849,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Enrollment Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Estimated delivery date inquiry</fullName>
                 <default>false</default>
             </values>
@@ -14943,6 +14894,10 @@
             </values>
             <values>
                 <fullName>Gift card to Original Tender</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Goodwill Points</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15066,7 +15021,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Missing Bonus Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Missing Items</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing Partner Points</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15166,6 +15129,14 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Point Conversion Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Point Redemption Fraud</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Points Inquire</fullName>
                 <default>false</default>
             </values>
@@ -15223,6 +15194,14 @@
             </values>
             <values>
                 <fullName>Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Opt Out</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15286,6 +15265,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Rewards Promo Not Working</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Rewards not applied properly after purchase</fullName>
                 <default>false</default>
             </values>
@@ -15339,6 +15322,10 @@
             </values>
             <values>
                 <fullName>Tax Exclusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier Change</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15447,149 +15434,6 @@
             </values>
             <values>
                 <fullName>Wrong Order Received</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Community_Case_Type__c</picklist>
-            <values>
-                <fullName>Gifts</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hudson%27s Bay Rewards</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Major Home Purchases</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>My Account</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Order Status</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Payment Methods</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Returns</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Shipping</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Store Experience</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Origin</picklist>
-            <values>
-                <fullName>Email - Executive Escalation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Email - LT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Email - Service Excellence</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Email - Service Excellence MHF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Email - Store Operation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Email - The Bay</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Internal</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Live Agent</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OMS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Phone</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Social Media</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Support Community</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Origin_Is_Chat__c</picklist>
-            <values>
-                <fullName>False</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>True</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Priority</picklist>
-            <values>
-                <fullName>High</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Low</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Medium</fullName>
-                <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Reason</picklist>
-            <values>
-                <fullName>Complex functionality</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Existing problem</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Instructions not clear</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>New problem</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>User didn%27t attend training</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -16016,6 +15860,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Requires Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Reschedule Delivery</fullName>
                 <default>false</default>
             </values>
@@ -16121,6 +15969,227 @@
             </values>
             <values>
                 <fullName>Wrong Order Received - Refund</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Auto_Email_Status__c</picklist>
+            <values>
+                <fullName>Customer Day 5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer Day 7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Day 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Day 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Set</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Automatic_Case_Close_Reason__c</picklist>
+            <values>
+                <fullName>Unresponsive Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Status__c</picklist>
+            <values>
+                <fullName>Answered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transferred</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Can_Re_Order__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Cancellation_Type__c</picklist>
+            <values>
+                <fullName>HBC_MC_CC_001</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HBC_MC_CC_002</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Case_Language__c</picklist>
+            <values>
+                <fullName>English</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>French</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Community_Case_Type__c</picklist>
+            <values>
+                <fullName>Gifts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hudson%27s Bay Rewards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Major Home Purchases</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>My Account</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Order Status</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Payment Methods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returns</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Store Experience</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Email - Executive Escalation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - LT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Service Excellence MHF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - Store Operation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email - The Bay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Agent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Support Community</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Origin_Is_Chat__c</picklist>
+            <values>
+                <fullName>False</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>True</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New problem</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>User didn%27t attend training</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
