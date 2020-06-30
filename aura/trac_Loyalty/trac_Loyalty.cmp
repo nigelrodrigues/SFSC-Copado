@@ -15,6 +15,9 @@
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
+
+    <aura:handler name="trac_MerkleErrorEvent" event="c:trac_MerkleErrorEvent" action="{!c.handleMerkleErrorEvent}"/>
+
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.handleSaveChanges}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
@@ -97,7 +100,7 @@
                             label="Email"
                             type="email"
 
-                            aura:id="phoneNumberInput"
+                            aura:id="emailInput"
 
                             value="{!v.email}"
                             placeholder="example@hbc.com"
@@ -147,10 +150,11 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
+
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
-
                 <aura:if isTrue="{!not(empty(v.loyalty.card_details))}">
                     <div>
                         <ul class="slds-list_horizontal slds-has-dividers_right">
@@ -163,10 +167,11 @@
                         <p>N/A</p>
                     </aura:set>
                 </aura:if>
-
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
@@ -180,9 +185,8 @@
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-            <!--            Place Holder to keep air miles on the left side-->
-        </lightning:layoutItem>
-        <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">AirMiles Link</p>
                 <aura:if isTrue="{!v.loyalty.linked_partnerships}">
@@ -297,12 +301,8 @@
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
                     <div class="header-column">
-                        <p class="field-title slds-form-element__label slds-no-flex">Qualifying Purchase Visits (purchases on separate days)</p>
-                        <p>Unknown</p>
-                    </div>
-                </lightning:layoutItem>
-                <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-                    <div class="header-column">
+
+
                         <p class="field-title slds-form-element__label slds-no-flex">Last Year's Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.member_attributes.ly_tier))}">
                             <p>{!v.loyalty.member_attributes.ly_tier}</p>
@@ -340,7 +340,9 @@
             <c:trac_EscalateToLoyaltyTeam caseRecord="{!v.caseRecord}" />
         </lightning:layoutItem>
     </lightning:layout>
-    <div aura:id="divRecordTransaction">
+
+    <div aura:id="divBody">
+
         {!v.body}
     </div>
 </aura:component>
