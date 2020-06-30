@@ -48,10 +48,6 @@
         });
     },
 
-    unsetCustomerLoyaltyId: function(component, helper) {
-
-    },
-
     isValidResponse: function (res) {
         return res != null && (res == 200 || res == 201 || res == 204);
     },
