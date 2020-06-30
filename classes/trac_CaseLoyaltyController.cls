@@ -29,6 +29,12 @@ public with sharing class trac_CaseLoyaltyController {
         return response;
     }
 
+    @AuraEnabled
+    public static void unsetCustomerLoyaltyId(Id caseId) {
+        Case cs = new Case(Id = caseId, Customer_Loyalty_Id__c = null);
+        update cs;
+    }
+
     public class CaseLoyaltyException extends Exception {}
 
 }
