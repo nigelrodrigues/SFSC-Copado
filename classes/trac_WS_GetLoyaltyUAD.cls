@@ -78,6 +78,7 @@ public with sharing class trac_WS_GetLoyaltyUAD {
         @AuraEnabled public res_DataWrapper data;
         @AuraEnabled public String offline_flag;
         @AuraEnabled public List<res_CardDetailsWrapper> card_details;
+
     }
 
     public class res_DataWrapper {
@@ -163,5 +164,6 @@ public with sharing class trac_WS_GetLoyaltyUAD {
     public class res_CardDetailsWrapper {
         @AuraEnabled public String card_type;
     }
+
 
 }
