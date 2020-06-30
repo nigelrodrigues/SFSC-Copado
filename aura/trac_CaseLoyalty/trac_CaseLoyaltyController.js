@@ -1,11 +1,13 @@
 ({
 
+
     init : function(component, event, helper) {
         helper.getConversionRateHelper(component, helper)
         .catch(error => helper.handleError(component, helper, error))
     },
-    isEditableToggle : function(component, event, helper) {
 
+
+    isEditableToggle : function(component, event, helper) {
         var loyalty = component.get('v.loyalty')
         var appEvent = $A.get("e.c:trac_EditLoyaltyApplicationEvent");
         appEvent.setParams({
@@ -14,6 +16,7 @@
             'email' : loyalty.email
         });
         appEvent.fire();
+
 
         var isEditable = !component.get('v.isEditable')
         component.set('v.isEditable', isEditable)
@@ -24,6 +27,7 @@
         component.set('v.loyalty', null)
         component.set('v.isEditable', false)
     },
+
     handleValueChange : function (component, event, helper) {
         var isEditable = component.get('v.isEditable')
         var displayButtonText = (isEditable) ? "Cancel" : "Edit"

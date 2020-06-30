@@ -8,8 +8,10 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String email = 'wassim1002@hbc.com';
         String loyaltyId = null;
 
+
         String recordId = null;
         trac_WS_GetLoyalty.LoyaltyResponse res = (trac_WS_GetLoyalty.LoyaltyResponse) trac_LoyaltySearchController.getLoyalty(email, loyaltyId, recordId).returnValuesMap.get('body');
+
 
         System.assert(res != null, 'Loyalty retrived successfully.');
     }
@@ -20,8 +22,10 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String email = 'wassim1002@hbc.com';
         String loyaltyId = null;
 
+
         String recordId = '50005000000b8IzAAI';
         String res = (String) trac_LoyaltySearchController.getLoyalty(email, loyaltyId, recordId).returnValuesMap.get('body');
+
 
         System.assert(res == '', 'Loyalty not retrived successfully.');
     }
@@ -32,6 +36,8 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String email = 'wassim1002@hbc.com';
         String loyaltyId = null;
 
+
+
         String recordId = '50005000000b8IzAAI';
         try{
             String res = (String) trac_LoyaltySearchController.getLoyalty(email, loyaltyId, recordId).message;
@@ -39,6 +45,8 @@ public with sharing class trac_LoyaltySearchControllerTest {
         } catch (Exception e) {
             System.assert(e.getMessage() != null, 'exception thrown.');
         }
+
+
 
     }
 
@@ -68,6 +76,8 @@ public with sharing class trac_LoyaltySearchControllerTest {
         String email = null;
         String loyaltyId = '600294999992297';
         String phoneNum = null;
+
+
         try {
             String res = (String) trac_LoyaltySearchController.getLoyaltyUAD(loyaltyId, email, phoneNum).message;
 
@@ -75,5 +85,7 @@ public with sharing class trac_LoyaltySearchControllerTest {
             System.assert(e.getMessage() != null, 'exception thrown.');
 
         }
+
+
     }
 }

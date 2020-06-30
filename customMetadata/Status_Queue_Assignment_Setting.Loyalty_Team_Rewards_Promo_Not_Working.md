@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Loyalty Team - Missing Bonus Points</label>
+    <label>Loyalty Team - Rewards Promo Not Working</label>
     <protected>false</protected>
     <values>
         <field>Business_Unit__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Category__c</field>
-        <value xsi:type="xsd:string">Missing Bonus Points</value>
+        <value xsi:type="xsd:string">Rewards Promo Not Working</value>
     </values>
     <values>
         <field>Ignore_Metadata_Mapping__c</field>

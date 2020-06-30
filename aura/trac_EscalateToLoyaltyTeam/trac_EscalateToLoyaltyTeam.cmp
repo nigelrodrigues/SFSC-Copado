@@ -4,17 +4,21 @@
  - @description To escalate and transfer the Case to a Loyalty Queue.
  -->
 
+
 <aura:component description="trac_EscalateToLoyaltyTeam"
                 controller="trac_CaseLoyaltyEscalation"
                 extends="c:trac_BaseComponent"
                 implements="flexipage:availableForRecordHome">
 
-    <aura:attribute name="fileName"               type="String" default="Please select a file" />
+
+    <aura:attribute name="fileName"          type="String" default="Please select a file" />
     <aura:attribute name="caseRecord"             type="Object" />
     <aura:attribute name="openLightningForm"      type="Boolean" />
-    <aura:attribute name="customerLoyaltyId"      type="String"  />
+    <aura:attribute name="customerLoyaltyId" type="String"  />
+
     <aura:attribute name="showEscalationOptions"        type="Boolean" />
     <aura:attribute name="enableCategory"        type="Boolean" default="false"/>
+
     <aura:attribute name="options"                type="List" default="[
                                                         {'label': 'Loyalty Escalation', 'value': 'escalation'},
                                                         {'label': 'Loyalty Operations', 'value': 'operations'}
@@ -23,20 +27,21 @@
                                                         {'label': ' Yes, keep current case open', 'value': 'yes'},
                                                         {'label': 'No, close current case', 'value': 'no'}
                                                         ]"/>
+
     <aura:attribute name="selectedTeam"           type="String" default="escalation"/>
     <aura:attribute name="selectedForCaseClose"   type="String" default="no"/>
     <aura:attribute name="createNewCase"          type="Boolean" default="false"/>
+    <aura:attribute name="issue"                  type="String"  />
 
     <lightning:workspaceAPI aura:id="workspace"/>
-
     <lightning:button variant="neutral"
                       label="Escalate Case"
                       title="Escalate Case to Loyalty Team"
                       onclick="{! c.openForm }"
     />
 
-
     <aura:if isTrue="{!v.openLightningForm}" >
+
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
                 <header class="slds-modal__header">
@@ -46,32 +51,31 @@
                     <p class="slds-m-top_x-small">{!v.modalHeader}</p>
                 </header>
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-
                     <lightning:recordEditForm
                             aura:id="escalateForm"
+
+
                             recordId="{!v.caseRecord.Id}"
                             onsuccess="{!c.handleSuccess}"
                             onload="{!c.handleLoad}"
                             onsubmit="{!c.handleSubmit}"
                             onerror="{!c.handleError}"
                             objectApiName="Case">
-
                         <lightning:messages/>
+
 
                         <div class="slds-grid slds-wrap">
                             <div class="slds-col slds-size_1-of-1">
-
                                 <lightning:radioGroup name="radioGroup"
                                                       label="Select Team"
                                                       aura:id="radioGrp"
                                                       options="{! v.options }"
+
                                                       value="{! v.selectedTeam }"
                                                       onchange="{!c.handleRadioChange}"
                                                       type="radio"/>
-
                                 <div class="slds-m-top_large">
                                     <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true" disabled="true" class="slds-hide"/>
-
                                     <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c"  class="slds-hide"/> <!-- class="slds-hide" -->
                                     <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      class="slds-hide"/>
 
@@ -79,15 +83,15 @@
                                         <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="true" />
                                         <lightning:inputField aura:id="caseSubCategory"  fieldName="Subcategory__c"   required="true" class="slds-hide"/>
                                     </aura:if>
+
+
                                     <label for="caseIssueDescription">Issue Description</label>
                                     <lightning:inputField aura:id="caseIssueDescription"
-                                                          fieldName="Loyalty_Issue_Description__c" variant="label-hidden" />
+                                                          fieldName="Loyalty_Issue_Description__c" variant="label-hidden"/>
                                     <lightning:input aura:id="fileUpload" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload File" multiple="false" accept="image/png, .zip"/>
                                     <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
                                     <br/>
-                                    
                                     <aura:if isTrue="{!v.showEscalationOptions}" >
-
                                     <br/><br/>
                                         <lightning:radioGroup name="closeCaseRadioGroup"
                                                               label="Do you want to continue working on this case?"
@@ -98,30 +102,28 @@
                                                               type="radio"/>
                                         <br/>
                                     </aura:if>
-
                                 </div>
                             </div>
 
                             <div class="slds-align_absolute-center">
-                                <lightning:button variant="brand" type="submit" label="Escalate" class="submit_button"/>
+
+                            <lightning:button variant="brand" type="submit" label="Escalate" class="submit_button"/>
                                 <lightning:button variant="neutral"
                                                   label="Cancel"
                                                   title="Cancel"
                                                   onclick="{! c.closeForm }" />
-                            </div>
-
                         </div>
-
+                        </div>
 
                     </lightning:recordEditForm>
 
                 </div>
                 <footer class="slds-modal__footer slds-hide">
-
                 </footer>
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
     </aura:if>
+
 
 </aura:component>
