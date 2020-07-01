@@ -108,7 +108,8 @@
             exclusionSubtotal: exclusionSubtotal
         };
         action.setParams({
-            "params": myRecordTransactionParameters
+            "params": myRecordTransactionParameters,
+            "dateToCompare": null
         });
         cmp.set("v.showError", false);
 
