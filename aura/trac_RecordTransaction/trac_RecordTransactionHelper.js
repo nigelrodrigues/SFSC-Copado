@@ -78,7 +78,7 @@
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
         var orderNumber = '';
         var transactionNumber = '';
-        var transactionDate = cmp.find("TransactionDate").get("v.value");
+        var transactionDate = cmp.get("v.date");
 
 
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
