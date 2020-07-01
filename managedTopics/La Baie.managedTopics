@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ManagedTopics xmlns="http://soap.sforce.com/2006/04/metadata">
     <managedTopic>
+        <fullName>La Baie.Navigational:Expédition</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Expédition</name>
+        <parentName></parentName>
+        <position>1</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
         <fullName>La Baie.Navigational:Gros articles pour la maison</fullName>
         <managedTopicType>Navigational</managedTopicType>
         <name>Gros articles pour la maison</name>
@@ -9,19 +17,11 @@
         <topicDescription> </topicDescription>
     </managedTopic>
     <managedTopic>
-        <fullName>La Baie.Navigational:Idée-Cadeaux et Registre de cadeaux</fullName>
+        <fullName>La Baie.Navigational:Idées-Cadeaux et Registre de cadeaux</fullName>
         <managedTopicType>Navigational</managedTopicType>
-        <name>Idée-Cadeaux et Registre de cadeaux</name>
+        <name>Idées-Cadeaux et Registre de cadeaux</name>
         <parentName></parentName>
         <position>0</position>
-        <topicDescription> </topicDescription>
-    </managedTopic>
-    <managedTopic>
-        <fullName>La Baie.Navigational:Livraison</fullName>
-        <managedTopicType>Navigational</managedTopicType>
-        <name>Livraison</name>
-        <parentName></parentName>
-        <position>1</position>
         <topicDescription> </topicDescription>
     </managedTopic>
     <managedTopic>
@@ -41,6 +41,14 @@
         <topicDescription> </topicDescription>
     </managedTopic>
     <managedTopic>
+        <fullName>La Baie.Navigational:Primes La Baie d&apos;Hudson</fullName>
+        <managedTopicType>Navigational</managedTopicType>
+        <name>Primes La Baie d&apos;Hudson</name>
+        <parentName></parentName>
+        <position>6</position>
+        <topicDescription> </topicDescription>
+    </managedTopic>
+    <managedTopic>
         <fullName>La Baie.Navigational:Retours</fullName>
         <managedTopicType>Navigational</managedTopicType>
         <name>Retours</name>
@@ -49,17 +57,9 @@
         <topicDescription> </topicDescription>
     </managedTopic>
     <managedTopic>
-        <fullName>La Baie.Navigational:Récompenses de la Baie</fullName>
+        <fullName>La Baie.Navigational:État des commandes</fullName>
         <managedTopicType>Navigational</managedTopicType>
-        <name>Récompenses de la Baie</name>
-        <parentName></parentName>
-        <position>6</position>
-        <topicDescription> </topicDescription>
-    </managedTopic>
-    <managedTopic>
-        <fullName>La Baie.Navigational:Statut des commandes</fullName>
-        <managedTopicType>Navigational</managedTopicType>
-        <name>Statut des commandes</name>
+        <name>État des commandes</name>
         <parentName></parentName>
         <position>7</position>
         <topicDescription> </topicDescription>
