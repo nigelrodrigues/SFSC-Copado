@@ -150,5 +150,10 @@
 
         appEvent.fire();
         this.close(cmp);
+    },
+
+    normalize: function(number) {
+        if (!number) return "";
+        return number.replace(/[^\d]/g, "");
     }
 });

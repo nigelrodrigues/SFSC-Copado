@@ -146,10 +146,6 @@ public with sharing class trac_RecordTransactionController {
         } else {
             // parse transactionDate using trac_WS_LoyaltyUtils.parseDateString()
             trnDatetime = trac_WS_LoyaltyUtils.parseDateString(params.transactionDate);
-
-
-
-
             Date trnDate = trnDatetime == null ? null : Date.newinstance(trnDatetime.year(), trnDatetime.month(), trnDatetime.day());
             if (trnDatetime == null) {
                 // failed to parse transactionDate
@@ -158,10 +154,9 @@ public with sharing class trac_RecordTransactionController {
             } else if (trnDate > System.today()) {
                 response.isSuccess = false;
                 response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be future: ' + params.transactionDate);
-
-
-
-
+            } else if(trnDate.daysBetween(System.today()) > 90) {
+                response.isSuccess = false;
+                response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be more than 90 days old: ' + params.transactionDate);
             } else {
                 // successfully parsed transactionDate
                 params.transactionDateObj = trnDatetime;
@@ -181,21 +176,15 @@ public with sharing class trac_RecordTransactionController {
             params.exclusionSubtotal = 0.00;
         }
 
-
         response.returnValuesMap.put('validForm', response.isSuccess);
-
 
         return response.isSuccess;
     }
 
     public class RecordTransactionParameters {
         @AuraEnabled
-
-
         public String caseRecordId {get; set;}
         @AuraEnabled
-
-
         public String loyaltyNumber {get; set;}
         @AuraEnabled
         public String email {get; set;}
@@ -207,7 +196,6 @@ public with sharing class trac_RecordTransactionController {
         public String transactionNumber {get; set;}
         @AuraEnabled
         public String transactionDate {get; set;}
-
         public Datetime transactionDateObj;
         @AuraEnabled
         public Decimal transactionSubtotal {get; set;}
