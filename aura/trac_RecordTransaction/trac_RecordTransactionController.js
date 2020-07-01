@@ -21,6 +21,15 @@
         cmp.set('v.totalEarnValue', totalEarnValue);
     },
 
+    updateDateFromNumber: function(cmp, event, helper) {
+        var transactionNumber = cmp.find("TransactionNumber").get("v.value");
+
+        if(transactionNumber.length === 19) {
+            var date = transactionNumber.substr(11).replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+            cmp.set("v.date", date);
+        }
+    },
+
     handleSubmit: function(cmp, event, helper) {
         if (helper.validateForm(cmp)) {
             helper.submitRecordTransaction(cmp, helper);
@@ -35,5 +44,9 @@
         //window.scrollTo(0,480);
         //scrollTo({top: 480, behavior: "smooth"});
 
+    },
+
+    handleButtonChange: function(cmp, event, helper) {
+        cmp.set("v.date", "");
     }
 });
