@@ -108,7 +108,8 @@
             exclusionSubtotal: exclusionSubtotal
         };
         action.setParams({
-            "params": myRecordTransactionParameters
+            "params": myRecordTransactionParameters,
+            "dateToCompare": null
         });
         cmp.set("v.showError", false);
 
@@ -150,5 +151,10 @@
 
         appEvent.fire();
         this.close(cmp);
+    },
+
+    normalize: function(number) {
+        if (!number) return "";
+        return number.replace(/[^\d]/g, "");
     }
 });
