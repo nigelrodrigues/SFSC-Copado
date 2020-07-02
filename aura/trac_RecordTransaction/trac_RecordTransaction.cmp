@@ -71,9 +71,9 @@
                     </aura:if>
 
                     <lightning:input aura:id="TransactionSubtotal" label="Transaction Subtotal" required="true"
-                                     onchange="{!c.updateTotalEarn}" value="0" />
+                                     onchange="{!c.updateTotalEarn}" value="0" maxlength="9" />
                     <lightning:input aura:id="SubtotalExcludedItems" label="Subtotal of Excluded Items (e.g. giftcards)"
-                                     onchange="{!c.updateTotalEarn}" required="true" value="0" />
+                                     onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="9" />
                     <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Account Tier</p>
                     <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
                         <p>{!v.loyalty.top_tier_name}</p>
