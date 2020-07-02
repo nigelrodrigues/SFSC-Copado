@@ -157,4 +157,10 @@
         <label>Team Assistance Needed</label>
         <closed>false</closed>
     </standardValue>
+    <standardValue>
+        <fullName>Open</fullName>
+        <default>false</default>
+        <label>Open</label>
+        <closed>false</closed>
+    </standardValue>
 </StandardValueSet>

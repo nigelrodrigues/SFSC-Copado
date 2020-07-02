@@ -7,12 +7,14 @@
 public with sharing class trac_CaseLoyaltyEscalation {
 
     @AuraEnabled
-    public static TLAuraResponse createCaseAndAttachFile(Case caseRecord, String fileName, String fileContentsToEncode, String contentType, Boolean cloneCase)
+
+    public static TLAuraResponse createCaseAndAttachFile(Case caseRecord, String fileName, String fileContentsToEncode, String contentType, Boolean cloneCase, String loyaltyIssue)
+
     {
         TLAuraResponse response = new TLAuraResponse(true);
 
         try {
-            System.debug('cloneCase: ' + cloneCase);
+           
 
             if( cloneCase )
             {
@@ -24,6 +26,9 @@ public with sharing class trac_CaseLoyaltyEscalation {
                 newCase.Subcategory__c = 'Requires Approval';
                 newCase.ParentId = caseRecord.Id;
                 newCase.Subject = 'Escalation - ' + caseRecord.Subject;
+
+                newCase.Loyalty_Issue_Description__c = loyaltyIssue;
+
                 insert newCase;
 
                 if( fileName!=null )
@@ -34,7 +39,7 @@ public with sharing class trac_CaseLoyaltyEscalation {
             }
             else
             {
-                System.debug('HEREEEEEE');
+               
                 response = attachToCase( caseRecord, fileName, fileContentsToEncode, contentType);
             }
 
@@ -49,19 +54,26 @@ public with sharing class trac_CaseLoyaltyEscalation {
 
     private static TLAuraResponse attachToCase(Case parentCase, String fileName, String fileContentsToEncode, String contentType) {
 
+
         TLAuraResponse response = new TLAuraResponse(true);
 
         try {
-            System.debug('HEREEattach');
+            
+
             fileContentsToEncode = EncodingUtil.urlDecode(fileContentsToEncode, 'UTF-8');
 
             Attachment newAttachment = new Attachment();
             newAttachment.ParentId = parentCase.Id;
+
+
             newAttachment.Name = fileName;
             newAttachment.ContentType = contentType;
             newAttachment.Body = EncodingUtil.base64Decode(fileContentsToEncode);
             insert newAttachment;
-            System.debug('attachment Id: ' + newAttachment.ID);
+
+
+
+
         }
         catch(Exception e)
         {

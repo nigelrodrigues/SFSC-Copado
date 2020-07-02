@@ -21,6 +21,10 @@ public with sharing class trac_WS_GetSaksLoyalty {
         return extraParameters;
     }
     public Boolean send() {
+        if ('null'.equals(trac_WS_WebServiceHelper.webServiceSettings.Loyalty_Saks_Endpoint__c)) {
+            System.debug('Not making loyalty request due to blank configuration string');
+            return false;
+        }
 
         dynamicEndpoint = (loyaltyId != null ? ENDPOINT.replace('{id}',loyaltyId) : ENDPOINT);
         System.debug('dynamicEndpoint: ' + dynamicEndpoint);

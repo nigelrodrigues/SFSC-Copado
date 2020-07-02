@@ -23,6 +23,7 @@ public class trac_WS_RecordLoyaltyEventTest {
         Boolean success = callout.send();
         Test.stopTest();
 
+
         String body = callout.getBody();
         Boolean isNotFound = callout.isNotFound();
         Integer statusCode = callout.getStatusCode();
@@ -36,6 +37,7 @@ public class trac_WS_RecordLoyaltyEventTest {
         System.assertEquals(false, isNotFound);
         System.assertEquals(200, statusCode);
         System.assertNotEquals(null, uniqueEventId);
+
     }
 
     @IsTest

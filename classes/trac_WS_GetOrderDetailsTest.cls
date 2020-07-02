@@ -31,5 +31,4 @@ public with sharing class trac_WS_GetOrderDetailsTest {
         System.assertEquals(null, webServiceClass.getOrderDetailsResponse);
         Test.stopTest();
     }
-
 }

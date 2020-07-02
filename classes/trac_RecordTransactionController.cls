@@ -6,6 +6,10 @@
 
 public with sharing class trac_RecordTransactionController {
 
+
+
+
+
     private static final String DATETIME_FORMAT = 'yyyy-MM-dd HH:mm:ss z';
 
     /**
@@ -19,12 +23,15 @@ public with sharing class trac_RecordTransactionController {
      *  transactionDate String, the transaction date/time (expected format: Mar. 04, 2020, 06:31 a.m.)
      *  transactionSubtotal Decimal, the order subtotal
      *  exclusionSubtotal Decimal, the amount to exclude
+     *  @param dateToCompare Date comparision for transaction date. Difference cannot be greater than 90 days
+     *  will default to today's date if null
      * @return TLAuraResponse object
      */
     @AuraEnabled
-    public static TLAuraResponse recordTransaction(RecordTransactionParameters params) {
+    public static TLAuraResponse recordTransaction(RecordTransactionParameters params, Date dateToCompare) {
         TLAuraResponse response = new TLAuraResponse(true);
-        validateParams(params, response);
+        if(dateToCompare == null) dateToCompare = System.today();
+        validateParams(params, response, dateToCompare);
         // any validation errors?
         if (response.isSuccess) {
             // no errors so far; callout to endpoint
@@ -36,6 +43,9 @@ public with sharing class trac_RecordTransactionController {
                 evt.value = params.transactionSubtotal - params.exclusionSubtotal;
                 evt.eventId = params.transactionNumber;
                 evt.originatedAt = params.transactionDateObj.formatGmt(DATETIME_FORMAT);
+
+
+
                 switch on params.transactionOrigin.toLowerCase() {
                     when 'website' {
                         evt.detail = 'Manual points award for order ' + params.orderNumber;
@@ -54,21 +64,27 @@ public with sharing class trac_RecordTransactionController {
                 evt.subChannelDetail = aUser != null ? aUser.Email : '';
                 if (evt.send()) {
                     // successful callout
+
                     response.returnValuesMap.put('body', evt.eventResponse);
+
                     response.message = 'Successfully recorded transaction ' + params.transactionNumber;
                     response.returnValuesMap.put('id', evt.eventResponse.data.id);
                     response.returnValuesMap.put('points', evt.eventResponse.data.points);
                 } else {
                     // unsuccessful callout
                     response.isSuccess = false;
+
                     response.returnValuesMap.put('body', evt.getBody());
+
                     if (evt.eventResponse != null) {
                         response.message = evt.eventResponse.data.message;
                     } else {
                         response.message = evt.jsonError;
+
                     }
                 }
                 response.returnValuesMap.put('statusCode', evt.getStatusCode());
+
             } catch (Exception e) {
                 throw new AuraHandledException(e.getMessage());
             }
@@ -78,6 +94,9 @@ public with sharing class trac_RecordTransactionController {
 
         return response;
     }
+
+
+
 
     private static User getUser(Id userId) {
         List<User> users = [
@@ -97,7 +116,10 @@ public with sharing class trac_RecordTransactionController {
         return (!cases.isEmpty()) ? cases[0] : null;
     }
 
-    private static Boolean validateParams(RecordTransactionParameters params, TLAuraResponse response) {
+
+
+
+    private static Boolean validateParams(RecordTransactionParameters params, TLAuraResponse response, Date dateToCompare) {
         if (String.isBlank(params.loyaltyNumber)) {
             response.isSuccess = false;
             response.returnValuesMap.put('loyaltyNumber', 'Loyalty Number missing');
@@ -132,9 +154,12 @@ public with sharing class trac_RecordTransactionController {
                 // failed to parse transactionDate
                 response.isSuccess = false;
                 response.returnValuesMap.put('transactionDate', 'Invalid Transaction Date: ' + params.transactionDate);
-            } else if (trnDate > System.today()) {
+            } else if (trnDate > dateToCompare) {
                 response.isSuccess = false;
                 response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be future: ' + params.transactionDate);
+            } else if(trnDate.daysBetween(dateToCompare) > 90) {
+                response.isSuccess = false;
+                response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be more than 90 days old: ' + params.transactionDate);
             } else {
                 // successfully parsed transactionDate
                 params.transactionDateObj = trnDatetime;
@@ -174,7 +199,6 @@ public with sharing class trac_RecordTransactionController {
         public String transactionNumber {get; set;}
         @AuraEnabled
         public String transactionDate {get; set;}
-
         public Datetime transactionDateObj;
         @AuraEnabled
         public Decimal transactionSubtotal {get; set;}

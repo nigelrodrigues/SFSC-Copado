@@ -176,6 +176,11 @@
                     <label>POS Gift Card Processing</label>
                 </value>
                 <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
                     <fullName>Borderfree Transfer</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -389,6 +394,11 @@
                     <fullName>Call Tag</fullName>
                     <default>false</default>
                     <label>Call Tag</label>
+                </value>
+                <value>
+                    <fullName>Rewards Escalation</fullName>
+                    <default>false</default>
+                    <label>Rewards Escalation</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
