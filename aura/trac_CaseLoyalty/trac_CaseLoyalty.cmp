@@ -1,0 +1,65 @@
+<aura:component description="trac_CaseLoyalty" controller="trac_CaseLoyaltyController" extends="c:trac_BaseComponent" implements="flexipage:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome">
+    <aura:attribute name="loyalty"         type="Map" />
+    <aura:attribute name="editButtonText"  type="String"  default="Edit" />
+    <aura:attribute name="isEditable"      type="Boolean" default="false" />
+    <aura:attribute name="caseRecord"      type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="refreshSearch" type="Boolean" default="false" />
+    <aura:attribute name="forceSearchRestart" type="Boolean" default="false" />
+    <aura:attribute name="conversionRate" type="Integer" />
+    <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
+    <aura:attribute type="Boolean" name="canRetry"   default="false"/>
+    <aura:attribute type="Integer"  name="responseCode"  default=""/>
+    <aura:attribute type="String"  name="bodyMsg"  default=""/>
+    <aura:registerEvent name="editLoyaltyEvent" type="c:trac_EditLoyaltyApplicationEvent"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler event="c:trac_LoyaltyRefreshEvent" action="{!c.handleLoyaltyRefreshEvent}"/>
+    <aura:handler name="change" value="{!v.isEditable}" action="{!c.handleValueChange}"/>
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Id, Customer_Loyalty_Id__c, Business_Unit__c, Order_Number__c,
+                                Subject, Loyalty_Tier__c, Loyalty_Issue_Description__c, CaseNumber"
+                      targetFields="{!v.caseRecord}"
+                      targetError="{!v.recordLoadError}"
+    />
+    <c:trac_MerkleErrorComponent
+            canRetry="{!v.canRetry}"
+            reattempt="{!c.init}"
+            isMerkleError="{!v.isMerkleError}"
+            bodyMsg="{!v.bodyMsg}"
+            responseCode="{!v.responseCode}"/>
+    <div class="slds-box slds-theme_default slds-is-relative">
+        <div style="overflow:auto" class="slds-align_absolute-center">
+            <lightning:layoutItem padding="around-small" class="slds-float_left">
+                <lightning:icon iconName="action:share_thanks" alternativeText="Loyalty" size="small" title="loyalty" />
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-align-content-center slds-float_left">
+                <p><span class="slds-text-heading_small slds-card__header-link">Hudson's Bay Loyalty</span></p>
+            </lightning:layoutItem>
+            <aura:if isTrue="{!not(empty(v.loyalty))}">
+                <lightning:layoutItem class="slds-float_right slds-p-around_xx-small">
+                    <lightning:button  label="Back" onclick="{!c.goBack}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="slds-float_right slds-p-around_xx-small">
+                    <lightning:button label="{!v.editButtonText}" onclick="{!c.isEditableToggle}"/>
+                </lightning:layoutItem>
+            </aura:if>
+        </div>
+        <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
+        <div class="slds-is-relative">
+            <aura:if isTrue="{!empty(v.loyalty) || v.refreshSearch==true}">
+                <aura:if isTrue="{!empty(v.caseRecord.Customer_Loyalty_Id__c) || v.forceSearchRestart}">
+                    <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" conversionRate="{!v.conversionRate}" refreshSearch="{!v.refreshSearch}"/>
+                    <aura:set attribute="else">
+                        <c:trac_LoyaltySearch loyalty="{!v.loyalty}" recordId="{!v.recordId}" conversionRate="{!v.conversionRate}" customerLoyaltyId="{!v.caseRecord.Customer_Loyalty_Id__c}" refreshSearch="{!v.refreshSearch}"/>
+                    </aura:set>
+                </aura:if>
+            </aura:if>
+        </div>
+        <div class="slds-is-relative">
+            <aura:if isTrue="{!not(empty(v.loyalty))}">
+                <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}"  caseRecord="{!v.caseRecord}" conversionRate="{!v.conversionRate}" />
+            </aura:if>
+        </div>
+    </div>
+</aura:component>
