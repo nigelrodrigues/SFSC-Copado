@@ -2,8 +2,6 @@
  * Created by gtorres on 6/5/2020.
  */
 ({
-
-
     validateForm: function(cmp) {
         var result = true;
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
@@ -34,8 +32,6 @@
         cmp.destroy();
     },
     showToast: function(message, type, title, duration) {
-
-
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
             "title": title,
@@ -72,8 +68,8 @@
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
         var orderNumber = '';
         var transactionNumber = '';
-        var transactionDate = cmp.find("TransactionDate").get("v.value");
 
+        var transactionDate = cmp.get("v.date");
 
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
@@ -98,10 +94,11 @@
             exclusionSubtotal: exclusionSubtotal
         };
         action.setParams({
-            "params": myRecordTransactionParameters
+
+            "params": myRecordTransactionParameters,
+            "dateToCompare": null
         });
         cmp.set("v.showError", false);
-
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
 
@@ -117,8 +114,6 @@
         });
         $A.enqueueAction(action);
     },
-
-
     proceedWithSuccessfulTransaction: function(cmp, transactionSubtotal, exclusionSubtotal, result) {
                         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
                         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
@@ -137,8 +132,12 @@
                             this.showToast(result.message, 'success', 'Transaction Submitted');
                         }
 
-
         appEvent.fire();
         this.close(cmp);
+    },
+    normalize: function(number) {
+        if (!number) return "";
+        return number.replace(/[^\d]/g, "");
+
     }
 });
