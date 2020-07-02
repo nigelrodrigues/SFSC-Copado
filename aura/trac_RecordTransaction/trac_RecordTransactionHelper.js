@@ -78,7 +78,7 @@
         var transactionOrigin =  cmp.get('v.TransactionOriginValue');
         var orderNumber = '';
         var transactionNumber = '';
-        var transactionDate = cmp.find("TransactionDate").get("v.value");
+        var transactionDate = cmp.get("v.date");
 
 
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
@@ -108,7 +108,8 @@
             exclusionSubtotal: exclusionSubtotal
         };
         action.setParams({
-            "params": myRecordTransactionParameters
+            "params": myRecordTransactionParameters,
+            "dateToCompare": null
         });
         cmp.set("v.showError", false);
 
@@ -150,5 +151,10 @@
 
         appEvent.fire();
         this.close(cmp);
+    },
+
+    normalize: function(number) {
+        if (!number) return "";
+        return number.replace(/[^\d]/g, "");
     }
 });
