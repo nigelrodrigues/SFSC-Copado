@@ -4,7 +4,6 @@
  - @description To display the customer's transaction history (Event History)
  -->
 
-
 <aura:component description="trac_LoyaltyTransactionHistory"
                 controller="trac_EventController"
                 extends="c:trac_BaseComponent"
@@ -19,6 +18,7 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
     <aura:handler name="TractionComponentEvent" event="c:trac_TransactionHistoryEvent" action="{!c.openModal}"/>
+
     <lightning:accordion aura:id="accordion">
         <div class="slds">
             <table class="slds-table slds-table_bordered" style="table-layout: fixed;">
@@ -34,25 +34,23 @@
                         <div class="slds-truncate slds-grid">Description</div>
                     </th>
                     <th scope="col" class="slds-size--2-of-12">
-
-                    <div class="slds-truncate slds-float_right">Value</div>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <aura:if isTrue="{!not(empty(v.transactions.data))}">
-                    <c:trac_DisplayTransaction transactionValues="{!v.transactions.data}" />
-                <aura:set attribute="else">
-                    <tr>
-                        <td colspan="4" style="text-align:center;">
-                            No Transaction History available
-                        </td>
-                    </tr>
-                </aura:set>
-            </aura:if>
-            </tbody>
-        </table>
-
+                        <div class="slds-truncate slds-float_right">Value</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <aura:if isTrue="{!not(empty(v.transactions.data))}">
+                        <c:trac_DisplayTransaction transactionValues="{!v.transactions.data}" />
+                    <aura:set attribute="else">
+                        <tr>
+                            <td colspan="4" style="text-align:center;">
+                                No Transaction History available
+                            </td>
+                        </tr>
+                    </aura:set>
+                </aura:if>
+                </tbody>
+            </table>
         </div>
     </lightning:accordion>
 
@@ -62,7 +60,7 @@
                 <header class="slds-modal__header">
                     <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate slds-p-right_xx-small">
                         <lightning:icon iconName="standard:timesheet" alternativeText="Transactions" title="Transactions" />
-                        Transaction History : Displaying {!v.recordsToDisplay} of {!v.totalRecords} records
+                        Transaction History: Displaying {!v.recordsToDisplay} of {!v.totalRecords} records
                     </h2>
                 </header>
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
@@ -87,8 +85,8 @@
                                 <div class="custom-box"><b>Points Earned</b> </div>
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small" size="1">
-                                    <div class="slds-clearfix">
-                                        <div class="slds-float_right">
+                                <div class="slds-clearfix">
+                                    <div class="slds-float_right">
                                         <b>Net Points</b>
                                     </div>
                                 </div>
@@ -97,7 +95,6 @@
                                 <div class="custom-box"></div>
                             </lightning:layoutItem>
                         </lightning:layout>
-
 
                         <aura:iteration items="{!v.transactions.data}" var="transactionData" indexVar="variableIndex">
                             <aura:if isTrue="{!lessthan(variableIndex,v.recordsToDisplay)}">

@@ -1,24 +1,25 @@
 ({
+
     getLoyalty: function(component, helper, loyalty) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
-
-
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
         var caseRecordId = component.get("v.recordId");
         var action = component.get("c.getLoyalty");
+
         action.setParams({
             'email': loyalty.email,
             'loyaltyId': loyalty.external_customer_id,
             'recordId':  caseRecordId
-
         });
 
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
                 var state = response.getState();
+
                 if (component.isValid() && state === "SUCCESS") {
+
                     var result = response.getReturnValue();
                     if (result == null) {
                         reject(new Error("Connection Error"));
@@ -26,15 +27,11 @@
                         var statusCode = result.returnValuesMap['statusCode']
                         var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
-
-
                             var merkle = str['data'];
                             loyalty.next_tier_name = merkle.next_tier_name
                             loyalty.member_attributes.ytd_spend = merkle.member_attributes.ytd_spend
                             loyalty.member_attributes.ly_tier = merkle.member_attributes.ly_tier
                             resolve(loyalty)
-
-
                         } else if (helper.isValidResponse(statusCode)) {
                             var error = new Error(response.getError())
                             var body = JSON.parse(str)
@@ -59,19 +56,18 @@
             $A.enqueueAction(action);
         });
     },
+
     getLoyaltyUAD: function(component, helper, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.isMerkleError", false);
         component.set("v.loyalty", null);
 
         var action = component.get("c.getLoyaltyUAD");
-
         action.setParams({
             'loyaltyId': loyaltyId,
             'email': email,
             'phoneNum': phoneNum
         });
-
 
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
@@ -86,8 +82,6 @@
                         var str = result.returnValuesMap['body']
                         if(result.isSuccess && result.returnValuesMap['body']['success']) {
                             var returnVal = str;
-
-
                             for(var k in returnVal.data) returnVal[k] = returnVal.data[k];
                             if(returnVal.linked_partnerships === 'Airmiles')
                                 component.set('v.linked_partnerships', true)
@@ -95,8 +89,6 @@
                             returnVal.lifetime_balance_in_dollars = returnVal.lifetime_balance * conversionRate
                             returnVal.balance_in_dollars = returnVal.balance * conversionRate
                             returnVal.top_tier_join_date = Date.parse(returnVal.top_tier_join_date)
-
-
                             resolve(returnVal)
                         } else if (helper.isValidResponse(statusCode))  {
                             var error = new Error(response.getError())
@@ -115,9 +107,7 @@
                         }
                     }
                 } else {
-
                    reject(new Error(response.getError()[0].message));
-
                 }
             });
             $A.enqueueAction(action);
@@ -131,12 +121,9 @@
             return true;
         }
     },
-
-
     isValidResponse: function (res) {
         return res != null && (res == 200 || res == 201 || res == 204);
     },
-
 
     handleError : function(component, helper, error) {
         if(error.isMerkleError) {
@@ -149,22 +136,19 @@
             } else {
                 component.set("v.canRetry", true);
                 component.set("v.responseCode",  statusCode);
-
                 component.set("v.bodyMsg", error.str);
-
                 component.set("v.isMerkleError", true);
              }
         } else {
             component.set("v.isError", true);
-
             component.set("v.errorMsg", error);
         }
     },
+
     normalize: function(phone) {
         if (!phone) return "";
         phone = phone.replace(/[^\d]/g, "");
         return (phone.length != 10) ? phone :
             phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-
     }
 });

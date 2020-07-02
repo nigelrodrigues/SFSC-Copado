@@ -12,6 +12,9 @@ private class trac_RecordTransactionControllerTest {
 
     @IsTest
     static void testRecordTransactionSuccess() {
+
+
+
         Case aCase = new Case();
         insert aCase;
         String[] transactionOrigins = new String[] {'website', 'store', 'mhf'};
@@ -19,6 +22,9 @@ private class trac_RecordTransactionControllerTest {
         params.caseRecordId = aCase.Id;
         params.loyaltyNumber = '1000142';
         params.email = 'test101@pfsweb.com';
+
+
+
         params.orderNumber = '000000002';
         params.transactionNumber = '0000111122306082020';
         params.transactionDate = 'Mar. 04, 2020, 06:31 a.m.';
@@ -27,6 +33,9 @@ private class trac_RecordTransactionControllerTest {
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock());
         Test.startTest();
+
+
+
         for (String transactionOrigin : transactionOrigins) {
             params.transactionOrigin = transactionOrigin;
             TLAuraResponse resp = trac_RecordTransactionController.recordTransaction(params);
@@ -34,6 +43,9 @@ private class trac_RecordTransactionControllerTest {
             System.assertEquals(10, Integer.valueOf(resp.returnValuesMap.get('points')), 'origin: '+transactionOrigin);
         }
         Test.stopTest();
+
+
+
 
 
     }
@@ -54,6 +66,9 @@ private class trac_RecordTransactionControllerTest {
 
     @IsTest
     static void testRecordTransactionFail() {
+
+
+
         Case aCase = new Case();
         insert aCase;
         String[] transactionOrigins = new String[] {'website', 'store', 'mhf'};
@@ -61,6 +76,9 @@ private class trac_RecordTransactionControllerTest {
         params.caseRecordId = aCase.Id;
         params.loyaltyNumber = '1000142';
         params.email = 'test101@pfsweb.com';
+
+
+
         params.orderNumber = '000000002';
         params.transactionNumber = '0000111122306082020';
         params.transactionDate = 'Mar. 04, 2020, 06:31 a.m.';
@@ -69,11 +87,17 @@ private class trac_RecordTransactionControllerTest {
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock('fail'));
         Test.startTest();
+
+
+
         for (String transactionOrigin : transactionOrigins) {
             params.transactionOrigin = transactionOrigin;
             TLAuraResponse resp = trac_RecordTransactionController.recordTransaction(params);
             System.assertEquals(false, resp.isSuccess, 'origin: '+transactionOrigin);
         }
         Test.stopTest();
+
+
+
     }
 }

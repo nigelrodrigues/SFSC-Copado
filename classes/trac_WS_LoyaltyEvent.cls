@@ -35,15 +35,11 @@ public with sharing class trac_WS_LoyaltyEvent {
         String sig = trac_WS_LoyaltyUtils.generateHash(SECRET_KEY, params);
         params.put('sig', sig);
 
-
-
         res = trac_WS_WebServiceHelper.SendGetRequest(ENDPOINT, params, false, additionalHeaders);
         if(trac_WS_WebServiceHelper.isValidResponse(res)) {
             System.debug('Event response: ' + res.getBody());
             eventResponse = parse(res.getBody());
-
             eventResponse.populateDisplayFields();
-
             return true;
         }
         else {
@@ -52,20 +48,16 @@ public with sharing class trac_WS_LoyaltyEvent {
         }
         return false;
     }
-
-
-
+    
     public static EventResponse parse(String json) {
         return (EventResponse) System.JSON.deserialize(json, EventResponse.class);
     }
 
     public class EventRequest {
     }
-
-
+    
     public class res_dataWrapper {
         
-
         @AuraEnabled public Boolean showDetails = false;
         @AuraEnabled public Integer id;
         @AuraEnabled public String event_id;
@@ -75,16 +67,12 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public Integer status;
         @AuraEnabled public String detail;
         @AuraEnabled public String created_at;
-
         @AuraEnabled public String originated_at;
-
         @AuraEnabled public String updated_at;
         @AuraEnabled public String value;
         @AuraEnabled public Decimal points;
         @AuraEnabled public String external_customer_id;
         @AuraEnabled public String channel;
-
-
         @AuraEnabled public String sub_channel;
         @AuraEnabled public Integer tier_id;
         @AuraEnabled public String display_detail;
@@ -93,8 +81,6 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public String display_points_redeemed;
         @AuraEnabled public String display_points_earned;
         @AuraEnabled public Integer net_points;
-
-
     }
     public class res_ruleWrapper {
         @AuraEnabled public Integer id;
@@ -106,10 +92,8 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public String ledger_type;
         @AuraEnabled public String title;
         @AuraEnabled public Decimal points;
-
         @AuraEnabled public String display_points;
         //@AuraEnabled public res_dataWrapper data; // this is not the correct "data" specification, need to use a dedicated ledgerData subclass
-
     }
     public class res_event_paramsWrapper {
         @AuraEnabled public String event_type;
@@ -120,15 +104,11 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public List<res_dataWrapper> data;
         @AuraEnabled public Boolean success;
 
-
-
         /**
         * @description Loops through data and populates display fields based on current instantiated values
         */
         private void populateDisplayFields() {
             if (!data.isEmpty()) {
-
-
 
 
                 // use netPoints to record running tally
@@ -142,8 +122,6 @@ public with sharing class trac_WS_LoyaltyEvent {
                     // netPoints
                     netPoints += Integer.valueOf(row.points);
                     row.net_points = netPoints;
-
-
 
 
 
@@ -163,15 +141,11 @@ public with sharing class trac_WS_LoyaltyEvent {
                     // populate rule.ledger.display_points_earned
                     if (row.rule != null && row.rule.ledger != null) {
 
-
-
                         List<res_ledgerWrapper> newLedger = new List<res_ledgerWrapper>();
                         for (res_ledgerWrapper ledgerRow : row.rule.ledger) {
                             // filter out Tier Visit Counter ledger rows
                             if (ledgerRow.title != LEDGER_TITLE_TIER_VISIT_COUNTER) {
-
                                 ledgerRow.title = (ledgerRow.title.equalsIgnoreCase('Enrollment - $1.0')) ? 'Enrollment' : ledgerRow.title;
-
                                 Decimal ledgerPoints = ledgerRow.points != null ? ledgerRow.points : 0;
                                 ledgerRow.display_points = (ledgerPoints >= 0 ? '+' : '') + Integer.valueOf(ledgerRow.points);
                                 newLedger.add( ledgerRow );
@@ -179,13 +153,9 @@ public with sharing class trac_WS_LoyaltyEvent {
                         }
                         row.rule.ledger = newLedger;
 
-
-
                     }
                 }
             }
         }
-
-
     }
 }
