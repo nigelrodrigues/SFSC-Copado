@@ -133,10 +133,10 @@ public with sharing class trac_WS_LoyaltyEvent {
                     }
 
                     // populate display_points_redeemed
-                    row.display_points_redeemed = ((row.points != null && row.points < 0) ? String.valueOf(row.points) : '0' );
+                    row.display_points_redeemed = ((row.points != null && row.points < 0) ? row.points.format() : '0' );
 
                     // populate display_points_earned
-                    row.display_points_earned = ((row.points != null && row.points > 0) ? '+' + row.points : '0');
+                    row.display_points_earned = ((row.points != null && row.points > 0) ? '+' + row.points.format() : '0');
 
                     // populate rule.ledger.display_points_earned
                     if (row.rule != null && row.rule.ledger != null) {
@@ -147,7 +147,7 @@ public with sharing class trac_WS_LoyaltyEvent {
                             if (ledgerRow.title != LEDGER_TITLE_TIER_VISIT_COUNTER) {
                                 ledgerRow.title = (ledgerRow.title.equalsIgnoreCase('Enrollment - $1.0')) ? 'Enrollment' : ledgerRow.title;
                                 Decimal ledgerPoints = ledgerRow.points != null ? ledgerRow.points : 0;
-                                ledgerRow.display_points = (ledgerPoints >= 0 ? '+' : '') + Integer.valueOf(ledgerRow.points);
+                                ledgerRow.display_points = (ledgerPoints >= 0 ? '+' : '') + ledgerPoints.format();
                                 newLedger.add( ledgerRow );
                             }
                         }
