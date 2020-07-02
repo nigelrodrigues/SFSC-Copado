@@ -20,14 +20,16 @@
 
     <aura:attribute type="String"  name="customerLoyaltyId" />
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
-    <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
 
+    <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <div onkeyup="{!c.formPress}" class="slds-border_bottom" >
         <div class="slds-text-color_destructive">
             <aura:if isTrue="{!v.showError}">
                 {!v.errorMessage}
             </aura:if>
         </div>
+
+
         <lightning:layout horizontalAlign="space" multipleRows="true">
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <lightning:select label="Find Account By" aura:id="loyaltySearchType" value="{!v.selectedValue}">
@@ -38,6 +40,8 @@
             </lightning:layoutItem>
             <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
                 <aura:if isTrue="{!v.selectedValue=='1'}">
+
+
                     <lightning:input label="Email"
                                      type="email"
                                      aura:id="emailInput"
@@ -67,10 +71,10 @@
                                      placeholder="(555)-555-5555"
                                      onchange="{!c.handleChange}"
                                      required="true" />
-
                 </aura:if>
             </lightning:layoutItem>
         </lightning:layout>
+
 
         <lightning:layout horizontalAlign="space">
             <div>
