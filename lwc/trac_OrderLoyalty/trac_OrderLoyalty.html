@@ -57,21 +57,21 @@
                                     <lightning-layout-item padding="around-small">
                                         <div class="header-column">
                                             <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
-                                            <p>{shipment.Extn.ExtnLoyaltyNo}</p>
+                                            <p>{shipment.Extn.displayExtnLoyaltyNo}</p>
                                         </div>
                                     </lightning-layout-item>
 
                                     <lightning-layout-item padding="around-small">
                                         <div class="header-column">
                                             <p class="field-title slds-form-element__label slds-no-flex">Loyalty Tier</p>
-                                            <p>{shipment.Extn.ExtnLoyaltyTier}</p>
+                                            <p>{shipment.Extn.displayExtnLoyaltyTier}</p>
                                         </div>
                                     </lightning-layout-item>
 
                                     <lightning-layout-item padding="around-small">
                                         <div class="header-column">
-                                            <p class="field-title slds-form-element__label slds-no-flex">Points Earned</p>
-                                            <p>{shipment.Extn.ExtnPointsEarned}</p>
+                                            <p class="field-title slds-form-element__label slds-no-flex">{shipment.Extn.displayExtnPointsLabel}</p>
+                                            <p>{shipment.Extn.displayExtnPointsValue}</p>
                                         </div>
                                     </lightning-layout-item>
                                 </lightning-layout>
