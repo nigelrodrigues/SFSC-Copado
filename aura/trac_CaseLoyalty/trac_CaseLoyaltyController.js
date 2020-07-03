@@ -34,6 +34,7 @@
             component.set('v.isEditable', false)
         });
         $A.enqueueAction(action);
+
     },
 
     handleValueChange : function (component, event, helper) {
