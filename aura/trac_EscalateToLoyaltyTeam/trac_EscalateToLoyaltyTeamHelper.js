@@ -7,13 +7,13 @@
     MAX_FILE_SIZE: 25000000,
     attachFile : function (component, event, helper) {
 
-        var fileInput = component.find("fileUpload").get("v.files");
-        var createCase = component.get("v.selectedForCaseClose");
+        let fileInput = component.find("fileUpload").get("v.files");
+        let createCase = component.get("v.selectedForCaseClose");
 
         if( fileInput )
         {
-            var file = fileInput[0];
-            var self = this;
+            let file = fileInput[0];
+            let self = this;
 
 
             if (file.size > self.MAX_FILE_SIZE) {
@@ -22,11 +22,11 @@
             }
 
 
-            var objFileReader = new FileReader();
+            let objFileReader = new FileReader();
             objFileReader.onload = $A.getCallback(function () {
-                var fileContents = objFileReader.result;
-                var base64 = 'base64,';
-                var dataStart = fileContents.indexOf(base64) + base64.length;
+                let fileContents = objFileReader.result;
+                let base64 = 'base64,';
+                let dataStart = fileContents.indexOf(base64) + base64.length;
                 fileContents = fileContents.substring(dataStart);
 
 
@@ -58,7 +58,6 @@
                 contentType: file.type,
                 fileName: file.name,
                 fileContentsToEncode: encodeURIComponent(fileContent),
-
                 cloneCase: createCase,
                 loyaltyIssue : issueEntered
 
@@ -71,8 +70,6 @@
                 contentType: null,
                 fileName: null,
                 fileContentsToEncode: null,
-
-
                 cloneCase: createCase,
                 loyaltyIssue : issueEntered
             });
@@ -80,7 +77,7 @@
 
 
         action.setCallback(this, function(response) {
-            var state = response.getState();
+            let state = response.getState();
             if (component.isValid() && state === "SUCCESS")
             {
 
@@ -94,9 +91,7 @@
                     {
                         if(result.isSuccess)
                         {
-
-
-                            var retrievedCase = result.returnValuesMap['caseRecord'];
+                            let retrievedCase = result.returnValuesMap['caseRecord'];
                             if ( retrievedCase )
                             {
                                 this.showToast('Success', 'New Case created and transferred to Loyalty Escalations Team', 'success');
@@ -126,7 +121,7 @@
 
     },
     showToast: function (title,message, type) {
-        var resultsToast = $A.get("e.force:showToast");
+        let resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
             "title": title,
             "message": message,

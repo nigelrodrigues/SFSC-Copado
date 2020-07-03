@@ -50,7 +50,6 @@
                     <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
                         <lightning:icon iconName="standard:high_velocity_sales" alternativeText="" title="Escalate Case" size="small"/>
                         Escalate Case</h2>
-                    <p class="slds-m-top_x-small">{!v.modalHeader}</p>
                 </header>
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
 
@@ -79,7 +78,7 @@
                                 <div class="slds-m-top_large">
                                     <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true" disabled="true" class="slds-hide"/>
 
-                                    <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c"  class="slds-hide"/> <!-- class="slds-hide" -->
+                                    <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c"  class="slds-hide"/>
                                     <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      class="slds-hide"/>
                                     <aura:if isTrue="{!v.enableCategory}" >
                                         <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="true" />

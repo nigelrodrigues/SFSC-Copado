@@ -18,7 +18,7 @@
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
                       fields="Id, Customer_Loyalty_Id__c, Business_Unit__c, Order_Number__c,
-                                Subject, Loyalty_Tier__c, Loyalty_Issue_Description__c, CaseNumber"
+                                Subject, Loyalty_Tier__c, Loyalty_Issue_Description__c, CaseNumber, Status"
                       targetFields="{!v.caseRecord}"
                       targetError="{!v.recordLoadError}"
     />

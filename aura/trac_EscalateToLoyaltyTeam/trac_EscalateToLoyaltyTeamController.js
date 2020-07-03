@@ -18,15 +18,17 @@
     },
     handleLoad: function (component, event, helper)
     {
-        component.find("caseStatus").set("v.value", "Open");
-        var selectedTeamue = component.get("v.selectedTeam");
-        if( selectedTeamue === 'operations')
+        let caseRecord = component.get("v.caseRecord");
+        let selectedTeam = component.get("v.selectedTeam");
+        if( selectedTeam === 'operations')
         {
+            component.find("caseStatus").set("v.value", "Open");
             component.find("caseType").set("v.value", "Rewards Escalation");
             component.set("v.enableCategory", true);
         }
         else
         {
+            component.find("caseStatus").set("v.value", caseRecord.Status);
             component.set("v.enableCategory", false);
             component.set("v.showEscalationOptions", true);
         }
@@ -42,20 +44,21 @@
     {
         let selectedTeam = component.get("v.selectedTeam");
         let closeCase = component.get("v.selectedForCaseClose");
+        // For Loyalty Operations Team
         if ( selectedTeam === "operations")
         {
             component.find("caseType").set("v.value", "Rewards Escalation");
             component.set("v.showEscalationOptions", false);
             component.set("v.createNewCase",   false);
 
-
-            var fileUploaded = component.find("fileUpload");
+            let fileUploaded = component.find("fileUpload");
             if ( fileUploaded && fileUploaded.get("v.files") && fileUploaded.get("v.files").length > 0) {
                 helper.attachFile(component, event);
             }
 
 
         }
+        // For Loyalty Escalations Team
         if ( selectedTeam === "escalation")
         {
             event.preventDefault(); // stop form submission
@@ -63,9 +66,10 @@
             let eventFields = event.getParam("fields");
 
             // For option - No, close case.
-            if( closeCase==="no" )
+            if( closeCase === "no" )
             {
                 component.set("v.enableCategory", true);
+                eventFields["Status"] = "Open";
                 eventFields["Case_Type__c"] = "Rewards";
                 eventFields["Category__c"] = "Goodwill Points";
                 eventFields["Subcategory__c"] = "Requires Approval";
@@ -77,7 +81,6 @@
             }
             else
             {
-
 
                 let issueEntered = component.find("caseIssueDescription").get("v.value");
                 eventFields["Loyalty_Issue_Description__c"]  = issueEntered;
@@ -98,7 +101,7 @@
         component.set("v.isSpinner", false);
         component.set("v.isLoading", false);
         component.set("v.openLightningForm", false);
-        var errorEncountered = component.get("v.isError");
+        let errorEncountered = component.get("v.isError");
 
 
         if( !errorEncountered )
@@ -137,10 +140,11 @@
             }
         }
     },
+
     handleFilesChange: function (component, event, helper)
     {
 
-        var fileName = 'No File Selected..';
+        let fileName = 'No File Selected..';
         if (event.getSource().get("v.files").length > 0)
         {
             fileName = event.getSource().get("v.files")[0]['name'];
@@ -153,9 +157,12 @@
     {
         const step = event.getSource().get("v.value");
         let selectedTeam = component.get("v.selectedTeam");
-        let closeCase = component.get("v.selectedForCaseClose");
+        let caseRecord = component.get("v.caseRecord");
+
+
         if ( selectedTeam === "operations")
         {
+            component.find("caseStatus").set("v.value", "Open");
             component.set("v.enableCategory", true);
             component.find("caseType").set("v.value", "Rewards Escalation");
             component.find("caseCategory").set("v.value", null);
@@ -164,6 +171,7 @@
         }
         if ( selectedTeam === "escalation" )
         {
+            component.find("caseStatus").set("v.value", caseRecord.Status);
             component.set("v.enableCategory", false);
             component.set("v.showEscalationOptions", true);
         }
