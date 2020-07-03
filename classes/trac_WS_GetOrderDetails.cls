@@ -237,13 +237,15 @@ public with sharing class trac_WS_GetOrderDetails {
         }
         // calculate total point label and value
         if (getOrderDetailsResponse.Extn != null) {
+            String displayValue = 'N/A';
+            getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Earned';
             if (getOrderDetailsResponse.Extn.ExtnPointsLost != null) {
                 getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Lost';
-                getOrderDetailsResponse.displayTotalPointsValue = getOrderDetailsResponse.Extn.ExtnPointsLost;
-            } else {
-                getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Earned';
-                getOrderDetailsResponse.displayTotalPointsValue = getOrderDetailsResponse.Extn.ExtnPointsEarned;
+                displayValue = getOrderDetailsResponse.Extn.ExtnPointsLost;
+            } else if (getOrderDetailsResponse.Extn.ExtnPointsEarned != null) {
+                displayValue = getOrderDetailsResponse.Extn.ExtnPointsEarned;
             }
+            getOrderDetailsResponse.displayTotalPointsValue = displayValue;
         }
 
         // prepare primeLines map
@@ -262,6 +264,21 @@ public with sharing class trac_WS_GetOrderDetails {
         // loop over shipments to fill out fields from primeLines
         if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
             for (res_ShipmentWrapper shipment : getOrderDetailsResponse.Shipments.Shipment) {
+                // set shipment display extn fields
+                shipment.Extn.displayExtnPointsLabel = 'Points Earned';
+                String displayPointsValue = 'N/A';
+                if (shipment.Extn != null) {
+                    if (String.isNotBlank(shipment.Extn.ExtnPointsLost)) {
+                        shipment.Extn.displayExtnPointsLabel = 'Points Lost';
+                        displayPointsValue = shipment.Extn.ExtnPointsLost;
+                    } else if (String.isNotBlank(shipment.Extn.ExtnPointsEarned)) {
+                        displayPointsValue = shipment.Extn.ExtnPointsEarned;
+                    }
+                }
+                shipment.Extn.displayExtnPointsValue = displayPointsValue;
+                shipment.Extn.displayExtnLoyaltyNo = String.isNotBlank(shipment.Extn.ExtnLoyaltyNo) ? shipment.Extn.ExtnLoyaltyNo : '-';
+                shipment.Extn.displayExtnLoyaltyTier = String.isNotBlank(shipment.Extn.ExtnLoyaltyTier) ? shipment.Extn.ExtnLoyaltyTier : 'N/A';
+
                 // loop over order invoice list
                 shipment.customInvoiceNo = '';
                 if (shipment.OrderInvoiceList != null && !shipment.OrderInvoiceList.OrderInvoice.isEmpty()) {
@@ -680,6 +697,10 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnFirstEstimatedShipDate;
         @AuraEnabled public String ExtnPointsEarned;
         @AuraEnabled public String ExtnPointsLost;
+        @AuraEnabled public String displayExtnPointsLabel;
+        @AuraEnabled public String displayExtnPointsValue;
+        @AuraEnabled public String displayExtnLoyaltyNo;
+        @AuraEnabled public String displayExtnLoyaltyTier;
     }
 
     public class res_OrderStatusesWrapper {
