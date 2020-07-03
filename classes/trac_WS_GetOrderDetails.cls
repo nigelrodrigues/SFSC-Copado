@@ -268,11 +268,11 @@ public with sharing class trac_WS_GetOrderDetails {
                 shipment.Extn.displayExtnPointsLabel = 'Points Earned';
                 String displayPointsValue = 'N/A';
                 if (shipment.Extn != null) {
-                    if (shipment.Extn.ExtnPointsLost != null) {
+                    if (String.isNotBlank(shipment.Extn.ExtnPointsLost)) {
                         shipment.Extn.displayExtnPointsLabel = 'Points Lost';
                         displayPointsValue = shipment.Extn.ExtnPointsLost;
-                    } else if (shipment.Extn.ExtnPointsEarned != null) {
-                        displayPointsValue = shipment.Extn.ExtnPointsLost;
+                    } else if (String.isNotBlank(shipment.Extn.ExtnPointsEarned)) {
+                        displayPointsValue = shipment.Extn.ExtnPointsEarned;
                     }
                 }
                 shipment.Extn.displayExtnPointsValue = displayPointsValue;
