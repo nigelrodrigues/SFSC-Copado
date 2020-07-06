@@ -20,7 +20,9 @@
     <aura:attribute type="String"  name="bodyMsg"  default=""/>
     <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
     <aura:attribute type="Boolean" name="canRetry"   default="false"/>
+
     <aura:handler name="trac_MerkleErrorEvent" event="c:trac_MerkleErrorEvent" action="{!c.handleMerkleErrorEvent}"/>
+
     <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.handleSaveChanges}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:layout multipleRows="true">
@@ -173,11 +175,9 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Credit</p>
-
                 <aura:if isTrue="{!not(empty(v.loyalty.card_details))}">
                     <div>
                         <ul class="slds-list_horizontal slds-has-dividers_right">
@@ -190,11 +190,9 @@
                         <p>N/A</p>
                     </aura:set>
                 </aura:if>
-
             </div>
         </lightning:layoutItem>
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
@@ -389,13 +387,13 @@
         </lightning:layoutItem>
         <lightning:layoutItem padding="around-small" size="4">
 
-
             <c:trac_EscalateToLoyaltyTeam caseRecord="{!v.caseRecord}" />
         </lightning:layoutItem>
     </lightning:layout>
     <div aura:id="divBody">
         {!v.body}
     </div>
+
     <aura:if isTrue="{!v.showAppeasementModal}">
     <div aura:id="appeasementModal">
         <c:trac_IssueAppeasement loyalty="{!v.loyalty}" conversionRate="{!v.conversionRate}" caseRecord="{!v.caseRecord}"/>

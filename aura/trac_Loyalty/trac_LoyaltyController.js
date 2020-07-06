@@ -2,18 +2,20 @@
  * Created by akong on 6/1/2020.
  */
 
+
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         cmp.set('v.showAppeasementModal', true);
     },
+
+
     handleCloseModalApplicationEvent: function(cmp) {
         cmp.set('v.showAppeasementModal', false);
     },
-
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
-        let container = cmp.find("divBody");
 
+        let container = cmp.find("divBody");
 
         $A.createComponent(
             "c:trac_RecordTransaction",
@@ -45,18 +47,22 @@
             })
 
         .catch(error => helper.handleError(component, helper, error))
-
     },
+
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
         var lastNameValid = component.find('lastNameInput').get("v.validity")
         var emailValid = component.find('emailInput').get("v.validity")
+
+
         if(firstNameValid.valid && lastNameValid.valid && emailValid.valid) {
             component.set('v.isDisabled', false)
         } else {
             component.set('v.isDisabled', true)
         }
     },
+
+
     handleEditLoyaltyApplicationEvent: function (component, event, helper) {
         var firstName = event.getParam("firstName");
         var lastName = event.getParam("lastName");
