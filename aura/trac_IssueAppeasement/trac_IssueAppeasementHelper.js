@@ -78,7 +78,6 @@
     },
     submitAppeasement: function(cmp, event, helper) {
         cmp.set('v.showSpinner', true);
-        //this.checkDisableButton(cmp);
         var appeasePoints = cmp.get("v.appeasePoints");
         // submit to server
         var action = cmp.get('c.submitAppeasement');
@@ -94,26 +93,41 @@
         action.setParams(params);
         action.setCallback(this, function (response) {
             cmp.set('v.showSpinner', false);
-            //this.checkDisableButton(cmp);
             var state = response.getState();
-            if (cmp.isValid() && state === "SUCCESS") {
-                var result = response.getReturnValue();
-                if (typeof result !== undefined && result != null) {
-                    if (result.isSuccess) {
-                        // success, show success toast
-                        helper.showToast(result.message, 'success', 'Appeasement Submitted');
-                        // fire event to close the modal
-                        helper.fireCloseModalEvent();
-                    } else {
-                        // failure, show error message
-                        cmp.set("v.isError", true);
-                        cmp.set("v.errorMsg", result.message);
-                    }
-                } else {
-                    // unexpected error
-                    cmp.set("v.isError", true);
-                    cmp.set("v.errorMsg", "Connection Error");
+            var result = response.getReturnValue();
+            // if (cmp.isValid() && state === "SUCCESS") {
+            //     var result = response.getReturnValue();
+            if (!helper.isMerkleErrorHandled(cmp, cmp.getReference("c.submitAppeasementForm"), response) ) {
+                if(result.isSuccess && result.returnValuesMap['body']['success']) {
+                    // success, show success toast
+                    helper.showToast(result.message, 'success', 'Appeasement Submitted');
+                    // fire event to close the modal
+                    helper.fireCloseModalEvent();
+                    //fire  loyalty refresh event
+                    var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
+                    appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+                    appEvent.fire();
                 }
+                else if (result.returnValuesMap['validForm'] !=null && !result.returnValuesMap['validForm'])  {
+                    cmp.set("v.isError", true);
+                    cmp.set("v.errorMsg", result.message);
+                }
+                // if (typeof result !== undefined && result != null) {
+                //     if (result.isSuccess) {
+                //         // success, show success toast
+                //         helper.showToast(result.message, 'success', 'Appeasement Submitted');
+                //         // fire event to close the modal
+                //         helper.fireCloseModalEvent();
+                //     } else {
+                //         // failure, show error message
+                //         cmp.set("v.isError", true);
+                //         cmp.set("v.errorMsg", result.message);
+                //     }
+                // } else {
+                //     // unexpected error
+                //     cmp.set("v.isError", true);
+                //     cmp.set("v.errorMsg", "Connection Error");
+                // }
             }
         });
         $A.enqueueAction(action);

@@ -24,40 +24,52 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.appeasePoints}" action="{!c.changeAmount}"/>
+
     <aura:registerEvent name="closeModalEvent" type="c:trac_CloseModalApplicationEvent"/>
-    <div>
-        <lightning:messages/>
-        <aura:if isTrue="{!not(v.allowUnlimited)}">
-            <lightning:card
-                    class="profile-warning slds-align--absolute-center slds-p-horizontal--medium slds-p-vertical--small slds-m-bottom--medium"
-                    iconName="utility:warning">
-                Your profile {!v.profileName} is limited to issuing appeasements of
-                <lightning:formattedNumber value="{!v.maxAppeasement}"/> points or less.
-                If you need to issue a larger appeasement, please escalate the case and write a description
-                of the amount requested and why in the case feed.
-            </lightning:card>
-        </aura:if>
-        <div>
-            <div class="slds-is-relative">
-                <lightning:spinner aura:id="spinner" variant="brand" class="{!v.showSpinner ? '' : 'slds-hide' }" size="large" alternativeText="Please wait..."/>
+    <aura:registerEvent name="loyaltyRefreshEvent" type="c:trac_LoyaltyRefreshEvent"/>
+
+    <div class="modal-glass slds-backdrop fadein slds-backdrop--open" data-aura-rendered-by="2677:0" style="opacity: 0.8; z-index: 8900 ! important;"></div>
+    <div aria-hidden="false" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" role="alertdialog" class="slds-modal slds-modal--prompt slds-fade-in-open" style="z-index: 8901 ! important;">
+        <div class="slds-modal__container slds-modal--prompt" role="document" id="prompt-message-wrapper">
+            <div class="slds-modal__header">
+                <h2 class="slds-text-heading--medium" id="prompt-heading-id">Issue Appeasement</h2>
             </div>
-            <div class="slds-form--stacked" style="min-height:70px;" onkeyup="{!c.formPress}">
-                <lightning:input aura:id="amount" label="Appeasement Points"
-                                 name="amount"
-                                 value="{!v.appeasePoints}"
-                                 type="text"
-                                 pattern="[0-9]+"
-                                 required="true"/>
+            <div class="slds-modal__content slds-p-around--medium slds-wrap">
+                <lightning:messages/>
+                <aura:if isTrue="{!not(v.allowUnlimited)}">
+                    <lightning:card
+                            class="profile-warning slds-align--absolute-center slds-p-horizontal--medium slds-p-vertical--small slds-m-bottom--medium"
+                            iconName="utility:warning">
+                        Your profile {!v.profileName} is limited to issuing appeasements of
+                        <lightning:formattedNumber value="{!v.maxAppeasement}"/> points or less.
+                        If you need to issue a larger appeasement, please escalate the case and write a description
+                        of the amount requested and why in the case feed.
+                    </lightning:card>
+                </aura:if>
+                <div>
+                    <div class="slds-is-relative">
+                        <lightning:spinner aura:id="spinner" variant="brand" class="{!v.showSpinner ? '' : 'slds-hide' }" size="large" alternativeText="Please wait..."/>
+                    </div>
+                    <div class="slds-form--stacked" style="min-height:70px;" onkeyup="{!c.formPress}">
+                        <lightning:input aura:id="amount" label="Appeasement Points"
+                                         name="amount"
+                                         value="{!v.appeasePoints}"
+                                         type="text"
+                                         pattern="[0-9]+"
+                                         required="true"/>
+                    </div>
+                </div>
+                <p class="{!(and(v.appeasePoints != null, v.appeasePoints > 0) ? 'slds-show' : 'slds-hide') + ' slds-m-top--large'}">
+                    The customer will be awarded <lightning:formattedNumber value="{!v.appeasePoints}" maximumFractionDigits="0"/> points,
+                    worth <lightning:formattedNumber style="currency" value="{!v.appeaseValue}"/> CAD
+                    at time of redemption.  Their new point balance will be <lightning:formattedNumber value="{!v.finalPointBalance}" maximumFractionDigits="0"/>
+                    points. An email confirmation will be sent regarding this.
+                </p>
+                <div class="slds-m-top--large slds-align--absolute-center">
+                    <lightning:button label="Submit Appeasement" variant="brand" disabled="{!v.showSpinner || v.disableButton}" onclick="{!c.submitAppeasementForm}" />
+                    <lightning:button label="Cancel" onclick="{!c.closeAppeasementModal}"/>
+                </div>
             </div>
-        </div>
-        <p class="{!(and(v.appeasePoints != null, v.appeasePoints > 0) ? 'slds-show' : 'slds-hide') + ' slds-m-top--large'}">
-            The customer will be awarded <lightning:formattedNumber value="{!v.appeasePoints}" maximumFractionDigits="0"/> points,
-            worth <lightning:formattedNumber style="currency" value="{!v.appeaseValue}"/> CAD
-            at time of redemption.  Their new point balance will be <lightning:formattedNumber value="{!v.finalPointBalance}" maximumFractionDigits="0"/>
-            points. An email confirmation will be sent regarding this.
-        </p>
-        <div class="slds-m-top--large slds-align--absolute-center">
-            <lightning:button label="Submit Appeasement" disabled="{!v.showSpinner || v.disableButton}" onclick="{!c.submitAppeasementForm}" />
         </div>
     </div>
 </aura:component>
