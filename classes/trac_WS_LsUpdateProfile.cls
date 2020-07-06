@@ -1,8 +1,6 @@
 public with sharing class trac_WS_LsUpdateProfile {
-//    public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_GW_Endpoint__c
-//            + trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_UAD_Lookup_Endpoint__c;
-
-    public final string ENDPOINT = 'https://api-gateway.hbc.io/dev/v1/ls-update-profile';
+    public final String ENDPOINT = trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_GW_Endpoint__c
+            + trac_WS_WebServiceHelper.webServiceSettings.Bay_LS_Update_Profile_Endpoint__c;
 
     private HttpResponse res = new HttpResponse();
     public LsUpdateProfileRequest lsUpdateProfileRequest;
@@ -15,8 +13,7 @@ public with sharing class trac_WS_LsUpdateProfile {
         Map<String, String> additionalHeaders = new Map<String, String>();
         additionalHeaders.put('x-api-key', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_API_Key__c);
         additionalHeaders.put('x-apigw-api-id', trac_WS_WebServiceHelper.webServiceSettings.Bay_Loyalty_X_APIGW_API_ID__c);
-
-
+        
         res = trac_WS_WebServiceHelper.sendPostRequest(ENDPOINT, lsUpdateProfileRequest, additionalHeaders);
 
         System.debug('res: ' + res);
