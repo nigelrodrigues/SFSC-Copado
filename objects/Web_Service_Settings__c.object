@@ -26,6 +26,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Bay_LS_Update_Profile_Endpoint__c</fullName>
+        <description>Middleware API for loyalty customer update</description>
+        <externalId>false</externalId>
+        <label>Bay LS Update Profile Endpoint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CNS_Email_Search_Endpoint__c</fullName>
         <description>Relative endpoint for the email search API</description>
         <externalId>false</externalId>
