@@ -38,12 +38,12 @@
         var firstName = component.get('v.firstName')
         var lastName = component.get('v.lastName')
         var email = component.get('v.email')
-        helper.handleSaveChangesHelper(component, loyalty, firstName, lastName, email)
+        helper.handleSaveChangesHelper(component, helper, loyalty, firstName, lastName, email)
         .then(() => {
             helper.showToast("Saved successfully!", 'success', 'Changes Submitted')
             component.set('v.isEditable', false)
         })
-        .catch(error => helper.handleError(component, error))
+        .catch(error => helper.handleError(component, helper, error))
     },
 
 
