@@ -5,40 +5,16 @@
 
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
-        console.log("Inside handleShowAppeasementModal");
-        var modalBody;
-        $A.createComponent(
-            "c:trac_IssueAppeasement",
-            {
-                loyalty: cmp.get('v.loyalty'),
-
-                conversionRate: cmp.get('v.conversionRate'),
-                caseRecord: cmp.get('v.caseRecord')
-
-            },
-            function(content, status) {
-                if (status === "SUCCESS") {
-                    modalBody = content;
-                    var modalPromise = cmp.find('overlayLib').showCustomModal({
-                        header: "Issue Appeasement",
-                        body: modalBody,
-                        showCloseButton: true,
-                        closeCallback: function() {}
-                    });
-                    cmp.set('v.appeasementModalPromise', modalPromise);
-                }
-            });
+        cmp.set('v.showAppeasementModal', true);
     },
-    handleCloseModalApplicationEvent: function(cmp) {
-        cmp.get('v.appeasementModalPromise').then(
-            function (modal) {
-                modal.close();
-            }
-        );
 
+
+    handleCloseModalApplicationEvent: function(cmp) {
+        cmp.set('v.showAppeasementModal', false);
     },
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
+
         let container = cmp.find("divBody");
 
         $A.createComponent(
@@ -62,23 +38,31 @@
         var firstName = component.get('v.firstName')
         var lastName = component.get('v.lastName')
         var email = component.get('v.email')
-        helper.handleSaveChangesHelper(component, loyalty, firstName, lastName, email)
+
+        helper.handleSaveChangesHelper(component, helper, loyalty, firstName, lastName, email)
+
             .then(() => {
                 helper.showToast("Saved successfully!", 'success', 'Changes Submitted')
                 component.set('v.isEditable', false)
             })
-            .catch(error => helper.handleError(component, error))
+
+        .catch(error => helper.handleError(component, helper, error))
     },
+
     handleChange: function(component, event, helper) {
         var firstNameValid = component.find('firstNameInput').get("v.validity")
         var lastNameValid = component.find('lastNameInput').get("v.validity")
         var emailValid = component.find('emailInput').get("v.validity")
+
+
         if(firstNameValid.valid && lastNameValid.valid && emailValid.valid) {
             component.set('v.isDisabled', false)
         } else {
             component.set('v.isDisabled', true)
         }
     },
+
+
     handleEditLoyaltyApplicationEvent: function (component, event, helper) {
         var firstName = event.getParam("firstName");
         var lastName = event.getParam("lastName");
@@ -89,6 +73,8 @@
         component.set('v.lastName', lastName)
         component.set('v.email', email)
     },
+
+
     handleMerkleErrorEvent : function(cmp, event) {
         var modalId = 'merkleCommonErrorModal';
         var canRetry = event.getParam('canRetry');
@@ -97,7 +83,9 @@
         var responseCode = event.getParam('responseCode');
         var container = cmp.find('divBody');
         var currentModal = cmp.find(modalId);
-        if (currentModal != null) {
+
+        if (typeof currentModal !== 'undefined' && currentModal != null) {
+
             currentModal.destroy();
         }
         $A.createComponent(
@@ -118,4 +106,6 @@
                 }
             });
     },
+
+
 });

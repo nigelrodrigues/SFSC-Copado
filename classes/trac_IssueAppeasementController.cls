@@ -13,7 +13,6 @@ public with sharing class trac_IssueAppeasementController {
     */
     @AuraEnabled
 
-
     public static TLAuraResponse submitAppeasement(String loyaltyNumber, String email, Integer points, Case retrievedCase) {
 
 
@@ -30,6 +29,10 @@ public with sharing class trac_IssueAppeasementController {
             response.message = 'Points must be a positive integer';
         }
 
+
+        response.returnValuesMap.put('validForm', response.isSuccess);
+
+
         // callout to Merkle API to award points
         try {
             if (response.isSuccess) {
@@ -39,26 +42,28 @@ public with sharing class trac_IssueAppeasementController {
                 evt.email = email;
 
 
-
                 evt.eventType = 'hb_lp_cs_appeasement';
                 evt.value = points;
                 evt.detail = 'appeasement from CSR';
                 evt.eventChannel = 'uad';
-                evt.subChannel = retrievedCase.CaseNumber;
+
+                evt.subChannel = (retrievedCase != null ? retrievedCase.CaseNumber : 'N/A');
                 evt.subChannelDetail = UserInfo.getUserEmail();
-
-
-
 
                 if (evt.send()) {
                     // successful callout
+                    response.returnValuesMap.put('body', evt.eventResponse);
                     response.message = 'Successfully awarded ' + points + ' point' + (points == 1 ? '' : 's') + ' to Loyalty Number ' + loyaltyNumber;
 
-                    // send customer notification email
+                    // TODO: send customer notification email
+
 
                 } else {
                     // unsuccessful callout
                     response.isSuccess = false;
+
+                    response.returnValuesMap.put('body', evt.getBody());
+
                     if (evt.eventResponse != null) {
                         response.message  = evt.eventResponse.data.message;
                     } else {
@@ -66,6 +71,9 @@ public with sharing class trac_IssueAppeasementController {
                         System.debug('JSON error response: ' + evt.jsonError);
                     }
                 }
+
+                response.returnValuesMap.put('statusCode', evt.getStatusCode());
+
             }
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

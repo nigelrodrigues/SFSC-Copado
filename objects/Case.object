@@ -7595,6 +7595,11 @@
         <columns>CORE.USERS.ALIAS</columns>
         <columns>Open_ORC__c</columns>
         <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notContain</operation>
+            <value>Team Lead Assistance Needed,Awaiting Service Excellence Review,POS Team</value>
+        </filters>
         <label>O5 - Risk Support - El Salvador</label>
         <queue>O5_Risk_Support_El_Salvador</queue>
         <sharedTo>
