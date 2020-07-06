@@ -204,6 +204,10 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
             body = '{"success":true,"conversion_rate":"0.005"}';
         } else if(callouttype == 'pointValue.fail') {
             body = '{"success":false,"data":{"code":101,"message":"Invalid or missing UUID."}}';
+        } else if(callouttype == 'lsUpdate') {
+            body = '{"success":true}';
+        } else if(callouttype == 'lsUpdate.fail') {
+            body = '{"success":false,"response_code":"89","error_message":"Loyalty Not Found"}';
 
         }
 
