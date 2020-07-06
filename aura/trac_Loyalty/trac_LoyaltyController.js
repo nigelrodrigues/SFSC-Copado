@@ -5,41 +5,13 @@
 
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
-        console.log("Inside handleShowAppeasementModal");
-        var modalBody;
-        $A.createComponent(
-            "c:trac_IssueAppeasement",
-            {
-                loyalty: cmp.get('v.loyalty'),
-
-                conversionRate: cmp.get('v.conversionRate'),
-                caseRecord: cmp.get('v.caseRecord')
-
-            },
-            function(content, status) {
-                if (status === "SUCCESS") {
-                    modalBody = content;
-                    var modalPromise = cmp.find('overlayLib').showCustomModal({
-                        header: "Issue Appeasement",
-                        body: modalBody,
-                        showCloseButton: true,
-                        closeCallback: function() {}
-                    });
-                    cmp.set('v.appeasementModalPromise', modalPromise);
-                }
-            });
+        cmp.set('v.showAppeasementModal', true);
     },
-
 
     handleCloseModalApplicationEvent: function(cmp) {
-        cmp.get('v.appeasementModalPromise').then(
-            function (modal) {
-                modal.close();
-            }
-        );
-
-
+        cmp.set('v.showAppeasementModal', false);
     },
+
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
 
@@ -94,7 +66,6 @@
         var lastName = event.getParam("lastName");
         var email = event.getParam("email");
 
-
         component.set('v.firstName', firstName)
         component.set('v.lastName', lastName)
         component.set('v.email', email)
@@ -108,7 +79,7 @@
         var responseCode = event.getParam('responseCode');
         var container = cmp.find('divBody');
         var currentModal = cmp.find(modalId);
-        if (currentModal != null) {
+        if (typeof currentModal !== 'undefined' && currentModal != null) {
             currentModal.destroy();
         }
         $A.createComponent(
