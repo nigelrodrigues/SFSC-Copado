@@ -18,7 +18,9 @@
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
                       fields="Id, Customer_Loyalty_Id__c, Business_Unit__c, Order_Number__c,
+
                                 Subject, Loyalty_Tier__c, Loyalty_Issue_Description__c, CaseNumber, Status"
+
                       targetFields="{!v.caseRecord}"
                       targetError="{!v.recordLoadError}"
     />
@@ -42,9 +44,11 @@
                 </lightning:layoutItem>
                 <lightning:layoutItem class="slds-float_right slds-p-around_xx-small">
                     <lightning:button label="{!v.editButtonText}" onclick="{!c.isEditableToggle}"/>
+
                 </lightning:layoutItem>
             </aura:if>
         </div>
+
         <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
         <div class="slds-is-relative">
             <aura:if isTrue="{!empty(v.loyalty) || v.refreshSearch==true}">
@@ -59,7 +63,9 @@
         <div class="slds-is-relative">
             <aura:if isTrue="{!not(empty(v.loyalty))}">
                 <c:trac_Loyalty loyalty="{!v.loyalty}" isEditable="{!v.isEditable}"  caseRecord="{!v.caseRecord}" conversionRate="{!v.conversionRate}" />
+
             </aura:if>
         </div>
+
     </div>
 </aura:component>
