@@ -32,4 +32,7 @@
             $A.enqueueAction(cmp.get('c.submitAppeasementForm'));
         }
     },
+    closeAppeasementModal: function(cmp, event, helper) {
+        helper.fireCloseModalEvent();
+    }
 });
