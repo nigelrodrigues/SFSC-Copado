@@ -7586,6 +7586,24 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>O5_Risk_Support_El_Salvador</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Open_ORC__c</columns>
+        <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Team Assistance Needed</value>
+        </filters>
+        <label>O5 - Risk Support - Team Assistance Need</label>
+        <queue>O5_Risk_Support_El_Salvador</queue>
+    </listViews>
+    <listViews>
         <fullName>O5_Risk_Support_El_Salvador_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
