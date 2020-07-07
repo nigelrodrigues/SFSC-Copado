@@ -9,7 +9,6 @@
         var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
         var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
 
-
         var errorValuesMap = {};
         if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
             result = false;
@@ -93,19 +92,16 @@
                                 cmp.find("TerminalNumberMhfStore").get("v.value");
         }
         var myRecordTransactionParameters = {
-
             caseRecordId: cmp.get('v.caseRecordId'),
-
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
             transactionOrigin: transactionOrigin,
             orderNumber: orderNumber,
             transactionNumber: transactionNumber,
             transactionDate: transactionDate,
-
-
             transactionSubtotal: transactionSubtotal,
-            exclusionSubtotal: exclusionSubtotal
+            exclusionSubtotal: exclusionSubtotal,
+            totalEarn: cmp.get('v.totalEarnValue')
         };
         action.setParams({
             "params": myRecordTransactionParameters,
@@ -131,22 +127,22 @@
     },
     proceedWithSuccessfulTransaction: function(cmp, transactionSubtotal, exclusionSubtotal, result) {
 
-                        var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
-                        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
-                        var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
-                        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
-                        var actions_needed_for_next_tier = cmp.get('v.loyalty.actions_needed_for_next_tier');
-                        var tierUpgrade = false;
-                        if (!isNaN(totalSpent) && !isNaN(actions_needed_for_next_tier)) {
-                            tierUpgrade = totalSpent >= actions_needed_for_next_tier;
-                        }
-                        if (tierUpgrade){
-                            this.showToast(result.message, 'success', 'Transaction Submitted', 8000);
-                            this.showToast('The new account tier might take a couple of minutes to be processed', 'info', 'Account Tier', 8000);
-                        }
-                        else {
-                            this.showToast(result.message, 'success', 'Transaction Submitted');
-                        }
+        var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
+        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+        var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
+        appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
+        var actions_needed_for_next_tier = cmp.get('v.loyalty.actions_needed_for_next_tier');
+        var tierUpgrade = false;
+        if (!isNaN(totalSpent) && !isNaN(actions_needed_for_next_tier)) {
+            tierUpgrade = totalSpent >= actions_needed_for_next_tier;
+        }
+        if (tierUpgrade){
+            this.showToast(result.message, 'success', 'Transaction Submitted', 8000);
+            this.showToast('The new account tier might take a couple of minutes to be processed', 'info', 'Account Tier', 8000);
+        }
+        else {
+            this.showToast(result.message, 'success', 'Transaction Submitted');
+        }
 
 
         appEvent.fire();
