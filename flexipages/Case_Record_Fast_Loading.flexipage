@@ -127,6 +127,10 @@
                 <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
+                <name>enableActionsConfiguration</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
                 <name>hideChatterActions</name>
                 <value>false</value>
             </componentInstanceProperties>
@@ -271,6 +275,9 @@
                     <rightValue>Returns</rightValue>
                 </criteria>
             </visibilityRule>
+        </componentInstances>
+        <componentInstances>
+            <componentName>trac_CaseLoyalty</componentName>
         </componentInstances>
         <name>Facet-9e454d46-1f74-4ff0-b0d3-5720d6bca1c4</name>
         <type>Facet</type>
@@ -621,10 +628,16 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
             <visibilityRule>
+                <booleanFilter>1 OR 2</booleanFilter>
                 <criteria>
                     <leftValue>{!Record.Business_Unit__c}</leftValue>
                     <operator>EQUAL</operator>
                     <rightValue>Hudson&apos;s Bay</rightValue>
+                </criteria>
+                <criteria>
+                    <leftValue>{!Record.Business_Unit__c}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>MHF</rightValue>
                 </criteria>
             </visibilityRule>
         </componentInstances>
@@ -635,12 +648,7 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
             <visibilityRule>
-                <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
-                <criteria>
-                    <leftValue>{!Record.Business_Unit__c}</leftValue>
-                    <operator>EQUAL</operator>
-                    <rightValue>MHF</rightValue>
-                </criteria>
+                <booleanFilter>1 OR 2 OR 3</booleanFilter>
                 <criteria>
                     <leftValue>{!Record.Business_Unit__c}</leftValue>
                     <operator>EQUAL</operator>
