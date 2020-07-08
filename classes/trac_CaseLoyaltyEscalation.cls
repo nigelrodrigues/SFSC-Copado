@@ -24,7 +24,7 @@ public with sharing class trac_CaseLoyaltyEscalation {
             {
                 Case newCase = caseRecord.clone(false, true, false, false);
                 newCase.Status = 'Open';
-                newCase.Business_Unit__c = 'Hudson\'s Bay';
+                newCase.Business_Unit__c = caseRecord.Business_Unit__c;
                 newCase.Case_Type__c = 'Rewards';
                 newCase.Category__c = 'Goodwill Points';
                 newCase.Subcategory__c = 'Requires Approval';
