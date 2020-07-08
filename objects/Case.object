@@ -1644,6 +1644,11 @@
                     <default>false</default>
                     <label>Order System Error</label>
                 </value>
+                <value>
+                    <fullName>Rewards Escalation</fullName>
+                    <default>false</default>
+                    <label>Rewards Escalation</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
@@ -1771,6 +1776,11 @@
                 <controllingFieldValue>Saks</controllingFieldValue>
                 <controllingFieldValue>Off 5th</controllingFieldValue>
                 <valueName>Executive Escalation Only</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <valueName>Rewards Escalation</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MHF</controllingFieldValue>
