@@ -1,20 +1,28 @@
 ({
+
+
     getLoyalty: function(component, helper, loyalty) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.noLoyaltyFound", false);
         component.set("v.isMerkleError", false);
         var caseRecordId = component.get("v.recordId");
         var action = component.get("c.getLoyalty");
+
+
         action.setParams({
             'email': loyalty.email,
             'loyaltyId': loyalty.external_customer_id,
             'recordId':  caseRecordId
         });
+
+
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
                 var state = response.getState();
+
                 if (component.isValid() && state === "SUCCESS") {
+
                     var result = response.getReturnValue();
                     if (result == null) {
                         reject(new Error("Connection Error"));
@@ -56,16 +64,22 @@
             $A.enqueueAction(action);
         });
     },
+
+
     getLoyaltyUAD: function(component, helper, email, loyaltyId, phoneNum) {
         component.find("Id_spinner").set("v.class" , 'slds-show');
         component.set("v.isMerkleError", false);
         component.set("v.loyalty", null);
+
+
         var action = component.get("c.getLoyaltyUAD");
         action.setParams({
             'loyaltyId': loyaltyId,
             'email': email,
             'phoneNum': phoneNum
         });
+
+
         return new Promise(function(resolve, reject) {
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
@@ -121,6 +135,8 @@
     isValidResponse: function (res) {
         return res != null && (res == 200 || res == 201 || res == 204);
     },
+
+
     handleError : function(component, helper, error) {
         if(error.isMerkleError) {
             var statusCode = error.statusCode
@@ -140,10 +156,9 @@
             component.set("v.errorMsg", error);
         }
     },
-    normalize: function(phone) {
-        if (!phone) return "";
-        phone = phone.replace(/[^\d]/g, "");
-        return (phone.length != 10) ? phone :
-            phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+
+    normalize: function(num) {
+        if (!num) return "";
+        return num.replace(/[^\d]/g, "");
     }
 });
