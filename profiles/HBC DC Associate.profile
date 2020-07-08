@@ -4922,6 +4922,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.Customer_Loyalty_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.Date_Time_First_Closed__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5118,6 +5123,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.Latest_Agent_Extension__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Loyalty_Issue_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
