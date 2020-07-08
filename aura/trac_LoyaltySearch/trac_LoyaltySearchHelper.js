@@ -148,10 +148,8 @@
         }
     },
 
-    normalize: function(phone) {
-        if (!phone) return "";
-        phone = phone.replace(/[^\d]/g, "");
-        return (phone.length != 10) ? phone :
-            phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+    normalize: function(num) {
+        if (!num) return "";
+        return num.replace(/[^\d]/g, "");
     }
 });

@@ -53,11 +53,19 @@
         .catch(error => helper.handleError(component, helper, error))
     },
 
-    handleChange: function(component, event, helper) {
+    handlePhoneChange: function(component, event, helper) {
         var phoneNumberInput = component.find('phoneNumberInput')
 
         var phone = helper.normalize(phoneNumberInput.get('v.value'))
+        phone = (phone.length != 10) ? phone :
+                    phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
         phoneNumberInput.set('v.value', phone)
+    },
+
+    handleAccountNumberChange: function(component, event, helper) {
+        var loyaltyNumberInput = component.find('loyaltyNumberInput')
+        var accNum = helper.normalize(loyaltyNumberInput.get('v.value'))
+        loyaltyNumberInput.set('v.value', accNum)
     },
 
 });

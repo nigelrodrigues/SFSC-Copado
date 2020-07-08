@@ -52,6 +52,7 @@
                                      messageWhenValueMissing="Loyalty number cannot be empty"
                                      pattern="[0-9]*"
                                      placeholder="123456789"
+                                     onchange="{!c.handleAccountNumberChange}"
                                      required="true"/>
                 </aura:if>
                 <aura:if isTrue="{!v.selectedValue=='3'}">
@@ -63,7 +64,7 @@
                                      messageWhenValueMissing="Phone number cannot be empty"
                                      pattern="^(?=.*[0-9])[- +()0-9]+$"
                                      placeholder="(555)-555-5555"
-                                     onchange="{!c.handleChange}"
+                                     onchange="{!c.handlePhoneChange}"
                                      required="true" />
 
                 </aura:if>
