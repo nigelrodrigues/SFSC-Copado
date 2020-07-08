@@ -1,0 +1,87 @@
+<aura:component description="trac_LoyaltySearch" extends="c:trac_BaseComponent" controller="trac_LoyaltySearchController" >
+    <aura:attribute name="loyalty" type="Object"/>
+    <aura:attribute name="noLoyaltyFound" type="Boolean" default="false"/>
+    <aura:attribute name="showError" type="boolean" default="false"/>
+    <aura:attribute name="errorMessage" type="String" default="Please specify a valid input." />
+    <aura:attribute name="options" type="List" access="PRIVATE"/>
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:attribute name="refreshSearch" type="Boolean" default="false" />
+    <aura:attribute type="Integer"  name="responseCode"  default=""/>
+    <aura:attribute type="String"  name="bodyMsg"  default=""/>
+    <aura:attribute type="Boolean"  name="linked_partnerships" default="false" />
+    <aura:attribute type="Boolean" name="isMerkleError"   default="false"/>
+    <aura:attribute type="Boolean" name="canRetry"   default="false"/>
+    <aura:attribute type="String"  name="recordId" />
+    <aura:attribute name="conversionRate" type="Integer" required="true"/>
+    <aura:attribute type="String"  name="customerLoyaltyId" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <c:trac_MerkleErrorComponent canRetry="{!v.canRetry}" reattempt="{!c.loyaltySearch}" isMerkleError="{!v.isMerkleError}" bodyMsg="{!v.bodyMsg}" responseCode="{!v.responseCode}"/>
+
+  <div onkeyup="{!c.formPress}" class="slds-border_bottom" >
+        <div class="slds-text-color_destructive">
+            <aura:if isTrue="{!v.showError}">
+                {!v.errorMessage}
+            </aura:if>
+        </div>
+
+
+        <lightning:layout horizontalAlign="space" multipleRows="true">
+            <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
+                <lightning:select label="Find Account By" aura:id="loyaltySearchType" value="{!v.selectedValue}">
+                    <aura:iteration items="{!v.options}" var="option">
+                        <option text="{!option.label}" value="{!option.id}" selected="{!option.selected}"></option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-small-size_1-of-2" padding="around-small">
+                <aura:if isTrue="{!v.selectedValue=='1'}">
+
+                    <lightning:input label="Email"
+                                     type="email"
+                                     aura:id="emailInput"
+                                     placeholder="example@hbc.com"
+                                     messageWhenValueMissing="Email cannot be empty"
+                                     required="true"/>
+                </aura:if>
+                <aura:if isTrue="{!v.selectedValue=='2'}">
+                    <lightning:input label="Number"
+                                     type="text"
+                                     aura:id="loyaltyNumberInput"
+                                     messageWhenPatternMismatch="Invalid Loyalty Number."
+                                     messageWhenValueMissing="Loyalty number cannot be empty"
+                                     pattern="[0-9]*"
+                                     placeholder="123456789"
+                                     onchange="{!c.handleAccountNumberChange}"
+                                     required="true"/>
+                </aura:if>
+                <aura:if isTrue="{!v.selectedValue=='3'}">
+
+                    <lightning:input label="Phone Number"
+                                     type="tel"
+                                     aura:id="phoneNumberInput"
+                                     messageWhenPatternMismatch="Invalid Phone Number."
+                                     messageWhenValueMissing="Phone number cannot be empty"
+                                     pattern="^(?=.*[0-9])[- +()0-9]+$"
+                                     placeholder="(555)-555-5555"
+                                     onchange="{!c.handlePhoneChange}"
+                                     required="true" />
+
+                </aura:if>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout horizontalAlign="space">
+            <div>
+                <lightning:layoutItem padding="around-small">
+                    <lightning:button label="Search" variant="brand" onclick="{!c.loyaltySearch}"/>
+                </lightning:layoutItem>
+            </div>
+        </lightning:layout>
+        <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
+        <aura:if isTrue="{!v.noLoyaltyFound}">
+            <div class="slds-text-align_center slds-text-heading_medium slds-text-color_destructive">
+                No loyalty account found.
+            </div>
+        </aura:if>
+    </div>
+</aura:component>
