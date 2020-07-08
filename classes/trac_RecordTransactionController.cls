@@ -6,10 +6,6 @@
 
 public with sharing class trac_RecordTransactionController {
 
-
-
-
-
     private static final String DATETIME_FORMAT = 'yyyy-MM-dd HH:mm:ss z';
 
     /**
@@ -40,11 +36,10 @@ public with sharing class trac_RecordTransactionController {
                 evt.loyaltyId = params.loyaltyNumber;
                 evt.email = params.email;
                 evt.eventType = 'purchase';
-                evt.value = params.transactionSubtotal - params.exclusionSubtotal;
+
+                evt.value = params.totalEarn;
                 evt.eventId = params.transactionNumber;
                 evt.originatedAt = params.transactionDateObj.formatGmt(DATETIME_FORMAT);
-
-
 
                 switch on params.transactionOrigin.toLowerCase() {
                     when 'website' {
@@ -95,9 +90,6 @@ public with sharing class trac_RecordTransactionController {
         return response;
     }
 
-
-
-
     private static User getUser(Id userId) {
         List<User> users = [
                 SELECT Id, Email
@@ -115,9 +107,6 @@ public with sharing class trac_RecordTransactionController {
         ];
         return (!cases.isEmpty()) ? cases[0] : null;
     }
-
-
-
 
     private static Boolean validateParams(RecordTransactionParameters params, TLAuraResponse response, Date dateToCompare) {
         if (String.isBlank(params.loyaltyNumber)) {
@@ -179,6 +168,11 @@ public with sharing class trac_RecordTransactionController {
             params.exclusionSubtotal = 0.00;
         }
 
+        if(params.totalEarn < 0) {
+            response.isSuccess = false;
+            response.returnValuesMap.put('total earn', 'Total Earn cannot be negative');
+        }
+
         response.returnValuesMap.put('validForm', response.isSuccess);
 
         return response.isSuccess;
@@ -204,5 +198,8 @@ public with sharing class trac_RecordTransactionController {
         public Decimal transactionSubtotal {get; set;}
         @AuraEnabled
         public Decimal exclusionSubtotal {get; set;}
+        @AuraEnabled
+        public Decimal totalEarn {get; set;}
+
     }
 }
