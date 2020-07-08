@@ -20,9 +20,7 @@ public with sharing class trac_WS_GetOrderDetails {
 
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderDetailsResponse = parse(res.getBody());
-
             updateDataFormat();
-
             success = true;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
@@ -33,6 +31,8 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
+//        String regex = '"Hudson.s Bay';
+//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -57,6 +57,7 @@ public with sharing class trac_WS_GetOrderDetails {
             setItemUPCs();
             setBlueMartiniStatus();
             sortItems();
+            setShipmentLoyaltyFields();
         } catch (Exception e) {
         }
     }
@@ -230,6 +231,79 @@ public with sharing class trac_WS_GetOrderDetails {
         return displayStatus;
     }
 
+    private void setShipmentLoyaltyFields() {
+        if (getOrderDetailsResponse == null) {
+            return;
+        }
+        // calculate total point label and value
+        if (getOrderDetailsResponse.Extn != null) {
+            String displayValue = 'N/A';
+            getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Earned';
+            if (getOrderDetailsResponse.Extn.ExtnPointsLost != null) {
+                getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Lost';
+                displayValue = getOrderDetailsResponse.Extn.ExtnPointsLost;
+            } else if (getOrderDetailsResponse.Extn.ExtnPointsEarned != null) {
+                displayValue = getOrderDetailsResponse.Extn.ExtnPointsEarned;
+            }
+            getOrderDetailsResponse.displayTotalPointsValue = displayValue;
+        }
+
+        // prepare primeLines map
+        Map<String,Map<String,String>> mapPrimeLines = new Map<String,Map<String,String>>();
+        if (getOrderDetailsResponse.OrderLines != null && !getOrderDetailsResponse.OrderLines.OrderLine.isEmpty()) {
+            for (res_OrderLineWrapper orderLine : getOrderDetailsResponse.OrderLines.OrderLine) {
+                Map<String,String> primeLineRow = new Map<String,String>();
+                primeLineRow.put('ShortDescription', orderLine.ItemDetails.PrimaryInformation.ShortDescription);
+                primeLineRow.put('Status', orderLine.Status);
+                primeLineRow.put('UnitPrice', orderLine.LinePriceInfo.UnitPrice);
+                primeLineRow.put('Model', orderLine.ItemDetails.ClassificationCodes.Model);
+                mapPrimeLines.put(orderLine.PrimeLineNo, primeLineRow);
+            }
+        }
+
+        // loop over shipments to fill out fields from primeLines
+        if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
+            for (res_ShipmentWrapper shipment : getOrderDetailsResponse.Shipments.Shipment) {
+                // set shipment display extn fields
+                shipment.Extn.displayExtnPointsLabel = 'Points Earned';
+                String displayPointsValue = 'N/A';
+                if (shipment.Extn != null) {
+                    if (shipment.Extn.ExtnPointsLost != null) {
+                        shipment.Extn.displayExtnPointsLabel = 'Points Lost';
+                        displayPointsValue = shipment.Extn.ExtnPointsLost;
+                    } else if (shipment.Extn.ExtnPointsEarned != null) {
+                        displayPointsValue = shipment.Extn.ExtnPointsLost;
+                    }
+                }
+                shipment.Extn.displayExtnPointsValue = displayPointsValue;
+                shipment.Extn.displayExtnLoyaltyNo = String.isNotBlank(shipment.Extn.ExtnLoyaltyNo) ? shipment.Extn.ExtnLoyaltyNo : '-';
+                shipment.Extn.displayExtnLoyaltyTier = String.isNotBlank(shipment.Extn.ExtnLoyaltyTier) ? shipment.Extn.ExtnLoyaltyTier : 'N/A';
+
+                // loop over order invoice list
+                shipment.customInvoiceNo = '';
+                if (shipment.OrderInvoiceList != null && !shipment.OrderInvoiceList.OrderInvoice.isEmpty()) {
+                    for (res_OrderInvoiceWrapper invoice : shipment.OrderInvoiceList.OrderInvoice) {
+                        shipment.customInvoiceNo += (shipment.customInvoiceNo.length() > 0 ? ', ' : '') + invoice.InvoiceNo;
+                    }
+                }
+
+                // loop over shipment lines
+                if (shipment.ShipmentLines != null && !shipment.ShipmentLines.ShipmentLine.isEmpty()) {
+                    Integer i = 1;
+                    for (res_ShipmentLineWrapper shipmentLine : shipment.ShipmentLines.ShipmentLine) {
+                        Map<String,String> primeLine = mapPrimeLines.get(shipmentLine.PrimeLineNo);
+                        shipmentLine.customIdx = shipment.ShipmentNo + '-' + i;
+                        shipmentLine.customShortDescription = primeLine.get('ShortDescription');
+                        shipmentLine.customStatus = primeLine.get('Status');
+                        shipmentLine.customUnitPrice = primeLine.get('UnitPrice');
+                        shipmentLine.customModel = primeLine.get('Model');
+                        i++;
+                    }
+                }
+            }
+        }
+    }
+
     public class GetOrderDetailsRequest {
         public req_OrderWrapper Order;
     }
@@ -280,6 +354,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public res_OrderDatesWrapper OrderDates;
         @AuraEnabled public String customBlueMartiniStatus;
+        @AuraEnabled public String displayTotalPointsLabel;
+        @AuraEnabled public String displayTotalPointsValue;
     }
 
     public class res_OrderLineWrapper implements Comparable {
@@ -391,6 +467,11 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String Quantity;
         @AuraEnabled public String PrimeLineNo;
         @AuraEnabled public res_ShipmentTagSerialsWrapper ShipmentTagSerials;
+        @AuraEnabled public String customIdx;
+        @AuraEnabled public String customShortDescription;
+        @AuraEnabled public String customUnitPrice;
+        @AuraEnabled public String customStatus;
+        @AuraEnabled public String customModel;
     }
 
     public class res_PromotionWrapper {
@@ -594,6 +675,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnIsReturnable;
         @AuraEnabled public String ExtnIsOrgPmtRefund;
         @AuraEnabled public String ExtnLoyaltyNo;
+        @AuraEnabled public String ExtnLoyaltyTier;
         @AuraEnabled public String ExtnCommLang;
         @AuraEnabled public String ExtnIsFiftyOne;
         @AuraEnabled public String ExtnFiftyOneOrderNo;
@@ -613,6 +695,12 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnBlueMartiniCancellationCode;
         @AuraEnabled public String ExtnEstimatedShipDate;
         @AuraEnabled public String ExtnFirstEstimatedShipDate;
+        @AuraEnabled public String ExtnPointsEarned;
+        @AuraEnabled public String ExtnPointsLost;
+        @AuraEnabled public String displayExtnPointsLabel;
+        @AuraEnabled public String displayExtnPointsValue;
+        @AuraEnabled public String displayExtnLoyaltyNo;
+        @AuraEnabled public String displayExtnLoyaltyTier;
     }
 
     public class res_OrderStatusesWrapper {
@@ -753,7 +841,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ShipmentContainerizedFlag;
         @AuraEnabled public String TotalWeightUOM;
         @AuraEnabled public res_AddressWrapper BillToAddress;
-        @AuraEnabled public String Status;
+        //@AuraEnabled public String Status;
+        @AuraEnabled public res_ShipmentStatusWrapper Status;
         @AuraEnabled public String ShipmentNo;
         @AuraEnabled public String TotalWeight;
         @AuraEnabled public String EnterpriseCode;
@@ -763,6 +852,13 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_AddressWrapper ToAddress;
         @AuraEnabled public String ExpectedDeliveryDate;
         @AuraEnabled public res_OrderInvoiceListWrapper OrderInvoiceList;
+        @AuraEnabled public res_ExtnWrapper Extn;
+        @AuraEnabled public String customInvoiceNo;
+    }
+
+    public class res_ShipmentStatusWrapper {
+        @AuraEnabled public String Status;
+        @AuraEnabled public String Description;
     }
 
     public class res_OrderInvoiceListWrapper {
