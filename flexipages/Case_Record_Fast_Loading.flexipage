@@ -628,10 +628,16 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
             <visibilityRule>
+                <booleanFilter>1 OR 2</booleanFilter>
                 <criteria>
                     <leftValue>{!Record.Business_Unit__c}</leftValue>
                     <operator>EQUAL</operator>
                     <rightValue>Hudson&apos;s Bay</rightValue>
+                </criteria>
+                <criteria>
+                    <leftValue>{!Record.Business_Unit__c}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>MHF</rightValue>
                 </criteria>
             </visibilityRule>
         </componentInstances>
@@ -642,12 +648,7 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
             <visibilityRule>
-                <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
-                <criteria>
-                    <leftValue>{!Record.Business_Unit__c}</leftValue>
-                    <operator>EQUAL</operator>
-                    <rightValue>MHF</rightValue>
-                </criteria>
+                <booleanFilter>1 OR 2 OR 3</booleanFilter>
                 <criteria>
                     <leftValue>{!Record.Business_Unit__c}</leftValue>
                     <operator>EQUAL</operator>
