@@ -181,9 +181,10 @@ public without sharing class trac_CaseTriggerHelper {
         for (Case cs : newList) {
             if (cs.Status == 'Closed' && (oldMap == null || oldMap.get(cs.Id).Status != cs.Status)) {
                 if (String.valueOf(cs.OwnerId).startsWithIgnoreCase('00G')) {
+                    System.debug('CaseTriggerHelper::updateCaseOwner: updating from ' + cs.OwnerId + ' to ' + userId);
                     cs.OwnerId = userId;
-
                 } else if (cs.Owner_When_First_Closed__c == null) {
+                    System.debug('CaseTriggerHelper::updateCaseOwner: updating owner when first closed from ' + cs.Owner_When_First_Closed__c + ' to ' + cs.OwnerId);
                     cs.Owner_When_First_Closed__c = cs.OwnerId;
                 }
                 if (cs.Date_Time_First_Closed__c == null) {
@@ -191,6 +192,7 @@ public without sharing class trac_CaseTriggerHelper {
                 }
             }
         }
+        System.debug('updateCaseOwner complete');
     }
 
     /**
@@ -418,7 +420,9 @@ public without sharing class trac_CaseTriggerHelper {
     public static void transferStewardship(List<Case> newList) {
         for (Case aCase : newList) {
             if (aCase.Transfer_Stewardship__c && aCase.Case_Steward__c != aCase.OwnerId && !String.valueOf(aCase.OwnerId).startsWithIgnoreCase('00G')) {
+                System.debug('Transfer stewardship from ' + aCase.Case_Steward__c + ' to ' + aCase.OwnerId);
                 aCase.Case_Steward__c = aCase.OwnerId;
+                System.debug('Steward is now ' + aCase.OwnerId);
             }
         }
     }
@@ -800,7 +804,7 @@ public without sharing class trac_CaseTriggerHelper {
     }
 
     public static void setTranscriptContact(List<Case> newCases, Map<Id, Case> oldCasesById) {
-
+        System.debug('begin setTranscriptContact');
         List<LiveChatTranscript> liveChatTranscriptsToUpdate = new List<LiveChatTranscript>();
 
         Map<Id, Case> casesByIds = new Map<Id, Case>();
@@ -832,6 +836,7 @@ public without sharing class trac_CaseTriggerHelper {
         if (!liveChatTranscriptsToUpdate.isEmpty()) {
             update liveChatTranscriptsToUpdate;
         }
+        System.debug('end setTranscriptContact');
     }
 
     /**
@@ -850,8 +855,8 @@ public without sharing class trac_CaseTriggerHelper {
         }
         try {
             if (System.isFuture() || System.isBatch()) {
-                trac_UpdateLoyaltyInfoOnContact loyaltyInfo = new trac_UpdateLoyaltyInfoOnContact();
-                loyaltyInfo.updateContacts(contactsToBeUpdated);
+//                trac_UpdateLoyaltyInfoOnContact loyaltyInfo = new trac_UpdateLoyaltyInfoOnContact();
+//                loyaltyInfo.updateContacts(contactsToBeUpdated);
             } else {
                 ID queueableJobID = System.enqueueJob(new trac_UpdateContactQueueable(contactsToBeUpdated));
             }
