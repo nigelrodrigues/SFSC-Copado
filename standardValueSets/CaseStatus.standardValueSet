@@ -151,10 +151,4 @@
         <label>POS Gift Card Processing</label>
         <closed>false</closed>
     </standardValue>
-    <standardValue>
-        <fullName>Team Assistance Needed</fullName>
-        <default>false</default>
-        <label>Team Assistance Needed</label>
-        <closed>false</closed>
-    </standardValue>
 </StandardValueSet>
