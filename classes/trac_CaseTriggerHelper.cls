@@ -991,10 +991,13 @@ public without sharing class trac_CaseTriggerHelper {
 
         if (mapToUpdate!=null && !mapToUpdate.isEmpty()) {
             upsert mapToUpdate.values();
+            List<Case> updateCases = new List<Case>();
             for (Case aCase : cases) {
-                aCase.ContactId = mapToUpdate.get(aCase.Id).Id;
+                // update a fresh instance of Case with limited properties, because the one from the JSON is stale
+                //   (i.e. OwnerId has changed due to case assignment rules)
+                updateCases.add(new Case(Id=aCase.Id, ContactId=mapToUpdate.get(aCase.Id).Id));
             }
-            update cases;
+            update updateCases;
         }
 
 
