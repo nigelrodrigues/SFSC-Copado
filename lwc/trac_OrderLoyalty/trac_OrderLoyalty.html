@@ -1,0 +1,189 @@
+<!--
+ - Created by akong on 6/17/2020.
+ -->
+
+<!-- Trac Order Loyalty -->
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item size="12">
+            <lightning-layout>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-layout>
+                        <lightning-layout-item padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
+                                <p>{order.Extn.displayExtnLoyaltyNo}</p>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">{order.displayTotalPointsLabel}</p>
+                                <p>{order.displayTotalPointsValue}</p>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <template for:each={order.Shipments.Shipment} for:item="shipment">
+        <div key={shipment.ShipmentNo}>
+            <div class="slds-p-around_xxx-small">
+                <div class="slds-text-title slds-p-around_xxx-small">
+                    <h3> > Shipment</h3>
+
+                    <div class="slds-box_border slds-p-around_small slds-theme--shade">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="12">
+                                <lightning-layout>
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Ship Node</p>
+                                            <p>{shipment.ShipNode.ShipNode}</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Shipment No</p>
+                                            <p>{shipment.ShipmentNo}</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Invoice No</p>
+                                            <p>{shipment.customInvoiceNo}</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
+                                            <p>{shipment.Extn.displayExtnLoyaltyNo}</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Loyalty Tier</p>
+                                            <p>{shipment.Extn.displayExtnLoyaltyTier}</p>
+                                        </div>
+                                    </lightning-layout-item>
+
+                                    <lightning-layout-item padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">{shipment.Extn.displayExtnPointsLabel}</p>
+                                            <p>{shipment.Extn.displayExtnPointsValue}</p>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+
+                                <!-- iterate over shipment line items -->
+                                <div class="slds-text-title slds-p-around_small">
+                                    <h3> > Shipment Lines</h3>
+
+                                    <table style="width:auto; min-width:70%; ">
+                                    <template for:each={shipment.ShipmentLines.ShipmentLine} for:item="shipmentLine">
+                                        <tr key={shipmentLine.customIdx} class="slds-box_border slds-theme--default">
+                                            <td class="slds-p-around--small slds-align-top">
+                                                <span style="line-height:1.4em;">
+                                                    SKN #<br />
+                                                    {shipmentLine.ItemID}
+                                                </span>
+                                            </td>
+
+                                            <td class="slds-p-around--small slds-align-top">
+                                                <span style="line-height:1.4em;">
+                                                    Style Code<br />
+                                                    {shipmentLine.customModel}
+                                                </span>
+                                            </td>
+
+                                            <td class="slds-p-around--small slds-align-top">
+                                                <span style="line-height:1.4em;">
+                                                    Item Description<br />
+                                                    {shipmentLine.customShortDescription}
+                                                </span>
+                                            </td>
+
+                                            <td class="slds-p-around--small slds-align-top">
+                                                <span style="line-height:1.4em;">
+                                                    Unit Price<br />
+                                                    {shipmentLine.customUnitPrice}
+                                                </span>
+                                            </td>
+
+                                            <td class="slds-p-around--small slds-align-top">
+                                                <span style="line-height:1.4em;">
+                                                    Quantity<br />
+                                                    {shipmentLine.Quantity}
+                                                </span>
+                                            </td>
+
+                                            <td class="slds-p-around--small slds-align-top">
+                                                <span style="line-height:1.4em;">
+                                                    Status<br />
+                                                    {shipmentLine.customStatus}
+                                                </span>
+                                            </td>
+                                        </tr>
+<!--                                        -->
+<!--                                        <lightning-layout key={shipmentLine.Idx} class="slds-box_border slds-theme&#45;&#45;default">-->
+<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
+<!--                                                <div class="header-column">-->
+<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">SKN #</p>-->
+<!--                                                    <p>{shipmentLine.ItemID}</p>-->
+<!--                                                </div>-->
+<!--                                            </lightning-layout-item>-->
+
+<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
+<!--                                                <div class="header-column">-->
+<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Style Code</p>-->
+<!--                                                    <p></p>-->
+<!--                                                </div>-->
+<!--                                            </lightning-layout-item>-->
+
+<!--                                            <lightning-layout-item size="6" flexibility="auto" padding="around-small">-->
+<!--                                                <div class="header-column">-->
+<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Item Description</p>-->
+<!--                                                    <p>{shipmentLine.ShortDescription}</p>-->
+<!--                                                </div>-->
+<!--                                            </lightning-layout-item>-->
+
+<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
+<!--                                                <div class="header-column">-->
+<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Unit Price</p>-->
+<!--                                                    <p>{shipmentLine.UnitPrice}</p>-->
+<!--                                                </div>-->
+<!--                                            </lightning-layout-item>-->
+
+<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
+<!--                                                <div class="header-column">-->
+<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Quantity</p>-->
+<!--                                                    <p>{shipmentLine.Quantity}</p>-->
+<!--                                                </div>-->
+<!--                                            </lightning-layout-item>-->
+
+<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
+<!--                                                <div class="header-column">-->
+<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Status</p>-->
+<!--                                                    <p>{shipmentLine.Status}</p>-->
+<!--                                                </div>-->
+<!--                                            </lightning-layout-item>-->
+<!--                                        </lightning-layout>-->
+                                    </template>
+                                    </table>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</template>
