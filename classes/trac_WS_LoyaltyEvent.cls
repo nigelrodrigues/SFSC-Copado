@@ -88,7 +88,7 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public List<res_ledgerWrapper> ledger;
     }
     public class res_ledgerWrapper {
-        @AuraEnabled public Integer id;
+        @AuraEnabled public Long id;
         @AuraEnabled public String ledger_type;
         @AuraEnabled public String title;
         @AuraEnabled public Decimal points;
