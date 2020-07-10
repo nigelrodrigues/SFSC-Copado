@@ -59,7 +59,9 @@ public with sharing class trac_WS_LoyaltyEvent {
     public class res_dataWrapper {
         
         @AuraEnabled public Boolean showDetails = false;
-        @AuraEnabled public Integer id;
+
+        @AuraEnabled public Long id;
+
         @AuraEnabled public String event_id;
         @AuraEnabled public Integer customer_id;
         @AuraEnabled public String email;
@@ -83,12 +85,16 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public Integer net_points;
     }
     public class res_ruleWrapper {
-        @AuraEnabled public Integer id;
+
+        @AuraEnabled public Long id;
+
         @AuraEnabled public String rule_type;
         @AuraEnabled public List<res_ledgerWrapper> ledger;
     }
     public class res_ledgerWrapper {
-        @AuraEnabled public Integer id;
+
+        @AuraEnabled public Long id;
+
         @AuraEnabled public String ledger_type;
         @AuraEnabled public String title;
         @AuraEnabled public Decimal points;
@@ -97,7 +103,9 @@ public with sharing class trac_WS_LoyaltyEvent {
     }
     public class res_event_paramsWrapper {
         @AuraEnabled public String event_type;
-        @AuraEnabled public Integer reference_id;
+
+        @AuraEnabled public Long reference_id;
+
         @AuraEnabled public String event_id;
     }
     public class EventResponse {
