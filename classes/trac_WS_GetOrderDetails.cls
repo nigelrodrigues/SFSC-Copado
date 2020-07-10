@@ -246,6 +246,9 @@ public with sharing class trac_WS_GetOrderDetails {
                 displayValue = getOrderDetailsResponse.Extn.ExtnPointsEarned;
             }
             getOrderDetailsResponse.displayTotalPointsValue = displayValue;
+
+            // set order level displayLoyaltyNo
+            getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
         }
 
         // prepare primeLines map
