@@ -1,8 +1,3 @@
-/**
- * Created by akong on 6/1/2020.
- */
-
-
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         cmp.set('v.showAppeasementModal', true);
