@@ -5,8 +5,8 @@
 
 ({
     updateTotalEarn: function(cmp, event, helper) {
-        var TransactionSubtotal = helper.normalize(cmp.find("TransactionSubtotal").get("v.value"));
-        var SubtotalExcludedItems = helper.normalize(cmp.find("SubtotalExcludedItems").get("v.value"));
+        var TransactionSubtotal = cmp.find("TransactionSubtotal").get("v.value");
+        var SubtotalExcludedItems = cmp.find("SubtotalExcludedItems").get("v.value");
 
         cmp.find("TransactionSubtotal").set("v.value", TransactionSubtotal)
         cmp.find("SubtotalExcludedItems").set("v.value", SubtotalExcludedItems)
@@ -36,7 +36,6 @@
     handleSubmit: function(cmp, event, helper) {
         if (helper.validateForm(cmp)) {
             helper.submitRecordTransaction(cmp, helper);
-
         }
     },
     handleCancel: function(cmp, event, helper) {
