@@ -1,21 +1,17 @@
 <!--
  - @description Award points for Unmarked Transaction
  - @author      Glauber Torres, Traction on Demand
-
  - @date        2020-06-05
  -->
-
 <aura:component description="trac_RecordTransaction"
                 extends="c:trac_BaseComponent"
                 implements="force:hasRecordId,flexipage:availableForAllPageTypes"
                 controller="trac_RecordTransactionController"
                 access="global">
-
     <aura:registerEvent name="loyaltyRefreshEvent" type="c:trac_LoyaltyRefreshEvent"/>
     <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
     <aura:attribute name="loyalty" type="Object" />
     <aura:attribute name="caseRecordId" type="String" />
-
     <aura:attribute name="openButton" type="Object" />
     <aura:attribute name="spinner" type="Boolean" default="FALSE"/>
     <aura:attribute name="showError" type="Boolean" default="FALSE"/>
@@ -28,14 +24,10 @@
     <aura:attribute name="totalEarnPoints" type="Integer" description="The amount of points to award" default="0" />
     <aura:attribute name="totalEarnValue" type="String" description="The monetary value of appeasePoints" default="0" />
     <aura:attribute name="date" type="String" />
-
-
     <lightning:card title="Award Points for Unmarked Transaction" class="slds-box slds-theme--default slds-container--small">
         <div class="slds-p-horizontal--medium">
             <form aura:id="memberForm" class="slds-form--stacked">
                 <fieldset aura:id="memberFieldset">
-
-
                     <lightning:radioGroup name="TransactionOrigin"
                                           label="Transaction Origin"
                                           options="{! v.TransactionOriginOptions }"
@@ -43,10 +35,8 @@
                                           type="button"
                                           required="true"
                                           onchange="{!c.handleButtonChange}" />
-
                     <aura:if isTrue="{!v.TransactionOriginValue == 'Website'}">
                         <lightning:input aura:id="OrderNumber" label="Order Number" required="true" />
-
                         <lightning:input aura:id="TransactionNumber" type="text" maxlength="19" required="true"
                                          label="Transaction Number (AAAABBBBCCCMMDDYYYY)" pattern="^\d{19}$"
                                          messageWhenPatternMismatch="Transaction Number should be numeric and 19 digits long"
@@ -69,11 +59,11 @@
                                              messageWhenPatternMismatch="Your entry does not match the allowed format mm/dd/yyyy"/>
                         </aura:set>
                     </aura:if>
-
                     <lightning:input aura:id="TransactionSubtotal" label="Transaction Subtotal" required="true"
-                                     onchange="{!c.updateTotalEarn}" value="0" maxlength="9" />
+                                     type="number" onchange="{!c.updateTotalEarn}" value="0" maxlength="12" step="0.01" />
                     <lightning:input aura:id="SubtotalExcludedItems" label="Subtotal of Excluded Items (e.g. giftcards)"
-                                     onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="9" />
+                                     type="number" onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="12" step="0.01" />
+
                     <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Account Tier</p>
                     <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
                         <p>{!v.loyalty.top_tier_name}</p>
@@ -81,20 +71,14 @@
                             <p>N/A</p>
                         </aura:set>
                     </aura:if>
-
-
                     <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Total Earn</p>
                     <p>
                         <lightning:formattedNumber value="{!v.totalEarnValue}"/> points
                     </p>
-
-
                     <div style="margin-top:15px;">
                         <lightning:button aura:id="btnSubmit" label="Submit" variant="brand" onclick="{!c.handleSubmit}" />
                         <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
                     </div>
-
-
                     <aura:if isTrue="{!v.spinner}">
                         <div aura:id="spinnerId" class="slds-spinner_container">
                             <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
@@ -104,8 +88,6 @@
                             </div>
                         </div>
                     </aura:if>
-
-
                 </fieldset>
             </form>
             <aura:if isTrue="{!v.showError}">
@@ -117,7 +99,5 @@
                 </div>
             </aura:if>
         </div>
-
-
     </lightning:card>
 </aura:component>
