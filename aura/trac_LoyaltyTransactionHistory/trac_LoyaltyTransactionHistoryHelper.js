@@ -31,6 +31,7 @@
                         if(transactionsReturned && transactionsReturned.success) {
                             component.set("v.transactions", transactionsReturned);
                             component.set("v.totalRecords", transactionsReturned.data.length);
+                            helper.setRecordsToDisplay(component)
                             console.log('****************' +  JSON.stringify(component.get('v.transactions.data')));
                         }
                         else{
@@ -51,5 +52,19 @@
         });
 
         $A.enqueueAction(action);
+    },
+
+    setRecordsToDisplay: function(component) {
+        var totalRecords = component.get("v.totalRecords");
+        let numberOfRecordsToDisplay =0;
+        if( totalRecords >= 20 )
+        {
+            numberOfRecordsToDisplay = 20;
+        }
+        else
+        {
+            numberOfRecordsToDisplay = totalRecords;
+        }
+        component.set("v.recordsToDisplay", numberOfRecordsToDisplay);
     },
 });
