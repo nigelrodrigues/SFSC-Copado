@@ -1,0 +1,123 @@
+<!--
+ - @description Award points for Unmarked Transaction
+ - @author      Glauber Torres, Traction on Demand
+
+ - @date        2020-06-05
+ -->
+
+<aura:component description="trac_RecordTransaction"
+                extends="c:trac_BaseComponent"
+                implements="force:hasRecordId,flexipage:availableForAllPageTypes"
+                controller="trac_RecordTransactionController"
+                access="global">
+
+    <aura:registerEvent name="loyaltyRefreshEvent" type="c:trac_LoyaltyRefreshEvent"/>
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+    <aura:attribute name="loyalty" type="Object" />
+    <aura:attribute name="caseRecordId" type="String" />
+
+    <aura:attribute name="openButton" type="Object" />
+    <aura:attribute name="spinner" type="Boolean" default="FALSE"/>
+    <aura:attribute name="showError" type="Boolean" default="FALSE"/>
+    <aura:attribute name="errorMessage" type="String"/>
+    <aura:attribute name="errorDetails" type="String"/>
+    <aura:attribute name="TransactionOriginOptions" type="List" default="[{'label': 'Website', 'value': 'Website'},
+                                                                          {'label': 'MHF', 'value': 'MHF'},
+                                                                          {'label': 'Store', 'value': 'Store'}]"/>
+    <aura:attribute name="TransactionOriginValue" type="String" default="Website"/>
+    <aura:attribute name="totalEarnPoints" type="Integer" description="The amount of points to award" default="0" />
+    <aura:attribute name="totalEarnValue" type="String" description="The monetary value of appeasePoints" default="0" />
+    <aura:attribute name="date" type="String" />
+
+
+    <lightning:card title="Award Points for Unmarked Transaction" class="slds-box slds-theme--default slds-container--small">
+        <div class="slds-p-horizontal--medium">
+            <form aura:id="memberForm" class="slds-form--stacked">
+                <fieldset aura:id="memberFieldset">
+
+
+                    <lightning:radioGroup name="TransactionOrigin"
+                                          label="Transaction Origin"
+                                          options="{! v.TransactionOriginOptions }"
+                                          value="{! v.TransactionOriginValue }"
+                                          type="button"
+                                          required="true"
+                                          onchange="{!c.handleButtonChange}" />
+
+                    <aura:if isTrue="{!v.TransactionOriginValue == 'Website'}">
+                        <lightning:input aura:id="OrderNumber" label="Order Number" required="true" />
+
+                        <lightning:input aura:id="TransactionNumber" type="text" maxlength="19" required="true"
+                                         label="Transaction Number (AAAABBBBCCCMMDDYYYY)" pattern="^\d{19}$"
+                                         messageWhenPatternMismatch="Transaction Number should be numeric and 19 digits long"
+                                         onchange="{!c.updateDateFromNumber}" />
+                        <aura:set attribute="else">
+                            <div class="slds-grid">
+                                <lightning:input aura:id="TransactionNumberMhfStore" class="slds-size_1-of-3 smallPading" type="text" maxlength="4"
+                                                 name="Transaction Number" label ="Transaction no." required="true" placeholder="0000"
+                                                 pattern="^\d{4}$" messageWhenPatternMismatch="Transaction Number should be numeric and 4 digits long" />
+                                <lightning:input aura:id="StoreNumberMhfStore" class="slds-size_1-of-3 smallPading" required="true"
+                                                 type="text" Name="Store Number" label ="Store no." placeholder="0000" maxlength="4"
+                                                 pattern="^\d{4}$" messageWhenPatternMismatch="Store Number should be numeric and 4 digits long" />
+                                <lightning:input aura:id="TerminalNumberMhfStore" class="slds-size_1-of-3 smallPading" required="true"
+                                                 type="text" Name="Terminal Number" label ="Terminal no." placeholder="000" maxlength="3"
+                                                 pattern="^\d{3}$" messageWhenPatternMismatch="Terminal Number should be numeric and 3 digits long" />
+                            </div>
+                            <lightning:input aura:id="TransactionDate" type="text" placeholder="MM/DD/YYYY"
+                                             label="Transaction Date" required="true" value="{!v.date}"
+                                             pattern="((0[13578]|1[02])[\/.](0[1-9]|[12][0-9]|3[01])[\/.](18|19|20)[0-9]{2})|((0[469]|11)[\/.](0[1-9]|[12][0-9]|30)[\/.](18|19|20)[0-9]{2})|((02)[\/.](0[1-9]|1[0-9]|2[0-8])[\/.](18|19|20)[0-9]{2})|((02)[\/.]29[\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))"
+                                             messageWhenPatternMismatch="Your entry does not match the allowed format mm/dd/yyyy"/>
+                        </aura:set>
+                    </aura:if>
+
+                    <lightning:input aura:id="TransactionSubtotal" label="Transaction Subtotal" required="true"
+                                     type="number" onchange="{!c.updateTotalEarn}" value="0" maxlength="12" step="0.01" />
+                    <lightning:input aura:id="SubtotalExcludedItems" label="Subtotal of Excluded Items (e.g. giftcards)"
+                                     type="number" onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="12" step="0.01" />
+                    <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Account Tier</p>
+                    <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
+                        <p>{!v.loyalty.top_tier_name}</p>
+                        <aura:set attribute="else">
+                            <p>N/A</p>
+                        </aura:set>
+                    </aura:if>
+
+
+                    <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Total Earn</p>
+                    <p>
+                        <lightning:formattedNumber value="{!v.totalEarnValue}"/> points
+                    </p>
+
+
+                    <div style="margin-top:15px;">
+                        <lightning:button aura:id="btnSubmit" label="Submit" variant="brand" onclick="{!c.handleSubmit}" />
+                        <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+                    </div>
+
+
+                    <aura:if isTrue="{!v.spinner}">
+                        <div aura:id="spinnerId" class="slds-spinner_container">
+                            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                <span class="slds-assistive-text">Loading...</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </aura:if>
+
+
+                </fieldset>
+            </form>
+            <aura:if isTrue="{!v.showError}">
+                <div class="slds-box slds-theme_error" style="margin-top: 10px;">
+                    <p>{!v.errorMessage}</p>
+                    <ul class="slds-list_dotted">
+                        <aura:unescapedHtml value="{!v.errorDetails}" />
+                    </ul>
+                </div>
+            </aura:if>
+        </div>
+
+
+    </lightning:card>
+</aura:component>
