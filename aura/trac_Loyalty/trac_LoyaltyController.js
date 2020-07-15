@@ -1,3 +1,5 @@
+
+
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         cmp.set('v.showAppeasementModal', true);
@@ -6,10 +8,8 @@
     handleCloseModalApplicationEvent: function(cmp) {
         cmp.set('v.showAppeasementModal', false);
     },
-
     handleShowRecordTransaction: function(cmp,event) {
         let openButton = event.getSource();
-
         let container = cmp.find("divBody");
 
         $A.createComponent(
@@ -61,10 +61,12 @@
         var lastName = event.getParam("lastName");
         var email = event.getParam("email");
 
+
         component.set('v.firstName', firstName)
         component.set('v.lastName', lastName)
         component.set('v.email', email)
     },
+
 
     handleMerkleErrorEvent : function(cmp, event) {
         var modalId = 'merkleCommonErrorModal';
@@ -95,5 +97,6 @@
                 }
             });
     },
+
 
 });
