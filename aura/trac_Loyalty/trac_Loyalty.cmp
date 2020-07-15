@@ -193,20 +193,22 @@
             </div>
         </lightning:layoutItem>
     </lightning:layout>
-    <lightning:layout >
-        <lightning:layoutItem class="slds-p-around_xx-small">
-            <div class="header-column">
-                <p class="field-title slds-form-element__label slds-no-flex">Badges</p>
-                <div>
-                    <ul class="slds-list_horizontal slds-has-dividers_right">
-                        <aura:iteration items="{!v.loyalty.customer_badges}" var="badge">
-                            <li class="slds-item"><lightning:badge label="{!badge.display_name}"/></li>
-                        </aura:iteration>
-                    </ul>
+    <aura:if isTrue="{!not(empty(v.loyalty.customer_badges))}">
+        <lightning:layout >
+            <lightning:layoutItem class="slds-p-around_xx-small">
+                <div class="header-column">
+                    <p class="field-title slds-form-element__label slds-no-flex">Badges</p>
+                    <div>
+                        <ul class="slds-list_horizontal slds-has-dividers_right">
+                            <aura:iteration items="{!v.loyalty.customer_badges}" var="badge">
+                                <li class="slds-item"><lightning:badge label="{!badge.display_name}"/></li>
+                            </aura:iteration>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </lightning:layoutItem>
-    </lightning:layout>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
     <lightning:layout>
         <aura:if isTrue="{!v.isEditable}">
             <lightning:layout>
