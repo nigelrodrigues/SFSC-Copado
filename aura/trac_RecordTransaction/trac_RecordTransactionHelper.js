@@ -103,7 +103,7 @@
             transactionDate: transactionDate,
             transactionSubtotal: transactionSubtotal,
             exclusionSubtotal: exclusionSubtotal,
-            totalEarn: cmp.get('v.totalEarnValue')
+            totalEarn: transactionSubtotal - exclusionSubtotal
         };
         action.setParams({
             "params": myRecordTransactionParameters,
