@@ -31,11 +31,13 @@
     <aura:attribute name="totalEarnPoints" type="Integer" description="The amount of points to award" default="0" />
     <aura:attribute name="totalEarnValue" type="String" description="The monetary value of appeasePoints" default="0" />
     <aura:attribute name="date" type="String" />
-    <lightning:card title="Award Points for Unmarked Transaction" class="slds-box slds-theme--default slds-container--small">
 
+    <lightning:card title="Award Points for Unmarked Transaction" class="slds-box slds-theme--default slds-container--small">
         <div class="slds-p-horizontal--medium">
             <form aura:id="memberForm" class="slds-form--stacked">
                 <fieldset aura:id="memberFieldset">
+
+
                     <lightning:radioGroup name="TransactionOrigin"
                                           label="Transaction Origin"
                                           options="{! v.TransactionOriginOptions }"
@@ -44,12 +46,14 @@
 
                                           required="true"
                                           onchange="{!c.handleButtonChange}" />
+
                     <aura:if isTrue="{!v.TransactionOriginValue == 'Website'}">
                         <lightning:input aura:id="OrderNumber" label="Order Number" required="true" />
                         <lightning:input aura:id="TransactionNumber" type="text" maxlength="19" required="true"
                                          label="Transaction Number (AAAABBBBCCCMMDDYYYY)" pattern="^\d{19}$"
                                          messageWhenPatternMismatch="Transaction Number should be numeric and 19 digits long"
                                          onchange="{!c.updateDateFromNumber}" />
+
 
                         <aura:set attribute="else">
                             <div class="slds-grid">
@@ -64,6 +68,7 @@
                                                  pattern="^\d{3}$" messageWhenPatternMismatch="Terminal Number should be numeric and 3 digits long" />
                             </div>
 
+
                             <lightning:input aura:id="TransactionDate" type="text" placeholder="MM/DD/YYYY"
                                              label="Transaction Date" required="true" value="{!v.date}"
                                              pattern="((0[13578]|1[02])[\/.](0[1-9]|[12][0-9]|3[01])[\/.](18|19|20)[0-9]{2})|((0[469]|11)[\/.](0[1-9]|[12][0-9]|30)[\/.](18|19|20)[0-9]{2})|((02)[\/.](0[1-9]|1[0-9]|2[0-8])[\/.](18|19|20)[0-9]{2})|((02)[\/.]29[\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))"
@@ -71,10 +76,11 @@
                         </aura:set>
                     </aura:if>
                     <lightning:input aura:id="TransactionSubtotal" label="Transaction Subtotal" required="true"
-                                     onchange="{!c.updateTotalEarn}" value="0" maxlength="9" />
+                                     type="number" onchange="{!c.updateTotalEarn}" value="0" maxlength="12" step="0.01" />
                     <lightning:input aura:id="SubtotalExcludedItems" label="Subtotal of Excluded Items (e.g. giftcards)"
-                                     onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="9" />
+                                     type="number" onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="12" step="0.01" />
                     <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Account Tier</p>
+
 
                     <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
                         <p>{!v.loyalty.top_tier_name}</p>

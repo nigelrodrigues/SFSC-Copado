@@ -3,19 +3,21 @@
  */
 ({
 
-
     validateForm: function(cmp) {
         var result = true;
-        var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
-        var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
+        var transactionSubtotalInput = cmp.find("TransactionSubtotal");
+        var exclusionSubtotalInput = cmp.find("SubtotalExcludedItems");
+        var transactionSubtotal = transactionSubtotalInput.get("v.value").trim();
+        var exclusionSubtotal = exclusionSubtotalInput.get("v.value").trim();
+
         var errorValuesMap = {};
-        if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
+        if (isNaN(transactionSubtotal) || transactionSubtotal=='' || !transactionSubtotalInput.checkValidity() ) {
             result = false;
             errorValuesMap['TransactionSubtotal'] = 'Transaction Subtotal is invalid';
-
-
         }
-        if (isNaN(exclusionSubtotal) || exclusionSubtotal=='') {
+
+        if (isNaN(exclusionSubtotal) || exclusionSubtotal=='' || !exclusionSubtotalInput.checkValidity()) {
+
             result = false;
             errorValuesMap['SubtotalExcludedItems'] = 'Subtotal of Excluded Items is invalid';
         }
@@ -34,8 +36,6 @@
         cmp.destroy();
     },
     showToast: function(message, type, title, duration) {
-
-
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
             "title": title,
@@ -89,19 +89,17 @@
                                 cmp.find("TerminalNumberMhfStore").get("v.value");
         }
         var myRecordTransactionParameters = {
-
             caseRecordId: cmp.get('v.caseRecordId'),
-
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
             transactionOrigin: transactionOrigin,
             orderNumber: orderNumber,
             transactionNumber: transactionNumber,
             transactionDate: transactionDate,
-
             transactionSubtotal: transactionSubtotal,
             exclusionSubtotal: exclusionSubtotal,
-            totalEarn: cmp.get('v.totalEarnValue')
+            totalEarn: transactionSubtotal - exclusionSubtotal
+
         };
         action.setParams({
             "params": myRecordTransactionParameters,
@@ -109,6 +107,7 @@
         });
 
         cmp.set("v.showError", false);
+
         action.setCallback(this, function (response) {
             cmp.set('v.spinner', false);
             var result = response.getReturnValue();
@@ -120,6 +119,8 @@
                     this.showErrorSummary(cmp, result.message, result.returnValuesMap);
                 }
             }
+
+
         });
         $A.enqueueAction(action);
     },
@@ -143,6 +144,7 @@
           this.showToast(result.message, 'success', 'Transaction Submitted');
         }
 
+
         appEvent.fire();
         this.close(cmp);
     },
@@ -150,5 +152,6 @@
         if (!number) return "";
         return number.replace(/[^\d]/g, "");
     }
+
 
 });
