@@ -13,5 +13,5 @@
     <enableOotbProfExtUserOpsEnable>false</enableOotbProfExtUserOpsEnable>
     <enablePRMAccRelPref>false</enablePRMAccRelPref>
     <enableRelaxPartnerAccountFieldPref>false</enableRelaxPartnerAccountFieldPref>
-    <enableUnsupportedBrowserModalPref>false</enableUnsupportedBrowserModalPref>
+    <enableUnsupportedBrowserModalPref>true</enableUnsupportedBrowserModalPref>
 </CommunitiesSettings>

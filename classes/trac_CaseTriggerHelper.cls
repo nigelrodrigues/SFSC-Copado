@@ -950,7 +950,7 @@ public without sharing class trac_CaseTriggerHelper {
 
     @future(callout=true)
     public static void searchAndAssociateContactFromOrder(String caseList) {
-
+        System.debug('Entering searchAndAssociateContactFromOrder');
         Map<String, String> caseMap = new Map <String, String>();
         List<Contact> webServiceContacts = new List<Contact>();
         Map<String, Contact> fetchedContacts = new Map<String, Contact>();
@@ -983,7 +983,7 @@ public without sharing class trac_CaseTriggerHelper {
 
         fetchedContacts = searchContactByBUAndEmail(businessUnitList,emailList);
 
-        if(webServiceContacts!=null && !webServiceContacts.isEmpty()){
+        if (webServiceContacts!=null && !webServiceContacts.isEmpty()) {
             for (Contact con : webServiceContacts) {
                 if (fetchedContacts!=null && fetchedContacts.containsKey(con.Business_Unit__c + con.Email)) {
                     mapToUpdate.put(caseMap.get(con.Business_Unit__c + con.Email), fetchedContacts.get(con.Business_Unit__c + con.Email));
@@ -993,16 +993,17 @@ public without sharing class trac_CaseTriggerHelper {
             }
         }
 
-
         if (mapToUpdate!=null && !mapToUpdate.isEmpty()) {
             upsert mapToUpdate.values();
+            List<Case> updateCases = new List<Case>();
             for (Case aCase : cases) {
-                aCase.ContactId = mapToUpdate.get(aCase.Id).Id;
+                // update a fresh instance of Case with limited properties, because the one from the JSON is stale
+                //   (i.e. OwnerId has changed due to case assignment rules)
+                updateCases.add(new Case(Id=aCase.Id, ContactId=mapToUpdate.get(aCase.Id).Id));
             }
-            update cases;
+            update updateCases;
         }
-
-
+        System.debug('Exiting searchAndAssociateContactFromOrder');
     }
 
     public static Map<String, Contact> searchContactByBUAndEmail(List<String> businessUnitList, List<String> emailList){
@@ -1013,9 +1014,9 @@ public without sharing class trac_CaseTriggerHelper {
             }
         }
 
-        if(fetchedContacts!=null && !fetchedContacts.isEmpty()){
+        if (fetchedContacts!=null && !fetchedContacts.isEmpty()) {
             return fetchedContacts;
-        }else{
+        } else {
             return null;
         }
     }
