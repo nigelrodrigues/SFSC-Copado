@@ -2,18 +2,22 @@
  * Created by gtorres on 6/5/2020.
  */
 ({
+
     validateForm: function(cmp) {
         var result = true;
-        var transactionSubtotal = cmp.find("TransactionSubtotal").get("v.value").trim();
-        var exclusionSubtotal = cmp.find("SubtotalExcludedItems").get("v.value").trim();
-
+        var transactionSubtotalInput = cmp.find("TransactionSubtotal");
+        var exclusionSubtotalInput = cmp.find("SubtotalExcludedItems");
+        var transactionSubtotal = transactionSubtotalInput.get("v.value").trim();
+        var exclusionSubtotal = exclusionSubtotalInput.get("v.value").trim();
 
         var errorValuesMap = {};
-        if (isNaN(transactionSubtotal) || transactionSubtotal=='') {
+        if (isNaN(transactionSubtotal) || transactionSubtotal=='' || !transactionSubtotalInput.checkValidity() ) {
             result = false;
             errorValuesMap['TransactionSubtotal'] = 'Transaction Subtotal is invalid';
         }
-        if (isNaN(exclusionSubtotal) || exclusionSubtotal=='') {
+
+
+        if (isNaN(exclusionSubtotal) || exclusionSubtotal=='' || !exclusionSubtotalInput.checkValidity()) {
             result = false;
             errorValuesMap['SubtotalExcludedItems'] = 'Subtotal of Excluded Items is invalid';
         }
@@ -82,7 +86,7 @@
             transactionDate: transactionDate,
             transactionSubtotal: transactionSubtotal,
             exclusionSubtotal: exclusionSubtotal,
-            totalEarn: cmp.get('v.totalEarnValue')
+            totalEarn: transactionSubtotal - exclusionSubtotal
 
         };
         action.setParams({
@@ -101,10 +105,14 @@
                     this.showErrorSummary(cmp, result.message, result.returnValuesMap);
                 }
             }
+
+
         });
         $A.enqueueAction(action);
     },
     proceedWithSuccessfulTransaction: function(cmp, transactionSubtotal, exclusionSubtotal, result) {
+
+
         var appEvent = $A.get("e.c:trac_LoyaltyRefreshEvent");
         appEvent.setParams({"LoyaltyNumber" : cmp.get('v.loyalty.external_customer_id') });
         var totalSpent = parseFloat(transactionSubtotal) - parseFloat(exclusionSubtotal);
@@ -121,6 +129,8 @@
         else {
           this.showToast(result.message, 'success', 'Transaction Submitted');
         }
+
+
         appEvent.fire();
         this.close(cmp);
     },
