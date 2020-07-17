@@ -944,7 +944,7 @@ public without sharing class trac_CaseTriggerHelper {
 
     @future(callout=true)
     public static void searchAndAssociateContactFromOrder(String caseList) {
-
+        System.debug('Entering searchAndAssociateContactFromOrder');
         Map<String, String> caseMap = new Map <String, String>();
         List<Contact> webServiceContacts = new List<Contact>();
         Map<String, Contact> fetchedContacts = new Map<String, Contact>();
@@ -987,7 +987,6 @@ public without sharing class trac_CaseTriggerHelper {
             }
         }
 
-
         if (mapToUpdate!=null && !mapToUpdate.isEmpty()) {
             upsert mapToUpdate.values();
             List<Case> updateCases = new List<Case>();
@@ -998,8 +997,7 @@ public without sharing class trac_CaseTriggerHelper {
             }
             update updateCases;
         }
-
-
+        System.debug('Exiting searchAndAssociateContactFromOrder');
     }
 
     public static Map<String, Contact> searchContactByBUAndEmail(List<String> businessUnitList, List<String> emailList){
