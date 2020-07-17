@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">http://furnituremedic.na.smcanada.ca/</value>
+        <value xsi:type="xsd:string">https://furnituremedic.na.smcanada.ca/</value>
     </values>
 </CustomMetadata>

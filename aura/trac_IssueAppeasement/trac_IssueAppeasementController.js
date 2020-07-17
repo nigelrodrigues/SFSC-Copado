@@ -19,12 +19,9 @@
     },
     submitAppeasementForm: function(cmp, event, helper) {
         // check validity
-        if (cmp.find('amount').get('v.validity').valid) {
-            // form field is valid, do one final check on max appeasement amount
-            if (helper.checkAppeasementValue(cmp)) {
-                // all good, submit the appeasement
-                helper.submitAppeasement(cmp, event, helper);
-            }
+        if (helper.checkAppeasementValue(cmp)) {
+            // all good, submit the appeasement
+            helper.submitAppeasement(cmp, event, helper);
         }
     },
     formPress: function (cmp, event, helper) {
