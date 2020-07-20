@@ -295,7 +295,7 @@
                 <c:trac_OverallTotals overallTotal="{!v.order.OverallTotals}"/>
 
                 <aura:iteration items="{!v.order.PaymentMethods.PaymentMethod}" var="paymentMethod">
-                    <c:trac_PaymentMethod paymentMethod="{!paymentMethod}"/>
+                    <c:trac_PaymentMethod paymentMethod="{!paymentMethod}" loyaltyNo="{!v.order.Extn.ExtnLoyaltyNo}"/>
                 </aura:iteration>
 
                 <aura:if isTrue="{!not(empty(v.order.Notes.Note))}">
@@ -352,6 +352,12 @@
                     <aura:iteration items="{!v.order.OrderHoldTypes.OrderHoldType}" var="orderHold">
                         <c:trac_OrderHold orderHold="{!orderHold}"/>
                     </aura:iteration>
+                </lightning:tab>
+            </aura:if>
+
+            <aura:if isTrue="{!not(empty(v.order.Extn))}">
+                <lightning:tab label="Loyalty" id="loyalty">
+                    <c:trac_OrderLoyalty order="{!v.order}" />
                 </lightning:tab>
             </aura:if>
 
