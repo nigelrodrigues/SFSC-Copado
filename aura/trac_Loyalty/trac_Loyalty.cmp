@@ -220,8 +220,9 @@
         </lightning:layoutItem>
 
     </lightning:layout>
-    <lightning:layout >
-        <lightning:layoutItem class="slds-p-around_xx-small">
+    <aura:if isTrue="{!not(empty(v.loyalty.customer_badges))}">
+        <lightning:layout >
+            <lightning:layoutItem class="slds-p-around_xx-small">
 
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Badges</p>
@@ -235,7 +236,8 @@
             </div>
         </lightning:layoutItem>
 
-    </lightning:layout>
+        </lightning:layout>
+    </aura:if>
     <lightning:layout>
 
         <aura:if isTrue="{!v.isEditable}">
@@ -387,12 +389,14 @@
         </lightning:layoutItem>
         <lightning:layoutItem padding="around-small" size="4">
 
+
             <c:trac_EscalateToLoyaltyTeam caseRecord="{!v.caseRecord}" />
         </lightning:layoutItem>
     </lightning:layout>
     <div aura:id="divBody">
         {!v.body}
     </div>
+
 
     <aura:if isTrue="{!v.showAppeasementModal}">
     <div aura:id="appeasementModal">

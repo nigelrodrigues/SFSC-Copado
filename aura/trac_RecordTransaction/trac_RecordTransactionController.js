@@ -2,15 +2,13 @@
  * Created by gtorres on 6/5/2020.
  */
 
-
 ({
     updateTotalEarn: function(cmp, event, helper) {
-        var TransactionSubtotal = helper.normalize(cmp.find("TransactionSubtotal").get("v.value"));
-        var SubtotalExcludedItems = helper.normalize(cmp.find("SubtotalExcludedItems").get("v.value"));
 
+        var TransactionSubtotal = cmp.find("TransactionSubtotal").get("v.value");
+        var SubtotalExcludedItems = cmp.find("SubtotalExcludedItems").get("v.value");
         cmp.find("TransactionSubtotal").set("v.value", TransactionSubtotal)
         cmp.find("SubtotalExcludedItems").set("v.value", SubtotalExcludedItems)
-
         var tier = cmp.get('v.loyalty.top_tier_name').toLowerCase();
         var tier_multiplier = 1;
         if (tier === 'hudson\'s bay rewards plus') {
@@ -31,6 +29,8 @@
             cmp.set("v.date", date);
         }
     },
+
+
     handleSubmit: function(cmp, event, helper) {
         if (helper.validateForm(cmp)) {
             helper.submitRecordTransaction(cmp, helper);

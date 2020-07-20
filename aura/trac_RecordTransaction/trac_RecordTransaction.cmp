@@ -44,9 +44,9 @@
 
                                           required="true"
                                           onchange="{!c.handleButtonChange}" />
-
                     <aura:if isTrue="{!v.TransactionOriginValue == 'Website'}">
                         <lightning:input aura:id="OrderNumber" label="Order Number" required="true" />
+
                         <lightning:input aura:id="TransactionNumber" type="text" maxlength="19" required="true"
                                          label="Transaction Number (AAAABBBBCCCMMDDYYYY)" pattern="^\d{19}$"
                                          messageWhenPatternMismatch="Transaction Number should be numeric and 19 digits long"
@@ -75,9 +75,9 @@
                     </aura:if>
 
                     <lightning:input aura:id="TransactionSubtotal" label="Transaction Subtotal" required="true"
-                                     onchange="{!c.updateTotalEarn}" value="0" maxlength="9" />
+                                     type="number" onchange="{!c.updateTotalEarn}" value="0" maxlength="12" step="0.01" />
                     <lightning:input aura:id="SubtotalExcludedItems" label="Subtotal of Excluded Items (e.g. giftcards)"
-                                     onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="9" />
+                                     type="number" onchange="{!c.updateTotalEarn}" required="true" value="0" maxlength="12" step="0.01" />
 
                     <p class="field-title slds-form-element__label slds-no-flex" style="margin-top:10px;">Account Tier</p>
                     <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">

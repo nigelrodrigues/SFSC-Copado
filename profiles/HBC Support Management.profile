@@ -3425,7 +3425,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_OrderRefundCreditHelper</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>trac_OrderRefundCreditHelperTest</apexClass>
