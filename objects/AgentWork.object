@@ -36,6 +36,9 @@
         <fullName>HandleTime</fullName>
     </fields>
     <fields>
+        <fullName>IsAutoAcceptEnabled</fullName>
+    </fields>
+    <fields>
         <fullName>IsConference</fullName>
     </fields>
     <fields>
@@ -84,6 +87,9 @@
     </fields>
     <fields>
         <fullName>ShouldSkipCapacityCheck</fullName>
+    </fields>
+    <fields>
+        <fullName>ShouldSkipChannelCheck</fullName>
     </fields>
     <fields>
         <fullName>SpeedToAnswer</fullName>

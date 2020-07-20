@@ -305,6 +305,18 @@ public with sharing class trac_WS_GetOrderDetails {
                 }
             }
         }
+
+        // loop over paymentMethods
+        if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
+            for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
+                // for PaymentType "REWARDS", calculate DisplayPointsAmount
+                if (paymentMethod.PaymentType == 'REWARDS' && String.isNotEmpty(paymentMethod.TotalCharged)) {
+                    Decimal totalCharged = Decimal.valueOf(paymentMethod.TotalCharged);
+                    // TODO: change from hard-coded points conversion to API-based dynamic conversion
+                    paymentMethod.DisplayPointsAmount = String.valueOf( (totalCharged * 200).intValue() );
+                }
+            }
+        }
     }
 
     public class GetOrderDetailsRequest {
@@ -486,10 +498,11 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public class res_PaymentMethodWrapper {
-        @AuraEnabled public String PaymentReference3;
         @AuraEnabled public String PaymentReference1;
-        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String PaymentReference2;
+        @AuraEnabled public String PaymentReference3;
+        @AuraEnabled public String PaymentReference9;
+        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String UnlimitedCharges;
         @AuraEnabled public String TotalRefundedAmount;
         @AuraEnabled public String RequestedChargeAmount;
@@ -509,6 +522,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String CreditCardNo;
         @AuraEnabled public String DisplayCreditCardNo;
         @AuraEnabled public res_AddressWrapper PersonInfoBillTo;
+        @AuraEnabled public String DisplayPointsAmount;
     }
 
     public class res_HeaderTaxesWrapper {

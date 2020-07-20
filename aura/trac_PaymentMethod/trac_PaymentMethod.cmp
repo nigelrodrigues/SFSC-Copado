@@ -4,6 +4,7 @@
 
 <aura:component description="trac_PaymentMethod">
     <aura:attribute name="paymentMethod" type="Object"/>
+    <aura:attribute name="loyaltyNo" type="String"/>
     <aura:attribute name="count" type="string"/>
     <aura:attribute name="showActions" type="Boolean" default="false"/>
 
@@ -23,42 +24,58 @@
                                 <p>{!v.paymentMethod.PaymentType}</p>
                             </div>
                         </lightning:layoutItem>
-                        
-                        <aura:if isTrue="{! not(equals(v.paymentMethod.PaymentType, 'PAYPAL'))}">
+
+                        <aura:if isTrue="{!equals(v.paymentMethod.PaymentType, 'REWARDS')}">
                             <lightning:layoutItem padding="around-small">
                                 <div class="header-column">
-                                    <p class="field-title slds-form-element__label slds-no-flex">Credit Card Name</p>
-                                    <p>{!v.paymentMethod.CreditCardName}</p>
-                                </div>
-                            </lightning:layoutItem>
-                            <aura:if isTrue="{! not(equals(v.paymentMethod.PaymentType, 'OFF5_EMC'))}">
-                            <lightning:layoutItem padding="around-small">
-                                <div class="header-column">
-                                    <p class="field-title slds-form-element__label slds-no-flex">Credit Card</p>
-                                    <p>{!v.paymentMethod.CreditCardType} ending in {!v.paymentMethod.DisplayCreditCardNo}</p>
+                                    <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
+                                    <p>{!v.loyaltyNo}</p>
                                 </div>
                             </lightning:layoutItem>
                             <lightning:layoutItem padding="around-small">
                                 <div class="header-column">
-                                    <p class="field-title slds-form-element__label slds-no-flex">Credit Card Token</p>
-                                    <p>{!v.paymentMethod.CreditCardNo}</p>
+                                    <p class="field-title slds-form-element__label slds-no-flex">Points Amount</p>
+                                    <p><lightning:formattedNumber value="{!v.paymentMethod.DisplayPointsAmount}"/></p>
                                 </div>
                             </lightning:layoutItem>
-                            <lightning:layoutItem padding="around-small">
-                                <div class="header-column">
-                                    <p class="field-title slds-form-element__label slds-no-flex">Expiration Date</p>
-                                    <p>{!v.paymentMethod.CreditCardExpDate}</p>
-                                </div>
-                            </lightning:layoutItem>
-                            </aura:if>
-                            <aura:if isTrue="{!not(empty(v.paymentMethod.DisplaySvcNo))}">
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Gift Card</p>
-                                        <p>{!v.paymentMethod.DisplaySvcNo}</p>
-                                    </div>
-                                </lightning:layoutItem>
-                            </aura:if>
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{! not(equals(v.paymentMethod.PaymentType, 'PAYPAL'))}">
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <p class="field-title slds-form-element__label slds-no-flex">Credit Card Name</p>
+                                            <p>{!v.paymentMethod.CreditCardName}</p>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <aura:if isTrue="{! not(equals(v.paymentMethod.PaymentType, 'OFF5_EMC'))}">
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">Credit Card</p>
+                                                <p>{!v.paymentMethod.CreditCardType} ending in {!v.paymentMethod.DisplayCreditCardNo}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">Credit Card Token</p>
+                                                <p>{!v.paymentMethod.CreditCardNo}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">Expiration Date</p>
+                                                <p>{!v.paymentMethod.CreditCardExpDate}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+                                    </aura:if>
+                                    <aura:if isTrue="{!not(empty(v.paymentMethod.DisplaySvcNo))}">
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <p class="field-title slds-form-element__label slds-no-flex">Last 4 Digits of Gift Card</p>
+                                                <p>{!v.paymentMethod.DisplaySvcNo}</p>
+                                            </div>
+                                        </lightning:layoutItem>
+                                    </aura:if>
+                                </aura:if>
+                            </aura:set>
                         </aura:if>
 
                         <lightning:layoutItem padding="around-small">
