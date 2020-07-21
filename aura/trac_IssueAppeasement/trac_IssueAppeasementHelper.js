@@ -61,8 +61,12 @@
         var appeasePoints = cmp.get('v.appeasePoints');
         var inputCmp = cmp.find("amount");
         inputCmp.setCustomValidity("");
+        // check blank
+        if ($A.util.isEmpty(appeasePoints)) {
+            inputCmp.setCustomValidity("Please enter an appeasement amount");
+            retval = false;
         // check < 0
-        if (appeasePoints <= 0) {
+        } else if (appeasePoints <= 0) {
             inputCmp.setCustomValidity("Invalid appeasement amount: " + appeasePoints);
             retval = false;
         }
