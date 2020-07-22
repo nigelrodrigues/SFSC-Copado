@@ -21,21 +21,6 @@ public with sharing class trac_WS_GetOrderDetails {
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderDetailsResponse = parse(res.getBody());
             updateDataFormat();
-            // test cc
-            res_PaymentMethodWrapper pymt = new res_PaymentMethodWrapper();
-            pymt.CreditCardExpDate = '09/2021';
-            pymt.PaymentType = 'CREDIT_CARD_HBC';
-            pymt.RequestedChargeAmount = '0.00';
-            pymt.TotalAuthorized = '0.00';
-            pymt.TotalCharged = '6.78';
-            pymt.CreditCardName = 'Testy Tester';
-            pymt.CreditCardNo = '5191230003447850';
-            pymt.CreditCardType = 'MAST';
-            pymt.DisplayCreditCardNo = '1111';
-            pymt.DisplayPaymentReference1 = '1111';
-            pymt.PersonInfoBillTo = getOrderDetailsResponse.PaymentMethods.PaymentMethod[1].PersonInfoBillTo;
-            getOrderDetailsResponse.PaymentMethods.PaymentMethod.add(pymt);
-            // end test
             success = true;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
@@ -46,8 +31,6 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
-//        String regex = '"Hudson.s Bay';
-//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
