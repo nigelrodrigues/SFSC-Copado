@@ -280,6 +280,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public res_OrderDatesWrapper OrderDates;
         @AuraEnabled public String customBlueMartiniStatus;
+        @AuraEnabled public String displayTotalPointsLabel;
+        @AuraEnabled public String displayTotalPointsValue;
     }
 
     public class res_OrderLineWrapper implements Comparable {
@@ -294,11 +296,13 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_AddressWrapper PersonInfoShipTo;
         @AuraEnabled public res_LineTaxesWrapper LineTaxes;
         @AuraEnabled public String CarrierServiceCode;
+        @AuraEnabled public String LineType;
         @AuraEnabled public String Status;
         @AuraEnabled public res_ItemWrapper Item;
         @AuraEnabled public String OrderLineKey;
         @AuraEnabled public res_InstructionsWrapper Instructions;
         @AuraEnabled public res_LineOverallTotalsWrapper LineOverallTotals;
+        @AuraEnabled public res_ShipNodeWrapper Shipnode;
         @AuraEnabled public String DeliveryMethod;
         @AuraEnabled public String PrimeLineNo;
         @AuraEnabled public String GiftFlag;
@@ -391,6 +395,11 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String Quantity;
         @AuraEnabled public String PrimeLineNo;
         @AuraEnabled public res_ShipmentTagSerialsWrapper ShipmentTagSerials;
+        @AuraEnabled public String customIdx;
+        @AuraEnabled public String customShortDescription;
+        @AuraEnabled public String customUnitPrice;
+        @AuraEnabled public String customStatus;
+        @AuraEnabled public String customModel;
     }
 
     public class res_PromotionWrapper {
@@ -594,6 +603,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnIsReturnable;
         @AuraEnabled public String ExtnIsOrgPmtRefund;
         @AuraEnabled public String ExtnLoyaltyNo;
+        @AuraEnabled public String ExtnLoyaltyTier;
         @AuraEnabled public String ExtnCommLang;
         @AuraEnabled public String ExtnIsFiftyOne;
         @AuraEnabled public String ExtnFiftyOneOrderNo;
@@ -613,6 +623,12 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ExtnBlueMartiniCancellationCode;
         @AuraEnabled public String ExtnEstimatedShipDate;
         @AuraEnabled public String ExtnFirstEstimatedShipDate;
+        @AuraEnabled public String ExtnPointsEarned;
+        @AuraEnabled public String ExtnPointsLost;
+        @AuraEnabled public String displayExtnPointsLabel;
+        @AuraEnabled public String displayExtnPointsValue;
+        @AuraEnabled public String displayExtnLoyaltyNo;
+        @AuraEnabled public String displayExtnLoyaltyTier;
     }
 
     public class res_OrderStatusesWrapper {
@@ -753,7 +769,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ShipmentContainerizedFlag;
         @AuraEnabled public String TotalWeightUOM;
         @AuraEnabled public res_AddressWrapper BillToAddress;
-        @AuraEnabled public String Status;
+        //@AuraEnabled public String Status;
+        @AuraEnabled public res_ShipmentStatusWrapper Status;
         @AuraEnabled public String ShipmentNo;
         @AuraEnabled public String TotalWeight;
         @AuraEnabled public String EnterpriseCode;
@@ -763,6 +780,13 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_AddressWrapper ToAddress;
         @AuraEnabled public String ExpectedDeliveryDate;
         @AuraEnabled public res_OrderInvoiceListWrapper OrderInvoiceList;
+        @AuraEnabled public res_ExtnWrapper Extn;
+        @AuraEnabled public String customInvoiceNo;
+    }
+
+    public class res_ShipmentStatusWrapper {
+        @AuraEnabled public String Status;
+        @AuraEnabled public String Description;
     }
 
     public class res_OrderInvoiceListWrapper {
@@ -862,6 +886,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ExtnWrapper Extn;
         @AuraEnabled public String ShippingNode;
         @AuraEnabled public String ShipNode;
+        @AuraEnabled public String Description;
     }
 
     public class res_AddressWrapper {
