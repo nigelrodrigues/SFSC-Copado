@@ -486,10 +486,11 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public class res_PaymentMethodWrapper {
-        @AuraEnabled public String PaymentReference3;
         @AuraEnabled public String PaymentReference1;
-        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String PaymentReference2;
+        @AuraEnabled public String PaymentReference3;
+        @AuraEnabled public String PaymentReference9;
+        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String UnlimitedCharges;
         @AuraEnabled public String TotalRefundedAmount;
         @AuraEnabled public String RequestedChargeAmount;
