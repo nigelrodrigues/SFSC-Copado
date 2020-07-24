@@ -1345,9 +1345,19 @@
                     <label>Tier Change</label>
                 </value>
                 <value>
-                    <fullName>Goodwill Points</fullName>
+                    <fullName>Appeasement Amount Requires Approval</fullName>
                     <default>false</default>
-                    <label>Goodwill Points</label>
+                    <label>Appeasement Amount Requires Approval</label>
+                </value>
+                <value>
+                    <fullName>High-Value Transaction</fullName>
+                    <default>false</default>
+                    <label>High-Value Transaction</label>
+                </value>
+                <value>
+                    <fullName>Suspected Fraudulent Activity</fullName>
+                    <default>false</default>
+                    <label>Suspected Fraudulent Activity</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
