@@ -18,7 +18,6 @@
     {
         let caseRecord = component.get("v.caseRecord");
         let selectedTeam = component.get("v.selectedTeam");
-        component.set("v.enableCategory", true);
         if( selectedTeam === 'operations')
         {
             component.find("caseStatus").set("v.value", "Open");
@@ -151,19 +150,12 @@
         if ( selectedTeam === "operations")
         {
             component.find("caseStatus").set("v.value", "Open");
-            //component.set("v.enableCategory", true);
             component.find("caseType").set("v.value", "Rewards Escalation");
             component.find("caseCategory").set("v.value", null);
             component.set("v.showEscalationOptions", false);
-            //component.set("v.createNewCase", false);
         }
         else if ( selectedTeam === "escalation" )
         {
-            // if (keepCaseOpen === "yes") {
-            //     component.set("v.createNewCase", true);
-            // } else {
-            //     component.set("v.createNewCase", false);
-            // }
             component.set("v.showEscalationOptions", true);
         }
     }
