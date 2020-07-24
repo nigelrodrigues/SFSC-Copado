@@ -1036,6 +1036,9 @@ MetadataGrid2.prototype._matchSelectedItemsWithAllMetaData = function(allMetaDat
         t = idx_allItems[e.t+' '+e.n];
         if( t ) {
             t.s = true;
+            // This line mark, if needed, selected metadata as "Retrieve Only".
+            // When it comes from: Recommit User Story feature.
+            t.r = e.r;
         }else{
             allMetaData.push(e);
         }
