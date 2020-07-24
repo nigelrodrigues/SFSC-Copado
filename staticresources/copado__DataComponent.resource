@@ -63,8 +63,10 @@ dw.qb.startQueryBuilder = function(data, parsed) {
 
             });
         }
-
-        $copado('#attachmentOptions').val(parsed.iao);
+		//its defined at first, not after refresh metadata since parsed inherited from the page but component
+        if(parsed) {
+            $copado("#attachmentOptions").val(parsed.iao);
+        }
         //start get fields
         dw.qb.ui.getFields = $copado('#getFields');
         dw.qb.ui.testQuery = $copado('#testQuery');
