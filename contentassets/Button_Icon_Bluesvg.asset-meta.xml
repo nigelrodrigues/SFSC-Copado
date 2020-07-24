@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isVisibleByExternalUsers>true</isVisibleByExternalUsers>
+    <language>en_US</language>
+    <masterLabel>Button_Icon_Bluesvg</masterLabel>
+    <versions>
+        <version>
+            <number>1</number>
+            <pathOnClient>Button_Icon_Blue.svg.png</pathOnClient>
+        </version>
+    </versions>
+</ContentAsset>
