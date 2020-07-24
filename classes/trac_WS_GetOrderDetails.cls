@@ -373,11 +373,13 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_AddressWrapper PersonInfoShipTo;
         @AuraEnabled public res_LineTaxesWrapper LineTaxes;
         @AuraEnabled public String CarrierServiceCode;
+        @AuraEnabled public String LineType;
         @AuraEnabled public String Status;
         @AuraEnabled public res_ItemWrapper Item;
         @AuraEnabled public String OrderLineKey;
         @AuraEnabled public res_InstructionsWrapper Instructions;
         @AuraEnabled public res_LineOverallTotalsWrapper LineOverallTotals;
+        @AuraEnabled public res_ShipNodeWrapper Shipnode;
         @AuraEnabled public String DeliveryMethod;
         @AuraEnabled public String PrimeLineNo;
         @AuraEnabled public String GiftFlag;
@@ -962,6 +964,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ExtnWrapper Extn;
         @AuraEnabled public String ShippingNode;
         @AuraEnabled public String ShipNode;
+        @AuraEnabled public String Description;
     }
 
     public class res_AddressWrapper {
