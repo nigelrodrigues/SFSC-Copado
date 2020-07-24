@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isVisibleByExternalUsers>true</isVisibleByExternalUsers>
+    <language>en_US</language>
+    <masterLabel>X0012089_elitetshirtnavy</masterLabel>
+    <versions>
+        <version>
+            <number>1</number>
+            <pathOnClient>0012089_elite-t-shirt-navy.jpeg</pathOnClient>
+        </version>
+    </versions>
+</ContentAsset>
