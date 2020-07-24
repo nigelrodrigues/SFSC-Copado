@@ -7,18 +7,12 @@
 public with sharing class trac_CaseLoyaltyEscalation {
 
     @AuraEnabled
-
-
-    public static TLAuraResponse createCaseAndAttachFile(Case caseRecord, String fileName, String fileContentsToEncode, String contentType, Boolean cloneCase, String loyaltyIssue)
-
-
+    public static TLAuraResponse createCaseAndAttachFile(Case caseRecord, String fileName, String fileContentsToEncode, String contentType, Boolean cloneCase, String loyaltyIssue, String newCaseType, String newCaseCategory, String newCaseSubcategory)
     {
+        System.debug('akong: createCaseAndAttachFile: Id: ' + caseRecord.Id);
         TLAuraResponse response = new TLAuraResponse(true);
 
         try {
-           
-
-
 
             if( cloneCase )
             {
@@ -27,9 +21,12 @@ public with sharing class trac_CaseLoyaltyEscalation {
 
                 newCase.Business_Unit__c = caseRecord.Business_Unit__c;
 
-                newCase.Case_Type__c = 'Rewards';
-                newCase.Category__c = 'Goodwill Points';
-                newCase.Subcategory__c = 'Requires Approval';
+//                newCase.Case_Type__c = 'Rewards';
+//                newCase.Category__c = 'Goodwill Points';
+//                newCase.Subcategory__c = 'Requires Approval';
+                newCase.Case_Type__c = newCaseType;
+                newCase.Category__c = newCaseCategory;
+                newCase.Subcategory__c = String.isNotBlank(newCaseSubcategory) ? newCaseSubcategory : null;
                 newCase.ParentId = caseRecord.Id;
                 newCase.Subject = 'Escalation - ' + caseRecord.Subject;
 
