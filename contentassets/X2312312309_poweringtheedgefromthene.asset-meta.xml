@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isVisibleByExternalUsers>true</isVisibleByExternalUsers>
+    <language>en_US</language>
+    <masterLabel>X2312312309_poweringtheedgefromthene</masterLabel>
+    <versions>
+        <version>
+            <number>1</number>
+            <pathOnClient>231-2312309_powering-the-edge-from-the-network-core-building.png</pathOnClient>
+        </version>
+    </versions>
+</ContentAsset>

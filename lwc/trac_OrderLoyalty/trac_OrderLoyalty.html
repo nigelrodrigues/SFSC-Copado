@@ -18,6 +18,12 @@
                         </lightning-layout-item>
                         <lightning-layout-item padding="around-small">
                             <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Loyalty Tier</p>
+                                <p>{order.Extn.displayExtnLoyaltyTier}</p>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small">
+                            <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">{order.displayTotalPointsLabel}</p>
                                 <p>{order.displayTotalPointsValue}</p>
                             </div>
@@ -64,13 +70,6 @@
                                         <div class="header-column">
                                             <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
                                             <p>{shipment.Extn.displayExtnLoyaltyNo}</p>
-                                        </div>
-                                    </lightning-layout-item>
-
-                                    <lightning-layout-item padding="around-small">
-                                        <div class="header-column">
-                                            <p class="field-title slds-form-element__label slds-no-flex">Loyalty Tier</p>
-                                            <p>{shipment.Extn.displayExtnLoyaltyTier}</p>
                                         </div>
                                     </lightning-layout-item>
 

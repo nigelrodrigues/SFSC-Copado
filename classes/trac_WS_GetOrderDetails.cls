@@ -31,8 +31,6 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
-//        String regex = '"Hudson.s Bay';
-//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -247,8 +245,9 @@ public with sharing class trac_WS_GetOrderDetails {
             }
             getOrderDetailsResponse.displayTotalPointsValue = displayValue;
 
-            // set order level displayLoyaltyNo
+            // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
             getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
+            getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
         }
 
         // prepare primeLines map

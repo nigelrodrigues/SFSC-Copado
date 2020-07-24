@@ -2921,6 +2921,7 @@ var copadoGitMetadataStep = {
             var e = me.data.metadata[len];
             e.s = e.s || false;
         }
+        
         //create datasource
         var source2 = {
             localdata: res,
@@ -2936,6 +2937,9 @@ var copadoGitMetadataStep = {
             }, {
                 name: 't',
                 type: 'string'
+            }, {
+                name: 'vk',
+                type: 'string'
             }],
             datatype: 'array',
             updaterow: function(rowid, rowdata, commit) {
@@ -2944,7 +2948,7 @@ var copadoGitMetadataStep = {
                 copadoStep.dirty = true;
             }
         };
-
+        
         //adapter wrapper
         dataAdapter2 = new $copado.jqx.dataAdapter(source2);
 
@@ -3364,6 +3368,7 @@ rock.getSelectedObj = function() {
         data[len].s && rock.selectedNames.push({
             t: data[len].t,
             n: data[len].n,
+            vk: data[len].vk,
             s: true
         });
     }
@@ -4662,6 +4667,7 @@ var copadoGitPromotionStep = {
             var e = me.data.metadata[len];
             e.s = e.s || false;
         }
+        
         //create datasource
         var source2 = {
             localdata: res,
