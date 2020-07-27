@@ -173,6 +173,11 @@ public with sharing class trac_RecordTransactionController {
             response.returnValuesMap.put('total earn', 'Total Earn cannot be negative');
         }
 
+        if(params.totalEarn > 10000) {
+            response.isSuccess = false;
+            response.returnValuesMap.put('total earn', 'Total Earn cannot be greater than $10,000');
+        }
+
         response.returnValuesMap.put('validForm', response.isSuccess);
 
         return response.isSuccess;
