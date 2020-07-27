@@ -69,7 +69,7 @@ private class trac_RecordTransactionControllerTest {
         params.orderNumber = '000000002';
         params.transactionNumber = '0000111122306082020';
         params.transactionDate = 'Mar. 04, 2020, 06:31 a.m.';
-        params.transactionSubtotal = 15.75;
+        params.transactionSubtotal = 10015.75;
         params.exclusionSubtotal = 9.25;
         params.totalEarn = params.transactionSubtotal - params.exclusionSubtotal;
 
