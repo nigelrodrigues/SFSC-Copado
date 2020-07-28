@@ -81,6 +81,16 @@
         <visible>true</visible>
     </applicationVisibilities>
     <applicationVisibilities>
+        <application>standard__AllTabSet</application>
+        <default>false</default>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>standard__AppLauncher</application>
+        <default>false</default>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>standard__Chatter</application>
         <default>false</default>
         <visible>false</visible>
@@ -4987,7 +4997,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Field_Tracker_Counter__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -12845,6 +12855,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Idea-Idea Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Image-Image Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Individual-Individual Layout</layout>

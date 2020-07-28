@@ -17,7 +17,7 @@ private class trac_CaseLoyaltyEscalationTest {
         String fileType ='png';
 
 
-        TLAuraResponse response = trac_CaseLoyaltyEscalation.createCaseAndAttachFile(testCase, fileName, fileContents, fileType, false, 'test issue');
+        TLAuraResponse response = trac_CaseLoyaltyEscalation.createCaseAndAttachFile(testCase, fileName, fileContents, fileType, false, 'test issue', 'Rewards', 'Goodwill Points', 'Requires Approval');
 
 
 
@@ -40,7 +40,7 @@ private class trac_CaseLoyaltyEscalationTest {
         String fileType ='png';
 
 
-        TLAuraResponse response = trac_CaseLoyaltyEscalation.createCaseAndAttachFile(testCase, fileName, fileContents, fileType, true, null);
+        TLAuraResponse response = trac_CaseLoyaltyEscalation.createCaseAndAttachFile(testCase, fileName, fileContents, fileType, true, 'test issue', 'Rewards', 'Goodwill Points', 'Requires Approval');
 
 
 

@@ -18,6 +18,12 @@
                         </lightning-layout-item>
                         <lightning-layout-item padding="around-small">
                             <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex">Loyalty Tier</p>
+                                <p>{order.Extn.displayExtnLoyaltyTier}</p>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small">
+                            <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">{order.displayTotalPointsLabel}</p>
                                 <p>{order.displayTotalPointsValue}</p>
                             </div>
@@ -64,13 +70,6 @@
                                         <div class="header-column">
                                             <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
                                             <p>{shipment.Extn.displayExtnLoyaltyNo}</p>
-                                        </div>
-                                    </lightning-layout-item>
-
-                                    <lightning-layout-item padding="around-small">
-                                        <div class="header-column">
-                                            <p class="field-title slds-form-element__label slds-no-flex">Loyalty Tier</p>
-                                            <p>{shipment.Extn.displayExtnLoyaltyTier}</p>
                                         </div>
                                     </lightning-layout-item>
 
@@ -131,50 +130,6 @@
                                                 </span>
                                             </td>
                                         </tr>
-<!--                                        -->
-<!--                                        <lightning-layout key={shipmentLine.Idx} class="slds-box_border slds-theme&#45;&#45;default">-->
-<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
-<!--                                                <div class="header-column">-->
-<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">SKN #</p>-->
-<!--                                                    <p>{shipmentLine.ItemID}</p>-->
-<!--                                                </div>-->
-<!--                                            </lightning-layout-item>-->
-
-<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
-<!--                                                <div class="header-column">-->
-<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Style Code</p>-->
-<!--                                                    <p></p>-->
-<!--                                                </div>-->
-<!--                                            </lightning-layout-item>-->
-
-<!--                                            <lightning-layout-item size="6" flexibility="auto" padding="around-small">-->
-<!--                                                <div class="header-column">-->
-<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Item Description</p>-->
-<!--                                                    <p>{shipmentLine.ShortDescription}</p>-->
-<!--                                                </div>-->
-<!--                                            </lightning-layout-item>-->
-
-<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
-<!--                                                <div class="header-column">-->
-<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Unit Price</p>-->
-<!--                                                    <p>{shipmentLine.UnitPrice}</p>-->
-<!--                                                </div>-->
-<!--                                            </lightning-layout-item>-->
-
-<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
-<!--                                                <div class="header-column">-->
-<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Quantity</p>-->
-<!--                                                    <p>{shipmentLine.Quantity}</p>-->
-<!--                                                </div>-->
-<!--                                            </lightning-layout-item>-->
-
-<!--                                            <lightning-layout-item size="1" flexibility="auto" padding="around-small">-->
-<!--                                                <div class="header-column">-->
-<!--                                                    <p class="field-title slds-form-element__label slds-no-flex">Status</p>-->
-<!--                                                    <p>{shipmentLine.Status}</p>-->
-<!--                                                </div>-->
-<!--                                            </lightning-layout-item>-->
-<!--                                        </lightning-layout>-->
                                     </template>
                                     </table>
                                 </div>
@@ -185,5 +140,9 @@
             </div>
         </div>
     </template>
+
+    <div class="slds-m-top_small slds-m-bottom_small slds-text-align_center" style="color: rgb(124, 124, 124); font-size: 0.8125rem;">
+        <p>Hudson's Bay loyalty point earn is only recorded for items once they ship or are ready for in-store pickup.</p>
+    </div>
 
 </template>

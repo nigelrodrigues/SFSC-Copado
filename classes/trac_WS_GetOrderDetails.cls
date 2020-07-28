@@ -31,8 +31,6 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
-//        String regex = '"Hudson.s Bay';
-//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -247,8 +245,9 @@ public with sharing class trac_WS_GetOrderDetails {
             }
             getOrderDetailsResponse.displayTotalPointsValue = displayValue;
 
-            // set order level displayLoyaltyNo
+            // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
             getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
+            getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
         }
 
         // prepare primeLines map
@@ -261,6 +260,14 @@ public with sharing class trac_WS_GetOrderDetails {
                 primeLineRow.put('UnitPrice', orderLine.LinePriceInfo.UnitPrice);
                 primeLineRow.put('Model', orderLine.ItemDetails.ClassificationCodes.Model);
                 mapPrimeLines.put(orderLine.PrimeLineNo, primeLineRow);
+            }
+        }
+
+        // loop over payment method list
+        if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
+            for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
+                paymentMethod.DisplayPointsAuthorized = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalAuthorized) ? Decimal.valueOf(paymentMethod.TotalAuthorized) * 200 : 0.00));
+                paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
             }
         }
 
@@ -486,10 +493,11 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public class res_PaymentMethodWrapper {
-        @AuraEnabled public String PaymentReference3;
         @AuraEnabled public String PaymentReference1;
-        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String PaymentReference2;
+        @AuraEnabled public String PaymentReference3;
+        @AuraEnabled public String PaymentReference9;
+        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String UnlimitedCharges;
         @AuraEnabled public String TotalRefundedAmount;
         @AuraEnabled public String RequestedChargeAmount;
@@ -509,6 +517,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String CreditCardNo;
         @AuraEnabled public String DisplayCreditCardNo;
         @AuraEnabled public res_AddressWrapper PersonInfoBillTo;
+        @AuraEnabled public String DisplayPointsAuthorized;
+        @AuraEnabled public String DisplayPointsCharged;
     }
 
     public class res_HeaderTaxesWrapper {

@@ -1881,6 +1881,11 @@
                     <label>Allowance Request</label>
                 </value>
                 <value>
+                    <fullName>Appeasement Amount Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Appeasement Amount Requires Approval</label>
+                </value>
+                <value>
                     <fullName>Appliance Claim</fullName>
                     <default>false</default>
                     <label>Appliance Claim</label>
@@ -2146,14 +2151,14 @@
                     <label>Gift Card to Original Tender</label>
                 </value>
                 <value>
-                    <fullName>Goodwill Points</fullName>
-                    <default>false</default>
-                    <label>Goodwill Points</label>
-                </value>
-                <value>
                     <fullName>Have you received my return?</fullName>
                     <default>false</default>
                     <label>Have you received my return?</label>
+                </value>
+                <value>
+                    <fullName>High-Value Transaction</fullName>
+                    <default>false</default>
+                    <label>High-Value Transaction</label>
                 </value>
                 <value>
                     <fullName>Hold Batch</fullName>
@@ -2691,6 +2696,11 @@
                     <label>Store Locator</label>
                 </value>
                 <value>
+                    <fullName>Suspected Fraudulent Activity</fullName>
+                    <default>false</default>
+                    <label>Suspected Fraudulent Activity</label>
+                </value>
+                <value>
                     <fullName>Tax Exclusion</fullName>
                     <default>false</default>
                     <label>Tax Exclusion</label>
@@ -3010,6 +3020,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Tier Change</valueName>
             </valueSettings>
             <valueSettings>
@@ -3289,11 +3300,15 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Appeasement Amount Requires Approval</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Credit Points Dispute</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
-                <valueName>Goodwill Points</valueName>
+                <valueName>High-Value Transaction</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
@@ -3334,6 +3349,10 @@
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Rewards Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Suspected Fraudulent Activity</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
@@ -7811,6 +7830,28 @@
         <queue>Off_5th_Main</queue>
     </listViews>
     <listViews>
+        <fullName>S05_Team_Leader_Assistance_Needed</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Open_ORC__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Team Lead Assistance Needed</value>
+        </filters>
+        <filters>
+            <field>Business_Unit__c</field>
+            <operation>equals</operation>
+            <value>Off 5th</value>
+        </filters>
+        <label>S05 Team Leader Assistance Needed</label>
+    </listViews>
+    <listViews>
         <fullName>SE_MNR_Case</fullName>
         <filterScope>Queue</filterScope>
         <label>HBC SE-MNR</label>
@@ -8039,6 +8080,24 @@
         <label>System Issue</label>
     </listViews>
     <listViews>
+        <fullName>Team_Assistance_Need</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Open_ORC__c</columns>
+        <columns>Business_Unit__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Team Assistance Needed</value>
+        </filters>
+        <label>Team Assistance Need</label>
+    </listViews>
+    <listViews>
         <fullName>Team_Lead_Fraud_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -8058,6 +8117,23 @@
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Team_Leader_Assistance_Needed</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Open_ORC__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Team Lead Assistance Needed</value>
+        </filters>
+        <label>Team Leader Assistance Needed</label>
     </listViews>
     <listViews>
         <fullName>The_Bay_Main_Case</fullName>
