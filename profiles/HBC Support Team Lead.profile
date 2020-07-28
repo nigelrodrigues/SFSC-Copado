@@ -4997,7 +4997,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Field_Tracker_Counter__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

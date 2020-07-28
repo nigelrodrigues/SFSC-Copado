@@ -7811,6 +7811,28 @@
         <queue>Off_5th_Main</queue>
     </listViews>
     <listViews>
+        <fullName>S05_Team_Leader_Assistance_Needed</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Open_ORC__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Team Lead Assistance Needed</value>
+        </filters>
+        <filters>
+            <field>Business_Unit__c</field>
+            <operation>equals</operation>
+            <value>Off 5th</value>
+        </filters>
+        <label>S05 Team Leader Assistance Needed</label>
+    </listViews>
+    <listViews>
         <fullName>SE_MNR_Case</fullName>
         <filterScope>Queue</filterScope>
         <label>HBC SE-MNR</label>
@@ -8039,6 +8061,24 @@
         <label>System Issue</label>
     </listViews>
     <listViews>
+        <fullName>Team_Assistance_Need</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Open_ORC__c</columns>
+        <columns>Business_Unit__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Team Assistance Needed</value>
+        </filters>
+        <label>Team Assistance Need</label>
+    </listViews>
+    <listViews>
         <fullName>Team_Lead_Fraud_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -8058,6 +8098,23 @@
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Team_Leader_Assistance_Needed</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Open_ORC__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Team Lead Assistance Needed</value>
+        </filters>
+        <label>Team Leader Assistance Needed</label>
     </listViews>
     <listViews>
         <fullName>The_Bay_Main_Case</fullName>
