@@ -1,7 +1,6 @@
 /**
  * Created by nrodrigues on 6/10/2020.
  */
-
 ({
     MAX_FILE_SIZE: 25000000,
     attachFile : function (component, event, helper) {
@@ -15,7 +14,6 @@
             let file = fileInput[0];
             let self = this;
             console.log('file: ', file);
-
             if (file.size > self.MAX_FILE_SIZE) {
                 component.set("v.fileName", 'Maximum size of the file is 25 MB.\n' + ' Selected file size: ' + (file.size/1000000) + 'MB.');
                 return;
@@ -29,10 +27,10 @@
                 let dataStart = fileContents.indexOf(base64) + base64.length;
                 fileContents = fileContents.substring(dataStart);
 
+
                 console.log('About to call self.processCaseAndAttachment');
                 self.processCaseAndAttachment(component, file, fileContents);
             });
-
             objFileReader.readAsDataURL(file);
         }
         else if( createCase === "yes" )
@@ -42,6 +40,7 @@
             this.processCaseAndAttachment(component, null, null);
         }
     },
+
     processCaseAndAttachment: function(component, file, fileContents)
     {
         console.log('Inside processCaseAndAttachment');
@@ -59,6 +58,7 @@
         console.log('newCaseCategory: ' + newCaseCategory);
         console.log('newCaseSubcategory: ' + newCaseSubcategory);
         console.log('issueEntered: ' + issueEntered);
+
         let action = component.get("c.createCaseAndAttachFile");
         let params = {
 
@@ -67,6 +67,7 @@
                 fileName: null,
                 fileContentsToEncode: null,
                 cloneCase: createCase,
+
 
             loyaltyIssue : issueEntered,
             newCaseType : newCaseType,
@@ -81,7 +82,6 @@
         }
         console.log('params B: ', params);
         action.setParams(params);
-
         action.setCallback(this, function(response) {
             let state = response.getState();
             if (component.isValid() && state === "SUCCESS")
@@ -113,12 +113,13 @@
                             component.set("v.isError", true);
                             component.set("v.errorMsg", result.message);
                         }
+
                 }
+
             }
             else {
                 component.set("v.isError", true);
                 component.set("v.errorMsg", 'Please try again.');
-
             }
             component.set("v.isSpinner", false);
             component.set("v.isLoading", false);
@@ -127,7 +128,6 @@
     },
     showToast: function (title,message, type) {
         let resultsToast = $A.get("e.force:showToast");
-
         resultsToast.setParams({
             "title": title,
             "message": message,

@@ -28,6 +28,7 @@
                                                         {'label': 'No, close current case', 'value': 'no'}
                                                         ]"/>
 
+
     <aura:attribute name="escalateCategoryOptions"  type="List" default="[
                                                             {'value': 'Appeasement Amount Requires Approval'},
                                                             {'value': 'High-Value Transaction'},
@@ -43,8 +44,9 @@
     <aura:attribute name="newCaseType"            type="String"  />
     <aura:attribute name="newCaseCategory"        type="String"  />
     <aura:attribute name="newCaseSubcategory"     type="String"  />
-    <lightning:workspaceAPI aura:id="workspace"/>
 
+
+    <lightning:workspaceAPI aura:id="workspace"/>
     <lightning:button variant="neutral"
                       label="Escalate Case"
                       title="Escalate Case to Loyalty Team"
@@ -59,37 +61,42 @@
                     <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
                         <lightning:icon iconName="standard:high_velocity_sales" alternativeText="" title="Escalate Case" size="small"/>
                         Escalate Case</h2>
-
                 </header>
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
 
                     <lightning:recordEditForm
                             aura:id="escalateForm"
+
                             recordId="{!v.caseRecord.Id}"
                             onsuccess="{!c.handleSuccess}"
                             onload="{!c.handleLoad}"
                             onsubmit="{!c.handleSubmit}"
                             onerror="{!c.handleError}"
                             objectApiName="Case">
-                        <lightning:messages/>
 
+
+                        <lightning:messages/>
                         <div class="slds-grid slds-wrap">
                             <div class="slds-col slds-size_1-of-1">
-
                                 <lightning:radioGroup name="radioGroup"
                                                       label="Select Team"
                                                       aura:id="radioGrp"
                                                       options="{! v.options }"
+
 
                                                       value="{! v.selectedTeam }"
                                                       onchange="{!c.handleRadioChange}"
                                                       type="radio"/>
                                 <div class="slds-m-top_large">
                                     <lightning:inputField aura:id="caseStatus" fieldName="Status" required="true" disabled="true" class="slds-hide"/>
+
+
                                     <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c"  class="slds-hide"/>
                                     <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      class="slds-hide"/>
                                     <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="{!(v.selectedTeam=='operations')}" class="{!if(v.selectedTeam=='operations','slds-show','slds-hide')}" />
                                     <lightning:inputField aura:id="caseSubCategory"  fieldName="Subcategory__c"   class="slds-hide"/>
+
+
                                     <aura:if isTrue="{! equals(v.selectedTeam, 'escalation')}">
                                         <lightning:select name="escalateCategory" label="Category" aura:id="escalateCategory" required="true">
                                             <aura:iteration items="{!v.escalateCategoryOptions}" var="option">
@@ -97,6 +104,8 @@
                                             </aura:iteration>
                                         </lightning:select>
                                     </aura:if>
+
+
                                     <br/>
                                     <label for="caseIssueDescription">Issue Description</label>
                                     <lightning:inputField aura:id="caseIssueDescription"
@@ -104,6 +113,7 @@
                                     <br/>
                                     <lightning:input aura:id="fileUpload" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload File" multiple="false" accept="image/png, .zip"/>
                                     <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
+
                                     <aura:if isTrue="{!v.showEscalationOptions}" >
                                         <br/><br/>
 
@@ -114,22 +124,24 @@
                                                           value="{! v.selectedForCaseClose }"
                                                           onchange="{!c.handleRadioChange}"
 
+
                                                               type="radio"/>
                                         <!-- onchange="{!c.handleRadioChange}" -->
                                         <br/>
                                     </aura:if>
+
+
                                 </div>
                             </div>
                             <div class="slds-align_absolute-center">
-
                             <lightning:button variant="brand" type="submit" label="Escalate" class="submit_button"/>
                             <lightning:button variant="neutral"
                                               label="Cancel"
                                               title="Cancel"
                                               onclick="{! c.closeForm }" />
                         </div>
-
                         </div>
+
 
                     </lightning:recordEditForm>
                 </div>

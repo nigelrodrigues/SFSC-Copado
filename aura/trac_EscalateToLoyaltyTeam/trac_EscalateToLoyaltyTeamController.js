@@ -6,17 +6,22 @@
     {
         component.set("v.openLightningForm", true);
     },
+
+
     closeForm : function(component, event, helper)
     {
         component.set("v.isSpinner", false);
         component.set("v.isLoading", false);
         component.set("v.openLightningForm", false);
+
+
     },
     handleLoad: function (component, event, helper)
     {
         let caseRecord = component.get("v.caseRecord");
         let selectedTeam = component.get("v.selectedTeam");
-        component.set("v.enableCategory", true);
+
+
         if( selectedTeam === 'operations')
         {
             component.find("caseStatus").set("v.value", "Open");
@@ -33,18 +38,24 @@
         component.set("v.isLoading", false);
         console.error('ERROR:' + event.getParam("output").fieldErrors);
     },
+
+
     handleSubmit: function (component, event, helper)
     {
         let selectedTeam = component.get("v.selectedTeam");
         let keepCaseOpen = component.get("v.selectedForCaseClose");
         //let createNewCase = component.get("v.createNewCase");
+
+
         // For Loyalty Operations Team
         if ( selectedTeam === "operations")
         {
             component.find("caseType").set("v.value", "Rewards Escalation");
             component.set("v.showEscalationOptions", false);
             //component.set("v.createNewCase",   false);
+
             let fileUploaded = component.find("fileUpload");
+
             if ( fileUploaded && fileUploaded.get("v.files") && fileUploaded.get("v.files").length > 0) {
                 helper.attachFile(component, event);
             }
@@ -54,6 +65,8 @@
         {
             event.preventDefault(); // stop form submission
             let eventFields = event.getParam("fields");
+
+
             // set new case fields
             let issueDescription = component.find("caseIssueDescription").get("v.value");
             let newCaseType = "Rewards";
@@ -62,6 +75,8 @@
             component.set("v.issue", issueDescription);
             component.set("v.newCaseType", newCaseType);
             component.set("v.newCaseCategory", newCaseCategory);
+
+
             // set eventFields
             eventFields["Status"] = "Open";
             if (keepCaseOpen === "no") {
@@ -71,11 +86,13 @@
                 eventFields["Subcategory__c"] = newCaseSubCategory;
                 eventFields["Loyalty_Issue_Description__c"] = issueDescription;
             }
+
             // submit the escalateForm
             component.find('escalateForm').submit(eventFields);
             // attach file and complete case processing
             helper.attachFile(component, event, helper);
         }
+
         component.set("v.isSpinner", true);
         component.set("v.isLoading", true);
     },
@@ -85,6 +102,8 @@
         component.set("v.isLoading", false);
         component.set("v.openLightningForm", false);
         let errorEncountered = component.get("v.isError");
+
+
         if( !errorEncountered )
         {
             let selectedTeam = component.get("v.selectedTeam");
@@ -100,6 +119,8 @@
                         console.error('Error in closing tab:' + error);
                     });
             }
+
+
             if ( selectedTeam === "escalation")
             {
                 if( keepCaseOpen==="no" )
@@ -116,15 +137,19 @@
             }
         }
     },
+
     handleFilesChange: function (component, event, helper)
     {
         let fileName = 'No File Selected..';
+
         if (event.getSource().get("v.files").length > 0)
         {
             fileName = event.getSource().get("v.files")[0]['name'];
         }
         component.set("v.fileName", fileName);
     },
+
+
     handleRadioChange: function (component, event, helper)
     {
         const step = event.getSource().get("v.value");
@@ -134,19 +159,14 @@
         if ( selectedTeam === "operations")
         {
             component.find("caseStatus").set("v.value", "Open");
-            //component.set("v.enableCategory", true);
+
             component.find("caseType").set("v.value", "Rewards Escalation");
             component.find("caseCategory").set("v.value", null);
             component.set("v.showEscalationOptions", false);
-            //component.set("v.createNewCase", false);
         }
         else if ( selectedTeam === "escalation" )
         {
-            // if (keepCaseOpen === "yes") {
-            //     component.set("v.createNewCase", true);
-            // } else {
-            //     component.set("v.createNewCase", false);
-            // }
+
             component.set("v.showEscalationOptions", true);
         }
     }
