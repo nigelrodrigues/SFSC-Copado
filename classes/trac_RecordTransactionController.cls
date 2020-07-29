@@ -170,12 +170,12 @@ public with sharing class trac_RecordTransactionController {
 
         if(params.totalEarn < 0) {
             response.isSuccess = false;
-            response.returnValuesMap.put('total earn', 'Total Earn cannot be negative');
+            response.returnValuesMap.put('total earn', 'Transaction amount cannot be negative');
         }
 
         if(params.totalEarn > 10000) {
             response.isSuccess = false;
-            response.returnValuesMap.put('total earn', 'Total Earn cannot be greater than $10,000');
+            response.returnValuesMap.put('total earn', 'Transaction amount cannot be greater than $10,000.  If a transaction greater than $10,000 needs to be recorded, please escalate to loyalty escalations to finish the transaction.');
         }
 
         response.returnValuesMap.put('validForm', response.isSuccess);
