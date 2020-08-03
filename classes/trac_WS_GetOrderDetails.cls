@@ -31,6 +31,8 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
+//        String regex = '"Hudson.s Bay';
+//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -245,9 +247,8 @@ public with sharing class trac_WS_GetOrderDetails {
             }
             getOrderDetailsResponse.displayTotalPointsValue = displayValue;
 
-            // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
+            // set order level displayLoyaltyNo
             getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
-            getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
         }
 
         // prepare primeLines map
@@ -260,14 +261,6 @@ public with sharing class trac_WS_GetOrderDetails {
                 primeLineRow.put('UnitPrice', orderLine.LinePriceInfo.UnitPrice);
                 primeLineRow.put('Model', orderLine.ItemDetails.ClassificationCodes.Model);
                 mapPrimeLines.put(orderLine.PrimeLineNo, primeLineRow);
-            }
-        }
-
-        // loop over payment method list
-        if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
-            for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
-                paymentMethod.DisplayPointsAuthorized = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalAuthorized) ? Decimal.valueOf(paymentMethod.TotalAuthorized) * 200 : 0.00));
-                paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
             }
         }
 
@@ -366,6 +359,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String displayTotalPointsLabel;
         @AuraEnabled public String displayTotalPointsValue;
+        @AuraEnabled public String ResponseCode;
+        @AuraEnabled public String ResposneMessage;
     }
 
     public class res_OrderLineWrapper implements Comparable {
@@ -380,11 +375,13 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_AddressWrapper PersonInfoShipTo;
         @AuraEnabled public res_LineTaxesWrapper LineTaxes;
         @AuraEnabled public String CarrierServiceCode;
+        @AuraEnabled public String LineType;
         @AuraEnabled public String Status;
         @AuraEnabled public res_ItemWrapper Item;
         @AuraEnabled public String OrderLineKey;
         @AuraEnabled public res_InstructionsWrapper Instructions;
         @AuraEnabled public res_LineOverallTotalsWrapper LineOverallTotals;
+        @AuraEnabled public res_ShipNodeWrapper Shipnode;
         @AuraEnabled public String DeliveryMethod;
         @AuraEnabled public String PrimeLineNo;
         @AuraEnabled public String GiftFlag;
@@ -397,6 +394,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customUPC;
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String customBlueMartiniCancelCode;
+        @AuraEnabled public res_OrderHoldTypesWrapper OrderHoldTypes;
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
@@ -493,11 +491,10 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public class res_PaymentMethodWrapper {
-        @AuraEnabled public String PaymentReference1;
-        @AuraEnabled public String PaymentReference2;
         @AuraEnabled public String PaymentReference3;
-        @AuraEnabled public String PaymentReference9;
+        @AuraEnabled public String PaymentReference1;
         @AuraEnabled public String CreditCardExpDate;
+        @AuraEnabled public String PaymentReference2;
         @AuraEnabled public String UnlimitedCharges;
         @AuraEnabled public String TotalRefundedAmount;
         @AuraEnabled public String RequestedChargeAmount;
@@ -517,8 +514,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String CreditCardNo;
         @AuraEnabled public String DisplayCreditCardNo;
         @AuraEnabled public res_AddressWrapper PersonInfoBillTo;
-        @AuraEnabled public String DisplayPointsAuthorized;
-        @AuraEnabled public String DisplayPointsCharged;
     }
 
     public class res_HeaderTaxesWrapper {
@@ -971,6 +966,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ExtnWrapper Extn;
         @AuraEnabled public String ShippingNode;
         @AuraEnabled public String ShipNode;
+        @AuraEnabled public String Description;
     }
 
     public class res_AddressWrapper {

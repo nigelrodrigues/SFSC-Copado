@@ -476,6 +476,10 @@
             <translation><!-- Rewards --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Rewards Escalation</masterLabel>
+            <translation><!-- Rewards Escalation --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Special Projects</masterLabel>
             <translation><!-- Special Projects --></translation>
         </picklistValues>
@@ -536,6 +540,10 @@
             <translation><!-- Archived Accounts --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Associate Loyalty Issue</masterLabel>
+            <translation><!-- Associate Loyalty Issue --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>BTO</masterLabel>
             <translation><!-- BTO --></translation>
         </picklistValues>
@@ -558,6 +566,10 @@
         <picklistValues>
             <masterLabel>CA - Cancellation</masterLabel>
             <translation><!-- CA - Cancellation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CASL Issue</masterLabel>
+            <translation><!-- CASL Issue --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CS - Customer Service</masterLabel>
@@ -672,6 +684,10 @@
             <translation><!-- Employee Discount --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Enrollment Issue</masterLabel>
+            <translation><!-- Enrollment Issue --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Estimated delivery date inquiry</masterLabel>
             <translation><!-- Estimated delivery date inquiry --></translation>
         </picklistValues>
@@ -726,6 +742,10 @@
         <picklistValues>
             <masterLabel>Gift Card to Original Tender</masterLabel>
             <translation><!-- Gift Card to Original Tender --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Goodwill Points</masterLabel>
+            <translation><!-- Goodwill Points --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Have you received my return?</masterLabel>
@@ -852,8 +872,16 @@
             <translation><!-- Merchandise Not Received (MNR) --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Missing Bonus Points</masterLabel>
+            <translation><!-- Missing Bonus Points --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Missing Items</masterLabel>
             <translation><!-- Missing Items --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing Partner Points</masterLabel>
+            <translation><!-- Missing Partner Points --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Missing Points from Online Order</masterLabel>
@@ -960,6 +988,14 @@
             <translation><!-- Place New Order --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Point Conversion Issue</masterLabel>
+            <translation><!-- Point Conversion Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Point Redemption Fraud</masterLabel>
+            <translation><!-- Point Redemption Fraud --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Points Inquire</masterLabel>
             <translation><!-- Points Inquire --></translation>
         </picklistValues>
@@ -1018,6 +1054,14 @@
         <picklistValues>
             <masterLabel>Product</masterLabel>
             <translation><!-- Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promo Opt In</masterLabel>
+            <translation><!-- Promo Opt In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promo Opt Out</masterLabel>
+            <translation><!-- Promo Opt Out --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Promo Questions/Problem</masterLabel>
@@ -1080,6 +1124,10 @@
             <translation><!-- Rewards Points --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Rewards Promo Not Working</masterLabel>
+            <translation><!-- Rewards Promo Not Working --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Rewards not applied properly after purchase</masterLabel>
             <translation><!-- Rewards not applied properly after purchase --></translation>
         </picklistValues>
@@ -1138,6 +1186,10 @@
         <picklistValues>
             <masterLabel>Tax Exclusion</masterLabel>
             <translation><!-- Tax Exclusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier Change</masterLabel>
+            <translation><!-- Tier Change --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Tracking number inquiry</masterLabel>
@@ -1313,6 +1365,10 @@
         <name>Create_Time__c</name>
     </fields>
     <fields>
+        <label><!-- Customer Loyalty Id --></label>
+        <name>Customer_Loyalty_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Date/Time First Closed --></label>
         <name>Date_Time_First_Closed__c</name>
     </fields>
@@ -1469,6 +1525,10 @@
         <help><!-- The extension of the agent who most recently answered a call for this case --></help>
         <label><!-- Latest Agent Extension --></label>
         <name>Latest_Agent_Extension__c</name>
+    </fields>
+    <fields>
+        <label><!-- Loyalty Issue Description --></label>
+        <name>Loyalty_Issue_Description__c</name>
     </fields>
     <fields>
         <label><!-- Loyalty Tier --></label>
@@ -2103,6 +2163,10 @@
         <picklistValues>
             <masterLabel>Request for smaller delivery window</masterLabel>
             <translation><!-- Request for smaller delivery window --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requires Approval</masterLabel>
+            <translation><!-- Requires Approval --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Reschedule Delivery</masterLabel>

@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Storefront_URL__c</field>
-        <value xsi:type="xsd:string">https://www.saksoff5th.com</value>
+        <value xsi:type="xsd:string">https://beta.saksoff5th.com</value>
     </values>
 </CustomMetadata>

@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Default_Customer_Id__c</field>
-        <value xsi:type="xsd:string">ac1UHVasUeEqTx75tFKCTVMY7q</value>
+        <value xsi:type="xsd:string">cdEbNEFehKCjO8uXpJK0mavIno</value>
     </values>
     <values>
         <field>Store_ID__c</field>
@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Storefront_URL__c</field>
-        <value xsi:type="xsd:string">https://www.thebay.com</value>
+        <value xsi:type="xsd:string">https://development-na02-hbc.demandware.net</value>
     </values>
 </CustomMetadata>

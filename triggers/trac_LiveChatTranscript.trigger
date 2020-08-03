@@ -7,13 +7,9 @@ trigger trac_LiveChatTranscript on LiveChatTranscript (before insert, before upd
     try {
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
-                System.debug('About to update case contact - on LiveChat Transcript insert');
                 trac_LiveChatTranscriptHelper.setContactToCaseContact(Trigger.new, new Map<Id, LiveChatTranscript>());
-                System.debug('Just updated case contact - on LiveChat Transcript insert');
             } else if (Trigger.isUpdate) {
-                System.debug('About to update case contact - on LiveChat Transcript update');
                 trac_LiveChatTranscriptHelper.setContactToCaseContact(Trigger.new, Trigger.oldMap);
-                System.debug('Just updated case contact - on LiveChat Transcript update');
             }
         } else if (Trigger.isAfter) {
             if (Trigger.isInsert) {

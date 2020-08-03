@@ -5,32 +5,29 @@
         var urlString = window.location.href;
         var pathlength = urlString.split("?")[0].split("\/").length;
         var homePage = urlString.split('?')[0].split('\/')[pathlength - 1];
-
         var saksOff5 = $A.get("$Label.c.Saks_Off_5th_CommunityName");
         var serviceOff5 = $A.get("$Label.c.ServiceSaksOff5th_CommunityName");
         var supportSaks = $A.get("$Label.c.Support_Saks_CommunityName");
-
         if (homePage === "") {
             component.set("v.showContactUs", true);
         } else {
             component.set("v.showContactUs", false);
         }
 
-        var communityName = urlString.substring(urlString.indexOf("https://"), urlString.indexOf("/s/"));
-
-        if (communityName === saksOff5) {
-            homeURL = saksOff5 + "/s";
+        var communityName = urlString.substring(urlString.indexOf("com/"), urlString.indexOf("/s/"));
+        if (communityName === ('com/' + saksOff5)) {
+            homeURL = baseURL + "/" + saksOff5 + "/s";
             component.set("v.homeURL", homeURL);
             this.setBackground();
             component.set("v.showFooterBottom", true);
-        } else if (communityName === serviceOff5) {
-            homeURL = serviceOff5 + "/s";
+        } else if (communityName === ('com/' + serviceOff5)) {
+            homeURL = baseURL + "/" + serviceOff5 + "/s";
             component.set("v.homeURL", homeURL);
             component.set("v.showInFrench", true);
             this.setBackground();
             component.set("v.showFooterBottom", true);
-        } else if (communityName === supportSaks) {
-            homeURL = supportSaks + "/s";
+        } else if (communityName === ('com/' + supportSaks)) {
+            homeURL = baseURL + "/" + supportSaks + "/s";
             component.set("v.homeURL", homeURL);
             this.setBackground();
             component.set("v.showFooterBottom", true);
@@ -43,9 +40,9 @@
     },
 
     setLanguageFooter: function (component, communityName, saksOff5, serviceOff5) {
-        if (communityName === saksOff5 || communityName === serviceOff5) {
+        if (communityName === ('com/' + saksOff5) || communityName === ('com/' + serviceOff5)) {
             component.set("v.showLanguageSelect", true);
-            if (communityName === saksOff5) {
+            if (communityName === ('com/' + saksOff5)) {
                 var cmpTargetEng = component.find("english-footer");
                 var cmpTargetFrench = component.find("french-footer");
                 $A.util.addClass(cmpTargetEng, "text-bold");

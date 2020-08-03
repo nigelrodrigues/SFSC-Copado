@@ -1,46 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <baseObject>LightningUsageByFlexiPageMetrics</baseObject>
+    <baseObject></baseObject>
     <category>other</category>
     <deployed>true</deployed>
     <description>Custom pages Users viewed most frequently in Lightning Experience</description>
     <label>Custom Lightning Page Usage</label>
     <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>LightningUsageByFlexiPageMetrics</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>MetricsDate</field>
-            <table>LightningUsageByFlexiPageMetrics</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ParentEnumOrId</field>
-            <table>LightningUsageByFlexiPageMetrics</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>FieldValue</field>
-            <table>LightningUsageByFlexiPageMetrics</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>RecordCountEPT</field>
-            <table>LightningUsageByFlexiPageMetrics</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>TotalCount</field>
-            <table>LightningUsageByFlexiPageMetrics</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SumEPT</field>
-            <table>LightningUsageByFlexiPageMetrics</table>
-        </columns>
         <masterLabel>LightningUsageByFlexiPageMetrics</masterLabel>
     </sections>
 </ReportType>

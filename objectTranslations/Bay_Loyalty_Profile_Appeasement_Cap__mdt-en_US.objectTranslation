@@ -9,8 +9,8 @@
         <value>Bay Loyalty Profile Appeasement Caps</value>
     </caseValues>
     <fields>
-        <help></help>
-        <label></label>
+        <help><!-- Maximum points per appeasement (or Unlimited) --></help>
+        <label><!-- Max Appeasement --></label>
         <name>Max_Appeasement__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

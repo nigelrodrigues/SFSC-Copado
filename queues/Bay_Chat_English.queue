@@ -6,6 +6,9 @@
         <publicGroups>
             <publicGroup>Bay_Chat_English</publicGroup>
         </publicGroups>
+        <users>
+            <user>michelle.esposito@hbc.com</user>
+        </users>
     </queueMembers>
     <queueRoutingConfig>Chat_English</queueRoutingConfig>
     <queueSobject>

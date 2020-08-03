@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- inContactStatus --></label>
+        <name>icAgentConsole__inContactStatus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agent Settings --></label>
+        <name>icAgentConsole__incAgentSettings__c</name>
+        <relationshipLabel><!-- OmniChannel Presence Mappings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- salesforceStatus --></label>
+        <name>icAgentConsole__salesforceStatus__c</name>
+    </fields>
+</CustomObjectTranslation>

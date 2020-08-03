@@ -8,6 +8,7 @@ private class trac_WS_GetEmailBodyTest {
 
     @IsTest static void test_getEmailBody() {
         trac_WS_GetEmailBody webServiceClass = new trac_WS_GetEmailBody();
+        webServiceClass.id = '106714';
         Test.startTest();
         StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
         mock.setStaticResource(EMAIL_GET_BODY_RESOURCE);

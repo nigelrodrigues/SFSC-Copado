@@ -564,10 +564,6 @@
             <translation><!-- Promo Questions/Problem --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Return Not Received</masterLabel>
-            <translation><!-- Return Not Received --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Return Problem</masterLabel>
             <translation><!-- Return Problem --></translation>
         </picklistValues>

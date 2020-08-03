@@ -181,10 +181,9 @@ public without sharing class trac_CaseTriggerHelper {
         for (Case cs : newList) {
             if (cs.Status == 'Closed' && (oldMap == null || oldMap.get(cs.Id).Status != cs.Status)) {
                 if (String.valueOf(cs.OwnerId).startsWithIgnoreCase('00G')) {
-                    System.debug('CaseTriggerHelper::updateCaseOwner: updating from ' + cs.OwnerId + ' to ' + userId);
                     cs.OwnerId = userId;
+
                 } else if (cs.Owner_When_First_Closed__c == null) {
-                    System.debug('CaseTriggerHelper::updateCaseOwner: updating owner when first closed from ' + cs.Owner_When_First_Closed__c + ' to ' + cs.OwnerId);
                     cs.Owner_When_First_Closed__c = cs.OwnerId;
                 }
                 if (cs.Date_Time_First_Closed__c == null) {
@@ -192,7 +191,6 @@ public without sharing class trac_CaseTriggerHelper {
                 }
             }
         }
-        System.debug('updateCaseOwner complete');
     }
 
     /**
@@ -420,9 +418,7 @@ public without sharing class trac_CaseTriggerHelper {
     public static void transferStewardship(List<Case> newList) {
         for (Case aCase : newList) {
             if (aCase.Transfer_Stewardship__c && aCase.Case_Steward__c != aCase.OwnerId && !String.valueOf(aCase.OwnerId).startsWithIgnoreCase('00G')) {
-                System.debug('Transfer stewardship from ' + aCase.Case_Steward__c + ' to ' + aCase.OwnerId);
                 aCase.Case_Steward__c = aCase.OwnerId;
-                System.debug('Steward is now ' + aCase.OwnerId);
             }
         }
     }
@@ -804,7 +800,7 @@ public without sharing class trac_CaseTriggerHelper {
     }
 
     public static void setTranscriptContact(List<Case> newCases, Map<Id, Case> oldCasesById) {
-        System.debug('begin setTranscriptContact');
+
         List<LiveChatTranscript> liveChatTranscriptsToUpdate = new List<LiveChatTranscript>();
 
         Map<Id, Case> casesByIds = new Map<Id, Case>();
@@ -836,7 +832,6 @@ public without sharing class trac_CaseTriggerHelper {
         if (!liveChatTranscriptsToUpdate.isEmpty()) {
             update liveChatTranscriptsToUpdate;
         }
-        System.debug('end setTranscriptContact');
     }
 
     /**
@@ -855,8 +850,8 @@ public without sharing class trac_CaseTriggerHelper {
         }
         try {
             if (System.isFuture() || System.isBatch()) {
-//                trac_UpdateLoyaltyInfoOnContact loyaltyInfo = new trac_UpdateLoyaltyInfoOnContact();
-//                loyaltyInfo.updateContacts(contactsToBeUpdated);
+                trac_UpdateLoyaltyInfoOnContact loyaltyInfo = new trac_UpdateLoyaltyInfoOnContact();
+                loyaltyInfo.updateContacts(contactsToBeUpdated);
             } else {
                 ID queueableJobID = System.enqueueJob(new trac_UpdateContactQueueable(contactsToBeUpdated));
             }
@@ -950,7 +945,7 @@ public without sharing class trac_CaseTriggerHelper {
 
     @future(callout=true)
     public static void searchAndAssociateContactFromOrder(String caseList) {
-        System.debug('Entering searchAndAssociateContactFromOrder');
+
         Map<String, String> caseMap = new Map <String, String>();
         List<Contact> webServiceContacts = new List<Contact>();
         Map<String, Contact> fetchedContacts = new Map<String, Contact>();
@@ -983,7 +978,7 @@ public without sharing class trac_CaseTriggerHelper {
 
         fetchedContacts = searchContactByBUAndEmail(businessUnitList,emailList);
 
-        if (webServiceContacts!=null && !webServiceContacts.isEmpty()) {
+        if(webServiceContacts!=null && !webServiceContacts.isEmpty()){
             for (Contact con : webServiceContacts) {
                 if (fetchedContacts!=null && fetchedContacts.containsKey(con.Business_Unit__c + con.Email)) {
                     mapToUpdate.put(caseMap.get(con.Business_Unit__c + con.Email), fetchedContacts.get(con.Business_Unit__c + con.Email));
@@ -993,17 +988,16 @@ public without sharing class trac_CaseTriggerHelper {
             }
         }
 
+
         if (mapToUpdate!=null && !mapToUpdate.isEmpty()) {
             upsert mapToUpdate.values();
-            List<Case> updateCases = new List<Case>();
             for (Case aCase : cases) {
-                // update a fresh instance of Case with limited properties, because the one from the JSON is stale
-                //   (i.e. OwnerId has changed due to case assignment rules)
-                updateCases.add(new Case(Id=aCase.Id, ContactId=mapToUpdate.get(aCase.Id).Id));
+                aCase.ContactId = mapToUpdate.get(aCase.Id).Id;
             }
-            update updateCases;
+            update cases;
         }
-        System.debug('Exiting searchAndAssociateContactFromOrder');
+
+
     }
 
     public static Map<String, Contact> searchContactByBUAndEmail(List<String> businessUnitList, List<String> emailList){
@@ -1014,9 +1008,9 @@ public without sharing class trac_CaseTriggerHelper {
             }
         }
 
-        if (fetchedContacts!=null && !fetchedContacts.isEmpty()) {
+        if(fetchedContacts!=null && !fetchedContacts.isEmpty()){
             return fetchedContacts;
-        } else {
+        }else{
             return null;
         }
     }

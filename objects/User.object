@@ -217,17 +217,6 @@
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>Agent_ID__c</fullName>
-        <businessStatus>Active</businessStatus>
-        <externalId>false</externalId>
-        <formula>EmployeeNumber</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Agent ID</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Agent_Location__c</fullName>
         <description>The location where the agent works.</description>
         <externalId>false</externalId>
@@ -516,6 +505,30 @@
             <value>1</value>
         </filters>
         <label>Active Users</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>ActiveUsersProfile</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>EMPLOYEE_NUMBER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>equals</operation>
+            <value>HBC Support Agent</value>
+        </filters>
+        <label>Active Users - Profile</label>
         <language>en_US</language>
     </listViews>
     <listViews>

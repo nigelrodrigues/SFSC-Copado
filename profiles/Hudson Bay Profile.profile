@@ -71,11 +71,6 @@
         <visible>false</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>guar__GUAR_Admin</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
         <application>standard__AllTabSet</application>
         <default>false</default>
         <visible>false</visible>
@@ -97,11 +92,6 @@
     </applicationVisibilities>
     <applicationVisibilities>
         <application>standard__LightningBolt</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>standard__LightningInstrumentation</application>
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
@@ -433,6 +423,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>MockHttpResponseLoyalty</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>MockHttpResponseOrderDetails</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -450,6 +444,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>MockOrderResponsesError</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MockResponseLoyaltyEvent</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -726,10 +724,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TestIntegration</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UpdateOff5</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -2929,26 +2923,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>guar__GuestAccessReportController</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>guar__GuestAccessReportControllerTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>guar__GuestAccessReportHelperWS</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>guar__guarAdminController</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>guar__guarAdminControllerTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>icAgentConsole__AgentController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3213,6 +3187,22 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_CaseLoyaltyController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyEscalation</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyEscalationTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_CasePopController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3258,6 +3248,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_CaseTriggerHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CloseLoyaltyAccountController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CloseLoyaltyAccountControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3353,6 +3351,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_EventController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_EventControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_GetCustomerDetailsResource</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3381,6 +3387,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_IssueAppeasementController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_IssueAppeasementControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_LiveChatAuraCtlr</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3394,6 +3408,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_LiveChatTranscriptHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltyController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltyControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltySearchController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltySearchControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3502,6 +3532,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_QuickLinksControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_RecordTransactionController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_RecordTransactionControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3617,6 +3655,18 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_GetLoyalty</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_GetLoyaltyTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_GetLoyaltyUAD</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_GetOrderAdjustments</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3661,6 +3711,38 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_LoyaltyEvent</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyEventTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyPointValue</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyPointValueTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyUtils</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyUtilsTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LsUpdateProfile</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LsUpdateProfileTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_OrderLineHistory</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3689,11 +3771,27 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_PauseLoyalty</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_PauseLoyaltyTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_PurchaseOrder</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>trac_WS_PurchaseOrderTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_RecordLoyaltyEvent</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_RecordLoyaltyEventTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3729,6 +3827,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_UpdateLoyaltyEvent</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_UpdateLoyaltyEventTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_UpdateOrder</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3742,6 +3848,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_WS_WebServiceHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_getLoyaltyUADTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
@@ -8807,11 +8917,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>User.Agent_ID__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>User.Agent_Location__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -12570,6 +12675,71 @@
         <field>copado__User_Story__c.copado__userStory_reason__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfigField__c.icAgentConsole__FieldType__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__Agent_Sync_Available__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__Agent_Sync_Unavailable__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__Always_Create_New_Task__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__Configurable_Search__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__CreateTask_Refused__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__CreateTask__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__EntityMappingType__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__PopupTask__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__Presence_Master__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incAgentConfiguration__c.icAgentConsole__StoreScriptVariables__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incPresenceStatusMapping__c.icAgentConsole__inContactStatus__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>icAgentConsole__incPresenceStatusMapping__c.icAgentConsole__salesforceStatus__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>API_Business_Unit_Version_Setting__mdt-API Business Unit Version Setting Layout</layout>
     </layoutAssignments>
@@ -12590,6 +12760,12 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>AuthorizationForm-Authorization Form Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Bay_Loyalty_Profile_Appeasement_Cap__mdt-Bay Loyalty Profile Appeasement Cap Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Blue_Martini__mdt-Blue Martini Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Business_Unit_Business_Hours_Setting__mdt-Business Unit Business Hours Setting Layout</layout>
@@ -12757,9 +12933,6 @@
         <layout>Idea-Idea Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Image-Image Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Individual-Individual Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -12818,6 +12991,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>OrderItem-Order Product Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Order_Number_Range__mdt-Order Number Range Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Order_Refund_Credit_Case_Status_Setting__mdt-Order Refund Credit Case Status Setting Layout</layout>
@@ -13786,10 +13962,6 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>guar__GuestAccessReport</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
-    <pageAccesses>
         <apexPage>icAgentConsole__agent</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
@@ -14073,6 +14245,10 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>Test_Loyalty_App</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>Urgent_Message__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -14286,6 +14462,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>copado__Work_Manager</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>icAgentConsole__incAgentConfiguration__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>

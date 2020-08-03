@@ -1,5 +1,3 @@
-
-
 ({
     handleShowAppeasementModal: function(cmp, event, helper) {
         cmp.set('v.showAppeasementModal', true);

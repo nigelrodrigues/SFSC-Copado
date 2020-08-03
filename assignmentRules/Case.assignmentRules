@@ -38,7 +38,7 @@
             <criteriaItems>
                 <field>Case.RecordTypeId</field>
                 <operation>equals</operation>
-                <value>Bay/LT Support Case</value>
+                <value>Support Case</value>
             </criteriaItems>
             <criteriaItems>
                 <field>Case.Business_Unit__c</field>
@@ -92,28 +92,6 @@
                 <field>Case.RecordTypeId</field>
                 <operation>equals</operation>
                 <value>Off 5th Support Case</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>notEqual</operation>
-                <value>Phone</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <criteriaItems>
-                <field>Case.Business_Unit__c</field>
-                <operation>equals</operation>
-                <value>Off 5th</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Off 5th Support Case</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Case.Origin</field>
-                <operation>equals</operation>
-                <value>Phone</value>
             </criteriaItems>
         </ruleEntry>
     </assignmentRule>

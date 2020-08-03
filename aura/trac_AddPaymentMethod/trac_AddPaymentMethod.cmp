@@ -16,7 +16,7 @@
     <aura:attribute name="creditCardNumber" type="String"/>
     <aura:attribute name="maskedCCNumber" type="String"/>
     <aura:attribute name="paymentRemaining" type="Decimal" default="0.00"/>
-    <aura:attribute name="useExistingBillingAddress" type="Boolean" default="true"/>
+    <aura:attribute name="useExistingBillingAddress" type="Boolean" default="false"/>
     <aura:attribute name="giftCardBalance" type="String"/>
     <aura:attribute name="isEdit" type="Boolean" default="false"/>
     <aura:attribute name="displayWarning" type="Boolean" default="true"/>
@@ -26,17 +26,22 @@
     </aura:method>
 
     <aura:attribute name="paymentMethodOptions" type="List" default="[
-        {label: 'Credit Card',     value:'CREDIT_CARD'},
-        {label: 'Saks Store Card', value:'PVT_CREDIT_CARD'},
-        {label: 'Gift Card',       value:'GIFT_CARD'}
+        {'label':'CREDIT_CARD', 'value':'CREDIT_CARD'},
+        {'label':'CREDIT_CARD_HBC', 'value':'CREDIT_CARD_HBC'},
+        {'label':'CREDIT_CARD_PVT_HBC', 'value':'CREDIT_CARD_PVT_HBC'},
+        {'label':'GIFT_CARD', 'value':'GIFT_CARD'},
+        {'label':'HBGC', 'value':'HBGC'},
+        {'label':'HBRGC', 'value':'HBRGC'},
+        {'label':'PVT_CREDIT_CARD', 'value':'PVT_CREDIT_CARD'}
     ]"/>
 
     <aura:attribute name="creditOptions" type="List" default="[
-        {label: 'AMEX',       value: 'AMEX'},
-        {label: 'Discover',   value: 'DISC'},
-        {label: 'JCB',        value: 'JCB'},
-        {label: 'MasterCard', value: 'MAST'},
-        {label: 'Visa',       value: 'VISA'}
+        {'label':'AMEX', 'value':'AMEX'},
+        {'label':'DISC', 'value':'DISC'},
+        {'label':'HBC', 'value':'HBC'},
+        {'label':'JCB', 'value':'JCB'},
+        {'label':'MAST', 'value':'MAST'},
+        {'label':'VISA', 'value':'VISA'}
     ]"/>
 
     <aura:registerEvent name="paymentMethodAdded" type="c:trac_PaymentMethodAddedEvent"/>
@@ -77,7 +82,7 @@
                             <div class="slds-col slds-size_1-of-2 slds-p-right_xx-small">
                                 <lightning:input type="number" aura:id="reqAmt" onchange="{!c.handleAmount}" name="input7"
                                                  label="Amount" value="{!v.paymentMethod.RequestAmount}"
-                                                 formatter="decimal" step="0.01" required="true"/>
+                                                 formatter="currency" step="0.01" required="true"/>
                             </div>
 
                             <div class="slds-col slds-size_1-of-2 slds-p-left_xx-small">
@@ -87,7 +92,8 @@
                                                     onchange="{! c.handlePaymentChange }" required="true"/>
                             </div>
 
-                            <aura:if isTrue="{!v.paymentMethod.PaymentType == 'GIFT_CARD' || v.paymentMethod.PaymentType == 'HBGC' || v.paymentMethod.PaymentType == 'HBRGC'}">
+                            <aura:if
+                                    isTrue="{!v.paymentMethod.PaymentType == 'GIFT_CARD' || v.paymentMethod.PaymentType == 'HBGC' || v.paymentMethod.PaymentType == 'HBRGC'}">
 
                                 <div class="slds-col slds-size_1-of-1">
                                     <lightning:input type="text" name="giftCardNumber" label="Gift Card Number" aura:id="giftCardNumber" 
@@ -108,17 +114,15 @@
                                 </div>
 
                                 <aura:set attribute="else">
-                                    <aura:if isTrue="{!v.paymentMethod.PaymentType != 'PVT_CREDIT_CARD'}">
-                                        <div class="slds-col slds-size_1-of-1">
-                                            <lightning:combobox label="Credit Card Brand"
-                                                                value="{!v.paymentMethod.CreditCardType}"
-                                                                placeholder="Select Credit Card"
-                                                                options="{! v.creditOptions }"
-                                                                onchange="{! c.handleCreditChange }"/>
-                                        </div>
-                                    </aura:if>
                                     <div class="slds-col slds-size_1-of-1">
-                                        <lightning:input type="text" name="input1" label="Credit Card Name"
+                                        <lightning:combobox label="Credit Card Type"
+                                                            value="{!v.paymentMethod.CreditCardType}"
+                                                            placeholder="Select Credit Card"
+                                                            options="{! v.creditOptions }"
+                                                            onchange="{! c.handleCreditChange }"/>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning:input type="text" name="input1" label="Name As Printed On Card"
                                                          value="{!v.paymentMethod.CreditCardName}" required="true"/>
                                     </div>
                                     <div class="slds-col slds-size_1-of-1">
@@ -127,7 +131,9 @@
                                                          label="Credit Card Number"
                                                          onkeypress="{!c.onChangeCCHandler}"
                                                          onblur="{! c.creditCardFormat }" value="{!v.creditCardNumber}"
-                                                         required="true" />
+                                                         required="true"
+                                                         pattern="^([X 0-9]{4}[- ]){3}\d{4}|\d{16}$"
+                                                         messageWhenPatternMismatch="Not a validate credit card number"/>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2 slds-p-right_xx-small">
                                         <lightning:input type="text" name="input1" aura:id="expiryDate"
@@ -146,24 +152,24 @@
 
                             </aura:if>
 
-                            <div class="slds-col slds-p-around_x-small slds-size_1-of-1">
-                                <lightning:input type="toggle" name="input1" label="Use Existing Billing Address"
-                                                 checked="{!v.useExistingBillingAddress}"
-                                                 onchange="{!c.useExistingAddressChange}"
-                                                 messageToggleActive="" messageToggleInactive=""/>
+                            <div class="slds-col slds-size_1-of-1">
+                                <lightning:input type="checkbox" name="input1" label="Use Existing Billing Address"
+                                                 value="{!v.useExistingBillingAddress}"
+                                                 onchange="{! c.useExistingAddressChange }"/>
                             </div>
 
                             <aura:if isTrue="{!not(v.useExistingBillingAddress)}">
-                                <div class="slds-col slds-size_1-of-4">
+
+                                <div class="slds-col slds-size_1-of-2">
                                     <lightning:inputField aura:id="paymentFieldFirstName" fieldName="FirstName" required="{!not(v.useExistingBillingAddress)}" />
                                 </div>
-                                <div class="slds-col slds-size_1-of-4">
+                                <div class="slds-col slds-size_1-of-2">
                                     <lightning:inputField aura:id="paymentFieldLastName" fieldName="LastName" required="{!not(v.useExistingBillingAddress)}" />
                                 </div>
-                                <div class="slds-col slds-size_1-of-4">
+                                <div class="slds-col slds-size_1-of-2">
                                     <lightning:inputField aura:id="paymentFieldEmail" fieldName="Email" required="{!not(v.useExistingBillingAddress)}" />
                                 </div>
-                                <div class="slds-col slds-size_1-of-4">
+                                <div class="slds-col slds-size_1-of-2">
                                     <lightning:inputField aura:id="paymentFieldDayPhone" fieldName="Phone" required="{!not(v.useExistingBillingAddress)}" />
                                 </div>
                                 <div class="slds-col slds-size_1-of-1">
@@ -193,5 +199,6 @@
                 </lightning:recordEditForm>
             </div>
         </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
     </aura:if>
 </aura:component>

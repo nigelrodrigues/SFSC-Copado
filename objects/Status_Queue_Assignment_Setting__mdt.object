@@ -395,6 +395,11 @@
                     <default>false</default>
                     <label>Call Tag</label>
                 </value>
+                <value>
+                    <fullName>Rewards Escalation</fullName>
+                    <default>false</default>
+                    <label>Rewards Escalation</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1340,19 +1345,9 @@
                     <label>Tier Change</label>
                 </value>
                 <value>
-                    <fullName>Appeasement Amount Requires Approval</fullName>
+                    <fullName>Goodwill Points</fullName>
                     <default>false</default>
-                    <label>Appeasement Amount Requires Approval</label>
-                </value>
-                <value>
-                    <fullName>High-Value Transaction</fullName>
-                    <default>false</default>
-                    <label>High-Value Transaction</label>
-                </value>
-                <value>
-                    <fullName>Suspected Fraudulent Activity</fullName>
-                    <default>false</default>
-                    <label>Suspected Fraudulent Activity</label>
+                    <label>Goodwill Points</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

@@ -45,10 +45,10 @@
                     <div aura:id="footId" class="slds-col slds-size_1-of-2 slds-p-left_xx-large">
                         <hr/>
                         <aura:if isTrue="{!v.showInFrench}">
-                            <p class="slds-text-heading_small"><a href="https://www.saksoff5th.com"><b>MAGASINEZ À
-                                        saksoff5th.com</b></a></p>
+                            <p class="slds-text-heading_small"><a href="{!v.homeURL}"><b>ACCUEIL DU CENTRE
+                                        D'AIDE</b></a></p>
                             <aura:set attribute="else">
-                                <p class="slds-text-heading_small"><a href="https://www.saksoff5th.com"><b>SHOP saksoff5th.com</b></a>
+                                <p class="slds-text-heading_small"><a href="{!v.homeURL}"><b>HELP CENTER HOME</b></a>
                                 </p>
                             </aura:set>
                         </aura:if>

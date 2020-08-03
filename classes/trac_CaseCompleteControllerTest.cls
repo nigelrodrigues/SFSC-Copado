@@ -10,7 +10,7 @@ public with sharing class trac_CaseCompleteControllerTest {
 
     @isTest
     static void getCaseRecordTypeTest() {
-        Case bayCase = (Case) factory.createSObject(
+        Case  bayCase = (Case) factory.createSObject(
                 new Case(
                         RecordTypeId = TLSObj.getRecordTypeIdForName(Case.SObjectType, trac_CaseConstants.RECORD_TYPE_DEVNAME_SUPPORT_CASE),
                         Status = trac_CaseConstants.STATUS_NEW),
@@ -22,26 +22,11 @@ public with sharing class trac_CaseCompleteControllerTest {
                 true);
 
         Test.startTest();
-        String saksCaseRecType = trac_CaseCompleteController.getCaseRecordType(saksCase.RecordTypeId);
-        String bayCaseRecType = trac_CaseCompleteController.getCaseRecordType(bayCase.RecordTypeId);
+        String saksCaseRecType= trac_CaseCompleteController.getCaseRecordType(saksCase.RecordTypeId);
+        String bayCaseRecType= trac_CaseCompleteController.getCaseRecordType(bayCase.RecordTypeId);
         Test.stopTest();
 
-        System.assertEquals('saksoff5th', saksCaseRecType);
-        System.assertEquals('bay', bayCaseRecType);
-    }
-
-    @IsTest
-    static void testGetCaseDetails()
-    {
-        Case off5thCase = (Case) factory.createSObject(
-                new Case(
-                        RecordTypeId = TLSObj.getRecordTypeIdForName(Case.SObjectType, trac_CaseConstants.RECORD_TYPE_DEVNAME_OFF_5TH),
-                        Status = trac_CaseConstants.STATUS_NEW),
-                true);
-
-        Test.startTest();
-        Case aCase = trac_CaseCompleteController.getCaseDetails(off5thCase.Id);
-        System.assertEquals(false, aCase == null);
-        Test.stopTest();
+        System.assertEquals('saksoff5th',saksCaseRecType);
+        System.assertEquals('bay',bayCaseRecType);
     }
 }

@@ -41,6 +41,8 @@ trigger trac_CaseTrigger on Case (after insert, after update, before update, bef
                 trac_CaseTriggerHelper.setOrderRefundCreditApproval(Trigger.new, new Map<Id, Case>());
                 trac_CaseTriggerHelper.setOrderInformation(Trigger.new, new Map<Id, Case>());
                 trac_CaseTriggerHelper.setTranscriptContact(Trigger.new, new Map<Id, Case>());
+                trac_CaseTriggerHelper.updateLoyaltyInfoOnRelatedContact(Trigger.new);
+
             } else if (Trigger.isUpdate) {
                 trac_CaseTriggerHelper.searchAndAssociateContact(Trigger.new,Trigger.oldMap);
                 trac_CaseTriggerHelper.updateLastCaseOnContact(Trigger.new, Trigger.oldMap);
@@ -49,6 +51,7 @@ trigger trac_CaseTrigger on Case (after insert, after update, before update, bef
                 trac_CaseTriggerHelper.setOrderRefundCreditApproval(Trigger.new, Trigger.oldMap);
                 trac_CaseTriggerHelper.setOrderInformation(Trigger.new, Trigger.oldMap);
                 trac_CaseTriggerHelper.setTranscriptContact(Trigger.new, Trigger.oldMap);
+                trac_CaseTriggerHelper.updateLoyaltyInfoOnRelatedContact(Trigger.new);
             }
         }
 

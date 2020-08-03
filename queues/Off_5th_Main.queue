@@ -9,6 +9,9 @@
         <roles>
             <role>Off_5th_Digital_Cebu</role>
         </roles>
+        <users>
+            <user>michelle.esposito@hbc.com</user>
+        </users>
     </queueMembers>
     <queueRoutingConfig>All_Queues</queueRoutingConfig>
     <queueSobject>
