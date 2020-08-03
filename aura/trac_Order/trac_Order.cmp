@@ -14,9 +14,9 @@
     <aura:attribute name="validSpaBusinessUnit" type="Boolean" default="false"/>
     <aura:attribute name="disableCancelBtn"        type="Boolean" />
 
+
     <aura:attribute name="channel"                 type="String" />
     <c:trac_OrderRefundCredit aura:id="componentORC" />
-
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <div>
         <div class="slds-media slds-p-around_small slds-p-top_small slds-p-right_small slds-p-bottom_small slds-p-left_small slds-border_bottom">
@@ -76,14 +76,14 @@
                         <p class="slds-text-title_caps">{!v.order.OrderNo}</p>
                 </div>
             </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Channel</p>
+
                         <p class="slds-text-title_caps">{!v.channel}</p>
+
                 </div>
             </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Date</p>
@@ -93,11 +93,11 @@
                     </p>
                 </div>
             </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Status</p>
                         <p class="slds-text-title_caps">{!v.order.Status}</p>
+
                 </div>
             </lightning:layoutItem>
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
@@ -107,8 +107,20 @@
                             <lightning:formattedNumber value="{!v.order.OverallTotals.GrandTotal}" style="currency"
                                                        currencyCode="USD" currencyDisplayAs="symbol"/>
                         </p>
-                </div>
-            </lightning:layoutItem>
+                    </div>
+                </lightning:layoutItem>
+               <!-- BU codition for SAKS -->
+               <aura:if isTrue="{!not(empty(v.order.COMXdata))}">
+                    <lightning:layoutItem padding="around-small" class="slds-size_2-of-8">
+                        <div class="header-column">
+                            <p class="field-title slds-form-element__label slds-no-flex">Placed By</p>
+                            <p class="field-title slds-form-element__label slds-no-flex">Associate#  (from Store#)</p>
+                            <aura:iteration var="{!v.order.COMXdata}" items="comXData" >
+                                <p> {!comXdata.associateNo} (from {!comxData.storeNo})</p>
+                            </aura:iteration>
+                        </div>
+                    </lightning:layoutItem>
+                    <aura:set attribute="else">
 
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
@@ -117,12 +129,14 @@
                             <p class="slds-text-title_caps">{!v.order.Extn.ExtnAssociateName}</p>
                         <aura:set attribute="else">
                                 <p class="slds-text-title_caps">Customer</p>
+
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </lightning:layoutItem>
+
                         </aura:set>
                     </aura:if>
-
-                    </div>
-                </lightning:layoutItem>
-
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8 slds-p-top--xx-large">
                     <div class="slds-p-top--medium">
                         <lightning:buttonMenu label="ACTIONS" title="Actions" variant="border-filled"
@@ -130,7 +144,6 @@
                                               iconSize="medium" class="slds-text-title_caps"
                                               onselect="{!c.handleActions}"
                         >
-
                             <lightning:menuItem label="Cancel Order" value="cancelOrder"  disabled="{!v.disableCancelBtn}"/>
                             <lightning:menuItem label="Add Note"     value="addNote"     />
                             <aura:if isTrue="{!v.validSpaBusinessUnit}">
@@ -141,14 +154,13 @@
                                 <lightning:menuItem label="Payment Capture" value="paymentCapture" />
                             </aura:if>
                             <lightning:menuItem label="Refund Options" value="orderReturnFee" />
-
                             <lightning:menuItem label="Link To Case"   value="linkToCase" disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
                         </lightning:buttonMenu>
-                </div>
+                    </div>
                     {!v.body}
-            </lightning:layoutItem>
+                </lightning:layoutItem>
 
-            <lightning:layoutItem padding="around-small">
+                <!--<lightning:layoutItem padding="around-small">
 
                 <c:trac_CancelOrder order="{!v.order}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
             </lightning:layoutItem>
@@ -175,38 +187,10 @@
                 <lightning:button label="Link to Case" variant="neutral" onclick="{!c.handleImport}"
                                   disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
 
-            </lightning:layoutItem>
-        </lightning:layout>
-            <!--<div>-->
-            <!--<lightning:layout multipleRows="true" class="slds-grid">-->
-            <!--<lightning:layoutItem padding="around-small" class="slds-size_1-of-8">-->
-            <!--<div class="header-column">-->
-            <!--<p class="field-title slds-form-element__label slds-no-flex">Is ShopRunner Order</p>-->
-            <!--<p class="slds-text-title_caps">{! empty(v.order.Extn.ExtnShopRnrAuthTok) ? 'N' : 'Y'}</p>-->
-            <!--</div>-->
-            <!--</lightning:layoutItem>-->
-            <!--<lightning:layoutItem padding="around-small" class="slds-size_1-of-8">-->
-            <!--<div class="header-column">-->
-            <!--<p class="field-title slds-form-element__label slds-no-flex">Is BorderFree Order</p>-->
-            <!--<p class="slds-text-title_caps">{!v.order.Extn.ExtnIsFiftyOne}</p>-->
-            <!--</div>-->
-            <!--</lightning:layoutItem>-->
-            <!--<lightning:layoutItem padding="around-small" class="slds-size_1-of-8">-->
-            <!--<div class="header-column">-->
-            <!--<p class="field-title slds-form-element__label slds-no-flex">BorderFree Order No</p>-->
-            <!--<p>{!v.order.Extn.ExtnFiftyOneOrderNo}</p>-->
-            <!--</div>-->
-            <!--</lightning:layoutItem>-->
-            <!--<lightning:layoutItem padding="around-small" class="slds-size_1-of-8">-->
-            <!--<div class="header-column">-->
-            <!--<p class="field-title slds-form-element__label slds-no-flex">Is Draft Order</p>-->
-            <!--<p>{!v.order.DraftOrderFlag}</p>-->
-            <!--</div>-->
-            <!--</lightning:layoutItem>-->
-            <!--</lightning:layout>-->
-            <!--</div>-->
-                                </div>
+                </lightning:layoutItem>-->
+            </lightning:layout>
 
+                                </div>
         <lightning:tabset selectedTabId="order" variant="scoped">
             <lightning:tab label="Order Lines" id="order">
                 <aura:iteration items="{!v.order.OrderLines.OrderLine}" var="orderLine">
