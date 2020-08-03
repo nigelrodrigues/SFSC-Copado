@@ -12,6 +12,7 @@
     <aura:attribute name="newOrderRefundCreditError" type="String"/>
 
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="showButton" type="boolean" default="true"/>
 
     <force:recordData aura:id="orderRefundCreditCreator"
                       layoutType="FULL"
@@ -19,15 +20,16 @@
                       targetFields="{!v.simpleNewOrderRefundCredit}"
                       targetError="{!v.newOrderRefundCreditError}"/>
 
-    <lightning:layout>
-
-        <lightning:layoutItem>
-            <lightning:button onclick="{!c.createOrderRefundCredit}"
-                              variant="brand"
-                              label="Order Refund/Credit"
-                              iconName="utility:record_create"/>
-        </lightning:layoutItem>
-    </lightning:layout>
+    <aura:if isTrue="{!v.showButton}">
+        <lightning:layout>
+            <lightning:layoutItem>
+                <lightning:button onclick="{!c.createOrderRefundCredit}"
+                                  variant="brand"
+                                  label="Order Refund/Credit"
+                                  iconName="utility:record_create"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
 
 
     <aura:if isTrue="{!v.isModalOpen}">
@@ -35,18 +37,21 @@
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
                  aria-describedby="modal-content-id-1" class="slds-modal slds-modal_medium slds-fade-in-open">
             <div class="slds-modal__container">
-                <!-- Modal/Popup Box Header Starts here-->
-                <header class="slds-modal__header">
-                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Order Refund Credit</h2>
-                </header>
-                <!--Modal/Popup Box Body Starts here-->
-                <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
-                    <lightning:flow aura:id="flow" onstatuschange="{!c.handleStatusChange}"/>
+                <div class="slds-is-relative">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Order Refund Credit</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
+                        <lightning:flow aura:id="flow" onstatuschange="{!c.handleStatusChange}"/>
+                        <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide"/>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button label="Close" onclick="{! c.handleCloseModal }"/>
+                    </footer>
                 </div>
-                <!--Modal/Popup Box Footer Starts here-->
-                <footer class="slds-modal__footer">
-                    <lightning:button label="Close" onclick="{! c.handleCloseModal }"/>
-                </footer>
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
