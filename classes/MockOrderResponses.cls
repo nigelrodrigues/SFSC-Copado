@@ -65,67 +65,7 @@ global class MockOrderResponses implements HttpCalloutMock{
         }
         else if(this.callouttype.equalsIgnoreCase('/history'))
         {
-           body = '{' +
-                   '  "LineStatusHistoryList": {' +
-                   '    "LineStatusHistory": [' +
-                   '      {' +
-                   '        "OrderLineKey": "20200114133607502158840",' +
-                   '        "PrimeLineNo": "1",' +
-                   '        "ReasonCode": "HBC_SC_FR_001",' +
-                   '        "ReasonDescription": "Fraud Hold resolved on 01/14/2020 01:37:29",' +
-                   '        "Status": "1300",' +
-                   '        "StatusDescription": "FraudHoldResolved",' +
-                   '        "StatusQuantity": "1",' +
-                   '        "SubLineNo": "1"' +
-                   '      },' +
-                   '      {' +
-                   '        "NodeDescription": "8601 NEW YORK",' +
-                   '        "NodeType": "Store",' +
-                   '        "OrderLineKey": "20200114133607502158840",' +
-                   '        "PrimeLineNo": "1",' +
-                   '        "ReasonCode": "HBC_SB_SM_001",' +
-                   '        "ReasonDescription": "Backordering the order as no action taken by Store with in targetted duration",' +
-                   '        "ShipNode": "8601",' +
-                   '        "Status": "1300",' +
-                   '        "StatusDescription": "Backordered",' +
-                   '        "SubLineNo": "1"' +
-                   '      },' +
-                   '      {' +
-                   '        "NodeDescription": "8601 NEW YORK",' +
-                   '        "NodeType": "Store",' +
-                   '        "OrderLineKey": "20200114133607502158840",' +
-                   '        "PrimeLineNo": "1",' +
-                   '        "ShipNode": "8601",' +
-                   '        "Status": "3200",' +
-                   '        "StatusDescription": "Released",' +
-                   '        "StatusQuantity": "1",' +
-                   '        "SubLineNo": "1"' +
-                   '      },' +
-                   '      {' +
-                   '        "NodeDescription": "8601 NEW YORK",' +
-                   '        "NodeType": "Store",' +
-                   '        "OrderLineKey": "20200114133607502158840",' +
-                   '        "PrimeLineNo": "1",' +
-                   '        "ShipNode": "8601",' +
-                   '        "Status": "3200",' +
-                   '        "StatusDescription": "Released",' +
-                   '        "StatusQuantity": "1",' +
-                   '        "SubLineNo": "1"' +
-                   '      },' +
-                   '      {' +
-                   '        "NodeDescription": "8601 NEW YORK",' +
-                   '        "NodeType": "Store",' +
-                   '        "OrderLineKey": "20200114133607502158840",' +
-                   '        "PrimeLineNo": "1",' +
-                   '        "ShipNode": "8601",' +
-                   '        "Status": "3700",' +
-                   '        "StatusDescription": "Shipped",' +
-                   '        "StatusQuantity": "1",' +
-                   '        "SubLineNo": "1"' +
-                   '      }' +
-                   '    ]' +
-                   '  }' +
-                   '}';
+           body = '{"LineStatusHistory":[{"Status":"3700","PrimeLineNo":"1","StatusDescription":"Shipped","NodeType":"Store","StatusQuantity":"1","OrderLineKey":"202007131022098579305124","NodeDescription":"NEW YORK","SubLineNo":"1","Createts":"2020-07-13T11:45:42-04:00","ShipNode":"8601"},{"Status":"3200","PrimeLineNo":"1","StatusDescription":"Released","NodeType":"Store","StatusQuantity":"1","OrderLineKey":"202007131022098579305124","NodeDescription":"NEW YORK","SubLineNo":"1","Createts":"2020-07-13T10:50:31-04:00","ShipNode":"8601"},{"Status":"1100","PrimeLineNo":"1","StatusDescription":"Created","ReasonDescription":"Fraud  Review Hold resolved on 07\\/13\\/2020 10:35:39","StatusQuantity":"1","ReasonCode":"HBC_SC_FR_002","OrderLineKey":"202007131022098579305124","SubLineNo":"1","Createts":"2020-07-13T10:35:40-04:00"}],"ResponseCode":"0","ResposneMessage":"Sucess"}';
         }
         else if(this.callouttype.equalsIgnoreCase('/update'))
         {
