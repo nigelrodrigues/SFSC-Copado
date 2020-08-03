@@ -9,15 +9,15 @@
         <value>Order Hold - Badge Mappings</value>
     </caseValues>
     <fields>
-        <label><!-- Badge --></label>
+        <label></label>
         <name>Badge__c</name>
     </fields>
     <fields>
-        <label><!-- Hold Type --></label>
+        <label></label>
         <name>Hold_Type__c</name>
     </fields>
     <fields>
-        <label><!-- Status Description --></label>
+        <label></label>
         <name>Status_Description__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
