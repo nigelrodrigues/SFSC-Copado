@@ -115,6 +115,7 @@
                orderLineItem.Status === 'General Error' ||
                orderLineItem.Status === 'Created' ||
                orderLineItem.Status === 'Open' ||
+               orderLineItem.Status === 'Ready For Backroom Pick' ||
                orderLineItem.Status === 'Scheduled'
            )
        )
@@ -131,6 +132,7 @@
                 order.Status === 'General Error' ||
                 order.Status === 'Created' ||
                 order.Status === 'Open' ||
+                order.Status === 'Ready For Backroom Pick' ||
                 order.Status === 'Scheduled'
             )
         )
