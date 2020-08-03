@@ -43,5 +43,23 @@
         }
 
         component.set("v.validSpaBusinessUnit", validSpaBusinessUnit);
+    },
+
+    setBody : function (component, event, helper, newCmp, status, errorMessage)
+    {
+        if (status === "SUCCESS")
+        {
+            let body = component.get("v.body");
+            body.push(newCmp);
+            component.set("v.body", body);
+        }
+        else if (status === "INCOMPLETE")
+        {
+            console.log("No response from server or client is offline.")
+        }
+        else if (status === "ERROR")
+        {
+            console.log("Error: " + errorMessage);
+        }
     }
 })
