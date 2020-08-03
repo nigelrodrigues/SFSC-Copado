@@ -1783,6 +1783,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
                 <valueName>Rewards Escalation</valueName>
             </valueSettings>
             <valueSettings>
@@ -1878,6 +1879,11 @@
                     <fullName>Allowance Request</fullName>
                     <default>false</default>
                     <label>Allowance Request</label>
+                </value>
+                <value>
+                    <fullName>Appeasement Amount Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Appeasement Amount Requires Approval</label>
                 </value>
                 <value>
                     <fullName>Appliance Claim</fullName>
@@ -2145,14 +2151,14 @@
                     <label>Gift Card to Original Tender</label>
                 </value>
                 <value>
-                    <fullName>Goodwill Points</fullName>
-                    <default>false</default>
-                    <label>Goodwill Points</label>
-                </value>
-                <value>
                     <fullName>Have you received my return?</fullName>
                     <default>false</default>
                     <label>Have you received my return?</label>
+                </value>
+                <value>
+                    <fullName>High-Value Transaction</fullName>
+                    <default>false</default>
+                    <label>High-Value Transaction</label>
                 </value>
                 <value>
                     <fullName>Hold Batch</fullName>
@@ -2690,6 +2696,11 @@
                     <label>Store Locator</label>
                 </value>
                 <value>
+                    <fullName>Suspected Fraudulent Activity</fullName>
+                    <default>false</default>
+                    <label>Suspected Fraudulent Activity</label>
+                </value>
+                <value>
                     <fullName>Tax Exclusion</fullName>
                     <default>false</default>
                     <label>Tax Exclusion</label>
@@ -3009,6 +3020,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Tier Change</valueName>
             </valueSettings>
             <valueSettings>
@@ -3288,11 +3300,15 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Appeasement Amount Requires Approval</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Credit Points Dispute</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
-                <valueName>Goodwill Points</valueName>
+                <valueName>High-Value Transaction</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
@@ -3333,6 +3349,10 @@
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Rewards Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Suspected Fraudulent Activity</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>

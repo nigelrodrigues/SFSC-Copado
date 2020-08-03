@@ -7,27 +7,32 @@
 public with sharing class trac_CaseLoyaltyEscalation {
 
     @AuraEnabled
-
-    public static TLAuraResponse createCaseAndAttachFile(Case caseRecord, String fileName, String fileContentsToEncode, String contentType, Boolean cloneCase, String loyaltyIssue)
-
+    public static TLAuraResponse createCaseAndAttachFile(Case caseRecord, String fileName, String fileContentsToEncode, String contentType, Boolean cloneCase, String loyaltyIssue, String newCaseType, String newCaseCategory, String newCaseSubcategory)
     {
+        System.debug('akong: createCaseAndAttachFile: Id: ' + caseRecord.Id);
         TLAuraResponse response = new TLAuraResponse(true);
 
         try {
-           
 
             if( cloneCase )
             {
                 Case newCase = caseRecord.clone(false, true, false, false);
                 newCase.Status = 'Open';
-                newCase.Business_Unit__c = 'Hudson\'s Bay';
-                newCase.Case_Type__c = 'Rewards';
-                newCase.Category__c = 'Goodwill Points';
-                newCase.Subcategory__c = 'Requires Approval';
+
+                newCase.Business_Unit__c = caseRecord.Business_Unit__c;
+
+//                newCase.Case_Type__c = 'Rewards';
+//                newCase.Category__c = 'Goodwill Points';
+//                newCase.Subcategory__c = 'Requires Approval';
+                newCase.Case_Type__c = newCaseType;
+                newCase.Category__c = newCaseCategory;
+                newCase.Subcategory__c = String.isNotBlank(newCaseSubcategory) ? newCaseSubcategory : null;
                 newCase.ParentId = caseRecord.Id;
                 newCase.Subject = 'Escalation - ' + caseRecord.Subject;
 
+
                 newCase.Loyalty_Issue_Description__c = loyaltyIssue;
+
 
                 insert newCase;
 
@@ -40,6 +45,8 @@ public with sharing class trac_CaseLoyaltyEscalation {
             else
             {
                
+
+
                 response = attachToCase( caseRecord, fileName, fileContentsToEncode, contentType);
             }
 
@@ -55,10 +62,14 @@ public with sharing class trac_CaseLoyaltyEscalation {
     private static TLAuraResponse attachToCase(Case parentCase, String fileName, String fileContentsToEncode, String contentType) {
 
 
+
+
         TLAuraResponse response = new TLAuraResponse(true);
 
         try {
             
+
+
 
             fileContentsToEncode = EncodingUtil.urlDecode(fileContentsToEncode, 'UTF-8');
 
@@ -66,10 +77,14 @@ public with sharing class trac_CaseLoyaltyEscalation {
             newAttachment.ParentId = parentCase.Id;
 
 
+
+
             newAttachment.Name = fileName;
             newAttachment.ContentType = contentType;
             newAttachment.Body = EncodingUtil.base64Decode(fileContentsToEncode);
             insert newAttachment;
+
+
 
 
 

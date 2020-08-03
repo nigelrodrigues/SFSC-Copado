@@ -7,26 +7,35 @@
                 controller="trac_CaseLoyaltyEscalation"
                 extends="c:trac_BaseComponent"
                 implements="flexipage:availableForRecordHome">
-    <aura:attribute name="fileName"          type="String" default="Please select a file" />
-    <aura:attribute name="caseRecord"             type="Object" />
-    <aura:attribute name="openLightningForm"      type="Boolean" />
-    <aura:attribute name="customerLoyaltyId" type="String"  />
-    <aura:attribute name="showEscalationOptions"        type="Boolean" />
-    <aura:attribute name="enableCategory"        type="Boolean" default="false"/>
-    <aura:attribute name="options"                type="List" default="[
+    <aura:attribute name="fileName"                 type="String" default="Please select a file" />
+    <aura:attribute name="caseRecord"               type="Object" />
+    <aura:attribute name="openLightningForm"        type="Boolean" />
+    <aura:attribute name="customerLoyaltyId"        type="String"  />
+    <aura:attribute name="showEscalationOptions"    type="Boolean" />
+    <aura:attribute name="updateOriginalCase"       type="Boolean" default="false"/>
+    <aura:attribute name="options"                  type="List" default="[
                                                         {'label': 'Loyalty Escalation', 'value': 'escalation'},
                                                         {'label': 'Loyalty Operations', 'value': 'operations'}
                                                         ]"/>
-    <aura:attribute name="closeCaseOptions"       type="List" default="[
+    <aura:attribute name="closeCaseOptions"         type="List" default="[
                                                         {'label': ' Yes, keep current case open', 'value': 'yes'},
                                                         {'label': 'No, close current case', 'value': 'no'}
+                                                        ]"/>
+    <aura:attribute name="escalateCategoryOptions"  type="List" default="[
+                                                            {'value': 'Appeasement Amount Requires Approval'},
+                                                            {'value': 'High-Value Transaction'},
+                                                            {'value': 'Suspected Fraudulent Activity'},
+                                                            {'value': 'Tier Change'}
                                                         ]"/>
 
 
     <aura:attribute name="selectedTeam"           type="String" default="escalation"/>
     <aura:attribute name="selectedForCaseClose"   type="String" default="no"/>
-    <aura:attribute name="createNewCase"          type="Boolean" default="false"/>
+<!--    <aura:attribute name="createNewCase"          type="Boolean" default="false"/>-->
     <aura:attribute name="issue"                  type="String"  />
+    <aura:attribute name="newCaseType"            type="String"  />
+    <aura:attribute name="newCaseCategory"        type="String"  />
+    <aura:attribute name="newCaseSubcategory"     type="String"  />
 
     <lightning:workspaceAPI aura:id="workspace"/>
 
@@ -56,6 +65,7 @@
                             objectApiName="Case">
 
                         <lightning:messages/>
+
                         <div class="slds-grid slds-wrap">
                             <div class="slds-col slds-size_1-of-1">
 
@@ -71,21 +81,28 @@
 
                                     <lightning:inputField aura:id="caseBusinessUnit" fieldName="Business_Unit__c"  class="slds-hide"/>
                                     <lightning:inputField aura:id="caseType"         fieldName="Case_Type__c"      class="slds-hide"/>
+                                    <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="{!(v.selectedTeam=='operations')}" class="{!if(v.selectedTeam=='operations','slds-show','slds-hide')}" />
+                                    <lightning:inputField aura:id="caseSubCategory"  fieldName="Subcategory__c"   class="slds-hide"/>
 
-                                    <aura:if isTrue="{!v.enableCategory}" >
-                                        <lightning:inputField aura:id="caseCategory"     fieldName="Category__c"      required="true" />
-                                        <lightning:inputField aura:id="caseSubCategory"  fieldName="Subcategory__c"   required="true" class="slds-hide"/>
+                                    <aura:if isTrue="{! equals(v.selectedTeam, 'escalation')}">
+                                        <lightning:select name="escalateCategory" label="Category" aura:id="escalateCategory" required="true">
+                                            <aura:iteration items="{!v.escalateCategoryOptions}" var="option">
+                                                <option text="{!option.value}" value="{!option.value}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
                                     </aura:if>
+
+                                    <br/>
                                     <label for="caseIssueDescription">Issue Description</label>
                                     <lightning:inputField aura:id="caseIssueDescription"
                                                           fieldName="Loyalty_Issue_Description__c" variant="label-hidden"/>
+                                    <br/>
                                     <lightning:input aura:id="fileUpload" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload File" multiple="false" accept="image/png, .zip"/>
                                     <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>
-                                    <br/>
 
                                     <aura:if isTrue="{!v.showEscalationOptions}" >
 
-                                    <br/><br/>
+                                        <br/><br/>
                                         <lightning:radioGroup name="closeCaseRadioGroup"
                                                               label="Do you want to continue working on this case?"
                                                               aura:id="closeCaseRadioGrp"
@@ -93,6 +110,7 @@
                                                               value="{! v.selectedForCaseClose }"
                                                               onchange="{!c.handleRadioChange}"
                                                               type="radio"/>
+                                        <!-- onchange="{!c.handleRadioChange}" -->
                                         <br/>
                                     </aura:if>
 
