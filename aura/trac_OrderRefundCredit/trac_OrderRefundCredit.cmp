@@ -10,8 +10,10 @@
     <aura:attribute name="newOrderRefundCredit" type="Object"/>
     <aura:attribute name="simpleNewOrderRefundCredit" type="Object"/>
     <aura:attribute name="newOrderRefundCreditError" type="String"/>
-
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="showButton" type="Boolean" default="true" />
+
+    <aura:method name="createORC"  action="{!c.createOrderRefundCredit}" access="public"/>
 
     <force:recordData aura:id="orderRefundCreditCreator"
                       layoutType="FULL"
@@ -19,8 +21,8 @@
                       targetFields="{!v.simpleNewOrderRefundCredit}"
                       targetError="{!v.newOrderRefundCreditError}"/>
 
+    <aura:if isTrue="{!v.showButton}">
     <lightning:layout>
-
         <lightning:layoutItem>
             <lightning:button onclick="{!c.createOrderRefundCredit}"
                               variant="brand"
@@ -28,6 +30,7 @@
                               iconName="utility:record_create"/>
         </lightning:layoutItem>
     </lightning:layout>
+    </aura:if>
 
 
     <aura:if isTrue="{!v.isModalOpen}">
