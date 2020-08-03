@@ -96,6 +96,8 @@ public with sharing class trac_RecordTransactionController {
 
 
 
+
+
             } catch (Exception e) {
                 throw new AuraHandledException(e.getMessage());
             }
@@ -105,6 +107,8 @@ public with sharing class trac_RecordTransactionController {
 
         return response;
     }
+
+
 
 
 
@@ -160,11 +164,15 @@ public with sharing class trac_RecordTransactionController {
             trnDatetime = trac_WS_LoyaltyUtils.parseDateString(params.transactionDate);
 
 
+
+
             Date trnDate = trnDatetime == null ? null : Date.newinstance(trnDatetime.year(), trnDatetime.month(), trnDatetime.day());
             if (trnDatetime == null) {
                 // failed to parse transactionDate
                 response.isSuccess = false;
                 response.returnValuesMap.put('transactionDate', 'Invalid Transaction Date: ' + params.transactionDate);
+
+
 
 
             } else if (trnDate > dateToCompare) {
@@ -173,6 +181,8 @@ public with sharing class trac_RecordTransactionController {
             } else if(trnDate.daysBetween(dateToCompare) > 90) {
                 response.isSuccess = false;
                 response.returnValuesMap.put('transactionDate', 'Transaction Date cannot be more than 90 days old: ' + params.transactionDate);
+
+
 
 
             } else {
@@ -196,18 +206,21 @@ public with sharing class trac_RecordTransactionController {
 
 
 
+
         if(params.totalEarn < 0) {
             response.isSuccess = false;
-            response.returnValuesMap.put('total earn', 'Total Earn cannot be negative');
+            response.returnValuesMap.put('total earn', 'Transaction amount cannot be negative');
         }
-
 
         if(params.totalEarn > 10000) {
             response.isSuccess = false;
-            response.returnValuesMap.put('total earn', 'Total Earn cannot be greater than $10,000');
+            response.returnValuesMap.put('total earn', 'Transaction amount cannot be greater than $10,000.  If a transaction greater than $10,000 needs to be recorded, please escalate to loyalty escalations to finish the transaction.');
+
         }
 
         response.returnValuesMap.put('validForm', response.isSuccess);
+
+
 
 
         return response.isSuccess;
@@ -216,8 +229,10 @@ public with sharing class trac_RecordTransactionController {
     public class RecordTransactionParameters {
         @AuraEnabled
 
+
         public String caseRecordId {get; set;}
         @AuraEnabled
+
 
         public String loyaltyNumber {get; set;}
         @AuraEnabled
@@ -232,11 +247,15 @@ public with sharing class trac_RecordTransactionController {
         public String transactionDate {get; set;}
 
 
+
+
         public Datetime transactionDateObj;
         @AuraEnabled
         public Decimal transactionSubtotal {get; set;}
         @AuraEnabled
         public Decimal exclusionSubtotal {get; set;}
+
+
 
 
         @AuraEnabled
