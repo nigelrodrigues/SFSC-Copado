@@ -12,6 +12,8 @@ public with sharing class trac_WS_GetOrderDetails {
     public GetOrderDetailsRequest getOrderDetailsRequest;
     public GetOrderDetailsResponse getOrderDetailsResponse;
     public String jsonError;
+    Map<String, OrderHoldWrapper> orderHoldTypeMap = new Map<String, OrderHoldWrapper>();
+
 
     public Boolean send() {
         Boolean success = false;
@@ -20,6 +22,11 @@ public with sharing class trac_WS_GetOrderDetails {
 
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderDetailsResponse = parse(res.getBody());
+            for ( Order_Hold_Badge_Mapping__mdt orderHoldBadgeMapping : [ SELECT Id, Status_Description__c, Badge__c, Hold_Type__c FROM Order_Hold_Badge_Mapping__mdt])
+            {
+                orderHoldTypeMap.put( orderHoldBadgeMapping.Hold_Type__c,
+                        new OrderHoldWrapper(orderHoldBadgeMapping.Status_Description__c, orderHoldBadgeMapping.Badge__c));
+            }
             updateDataFormat();
             success = true;
         } else {
@@ -33,6 +40,8 @@ public with sharing class trac_WS_GetOrderDetails {
     public static GetOrderDetailsResponse parse(String json) {
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
+
+
 
     private String getEndpoint() {
         String dynamicEndpoint = ENDPOINT;
@@ -49,6 +58,8 @@ public with sharing class trac_WS_GetOrderDetails {
 
     private void updateDataFormat() {
         try {
+            setBadges();
+            setCOMXdata();
             linkItemsToContainers();
             linkItemsToShipmentLines();
             setPreOrderDateFields();
@@ -57,6 +68,84 @@ public with sharing class trac_WS_GetOrderDetails {
             sortItems();
             setShipmentLoyaltyFields();
         } catch (Exception e) {
+        }
+    }
+
+    private void setBadges()
+    {
+        if ( getOrderDetailsResponse != null)
+        {
+            if (getOrderDetailsResponse.OrderHoldTypes != null && getOrderDetailsResponse.OrderHoldTypes.OrderHoldType != null)
+            {
+                getOrderDetailsResponse.Badges = new List<String>();
+                // Check for badges at the order level
+                for ( res_OrderHoldTypeWrapper orderHoldType : getOrderDetailsResponse.OrderHoldTypes.OrderHoldType)
+                {
+                    if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(orderHoldType.HoldType) != null )
+                    {
+                        OrderHoldWrapper orderHold = orderHoldTypeMap.get(orderHoldType.HoldType);
+
+                        if ( orderHold.statusDesc.equals(orderHoldType.StatusDescription) )
+                        {
+                            System.debug('HERE1: ');
+                            getOrderDetailsResponse.Badges.add( orderHold.badge );
+                        }
+                    }
+                }
+            }
+
+            if ( getOrderDetailsResponse.OrderLines != null)
+            {
+                for ( res_OrderLineWrapper orderline :  getOrderDetailsResponse.OrderLines.OrderLine)
+                {
+                    for ( res_OrderLineHoldType_Wrapper holdType : orderline.OrderHoldTypes.OrderHoldType )
+                    {
+                        if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(holdType.HoldType) != null )
+                        {
+                            OrderHoldWrapper orderHold = orderHoldTypeMap.get(holdType.HoldType);
+
+                            if ( orderHold.statusDesc.equals(holdType.StatusDescription) )
+                            {
+                                getOrderDetailsResponse.Badges.add( orderHold.badge );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void setCOMXdata()
+    {
+        if (getOrderDetailsResponse != null &&
+                getOrderDetailsResponse.OrderLines != null &&
+                getOrderDetailsResponse.OrderLines.OrderLine != null)
+        {
+            res_OrderLineWrapper orderline =  getOrderDetailsResponse.OrderLines.OrderLine.get(0);
+            // Checks to find the COMX data
+            if ( orderline.Instructions != null && orderline.Instructions.Instruction.get(0) != null)
+            {
+                res_InstructionWrapper instruction = orderline.Instructions.Instruction.get(0);
+                if ( instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionType.equals('COMX') )
+                {
+                    // Get the store and associate IDs (Max 2)
+                    List<String> comxDataList = new List<String>();
+                    String[] comxData = orderline.Createuserid.split(',');
+                    for (String data : comxData)
+                    {
+                        comxDataList.add(data);
+                    }
+
+                    if( !comxDataList.isEmpty())
+                    {
+                        getOrderDetailsResponse.COMXdata = new List<COMXdataWrapper>();
+                        for (String comXValues : comxDataList)
+                        {
+                            getOrderDetailsResponse.COMXdata.add( new COMXdataWrapper(comXValues.substring(0,4), comXValues.substring(4, comXValues.length())));
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -366,6 +455,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String displayTotalPointsLabel;
         @AuraEnabled public String displayTotalPointsValue;
+        @AuraEnabled public List<String> Badges;
+        @AuraEnabled public List<COMXdataWrapper> COMXdata;
     }
 
     public class res_OrderLineWrapper implements Comparable {
@@ -397,11 +488,29 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customUPC;
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String customBlueMartiniCancelCode;
+        @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
+        @AuraEnabled public String Createuserid;
+        @AuraEnabled public String LineType;
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
             return (PrimeLineNo != null && compareToOrderLineWrapper != null && Integer.valueOf(PrimeLineNo) > Integer.valueOf(compareToOrderLineWrapper.PrimeLineNo)) ? 1 : -1;
         }
+    }
+
+
+
+    public class res_OrderLineHoldTypesWrapper
+    {
+        @AuraEnabled public List<res_OrderLineHoldType_Wrapper> OrderHoldType;
+    }
+    public class res_OrderLineHoldType_Wrapper
+    {
+        @AuraEnabled public String Status;
+        @AuraEnabled public String HoldType;
+        @AuraEnabled public String ReasonText;
+        @AuraEnabled public String StatusDescription;
+        @AuraEnabled public String LastHoldTypeDate;
     }
 
     public class res_OrderHoldTypesWrapper {
@@ -854,7 +963,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ShipmentContainerizedFlag;
         @AuraEnabled public String TotalWeightUOM;
         @AuraEnabled public res_AddressWrapper BillToAddress;
-        //@AuraEnabled public String Status;
+//@AuraEnabled public String Status;
         @AuraEnabled public res_ShipmentStatusWrapper Status;
         @AuraEnabled public String ShipmentNo;
         @AuraEnabled public String TotalWeight;
@@ -991,4 +1100,29 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String AddressLine2;
         @AuraEnabled public String AddressLine3;
     }
+
+    public class OrderHoldWrapper
+    {
+        public String statusDesc {get;set;}
+        public String badge {get;set;}
+
+        public OrderHoldWrapper ( String statusDescription, String badge)
+        {
+            this.statusDesc =statusDescription;
+            this.badge = badge;
+        }
+    }
+
+    public class COMXdataWrapper
+    {
+        @AuraEnabled public String storeNo{get;set;}
+        @AuraEnabled public String associateNo{get;set;}
+
+        public COMXdataWrapper( String storeNo, String associateNo)
+        {
+            this.storeNo= storeNo;
+            this.associateNo= associateNo;
+        }
+    }
+
 }
