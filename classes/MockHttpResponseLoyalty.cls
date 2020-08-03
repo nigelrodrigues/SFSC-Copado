@@ -1,6 +1,7 @@
 @IsTest
 global class MockHttpResponseLoyalty implements HttpCalloutMock {
 
+
     private String callouttype;
 
     public MockHttpResponseLoyalty(){
@@ -11,10 +12,12 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
         this.callouttype = reqType;
     }
 
+
     global HTTPResponse respond(HTTPRequest req) {
         // Create a fake response
         HttpResponse res = new HttpResponse();
         res.setHeader('Content-Type', 'application/json');
+
         res.setStatusCode(200);
 
         String body = null;
@@ -216,6 +219,7 @@ global class MockHttpResponseLoyalty implements HttpCalloutMock {
         }
 
         res.setBody(body);
+
         return res;
     }
 }
