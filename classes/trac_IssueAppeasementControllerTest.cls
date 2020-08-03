@@ -28,6 +28,7 @@ private class trac_IssueAppeasementControllerTest {
 
 
 
+
         Case aCase = (Case)factory.createSObject(
                 new Case(
                         Business_Unit__c = 'Hudson\'s Bay',
@@ -37,6 +38,7 @@ private class trac_IssueAppeasementControllerTest {
         );
 
 
+
     }
 
     @IsTest
@@ -44,11 +46,13 @@ private class trac_IssueAppeasementControllerTest {
         List<Contact> cnts = [SELECT Id, FirstName, LastName, Email, Loyalty_Number__c FROM Contact];
 
 
+
         List<Case> caseList = [SELECT Id, CaseNumber FROM Case WHERE Subject = 'Test Case'];
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock());
         Test.startTest();
         TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10, caseList.get(0));
+
 
 
         Test.stopTest();
@@ -61,11 +65,13 @@ private class trac_IssueAppeasementControllerTest {
         List<Contact> cnts = [SELECT Id, FirstName, LastName, Email, Loyalty_Number__c FROM Contact];
 
 
+
         List<Case> caseList = [SELECT Id, CaseNumber FROM Case WHERE Subject = 'Test Case'];
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock('fail'));
         Test.startTest();
         TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10, caseList.get(0));
+
 
 
         Test.stopTest();
@@ -78,11 +84,13 @@ private class trac_IssueAppeasementControllerTest {
         List<Contact> cnts = [SELECT Id, FirstName, LastName, Email, Loyalty_Number__c FROM Contact];
 
 
+
         List<Case> caseList = [SELECT Id, CaseNumber FROM Case WHERE Subject = 'Test Case'];
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock('error'));
         Test.startTest();
         TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 10, caseList.get(0));
+
 
 
         Test.stopTest();
@@ -98,7 +106,9 @@ private class trac_IssueAppeasementControllerTest {
 
 
 
+
         List<Case> caseList = [SELECT Id, CaseNumber FROM Case WHERE Subject = 'Test Case'];
+
 
 
 
@@ -106,6 +116,7 @@ private class trac_IssueAppeasementControllerTest {
         Test.startTest();
 
         // null loyaltyNumber
+
 
 
         TLAuraResponse resp = trac_IssueAppeasementController.submitAppeasement(null, null, 10, caseList.get(0));
@@ -119,12 +130,14 @@ private class trac_IssueAppeasementControllerTest {
         resp = trac_IssueAppeasementController.submitAppeasement(loyaltyNumber, email, 0, caseList.get(0));
 
 
+
         System.assertEquals(false, resp.isSuccess);
 
         Test.stopTest();
 
         System.assertEquals(false, resp.isSuccess);
     }
+
 
 
     @IsTest
@@ -154,5 +167,6 @@ private class trac_IssueAppeasementControllerTest {
 
 
     }
+
 
 }
