@@ -36,6 +36,11 @@ public with sharing class trac_OrderLineStatusHistoryCtlr {
 
             orderLineHistory.send();
 
+            if (   orderLineHistory.orderLineHistoryResponse.LineStatusHistory != null )
+            {
+                orderLineHistory.orderLineHistoryResponse.LineStatusHistory.sort();
+            }
+
             response.returnValuesMap.put('lineStatusHistory', orderLineHistory.orderLineHistoryResponse);
         }
         catch (Exception e) {
