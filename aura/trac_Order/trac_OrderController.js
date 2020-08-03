@@ -9,6 +9,8 @@
         let order = component.get("v.order");
         let businessUnit = component.get("v.businessUnit");
         //let orderlineItems = order.OrderLines.OrderLine;
+
+
         if( order.Status === 'Released' ||
             order.Status === 'Backordered' ||
             order.Status === 'Hold Credit' ||
@@ -27,12 +29,12 @@
             }
         }
 
+
         if(order.EntryType === 'POS') {
             component.set("v.channel", 'Saks CNCT');
         } else {
             helper.setChannel(component, event, helper, order)
         }
-
     },
     showOrderLineItems : function (component, event, helper) {
         if(component.get("v.showLineItem")){
@@ -70,12 +72,16 @@
             component.set("v.showAdditionalInfo", true);
         }
     },
+
     handleActions : function (component, event, helper) {
+
         let selectedAction = event.getParam("value");
         let order = component.get("v.order");
         let caseRecord = component.get("v.caseRecord");
         let businessUnit = component.get("v.businessUnit");
         let recordId = component.get("v.caseRecord.Id");
+
+
         switch(selectedAction)
         {
             case "cancelOrder":
@@ -94,6 +100,8 @@
                     }
                 );
                 break;
+
+
             case "addNote":
                 $A.createComponent(
                     "c:trac_AddNote",
@@ -110,6 +118,8 @@
                     }
                 );
                 break;
+
+
             case "salesPriceAdjustment":
                 $A.createComponent(
                     "c:trac_SalesPriceAdjustmentButton",
@@ -126,6 +136,8 @@
                     }
                 );
                 break;
+
+
             case "orderRefundCredit":
                 let action = component.find("componentORC");
                 component.find('componentORC').set('v.caseRecord', caseRecord);
@@ -133,6 +145,8 @@
                 component.find('componentORC'). set('v.showButton', false);
                 action.createORC();
                 break;
+
+
             case "paymentCapture":
                 $A.createComponent(
                     "c:trac_PaymentCapture",
@@ -149,6 +163,8 @@
                     }
                 );
                 break;
+
+
             case "orderReturnFee":
                 $A.createComponent(
                     "c:trac_OrderReturnFee",
@@ -164,6 +180,8 @@
                     }
                 );
                 break;
+
+
             case "linkToCase":
                 this.handleImport(component, event, helper);
                 break;
