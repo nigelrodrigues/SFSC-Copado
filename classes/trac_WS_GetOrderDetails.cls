@@ -263,6 +263,14 @@ public with sharing class trac_WS_GetOrderDetails {
             }
         }
 
+        // loop over payment method list
+        if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
+            for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
+                paymentMethod.DisplayPointsAuthorized = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalAuthorized) ? Decimal.valueOf(paymentMethod.TotalAuthorized) * 200 : 0.00));
+                paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
+            }
+        }
+
         // loop over shipments to fill out fields from primeLines
         if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
             for (res_ShipmentWrapper shipment : getOrderDetailsResponse.Shipments.Shipment) {
@@ -509,6 +517,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String CreditCardNo;
         @AuraEnabled public String DisplayCreditCardNo;
         @AuraEnabled public res_AddressWrapper PersonInfoBillTo;
+        @AuraEnabled public String DisplayPointsAuthorized;
+        @AuraEnabled public String DisplayPointsCharged;
     }
 
     public class res_HeaderTaxesWrapper {
