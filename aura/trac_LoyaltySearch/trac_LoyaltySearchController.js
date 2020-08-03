@@ -2,6 +2,7 @@
     init: function (component, event, helper) {
         component.set('v.options', [
                                  { id: 1, label: 'Email', selected: true },
+
                                  { id: 2, label: 'Loyalty Account Number' },
                                  { id: 3, label: 'Phone Number' }
                              ]);
@@ -43,7 +44,6 @@
         .then(loyalty => component.set('v.loyalty', loyalty))
         .catch(error => helper.handleError(component, helper, error))
     },
-
     handlePhoneChange: function(component, event, helper) {
         var phoneNumberInput = component.find('phoneNumberInput')
         var phone = helper.normalize(phoneNumberInput.get('v.value'))
@@ -51,11 +51,10 @@
                     phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
         phoneNumberInput.set('v.value', phone)
     },
-
     handleAccountNumberChange: function(component, event, helper) {
         var loyaltyNumberInput = component.find('loyaltyNumberInput')
         var accNum = helper.normalize(loyaltyNumberInput.get('v.value'))
         loyaltyNumberInput.set('v.value', accNum)
-    },
 
+    },
 });
