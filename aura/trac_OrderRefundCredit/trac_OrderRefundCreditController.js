@@ -4,8 +4,8 @@
 ({
 
     createOrderRefundCredit: function(component, event, helper) {
-
-        component.set('v.isLoading', true);
+        component.set("v.isModalOpen", true);
+        component.find("Id_spinner").set("v.class" , 'slds-show');
 
         var caseRecord = component.get("v.caseRecord");
         var order = component.get("v.order");
@@ -51,7 +51,7 @@
 
                 component.find("orderRefundCreditCreator").saveRecord(function(saveResult) {
                     if (saveResult.state === "SUCCESS" || saveResult.state === "DRAFT") {
-                        component.set("v.isModalOpen", true);
+
                         var flow = component.find("flow");
                         var inputVariables = [
                             {
@@ -61,6 +61,7 @@
                             }
                         ];
                         flow.startFlow("Order_Refund_Credit", inputVariables);
+                        component.find("Id_spinner").set("v.class" , 'slds-hide');
                     } else if (saveResult.state === "INCOMPLETE") {
                         // handle the incomplete state
                         console.log("User is offline, device doesn't support drafts.");
@@ -72,7 +73,6 @@
                     }
                 });
 
-                component.set('v.isLoading', false);
             })
         );
     },
