@@ -1,13 +1,43 @@
+<!--
+ - Created by jhoran on 3/2/2020.
+ -->
+
 <aura:component description="trac_SalesPriceAdjustmentButton" extends="c:trac_BaseComponent">
     <aura:attribute name="order" type="Object"/>
     <aura:attribute name="caseRecord" type="Case"/>
     <aura:attribute name="recordId" type="String"/>
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
     <aura:attribute name="disabled" type="boolean" default="false"/>
+    <aura:attribute name="showButton" type="Boolean" default="true" />
 
-    <lightning:button onclick="{! c.openOldSpa }"
+    <aura:if isTrue="{!v.showButton}">
+    <lightning:button onclick="{!c.handleOpenModal}"
                       variant="brand"
                       label="Sales Price Adjustment"
                       iconName="utility:close"
                       disabled="{!v.disabled}"/>
+    </aura:if>
+
+    <aura:if isTrue="{!v.isModalOpen}">
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                 aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Sales Price Adjustment</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
+                    <c:trac_SPA_Calculator orderNumber="{!v.order.OrderNo}"/>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close"
+                                      onclick="{! c.handleCloseModal }"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
 </aura:component>

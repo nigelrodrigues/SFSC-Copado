@@ -274,6 +274,18 @@ export default class trac_ContactSupportForm extends LightningElement {
             fields.Origin = this.defaultOrigin;
 
             console.log(JSON.stringify(fields));
+
+            /**
+             * UDB-2 workaround for https://trailblazer.salesforce.com/issues_view?id=a1p3A000001GN1gQAG
+             */
+            alert(labels.lblCreatedTitle + " " + labels.lblCreatedSubtitle);
+            let redirectUrl = './contactsupport';
+            console.log('Rediredcting to ' + redirectUrl);
+            window.open(redirectUrl,'_top');
+            /**
+             * END UDB-2 workaround
+             */
+
             this.template.querySelector('lightning-record-edit-form').submit(fields);
         }
         // this.busy = false;

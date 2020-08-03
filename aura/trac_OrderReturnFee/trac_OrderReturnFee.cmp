@@ -10,14 +10,17 @@
 
     <aura:attribute name="refundShippingCharge" type="boolean" default="false"/>
     <aura:attribute name="chargePrepaidShippingLabel" type="boolean" default="true"/>
+    <aura:attribute name="showButton" type="Boolean" default="true" />
 
     <aura:registerEvent name="refreshOrderEvent" type="c:trac_RefreshOrderEvent"/>
 
+    <aura:if isTrue="{!v.showButton}">
     <lightning:button onclick="{!c.handleOpenModal}"
                       variant="brand"
                       label="Refund Options"
                       iconName="utility:change_record_type"
                       disabled="{!v.disabled}"/>
+    </aura:if>
 
     <aura:if isTrue="{!v.isModalOpen}">
         <!-- Modal/Popup Box starts here-->
