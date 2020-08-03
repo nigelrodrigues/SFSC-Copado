@@ -1,6 +1,8 @@
 /**
  * Created by akong on 5/21/2020.
  */
+
+
 ({
     showToast: function(message, type, title) {
         var resultsToast = $A.get("e.force:showToast");
@@ -11,6 +13,7 @@
         });
         resultsToast.fire();
     },
+
     calculateAmounts: function(cmp) {
         var appeasePoints = cmp.get('v.appeasePoints');
         if (!$A.util.isEmpty(appeasePoints)) {
@@ -85,10 +88,8 @@
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
             points: cmp.get('v.appeasePoints'),
-
             pointsAvailable: cmp.get('v.pointsAvailable'),
             retrievedCase: cmp.get('v.caseRecord')
-
         };
         action.setParams(params);
         action.setCallback(this, function (response) {
@@ -131,10 +132,13 @@
             }
         });
         $A.enqueueAction(action);
+
     },
     fireCloseModalEvent: function() {
         var appEvent = $A.get("e.c:trac_CloseModalApplicationEvent");
         appEvent.setParams({"closeModal" : true});
         appEvent.fire();
+
+
     }
 });

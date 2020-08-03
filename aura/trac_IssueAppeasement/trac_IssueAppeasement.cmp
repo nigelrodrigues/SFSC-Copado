@@ -3,11 +3,14 @@
  - @author      Alex Kong, Traction on Demand
  - @date        2020-05-21
  -->
+
+
 <aura:component description="trac_IssueAppeasement"
                 extends="c:trac_BaseComponent"
                 implements="force:hasRecordId,flexipage:availableForAllPageTypes"
                 controller="trac_IssueAppeasementController"
                 access="global">
+
     <aura:attribute name="loyalty" type="Object" />
     <aura:attribute name="profileName" type="String" />
     <aura:attribute name="maxAppeasement" type="Integer" default="0" />
@@ -18,16 +21,12 @@
     <aura:attribute name="finalPointBalance" type="String" description="Final point balance after adding appeasePoints"/>
     <aura:attribute name="showSpinner" type="Boolean" default="false" />
     <aura:attribute name="disableButton" type="Boolean" default="true" />
-
     <aura:attribute name="conversionRate"     type="Integer" required="true"/>
     <aura:attribute name="caseRecord"         type="Object" />
-
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.appeasePoints}" action="{!c.changeAmount}"/>
-
     <aura:registerEvent name="closeModalEvent" type="c:trac_CloseModalApplicationEvent"/>
     <aura:registerEvent name="loyaltyRefreshEvent" type="c:trac_LoyaltyRefreshEvent"/>
-
     <div class="modal-glass slds-backdrop fadein slds-backdrop--open" data-aura-rendered-by="2677:0" style="opacity: 0.8; z-index: 8900 ! important;"></div>
     <div aria-hidden="false" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" role="alertdialog" class="slds-modal slds-modal--prompt slds-fade-in-open" style="z-index: 8901 ! important;">
         <div class="slds-modal__container slds-modal--prompt" role="document" id="prompt-message-wrapper">
@@ -72,4 +71,5 @@
             </div>
         </div>
     </div>
+
 </aura:component>

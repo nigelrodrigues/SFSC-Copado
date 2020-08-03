@@ -4,6 +4,7 @@
 
 public with sharing class trac_IssueAppeasementController {
 
+
     /**
     * @description Callout to Merkle API to record gift event
     * @param loyaltyNumber String, the customer's Loyalty Number
@@ -13,6 +14,7 @@ public with sharing class trac_IssueAppeasementController {
     */
     @AuraEnabled
     public static TLAuraResponse submitAppeasement(String loyaltyNumber, String email, Integer points, Case retrievedCase) {
+
 
         TLAuraResponse response = new TLAuraResponse(true);
 
@@ -27,7 +29,9 @@ public with sharing class trac_IssueAppeasementController {
             response.message = 'Points must be a positive integer';
         }
 
+
         response.returnValuesMap.put('validForm', response.isSuccess);
+
 
         // callout to Merkle API to award points
         try {
@@ -36,6 +40,7 @@ public with sharing class trac_IssueAppeasementController {
                 trac_WS_RecordLoyaltyEvent evt = new trac_WS_RecordLoyaltyEvent();
                 evt.loyaltyId = loyaltyNumber;
                 evt.email = email;
+
                 evt.eventType = 'hb_lp_cs_appeasement';
                 evt.value = points;
                 evt.detail = 'appeasement from CSR';
@@ -50,10 +55,13 @@ public with sharing class trac_IssueAppeasementController {
 
                     // TODO: send customer notification email
 
+
                 } else {
                     // unsuccessful callout
                     response.isSuccess = false;
+
                     response.returnValuesMap.put('body', evt.getBody());
+
                     if (evt.eventResponse != null) {
                         response.message  = evt.eventResponse.data.message;
                     } else {
@@ -61,7 +69,9 @@ public with sharing class trac_IssueAppeasementController {
                         System.debug('JSON error response: ' + evt.jsonError);
                     }
                 }
+
                 response.returnValuesMap.put('statusCode', evt.getStatusCode());
+
             }
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
@@ -69,6 +79,7 @@ public with sharing class trac_IssueAppeasementController {
 
         return response;
     }
+
 
     /**
     * @description Returns the maximum appeasement allowed for current profile
@@ -91,4 +102,5 @@ public with sharing class trac_IssueAppeasementController {
 
         return retMap;
     }
+
 }
