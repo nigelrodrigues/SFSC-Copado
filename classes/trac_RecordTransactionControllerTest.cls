@@ -29,6 +29,7 @@ private class trac_RecordTransactionControllerTest {
         params.exclusionSubtotal = 9.25;
         params.totalEarn = params.transactionSubtotal - params.exclusionSubtotal;
 
+
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock());
         Test.startTest();
 
@@ -57,6 +58,7 @@ private class trac_RecordTransactionControllerTest {
 
     @IsTest
     static void testRecordTransactionFail() {
+
         Case aCase = new Case();
         insert aCase;
         String[] transactionOrigins = new String[] {'website', 'store', 'mhf'};
@@ -67,9 +69,10 @@ private class trac_RecordTransactionControllerTest {
         params.orderNumber = '000000002';
         params.transactionNumber = '0000111122306082020';
         params.transactionDate = 'Mar. 04, 2020, 06:31 a.m.';
-        params.transactionSubtotal = 15.75;
+        params.transactionSubtotal = 10015.75;
         params.exclusionSubtotal = 9.25;
         params.totalEarn = params.transactionSubtotal - params.exclusionSubtotal;
+
 
         Test.setMock(HttpCalloutMock.class, new trac_WS_RecordLoyaltyEventTest.RecordEventMock('fail'));
         Test.startTest();

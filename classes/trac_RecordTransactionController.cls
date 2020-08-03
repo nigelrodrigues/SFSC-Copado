@@ -36,6 +36,7 @@ public with sharing class trac_RecordTransactionController {
                 evt.loyaltyId = params.loyaltyNumber;
                 evt.email = params.email;
                 evt.eventType = 'purchase';
+
                 evt.value = params.totalEarn;
                 evt.eventId = params.transactionNumber;
                 evt.originatedAt = params.transactionDateObj.formatGmt(DATETIME_FORMAT);
@@ -172,6 +173,11 @@ public with sharing class trac_RecordTransactionController {
             response.returnValuesMap.put('total earn', 'Total Earn cannot be negative');
         }
 
+        if(params.totalEarn > 10000) {
+            response.isSuccess = false;
+            response.returnValuesMap.put('total earn', 'Total Earn cannot be greater than $10,000');
+        }
+
         response.returnValuesMap.put('validForm', response.isSuccess);
 
         return response.isSuccess;
@@ -199,5 +205,6 @@ public with sharing class trac_RecordTransactionController {
         public Decimal exclusionSubtotal {get; set;}
         @AuraEnabled
         public Decimal totalEarn {get; set;}
+
     }
 }
