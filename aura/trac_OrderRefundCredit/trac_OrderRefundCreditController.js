@@ -6,8 +6,10 @@
     createOrderRefundCredit: function(component, event, helper) {
 
         component.set('v.isLoading', true);
+        console.log('IN createOrderRefundCredit');
 
         var caseRecord = component.get("v.caseRecord");
+        console.log('ID: ' + caseRecord);
         var order = component.get("v.order");
         var orderLineItem = component.get("v.orderLineItem");
 
