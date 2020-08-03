@@ -13,6 +13,7 @@
 
     <aura:attribute name="newPaymentMethods" type="Object[]" default="[]"/>
     <aura:attribute name="paymentRemaining" type="Decimal" default="0.00"/>
+    <aura:attribute name="showButton" type="Boolean" default="true" />
 
     <aura:registerEvent name="refreshOrderEvent" type="c:trac_RefreshOrderEvent"/>
 
@@ -22,11 +23,13 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
 
+    <aura:if isTrue="{!v.showButton}">
     <lightning:button onclick="{!c.handleOpenModal}"
                       variant="brand"
                       label="Update Payment"
                       iconName="utility:currency"
                       disabled="{!v.disabled}"/>
+    </aura:if>
 
     <aura:if isTrue="{!v.isModalOpen}">
         <!-- Modal/Popup Box starts here-->

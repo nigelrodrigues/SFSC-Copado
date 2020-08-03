@@ -18,7 +18,6 @@
         });
         resultsToast.fire();
     },
-
     setUnresolvedHolds: function (component, event, helper) {
         var order = component.get("v.order");
         var hasUnresolvedHolds = false;
@@ -33,18 +32,14 @@
         }
         component.set("v.hasUnresolvedHolds", hasUnresolvedHolds);
     },
-
     spaBusinessUnit: function (component, event, helper) {
         var order = component.get("v.order");
         let validSpaBusinessUnit = false;
-
         if(order && order.EnterpriseCode && (order.EnterpriseCode === ('SAKS') || order.EnterpriseCode === ('OFF5'))) {
             validSpaBusinessUnit = true;
         }
-
         component.set("v.validSpaBusinessUnit", validSpaBusinessUnit);
     },
-
     setBody : function (component, event, helper, newCmp, status, errorMessage)
     {
         if (status === "SUCCESS")
@@ -61,36 +56,31 @@
         {
             console.log("Error: " + errorMessage);
         }
-    },
 
+    },
     setChannel : function(component, event, helper, order) {
         var action = component.get("c.getOrderNumberRange");
-
         component.set("v.isLoading", true);
-
         action.setParams({
             "label": 'Digital Blue Martini'
         });
-
         action.setCallback(this, function(response) {
             if (response.getState() == "SUCCESS") {
                 var rangeStr = response.getReturnValue();
                 var ranges = rangeStr.split("-");
-
                 if( helper.isBetweenRange(rangeStr, order.OrderNo) ) {
                     component.set("v.channel", "Digital Blue Martini");
                 } else {
                     component.set("v.channel", "Digital");
                 }
-
             }
             component.set("v.isLoading", false);
         });
         $A.enqueueAction(action);
     },
-
     isBetweenRange : function (rangeStr, number) {
         var ranges = rangeStr.split("-");
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
+
     }
 })
