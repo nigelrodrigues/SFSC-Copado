@@ -13,8 +13,10 @@
     <aura:attribute name="showAdditionalInfo" type="Boolean" default="false"/>
     <aura:attribute name="validSpaBusinessUnit" type="Boolean" default="false"/>
     <aura:attribute name="disableCancelBtn"        type="Boolean" />
+
     <aura:attribute name="channel"                 type="String" />
     <c:trac_OrderRefundCredit aura:id="componentORC" />
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <div>
         <div class="slds-media slds-p-around_small slds-p-top_small slds-p-right_small slds-p-bottom_small slds-p-left_small slds-border_bottom">
@@ -37,6 +39,8 @@
                     </p>
                 </div>
             </lightning:layoutItem>
+
+
             <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                     <p class="field-title slds-form-element__label slds-no-flex">Email</p>
@@ -52,9 +56,11 @@
                     <div>
                         <b> Order </b>
                         <c:trac_DisplayBadges orderObject="{!v.order}"/>
+
                         <aura:iteration items="{!v.order.OrderLines.OrderLine}" var="orderLine">
                             <c:trac_DisplayBadges orderObject="orderLine"/>
                         </aura:iteration>
+
                     </div>
                     <aura:if isTrue="{!v.order.Extn.ExtnIsFiftyOne == 'Y'}">
                         <span  class="slds-p-left--medium">
@@ -70,12 +76,14 @@
                         <p class="slds-text-title_caps">{!v.order.OrderNo}</p>
                 </div>
             </lightning:layoutItem>
+
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Channel</p>
                         <p class="slds-text-title_caps">{!v.channel}</p>
                 </div>
             </lightning:layoutItem>
+
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Date</p>
@@ -85,6 +93,7 @@
                     </p>
                 </div>
             </lightning:layoutItem>
+
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Status</p>
@@ -100,6 +109,7 @@
                         </p>
                 </div>
             </lightning:layoutItem>
+
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Placed By</p>
@@ -109,8 +119,10 @@
                                 <p class="slds-text-title_caps">Customer</p>
                         </aura:set>
                     </aura:if>
+
                     </div>
                 </lightning:layoutItem>
+
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8 slds-p-top--xx-large">
                     <div class="slds-p-top--medium">
                         <lightning:buttonMenu label="ACTIONS" title="Actions" variant="border-filled"
@@ -118,22 +130,26 @@
                                               iconSize="medium" class="slds-text-title_caps"
                                               onselect="{!c.handleActions}"
                         >
-                            <lightning:menuItem label="Cancel Order" value="cancelOrder" prefixIconName="utility:close" disabled="{!v.disableCancelBtn}"/>
-                            <lightning:menuItem label="Add Note"     value="addNote"     prefixIconName="utility:note"/>
+
+                            <lightning:menuItem label="Cancel Order" value="cancelOrder"  disabled="{!v.disableCancelBtn}"/>
+                            <lightning:menuItem label="Add Note"     value="addNote"     />
                             <aura:if isTrue="{!v.validSpaBusinessUnit}">
-                                <lightning:menuItem label="Sales Price Adjustment" value="salesPriceAdjustment" prefixIconName="utility:close"/>
+                                <lightning:menuItem label="Sales Price Adjustment" value="salesPriceAdjustment" />
                             </aura:if>
-                            <lightning:menuItem  label="Order Refund/Credit" value="orderRefundCredit" prefixIconName="utility:record_create"/>
+                            <lightning:menuItem  label="Order Refund/Credit" value="orderRefundCredit" />
                             <aura:if isTrue="{!v.validSpaBusinessUnit}">
-                                <lightning:menuItem label="Payment Capture" value="paymentCapture" prefixIconName="utility:currency"/>
+                                <lightning:menuItem label="Payment Capture" value="paymentCapture" />
                             </aura:if>
-                            <lightning:menuItem label="Refund Options" value="orderReturnFee" prefixIconName="utility:change_record_type"/>
+                            <lightning:menuItem label="Refund Options" value="orderReturnFee" />
+
                             <lightning:menuItem label="Link To Case"   value="linkToCase" disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
                         </lightning:buttonMenu>
                 </div>
                     {!v.body}
             </lightning:layoutItem>
+
             <lightning:layoutItem padding="around-small">
+
                 <c:trac_CancelOrder order="{!v.order}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
             </lightning:layoutItem>
             <lightning:layoutItem padding="around-small">
@@ -158,6 +174,7 @@
             <lightning:layoutItem padding="around-small">
                 <lightning:button label="Link to Case" variant="neutral" onclick="{!c.handleImport}"
                                   disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
+
             </lightning:layoutItem>
         </lightning:layout>
             <!--<div>-->
@@ -189,6 +206,7 @@
             <!--</lightning:layout>-->
             <!--</div>-->
                                 </div>
+
         <lightning:tabset selectedTabId="order" variant="scoped">
             <lightning:tab label="Order Lines" id="order">
                 <aura:iteration items="{!v.order.OrderLines.OrderLine}" var="orderLine">
@@ -196,6 +214,8 @@
                                           businessUnit="{!v.businessUnit}" />
                 </aura:iteration>
             </lightning:tab>
+
+
             <lightning:tab label="Shipping" id="shipping">
                 <lightning:layout multipleRows="true">
                     <lightning:layoutItem size="12">
@@ -236,6 +256,8 @@
                                                  caseRecord="{!v.caseRecord}"/>
                 </aura:iteration>
             </lightning:tab>
+
+
             <lightning:tab label="Payment" id="payment">
                 <c:trac_OverallTotals overallTotal="{!v.order.OverallTotals}"/>
                 <aura:iteration items="{!v.order.PaymentMethods.PaymentMethod}" var="paymentMethod">
@@ -271,6 +293,8 @@
                     <c:trac_Note note="{!note}"/>
                 </aura:iteration>
             </lightning:tab>
+
+
             <lightning:tab label="Purchase Orders" id="purchaseOrder">
                     <c:trac_PurchaseOrder businessUnit="{!v.businessUnit}" order="{!v.order}"/>
             </lightning:tab>
