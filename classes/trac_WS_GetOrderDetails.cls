@@ -87,17 +87,18 @@ public with sharing class trac_WS_GetOrderDetails {
 
                         if ( orderHold.statusDesc.equals(orderHoldType.StatusDescription) )
                         {
-                            System.debug('HERE1: ');
                             getOrderDetailsResponse.Badges.add( orderHold.badge );
                         }
                     }
                 }
             }
 
-            if ( getOrderDetailsResponse.OrderLines != null)
+            // check for badges at order-line level
+            if ( getOrderDetailsResponse.OrderLines != null && !getOrderDetailsResponse.OrderLines.OrderLine.isEmpty())
             {
                 for ( res_OrderLineWrapper orderline :  getOrderDetailsResponse.OrderLines.OrderLine)
                 {
+                    if( orderline.OrderHoldTypes!=null && orderLine.OrderHoldTypes.OrderHoldType!=null )
                     for ( res_OrderLineHoldType_Wrapper holdType : orderline.OrderHoldTypes.OrderHoldType )
                     {
                         if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(holdType.HoldType) != null )
@@ -113,6 +114,13 @@ public with sharing class trac_WS_GetOrderDetails {
                 }
             }
         }
+        if( getOrderDetailsResponse.Badges!=null && !getOrderDetailsResponse.Badges.isEmpty())
+        {
+            Set<String> badgeSet = new Set<String>();
+            badgeSet.addAll(getOrderDetailsResponse.Badges);
+            getOrderDetailsResponse.Badges.clear();
+            getOrderDetailsResponse.Badges.addAll(badgeSet);
+        }
     }
 
     private void setCOMXdata()
@@ -126,7 +134,7 @@ public with sharing class trac_WS_GetOrderDetails {
             if ( orderline.Instructions != null && orderline.Instructions.Instruction.get(0) != null)
             {
                 res_InstructionWrapper instruction = orderline.Instructions.Instruction.get(0);
-                if ( instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionType.equals('COMX') )
+                if ( instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionUsage.equals('COMX') )
                 {
                     // Get the store and associate IDs (Max 2)
                     List<String> comxDataList = new List<String>();
@@ -874,6 +882,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String InstructionType;
         @AuraEnabled public String InstructionText;
         @AuraEnabled public String SequenceNo;
+        @AuraEnabled public String InstructionUsage;
     }
 
     public class res_LineOverallTotalsWrapper {
