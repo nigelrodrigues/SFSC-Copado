@@ -10,3 +10,37 @@
     height: 108px;
     width: auto;
 }
+
+.THIS .slds-size_1-of-12 {
+    height: 12em;
+}
+
+.THIS .slds-size_2-of-12 {
+    height: 12em;
+}
+
+.THIS .slds-size_1-of-8 {
+    height: 12em;
+}
+
+.THIS .slds-size_1-of-6 {
+    height: 12em;
+}
+
+.THIS .slds-size_1-of-6 * {
+    transition-delay: 0s;
+}
+
+.THIS div.slds-form-element__icon {
+    padding-top: 0;
+}
+
+.THIS .item-description * {
+    font-weight: normal;
+}
+
+.THIS .slds-badge {
+    font-size: x-small;
+    font-weight: normal;
+    text-transform: uppercase;
+}

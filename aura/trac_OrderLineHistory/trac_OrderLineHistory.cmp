@@ -7,7 +7,17 @@
 
     <tr>
         <td>
+            <div class="slds-truncate">
+                <lightning:formattedDateTime value="{!v.lineHistory.Createts}" />,
+                <lightning:formattedDateTime value="{!v.lineHistory.Createts}" hour="2-digit"
+                                             minute="2-digit" hour12="true"/>
+            </div>
+        </td>
+        <td>
             <div class="slds-truncate">{!v.lineHistory.StatusDescription}</div>
+        </td>
+        <td>
+            <div class="slds-truncate">{!v.lineHistory.ReasonCode}</div>
         </td>
         <td>
             <div class="slds-truncate">{!v.lineHistory.ReasonDescription}</div>
