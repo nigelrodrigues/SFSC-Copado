@@ -179,6 +179,7 @@
             case "linkToCase":
                 this.handleImport(component, event, helper);
                 break;
+
         }
     }
 
