@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Blue Martini link to look up orders not yet in OMS</description>
+    <fields>
+        <fullName>Link__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>link to Blue Martini an environment</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Link</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Blue Martini</label>
+    <pluralLabel>Blue Martinis</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
