@@ -11,6 +11,7 @@
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
     <aura:attribute name="disabled" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="showButton" type="Boolean" default="true" />
 
     <aura:attribute name="quantityOptions" type="List" default="[{'label': '1', 'value': '1'}]"/>
 
@@ -35,11 +36,13 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
+    <aura:if isTrue="{!v.showButton}">
     <lightning:button onclick="{!c.handleOpenModal}"
                       variant="brand"
                       label="Cancel"
                       iconName="utility:close"
                       disabled="{!v.disabled}"/>
+    </aura:if>
 
     <aura:if isTrue="{!v.isModalOpen}">
         <!-- Modal/Popup Box starts here-->

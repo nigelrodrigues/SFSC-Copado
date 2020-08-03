@@ -9,13 +9,16 @@
     <aura:attribute name="notes" type="String"/>
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="showButton" type="Boolean" default="true" />
 
     <aura:registerEvent name="refreshOrderEvent" type="c:trac_RefreshOrderEvent"/>
 
+    <aura:if isTrue="{!v.showButton}">
     <lightning:button onclick="{!c.handleOpenModal}"
                       variant="brand"
                       label="Add Note to OMS"
                       iconName="utility:note"/>
+    </aura:if>
 
     <aura:if isTrue="{!v.isModalOpen}">
         <!-- Modal/Popup Box starts here-->
