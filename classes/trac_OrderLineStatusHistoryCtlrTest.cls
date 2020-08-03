@@ -12,8 +12,6 @@ private class trac_OrderLineStatusHistoryCtlrTest {
         TLAuraResponse response  = trac_OrderLineStatusHistoryCtlr.getLineHistory('SAKS', '12345', '');
         System.assertEquals(true, response.isSuccess);
         System.assertEquals(false,  response.returnValuesMap.get('lineStatusHistory') == null);
-
-
     }
 
     @IsTest
