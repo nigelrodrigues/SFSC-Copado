@@ -2,6 +2,7 @@ public with sharing class trac_LoyaltyController {
 
     @AuraEnabled
 
+
     public static TLAuraResponse updateCustomerInfo(String loyaltyId, String firstName, String lastName, String email) {
         TLAuraResponse response = new TLAuraResponse(true);
         trac_WS_UpdateLoyaltyEvent request = new trac_WS_UpdateLoyaltyEvent();
@@ -32,12 +33,14 @@ public with sharing class trac_LoyaltyController {
 
             response = new TLAuraResponse(false, errorMessage);
 
+
         }
 
         return response;
     }
 
     @AuraEnabled
+
 
     public static TLAuraResponse lsUpdateProfile(trac_WS_LsUpdateProfile.LsUpdateProfileRequest params) {
         TLAuraResponse response = new TLAuraResponse(true);
@@ -60,6 +63,7 @@ public with sharing class trac_LoyaltyController {
                         Endpoint__c = request.ENDPOINT,
                         Service__c = 'Loyalty Update'
 
+
                 ));
                 insert integrationError;
 
@@ -67,6 +71,7 @@ public with sharing class trac_LoyaltyController {
 
                 response = new TLAuraResponse(false, errorMessage);
             }
+
 
         }
         return response;
@@ -85,6 +90,7 @@ public with sharing class trac_LoyaltyController {
         response.returnValuesMap.put('validForm', response.isSuccess);
 
         return response.isSuccess;
+
 
     }
 

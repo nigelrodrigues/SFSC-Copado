@@ -120,9 +120,11 @@
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.status))}">
                     <aura:if isTrue="{!v.loyalty.status == 'paused'}">
+
                         <p>Closed</p>
                         <aura:set attribute="else">
                             <p class="capitalize">{!v.loyalty.status}</p>
+
                         </aura:set>
                     </aura:if>
                     <aura:set attribute="else">
@@ -226,12 +228,10 @@
                 <lightning:layoutItem padding="around-small">
 
                     <lightning:button label="Save Changes" variant="brand" onclick="{!c.handleSaveChanges}" aura:id="saveButton" disabled="{!v.isDisabled}"/>
-
                 </lightning:layoutItem>
             </lightning:layout>
         </aura:if>
     </lightning:layout>
-
     <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
         <lightning:accordionSection name="tier" label="Tier Qualification">
             <lightning:layout multipleRows="true">
@@ -255,12 +255,10 @@
                 </lightning:layoutItem>
 
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
-
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
                             <p>{!v.loyalty.top_tier_name}</p>
-
 
                             <aura:set attribute="else">
                                 <p>N/A</p>
