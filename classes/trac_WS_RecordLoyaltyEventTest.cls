@@ -23,21 +23,9 @@ public class trac_WS_RecordLoyaltyEventTest {
         Boolean success = callout.send();
         Test.stopTest();
 
-
-        String body = callout.getBody();
-        Boolean isNotFound = callout.isNotFound();
-        Integer statusCode = callout.getStatusCode();
-        String uniqueEventId = callout.generateUniqueEventId();
-
         System.assertEquals(true, success);
         System.assertEquals(false, callout.isNotFound() );
         System.assertEquals(200, callout.getStatusCode() );
-
-        System.assertNotEquals(null, body);
-        System.assertEquals(false, isNotFound);
-        System.assertEquals(200, statusCode);
-        System.assertNotEquals(null, uniqueEventId);
-
     }
 
     @IsTest

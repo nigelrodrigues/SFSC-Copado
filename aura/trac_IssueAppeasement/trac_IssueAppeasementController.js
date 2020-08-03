@@ -5,6 +5,7 @@
  */
 ({
     doInit: function(cmp, event, helper) {
+
         var pointsAvailable = cmp.get('v.loyalty.balance');
         pointsAvailable = $A.util.isEmpty(pointsAvailable) ? 0 : parseInt(pointsAvailable);
         cmp.set('v.pointsAvailable', pointsAvailable);
@@ -34,5 +35,6 @@
     },
     closeAppeasementModal: function(cmp, event, helper) {
         helper.fireCloseModalEvent();
+
     }
 });
