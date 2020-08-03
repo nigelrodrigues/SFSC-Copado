@@ -31,6 +31,8 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
+//        String regex = '"Hudson.s Bay';
+//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -245,9 +247,11 @@ public with sharing class trac_WS_GetOrderDetails {
             }
             getOrderDetailsResponse.displayTotalPointsValue = displayValue;
 
+
             // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
             getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
             getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
+
         }
 
         // prepare primeLines map
@@ -263,6 +267,7 @@ public with sharing class trac_WS_GetOrderDetails {
             }
         }
 
+
         // loop over payment method list
         if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
             for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
@@ -270,6 +275,7 @@ public with sharing class trac_WS_GetOrderDetails {
                 paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
             }
         }
+
 
         // loop over shipments to fill out fields from primeLines
         if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
@@ -366,6 +372,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String displayTotalPointsLabel;
         @AuraEnabled public String displayTotalPointsValue;
+        @AuraEnabled public String ResponseCode;
+        @AuraEnabled public String ResposneMessage;
     }
 
     public class res_OrderLineWrapper implements Comparable {
@@ -397,6 +405,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customUPC;
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String customBlueMartiniCancelCode;
+        @AuraEnabled public res_OrderHoldTypesWrapper OrderHoldTypes;
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;

@@ -231,6 +231,16 @@
             <field>ServiceChannel.Id</field>
             <table>AgentWork</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OriginalQueue.Owner.UserRole.PortalAccountOwner</field>
+            <table>AgentWork</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>User.Profile</field>
+            <table>AgentWork</table>
+        </columns>
         <masterLabel>Agent Work</masterLabel>
     </sections>
 </ReportType>
