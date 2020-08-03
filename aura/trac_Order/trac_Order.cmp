@@ -107,7 +107,7 @@
                 </lightning:layoutItem>
 
 
-               <!-- BU codition for SAKS
+               <!-- BU codition for SAKS -->
                <aura:if isTrue="{!not(empty(v.order.COMXdata))}">
                     <lightning:layoutItem padding="around-small" class="slds-size_2-of-8">
                         <div class="header-column">
@@ -132,31 +132,7 @@
                             </div>
                         </lightning:layoutItem>
                     </aura:set>
-                </aura:if>-->
-
-
-
-                <lightning:layoutItem padding="around-small" class="slds-size_2-of-8">
-                    <div class="header-column">
-                        <p class="field-title slds-form-element__label slds-no-flex">Placed By</p>
-                        <p class="slds-text-title_caps">Store Associate(s)</p>
-                        <p class="field-title slds-form-element__label slds-no-flex">C1233374 (from Store# 7001)</p><br/>
-                        <p class="field-title slds-form-element__label slds-no-flex"    >C1233375 (from Store# 7002)</p>
-                        <!--<ul class="showDot">
-                           <li class="slds-item">Associate#  </li>
-                            <ul class="slds-is-nested ">
-                                <li> Store# 7001</li>
-                            </ul>
-                        </ul>
-                        <ul class="showDot">
-                            <li class="slds-item">Associate#  C1233385</li>
-                                <ul class="slds-is-nested">
-                                    <li> Store# 7002</li>
-                                </ul>
-                        </ul>-->
-
-                    </div>
-                </lightning:layoutItem>
+                </aura:if>
 
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8 slds-p-top--xx-large">
                     <div class="slds-p-top--medium">
