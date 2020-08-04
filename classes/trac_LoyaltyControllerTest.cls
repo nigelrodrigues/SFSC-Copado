@@ -2,6 +2,7 @@
 public with sharing class trac_LoyaltyControllerTest {
 
     @IsTest
+
     static void testUpdateCustomerInfo() {
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseLoyalty('update_customer_info'));
         String loyaltyId = '1200657659';
@@ -95,5 +96,6 @@ public with sharing class trac_LoyaltyControllerTest {
         } catch (Exception e) {
             System.assert(e.getMessage() != null, 'exception thrown.');
         }
+
     }
 }
