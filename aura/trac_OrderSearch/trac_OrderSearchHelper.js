@@ -50,12 +50,17 @@
                     component.set("v.errorMsg", "Connection Error");
                 } else {
                     if(result.isSuccess) {
-                        if(!$A.util.isEmpty(result.returnValuesMap['orderDetails'])) {
+                        if(!$A.util.isEmpty(result.returnValuesMap['orderDetails']) && result.returnValuesMap['orderDetails']['ResponseCode'] === '0') {
                             if(component.get("v.orderNumber")){
+                                component.set("v.showWarning", false);
                                 component.set("v.order", result.returnValuesMap['orderDetails']);
                             }else{
+                                component.set("v.showWarning", false);
                                 helper.linkToCase(component, orderNo, postalCode);
                             }
+                        } else if (helper.isBetweenRange(component.get("v.range"), orderNo)) {
+                            helper.linkToCase(component, orderNo, postalCode);
+                            component.set("v.showWarning", true);
                         }
                     } else {
                         component.set("v.isError", true);
@@ -251,5 +256,44 @@
 
             $A.enqueueAction(action);
         }
+    },
+
+    setRange : function(component, event, helper) {
+        var action = component.get("c.getOrderNumberRange");
+
+        component.set("v.isLoading", true);
+
+        action.setParams({
+            "label": 'Digital Blue Martini'
+        });
+
+        action.setCallback(this, function(response) {
+            if (response.getState() == "SUCCESS") {
+                var range = response.getReturnValue();
+                component.set("v.range", range);
+            }
+            component.set("v.isLoading", false);
+        });
+        $A.enqueueAction(action);
+    },
+
+    setBlueMartiniLink : function(component, event, helper) {
+        var action = component.get("c.getBlueMartiniLink");
+
+        component.set("v.isLoading", true);
+
+        action.setCallback(this, function(response) {
+            if (response.getState() == "SUCCESS") {
+                var link = response.getReturnValue();
+                component.set("v.link", link);
+            }
+            component.set("v.isLoading", false);
+        });
+        $A.enqueueAction(action);
+    },
+
+    isBetweenRange : function (rangeStr, number) {
+        var ranges = rangeStr.split("-");
+        return (ranges[0] <= number && ranges[1] >= number ) ? true : false
     }
 })

@@ -4,6 +4,8 @@
 ({
     doInit: function (component, event, helper) {
         helper.fetchPickListVal(component, 'Business_Unit__c', 'businessUnit');
+        helper.setRange(component, event, helper);
+        helper.setBlueMartiniLink(component, event, helper);
         var orderNo    = component.get("v.orderNumber");
         var postalCode = component.get("v.postalCode");
         var cs         = component.get("v.caseRecord");
