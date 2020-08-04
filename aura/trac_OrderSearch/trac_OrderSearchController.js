@@ -4,9 +4,11 @@
 ({
     doInit: function (component, event, helper) {
         helper.fetchPickListVal(component, 'Business_Unit__c', 'businessUnit');
-        var orderNo    = component.get("v.orderNumber");
-        var postalCode = component.get("v.postalCode");
-        var cs         = component.get("v.caseRecord");
+        helper.setRange(component, event, helper);
+        helper.setBlueMartiniLink(component, event, helper);
+        let orderNo    = component.get("v.orderNumber");
+        let postalCode = component.get("v.postalCode");
+        let cs         = component.get("v.caseRecord");
 
         if (cs && (cs.Business_Unit__c === 'Saks')) {
             component.set("v.setPostalRequired", true);
@@ -36,7 +38,7 @@
     },
 
     onPicklistChange: function (component, event, helper) {
-        var pickVal = event.getSource().get("v.value");
+        let pickVal = event.getSource().get("v.value");
         component.set("v.setPostalRequired", pickVal === 'Saks');
     },
 
@@ -45,7 +47,7 @@
             component.set("v.showAdvanceSearch", false);
         } else {
             component.set("v.showAdvanceSearch", true);
-            var cs = component.get("v.caseRecord");
+            let cs = component.get("v.caseRecord");
             if (component.find("phoneInput") && cs.Contact && cs.Contact.Phone != null) {
                 component.find("phoneInput").set("v.value", cs.Contact.Phone);
             }
