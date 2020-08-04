@@ -510,7 +510,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
-        @AuraEnabled public res_OrderHoldTypesWrapper OrderHoldTypes;
+       
 
 
         public Integer compareTo(Object compareTo) {
