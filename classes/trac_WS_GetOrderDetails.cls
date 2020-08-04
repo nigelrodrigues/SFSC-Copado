@@ -22,11 +22,13 @@ public with sharing class trac_WS_GetOrderDetails {
 
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderDetailsResponse = parse(res.getBody());
+
             for ( Order_Hold_Badge_Mapping__mdt orderHoldBadgeMapping : [ SELECT Id, Status_Description__c, Badge__c, Hold_Type__c FROM Order_Hold_Badge_Mapping__mdt])
             {
                 orderHoldTypeMap.put( orderHoldBadgeMapping.Hold_Type__c,
                         new OrderHoldWrapper(orderHoldBadgeMapping.Status_Description__c, orderHoldBadgeMapping.Badge__c));
             }
+
             updateDataFormat();
             success = true;
         } else {
@@ -38,6 +40,8 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
+//        String regex = '"Hudson.s Bay';
+//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -342,9 +346,11 @@ public with sharing class trac_WS_GetOrderDetails {
             }
             getOrderDetailsResponse.displayTotalPointsValue = displayValue;
 
+
             // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
             getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
             getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
+
         }
 
         // prepare primeLines map
@@ -360,6 +366,7 @@ public with sharing class trac_WS_GetOrderDetails {
             }
         }
 
+
         // loop over payment method list
         if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
             for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
@@ -367,6 +374,7 @@ public with sharing class trac_WS_GetOrderDetails {
                 paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
             }
         }
+
 
         // loop over shipments to fill out fields from primeLines
         if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
@@ -465,6 +473,9 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String displayTotalPointsValue;
         @AuraEnabled public List<String> Badges;
         @AuraEnabled public List<COMXdataWrapper> COMXdata;
+        @AuraEnabled public String ResponseCode;
+        @AuraEnabled public String ResposneMessage;
+
     }
 
     public class res_OrderLineWrapper implements Comparable {
@@ -499,6 +510,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
+        @AuraEnabled public res_OrderHoldTypesWrapper OrderHoldTypes;
+
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
@@ -972,7 +985,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ShipmentContainerizedFlag;
         @AuraEnabled public String TotalWeightUOM;
         @AuraEnabled public res_AddressWrapper BillToAddress;
-//@AuraEnabled public String Status;
+        //@AuraEnabled public String Status;
         @AuraEnabled public res_ShipmentStatusWrapper Status;
         @AuraEnabled public String ShipmentNo;
         @AuraEnabled public String TotalWeight;
