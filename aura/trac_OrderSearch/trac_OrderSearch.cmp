@@ -17,7 +17,10 @@
     <aura:attribute name="businessUnit" type="String" />
     <aura:attribute name="postalCode" type="String" default=""/>
     <aura:attribute name="setPostalRequired" type="Boolean" default="false"/>
+    <aura:attribute name="range" type="String" />
+    <aura:attribute name="link" type="String" />
     <aura:attribute name="showError" type="boolean" default="false"/>
+    <aura:attribute name="showWarning" type="boolean" default="false"/>
     <aura:attribute name="errorMessage" type="String" default="Please specify at least Order Number, Email or Phone Number for a detailed search." />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -141,5 +144,16 @@
         </aura:if>
 
     </div>
+
+    <aura:if isTrue="{!v.showWarning}">
+        <lightning:card
+                class="profile-warning slds-align--absolute-center slds-p-horizontal--medium slds-p-vertical--small slds-m-bottom--medium"
+                iconName="utility:warning">
+            <div>
+                <p>Due to the status of this order, please click <a href="{!v.link}"
+                                                                    target="_blank">here</a> to view it in Blue Martini</p>
+            </div>
+        </lightning:card>
+    </aura:if>
 
 </aura:component>
