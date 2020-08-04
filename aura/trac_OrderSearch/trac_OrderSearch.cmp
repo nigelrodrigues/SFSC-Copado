@@ -34,32 +34,32 @@
                 {!v.errorMessage}
             </aura:if>
         </div>
-        <lightning:layout>
-            <lightning:layoutItem padding="around-small">
+        
+        <lightning:layout class="slds-grid">
+            <lightning:layoutItem padding="around-small" size="3" class="slds-size_1-of-8">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="select-01">Business Unit</label>
+                    <div class="">
+                        <ui:inputSelect aura:id="businessUnit" class="slds-select" change="{!c.onPicklistChange}" value="{!v.caseRecord.Business_Unit__c}" disabled="true"/>
+                    </div>
+                </div>
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <lightning:input label="Order Number" type="text" aura:id="orderNumberInput"
                                  messageWhenPatternMismatch="Invalid Order Number."
                                  pattern="[0-9]*"/>
             </lightning:layoutItem>
 
-            <lightning:layoutItem padding="around-small" size="3">
-                <div class="slds-form-element">
-                    <label class="slds-form-element__label" for="select-01">Business Unit</label>
-                    <div class="">
-                        <ui:inputSelect aura:id="businessUnit" class="slds-select" change="{!c.onPicklistChange}"/>
-                    </div>
-                </div>
+            <lightning:layoutItem padding="around-small" class="slds-hide">
+                <lightning:input label="Postal Code" type="text" aura:id="postalInput"/>
             </lightning:layoutItem>
 
-            <lightning:layoutItem padding="around-small">
-                <!--<lightning:input label="Postal Code" value="{!v.postalCode}" type="text" aura:id="postalInput" required="{! v.setPostalRequired}"/>-->
-                <lightning:input label="Postal Code" type="text" aura:id="postalInput" required="{! v.setPostalRequired}"/>
-            </lightning:layoutItem>
-
-            <lightning:layoutItem padding="around-small">
+            <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                 <lightning:input label="Email" type="email" aura:id="emailInput"/>
             </lightning:layoutItem>
 
-            <lightning:layoutItem padding="around-small">
+            <lightning:layoutItem padding="around-small" class="slds-hide">
                 <lightning:input label="Account Number" type="text" pattern="[0-9]*" aura:id="accountNumberInput"/>
             </lightning:layoutItem>
 
