@@ -18,34 +18,25 @@
         });
         resultsToast.fire();
     },
-
     searchByOrderNumber : function(component, event, helper, orderNo) {
         var businessUnit = component.find("businessUnit").get("v.value");
         var postalCode = component.find("postalInput").get("v.value");
-
         if (!businessUnit) {
             var cs = component.get("v.caseRecord");
             businessUnit = cs.Business_Unit__c;
         }
-
         component.set("v.businessUnit", businessUnit);
-
         component.set("v.isLoading", true);
-
         var action = component.get("c.getOrderDetails");
         action.setParams({
             "orderNo": orderNo,
             "businessUnit": businessUnit,
             "postalCode" :postalCode
         });
-
         action.setCallback(this, function (response) {
             var state = response.getState();
-
             if (component.isValid() && state === "SUCCESS") {
-
                 var result =  response.getReturnValue();
-
                 if (result == null) {
                     component.set("v.errorMsg", "Connection Error");
                 } else {
@@ -73,25 +64,20 @@
             }
             component.set("v.isLoading", false);
         });
-
         $A.enqueueAction(action);
     },
-
     fetchPickListVal: function(component, fieldName, elementId) {
-        var action = component.get("c.getselectOptions");
-
+        let action = component.get("c.getselectOptions");
         component.set("v.isLoading", true);
-
         action.setParams({
             "objObject": component.get("v.objInfo"),
             "fld": fieldName
         });
-        var opts = [];
+        let opts = [];
         action.setCallback(this, function(response) {
             if (response.getState() == "SUCCESS") {
-                var allValues = response.getReturnValue();
-                var cs = component.get("v.caseRecord");
-
+                let allValues = response.getReturnValue();
+                let cs = component.get("v.caseRecord");
                 if (allValues != undefined && allValues.length > 0) {
                     opts.push({
                         class: "optionClass",
@@ -99,8 +85,8 @@
                         value: ""
                     });
                 }
-                for (var i = 0; i < allValues.length; i++) {
-                    var selected = (cs.Business_Unit__c === allValues[i]);
+                for (let i = 0; i < allValues.length; i++) {
+                    let selected = (cs.Business_Unit__c === allValues[i]);
                     opts.push({
                         class: "optionClass",
                         label: allValues[i],
@@ -114,10 +100,8 @@
         });
         $A.enqueueAction(action);
     },
-
     handleSearch : function (component, event, helper) {
         helper.resetResults(component);
-
         component.set("v.showError", false);
         if(helper.checkBlank(component, 'orderNumberInput') && helper.checkBlank(component, 'emailInput')){
             if(!component.find("phoneInput") || helper.checkBlank(component, 'phoneInput')){
@@ -126,37 +110,34 @@
             }
         }
         if(component.find("creditCardInput")){
-            var validity = component.find("creditCardInput").get("v.validity");
+            let validity = component.find("creditCardInput").get("v.validity");
             if(validity.patternMismatch)   return;
         }
-        var validity = component.find("orderNumberInput").get("v.validity");
+        let validity = component.find("orderNumberInput").get("v.validity");
         if(validity.patternMismatch)   return;
         component.set("v.isLoading", true);
         component.set("v.noOrdersFound", false);
         component.set("v.order", null);
         component.set("v.orders", null);
-        var orderNo = component.find("orderNumberInput").get("v.value");
+        let orderNo = component.find("orderNumberInput").get("v.value");
         if(!$A.util.isEmpty(orderNo)){
             helper.searchByOrderNumber(component, event, helper, orderNo);
             return;
         }
-
-        var email = component.find("emailInput").get("v.value");
-        var businessUnit = component.find("businessUnit").get("v.value");
+        let email = component.find("emailInput").get("v.value");
+        let businessUnit = component.find("businessUnit").get("v.value");
         component.set("v.businessUnit", businessUnit);
-
         if(component.get("v.showAdvanceSearch")){
-            var phone = component.find("phoneInput").get("v.value");
-            var fromDate = component.find("orderDateFromInput").get("v.value");
-            var toDate = component.find("orderDateToInput").get("v.value");
-            var creditCard = component.find("creditCardInput").get("v.value");
-            var upc = component.find("upcInput").get("v.value");
-            var giftCard = component.find("giftCardNumberInput").get("v.value");
-            var archievedOrder = component.find("archivedOrderInput").get("v.value") ? 'Y' : 'N';
-            var draftOrder = component.find("draftOrderInput").get("v.value") ? 'Y' : 'N';
-            var accountNumber = component.find('accountNumberInput').get("v.value");
-
-            var action = component.get("c.getOrderListAdv");
+            let phone = component.find("phoneInput").get("v.value");
+            let fromDate = component.find("orderDateFromInput").get("v.value");
+            let toDate = component.find("orderDateToInput").get("v.value");
+            let creditCard = component.find("creditCardInput").get("v.value");
+            let upc = component.find("upcInput").get("v.value");
+            let giftCard = component.find("giftCardNumberInput").get("v.value");
+            let archievedOrder = component.find("archivedOrderInput").get("v.value") ? 'Y' : 'N';
+            let draftOrder = component.find("draftOrderInput").get("v.value") ? 'Y' : 'N';
+            let accountNumber = component.find('accountNumberInput').get("v.value");
+            let action = component.get("c.getOrderListAdv");
             action.setParams({
                 "email": email,
                 "businessUnit": businessUnit,
@@ -171,25 +152,22 @@
             });
         }
         else{
-            var action = component.get("c.getOrderList");
+            let action = component.get("c.getOrderList");
             action.setParams({
                 "email": email,
                 "businessUnit": businessUnit,
                 "accountNumber": accountNumber
             });
         }
-
         action.setCallback(this, function (response) {
-            var state = response.getState();
+            let state = response.getState();
             if (component.isValid() && state === "SUCCESS") {
-
-                var result =  response.getReturnValue();
+                let result =  response.getReturnValue();
                 if (result == null) {
                     component.set("v.errorMsg", "Connection Error");
                 } else {
-
                     if(result.isSuccess) {
-                        var returnVal = result.returnValuesMap['orderList'];
+                        let returnVal = result.returnValuesMap['orderList'];
                         if(!$A.util.isEmpty(returnVal) && returnVal.TotalOrderList !== '0'){
                             component.set("v.orderListResult", returnVal);
                             component.set("v.orders", returnVal.Order);
@@ -208,10 +186,8 @@
             }
             component.set("v.isLoading", false);
         });
-
         $A.enqueueAction(action);
     },
-
     checkBlank: function(component, field) {
         if (component.find(field).get("v.value") == null || component.find(field).get("v.value") == '') {
             return true;
@@ -220,80 +196,74 @@
             return false;
         }
     },
-
     resetResults: function(component) {
         component.set("v.orderListResult", null);
         component.set("v.orders", null);
         component.set("v.order", null);
     },
-
     linkToCase : function (component, orderNo, postalCode) {
-        var action = component.get("c.updateCase");
-        var caseRecord = component.get("v.caseRecord");
-        var order = component.get("v.order");
-
+        let action = component.get("c.updateCase");
+        let caseRecord = component.get("v.caseRecord");
+        let order = component.get("v.order");
         if (caseRecord && !caseRecord.Order_Number__c) {
-
             if(!postalCode)
                 postalCode = null;
-
-            var zipCode = (order && order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : postalCode;
-
+            let zipCode = (order && order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : postalCode;
             action.setParams({
                 "caseId": caseRecord.Id,
                 "orderNo": orderNo,
                 "orderZipCode": zipCode
             });
-
             action.setCallback(this, function (response) {
-                var state = response.getState();
+                let state = response.getState();
                 if (component.isValid() && state === "SUCCESS") {
                     $A.get('e.force:refreshView').fire();
                 } else {
                     console.error("failed with state: " + state);
                 }
             });
-
             $A.enqueueAction(action);
         }
     },
-
     setRange : function(component, event, helper) {
-        var action = component.get("c.getOrderNumberRange");
+
+        let action = component.get("c.getOrderNumberRange");
 
         component.set("v.isLoading", true);
-
         action.setParams({
             "label": 'Digital Blue Martini'
         });
-
         action.setCallback(this, function(response) {
             if (response.getState() == "SUCCESS") {
-                var range = response.getReturnValue();
+
+                let range = response.getReturnValue();
+
                component.set("v.range", range);
             }
             component.set("v.isLoading", false);
         });
         $A.enqueueAction(action);
     },
-
     setBlueMartiniLink : function(component, event, helper) {
-        var action = component.get("c.getBlueMartiniLink");
+
+        let action = component.get("c.getBlueMartiniLink");
 
         component.set("v.isLoading", true);
-
         action.setCallback(this, function(response) {
             if (response.getState() == "SUCCESS") {
-                var link = response.getReturnValue();
+
+                let link = response.getReturnValue();
+
                component.set("v.link", link);
             }
             component.set("v.isLoading", false);
         });
         $A.enqueueAction(action);
     },
-
     isBetweenRange : function (rangeStr, number) {
-        var ranges = rangeStr.split("-");
+
+        let ranges = rangeStr.split("-");
+
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
     }
 })
