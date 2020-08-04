@@ -40,6 +40,8 @@
         }
         component.set("v.validSpaBusinessUnit", validSpaBusinessUnit);
     },
+
+
     setBody : function (component, event, helper, newCmp, status, errorMessage)
     {
         if (status === "SUCCESS")
