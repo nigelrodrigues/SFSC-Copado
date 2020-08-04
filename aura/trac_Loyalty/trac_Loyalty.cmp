@@ -115,6 +115,7 @@
             </lightning:layoutItem>
         </aura:if>
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
+
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Status</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.status))}">
@@ -130,19 +131,18 @@
                 </aura:if>
             </div>
         </lightning:layoutItem>
+
         <lightning:layoutItem class="slds-p-around_xx-small" size="6">
             <div class="header-column">
                 <p class="field-title slds-form-element__label slds-no-flex">Account Phone</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.phone_no))}">
                     <p><lightning:formattedPhone value="{!v.loyalty.phone_no}"/></p>
-
                     <aura:set attribute="else">
                         <p>N/A</p>
                     </aura:set>
                 </aura:if>
             </div>
         </lightning:layoutItem>
-
         <lightning:layoutItem class="slds-p-around_xx-small"  size="6">
 
             <div class="header-column">
@@ -215,19 +215,23 @@
                 </div>
             </div>
         </lightning:layoutItem>
-    </lightning:layout>
 
+    </lightning:layout>
     </aura:if>
     <lightning:layout>
+
         <aura:if isTrue="{!v.isEditable}">
             <lightning:layout>
                 <c:trac_CloseLoyaltyAccount loyalty="{!v.loyalty}"/>
                 <lightning:layoutItem padding="around-small">
+
                     <lightning:button label="Save Changes" variant="brand" onclick="{!c.handleSaveChanges}" aura:id="saveButton" disabled="{!v.isDisabled}"/>
+
                 </lightning:layoutItem>
             </lightning:layout>
         </aura:if>
     </lightning:layout>
+
     <lightning:accordion aura:id="accordion" allowMultipleSectionsOpen="true">
         <lightning:accordionSection name="tier" label="Tier Qualification">
             <lightning:layout multipleRows="true">
@@ -251,10 +255,12 @@
                 </lightning:layoutItem>
 
                 <lightning:layoutItem class="slds-p-around_xx-small" size="6">
+
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Current Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.top_tier_name))}">
                             <p>{!v.loyalty.top_tier_name}</p>
+
 
                             <aura:set attribute="else">
                                 <p>N/A</p>

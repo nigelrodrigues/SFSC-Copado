@@ -14,17 +14,21 @@
         resultsToast.fire();
     },
 
+
     calculateAmounts: function(cmp) {
         var appeasePoints = cmp.get('v.appeasePoints');
         if (!$A.util.isEmpty(appeasePoints)) {
             appeasePoints = parseInt(appeasePoints);
+
             var conversionRate = cmp.get('v.conversionRate')
             var appeaseValue = (appeasePoints * conversionRate).toFixed(2);
             cmp.set('v.appeaseValue', appeaseValue);
+
             var finalBalance = parseInt(cmp.get('v.pointsAvailable')) + appeasePoints;
             cmp.set('v.finalPointBalance', finalBalance);
         }
     },
+
     checkDisableButton: function(cmp) {
         var maxAppeasement = cmp.get('v.maxAppeasement');
         var allowUnlimited = cmp.get('v.allowUnlimited');
@@ -84,10 +88,12 @@
         var appeasePoints = cmp.get("v.appeasePoints");
         // submit to server
         var action = cmp.get('c.submitAppeasement');
+
         var params = {
             loyaltyNumber: cmp.get('v.loyalty.external_customer_id'),
             email: cmp.get('v.loyalty.email'),
             points: cmp.get('v.appeasePoints'),
+
             pointsAvailable: cmp.get('v.pointsAvailable'),
             retrievedCase: cmp.get('v.caseRecord')
         };
