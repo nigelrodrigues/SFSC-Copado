@@ -6545,14 +6545,9 @@
         <columns>Business_Unit__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CASES.ORIGIN</field>
-            <operation>equals</operation>
-            <value>Support Community</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.ALIAS</field>
-            <operation>equals</operation>
-            <value>guest</value>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
         </filters>
         <label>All Open Cases</label>
     </listViews>

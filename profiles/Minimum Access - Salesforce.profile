@@ -12545,6 +12545,9 @@
         <layout>ContactPointAddress-Contact Point Address Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>DuplicateRecordItem-Duplicate Record Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Image-Image Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
