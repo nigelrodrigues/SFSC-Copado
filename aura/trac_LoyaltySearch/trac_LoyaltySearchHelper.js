@@ -15,11 +15,9 @@
             action.setCallback(this,function(response) {
                 component.find("Id_spinner").set("v.class" , 'slds-hide');
                 var state = response.getState();
-
                 if (component.isValid() && state === "SUCCESS") {
                     var result = response.getReturnValue();
                     if (result == null) {
-
                         reject(new Error("Connection Error"));
                     } else {
                         var statusCode = result.returnValuesMap['statusCode']
@@ -47,12 +45,10 @@
                             error.str = str
                             error.isMerkleError = true
                             reject(error)
-
                         }
                     }
                 }
                 else {
-
                    reject(response);
                 }
             });
@@ -112,8 +108,8 @@
             });
             $A.enqueueAction(action);
         });
-    },
 
+    },
     isNotBlank: function(component, field) {
         if (component.find(field).get("v.value") == null || component.find(field).get("v.value") == '') {
             return false;

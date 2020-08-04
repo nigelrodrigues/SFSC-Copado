@@ -55,6 +55,6 @@
         var loyaltyNumberInput = component.find('loyaltyNumberInput')
         var accNum = helper.normalize(loyaltyNumberInput.get('v.value'))
         loyaltyNumberInput.set('v.value', accNum)
-
     },
+
 });
