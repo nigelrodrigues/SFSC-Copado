@@ -8,6 +8,7 @@
     <aura:attribute name="caseRecord" type="Case"/>
     <aura:attribute name="notes" type="String"/>
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="showButton" type="boolean" default="true"/>
     <aura:attribute name="businessUnit" type="String" />
     <aura:attribute name="showButton" type="Boolean" default="true" />
 
