@@ -3,11 +3,10 @@
  - @description To show active holds summary badges for an order.
  - @date 22-July-2020
  -->
-
 <aura:component description="trac_DisplayBadges">
-    <aura:attribute name="orderObject"   type="Object" />
-    <aura:attribute name="lineItemLevel" type="Boolean" default="true"/>
+    <aura:attribute name="orderObject" type="Object" />
 
+    <aura:attribute name="lineItemLevel" type="Boolean" default="true"/>
     <aura:if isTrue="{!v.lineItemLevel}">
         <aura:iteration items="{!v.orderObject.Badges}" var="badge">
             <lightning:badge label="{!badge}"/>
