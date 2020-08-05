@@ -13,8 +13,7 @@ public with sharing class trac_WS_GetOrderDetails {
     public GetOrderDetailsResponse getOrderDetailsResponse;
     public String jsonError;
     Map<String, OrderHoldWrapper> orderHoldTypeMap = new Map<String, OrderHoldWrapper>();
-
-
+    
 
 
     public Boolean send() {
@@ -30,9 +29,6 @@ public with sharing class trac_WS_GetOrderDetails {
                 orderHoldTypeMap.put( orderHoldBadgeMapping.Hold_Type__c,
                         new OrderHoldWrapper(orderHoldBadgeMapping.Status_Description__c, orderHoldBadgeMapping.Badge__c));
             }
-
-
-
             updateDataFormat();
             success = true;
         } else {
@@ -44,8 +40,6 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
-//        String regex = '"Hudson.s Bay';
-//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -86,9 +80,7 @@ public with sharing class trac_WS_GetOrderDetails {
             if (getOrderDetailsResponse.OrderHoldTypes != null && getOrderDetailsResponse.OrderHoldTypes.OrderHoldType != null)
             {
                 getOrderDetailsResponse.Badges = new List<String>();
-
                 // Check for holds at the order level
-
                 for ( res_OrderHoldTypeWrapper orderHoldType : getOrderDetailsResponse.OrderHoldTypes.OrderHoldType)
                 {
                     if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(orderHoldType.HoldType) != null )
@@ -97,14 +89,12 @@ public with sharing class trac_WS_GetOrderDetails {
 
                         if ( orderHold.statusDesc.equals(orderHoldType.StatusDescription) )
                         {
-
                             if( !String.isEmpty(orderHold.badge))
                             {
                                 // Assign badge at Order Level.
                                 // 'Active Hold' assigned in the trac_OrderLineItem component (at Line level).
                                 getOrderDetailsResponse.Badges.add( orderHold.badge );
                             }
-
 
                         }
                     }
@@ -339,13 +329,9 @@ public with sharing class trac_WS_GetOrderDetails {
             }
             getOrderDetailsResponse.displayTotalPointsValue = displayValue;
 
-
-
             // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
             getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
             getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
-
-
         }
 
         // prepare primeLines map
@@ -361,10 +347,6 @@ public with sharing class trac_WS_GetOrderDetails {
             }
         }
 
-
-
-
-
         // loop over payment method list
         if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
             for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
@@ -372,10 +354,6 @@ public with sharing class trac_WS_GetOrderDetails {
                 paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
             }
         }
-
-
-
-
 
         // loop over shipments to fill out fields from primeLines
         if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
@@ -476,8 +454,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ResposneMessage;
         @AuraEnabled public List<String> Badges;
         @AuraEnabled public List<COMXdataWrapper> COMXdata;
-
-
     }
 
     public class res_OrderLineWrapper implements Comparable
@@ -513,11 +489,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
-
-        @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
-        @AuraEnabled public String Createuserid;
-        @AuraEnabled public String LineType;
-
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
@@ -991,7 +962,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ShipmentContainerizedFlag;
         @AuraEnabled public String TotalWeightUOM;
         @AuraEnabled public res_AddressWrapper BillToAddress;
-        //@AuraEnabled public String Status;
+//@AuraEnabled public String Status;
         @AuraEnabled public res_ShipmentStatusWrapper Status;
         @AuraEnabled public String ShipmentNo;
         @AuraEnabled public String TotalWeight;
