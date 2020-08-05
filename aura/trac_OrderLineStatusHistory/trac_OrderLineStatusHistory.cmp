@@ -5,19 +5,27 @@
 <aura:component description="trac_OrderLineStatusHistory" controller="trac_OrderLineStatusHistoryCtlr" extends="c:trac_BaseComponent">
 
     <aura:attribute name="orderLineHistory" type="Object"/>
-    <aura:attribute name="businessUnit" type="String"/>
-    <aura:attribute name="order" type="Object"/>
-    <aura:attribute name="orderLineItem" type="Object"/>
+    <aura:attribute name="businessUnit"     type="String"/>
+    <aura:attribute name="order"            type="Object"/>
+    <aura:attribute name="orderLineItem"    type="Object"/>
+    <aura:attribute name="showHistoryTable" type="Boolean" default="true" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 
+    <aura:if isTrue="{!v.showHistoryTable}">
     <div class="slds-scrollable" >
         <!-- TABLE CONTENT-->
         <table class="slds-table slds-table_bordered slds-table_cell-buffer">
             <thead>
             <tr class="slds-text-title_caps">
                 <th scope="col">
+                    <div class="slds-truncate">Created Date</div>
+                </th>
+                <th scope="col">
                     <div class="slds-truncate">Status</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate">Reason Code</div>
                 </th>
                 <th scope="col">
                     <div class="slds-truncate">Reason</div>
@@ -31,6 +39,9 @@
             </aura:iteration>
             </tbody>
         </table>
-
     </div>
+        <aura:set attribute="else">
+            <c:trac_DisplayBadges orderObject="{!v.orderLineHistory}" />
+        </aura:set>
+    </aura:if>
 </aura:component>

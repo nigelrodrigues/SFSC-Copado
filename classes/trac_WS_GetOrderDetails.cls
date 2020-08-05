@@ -12,6 +12,9 @@ public with sharing class trac_WS_GetOrderDetails {
     public GetOrderDetailsRequest getOrderDetailsRequest;
     public GetOrderDetailsResponse getOrderDetailsResponse;
     public String jsonError;
+    Map<String, OrderHoldWrapper> orderHoldTypeMap = new Map<String, OrderHoldWrapper>();
+    
+
 
     public Boolean send() {
         Boolean success = false;
@@ -21,8 +24,12 @@ public with sharing class trac_WS_GetOrderDetails {
         if (trac_WS_WebServiceHelper.isValidResponse(res)) {
             getOrderDetailsResponse = parse(res.getBody());
 
+            for ( Order_Hold_Badge_Mapping__mdt orderHoldBadgeMapping : [ SELECT Id, Status_Description__c, Badge__c, Hold_Type__c FROM Order_Hold_Badge_Mapping__mdt])
+            {
+                orderHoldTypeMap.put( orderHoldBadgeMapping.Hold_Type__c,
+                        new OrderHoldWrapper(orderHoldBadgeMapping.Status_Description__c, orderHoldBadgeMapping.Badge__c));
+            }
             updateDataFormat();
-
             success = true;
         } else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
@@ -35,6 +42,8 @@ public with sharing class trac_WS_GetOrderDetails {
     public static GetOrderDetailsResponse parse(String json) {
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
+
+
 
     private String getEndpoint() {
         String dynamicEndpoint = ENDPOINT;
@@ -51,13 +60,87 @@ public with sharing class trac_WS_GetOrderDetails {
 
     private void updateDataFormat() {
         try {
+            setBadges();
+            setCOMXdata();
             linkItemsToContainers();
             linkItemsToShipmentLines();
             setPreOrderDateFields();
             setItemUPCs();
             setBlueMartiniStatus();
             sortItems();
+            setShipmentLoyaltyFields();
         } catch (Exception e) {
+        }
+    }
+
+    private void setBadges()
+    {
+        if ( getOrderDetailsResponse != null)
+        {
+            if (getOrderDetailsResponse.OrderHoldTypes != null && getOrderDetailsResponse.OrderHoldTypes.OrderHoldType != null)
+            {
+                getOrderDetailsResponse.Badges = new List<String>();
+                // Check for holds at the order level
+                for ( res_OrderHoldTypeWrapper orderHoldType : getOrderDetailsResponse.OrderHoldTypes.OrderHoldType)
+                {
+                    if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(orderHoldType.HoldType) != null )
+                    {
+                        OrderHoldWrapper orderHold = orderHoldTypeMap.get(orderHoldType.HoldType);
+
+                        if ( orderHold.statusDesc.equals(orderHoldType.StatusDescription) )
+                        {
+                            if( !String.isEmpty(orderHold.badge))
+                            {
+                                // Assign badge at Order Level.
+                                // 'Active Hold' assigned in the trac_OrderLineItem component (at Line level).
+                                getOrderDetailsResponse.Badges.add( orderHold.badge );
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        if( getOrderDetailsResponse.Badges!=null && !getOrderDetailsResponse.Badges.isEmpty())
+        {
+            Set<String> badgeSet = new Set<String>();
+            badgeSet.addAll(getOrderDetailsResponse.Badges);
+            getOrderDetailsResponse.Badges.clear();
+            getOrderDetailsResponse.Badges.addAll(badgeSet);
+        }
+    }
+
+    private void setCOMXdata()
+    {
+        if (getOrderDetailsResponse != null &&
+                getOrderDetailsResponse.OrderLines != null &&
+                getOrderDetailsResponse.OrderLines.OrderLine != null)
+        {
+            res_OrderLineWrapper orderline =  getOrderDetailsResponse.OrderLines.OrderLine.get(0);
+            // Checks to find the COMX data
+            if ( orderline.Instructions != null && orderline.Instructions.Instruction.get(0) != null)
+            {
+                res_InstructionWrapper instruction = orderline.Instructions.Instruction.get(0);
+                if ( instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionUsage.equals('COMX') )
+                {
+                    // Get the store and associate IDs (Max 2)
+                    List<String> comxDataList = new List<String>();
+                    String[] comxData = orderline.Createuserid.split(',');
+                    for (String data : comxData)
+                    {
+                        comxDataList.add(data);
+                    }
+
+                    if( !comxDataList.isEmpty())
+                    {
+                        getOrderDetailsResponse.COMXdata = new List<COMXdataWrapper>();
+                        for (String comXValues : comxDataList)
+                        {
+                            getOrderDetailsResponse.COMXdata.add( new COMXdataWrapper(comXValues.substring(0,4), comXValues.substring(4, comXValues.length())));
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -230,6 +313,91 @@ public with sharing class trac_WS_GetOrderDetails {
         return displayStatus;
     }
 
+    private void setShipmentLoyaltyFields() {
+        if (getOrderDetailsResponse == null) {
+            return;
+        }
+        // calculate total point label and value
+        if (getOrderDetailsResponse.Extn != null) {
+            String displayValue = 'N/A';
+            getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Earned';
+            if (getOrderDetailsResponse.Extn.ExtnPointsLost != null) {
+                getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Lost';
+                displayValue = getOrderDetailsResponse.Extn.ExtnPointsLost;
+            } else if (getOrderDetailsResponse.Extn.ExtnPointsEarned != null) {
+                displayValue = getOrderDetailsResponse.Extn.ExtnPointsEarned;
+            }
+            getOrderDetailsResponse.displayTotalPointsValue = displayValue;
+
+            // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
+            getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
+            getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
+        }
+
+        // prepare primeLines map
+        Map<String,Map<String,String>> mapPrimeLines = new Map<String,Map<String,String>>();
+        if (getOrderDetailsResponse.OrderLines != null && !getOrderDetailsResponse.OrderLines.OrderLine.isEmpty()) {
+            for (res_OrderLineWrapper orderLine : getOrderDetailsResponse.OrderLines.OrderLine) {
+                Map<String,String> primeLineRow = new Map<String,String>();
+                primeLineRow.put('ShortDescription', orderLine.ItemDetails.PrimaryInformation.ShortDescription);
+                primeLineRow.put('Status', orderLine.Status);
+                primeLineRow.put('UnitPrice', orderLine.LinePriceInfo.UnitPrice);
+                primeLineRow.put('Model', orderLine.ItemDetails.ClassificationCodes.Model);
+                mapPrimeLines.put(orderLine.PrimeLineNo, primeLineRow);
+            }
+        }
+
+        // loop over payment method list
+        if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
+            for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
+                paymentMethod.DisplayPointsAuthorized = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalAuthorized) ? Decimal.valueOf(paymentMethod.TotalAuthorized) * 200 : 0.00));
+                paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
+            }
+        }
+
+        // loop over shipments to fill out fields from primeLines
+        if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
+            for (res_ShipmentWrapper shipment : getOrderDetailsResponse.Shipments.Shipment) {
+                // set shipment display extn fields
+                shipment.Extn.displayExtnPointsLabel = 'Points Earned';
+                String displayPointsValue = 'N/A';
+                if (shipment.Extn != null) {
+                    if (String.isNotBlank(shipment.Extn.ExtnPointsLost)) {
+                        shipment.Extn.displayExtnPointsLabel = 'Points Lost';
+                        displayPointsValue = shipment.Extn.ExtnPointsLost;
+                    } else if (String.isNotBlank(shipment.Extn.ExtnPointsEarned)) {
+                        displayPointsValue = shipment.Extn.ExtnPointsEarned;
+                    }
+                }
+                shipment.Extn.displayExtnPointsValue = displayPointsValue;
+                shipment.Extn.displayExtnLoyaltyNo = String.isNotBlank(shipment.Extn.ExtnLoyaltyNo) ? shipment.Extn.ExtnLoyaltyNo : '-';
+                shipment.Extn.displayExtnLoyaltyTier = String.isNotBlank(shipment.Extn.ExtnLoyaltyTier) ? shipment.Extn.ExtnLoyaltyTier : 'N/A';
+
+                // loop over order invoice list
+                shipment.customInvoiceNo = '';
+                if (shipment.OrderInvoiceList != null && !shipment.OrderInvoiceList.OrderInvoice.isEmpty()) {
+                    for (res_OrderInvoiceWrapper invoice : shipment.OrderInvoiceList.OrderInvoice) {
+                        shipment.customInvoiceNo += (shipment.customInvoiceNo.length() > 0 ? ', ' : '') + invoice.InvoiceNo;
+                    }
+                }
+
+                // loop over shipment lines
+                if (shipment.ShipmentLines != null && !shipment.ShipmentLines.ShipmentLine.isEmpty()) {
+                    Integer i = 1;
+                    for (res_ShipmentLineWrapper shipmentLine : shipment.ShipmentLines.ShipmentLine) {
+                        Map<String,String> primeLine = mapPrimeLines.get(shipmentLine.PrimeLineNo);
+                        shipmentLine.customIdx = shipment.ShipmentNo + '-' + i;
+                        shipmentLine.customShortDescription = primeLine.get('ShortDescription');
+                        shipmentLine.customStatus = primeLine.get('Status');
+                        shipmentLine.customUnitPrice = primeLine.get('UnitPrice');
+                        shipmentLine.customModel = primeLine.get('Model');
+                        i++;
+                    }
+                }
+            }
+        }
+    }
+
     public class GetOrderDetailsRequest {
         public req_OrderWrapper Order;
     }
@@ -282,9 +450,14 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String displayTotalPointsLabel;
         @AuraEnabled public String displayTotalPointsValue;
+        @AuraEnabled public String ResponseCode;
+        @AuraEnabled public String ResposneMessage;
+        @AuraEnabled public List<String> Badges;
+        @AuraEnabled public List<COMXdataWrapper> COMXdata;
     }
 
-    public class res_OrderLineWrapper implements Comparable {
+    public class res_OrderLineWrapper implements Comparable
+    {
         @AuraEnabled public String SCAC;
         @AuraEnabled public res_LinePriceInfoWrapper LinePriceInfo;
         @AuraEnabled public res_LineChargesWrapper LineCharges;
@@ -296,13 +469,11 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_AddressWrapper PersonInfoShipTo;
         @AuraEnabled public res_LineTaxesWrapper LineTaxes;
         @AuraEnabled public String CarrierServiceCode;
-        @AuraEnabled public String LineType;
         @AuraEnabled public String Status;
         @AuraEnabled public res_ItemWrapper Item;
         @AuraEnabled public String OrderLineKey;
         @AuraEnabled public res_InstructionsWrapper Instructions;
         @AuraEnabled public res_LineOverallTotalsWrapper LineOverallTotals;
-        @AuraEnabled public res_ShipNodeWrapper Shipnode;
         @AuraEnabled public String DeliveryMethod;
         @AuraEnabled public String PrimeLineNo;
         @AuraEnabled public String GiftFlag;
@@ -315,11 +486,29 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customUPC;
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String customBlueMartiniCancelCode;
+        @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
+        @AuraEnabled public String Createuserid;
+        @AuraEnabled public String LineType;
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
             return (PrimeLineNo != null && compareToOrderLineWrapper != null && Integer.valueOf(PrimeLineNo) > Integer.valueOf(compareToOrderLineWrapper.PrimeLineNo)) ? 1 : -1;
         }
+    }
+
+
+
+    public class res_OrderLineHoldTypesWrapper
+    {
+        @AuraEnabled public List<res_OrderLineHoldType_Wrapper> OrderHoldType;
+    }
+    public class res_OrderLineHoldType_Wrapper
+    {
+        @AuraEnabled public String Status;
+        @AuraEnabled public String HoldType;
+        @AuraEnabled public String ReasonText;
+        @AuraEnabled public String StatusDescription;
+        @AuraEnabled public String LastHoldTypeDate;
     }
 
     public class res_OrderHoldTypesWrapper {
@@ -411,10 +600,11 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public class res_PaymentMethodWrapper {
-        @AuraEnabled public String PaymentReference3;
         @AuraEnabled public String PaymentReference1;
-        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String PaymentReference2;
+        @AuraEnabled public String PaymentReference3;
+        @AuraEnabled public String PaymentReference9;
+        @AuraEnabled public String CreditCardExpDate;
         @AuraEnabled public String UnlimitedCharges;
         @AuraEnabled public String TotalRefundedAmount;
         @AuraEnabled public String RequestedChargeAmount;
@@ -434,6 +624,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String CreditCardNo;
         @AuraEnabled public String DisplayCreditCardNo;
         @AuraEnabled public res_AddressWrapper PersonInfoBillTo;
+        @AuraEnabled public String DisplayPointsAuthorized;
+        @AuraEnabled public String DisplayPointsCharged;
     }
 
     public class res_HeaderTaxesWrapper {
@@ -680,6 +872,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String InstructionType;
         @AuraEnabled public String InstructionText;
         @AuraEnabled public String SequenceNo;
+        @AuraEnabled public String InstructionUsage;
     }
 
     public class res_LineOverallTotalsWrapper {
@@ -769,7 +962,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ShipmentContainerizedFlag;
         @AuraEnabled public String TotalWeightUOM;
         @AuraEnabled public res_AddressWrapper BillToAddress;
-        //@AuraEnabled public String Status;
+//@AuraEnabled public String Status;
         @AuraEnabled public res_ShipmentStatusWrapper Status;
         @AuraEnabled public String ShipmentNo;
         @AuraEnabled public String TotalWeight;
@@ -886,7 +1079,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ExtnWrapper Extn;
         @AuraEnabled public String ShippingNode;
         @AuraEnabled public String ShipNode;
-        @AuraEnabled public String Description;
     }
 
     public class res_AddressWrapper {
@@ -907,4 +1099,29 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String AddressLine2;
         @AuraEnabled public String AddressLine3;
     }
+
+    public class OrderHoldWrapper
+    {
+        public String statusDesc {get;set;}
+        public String badge {get;set;}
+
+        public OrderHoldWrapper ( String statusDescription, String badge)
+        {
+            this.statusDesc =statusDescription;
+            this.badge = badge;
+        }
+    }
+
+    public class COMXdataWrapper
+    {
+        @AuraEnabled public String storeNo{get;set;}
+        @AuraEnabled public String associateNo{get;set;}
+
+        public COMXdataWrapper( String storeNo, String associateNo)
+        {
+            this.storeNo= storeNo;
+            this.associateNo= associateNo;
+        }
+    }
+
 }

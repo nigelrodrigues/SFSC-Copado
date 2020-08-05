@@ -1,0 +1,28 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @description To show active holds summary badges at order level and order line item level (Cancellation codes, 'Active Hold').
+ - @date 22-July-2020
+ -->
+<aura:component description="trac_DisplayBadges">
+    <aura:attribute name="orderObject"   type="Object" />
+    <aura:attribute name="lineItemLevel" type="Boolean" default="true"/>
+
+    <aura:if isTrue="{!v.lineItemLevel}">
+
+        <!-- For Cancellation Badges -->
+        <aura:iteration items="{!v.orderObject}" var="obj">
+            <aura:if isTrue="{!not(empty(obj.Badge))}">
+                <p><lightning:badge class="slds-badge_inverse" label="{!obj.Badge}"/></p>
+            </aura:if>
+        </aura:iteration>
+
+        <aura:set attribute="else">
+            <!-- For Badges at Order Level -->
+            <aura:iteration items="{!v.orderObject.Badges}" var="badge">
+                <lightning:badge label="{!badge}"/>
+            </aura:iteration>
+        </aura:set>
+
+    </aura:if>
+
+</aura:component>
