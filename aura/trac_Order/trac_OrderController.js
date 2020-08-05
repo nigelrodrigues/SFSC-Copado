@@ -5,9 +5,7 @@
     doInit : function (component, event, helper) {
         helper.setUnresolvedHolds(component, event, helper);
         helper.spaBusinessUnit(component, event, helper);
-
         helper.setCancelabilityMap(component, event, helper);
-
         // For Cancel button in Order Actions
         let order = component.get("v.order");
         let businessUnit = component.get("v.businessUnit");
@@ -120,11 +118,10 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
+
                     }
                 );
                 break;
-
-
             case "salesPriceAdjustment":
                 $A.createComponent(
                     "c:trac_SalesPriceAdjustmentButton",
@@ -141,8 +138,6 @@
                     }
                 );
                 break;
-
-
             case "orderRefundCredit":
                 let action = component.find("componentORC");
                 component.find('componentORC').set('v.caseRecord', caseRecord);
@@ -150,7 +145,6 @@
                 component.find('componentORC'). set('v.showButton', false);
                 action.createORC();
                 break;
-
             case "paymentCapture":
                 $A.createComponent(
                     "c:trac_PaymentCapture",
@@ -185,7 +179,7 @@
             case "linkToCase":
                 this.handleImport(component, event, helper);
                 break;
-
         }
     }
+
 })
