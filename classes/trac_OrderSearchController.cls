@@ -154,6 +154,11 @@ public with sharing class trac_OrderSearchController {
         return response;
     }
 
+    @AuraEnabled
+    public static Map<String, Boolean> getOrderLineCancelabilityByStatus(String businessUnit) {
+        return trac_WS_OrderUtils.getOrderLineCancelabilityByStatus(businessUnit);
+    }
+
     private static trac_WS_GetOrderList.GetOrderListResponse callGetOrderList(trac_WS_GetOrderList.req_OrderWrapper reqWrapper) {
         trac_WS_GetOrderList orderList = new trac_WS_GetOrderList();
 

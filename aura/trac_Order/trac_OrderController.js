@@ -5,6 +5,9 @@
     doInit : function (component, event, helper) {
         helper.setUnresolvedHolds(component, event, helper);
         helper.spaBusinessUnit(component, event, helper);
+
+        helper.setCancelabilityMap(component, event, helper);
+
         // For Cancel button in Order Actions
         let order = component.get("v.order");
         let businessUnit = component.get("v.businessUnit");
@@ -35,6 +38,8 @@
         } else {
             helper.setChannel(component, event, helper, order)
         }
+
+
     },
     showOrderLineItems : function (component, event, helper) {
         if(component.get("v.showLineItem")){
@@ -146,7 +151,6 @@
                 action.createORC();
                 break;
 
-
             case "paymentCapture":
                 $A.createComponent(
                     "c:trac_PaymentCapture",
@@ -163,8 +167,6 @@
                     }
                 );
                 break;
-
-
             case "orderReturnFee":
                 $A.createComponent(
                     "c:trac_OrderReturnFee",
@@ -180,7 +182,6 @@
                     }
                 );
                 break;
-
             case "linkToCase":
                 this.handleImport(component, event, helper);
                 break;

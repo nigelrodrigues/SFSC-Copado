@@ -11,7 +11,11 @@
     <aura:attribute name="disabledCancel" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
     <aura:attribute name="isActiveHold" type="Boolean" default="false" access="private" />
+
+    <aura:attribute name="cancelabilityMap" type="Map" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.cancelabilityMap}" action="{!c.resetDisabled}"/>
+
     <div class="slds-box slds-box_small slds-theme_shade">
         <aura:if isTrue="{!not(empty(v.orderLineItem))}">
             <div>
@@ -19,7 +23,6 @@
                     <lightning:layout class="slds-grid slds-text-body_small slds-align_absolute-center">
                         <lightning:layoutItem class="slds-size_1-of-5 slds-p-left--medium">
                             <div class="header-column">
-
                                 <aura:if isTrue="{!and(v.orderLineItem.Shipnode.NodeType == 'DC', v.orderLineItem.Shipnode.ShipNode == 'DC-689-585')}">
                                     <p><lightning:badge class="slds-badge_lightest" label="Ship from DC: TNDC SwissLog" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
                                 </aura:if>
@@ -111,11 +114,9 @@
                                 <p class="field-title slds-form-element__label slds-no-flex">Designer</p>
                                 <p>
                                     <lightning:formattedRichText value="{!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}" class="slds-text-title_caps item-description" style="font-size:11px" disableLinkify="true"/>
-
                                 </p>
                             </div>
                         </lightning:layoutItem>
-
                         <lightning:layoutItem class="slds-size_1-of-12 slds-p-left--small">
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">Status</p>
@@ -126,7 +127,6 @@
                         </lightning:layoutItem>
                         <lightning:layoutItem class="slds-size_1-of-12 slds-p-left--medium">
                             <div class="header-column">
-
                                 <p class="field-title slds-form-element__label slds-no-flex">Line Total</p>
                                 <p>
                                     <lightning:formattedRichText value="{!v.orderLineItem.LineOverallTotals.LineTotal}" class="slds-text-title_caps item-description" style="font-size:11px" disableLinkify="true"/>

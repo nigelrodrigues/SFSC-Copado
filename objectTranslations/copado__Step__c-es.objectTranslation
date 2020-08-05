@@ -172,6 +172,6 @@ WARNING: Credits consumption will apply as a regular deployment since resource-w
         <label><!-- dataJson --></label>
         <name>copado__dataJson__c</name>
     </fields>
-    <gender><!-- Feminine --></gender>
+    
     <nameFieldLabel><!-- Step Name --></nameFieldLabel>
 </CustomObjectTranslation>
