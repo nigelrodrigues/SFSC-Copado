@@ -60,6 +60,21 @@
         <unique>false</unique>
     </fields>
     <label>Order Line Status Setting</label>
+    <listViews>
+        <fullName>All_Records</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Order_Line_Status__c</columns>
+        <columns>Banner_Hudson_s_Bay__c</columns>
+        <columns>Banner_Lord_Taylor__c</columns>
+        <columns>Banner_MHF__c</columns>
+        <columns>Banner_Off_5th__c</columns>
+        <columns>Banner_Saks__c</columns>
+        <columns>Can_Be_Cancelled__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Records</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>Order Line Status Settings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>
