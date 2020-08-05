@@ -154,6 +154,11 @@ public with sharing class trac_OrderSearchController {
         return response;
     }
 
+    @AuraEnabled
+    public static Map<String, Boolean> getOrderLineCancelabilityByStatus(String businessUnit) {
+        return trac_WS_OrderUtils.getOrderLineCancelabilityByStatus(businessUnit);
+    }
+
     private static trac_WS_GetOrderList.GetOrderListResponse callGetOrderList(trac_WS_GetOrderList.req_OrderWrapper reqWrapper) {
         trac_WS_GetOrderList orderList = new trac_WS_GetOrderList();
 
@@ -203,6 +208,28 @@ public with sharing class trac_OrderSearchController {
                 Order_Billing_Postal_Code__c = orderZipCode
         );
         update cs;
+    }
+
+    @AuraEnabled
+    public static String getOrderNumberRange(String label) {
+        try {
+            return [select Range__c from Order_Number_Range__mdt where Label = :label].Range__c;
+        }
+        catch (Exception e) {
+            OrderSearchException orderSearchException = new OrderSearchException();
+            throw orderSearchException;
+        }
+    }
+
+    @AuraEnabled
+    public static String getBlueMartiniLink() {
+        try {
+            return [select Link__c from Blue_Martini__mdt].Link__c;
+        }
+        catch (Exception e) {
+            OrderSearchException orderSearchException = new OrderSearchException();
+            throw orderSearchException;
+        }
     }
 
     public class OrderSearchException extends Exception {}

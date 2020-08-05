@@ -48,4 +48,32 @@ private class trac_OrderSearchControllerTest {
         test_Case = [SELECT Id, Order_Number__c FROM Case LIMIT 1];
         System.assertEquals('123456', test_Case.Order_Number__c, 'Case not updated successfully.');
     }
+
+    @IsTest
+    static void testGetOrderNumberRange() {
+        Test.startTest();
+        String result = trac_OrderSearchController.getOrderNumberRange('Digital Blue Martini');
+        Test.stopTest();
+
+        System.assert(result != null, 'ranges match');
+    }
+
+    @IsTest
+    static void testGetBlueMartiniLink() {
+        Test.startTest();
+        String result = trac_OrderSearchController.getBlueMartiniLink();
+        Test.stopTest();
+
+        System.assert(result != null ,'Retrieved linked');
+    }
+
+    @IsTest
+    static void testGetOrderLineCancelabilityByStatus() {
+        Test.startTest();
+        String businessUnit = 'Hudson\'s Bay';
+        Map<String,Boolean> settings = trac_OrderSearchController.getOrderLineCancelabilityByStatus(businessUnit);
+        Test.stopTest();
+
+        System.assert(!settings.isEmpty(), 'No rows defined for custom metadata type Order Line Status Settings with Business Unit = ' + businessUnit);
+    }
 }
