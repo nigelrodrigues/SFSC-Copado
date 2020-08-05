@@ -129,6 +129,34 @@ public without sharing class trac_WS_OrderUtils {
         return orderDetails.getOrderDetailsResponse;
     }
 
+    public static Map<String, Boolean> getOrderLineCancelabilityByStatus(String businessUnit) {
+        Map<String,Boolean> retMap = new Map<String,Boolean>();
+        Map<String,String> mapBannerToField = new Map<String,String>{
+                'Hudson\'s Bay' => 'Banner_Hudson_s_Bay__c',
+                'MHF' => 'Banner_MHF__c',
+                'Lord + Taylor' => 'Banner_Lord_Taylor__c',
+                'Saks' => 'Banner_Saks__c',
+                'Off 5th' => 'Banner_Off_5th__c'
+        };
+        String bannerField = mapBannerToField.get(businessUnit);
+
+        if (String.isEmpty(bannerField)) {
+            // no match for business unit
+            return retMap;
+        }
+
+        String query = 'SELECT Order_Line_Status__c, Banner_Hudson_s_Bay__c, Banner_Lord_Taylor__c, ' +
+                            'Banner_MHF__c, Banner_Off_5th__c, Banner_Saks__c, Can_Be_Cancelled__c ' +
+                        'FROM Order_Line_Status_Setting__mdt ' +
+                        'WHERE ' + bannerField + ' = TRUE ';
+        List<Order_Line_Status_Setting__mdt> settings = Database.query(query);
+        for (Order_Line_Status_Setting__mdt setting : settings) {
+            retMap.put(setting.Order_Line_Status__c, setting.Can_Be_Cancelled__c);
+        }
+
+        return retMap;
+    }
+
     private static String getDeliveryMethodFromOrderResponse(trac_WS_GetOrderDetails.GetOrderDetailsResponse getOrderDetailsResponse) {
         String deliveryMethod;
 

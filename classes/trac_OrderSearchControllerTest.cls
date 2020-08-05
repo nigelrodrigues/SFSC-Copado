@@ -66,4 +66,16 @@ private class trac_OrderSearchControllerTest {
 
         System.assert(result != null ,'Retrieved linked');
     }
+
+
+    @IsTest
+    static void testGetOrderLineCancelabilityByStatus() {
+        Test.startTest();
+        String businessUnit = 'Hudson\'s Bay';
+        Map<String,Boolean> settings = trac_OrderSearchController.getOrderLineCancelabilityByStatus(businessUnit);
+        Test.stopTest();
+
+        System.assert(!settings.isEmpty(), 'No rows defined for custom metadata type Order Line Status Settings with Business Unit = ' + businessUnit);
+    }
+
 }

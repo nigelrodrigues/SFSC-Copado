@@ -16,6 +16,11 @@
         component.set("v.isModalOpen", false);
     },
 
+    resetDisabled: function(component, event, helper) {
+        console.log('Inside resetDisabled');
+        helper.setDisabled(component);
+    },
+
     toggleTracking: function(component, event, helper) {
         var showTrackingInfo = component.get("v.showTrackingInfo");
 
