@@ -75,7 +75,7 @@
                                             <div class="header-column">
                                                 <p class="field-title slds-form-element__label slds-no-flex">
                                                     Quantity</p>
-                                                <p>{!containerDetail.Quantity}</p>
+                                                <p>{!containerDetail.ShipmentLine.Quantity}</p>
                                             </div>
                                         </lightning:layoutItem>
 
