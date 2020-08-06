@@ -40,8 +40,6 @@
         }
         component.set("v.validSpaBusinessUnit", validSpaBusinessUnit);
     },
-
-
     setBody : function (component, event, helper, newCmp, status, errorMessage)
     {
         if (status === "SUCCESS")
@@ -79,6 +77,8 @@
         });
         $A.enqueueAction(action);
     },
+
+
     setCancelabilityMap: function(component, event, helper) {
         console.log('Inside setCancelabilityMap');
         var businessUnit = component.get('v.businessUnit');
@@ -94,6 +94,8 @@
         });
         $A.enqueueAction(action);
     },
+
+
     isBetweenRange : function (rangeStr, number) {
         var ranges = rangeStr.split("-");
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false

@@ -222,48 +222,44 @@
                     console.error("failed with state: " + state);
                 }
             });
+
             $A.enqueueAction(action);
         }
     },
     setRange : function(component, event, helper) {
-
         let action = component.get("c.getOrderNumberRange");
-
         component.set("v.isLoading", true);
         action.setParams({
             "label": 'Digital Blue Martini'
         });
         action.setCallback(this, function(response) {
             if (response.getState() == "SUCCESS") {
-
                 let range = response.getReturnValue();
-
                component.set("v.range", range);
             }
             component.set("v.isLoading", false);
         });
+
         $A.enqueueAction(action);
     },
     setBlueMartiniLink : function(component, event, helper) {
-
         let action = component.get("c.getBlueMartiniLink");
-
         component.set("v.isLoading", true);
         action.setCallback(this, function(response) {
             if (response.getState() == "SUCCESS") {
-
                 let link = response.getReturnValue();
-
                component.set("v.link", link);
             }
+
+
             component.set("v.isLoading", false);
         });
         $A.enqueueAction(action);
     },
+
     isBetweenRange : function (rangeStr, number) {
 
         let ranges = rangeStr.split("-");
-
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
     }
 })
