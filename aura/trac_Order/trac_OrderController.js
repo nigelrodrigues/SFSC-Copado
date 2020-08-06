@@ -128,13 +128,6 @@
                     }
                 );
                 break;
-            case "orderRefundCredit":
-                let action = component.find("componentORC");
-                component.find('componentORC').set('v.caseRecord', caseRecord);
-                component.find('componentORC').set('v.order', order);
-                component.find('componentORC'). set('v.showButton', false);
-                action.createORC();
-                break;
             case "paymentCapture":
                 $A.createComponent(
                     "c:trac_PaymentCapture",
