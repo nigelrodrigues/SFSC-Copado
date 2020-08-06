@@ -2,7 +2,6 @@
  - Created by jhoran on 7/17/2019.
  -->
 <aura:component description="trac_CancelOrder" extends="c:trac_BaseComponent" controller="trac_CancelOrderCtlr">
-    <aura:attribute name="showButton" type="Boolean" default="true" />
     <aura:attribute name="order" type="Object"/>
     <aura:attribute name="orderLineItem" type="Object"/>
     <aura:attribute name="caseRecord" type="Case"/>
