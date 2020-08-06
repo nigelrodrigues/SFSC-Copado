@@ -169,11 +169,6 @@
             case "linkToCase":
                 this.handleImport(component, event, helper);
                 break;
-        }
-
-    }
-                );
-                break;
             case "salesPriceAdjustment":
                 $A.createComponent(
                     "c:trac_SalesPriceAdjustmentButton",
