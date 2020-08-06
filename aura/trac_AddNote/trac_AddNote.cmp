@@ -3,6 +3,7 @@
  -->
 
 <aura:component description="trac_AddNote" extends="c:trac_BaseComponent" controller="trac_AddNoteCtlr">
+    <aura:attribute name="showButton" type="Boolean" default="true" />
     <aura:attribute name="order" type="Object"/>
     <aura:attribute name="orderLineItem" type="Object"/>
     <aura:attribute name="caseRecord" type="Case"/>
@@ -12,10 +13,12 @@
 
     <aura:registerEvent name="refreshOrderEvent" type="c:trac_RefreshOrderEvent"/>
 
+    <aura:if isTrue="{!v.showButton}">
     <lightning:button onclick="{!c.handleOpenModal}"
                       variant="brand"
                       label="Add Note to OMS"
                       iconName="utility:note"/>
+    </aura:if>
 
     <aura:if isTrue="{!v.isModalOpen}">
         <!-- Modal/Popup Box starts here-->

@@ -2,15 +2,15 @@
  * Created by jhoran on 7/3/2019.
  */
 ({
-
     createOrderRefundCredit: function(component, event, helper) {
 
-        component.set('v.isLoading', true);
+        component.set("v.isModalOpen", true);
+        component.find("Id_spinner").set("v.class" , 'slds-show');
 
         var caseRecord = component.get("v.caseRecord");
+        console.log('ID: ' + caseRecord);
         var order = component.get("v.order");
         var orderLineItem = component.get("v.orderLineItem");
-
         component.find("orderRefundCreditCreator").getNewRecord(
             "Order_Refund_Credit__c", // sObject type (objectApiName)
             null,      // recordTypeId
@@ -22,7 +22,6 @@
                     console.log("Error initializing record template: " + error);
                     return;
                 }
-
                 component.set("v.simpleNewOrderRefundCredit.Case__c", caseRecord.Id);
                 component.set("v.simpleNewOrderRefundCredit.Credit_Card_Alias__c", helper.getCreditCardAlias(order));
                 component.set("v.simpleNewOrderRefundCredit.Full_Credit_Card_Number__c", helper.getLast4CardNumber(order));
@@ -48,10 +47,8 @@
                 component.set("v.simpleNewOrderRefundCredit.Item_Name__c", helper.getItemName(orderLineItem, order));
                 component.set("v.simpleNewOrderRefundCredit.Item_Description__c", helper.getItemDescription(orderLineItem, order));
                 component.set("v.simpleNewOrderRefundCredit.Order_Items_Table__c", helper.getOrderItemsTable(order, helper));
-
                 component.find("orderRefundCreditCreator").saveRecord(function(saveResult) {
                     if (saveResult.state === "SUCCESS" || saveResult.state === "DRAFT") {
-                        component.set("v.isModalOpen", true);
                         var flow = component.find("flow");
                         var inputVariables = [
                             {
@@ -61,6 +58,7 @@
                             }
                         ];
                         flow.startFlow("Order_Refund_Credit", inputVariables);
+                        component.find("Id_spinner").set("v.class" , 'slds-hide');
                     } else if (saveResult.state === "INCOMPLETE") {
                         // handle the incomplete state
                         console.log("User is offline, device doesn't support drafts.");
@@ -71,20 +69,15 @@
                         console.log('Unknown problem, state: ' + saveResult.state + ', error: ' + JSON.stringify(saveResult.error));
                     }
                 });
-
-                component.set('v.isLoading', false);
             })
         );
     },
-
     handleOpenModal: function(component, event, helper) {
         component.set("v.isModalOpen", true);
     },
-
     handleCloseModal: function(component, event, helper) {
         component.set("v.isModalOpen", false);
     },
-
     handleStatusChange : function (component, event, helper) {
         if(event.getParam("status") === "FINISHED") {
             component.set("v.isModalOpen", false);
