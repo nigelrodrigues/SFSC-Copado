@@ -152,12 +152,12 @@
             <translation><!-- MHF --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Off 5th</masterLabel>
-            <translation><!-- Off 5th --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Saks</masterLabel>
             <translation><!-- Saks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saks OFF 5TH</masterLabel>
+            <translation><!-- Saks OFF 5TH --></translation>
         </picklistValues>
     </fields>
     <fields>

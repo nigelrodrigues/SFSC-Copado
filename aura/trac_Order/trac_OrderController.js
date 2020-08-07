@@ -5,8 +5,8 @@
     doInit : function (component, event, helper) {
         helper.setUnresolvedHolds(component, event, helper);
         helper.spaBusinessUnit(component, event, helper);
-
         helper.setCancelabilityMap(component, event, helper);
+        helper.setActiveHold(component, event, helper);
         // For Cancel button in Order Actions
         let order = component.get("v.order");
         let businessUnit = component.get("v.businessUnit");
@@ -33,7 +33,6 @@
         } else {
             helper.setChannel(component, event, helper, order)
         }
-
     },
     showOrderLineItems : function (component, event, helper) {
         if(component.get("v.showLineItem")){
@@ -108,59 +107,8 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
-
                     }
                 );
-                break;
-            case "salesPriceAdjustment":
-                $A.createComponent(
-                    "c:trac_SalesPriceAdjustmentButton",
-                    {
-                        "isModalOpen": true,
-                        "order": order,
-                        "caseRecord": caseRecord,
-                        "recordId": recordId,
-                        "showButton": false
-                    },
-                    function(newCmp, status, errorMessage)
-                    {
-                        helper.setBody(component, event, helper, newCmp, status, errorMessage);
-                    }
-                );
-                break;
-            case "paymentCapture":
-                $A.createComponent(
-                    "c:trac_PaymentCapture",
-                    {
-                        "isModalOpen": true,
-                        "order": order,
-                        "caseRecord": caseRecord,
-                        "recordId": recordId,
-                        "showButton": false
-                    },
-                    function(newCmp, status, errorMessage)
-                    {
-                        helper.setBody(component, event, helper, newCmp, status, errorMessage);
-                    }
-                );
-                break;
-            case "orderReturnFee":
-                $A.createComponent(
-                    "c:trac_OrderReturnFee",
-                    {
-                        "isModalOpen": true,
-                        "order": order,
-                        "caseRecord": caseRecord,
-                        "showButton": false
-                    },
-                    function(newCmp, status, errorMessage)
-                    {
-                        helper.setBody(component, event, helper, newCmp, status, errorMessage);
-                    }
-                );
-                break;
-            case "linkToCase":
-                this.handleImport(component, event, helper);
                 break;
             case "salesPriceAdjustment":
                 $A.createComponent(

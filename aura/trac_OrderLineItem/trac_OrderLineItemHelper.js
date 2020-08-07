@@ -1,7 +1,5 @@
 ({
     setDisabled: function(component) {
-
-
         var orderLineItem = component.get("v.orderLineItem");
         var disabled = true;
         var cancelabilityMap = component.get('v.cancelabilityMap');
@@ -11,22 +9,9 @@
         component.set("v.disabledCancel", disabled);
     },
 
-    setActiveHold: function(component) {
-        var orderLineItem = component.get("v.orderLineItem");
-
-        if(orderLineItem.OrderHoldTypes.OrderHoldType) {
-            for (var orderHoldType of orderLineItem.OrderHoldTypes.OrderHoldType){
-                console.log(orderHoldType)
-                if(orderHoldType.StatusDescription == 'Created') {
-                    component.set("v.isActiveHold", true);
-                }
-            }
-        }
-    },
 
     handleShowOrderRefundCredit: function(component, event, helper) {
         let container = component.find("divBody");
-
         $A.createComponent(
             "c:trac_OrderRefundCredit",
             {
@@ -54,11 +39,9 @@
                 }
             });
     },
-
     handleShowCancelOrder: function(component, event, helper) {
         let container = component.find("divBody");
         component.set('v.isLoading', true);
-
         $A.createComponent(
             "c:trac_CancelOrder",
             {
@@ -88,10 +71,8 @@
                 component.set('v.isLoading', false);
             });
     },
-
     handleShowAddNote: function(component, event, helper) {
         let container = component.find("divBody");
-
         $A.createComponent(
             "c:trac_AddNote",
             {
