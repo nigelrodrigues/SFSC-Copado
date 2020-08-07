@@ -77,8 +77,6 @@
         });
         $A.enqueueAction(action);
     },
-
-
     setCancelabilityMap: function(component, event, helper) {
         console.log('Inside setCancelabilityMap');
         var businessUnit = component.get('v.businessUnit');
@@ -94,10 +92,22 @@
         });
         $A.enqueueAction(action);
     },
-
-
     isBetweenRange : function (rangeStr, number) {
         var ranges = rangeStr.split("-");
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
-    }
+    },
+    setActiveHold: function(component)
+    {
+        let order = component.get("v.order");
+        if(order.OrderHoldTypes.OrderHoldType)
+        {
+            for (let orderHoldType of order.OrderHoldTypes.OrderHoldType)
+            {
+                if(orderHoldType.StatusDescription === 'Created')
+                {
+                    component.set("v.isActiveHold", true);
+                }
+            }
+        }
+    },
 })

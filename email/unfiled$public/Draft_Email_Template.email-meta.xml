@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Acknowledgement email for OFF 5TH</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Draft Email Template</name>
+    <style>none</style>
+    <subject>Thank you for contacting Saks OFF 5TH!</subject>
+    <textOnly>Subject Case # {!Case.CaseNumber}: {!Case.Subject} has been updated.
+The following case has been updated.
+Case #: {!Case.CaseNumber}
+Contact Name: {!Contact.Name}
+Subject: {!Case.Subject}
+Comment: {!Case.Comment}
+
+Click on the link to access the case: {!Case.Link}
+Your Case Number: {!Case.CaseNumber}
+
+All the best,
+
+Your {!Case.Business_Unit__c} Customer Service Team
+
+
+{!Case.Thread_Id}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
