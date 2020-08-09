@@ -74,7 +74,7 @@
 <br>
 
 
-Thanks for contacting Hudson’s Bay. We’ve issued your refund and it will reflect in your account within 14 days. If you have any questions or concerns, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
+Thanks for contacting {!Case.Business_Unit__c}. We’ve issued your refund and it will reflect in your account within 14 days. If you have any questions or concerns, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
 <br>
 <br>
 <a href="mailto:service@off5th.com?subject=We’ve issued your refund-{!Case.Thread_Id}" > CONTACT US </a>
