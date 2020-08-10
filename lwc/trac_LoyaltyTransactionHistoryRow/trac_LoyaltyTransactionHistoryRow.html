@@ -1,0 +1,71 @@
+<!--
+ - Created by akong on 6/11/2020.
+ -->
+
+<!-- Trac Loyalty Transaction History Row -->
+<template>
+    <lightning-layout>
+        <lightning-layout-item padding="around-small" size="1">
+            <lightning-button-icon value={variableIndex} onclick={toggleData} icon-name={iconChevron} alternative-text="View Details"></lightning-button-icon>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="1">
+            <div class="custom-box">
+                <lightning-formatted-date-time value={transactionData.created_at} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="1">
+            <div class="custom-box">
+                <lightning-formatted-date-time value={transactionData.originated_at} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="4">
+            <div class="custom-box">{transactionData.display_event_id}
+                <br/>{transactionData.display_detail} from {transactionData.display_sub_detail}
+                <br/><i>{transactionData.detail}</i>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="1">
+            <div class="custom-box">
+                <b>{transactionData.display_points_redeemed}</b>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="1">
+            <div class="custom-box">
+                <b>{transactionData.display_points_earned}</b>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="1">
+            <div class="slds-clearfix">
+                <div class="slds-float_right">
+                    <p><b><lightning-formatted-number value={transactionData.net_points}></lightning-formatted-number></b></p>
+                </div>
+            </div>
+            <div class="custom-box">
+                <template if:true={showDetails}>
+                    <template for:each={transactionData.rule.ledger} for:item="ledger">
+                        <div key={ledger.id} class="slds-clearfix">
+                            <div class="slds-float_right">
+                                <i>{ledger.display_points}</i>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+                <template if:false={showDetails}></template>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="2">
+            <br/>
+            <div class="custom-box">
+                <template if:true={showDetails}>
+                    <template for:each={transactionData.rule.ledger} for:item="ledger">
+                        <div key={ledger.id} class="slds-clearfix">
+                            <div><i>{ledger.title}</i></div>
+                        </div>
+                    </template>
+                </template>
+                <template if:false={showDetails}></template>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+
+</template>

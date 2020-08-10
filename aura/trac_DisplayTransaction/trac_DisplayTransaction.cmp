@@ -1,0 +1,37 @@
+<!--
+ - @author Nigel Rodrigues, Traction on Demand
+ - @date 4-June-2020
+ - @description To display a customer's transaction detail.
+ -->
+
+<aura:component description="trac_DisplayTransaction">
+    <aura:attribute name="transactionValues" type="Object"/>
+
+    <aura:registerEvent name="TractionComponentEvent" type="c:trac_TransactionHistoryEvent"/>
+
+    <aura:iteration items="{!v.transactionValues}" var="transactionData" indexVar="count">
+        <aura:if isTrue="{!lessthan(count,6)}">
+        <tr class="slds-hint-parent">
+            <td class="slds-cell-wrap slds-p-left--none">
+                <lightning:buttonIcon value="{!count}" onclick="{!c.fireEvent}" iconName="utility:search" />
+            </td>
+            <td>
+                <div class="slds-truncate">
+                    <lightning:formattedDateTime value="{!transactionData.created_at}" year="numeric" month="short" day="2-digit" />
+                </div>
+            </td>
+            <td class="slds-hyphenate slds-truncate" title="{!transactionData.display_event_id + ' - ' + transactionData.display_detail + ' (from ' + transactionData.channel + ')'}">
+                {!transactionData.display_event_id}<br/>
+                {!transactionData.display_detail}&nbsp;<i>(from <span style="text-transform:uppercase">{!transactionData.channel}</span>)</i>
+            </td>
+            <td>
+                <div class="slds-clearfix">
+                    <div class="slds-float_right">
+                        <b><aura:if isTrue="{!not(lessthan(transactionData.points,0))}">+</aura:if><lightning:formattedNumber value="{!transactionData.points}"/></b>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </aura:if>
+    </aura:iteration>
+</aura:component>
