@@ -15,10 +15,10 @@
     <aura:attribute name="disableCancelBtn"        type="Boolean" />
 
     <aura:attribute name="isActiveHold"            type="Boolean" default="false"/>
-
     <aura:attribute name="channel"                 type="String" />
     <aura:attribute name="cancelabilityMap" type="Map" />
     <c:trac_OrderRefundCredit aura:id="componentORC" />
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <div>
         <div class="slds-media slds-p-around_small slds-p-top_small slds-p-right_small slds-p-bottom_small slds-p-left_small slds-border_bottom">
@@ -55,9 +55,7 @@
                 <div class="slds-m-bottom_none slds-p-around_none slds-p-top_none slds-p-right_none slds-p-bottom_none slds-p-left_none slds-text-align_left slds-text-heading_small">
                     <div>
                         <b> Order </b>
-
                         <c:trac_DisplayBadges orderObject="{!v.order}" lineItemLevel="false"/>
-
                     </div>
                     <aura:if isTrue="{!v.order.Extn.ExtnIsFiftyOne == 'Y'}">
                         <span  class="slds-p-left--medium">
@@ -131,6 +129,7 @@
                         <aura:set attribute="else">
                                 <p class="slds-text-title_caps">Customer</p>
 
+
                                     </aura:set>
                                 </aura:if>
                             </div>
@@ -156,13 +155,31 @@
                             <lightning:menuItem label="Refund Options" value="orderReturnFee" />
                             <lightning:menuItem label="Link To Case"   value="linkToCase" disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
                         </lightning:buttonMenu>
-
+                <lightning:layoutItem padding="around-small" class="slds-size_1-of-8 slds-p-top--xx-large">
+                    <div class="slds-p-top--medium">
+                        <lightning:buttonMenu label="ACTIONS" title="Actions" variant="border-filled"
+                                              menuAlignment="left" iconName="utility:questions_and_answers"
+                                              iconSize="medium" class="slds-text-title_caps"
+                                              onselect="{!c.handleActions}"
+                        >
+                            <lightning:menuItem label="Cancel Order" value="cancelOrder"  disabled="{!v.disableCancelBtn}"/>
+                            <lightning:menuItem label="Add Note"     value="addNote"     />
+                            <aura:if isTrue="{!v.validSpaBusinessUnit}">
+                                <lightning:menuItem label="Sales Price Adjustment" value="salesPriceAdjustment" />
+                            </aura:if>
+                            <lightning:menuItem  label="Order Refund/Credit" value="orderRefundCredit" />
+                            <aura:if isTrue="{!v.validSpaBusinessUnit}">
+                                <lightning:menuItem label="Payment Capture" value="paymentCapture" />
+                            </aura:if>
+                            <lightning:menuItem label="Refund Options" value="orderReturnFee" />
+                            <lightning:menuItem label="Link To Case"   value="linkToCase" disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
+                        </lightning:buttonMenu>
                             </div>
                             {!v.body}
+
+
                         </lightning:layoutItem>
-
                 <!--<lightning:layoutItem padding="around-small">
-
                 <c:trac_CancelOrder order="{!v.order}" caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
             </lightning:layoutItem>
             <lightning:layoutItem padding="around-small">
@@ -187,9 +204,11 @@
             <lightning:layoutItem padding="around-small">
                 <lightning:button label="Link to Case" variant="neutral" onclick="{!c.handleImport}"
                                   disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
+
                 </lightning:layoutItem>-->
             </lightning:layout>
         </div>
+
         <lightning:tabset selectedTabId="order" variant="scoped">
             <lightning:tab label="Order Lines" id="order">
                 <aura:iteration items="{!v.order.OrderLines.OrderLine}" var="orderLine">

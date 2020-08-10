@@ -7,6 +7,8 @@
         helper.spaBusinessUnit(component, event, helper);
         helper.setCancelabilityMap(component, event, helper);
         helper.setActiveHold(component, event, helper);
+
+
         // For Cancel button in Order Actions
         let order = component.get("v.order");
         let businessUnit = component.get("v.businessUnit");
@@ -43,16 +45,20 @@
         }
     },
     handleImport : function (component, event, helper) {
-        var action = component.get("c.updateCase");
-        var caseRecord = component.get("v.caseRecord");
-        var order = component.get("v.order");
+
+        let action = component.get("c.updateCase");
+        let caseRecord = component.get("v.caseRecord");
+        let order = component.get("v.order");
+
         action.setParams({
             "caseId": caseRecord.Id,
             "orderNo": order.OrderNo,
             "orderZipCode": (order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : null
         });
         action.setCallback(this, function (response) {
-            var state = response.getState();
+
+            let state = response.getState();
+
             if (component.isValid() && state === "SUCCESS") {
                 $A.get('e.force:refreshView').fire();
             }
@@ -165,7 +171,10 @@
                 );
                 break;
             case "linkToCase":
-                this.handleImport(component, event, helper);
+
+                let linkOrderToCase = component.get('c.handleImport');
+                $A.enqueueAction(linkOrderToCase);
+
                 break;
         }
     }

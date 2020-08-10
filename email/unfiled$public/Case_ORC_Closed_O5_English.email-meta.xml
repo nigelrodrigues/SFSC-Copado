@@ -8,7 +8,7 @@
     <subject>We’ve issued your refund</subject>
     <textOnly>Hi {!Contact.FirstName},
 
-Thanks for contacting Hudson’s Bay. We’ve issued your refund and it will reflect in your account within 14 days. If you have any questions or concerns, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
+Thanks for contacting {!Case.Business_Unit__c}. We’ve issued your refund and it will reflect in your account within 14 days. If you have any questions or concerns, please don’t hesitate to contact us again and refer to case {!Case.CaseNumber}.
 
 CONTACT US
 
