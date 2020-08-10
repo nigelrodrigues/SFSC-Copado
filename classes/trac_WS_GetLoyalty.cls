@@ -85,7 +85,9 @@ public class trac_WS_GetLoyalty {
         @AuraEnabled public Integer id;
         @AuraEnabled public String last_activity;
         @AuraEnabled public String last_reward_date;
-        @AuraEnabled public Integer last_reward_event_id;
+
+        @AuraEnabled public Long last_reward_event_id;
+
         @AuraEnabled public String status;
         @AuraEnabled public String sub_channel;
         @AuraEnabled public String sub_channel_detail;
