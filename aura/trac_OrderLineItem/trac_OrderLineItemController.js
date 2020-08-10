@@ -5,7 +5,6 @@
 
     doInit: function(component, event, helper) {
         helper.setDisabled(component);
-        helper.setActiveHold(component);
     },
 
     openModel: function(component, event, helper) {

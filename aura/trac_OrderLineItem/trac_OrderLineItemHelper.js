@@ -11,17 +11,6 @@
         component.set("v.disabledCancel", disabled);
     },
 
-    setActiveHold: function(component) {
-        var orderLineItem = component.get("v.orderLineItem");
-        if(orderLineItem.OrderHoldTypes.OrderHoldType) {
-            for (var orderHoldType of orderLineItem.OrderHoldTypes.OrderHoldType){
-                console.log(orderHoldType)
-                if(orderHoldType.StatusDescription == 'Created') {
-                    component.set("v.isActiveHold", true);
-                }
-            }
-        }
-    },
     handleShowOrderRefundCredit: function(component, event, helper) {
         let container = component.find("divBody");
 
