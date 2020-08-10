@@ -13,8 +13,6 @@ public with sharing class trac_WS_GetOrderDetails {
     public GetOrderDetailsResponse getOrderDetailsResponse;
     public String jsonError;
     Map<String, OrderHoldWrapper> orderHoldTypeMap = new Map<String, OrderHoldWrapper>();
-    
-
 
 
 
@@ -23,7 +21,8 @@ public with sharing class trac_WS_GetOrderDetails {
 
         res = trac_WS_WebServiceHelper.sendPostRequest(getEndpoint(), getOrderDetailsRequest);
 
-        if (trac_WS_WebServiceHelper.isValidResponse(res)) {
+        if (trac_WS_WebServiceHelper.isValidResponse(res))
+        {
             getOrderDetailsResponse = parse(res.getBody());
 
             for ( Order_Hold_Badge_Mapping__mdt orderHoldBadgeMapping : [ SELECT Id, Status_Description__c, Badge__c, Hold_Type__c FROM Order_Hold_Badge_Mapping__mdt])
@@ -31,10 +30,6 @@ public with sharing class trac_WS_GetOrderDetails {
                 orderHoldTypeMap.put( orderHoldBadgeMapping.Hold_Type__c,
                         new OrderHoldWrapper(orderHoldBadgeMapping.Status_Description__c, orderHoldBadgeMapping.Badge__c));
             }
-
-
-
-
             updateDataFormat();
             success = true;
         } else {
@@ -46,8 +41,6 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
     public static GetOrderDetailsResponse parse(String json) {
-//        String regex = '"Hudson.s Bay';
-//        json = json.replaceAll(regex, '"Hudson\'s Bay'); // replace any special apostrophe chars with a plain single quote
         return (GetOrderDetailsResponse) System.JSON.deserialize(json, GetOrderDetailsResponse.class);
     }
 
@@ -77,112 +70,124 @@ public with sharing class trac_WS_GetOrderDetails {
             setBlueMartiniStatus();
             sortItems();
             setShipmentLoyaltyFields();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
+            throw new CustomException(e.getMessage());
         }
     }
 
-    private void setBadges()
-    {
-        if ( getOrderDetailsResponse != null)
-        {
-            if (getOrderDetailsResponse.OrderHoldTypes != null && getOrderDetailsResponse.OrderHoldTypes.OrderHoldType != null)
+    private void setBadges() {
+        try {
+            if (getOrderDetailsResponse != null)
             {
-                getOrderDetailsResponse.Badges = new List<String>();
-
-                // Check for holds at the order level
-
-                for ( res_OrderHoldTypeWrapper orderHoldType : getOrderDetailsResponse.OrderHoldTypes.OrderHoldType)
+                if (getOrderDetailsResponse.OrderHoldTypes != null &&
+                        getOrderDetailsResponse.OrderHoldTypes.OrderHoldType != null)
                 {
-                    if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(orderHoldType.HoldType) != null )
-                    {
-                        OrderHoldWrapper orderHold = orderHoldTypeMap.get(orderHoldType.HoldType);
+                    getOrderDetailsResponse.Badges = new List<String>();
+                    // Check for holds at the order level
+                    for (res_OrderHoldTypeWrapper orderHoldType : getOrderDetailsResponse.OrderHoldTypes.OrderHoldType) {
+                        if (!orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(orderHoldType.HoldType) != null) {
+                            OrderHoldWrapper orderHold = orderHoldTypeMap.get(orderHoldType.HoldType);
 
-                        if ( orderHold.statusDesc.equals(orderHoldType.StatusDescription) )
-                        {
+                            if (orderHold.statusDesc.equals(orderHoldType.StatusDescription)) {
+                                if (!String.isEmpty(orderHold.badge)) {
+                                    // Assign badge at Order Level.
+                                    // 'Active Hold' assigned in the trac_OrderLineItem component (at Line level).
+                                    getOrderDetailsResponse.Badges.add(orderHold.badge);
+                                }
 
-
-
-                            if( !String.isEmpty(orderHold.badge))
-                            {
-                                // Assign badge at Order Level.
-                                // 'Active Hold' assigned in the trac_OrderLineItem component (at Line level).
-                                getOrderDetailsResponse.Badges.add( orderHold.badge );
                             }
-
-
-
-
                         }
                     }
                 }
             }
+
+            if (getOrderDetailsResponse.Badges != null && !getOrderDetailsResponse.Badges.isEmpty()) {
+                Set<String> badgeSet = new Set<String>();
+                badgeSet.addAll(getOrderDetailsResponse.Badges);
+                getOrderDetailsResponse.Badges.clear();
+                getOrderDetailsResponse.Badges.addAll(badgeSet);
+            }
         }
-        if( getOrderDetailsResponse.Badges!=null && !getOrderDetailsResponse.Badges.isEmpty())
+        catch(Exception e)
         {
-            Set<String> badgeSet = new Set<String>();
-            badgeSet.addAll(getOrderDetailsResponse.Badges);
-            getOrderDetailsResponse.Badges.clear();
-            getOrderDetailsResponse.Badges.addAll(badgeSet);
+            throw new CustomException('Error in setting badges ' + e.getMessage() + '' + e.getStackTraceString());
         }
+
     }
 
     private void setCOMXdata()
     {
-        if (getOrderDetailsResponse != null &&
-                getOrderDetailsResponse.OrderLines != null &&
-                getOrderDetailsResponse.OrderLines.OrderLine != null)
-        {
-            res_OrderLineWrapper orderline =  getOrderDetailsResponse.OrderLines.OrderLine.get(0);
-            // Checks to find the COMX data
-            if ( orderline.Instructions != null && orderline.Instructions.Instruction.get(0) != null)
+        try {
+            if (getOrderDetailsResponse != null &&
+                    getOrderDetailsResponse.OrderLines != null &&
+                    getOrderDetailsResponse.OrderLines.OrderLine != null)
             {
-                res_InstructionWrapper instruction = orderline.Instructions.Instruction.get(0);
-                if ( instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionUsage.equals('COMX') )
-                {
-                    // Get the store and associate IDs (Max 2)
-                    List<String> comxDataList = new List<String>();
-                    String[] comxData = orderline.Createuserid.split(',');
-                    for (String data : comxData)
-                    {
-                        comxDataList.add(data);
-                    }
+                res_OrderLineWrapper orderline = getOrderDetailsResponse.OrderLines.OrderLine.get(0);
+                // Checks to find the COMX data
+                if (orderline.Instructions != null &&
+                        Integer.valueOf(orderline.Instructions.NumberOfInstructions) > 0 &&
+                        orderline.Instructions.Instruction.get(0) != null) {
+                    res_InstructionWrapper instruction = orderline.Instructions.Instruction.get(0);
+                    if (instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionUsage.equals('COMX')) {
+                        // Get the store and associate IDs (Max 2)
+                        List<String> comxDataList = new List<String>();
+                        String[] comxData = orderline.Createuserid.split(',');
+                        for (String data : comxData) {
+                            comxDataList.add(data);
+                        }
 
-                    if( !comxDataList.isEmpty())
-                    {
-                        getOrderDetailsResponse.COMXdata = new List<COMXdataWrapper>();
-                        for (String comXValues : comxDataList)
-                        {
-                            getOrderDetailsResponse.COMXdata.add( new COMXdataWrapper(comXValues.substring(0,4), comXValues.substring(4, comXValues.length())));
+                        if (!comxDataList.isEmpty()) {
+                            getOrderDetailsResponse.COMXdata = new List<COMXdataWrapper>();
+                            for (String comXValues : comxDataList) {
+                                getOrderDetailsResponse.COMXdata.add(new COMXdataWrapper(comXValues.substring(0, 4), comXValues.substring(4, comXValues.length())));
+                            }
                         }
                     }
                 }
             }
         }
-    }
-
-    private void sortItems() {
-        if (getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-            getOrderDetailsResponse.OrderLines.OrderLine.sort();
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setting COMX Data ' + e.getMessage() + '' + e.getStackTraceString());
         }
     }
 
-    private void linkItemsToContainers() {
+    private void sortItems()
+    {
+        try
+        {
+            if (getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                getOrderDetailsResponse.OrderLines.OrderLine.sort();
+            }
+        }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in sorting items ' + e.getMessage() + '' + e.getStackTraceString());
+        }
+    }
+
+    private void linkItemsToContainers()
+    {
         Map<String, String> itemNamesByItemId = getItemNamesByItemId();
         Map<String, res_OrderLineWrapper> itemsByItemId = getItemsByItemId();
 
-        if (getOrderDetailsResponse != null) {
-            if (getOrderDetailsResponse.Shipments != null && getOrderDetailsResponse.Shipments.Shipment != null) {
-                for (res_ShipmentWrapper shipmentWrapper : getOrderDetailsResponse.Shipments.Shipment) {
-                    if (shipmentWrapper != null && shipmentWrapper.Containers != null && shipmentWrapper.Containers.Container != null) {
-                        for (res_ContainerWrapper containerWrapper : shipmentWrapper.Containers.Container) {
-                            if (containerWrapper != null && containerWrapper.ContainerDetails != null && containerWrapper.ContainerDetails.ContainerDetail != null) {
-                                for (res_ContainerDetailWrapper containerDetailWrapper : containerWrapper.ContainerDetails.ContainerDetail) {
-                                    if (containerDetailWrapper != null && containerDetailWrapper.ItemID != null) {
-                                        if (itemNamesByItemId.containsKey(containerDetailWrapper.ItemID)) {
-                                            containerDetailWrapper.customItemName = itemNamesByItemId.get(containerDetailWrapper.ItemID);
-                                        }
-                                        if (itemsByItemId.containsKey(containerDetailWrapper.ItemID)) {
-                                            itemsByItemId.get(containerDetailWrapper.ItemID).customContainer = containerWrapper;
+        try {
+
+            if (getOrderDetailsResponse != null) {
+                if (getOrderDetailsResponse.Shipments != null && getOrderDetailsResponse.Shipments.Shipment != null) {
+                    for (res_ShipmentWrapper shipmentWrapper : getOrderDetailsResponse.Shipments.Shipment) {
+                        if (shipmentWrapper != null && shipmentWrapper.Containers != null && shipmentWrapper.Containers.Container != null) {
+                            for (res_ContainerWrapper containerWrapper : shipmentWrapper.Containers.Container) {
+                                if (containerWrapper != null && containerWrapper.ContainerDetails != null && containerWrapper.ContainerDetails.ContainerDetail != null) {
+                                    for (res_ContainerDetailWrapper containerDetailWrapper : containerWrapper.ContainerDetails.ContainerDetail) {
+                                        if (containerDetailWrapper != null && containerDetailWrapper.ItemID != null) {
+                                            if (itemNamesByItemId.containsKey(containerDetailWrapper.ItemID)) {
+                                                containerDetailWrapper.customItemName = itemNamesByItemId.get(containerDetailWrapper.ItemID);
+                                            }
+                                            if (itemsByItemId.containsKey(containerDetailWrapper.ItemID)) {
+                                                itemsByItemId.get(containerDetailWrapper.ItemID).customContainer = containerWrapper;
+                                            }
                                         }
                                     }
                                 }
@@ -192,232 +197,315 @@ public with sharing class trac_WS_GetOrderDetails {
                 }
             }
         }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in linking Items ' + e.getMessage() + '' + e.getStackTraceString());
+        }
     }
 
-    private void linkItemsToShipmentLines() {
+    private void linkItemsToShipmentLines()
+    {
         Map<String, res_OrderLineWrapper> itemsByItemId = getItemsByItemId();
 
-        if (getOrderDetailsResponse != null) {
-            if (getOrderDetailsResponse.Shipments != null && getOrderDetailsResponse.Shipments.Shipment != null) {
-                for (res_ShipmentWrapper shipmentWrapper : getOrderDetailsResponse.Shipments.Shipment) {
-                    if (shipmentWrapper != null && shipmentWrapper.ShipmentLines != null && shipmentWrapper.ShipmentLines.ShipmentLine != null) {
-                        for (res_ShipmentLineWrapper shipmentLineWrapper : shipmentWrapper.ShipmentLines.ShipmentLine) {
-                            if (itemsByItemId.containsKey(shipmentLineWrapper.ItemID)) {
-                                itemsByItemId.get(shipmentLineWrapper.ItemID).customShipmentLine = shipmentLineWrapper;
+        try {
+            if (getOrderDetailsResponse != null) {
+                if (getOrderDetailsResponse.Shipments != null && getOrderDetailsResponse.Shipments.Shipment != null) {
+                    for (res_ShipmentWrapper shipmentWrapper : getOrderDetailsResponse.Shipments.Shipment) {
+                        if (shipmentWrapper != null && shipmentWrapper.ShipmentLines != null && shipmentWrapper.ShipmentLines.ShipmentLine != null) {
+                            for (res_ShipmentLineWrapper shipmentLineWrapper : shipmentWrapper.ShipmentLines.ShipmentLine) {
+                                if (itemsByItemId.containsKey(shipmentLineWrapper.ItemID)) {
+                                    itemsByItemId.get(shipmentLineWrapper.ItemID).customShipmentLine = shipmentLineWrapper;
+                                }
                             }
                         }
                     }
                 }
             }
         }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in shipment lines ' + e.getMessage() + '' + e.getStackTraceString());
+        }
     }
 
-    private Map<String, String> getItemNamesByItemId() {
+    private Map<String, String> getItemNamesByItemId()
+    {
         Map<String, String> itemNamesByItemId = new Map<String, String>();
 
-        if (getOrderDetailsResponse != null) {
-            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                    if (orderLineWrapper != null && orderLineWrapper.Item != null && orderLineWrapper.Item.ItemID != null) {
+        try
+        {
+            if (getOrderDetailsResponse != null) {
+                if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                    for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                        if (orderLineWrapper != null && orderLineWrapper.Item != null && orderLineWrapper.Item.ItemID != null) {
 
-                        if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.PrimaryInformation != null
-                                && orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription != null) {
-                            itemNamesByItemId.put(orderLineWrapper.Item.ItemID, orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription);
+                            if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.PrimaryInformation != null
+                                    && orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription != null) {
+                                itemNamesByItemId.put(orderLineWrapper.Item.ItemID, orderLineWrapper.ItemDetails.PrimaryInformation.ShortDescription);
+                            }
                         }
                     }
                 }
             }
-        }
 
-        return itemNamesByItemId;
+            return itemNamesByItemId;
+        }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in getItemNamesByItemId ' + e.getMessage() + '' + e.getStackTraceString());
+        }
     }
 
-    private Map<String, res_OrderLineWrapper> getItemsByItemId() {
+    private Map<String, res_OrderLineWrapper> getItemsByItemId()
+    {
         Map<String, res_OrderLineWrapper> itemsByItemId = new Map<String, res_OrderLineWrapper>();
 
-        if (getOrderDetailsResponse != null) {
-            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                    if (orderLineWrapper != null && orderLineWrapper.Item != null && orderLineWrapper.Item.ItemID != null) {
+        try {
+            if (getOrderDetailsResponse != null) {
+                if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                    for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                        if (orderLineWrapper != null && orderLineWrapper.Item != null && orderLineWrapper.Item.ItemID != null) {
 
-                        itemsByItemId.put(orderLineWrapper.Item.ItemID, orderLineWrapper);
+                            itemsByItemId.put(orderLineWrapper.Item.ItemID, orderLineWrapper);
+                        }
                     }
                 }
             }
-        }
 
-        return itemsByItemId;
+            return itemsByItemId;
+        }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in getItemsByItemId ' + e.getMessage() + '' + e.getStackTraceString());
+        }
     }
 
-    private void setPreOrderDateFields() {
-        if (getOrderDetailsResponse != null) {
-            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                    if (orderLineWrapper.OrderDates != null && orderLineWrapper.OrderDates.OrderDate != null) {
-                        for (res_OrderDateWrapper orderDateWrapper : orderLineWrapper.OrderDates.OrderDate) {
-                            if (orderDateWrapper.DateTypeId == PRE_ORDER_DATE_TYPE) {
-                                orderLineWrapper.customRequestedDate = orderDateWrapper.RequestedDate;
-                                orderLineWrapper.customExpectedDate = orderDateWrapper.ExpectedDate;
+    private void setPreOrderDateFields()
+    {
+        try {
+
+            if (getOrderDetailsResponse != null) {
+                if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                    for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                        if (orderLineWrapper.OrderDates != null && orderLineWrapper.OrderDates.OrderDate != null) {
+                            for (res_OrderDateWrapper orderDateWrapper : orderLineWrapper.OrderDates.OrderDate) {
+                                if (orderDateWrapper.DateTypeId == PRE_ORDER_DATE_TYPE) {
+                                    orderLineWrapper.customRequestedDate = orderDateWrapper.RequestedDate;
+                                    orderLineWrapper.customExpectedDate = orderDateWrapper.ExpectedDate;
+                                }
                             }
                         }
                     }
                 }
             }
         }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setPreOrderDateFields ' + e.getMessage() + '' + e.getStackTraceString());
+        }
+
     }
 
     private void setBlueMartiniStatus() {
-        if (getOrderDetailsResponse != null) {
-            if (getOrderDetailsResponse.Extn != null) {
-                getOrderDetailsResponse.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(getOrderDetailsResponse.Extn.ExtnBlueMartiniStatus);
-            }
-            if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                    if (orderLineWrapper.Extn != null) {
-                        orderLineWrapper.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(orderLineWrapper.Extn.ExtnBlueMartiniStatus);
-                        orderLineWrapper.customBlueMartiniCancelCode = getBlueMartiniDisplayCancelCode(orderLineWrapper.Extn.ExtnBlueMartiniCancellationCode);
-                    }
+        try {
+            if (getOrderDetailsResponse != null) {
+                if (getOrderDetailsResponse.Extn != null) {
+                    getOrderDetailsResponse.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(getOrderDetailsResponse.Extn.ExtnBlueMartiniStatus);
                 }
-            }
-        }
-    }
-
-    private void setItemUPCs() {
-        if (getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-            for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.ItemAliasList != null && orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias != null) {
-
-                    for (res_ItemAliasWrapper itemAliasWrapper : orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias) {
-                        if (itemAliasWrapper.AliasName == ITEM_ALIAS_UPC) {
-                            orderLineWrapper.customUPC = itemAliasWrapper.AliasValue;
+                if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                    for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                        if (orderLineWrapper.Extn != null) {
+                            orderLineWrapper.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(orderLineWrapper.Extn.ExtnBlueMartiniStatus);
+                            orderLineWrapper.customBlueMartiniCancelCode = getBlueMartiniDisplayCancelCode(orderLineWrapper.Extn.ExtnBlueMartiniCancellationCode);
                         }
                     }
                 }
             }
         }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setBlueMartiniStatus ' + e.getMessage() + '' + e.getStackTraceString());
+        }
     }
 
-    private static String getBlueMartiniDisplayStatusFromCode(String blueMartiniStatusCode) {
+    private void setItemUPCs()
+    {
+        try
+        {
+            if (getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
+                    if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.ItemAliasList != null && orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias != null) {
+
+                        for (res_ItemAliasWrapper itemAliasWrapper : orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias) {
+                            if (itemAliasWrapper.AliasName == ITEM_ALIAS_UPC) {
+                                orderLineWrapper.customUPC = itemAliasWrapper.AliasValue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setItemUPCs ' + e.getMessage() + '' + e.getStackTraceString());
+        }
+    }
+
+    private static String getBlueMartiniDisplayStatusFromCode(String blueMartiniStatusCode)
+    {
         String displayStatus = blueMartiniStatusCode;
 
         Map<String, Map<String, Reference_Data__mdt>> referenceDataBySystemValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('Blue Martini', 'System_Value__c');
 
-        if (referenceDataBySystemValueByType.containsKey('Status')) {
-            Map<String, Reference_Data__mdt> referenceDataByStatus = referenceDataBySystemValueByType.get('Status');
+        try {
+            if (referenceDataBySystemValueByType.containsKey('Status')) {
+                Map<String, Reference_Data__mdt> referenceDataByStatus = referenceDataBySystemValueByType.get('Status');
 
-            if (referenceDataByStatus.containsKey(blueMartiniStatusCode)) {
-                displayStatus = referenceDataByStatus.get(blueMartiniStatusCode).Salesforce_Value__c;
+                if (referenceDataByStatus.containsKey(blueMartiniStatusCode)) {
+                    displayStatus = referenceDataByStatus.get(blueMartiniStatusCode).Salesforce_Value__c;
+                }
             }
-        }
 
-        return displayStatus;
+            return displayStatus;
+        }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in getBlueMartiniDisplayStatusFromCode ' + e.getMessage() + '' + e.getStackTraceString());
+        }
     }
 
-    private static String getBlueMartiniDisplayCancelCode(String blueMartiniStatusCode) {
+    private static String getBlueMartiniDisplayCancelCode(String blueMartiniStatusCode)
+    {
         String displayStatus = blueMartiniStatusCode;
 
         Map<String, Map<String, Reference_Data__mdt>> referenceDataBySystemValueByType = trac_ReferenceData.getReferenceDataMappedByValueByType('Blue Martini', 'System_Value__c');
 
-        if (referenceDataBySystemValueByType.containsKey('Cancel Code')) {
-            Map<String, Reference_Data__mdt> referenceDataByStatus = referenceDataBySystemValueByType.get('Cancel Code');
+        try {
+            if (referenceDataBySystemValueByType.containsKey('Cancel Code')) {
+                Map<String, Reference_Data__mdt> referenceDataByStatus = referenceDataBySystemValueByType.get('Cancel Code');
 
-            if (referenceDataByStatus.containsKey(blueMartiniStatusCode)) {
-                displayStatus = referenceDataByStatus.get(blueMartiniStatusCode).Salesforce_Value__c;
+                if (referenceDataByStatus.containsKey(blueMartiniStatusCode)) {
+                    displayStatus = referenceDataByStatus.get(blueMartiniStatusCode).Salesforce_Value__c;
+                }
             }
-        }
 
-        return displayStatus;
+            return displayStatus;
+        }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in getBlueMartiniDisplayCancelCode ' + e.getMessage() + '' + e.getStackTraceString());
+        }
     }
 
-    private void setShipmentLoyaltyFields() {
-        if (getOrderDetailsResponse == null) {
-            return;
-        }
-        // calculate total point label and value
-        if (getOrderDetailsResponse.Extn != null) {
-            String displayValue = 'N/A';
-            getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Earned';
-            if (getOrderDetailsResponse.Extn.ExtnPointsLost != null) {
-                getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Lost';
-                displayValue = getOrderDetailsResponse.Extn.ExtnPointsLost;
-            } else if (getOrderDetailsResponse.Extn.ExtnPointsEarned != null) {
-                displayValue = getOrderDetailsResponse.Extn.ExtnPointsEarned;
+    private void setShipmentLoyaltyFields()
+    {
+        try {
+            if (getOrderDetailsResponse == null)
+            {
+                return;
             }
-            getOrderDetailsResponse.displayTotalPointsValue = displayValue;
+            // calculate total point label and value
+            if (getOrderDetailsResponse.Extn != null)
+            {
+                String displayValue = 'N/A';
+                getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Earned';
 
-
-            // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
-            getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
-            getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
-
-        }
-
-        // prepare primeLines map
-        Map<String,Map<String,String>> mapPrimeLines = new Map<String,Map<String,String>>();
-        if (getOrderDetailsResponse.OrderLines != null && !getOrderDetailsResponse.OrderLines.OrderLine.isEmpty()) {
-            for (res_OrderLineWrapper orderLine : getOrderDetailsResponse.OrderLines.OrderLine) {
-                Map<String,String> primeLineRow = new Map<String,String>();
-                primeLineRow.put('ShortDescription', orderLine.ItemDetails.PrimaryInformation.ShortDescription);
-                primeLineRow.put('Status', orderLine.Status);
-                primeLineRow.put('UnitPrice', orderLine.LinePriceInfo.UnitPrice);
-                primeLineRow.put('Model', orderLine.ItemDetails.ClassificationCodes.Model);
-                mapPrimeLines.put(orderLine.PrimeLineNo, primeLineRow);
-            }
-        }
-
-
-
-        // loop over payment method list
-        if (getOrderDetailsResponse.PaymentMethods != null && !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty()) {
-            for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
-                paymentMethod.DisplayPointsAuthorized = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalAuthorized) ? Decimal.valueOf(paymentMethod.TotalAuthorized) * 200 : 0.00));
-                paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
-            }
-        }
-
-
-
-        // loop over shipments to fill out fields from primeLines
-        if (getOrderDetailsResponse.Shipments != null && !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
-            for (res_ShipmentWrapper shipment : getOrderDetailsResponse.Shipments.Shipment) {
-                // set shipment display extn fields
-                shipment.Extn.displayExtnPointsLabel = 'Points Earned';
-                String displayPointsValue = 'N/A';
-                if (shipment.Extn != null) {
-                    if (String.isNotBlank(shipment.Extn.ExtnPointsLost)) {
-                        shipment.Extn.displayExtnPointsLabel = 'Points Lost';
-                        displayPointsValue = shipment.Extn.ExtnPointsLost;
-                    } else if (String.isNotBlank(shipment.Extn.ExtnPointsEarned)) {
-                        displayPointsValue = shipment.Extn.ExtnPointsEarned;
-                    }
+                if (getOrderDetailsResponse.Extn.ExtnPointsLost != null)
+                {
+                    getOrderDetailsResponse.displayTotalPointsLabel = 'Total Points Lost';
+                    displayValue = getOrderDetailsResponse.Extn.ExtnPointsLost;
                 }
-                shipment.Extn.displayExtnPointsValue = displayPointsValue;
-                shipment.Extn.displayExtnLoyaltyNo = String.isNotBlank(shipment.Extn.ExtnLoyaltyNo) ? shipment.Extn.ExtnLoyaltyNo : '-';
-                shipment.Extn.displayExtnLoyaltyTier = String.isNotBlank(shipment.Extn.ExtnLoyaltyTier) ? shipment.Extn.ExtnLoyaltyTier : 'N/A';
-
-                // loop over order invoice list
-                shipment.customInvoiceNo = '';
-                if (shipment.OrderInvoiceList != null && !shipment.OrderInvoiceList.OrderInvoice.isEmpty()) {
-                    for (res_OrderInvoiceWrapper invoice : shipment.OrderInvoiceList.OrderInvoice) {
-                        shipment.customInvoiceNo += (shipment.customInvoiceNo.length() > 0 ? ', ' : '') + invoice.InvoiceNo;
-                    }
+                else if (getOrderDetailsResponse.Extn.ExtnPointsEarned != null)
+                {
+                    displayValue = getOrderDetailsResponse.Extn.ExtnPointsEarned;
                 }
+                getOrderDetailsResponse.displayTotalPointsValue = displayValue;
 
-                // loop over shipment lines
-                if (shipment.ShipmentLines != null && !shipment.ShipmentLines.ShipmentLine.isEmpty()) {
-                    Integer i = 1;
-                    for (res_ShipmentLineWrapper shipmentLine : shipment.ShipmentLines.ShipmentLine) {
-                        Map<String,String> primeLine = mapPrimeLines.get(shipmentLine.PrimeLineNo);
-                        shipmentLine.customIdx = shipment.ShipmentNo + '-' + i;
-                        shipmentLine.customShortDescription = primeLine.get('ShortDescription');
-                        shipmentLine.customStatus = primeLine.get('Status');
-                        shipmentLine.customUnitPrice = primeLine.get('UnitPrice');
-                        shipmentLine.customModel = primeLine.get('Model');
-                        i++;
-                    }
+                // set order level displayExtnLoyaltyNo and displayExtnLoyaltyTier
+                getOrderDetailsResponse.Extn.displayExtnLoyaltyNo = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyNo) ? getOrderDetailsResponse.Extn.ExtnLoyaltyNo : '-';
+                getOrderDetailsResponse.Extn.displayExtnLoyaltyTier = String.isNotBlank(getOrderDetailsResponse.Extn.ExtnLoyaltyTier) ? getOrderDetailsResponse.Extn.ExtnLoyaltyTier : 'N/A';
+            }
+
+            // prepare primeLines map
+            Map<String, Map<String, String>> mapPrimeLines = new Map<String, Map<String, String>>();
+            if (getOrderDetailsResponse.OrderLines != null &&
+                    getOrderDetailsResponse.OrderLines.OrderLine != null &&
+                    !getOrderDetailsResponse.OrderLines.OrderLine.isEmpty())
+            {
+                for (res_OrderLineWrapper orderLine : getOrderDetailsResponse.OrderLines.OrderLine) {
+                    Map<String, String> primeLineRow = new Map<String, String>();
+                    primeLineRow.put('ShortDescription', orderLine.ItemDetails.PrimaryInformation.ShortDescription);
+                    primeLineRow.put('Status', orderLine.Status);
+                    primeLineRow.put('UnitPrice', orderLine.LinePriceInfo.UnitPrice);
+                    primeLineRow.put('Model', orderLine.ItemDetails.ClassificationCodes.Model);
+                    mapPrimeLines.put(orderLine.PrimeLineNo, primeLineRow);
                 }
             }
+
+            // loop over payment method list
+            if (getOrderDetailsResponse.PaymentMethods != null &&
+                    getOrderDetailsResponse.PaymentMethods.PaymentMethod != null &&
+                    !getOrderDetailsResponse.PaymentMethods.PaymentMethod.isEmpty())
+            {
+                for (res_PaymentMethodWrapper paymentMethod : getOrderDetailsResponse.PaymentMethods.PaymentMethod) {
+                    paymentMethod.DisplayPointsAuthorized = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalAuthorized) ? Decimal.valueOf(paymentMethod.TotalAuthorized) * 200 : 0.00));
+                    paymentMethod.DisplayPointsCharged = String.valueOf(Integer.valueOf(String.isNotBlank(paymentMethod.TotalCharged) ? Decimal.valueOf(paymentMethod.TotalCharged) * 200 : 0.00));
+                }
+            }
+
+            // loop over shipments to fill out fields from primeLines
+            if (getOrderDetailsResponse.Shipments != null &&
+                    getOrderDetailsResponse.Shipments.Shipment != null &&
+                    !getOrderDetailsResponse.Shipments.Shipment.isEmpty()) {
+                for (res_ShipmentWrapper shipment : getOrderDetailsResponse.Shipments.Shipment) {
+                    // set shipment display extn fields
+                    shipment.Extn.displayExtnPointsLabel = 'Points Earned';
+                    String displayPointsValue = 'N/A';
+                    if (shipment.Extn != null) {
+                        if (String.isNotBlank(shipment.Extn.ExtnPointsLost)) {
+                            shipment.Extn.displayExtnPointsLabel = 'Points Lost';
+                            displayPointsValue = shipment.Extn.ExtnPointsLost;
+                        } else if (String.isNotBlank(shipment.Extn.ExtnPointsEarned)) {
+                            displayPointsValue = shipment.Extn.ExtnPointsEarned;
+                        }
+                    }
+                    shipment.Extn.displayExtnPointsValue = displayPointsValue;
+                    shipment.Extn.displayExtnLoyaltyNo = String.isNotBlank(shipment.Extn.ExtnLoyaltyNo) ? shipment.Extn.ExtnLoyaltyNo : '-';
+                    shipment.Extn.displayExtnLoyaltyTier = String.isNotBlank(shipment.Extn.ExtnLoyaltyTier) ? shipment.Extn.ExtnLoyaltyTier : 'N/A';
+
+                    // loop over order invoice list
+                    shipment.customInvoiceNo = '';
+                    if (shipment.OrderInvoiceList != null &&
+                            shipment.OrderInvoiceList.OrderInvoice != null &&
+                            !shipment.OrderInvoiceList.OrderInvoice.isEmpty()) {
+                        for (res_OrderInvoiceWrapper invoice : shipment.OrderInvoiceList.OrderInvoice) {
+                            shipment.customInvoiceNo += (shipment.customInvoiceNo.length() > 0 ? ', ' : '') + invoice.InvoiceNo;
+                        }
+                    }
+
+                    // loop over shipment lines
+                    if (shipment.ShipmentLines != null &&
+                            shipment.ShipmentLines.ShipmentLine != null &&
+                            !shipment.ShipmentLines.ShipmentLine.isEmpty()) {
+                        Integer i = 1;
+                        for (res_ShipmentLineWrapper shipmentLine : shipment.ShipmentLines.ShipmentLine) {
+                            Map<String, String> primeLine = mapPrimeLines.get(shipmentLine.PrimeLineNo);
+                            shipmentLine.customIdx = shipment.ShipmentNo + '-' + i;
+                            shipmentLine.customShortDescription = primeLine.get('ShortDescription');
+                            shipmentLine.customStatus = primeLine.get('Status');
+                            shipmentLine.customUnitPrice = primeLine.get('UnitPrice');
+                            shipmentLine.customModel = primeLine.get('Model');
+                            i++;
+                        }
+                    }
+                }
+            }
         }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setShipmentLoyaltyFields ' + e.getMessage() + '' + e.getStackTraceString());
+        }
+
     }
 
     public class GetOrderDetailsRequest {
@@ -476,9 +564,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ResposneMessage;
         @AuraEnabled public List<String> Badges;
         @AuraEnabled public List<COMXdataWrapper> COMXdata;
-
-
-
     }
 
     public class res_OrderLineWrapper implements Comparable
@@ -514,8 +599,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
-        @AuraEnabled public res_ShipNodeWrapper Shipnode;
-
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
@@ -695,7 +778,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ReasonCode;
         @AuraEnabled public String NoteText;
         @AuraEnabled public String Priority;
-        @AuraEnabled public String Createts;
     }
 
     public class res_OrderLinesWrapper {
@@ -1107,7 +1189,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ExtnWrapper Extn;
         @AuraEnabled public String ShippingNode;
         @AuraEnabled public String ShipNode;
-      @AuraEnabled public String Description;
     }
 
     public class res_AddressWrapper {
@@ -1152,5 +1233,8 @@ public with sharing class trac_WS_GetOrderDetails {
             this.associateNo= associateNo;
         }
     }
+
+    public class CustomException extends Exception
+    {}
 
 }
