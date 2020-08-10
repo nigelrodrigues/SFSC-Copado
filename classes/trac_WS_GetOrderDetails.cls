@@ -33,6 +33,8 @@ public with sharing class trac_WS_GetOrderDetails {
             }
 
 
+
+
             updateDataFormat();
             success = true;
         } else {
@@ -99,12 +101,14 @@ public with sharing class trac_WS_GetOrderDetails {
                         {
 
 
+
                             if( !String.isEmpty(orderHold.badge))
                             {
                                 // Assign badge at Order Level.
                                 // 'Active Hold' assigned in the trac_OrderLineItem component (at Line level).
                                 getOrderDetailsResponse.Badges.add( orderHold.badge );
                             }
+
 
 
 
@@ -468,12 +472,11 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String customBlueMartiniStatus;
         @AuraEnabled public String displayTotalPointsLabel;
         @AuraEnabled public String displayTotalPointsValue;
-
-
         @AuraEnabled public String ResponseCode;
         @AuraEnabled public String ResposneMessage;
         @AuraEnabled public List<String> Badges;
         @AuraEnabled public List<COMXdataWrapper> COMXdata;
+
 
 
     }
@@ -511,6 +514,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
+        @AuraEnabled public res_ShipNodeWrapper Shipnode;
+
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
@@ -690,6 +695,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ReasonCode;
         @AuraEnabled public String NoteText;
         @AuraEnabled public String Priority;
+        @AuraEnabled public String Createts;
     }
 
     public class res_OrderLinesWrapper {
@@ -1101,6 +1107,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ExtnWrapper Extn;
         @AuraEnabled public String ShippingNode;
         @AuraEnabled public String ShipNode;
+      @AuraEnabled public String Description;
     }
 
     public class res_AddressWrapper {

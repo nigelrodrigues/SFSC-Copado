@@ -11,7 +11,7 @@
     <aura:attribute name="disabledCancel" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
 
-    <aura:attribute name="isActiveHold" type="Boolean" default="false" />
+    <aura:attribute name="isActiveHold" type="Boolean" default="false" access="private" />
     <aura:attribute name="cancelabilityMap" type="Map" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -44,6 +44,10 @@
                                     <p><lightning:badge label="{!v.orderLineItem.LineType}"/></p>
                                 </aura:if>
 
+                                <aura:if isTrue="{!v.orderLineItem.Status == 'Backordered'}">
+                                    <p><lightning:badge  label="{!v.orderLineItem.Status}"/></p>
+                                </aura:if>
+
                                 <aura:if isTrue="{!not(empty(v.orderLineItem.customContainer))}">
                                     <aura:if isTrue="{!v.orderLineItem.cus == 'SameDay'}">
                                         <p><lightning:badge label="SHOPRUNNER - SAME DAY"/></p>
@@ -52,7 +56,6 @@
                                         <p><lightning:badge label="SHOPRUNNER"/></p>
                                     </aura:if>
                                 </aura:if>
-
                                 <aura:if isTrue="{!v.orderLineItem.Shipnode.NodeType == 'Store' }">
                                     <aura:if isTrue="{!v.orderLineItem.DeliveryMethod == 'PICK' }">
                                         <p><lightning:badge class="slds-badge_lightest" label="{!'Pick Up In Store: ' + v.orderLineItem.Shipnode.Description}"/></p>
@@ -118,7 +121,6 @@
                                     </aura:if>
                                     <p>{!'quantity ' + v.orderLineItem.OrderedQty}</p>
 
-
                                 </div>
                             </div>
                         </lightning:layoutItem>
@@ -140,10 +142,12 @@
                         </lightning:layoutItem>
                         <lightning:layoutItem class="slds-size_1-of-12 slds-p-left--medium">
                             <div class="header-column">
+
                                 <p class="field-title slds-form-element__label slds-no-flex">Line Total</p>
                                 <p>
                                     <lightning:formattedRichText value="{!v.orderLineItem.LineOverallTotals.LineTotal}" class="slds-text-title_caps item-description" style="font-size:11px" disableLinkify="true"/>
                                 </p>
+
                             </div>
                         </lightning:layoutItem>
                         <lightning:layoutItem class="slds-size_1-of-8">
@@ -207,7 +211,6 @@
                                 </lightning:buttonMenu>
                             </div>
                         </lightning:layoutItem>
-
 
                     </lightning:layout>
                 </div>
