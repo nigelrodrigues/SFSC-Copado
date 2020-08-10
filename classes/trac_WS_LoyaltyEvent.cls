@@ -82,6 +82,9 @@ public with sharing class trac_WS_LoyaltyEvent {
         @AuraEnabled public res_ruleWrapper rule;
         @AuraEnabled public String display_points_redeemed;
         @AuraEnabled public String display_points_earned;
+
+        @AuraEnabled public String display_event_id;
+
         @AuraEnabled public Integer net_points;
     }
     public class res_ruleWrapper {
@@ -131,6 +134,14 @@ public with sharing class trac_WS_LoyaltyEvent {
                     netPoints += Integer.valueOf(row.points);
                     row.net_points = netPoints;
 
+
+                    // populate display_event_id
+                    row.display_event_id = row.event_id;
+                    System.debug('akong: row.display_event_id: ' + row.display_event_id);
+                    if (String.isNotBlank(row.display_event_id) && row.display_event_id.length() == 11 && String.isNotBlank(row.created_at)) {
+                        List<String> bits = row.created_at.split('T')[0].split('-');
+                        row.display_event_id += bits[1] + bits[2] + bits[0];
+                    }
 
 
                     // populate display_sub_detail
