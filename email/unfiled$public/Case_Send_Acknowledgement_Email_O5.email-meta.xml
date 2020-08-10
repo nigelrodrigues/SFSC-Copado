@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Case - Send Acknowledgement Email (O5)</name>
     <style>none</style>
-    <subject>Thank you for contacting Off 5th!</subject>
+    <subject>Thank you for contacting Saks OFF 5TH!</subject>
     <textOnly>Dear {!Case.First_Name_Extract__c},
 
 Thank you for contacting {!Case.Business_Unit__c}! We are in the process of resolving your issue and will provide you with an update within 48 hours. If you need to contact us in the meantime about this issue, please click  here
