@@ -10,10 +10,13 @@
     <aura:attribute name="showTrackingInfo" type="boolean" default="false"/>
     <aura:attribute name="disabledCancel" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
+    <aura:attribute name="preorderBadge" type="String" />
+    <aura:attribute name="isActiveHold" type="Boolean" default="false" />
+    <aura:attribute name="cancelabilityMap" type="Map" />
 
     <aura:attribute name="isActiveHold" type="Boolean" default="false" />
-
     <aura:attribute name="cancelabilityMap" type="Map" />
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.cancelabilityMap}" action="{!c.resetDisabled}"/>
     <div class="slds-box slds-box_small slds-theme_shade">
@@ -23,6 +26,8 @@
                     <lightning:layout class="slds-grid slds-text-body_small slds-align_absolute-center">
                         <lightning:layoutItem class="slds-size_1-of-5 slds-p-left--medium">
                             <div class="header-column">
+
+
                                 <aura:if isTrue="{!and(v.orderLineItem.Shipnode.NodeType == 'DC', v.orderLineItem.Shipnode.ShipNode == 'DC-689-585')}">
                                     <p><lightning:badge class="slds-badge_lightest" label="Ship from DC: TNDC SwissLog" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
                                 </aura:if>
@@ -39,11 +44,13 @@
                                     <p><lightning:badge class="slds-badge_lightest" label="{!v.orderLineItem.LineType}"/></p>
                                 </aura:if>
                                 <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
-                                    <p><lightning:badge label="{!v.orderLineItem.LineType}"/></p>
+
+                                    <p><lightning:badge label="{!v.preorderBadge}"/></p>
                                 </aura:if>
                                 <aura:if isTrue="{!v.orderLineItem.Status == 'Backordered'}">
                                     <p><lightning:badge  label="{!v.orderLineItem.Status}"/></p>
                                 </aura:if>
+
                                 <aura:if isTrue="{!not(empty(v.orderLineItem.customContainer))}">
                                     <aura:if isTrue="{!v.orderLineItem.cus == 'SameDay'}">
                                         <p><lightning:badge label="SHOPRUNNER - SAME DAY"/></p>
@@ -52,8 +59,6 @@
                                         <p><lightning:badge label="SHOPRUNNER"/></p>
                                     </aura:if>
                                 </aura:if>
-
-
                                 <aura:if isTrue="{!v.orderLineItem.Shipnode.NodeType == 'Store' }">
                                     <aura:if isTrue="{!v.orderLineItem.DeliveryMethod == 'PICK' }">
                                         <p><lightning:badge class="slds-badge_lightest" label="{!'Pick Up In Store: ' + v.orderLineItem.Shipnode.Description}"/></p>
@@ -69,7 +74,6 @@
                                     <p><lightning:badge label="Active Hold" title="Is Active Hold"/></p>
                                 </aura:if>
 
-
                               <aura:if isTrue="{!v.businessUnit == 'Saks'}">
                                     <c:trac_OrderLineStatusHistory
                                             businessUnit="{!v.businessUnit}"
@@ -77,7 +81,6 @@
                                             orderLineItem="{!v.orderLineItem}"
                                             showHistoryTable="false"
                                     />
-
                                 </aura:if>
                             </div>
                         </lightning:layoutItem>
@@ -145,6 +148,7 @@
                                 <p>
                                     <lightning:formattedRichText value="{!v.orderLineItem.LineOverallTotals.LineTotal}" class="slds-text-title_caps item-description" style="font-size:11px" disableLinkify="true"/>
                                 </p>
+
                             </div>
                         </lightning:layoutItem>
                         <lightning:layoutItem class="slds-size_1-of-8">
@@ -161,11 +165,12 @@
                                 </p>
                             </div>
                             <div class="header-column">
+
                                 <p class="field-title slds-form-element__label slds-no-flex">UPC</p>
                                 <p>
                                     <lightning:formattedRichText value="{!v.orderLineItem.customUPC}" class="slds-text-title_caps item-description" style="font-size:11px" disableLinkify="true"/>
-
                                 </p>
+
                             </div>
                         </lightning:layoutItem>
                         <!--<aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniStatus))}">-->
