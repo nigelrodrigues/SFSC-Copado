@@ -6,13 +6,17 @@
     <name>Case - ORC Closed (O5 French)</name>
     <style>none</style>
     <subject>Nous avons traité votre remboursement</subject>
-    <textOnly>Dear {!Contact.FirstName},
+    <textOnly>Bonjour {!Contact.FirstName},
 
-Thank you for contacting {!Case.Business_Unit__c}! We&apos;ve submitted your credit request and it will reflect in your account within 14 days. If you need to contact us again about this issue, please click  here
+Merci d’avoir communiqué avec {!Case.Business_Unit__c}. Nous avons traité votre remboursement; il figurera sur votre compte dans les 14 jours. Pour toute question, n’hésitez pas à communiquer de nouveau avec nous, en précisant le numéro de référence {!Case.CaseNumber}.
 
-Your Case Number: {!Case.CaseNumber}
+COMMUNIQUEZ AVEC NOUS DÈS MAINTENANT
 
-All the best, Your {!Case.Business_Unit__c} Customer Service Team</textOnly>
+Sincères salutations.
+Service à la clientèle de {!Case.Business_Unit__c}
+
+
+{!Case.Thread_Id}</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

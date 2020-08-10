@@ -142,6 +142,7 @@
         <columns>ABSTRACT</columns>
         <columns>ARTICLE_NUMBER</columns>
         <columns>LANGUAGE</columns>
+        <columns>ARTICLE_CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PUBLISH_STATUS</field>
@@ -152,11 +153,6 @@
             <field>LANGUAGE</field>
             <operation>equals</operation>
             <value>en_US,fr</value>
-        </filters>
-        <filters>
-            <field>UPDATEDBY_USER</field>
-            <operation>contains</operation>
-            <value>Rodney</value>
         </filters>
         <label>Draft Articles</label>
     </listViews>
