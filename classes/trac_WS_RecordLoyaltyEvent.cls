@@ -98,7 +98,9 @@ public with sharing class trac_WS_RecordLoyaltyEvent {
         @AuraEnabled public Boolean success;
     }
     public class res_Data {
-        @AuraEnabled public Integer id;
+
+        @AuraEnabled public Long id;
+
         @AuraEnabled public Integer points;
         @AuraEnabled public Integer code;
         @AuraEnabled public String message;
