@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Badge__c</field>
-        <value xsi:type="xsd:string">PENDING INFO FROM BORDERFREE</value>
+        <value xsi:type="xsd:string">WAITING FOR INFO FROM BORDERFREE</value>
     </values>
     <values>
         <field>Hold_Type__c</field>

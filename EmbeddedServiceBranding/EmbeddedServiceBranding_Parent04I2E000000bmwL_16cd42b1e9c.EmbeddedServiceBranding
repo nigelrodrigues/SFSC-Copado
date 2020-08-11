@@ -6,6 +6,8 @@
     <font>Arial</font>
     <masterLabel>EmbeddedServiceBranding_Parent04I2E000000bmwL_16cd42b1e9c</masterLabel>
     <navBarColor>#222222</navBarColor>
+    <navBarTextColor>#ffffff</navBarTextColor>
     <primaryColor>#222222</primaryColor>
     <secondaryColor>#005290</secondaryColor>
+    <secondaryNavBarColor>#cb2b19</secondaryNavBarColor>
 </EmbeddedServiceBranding>

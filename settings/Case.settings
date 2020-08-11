@@ -794,6 +794,12 @@
     <enableEmailActionDefaultsHandler>false</enableEmailActionDefaultsHandler>
     <enableEscalateQfiToCaseInternal>false</enableEscalateQfiToCaseInternal>
     <enableEscalateQfiToCaseNetworks>false</enableEscalateQfiToCaseNetworks>
+    <enableMultiLangSolnSrchCSS>false</enableMultiLangSolnSrchCSS>
+    <enableMultiLangSolnSrchPKB>false</enableMultiLangSolnSrchPKB>
+    <enableMultiLangSolution>false</enableMultiLangSolution>
+    <enableSolutionCategory>false</enableSolutionCategory>
+    <enableSolutionInlineCategory>true</enableSolutionInlineCategory>
+    <enableSolutionShortSummary>true</enableSolutionShortSummary>
     <enableSuggestedArticlesApplication>false</enableSuggestedArticlesApplication>
     <enableSuggestedArticlesCustomerPortal>false</enableSuggestedArticlesCustomerPortal>
     <enableSuggestedArticlesPartnerPortal>false</enableSuggestedArticlesPartnerPortal>
