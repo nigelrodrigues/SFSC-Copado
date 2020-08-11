@@ -6,6 +6,8 @@
     <font>Salesforce Sans</font>
     <masterLabel>EmbeddedServiceBranding_Parent04I2E000000Xd6TUAS_17140e7be42</masterLabel>
     <navBarColor>#222222</navBarColor>
+    <navBarTextColor>#ffffff</navBarTextColor>
     <primaryColor>#222222</primaryColor>
     <secondaryColor>#005290</secondaryColor>
+    <secondaryNavBarColor>#cb2b19</secondaryNavBarColor>
 </EmbeddedServiceBranding>

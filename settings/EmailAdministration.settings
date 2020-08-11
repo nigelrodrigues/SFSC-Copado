@@ -9,6 +9,7 @@
     <enableEnhancedEmailEnabled>true</enableEnhancedEmailEnabled>
     <enableHandleBouncedEmails>false</enableHandleBouncedEmails>
     <enableHtmlEmail>true</enableHtmlEmail>
+    <enableInternationalEmailAddresses>false</enableInternationalEmailAddresses>
     <enableListEmailLogActivities>true</enableListEmailLogActivities>
     <enableResendBouncedEmails>false</enableResendBouncedEmails>
     <enableRestrictTlsToDomains>false</enableRestrictTlsToDomains>
