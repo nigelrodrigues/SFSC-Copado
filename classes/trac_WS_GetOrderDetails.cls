@@ -73,6 +73,7 @@ public with sharing class trac_WS_GetOrderDetails {
         } catch (Exception e)
         {
             throw new CustomException(e.getMessage());
+
         }
     }
 
@@ -85,7 +86,8 @@ public with sharing class trac_WS_GetOrderDetails {
                 {
                     getOrderDetailsResponse.Badges = new List<String>();
                     // Check for holds at the order level
-                    for (res_OrderHoldTypeWrapper orderHoldType : getOrderDetailsResponse.OrderHoldTypes.OrderHoldType) {
+                    for (res_OrderHoldTypeWrapper orderHoldType : getOrderDetailsResponse.OrderHoldTypes.OrderHoldType)
+                    {
                         if (!orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(orderHoldType.HoldType) != null) {
                             OrderHoldWrapper orderHold = orderHoldTypeMap.get(orderHoldType.HoldType);
 
@@ -98,6 +100,27 @@ public with sharing class trac_WS_GetOrderDetails {
 
                             }
                         }
+                    }
+                }
+
+                // check for badges at order-line level
+                if ( getOrderDetailsResponse.OrderLines != null && !getOrderDetailsResponse.OrderLines.OrderLine.isEmpty())
+                {
+                    for ( res_OrderLineWrapper orderline :  getOrderDetailsResponse.OrderLines.OrderLine)
+                    {
+                        if( orderline.OrderHoldTypes!=null && orderLine.OrderHoldTypes.OrderHoldType!=null )
+                            for ( res_OrderLineHoldType_Wrapper holdType : orderline.OrderHoldTypes.OrderHoldType )
+                            {
+                                if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(holdType.HoldType) != null )
+                                {
+                                    OrderHoldWrapper orderHold = orderHoldTypeMap.get(holdType.HoldType);
+
+                                    if ( orderHold.statusDesc.equals(holdType.StatusDescription) )
+                                    {
+                                        getOrderDetailsResponse.Badges.add( orderHold.badge );
+                                    }
+                                }
+                            }
                     }
                 }
             }
@@ -152,6 +175,7 @@ public with sharing class trac_WS_GetOrderDetails {
             throw new CustomException('Error in setting COMX Data ' + e.getMessage() + '' + e.getStackTraceString());
         }
     }
+
 
     private void sortItems()
     {
@@ -600,6 +624,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
         @AuraEnabled public res_ShipNodeWrapper Shipnode;
+
+
 
 
         public Integer compareTo(Object compareTo) {
