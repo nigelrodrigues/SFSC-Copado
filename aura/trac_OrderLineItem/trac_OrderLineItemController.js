@@ -4,7 +4,6 @@
 ({
     doInit: function(component, event, helper) {
         helper.setDisabled(component);
-
         // Set Preorder status
         let orderlineItem = component.get('v.orderLineItem');
         if (orderlineItem &&
@@ -34,7 +33,6 @@
                 }
             }
         }
-
     },
     openModel: function(component, event, helper) {
         component.set("v.isModalOpen", true);
