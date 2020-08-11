@@ -10,12 +10,13 @@
     <aura:attribute name="showTrackingInfo" type="boolean" default="false"/>
     <aura:attribute name="disabledCancel" type="boolean" default="false"/>
     <aura:attribute name="businessUnit" type="String" />
-    <aura:attribute name="isActiveHold" type="Boolean" default="false" />
 
-    <aura:attribute name="cancelabilityMap" type="Map" />
-
+    <aura:attribute name="preorderBadge"      type="String" />
+    <aura:attribute name="isActiveHold"       type="Boolean" default="false" />
+    <aura:attribute name="cancelabilityMap"   type="Map" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.cancelabilityMap}" action="{!c.resetDisabled}"/>
+
     <div class="slds-box slds-box_small slds-theme_shade">
         <aura:if isTrue="{!not(empty(v.orderLineItem))}">
             <div>
@@ -41,9 +42,9 @@
                                     <p><lightning:badge class="slds-badge_lightest" label="{!v.orderLineItem.LineType}"/></p>
                                 </aura:if>
                                 <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
-                                    <p><lightning:badge label="{!v.orderLineItem.LineType}"/></p>
-                                </aura:if>
 
+                                    <p><lightning:badge label="{!v.preorderBadge}"/></p>
+                                </aura:if>
                                 <aura:if isTrue="{!v.orderLineItem.Status == 'Backordered'}">
                                     <p><lightning:badge  label="{!v.orderLineItem.Status}"/></p>
                                 </aura:if>
@@ -68,12 +69,14 @@
                                     <p><lightning:badge label="Gift Wrapped" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
                                 </aura:if>
 
+
                                 <aura:if isTrue="{!v.orderLineItem.Extn.ExtnSignatureRequired == 'Y'}">
                                     <p><lightning:badge label="Signature Required" title="Signature Required"/></p>
                                 </aura:if>
                                 <aura:if isTrue="{!v.isActiveHold}">
                                     <p><lightning:badge label="Active Hold" title="Is Active Hold"/></p>
                                 </aura:if>
+
                               <aura:if isTrue="{!v.businessUnit == 'Saks'}">
                                     <c:trac_OrderLineStatusHistory
                                             businessUnit="{!v.businessUnit}"
@@ -165,13 +168,12 @@
                                 </p>
                             </div>
                             <div class="header-column">
-
                                 <p class="field-title slds-form-element__label slds-no-flex">UPC</p>
                                 <p>
                                     <lightning:formattedRichText value="{!v.orderLineItem.customUPC}" class="slds-text-title_caps item-description" style="font-size:11px" disableLinkify="true"/>
                                 </p>
-
                             </div>
+
                         </lightning:layoutItem>
                         <!--<aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniStatus))}">-->
                         <!--<lightning:layoutItem class="slds-size_1-of-12">-->
@@ -215,6 +217,7 @@
                             </div>
                         </lightning:layoutItem>
 
+
                     </lightning:layout>
                 </div>
                 <div class="{!v.showTrackingInfo ? '' : 'slds-hide' }">
@@ -246,7 +249,11 @@
                                         <td>
                                             <div class="slds-grid">
                                                 <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
-                                                    <div class="slds-float_left slds-align-middle slds-p-right_small"><lightning:badge class="slds-badge_lightest" label="PREORDER"/></div>
+
+                                                    <div class="slds-float_left slds-align-middle slds-p-right_small">
+                                                        <lightning:badge class="slds-badge_lightest" label="PREORDER"/>
+                                                    </div>
+
                                                 </aura:if>
                                                 <div class="slds-truncate slds-float_left">
                                                 <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation + v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" height="120px" width="auto"/>
@@ -257,7 +264,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Description </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-form-element__label">
                                                 {!v.orderLineItem.ItemDetails.PrimaryInformation.ShortDescription}
                                             </div>
                                         </td>
@@ -271,7 +278,7 @@
                                                     <div class="slds-truncate">
                                                         <label class="slds-form-element__label" for="select-01"> {!attribute.Name} </label>
                                                     </div>
-                                                    <div>
+                                                    <div class="slds-text-color_weak">
                                                 {!attribute.Value}
                                             </div>
                                                 </td>
@@ -281,7 +288,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Transaction ID / Invoice Number</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.Extn.ExtnTransactionID}
                                             </div>
                                         </td>
@@ -289,7 +296,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Returnable</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.Extn.ExtnIsReturnable}
                                             </div>
                                         </td>
@@ -299,7 +306,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Manufacturer</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-title_caps">
                                                 {!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}
                                             </div>
                                         </td>
@@ -307,7 +314,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">SKN #</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.Item.ItemID}
                                             </div>
                                         </td>
@@ -316,7 +323,7 @@
                                                 <label class="slds-form-element__label" for="select-01">Style Code</label>
                                                 <lightning:helptext content="Only available for online orders"/>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.ItemDetails.ClassificationCodes.Model}
                                             </div>
                                         </td>
@@ -324,7 +331,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">UPC</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.customUPC}
                                             </div>
                                         </td>
@@ -334,7 +341,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Unit Price</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.LinePriceInfo.UnitPrice}
                                             </div>
                                         </td>
@@ -342,7 +349,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Quantity </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.OrderedQty}
                                             </div>
                                         </td>
@@ -350,7 +357,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> List Price </label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.LinePriceInfo.ListPrice}
                                             </div>
                                         </td>
@@ -358,7 +365,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Tax </label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.LinePriceInfo.Tax}
                                             </div>
                                         </td>
@@ -368,7 +375,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Fulfillment Method </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.DeliveryMethod}
                                             </div>
                                         </td>
@@ -376,7 +383,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Carrier </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.SCAC}
                                             </div>
                                         </td>
@@ -384,7 +391,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Carrier Service </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.CarrierServiceCode}
                                             </div>
                                         </td>
@@ -392,7 +399,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Status </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.Status}
                                             </div>
                                         </td>
@@ -403,9 +410,11 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Latest Expected Ship Date </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 <lightning:formattedDateTime value="{!v.orderLineItem.Extn.ExtnEstimatedShipDate}" year="numeric" month="short"
-                                                                             day="2-digit"/>
+
+                                                                             day="2-digit" timeZone="UTC"/>
+
                                             </div>
                                         </td>
                                         </aura:if>
@@ -413,7 +422,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Is Gift</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.GiftFlag}
                                             </div>
                                         </td>
