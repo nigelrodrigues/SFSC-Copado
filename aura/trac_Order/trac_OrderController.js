@@ -113,6 +113,7 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
+
                     }
                 );
                 break;
@@ -171,11 +172,10 @@
                 );
                 break;
             case "linkToCase":
-
                 let linkOrderToCase = component.get('c.handleImport');
                 $A.enqueueAction(linkOrderToCase);
-
                 break;
         }
     }
+
 })
