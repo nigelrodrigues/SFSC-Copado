@@ -171,8 +171,10 @@
         <sessionTimeout>TwoHours</sessionTimeout>
     </sessionSettings>
     <singleSignOnSettings>
+        <enableCaseInsensitiveFederationID>false</enableCaseInsensitiveFederationID>
         <enableMultipleSamlConfigs>true</enableMultipleSamlConfigs>
         <enableSamlJitProvisioning>false</enableSamlJitProvisioning>
         <enableSamlLogin>true</enableSamlLogin>
+        <isLoginWithSalesforceCredentialsDisabled>false</isLoginWithSalesforceCredentialsDisabled>
     </singleSignOnSettings>
 </SecuritySettings>

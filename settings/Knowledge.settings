@@ -14,7 +14,10 @@
     <enableCreateEditOnArticlesTab>true</enableCreateEditOnArticlesTab>
     <enableExternalMediaContent>true</enableExternalMediaContent>
     <enableKnowledge>true</enableKnowledge>
+    <enableKnowledgeAgentContribution>false</enableKnowledgeAgentContribution>
+    <enableKnowledgeAnswersPromotion>false</enableKnowledgeAnswersPromotion>
     <enableKnowledgeArticleTextHighlights>true</enableKnowledgeArticleTextHighlights>
+    <enableKnowledgeCaseRL>true</enableKnowledgeCaseRL>
     <enableKnowledgeKeywordAutoComplete>true</enableKnowledgeKeywordAutoComplete>
     <enableKnowledgeTitleAutoComplete>true</enableKnowledgeTitleAutoComplete>
     <enableLightningKbAutoLoadRichTextField>true</enableLightningKbAutoLoadRichTextField>

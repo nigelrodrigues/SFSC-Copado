@@ -28,7 +28,9 @@
     <enableRemoveFooterFromRepExp>true</enableRemoveFooterFromRepExp>
     <enableReportNotificationsEnable>true</enableReportNotificationsEnable>
     <enableS1AnalyticsEclairEnable>true</enableS1AnalyticsEclairEnable>
+    <enableS3OutputConnector>false</enableS3OutputConnector>
     <enableSFXJoinedReportsEnable>false</enableSFXJoinedReportsEnable>
+    <enableSubscriptionAttachmentPref>false</enableSubscriptionAttachmentPref>
     <enableUseOldChartsLookAndFeel>false</enableUseOldChartsLookAndFeel>
     <enableWaveRecordNavigation>false</enableWaveRecordNavigation>
     <enableWaveReplication>false</enableWaveReplication>

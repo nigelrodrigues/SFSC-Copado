@@ -7,7 +7,9 @@
     <height>0</height>
     <masterLabel>EmbeddedServiceBranding_Parent04I2E000000bmwM_16cd42b1eab</masterLabel>
     <navBarColor>#222222</navBarColor>
+    <navBarTextColor>#ffffff</navBarTextColor>
     <primaryColor>#222222</primaryColor>
     <secondaryColor>#005290</secondaryColor>
+    <secondaryNavBarColor>#cb2b19</secondaryNavBarColor>
     <width>0</width>
 </EmbeddedServiceBranding>
