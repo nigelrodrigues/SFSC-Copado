@@ -11,6 +11,8 @@ public with sharing class trac_WS_OrderLineHistory {
     public OrderLineHistoryRequest orderLineHistoryRequest;
     public OrderLineHistoryResponse orderLineHistoryResponse;
     public String jsonError;
+    public List<Cancellation_Code_Badge_mapping__mdt> cancelCodeBadgeMapping;
+
 
     public trac_WS_OrderLineHistory() {
         orderLineHistoryRequest = new OrderLineHistoryRequest();
@@ -20,9 +22,12 @@ public with sharing class trac_WS_OrderLineHistory {
         Boolean success = false;
 
         res = trac_WS_WebServiceHelper.sendPostRequest(getEndpoint(), orderLineHistoryRequest);
-        if(trac_WS_WebServiceHelper.isValidResponse(res)) {
+        if(trac_WS_WebServiceHelper.isValidResponse(res)) 
+        {
             orderLineHistoryResponse = parse(res.getBody());
             success = true;
+            cancelCodeBadgeMapping = [SELECT Id,Status_Description__c, Reason_Code__c, Badge__c FROM Cancellation_Code_Badge_mapping__mdt];
+            setBadges();
         }
         else {
             jsonError = trac_WS_WebServiceHelper.getError(res);
@@ -45,6 +50,32 @@ public with sharing class trac_WS_OrderLineHistory {
         }
 
         return dynamicEndpoint;
+    }
+
+    private void setBadges()
+    {
+        if (orderLineHistoryResponse !=null && orderLineHistoryResponse.LineStatusHistory != null )
+        {
+            //Get the latest cancellation reason and associate with a badge
+            Boolean breakLoop = false;
+            for ( res_LineStatusHistoryWrapper  lineHistory : orderLineHistoryResponse.LineStatusHistory)
+            {
+                for ( Cancellation_Code_Badge_mapping__mdt cancelCodeBadge : cancelCodeBadgeMapping)
+                {
+                    if ( cancelCodeBadge.Status_Description__c != null && lineHistory.ReasonCode != null &&
+                            lineHistory.ReasonCode.equals(cancelCodeBadge.Reason_Code__c) &&
+                            lineHistory.StatusDescription.equals(cancelCodeBadge.Status_Description__c))
+                    {
+                        lineHistory.Badge = cancelCodeBadge.Badge__c;
+                        breakLoop = true;
+                    }
+                }
+                if( breakLoop )
+                {
+                    break;
+                }
+            }
+        }
     }
 
     public class OrderLineHistoryRequest {
@@ -82,7 +113,7 @@ public with sharing class trac_WS_OrderLineHistory {
     public class OrderLineHistoryResponse {
         @AuraEnabled public List<res_LineStatusHistoryWrapper> LineStatusHistory;
     }
-    public class res_LineStatusHistoryWrapper {
+    public class res_LineStatusHistoryWrapper implements Comparable{
         @AuraEnabled public String OrderLineKey;
         @AuraEnabled public String PrimeLineNo;
         @AuraEnabled public String ReasonCode;
@@ -94,6 +125,13 @@ public with sharing class trac_WS_OrderLineHistory {
         @AuraEnabled public String NodeDescription;
         @AuraEnabled public String NodeType;
         @AuraEnabled public String ShipNode;
+        @AuraEnabled public String Createts;
+        @AuraEnabled public String Badge;
+
+        public Integer compareTo(Object compareTo) {
+            res_LineStatusHistoryWrapper compareToLineStatusHistoryWrapper = (res_LineStatusHistoryWrapper) compareTo;
+            return Datetime.valueOf(Createts.replace('T',' ')) > Datetime.valueOf(compareToLineStatusHistoryWrapper.Createts.replace('T',' ')) ? 1 : -1;
+        }
     }
 
 }
