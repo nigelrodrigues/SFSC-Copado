@@ -14,12 +14,34 @@
                 <h2 class="slds-card__header-title">Note:</h2>
                 <lightning:formattedText value="{! v.note.NoteText }"/>
             </div>
-            <aura:if isTrue="{!not(empty(v.note.ReasonCode))}">
-                <div>
-                    <h2 class="slds-card__header-title">Reason:</h2>
-                    <lightning:formattedText value="{! v.note.ReasonCode }"/><!--todo: add mapping from OMS-->
-                </div>
-            </aura:if>
+            <div>
+                <aura:if isTrue="{!not(empty(v.note.ContactUser))}">
+                        <h2 class="slds-card__header-title">Contact User:</h2>
+                        <lightning:formattedText value="{! v.note.ContactUser }"/>
+                    <aura:set attribute="else">
+                        <h2 class="slds-card__header-title">Contact User:</h2>
+                        <lightning:formattedText value="N/A"/>
+
+                    </aura:set>
+                </aura:if>
+            </div>
+            <br/>
+            <div>
+                <aura:if isTrue="{!not(empty(v.note.Createts))}">
+
+                        <h2 class="slds-card__header-title">Date:</h2>
+                        <lightning:formattedDateTime value="{! v.note.Createts }" year="numeric" month="long" day="2-digit"
+                                                     hour="2-digit" minute="2-digit" timeZoneName="short" timeZone="America/Los_Angeles"/>
+                </aura:if>
+            </div>
+            <br/>
+            <div>
+                <aura:if isTrue="{!not(empty(v.note.ReasonCode))}">
+
+                        <h2 class="slds-card__header-title">Reason:</h2>
+                        <lightning:formattedText value="{! v.note.ReasonCode }"/>
+                </aura:if>
+            </div>
         </lightning:card>
     </div>
 </aura:component>
