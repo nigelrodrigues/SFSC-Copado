@@ -599,6 +599,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_OrderLineHoldTypesWrapper OrderHoldTypes;
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
+        @AuraEnabled public res_ShipNodeWrapper Shipnode;
+
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
@@ -778,6 +780,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String ReasonCode;
         @AuraEnabled public String NoteText;
         @AuraEnabled public String Priority;
+        @AuraEnabled public String Createts;
     }
 
     public class res_OrderLinesWrapper {
@@ -992,6 +995,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String Discount;
         @AuraEnabled public String UnitPrice;
         @AuraEnabled public String Charges;
+        @AuraEnabled public String Description;
     }
 
     public class res_HeaderChargesWrapper {
@@ -1189,6 +1193,7 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public res_ExtnWrapper Extn;
         @AuraEnabled public String ShippingNode;
         @AuraEnabled public String ShipNode;
+        @AuraEnabled public String Description;
     }
 
     public class res_AddressWrapper {
