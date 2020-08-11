@@ -22,7 +22,8 @@ public with sharing class trac_WS_OrderLineHistory {
         Boolean success = false;
 
         res = trac_WS_WebServiceHelper.sendPostRequest(getEndpoint(), orderLineHistoryRequest);
-        if(trac_WS_WebServiceHelper.isValidResponse(res)) {
+        if(trac_WS_WebServiceHelper.isValidResponse(res)) 
+        {
             orderLineHistoryResponse = parse(res.getBody());
             success = true;
             cancelCodeBadgeMapping = [SELECT Id,Status_Description__c, Reason_Code__c, Badge__c FROM Cancellation_Code_Badge_mapping__mdt];
@@ -55,6 +56,10 @@ public with sharing class trac_WS_OrderLineHistory {
     {
         if (orderLineHistoryResponse !=null && orderLineHistoryResponse.LineStatusHistory != null )
         {
+
+            //Get the latest cancellation reason and associate with a badge
+            Boolean breakLoop = false;
+
             for ( res_LineStatusHistoryWrapper  lineHistory : orderLineHistoryResponse.LineStatusHistory)
             {
                 for ( Cancellation_Code_Badge_mapping__mdt cancelCodeBadge : cancelCodeBadgeMapping)
@@ -64,8 +69,15 @@ public with sharing class trac_WS_OrderLineHistory {
                             lineHistory.StatusDescription.equals(cancelCodeBadge.Status_Description__c))
                     {
                         lineHistory.Badge = cancelCodeBadge.Badge__c;
+
+                        breakLoop = true;
                     }
                 }
+                if( breakLoop )
+                {
+                    break;
+                }
+
             }
         }
     }
