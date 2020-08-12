@@ -2,12 +2,12 @@
  * Created by ragrawal on 7/3/2019.
  */
 ({
-
     doInit: function(component, event, helper) {
+
         helper.setDisabled(component);
+
         // Set Preorder status
         let orderlineItem = component.get('v.orderLineItem');
-
         if (orderlineItem &&
             orderlineItem.LineType &&
             orderlineItem.LineType ==='PREORDER' &&
@@ -28,22 +28,26 @@
                 latestExpectedShipDate.substring(0,4) ;       //YYYY
             component.set('v.preorderBadge', preorderBadge);
         }
-
         component.set("v.lineItemActiveHold", false);
+
+
         if( orderlineItem.OrderHoldTypes &&
             orderlineItem.OrderHoldTypes.OrderHoldType &&
             orderlineItem.LineType
         )
         {
             let isActive = component.get("v.lineItemActiveHold");
+
             for (let orderlineItemHoldType of orderlineItem.OrderHoldTypes.OrderHoldType)
             {
                 let lineType = component.get('v.orderLineItem.LineType');
+
                 if(orderlineItemHoldType.StatusDescription === 'Created' &&
                     !isActive &&
                     lineType === 'PREORDER')
                 {
                     component.set("v.lineItemActiveHold", true);
+
 
                 }
             }
@@ -57,22 +61,16 @@
     closeModel: function(component, event, helper) {
         component.set("v.isModalOpen", false);
     },
-
-
     resetDisabled: function(component, event, helper) {
         console.log('Inside resetDisabled');
         helper.setDisabled(component);
     },
-
-
     toggleTracking: function(component, event, helper) {
         var showTrackingInfo = component.get("v.showTrackingInfo");
         component.set("v.showTrackingInfo", !showTrackingInfo);
     },
-
     handleMenuSelect: function(component, event, helper) {
         var selectedMenuItemValue = event.getParam("value");
-
         switch (selectedMenuItemValue) {
           case 'cancel':
             helper.handleShowCancelOrder(component, event, helper);
