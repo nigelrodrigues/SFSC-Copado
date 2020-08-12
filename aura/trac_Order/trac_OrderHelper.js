@@ -40,8 +40,6 @@
         }
         component.set("v.validSpaBusinessUnit", validSpaBusinessUnit);
     },
-
-
     setBody : function (component, event, helper, newCmp, status, errorMessage)
     {
         if (status === "SUCCESS")
@@ -74,12 +72,12 @@
                 } else {
                     component.set("v.channel", "Digital");
                 }
-
             }
             component.set("v.isLoading", false);
         });
         $A.enqueueAction(action);
     },
+
     setCancelabilityMap: function(component, event, helper) {
         console.log('Inside setCancelabilityMap');
         var businessUnit = component.get('v.businessUnit');
@@ -92,26 +90,32 @@
                 console.log('response.getReturnValue(): ', response.getReturnValue());
                 component.set('v.cancelabilityMap', response.getReturnValue());
             }
-
         });
         $A.enqueueAction(action);
     },
+
     isBetweenRange : function (rangeStr, number) {
         var ranges = rangeStr.split("-");
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
     },
-    setActiveHold: function(component)
+
+    setActiveHold: function(component, event, helper)
     {
         let order = component.get("v.order");
+        component.set("v.showActiveBadge", false);
+
         if(order.OrderHoldTypes.OrderHoldType)
         {
             for (let orderHoldType of order.OrderHoldTypes.OrderHoldType)
             {
+                console.log('orderHoldType.StatusDescription: ' + orderHoldType.StatusDescription);
                 if(orderHoldType.StatusDescription === 'Created')
                 {
-                    component.set("v.isActiveHold", true);
+                    component.set("v.showActiveBadge", true);
+
                 }
             }
         }
-    },
+
+    }
 })

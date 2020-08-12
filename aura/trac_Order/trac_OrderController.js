@@ -162,6 +162,7 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
+
                     }
                 );
                 break;
@@ -177,8 +178,6 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
-
-
                     }
                 );
                 break;
@@ -188,4 +187,5 @@
                 break;
         }
     }
+
 })
