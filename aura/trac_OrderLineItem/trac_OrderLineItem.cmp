@@ -12,6 +12,7 @@
     <aura:attribute name="businessUnit"       type="String" />
     <aura:attribute name="preorderBadge"      type="String" />
     <aura:attribute name="isActiveHold"       type="Boolean" default="false" />
+    <aura:attribute name="lineItemActiveHold" type="Boolean" default="false" />
     <aura:attribute name="cancelabilityMap"   type="Map" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -42,6 +43,7 @@
                                 <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
                                     <p><lightning:badge label="{!v.preorderBadge}"/></p>
                                 </aura:if>
+
                                 <aura:if isTrue="{!v.orderLineItem.Status == 'Backordered'}">
                                     <p><lightning:badge  label="{!v.orderLineItem.Status}"/></p>
                                 </aura:if>
@@ -67,8 +69,11 @@
                                 <aura:if isTrue="{!v.orderLineItem.Extn.ExtnSignatureRequired == 'Y'}">
                                     <p><lightning:badge label="Signature Required" title="Signature Required"/></p>
                                 </aura:if>
-                                <aura:if isTrue="{!v.isActiveHold}">
+                                <aura:if isTrue="{!or(v.isActiveHold, v.lineItemActiveHold)}">
                                     <p><lightning:badge label="Active Hold" title="Is Active Hold"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderLineItem.Extn.ExtnIsReturnable == 'N' }">
+                                    <p><lightning:badge label="FINAL SALE"/></p>
                                 </aura:if>
                               <aura:if isTrue="{!v.businessUnit == 'Saks'}">
                                     <c:trac_OrderLineStatusHistory
@@ -285,12 +290,12 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="slds-truncate">
+                                            <!--<div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Returnable</label>
                                             </div>
                                             <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.Extn.ExtnIsReturnable}
-                                            </div>
+                                            </div>-->
                                         </td>
                                     </tr>
                                     <tr>
