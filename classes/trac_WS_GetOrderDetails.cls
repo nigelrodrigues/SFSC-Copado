@@ -74,6 +74,7 @@ public with sharing class trac_WS_GetOrderDetails {
         {
             throw new CustomException(e.getMessage());
 
+
         }
     }
 
@@ -167,6 +168,7 @@ public with sharing class trac_WS_GetOrderDetails {
                             }
                         }
                     }
+
                 }
             }
         }
@@ -175,6 +177,8 @@ public with sharing class trac_WS_GetOrderDetails {
             throw new CustomException('Error in setting COMX Data ' + e.getMessage() + '' + e.getStackTraceString());
         }
     }
+
+
 
 
     private void sortItems()
@@ -624,6 +628,8 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
         @AuraEnabled public res_ShipNodeWrapper Shipnode;
+
+
 
 
 
