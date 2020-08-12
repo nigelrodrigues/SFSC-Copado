@@ -40,6 +40,8 @@
         }
         component.set("v.validSpaBusinessUnit", validSpaBusinessUnit);
     },
+
+
     setBody : function (component, event, helper, newCmp, status, errorMessage)
     {
         if (status === "SUCCESS")
@@ -72,6 +74,7 @@
                 } else {
                     component.set("v.channel", "Digital");
                 }
+
             }
             component.set("v.isLoading", false);
         });
@@ -89,6 +92,7 @@
                 console.log('response.getReturnValue(): ', response.getReturnValue());
                 component.set('v.cancelabilityMap', response.getReturnValue());
             }
+
         });
         $A.enqueueAction(action);
     },
