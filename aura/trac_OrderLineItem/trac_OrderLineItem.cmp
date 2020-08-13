@@ -1,175 +1,230 @@
 <!--
  - Created by ragrawal on 6/26/2019.
  -->
-
-<aura:component description="trac_OrderLineItem">
-    <aura:attribute name="caseRecord" type="Case"/>
-    <aura:attribute name="order" type="Object"/>
-    <aura:attribute name="orderLineItem" type="Object"/>
-    <aura:attribute name="addAttributes" type="Object" />
-    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
-    <aura:attribute name="showTrackingInfo" type="boolean" default="false"/>
-    <aura:attribute name="businessUnit" type="String" />
-
-    <div class="slds-box slds-theme_shade">
+<aura:component description="trac_OrderLineItem" extends="c:trac_BaseComponent">
+    <aura:attribute name="caseRecord"         type="Case"/>
+    <aura:attribute name="order"              type="Object"/>
+    <aura:attribute name="orderLineItem"      type="Object"/>
+    <aura:attribute name="addAttributes"      type="Object" />
+    <aura:attribute name="isModalOpen"        type="boolean" default="false"/>
+    <aura:attribute name="showTrackingInfo"   type="boolean" default="false"/>
+    <aura:attribute name="disabledCancel"     type="boolean" default="false"/>
+    <aura:attribute name="businessUnit"       type="String" />
+    <aura:attribute name="preorderBadge"      type="String" />
+    <aura:attribute name="isActiveHold"       type="Boolean" default="false" />
+    <aura:attribute name="lineItemActiveHold" type="Boolean" default="false" />
+    <aura:attribute name="cancelabilityMap"   type="Map" />
+    <aura:attribute name="showExpectedDate"   type="Boolean" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.cancelabilityMap}" action="{!c.resetDisabled}"/>
+    <div class="slds-box slds-box_small slds-theme_shade">
         <aura:if isTrue="{!not(empty(v.orderLineItem))}">
-            <div class="slds-grid">
-                <div class="slds-col slds-size_1-of-12">
-                    <lightning:layout>
-                        <lightning:layoutItem size="12">
+            <div>
+                <div>
+                    <lightning:layout class="slds-grid slds-text-body_small slds-align_absolute-center ">
+                        <lightning:layoutItem class="slds-size_1-of-5 slds-p-left--medium">
                             <div class="header-column">
+                                <aura:if isTrue="{!and(v.orderLineItem.Shipnode.NodeType == 'DC', v.orderLineItem.Shipnode.ShipNode == 'DC-689-585')}">
+                                    <p><lightning:badge class="slds-badge_lightest" label="Ship from DC: TNDC SwissLog" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!and(v.orderLineItem.Shipnode.NodeType == 'DC', v.orderLineItem.Shipnode.ShipNode == 'DC-LVG-689')}">
+                                    <p><lightning:badge class="slds-badge_lightest" label="Ship from DC: TNDC Kiva" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
+                                </aura:if>
+<!--                                <aura:if isTrue="{!or(v.orderLineItem.Shipnode.NodeType != 'DC',-->
+<!--                                and(v.orderLineItem.Shipnode.ShipNode != 'DC-LVG-689', v.orderLineItem.Shipnode.ShipNode != 'DC-689-585'))}">-->
+<!--                                    <aura:if isTrue="{!v.orderLineItem.LineType == 'REGULAR'}">-->
+<!--                                        <p><lightning:badge class="slds-badge_lightest slds-text-title_caps" label="{!v.orderLineItem.LineType}"/></p>-->
+<!--                                    </aura:if>-->
+<!--                                </aura:if>-->
+                                <aura:if isTrue="{!v.orderLineItem.LineType == 'DROPSHIP'}">
+                                    <p><lightning:badge class="slds-badge_lightest" label="{!v.orderLineItem.LineType}"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
+                                    <p><lightning:badge label="{!v.preorderBadge}"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderLineItem.Status == 'Backordered'}">
+                                    <p><lightning:badge  label="{!v.orderLineItem.Status}"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!not(empty(v.orderLineItem.customContainer))}">
+                                    <aura:if isTrue="{!v.orderLineItem.cus == 'SameDay'}">
+                                        <p><lightning:badge label="SHOPRUNNER - SAME DAY"/></p>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.orderLineItem.cus == 'ShopRunner'}">
+                                        <p><lightning:badge label="SHOPRUNNER"/></p>
+                                    </aura:if>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderLineItem.Shipnode.NodeType == 'Store' }">
+                                    <aura:if isTrue="{!v.orderLineItem.DeliveryMethod == 'PICK' }">
+                                        <p><lightning:badge class="slds-badge_lightest" label="{!'Pick Up In Store: ' + v.orderLineItem.Shipnode.Description}"/></p>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.orderLineItem.DeliveryMethod == 'SHP' }">
+                                        <p><lightning:badge class="slds-badge_lightest" label="{!'Ship From Store: ' + v.orderLineItem.Shipnode.Description}" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
+                                    </aura:if>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">
+                                    <p><lightning:badge label="Gift Wrapped" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderLineItem.Extn.ExtnSignatureRequired == 'Y'}">
+                                    <p><lightning:badge label="Signature Required" title="Signature Required"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!or(v.isActiveHold, v.lineItemActiveHold)}">
+                                    <p><lightning:badge label="Active Hold" title="Is Active Hold"/></p>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderLineItem.Extn.ExtnIsReturnable == 'N' }">
+                                    <p><lightning:badge label="FINAL SALE"/></p>
+                                </aura:if>
+                              <aura:if isTrue="{!v.businessUnit == 'Saks'}">
+                                    <c:trac_OrderLineStatusHistory
+                                            businessUnit="{!v.businessUnit}"
+                                            order="{!v.order}"
+                                            orderLineItem="{!v.orderLineItem}"
+                                            showHistoryTable="false"
+                                    />
+                                </aura:if>
+                            </div>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-size_2-of-12 slds-p-horizontal--x-large">
+                            <div class="header-column slds-box slds-theme_default slds-p-horizontal--large slds-align_absolute-center" style="height:12em;overflow:hidden;">
                                 <aura:if isTrue="{!v.businessUnit == 'Saks'}">
-                                    <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation +'/'+ v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" class="trac-img"/>
+                                    <figure>
+                                        <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation +'/'+ v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" onclick="{!c.openModel}"
+                                             alt="image" class="trac-img"/>
+                                    </figure>
                                     <aura:set attribute="else">
-                                        <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation + v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" class="trac-img"/>
+                                        <figure>
+                                            <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation + v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" onclick="{!c.openModel}" class="trac-img"/>
+                                        </figure>
                                     </aura:set>
                                 </aura:if>
                             </div>
                         </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-size_1-of-7 slds-p-right--medium">
+                            <div class="header-column" style="height:11em">
+                                <div>
+                                    <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Item</p>
+                                    <p>
+                                        <lightning:formattedRichText value="{!v.orderLineItem.ItemDetails.PrimaryInformation.ShortDescription}"
+                                                                     class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
+                                    </p>
+                                </div>
+                                <div class="slds-text-color_weak slds-text" style="font-size:10.5px;">
+                                    <aura:if
+                                            isTrue="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute != null}">
+                                        <ul class="slds-list_horizontal slds-has-dividers_right">
+                                            <aura:iteration
+                                                    items="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute}"
+                                                    var="attribute">
+                                                <!--<p class="field-title slds-form-element__label slds-no-flex">{!attribute.Name}</p>-->
+                                                <p class="slds-item" style="text-transform:lowercase">{!attribute.Name}: {!attribute.Value}</p>
+<!--                                                <li class="slds-item" style="text-transform:lowercase">{!attribute.Name}</li>
+                                                <li class="slds-item" style="text-transform:lowercase">{!attribute.Value}</li>-->
+                                            </aura:iteration>
+                                        </ul>
+                                    </aura:if>
+                                    <p>{!'quantity ' + v.orderLineItem.OrderedQty}</p>
+                                </div>
+                            </div>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-size_1-of-8 slds-p-right--small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Designer</p>
+                                <p>
+                                    <lightning:formattedRichText value="{!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}"
+                                                                 class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
+                                </p>
+                            </div>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-size_1-of-12 slds-p-left--small">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Status</p>
+                                <p>
+                                    <lightning:formattedRichText value="{!v.orderLineItem.Status}" class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
+                                </p>
+                            </div>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-size_1-of-12 slds-p-left--medium">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Line Total</p>
+                                <p>
+                                    <lightning:formattedRichText value="{!v.orderLineItem.LineOverallTotals.LineTotal}" class="slds-text-title_caps item-description"
+                                                                 style="font-size:10px" disableLinkify="true"/>
+                                </p>
+                            </div>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="slds-size_1-of-8">
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Style Code</p>
+                                <p>
+                                    <lightning:formattedRichText value="{!v.orderLineItem.ItemDetails.ClassificationCodes.Model}"
+                                                                 class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
+                                </p>
+                            </div>
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">SKN</p>
+                                <p>
+                                    <lightning:formattedRichText value="{!v.orderLineItem.Item.ItemID}"
+                                                                 class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
+                                </p>
+                            </div>
+                            <div class="header-column">
+                                <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">UPC</p>
+                                <p>
+                                    <lightning:formattedRichText value="{!v.orderLineItem.customUPC}" class="slds-text-title_caps item-description"
+                                                                 style="font-size:10px" disableLinkify="true"/>
+                                </p>
+                            </div>
+                        </lightning:layoutItem>
+                        <!--<aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniStatus))}">-->
+                        <!--<lightning:layoutItem class="slds-size_1-of-12">-->
+                        <!--<div class="header-column">-->
+                        <!--<p class="field-title slds-form-element__label slds-no-flex">Blue Martini Status</p>-->
+                        <!--<p class="slds-text-title_caps">{!v.orderLineItem.customBlueMartiniStatus}</p>-->
+                        <!--</div>-->
+                        <!--</lightning:layoutItem>-->
+                        <!--</aura:if>-->
+                        <!--<aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniCancelCode))}">-->
+                        <!--<lightning:layoutItem class="slds-size_1-of-12">-->
+                        <!--<div class="header-column">-->
+                        <!--<p class="field-title slds-form-element__label slds-no-flex">Blue Martini-->
+                        <!--Cancellation Code</p>-->
+                        <!--<p class="slds-text-title_caps">{!v.orderLineItem.customBlueMartiniCancelCode}</p>-->
+                        <!--</div>-->
+                        <!--</lightning:layoutItem>-->
+                        <!--</aura:if>-->
+                        <!--<lightning:layoutItem class="slds-size_1-of-12">-->
+                        <!--<div class="header-column">-->
+                        <!--<aura:if isTrue="{!not(empty(v.orderLineItem.Notes.Note))}">-->
+                        <!--<lightning:icon iconName="utility:note" alternativeText="Notes" size="small"/>-->
+                        <!--</aura:if>-->
+                        <!--<aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">-->
+                        <!--<lightning:icon iconName="standard:thanks" alternativeText="Gift" size="small"/>-->
+                        <!--</aura:if>-->
+                        <!--</div>-->
+                        <!--</lightning:layoutItem>-->
+                        <lightning:layoutItem class="slds-size_1-of-12 slds-p-top--x-small">
+                            <div>
+                                <lightning:buttonMenu label="ACTIONS" title="Order Actions"
+                                                      variant="border-filled" onselect="{!c.handleMenuSelect}"
+                                                      menuAlignment="left" iconName="utility:questions_and_answers"
+                                                      iconSize="small" class="slds-text-title_caps slds-button_stretch">
+                                    <lightning:menuItem label="Cancel Order Line" value="cancel" disabled="{!v.disabledCancel}"/>
+                                    <lightning:menuItem label="Line Refund/Credit" value="refund"/>
+                                    <lightning:menuItem label="Add Line Note" value="note"/>
+                                    <lightning:menuItem label="Track" value="track"
+                                                        disabled="{!empty(v.orderLineItem.customContainer.TrackingNo)}"/>
+                                </lightning:buttonMenu>
+                            </div>
+                        </lightning:layoutItem>
                     </lightning:layout>
                 </div>
-                <div class="slds-col slds-size_11-of-12">
-                    <lightning:layout multipleRows="true">
-                        <lightning:layoutItem size="12">
-                            <lightning:layout>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Line #</p>
-                                        <p>{!v.orderLineItem.PrimeLineNo}</p>
-                                    </div>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Manufacturer</p>
-                                        <p>{!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}</p>
-                                    </div>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Product</p>
-                                        <p>{!v.orderLineItem.ItemDetails.PrimaryInformation.ShortDescription}</p>
-                                    </div>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Unit Price</p>
-                                        <p>{!v.orderLineItem.LinePriceInfo.UnitPrice}</p>
-                                    </div>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Quantity</p>
-                                        <p>{!v.orderLineItem.OrderedQty}</p>
-                                    </div>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Line Total</p>
-                                        <p>{!v.orderLineItem.LineOverallTotals.LineTotal}</p>
-                                    </div>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <p class="field-title slds-form-element__label slds-no-flex">Status</p>
-                                        <p>{!v.orderLineItem.Status}</p>
-                                    </div>
-                                </lightning:layoutItem>
-
-                                <aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniStatus))}">
-                                    <lightning:layoutItem padding="around-small">
-                                        <div class="header-column">
-                                            <p class="field-title slds-form-element__label slds-no-flex">Blue Martini Status</p>
-                                            <p>{!v.orderLineItem.customBlueMartiniStatus}</p>
-                                        </div>
-                                    </lightning:layoutItem>
-                                </aura:if>
-
-                                <aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniCancelCode))}">
-                                    <lightning:layoutItem padding="around-small">
-                                        <div class="header-column">
-                                            <p class="field-title slds-form-element__label slds-no-flex">Blue Martini Cancellation Code</p>
-                                            <p>{!v.orderLineItem.customBlueMartiniCancelCode}</p>
-                                        </div>
-                                    </lightning:layoutItem>
-                                </aura:if>
-
-                                <aura:if isTrue="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute != null}" >
-                                    <aura:iteration items="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute}" var="attribute" >
-                                        <lightning:layoutItem padding="around-small">
-                                            <div class="header-column">
-                                                <p class="field-title slds-form-element__label slds-no-flex">{!attribute.Name}</p>
-                                                <p>{!attribute.Value}</p>
-                                            </div>
-                                        </lightning:layoutItem>
-                                    </aura:iteration>
-                                </aura:if>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <div class="header-column">
-                                        <aura:if isTrue="{!not(empty(v.orderLineItem.Notes.Note))}">
-                                            <lightning:icon iconName="utility:note" alternativeText="Notes" size="small"/>
-                                        </aura:if>
-                                        <aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">
-                                            <lightning:icon iconName="standard:thanks" alternativeText="Gift" size="small"/>
-                                        </aura:if>
-                                    </div>
-                                </lightning:layoutItem>
-
-                            </lightning:layout>
-                        </lightning:layoutItem>
-
-                        <!-- BUTTONS START -->
-                        <lightning:layoutItem>
-                            <lightning:layout>
-                                <lightning:layoutItem padding="around-small">
-                                    <lightning:button onclick="{!c.openModel}"
-                                                      variant="neutral"
-                                                      label="View Details"/>
-                                </lightning:layoutItem>
-                                <lightning:layoutItem padding="around-small">
-                                    <c:trac_OrderRefundCredit orderLineItem="{!v.orderLineItem}" order="{!v.order}"
-                                                              caseRecord="{!v.caseRecord}"/>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <c:trac_CancelOrder orderLineItem="{!v.orderLineItem}" order="{!v.order}"
-                                                        caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <c:trac_AddNote orderLineItem="{!v.orderLineItem}" order="{!v.order}"
-                                                    caseRecord="{!v.caseRecord}" businessUnit="{!v.businessUnit}"/>
-                                </lightning:layoutItem>
-
-                                <lightning:layoutItem padding="around-small">
-                                    <lightning:button onclick="{!c.toggleTracking}"
-                                                      variant="brand"
-                                                      label="Track"
-                                                      disabled="{!empty(v.orderLineItem.customContainer.TrackingNo)}"
-                                                      iconName="utility:checkin"/>
-                                </lightning:layoutItem>
-                            </lightning:layout>
-                        </lightning:layoutItem>
-                        <!-- BUTTONS END -->
-                    </lightning:layout>
+                <div class="{!v.showTrackingInfo ? '' : 'slds-hide' }">
+                    <aura:if isTrue="{!not(empty(v.orderLineItem.customContainer))}">
+                        <c:trac_OrderShippingContainer container="{!v.orderLineItem.customContainer}"/>
+                    </aura:if>
                 </div>
-            </div>
-
-            <div class="{!v.showTrackingInfo ? '' : 'slds-hide' }">
-                <aura:if isTrue="{!not(empty(v.orderLineItem.customContainer))}">
-                    <c:trac_OrderShippingContainer container="{!v.orderLineItem.customContainer}"/>
-                </aura:if>
             </div>
         </aura:if>
     </div>
-
     <div>
         <aura:if isTrue="{!v.isModalOpen}">
             <!-- Modal/Popup Box starts here-->
@@ -181,7 +236,6 @@
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Order Line Item
                             Details</h2>
                         <!--{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute[0].Name}-->
-
                     </header>
                     <!--Modal/Popup Box Body Starts here-->
                     <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
@@ -190,15 +244,22 @@
                                 <table class="slds-table slds-table_bordered slds-table_cell-buffer">
                                     <tr>
                                         <td>
-                                            <div class="slds-truncate">
+                                            <div class="slds-grid">
+                                                <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
+                                                    <div class="slds-float_left slds-align-middle slds-p-right_small">
+                                                        <lightning:badge class="slds-badge_lightest" label="PREORDER"/>
+                                                    </div>
+                                                </aura:if>
+                                                <div class="slds-truncate slds-float_left">
                                                 <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation + v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" alt="image" height="120px" width="auto"/>
+                                            </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Description </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-form-element__label">
                                                 {!v.orderLineItem.ItemDetails.PrimaryInformation.ShortDescription}
                                             </div>
                                         </td>
@@ -212,7 +273,7 @@
                                                     <div class="slds-truncate">
                                                         <label class="slds-form-element__label" for="select-01"> {!attribute.Name} </label>
                                                     </div>
-                                                    <div>
+                                                    <div class="slds-text-color_weak">
                                                 {!attribute.Value}
                                             </div>
                                                 </td>
@@ -222,17 +283,17 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Transaction ID / Invoice Number</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.Extn.ExtnTransactionID}
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="slds-truncate">
+                                            <!--<div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Returnable</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.Extn.ExtnIsReturnable}
-                                            </div>
+                                            </div>-->
                                         </td>
                                     </tr>
                                     <tr>
@@ -240,7 +301,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Manufacturer</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-title_caps">
                                                 {!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}
                                             </div>
                                         </td>
@@ -248,7 +309,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">SKN #</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.Item.ItemID}
                                             </div>
                                         </td>
@@ -257,7 +318,7 @@
                                                 <label class="slds-form-element__label" for="select-01">Style Code</label>
                                                 <lightning:helptext content="Only available for online orders"/>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.ItemDetails.ClassificationCodes.Model}
                                             </div>
                                         </td>
@@ -265,7 +326,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">UPC</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.customUPC}
                                             </div>
                                         </td>
@@ -275,7 +336,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Unit Price</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.LinePriceInfo.UnitPrice}
                                             </div>
                                         </td>
@@ -283,7 +344,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Quantity </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.OrderedQty}
                                             </div>
                                         </td>
@@ -291,7 +352,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> List Price </label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.LinePriceInfo.ListPrice}
                                             </div>
                                         </td>
@@ -299,7 +360,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Tax </label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.LinePriceInfo.Tax}
                                             </div>
                                         </td>
@@ -309,7 +370,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Fulfillment Method </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.DeliveryMethod}
                                             </div>
                                         </td>
@@ -317,7 +378,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Carrier </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.SCAC}
                                             </div>
                                         </td>
@@ -325,7 +386,7 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Carrier Service </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.CarrierServiceCode}
                                             </div>
                                         </td>
@@ -333,36 +394,28 @@
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Status </label>
                                             </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 {!v.orderLineItem.Status}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
+                                        <aura:if isTrue="{!v.showExpectedDate}">
                                         <td>
                                             <div class="slds-truncate">
-                                                <label class="slds-form-element__label" for="select-01"> Requested Date (Pre-Order) </label>
+                                                <label class="slds-form-element__label" for="select-01"> Latest Expected Ship Date </label>
                                             </div>
-                                            <div class="slds-truncate">
-                                                <lightning:formattedDateTime value="{!v.orderLineItem.Extn.ExtnFirstEstimatedShipDate}" year="numeric" month="short"
-                                                                             day="2-digit" hour="2-digit" minute="2-digit"/>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="slds-truncate">
-                                                <label class="slds-form-element__label" for="select-01"> Expected Date (Pre-Order) </label>
-                                            </div>
-                                            <div class="slds-truncate">
+                                            <div class="slds-truncate slds-text-color_weak">
                                                 <lightning:formattedDateTime value="{!v.orderLineItem.Extn.ExtnEstimatedShipDate}" year="numeric" month="short"
-                                                                             day="2-digit" hour="2-digit" minute="2-digit"/>
+                                                                             day="2-digit" timeZone="UTC"/>
                                             </div>
                                         </td>
+                                        </aura:if>
                                         <td>
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01">Is Gift</label>
                                             </div>
-                                            <div>
+                                            <div class="slds-text-color_weak">
                                                 {!v.orderLineItem.GiftFlag}
                                             </div>
                                         </td>
@@ -371,8 +424,6 @@
                                         <c:trac_OrderShipmentLine shipmentLine="{!v.orderLineItem.customShipmentLine}"/>
                                     </aura:if>
                                 </table>
-
-
                             </lightning:tab>
                             <lightning:tab label="Notes" iconName="{!not(empty(v.orderLineItem.Notes.Note)) ? 'utility:note' : ''}" id="notes">
                                 <aura:iteration items="{!v.orderLineItem.Notes.Note}" var="note">
@@ -384,6 +435,10 @@
                                         businessUnit="{!v.businessUnit}"
                                         order="{!v.order}"
                                         orderLineItem="{!v.orderLineItem}"/>
+                            </lightning:tab>
+                            <lightning:tab label="Gift Options" id="gift">
+
+                                <c:trac_OrderLineItemGift orderLineItem="{!v.orderLineItem}" order="{!v.order}"/>
                             </lightning:tab>
                             <lightning:tab label="Instructions" iconName="{!not(empty(v.orderLineItem.Instructions.Instruction)) ? 'utility:task' : ''}" id="instructions">
                                 <c:trac_OrderLineItemInstructions orderLineItem="{!v.orderLineItem}"/>
@@ -401,5 +456,7 @@
             <div class="slds-backdrop slds-backdrop_open"></div>
         </aura:if>
     </div>
-
+    <div aura:id="divBody">
+        {!v.body}
+    </div>
 </aura:component>
