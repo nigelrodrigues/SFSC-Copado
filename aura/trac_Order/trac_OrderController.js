@@ -5,16 +5,12 @@
     doInit : function (component, event, helper) {
         helper.setUnresolvedHolds(component, event, helper);
         helper.spaBusinessUnit(component, event, helper);
-
         helper.setCancelabilityMap(component, event, helper);
         helper.setActiveHold(component, event, helper);
-
         // For Cancel button in Order Actions
         let order = component.get("v.order");
         let businessUnit = component.get("v.businessUnit");
         //let orderlineItems = order.OrderLines.OrderLine;
-
-
         if( order.Status === 'Released' ||
             order.Status === 'Backordered' ||
             order.Status === 'Hold Credit' ||
@@ -32,15 +28,11 @@
                 component.set("v.disableCancelBtn", true);
             }
         }
-
-
         if(order.EntryType === 'POS') {
             component.set("v.channel", 'Saks CNCT');
         } else {
             helper.setChannel(component, event, helper, order)
         }
-
-
     },
     showOrderLineItems : function (component, event, helper) {
         if(component.get("v.showLineItem")){
@@ -51,16 +43,20 @@
         }
     },
     handleImport : function (component, event, helper) {
+
         let action = component.get("c.updateCase");
         let caseRecord = component.get("v.caseRecord");
         let order = component.get("v.order");
+
         action.setParams({
             "caseId": caseRecord.Id,
             "orderNo": order.OrderNo,
             "orderZipCode": (order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : null
         });
         action.setCallback(this, function (response) {
+
             let state = response.getState();
+
             if (component.isValid() && state === "SUCCESS") {
                 $A.get('e.force:refreshView').fire();
             }
@@ -78,16 +74,12 @@
             component.set("v.showAdditionalInfo", true);
         }
     },
-
     handleActions : function (component, event, helper) {
-
         let selectedAction = event.getParam("value");
         let order = component.get("v.order");
         let caseRecord = component.get("v.caseRecord");
         let businessUnit = component.get("v.businessUnit");
         let recordId = component.get("v.caseRecord.Id");
-
-
         switch(selectedAction)
         {
             case "cancelOrder":
@@ -106,8 +98,6 @@
                     }
                 );
                 break;
-
-
             case "addNote":
                 $A.createComponent(
                     "c:trac_AddNote",
@@ -121,8 +111,6 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
-
-
                     }
                 );
                 break;
@@ -139,6 +127,7 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
+
                     }
                 );
                 break;
@@ -152,21 +141,23 @@
             case "paymentCapture":
                 $A.createComponent(
                     "c:trac_PaymentCapture",
+
                     {
                         "isModalOpen": true,
                         "order": order,
                         "caseRecord": caseRecord,
+
                         "recordId": recordId,
+
                         "showButton": false
                     },
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
-
-
                     }
                 );
                 break;
+
             case "orderReturnFee":
                 $A.createComponent(
                     "c:trac_OrderReturnFee",
@@ -182,6 +173,7 @@
                     }
                 );
                 break;
+
             case "linkToCase":
                 let linkOrderToCase = component.get('c.handleImport');
                 $A.enqueueAction(linkOrderToCase);
