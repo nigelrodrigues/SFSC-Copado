@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Map of profile name to maximum points allowed per appeasement</description>
+    <fields>
+        <fullName>Max_Appeasement__c</fullName>
+        <description>Maximum points per appeasement (or Unlimited)</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Maximum points per appeasement (or Unlimited)</inlineHelpText>
+        <label>Max Appeasement</label>
+        <length>32</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Bay Loyalty Profile Appeasement Cap</label>
+    <listViews>
+        <fullName>All_Appeasement_Caps</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Max_Appeasement__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Appeasement Caps</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Bay Loyalty Profile Appeasement Caps</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

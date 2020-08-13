@@ -4868,6 +4868,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.Customer_Loyalty_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.Date_Time_First_Closed__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5064,6 +5069,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.Latest_Agent_Extension__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Loyalty_Issue_Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -12561,6 +12571,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>AuthorizationForm-Authorization Form Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Bay_Loyalty_Profile_Appeasement_Cap__mdt-Bay Loyalty Profile Appeasement Cap Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Business_Unit_Business_Hours_Setting__mdt-Business Unit Business Hours Setting Layout</layout>
