@@ -73,8 +73,6 @@ public with sharing class trac_WS_GetOrderDetails {
         } catch (Exception e)
         {
             throw new CustomException(e.getMessage());
-
-
         }
     }
 
@@ -110,18 +108,45 @@ public with sharing class trac_WS_GetOrderDetails {
                     for ( res_OrderLineWrapper orderline :  getOrderDetailsResponse.OrderLines.OrderLine)
                     {
                         if( orderline.OrderHoldTypes!=null && orderLine.OrderHoldTypes.OrderHoldType!=null )
-                            for ( res_OrderLineHoldType_Wrapper holdType : orderline.OrderHoldTypes.OrderHoldType )
+                        {
+                            for (res_OrderLineHoldType_Wrapper holdType : orderline.OrderHoldTypes.OrderHoldType)
                             {
-                                if ( !orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(holdType.HoldType) != null )
+                                if (!orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(holdType.HoldType) != null)
                                 {
                                     OrderHoldWrapper orderHold = orderHoldTypeMap.get(holdType.HoldType);
 
-                                    if ( orderHold.statusDesc.equals(holdType.StatusDescription) )
-                                    {
-                                        getOrderDetailsResponse.Badges.add( orderHold.badge );
+                                    if (orderHold.statusDesc.equals(holdType.StatusDescription)) {
+                                        getOrderDetailsResponse.Badges.add(orderHold.badge);
                                     }
                                 }
                             }
+                        }
+
+                        // Check for Associate badge.
+                        if( orderline.LineCharges != null && orderline.LineCharges.LineCharge != null)
+                        {
+                            for( res_LineChargeWrapper linecharge : orderline.LineCharges.LineCharge )
+                            {
+                                if( linecharge.ChargeName.equals('ASSOCIATE'))
+                                {
+                                    getOrderDetailsResponse.Badges.add('EMPLOYEE');
+                                }
+                            }
+                        }
+
+                        // If order is Cancelled
+                        if ( getOrderDetailsResponse.Notes !=null &&
+                                getOrderDetailsResponse.Notes.Note != null &&
+                                getOrderDetailsResponse.Status.equalsIgnoreCase('Cancelled'))
+                        {
+                            for ( res_NoteWrapper note : getOrderDetailsResponse.Notes.Note)
+                            {
+                                if ( note.ReasonCode.equals('HBC_MC_FR_RM') )
+                                {
+                                    getOrderDetailsResponse.Badges.add('CANCELLED DUE TO SECURITY');
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -168,7 +193,6 @@ public with sharing class trac_WS_GetOrderDetails {
                             }
                         }
                     }
-
                 }
             }
         }
@@ -177,9 +201,6 @@ public with sharing class trac_WS_GetOrderDetails {
             throw new CustomException('Error in setting COMX Data ' + e.getMessage() + '' + e.getStackTraceString());
         }
     }
-
-
-
 
     private void sortItems()
     {
@@ -628,11 +649,6 @@ public with sharing class trac_WS_GetOrderDetails {
         @AuraEnabled public String Createuserid;
         @AuraEnabled public String LineType;
         @AuraEnabled public res_ShipNodeWrapper Shipnode;
-
-
-
-
-
 
         public Integer compareTo(Object compareTo) {
             res_OrderLineWrapper compareToOrderLineWrapper = (res_OrderLineWrapper) compareTo;
