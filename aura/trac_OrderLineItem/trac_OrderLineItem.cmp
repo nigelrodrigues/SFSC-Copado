@@ -12,9 +12,10 @@
     <aura:attribute name="businessUnit"       type="String" />
     <aura:attribute name="preorderBadge"      type="String" />
     <aura:attribute name="isActiveHold"       type="Boolean" default="false" />
-
     <aura:attribute name="lineItemActiveHold" type="Boolean" default="false" />
     <aura:attribute name="cancelabilityMap"   type="Map" />
+    <aura:attribute name="showExpectedDate"   type="Boolean" />
+
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.cancelabilityMap}" action="{!c.resetDisabled}"/>
 
@@ -42,8 +43,8 @@
                                 </aura:if>
                                 <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
                                     <p><lightning:badge label="{!v.preorderBadge}"/></p>
-
                                 </aura:if>
+
                                 <aura:if isTrue="{!v.orderLineItem.Status == 'Backordered'}">
                                     <p><lightning:badge  label="{!v.orderLineItem.Status}"/></p>
                                 </aura:if>
@@ -83,7 +84,6 @@
                                             showHistoryTable="false"
                                     />
                                 </aura:if>
-
                             </div>
                         </lightning:layoutItem>
                         <lightning:layoutItem class="slds-size_2-of-12 slds-p-horizontal--x-large">
@@ -403,7 +403,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
+                                        <aura:if isTrue="{!v.showExpectedDate}">
                                         <td>
                                             <div class="slds-truncate">
                                                 <label class="slds-form-element__label" for="select-01"> Latest Expected Ship Date </label>
