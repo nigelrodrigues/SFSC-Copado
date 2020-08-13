@@ -1,0 +1,35 @@
+<!--
+ - Created by macuser on 8/12/20.
+ -->
+
+<aura:component description="trac_OrderLineItemGift">
+    <aura:attribute name="orderLineItem" type="Object"/>
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="detail" type="String"/>
+    <aura:attribute name="recipient" type="String"/>
+    <aura:attribute name="isBM" type="Boolean" default="false"/>
+    <aura:attribute name="order" type="Object"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <div>
+        <aura:if isTrue="{!not(empty(v.recipient))}">
+            <div class="slds-border_bottom slds-p-around_small">
+                <h2 class="slds-card__header-title slds-p-bottom_small">Gift Recipient</h2>
+                <lightning:formattedText value="{! v.recipient }"/>
+            </div>
+        </aura:if>
+        <div class="slds-border_bottom slds-p-around_small">
+            <h2 class="slds-card__header-title slds-p-bottom_small">Gift Message</h2>
+            <lightning:layoutItem class="slds-size_1-of-3">
+                <lightning:formattedText value="{! v.message }"/>
+            </lightning:layoutItem>
+        </div>
+        <aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">
+            <div class="slds-border_bottom slds-p-around_small">
+                <h2 class="slds-card__header-title slds-p-bottom_small">Details</h2>
+                <lightning:formattedText value="{! v.detail }"/>
+            </div>
+        </aura:if>
+    </div>
+
+</aura:component>

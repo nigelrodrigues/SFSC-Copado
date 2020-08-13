@@ -65,15 +65,31 @@ public with sharing class trac_WS_GetOrderDetails {
             setCOMXdata();
             linkItemsToContainers();
             linkItemsToShipmentLines();
-            setPreOrderDateFields();
-            setItemUPCs();
-            setBlueMartiniStatus();
             sortItems();
             setShipmentLoyaltyFields();
+            setCustomFields();
         } catch (Exception e)
         {
             throw new CustomException(e.getMessage());
         }
+    }
+
+    private void setCustomFields() {
+        if (getOrderDetailsResponse == null) {
+            return;
+        }
+        if (getOrderDetailsResponse.Extn != null) {
+            getOrderDetailsResponse.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(getOrderDetailsResponse.Extn.ExtnBlueMartiniStatus);
+        }
+
+        if(getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
+            for ( res_OrderLineWrapper orderLine :  getOrderDetailsResponse.OrderLines.OrderLine) {
+                setBlueMartiniStatus(orderLine);
+                setItemUPCs(orderLine);
+                setPreOrderDateFields(orderLine);
+            }
+        }
+
     }
 
     private void setBadges() {
@@ -202,6 +218,7 @@ public with sharing class trac_WS_GetOrderDetails {
         }
     }
 
+
     private void sortItems()
     {
         try
@@ -329,21 +346,15 @@ public with sharing class trac_WS_GetOrderDetails {
         }
     }
 
-    private void setPreOrderDateFields()
+
+    private void setPreOrderDateFields(res_OrderLineWrapper orderLineWrapper)
     {
         try {
-
-            if (getOrderDetailsResponse != null) {
-                if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                    for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                        if (orderLineWrapper.OrderDates != null && orderLineWrapper.OrderDates.OrderDate != null) {
-                            for (res_OrderDateWrapper orderDateWrapper : orderLineWrapper.OrderDates.OrderDate) {
-                                if (orderDateWrapper.DateTypeId == PRE_ORDER_DATE_TYPE) {
-                                    orderLineWrapper.customRequestedDate = orderDateWrapper.RequestedDate;
-                                    orderLineWrapper.customExpectedDate = orderDateWrapper.ExpectedDate;
-                                }
-                            }
-                        }
+            if (orderLineWrapper.OrderDates != null && orderLineWrapper.OrderDates.OrderDate != null) {
+                for (res_OrderDateWrapper orderDateWrapper : orderLineWrapper.OrderDates.OrderDate) {
+                    if (orderDateWrapper.DateTypeId == PRE_ORDER_DATE_TYPE) {
+                        orderLineWrapper.customRequestedDate = orderDateWrapper.RequestedDate;
+                        orderLineWrapper.customExpectedDate = orderDateWrapper.ExpectedDate;
                     }
                 }
             }
@@ -352,23 +363,14 @@ public with sharing class trac_WS_GetOrderDetails {
         {
             throw new CustomException('Error in setPreOrderDateFields ' + e.getMessage() + '' + e.getStackTraceString());
         }
-
     }
 
-    private void setBlueMartiniStatus() {
+
+    private void setBlueMartiniStatus(res_OrderLineWrapper orderLineWrapper) {
         try {
-            if (getOrderDetailsResponse != null) {
-                if (getOrderDetailsResponse.Extn != null) {
-                    getOrderDetailsResponse.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(getOrderDetailsResponse.Extn.ExtnBlueMartiniStatus);
-                }
-                if (getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                    for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                        if (orderLineWrapper.Extn != null) {
-                            orderLineWrapper.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(orderLineWrapper.Extn.ExtnBlueMartiniStatus);
-                            orderLineWrapper.customBlueMartiniCancelCode = getBlueMartiniDisplayCancelCode(orderLineWrapper.Extn.ExtnBlueMartiniCancellationCode);
-                        }
-                    }
-                }
+            if (orderLineWrapper.Extn != null) {
+                orderLineWrapper.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(orderLineWrapper.Extn.ExtnBlueMartiniStatus);
+                orderLineWrapper.customBlueMartiniCancelCode = getBlueMartiniDisplayCancelCode(orderLineWrapper.Extn.ExtnBlueMartiniCancellationCode);
             }
         }
         catch(Exception e)
@@ -377,19 +379,15 @@ public with sharing class trac_WS_GetOrderDetails {
         }
     }
 
-    private void setItemUPCs()
+    private void setItemUPCs(res_OrderLineWrapper orderLineWrapper)
     {
         try
         {
-            if (getOrderDetailsResponse != null && getOrderDetailsResponse.OrderLines != null && getOrderDetailsResponse.OrderLines.OrderLine != null) {
-                for (res_OrderLineWrapper orderLineWrapper : getOrderDetailsResponse.OrderLines.OrderLine) {
-                    if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.ItemAliasList != null && orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias != null) {
+            if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.ItemAliasList != null && orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias != null) {
 
-                        for (res_ItemAliasWrapper itemAliasWrapper : orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias) {
-                            if (itemAliasWrapper.AliasName == ITEM_ALIAS_UPC) {
-                                orderLineWrapper.customUPC = itemAliasWrapper.AliasValue;
-                            }
-                        }
+                for (res_ItemAliasWrapper itemAliasWrapper : orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias) {
+                    if (itemAliasWrapper.AliasName == ITEM_ALIAS_UPC) {
+                        orderLineWrapper.customUPC = itemAliasWrapper.AliasValue;
                     }
                 }
             }

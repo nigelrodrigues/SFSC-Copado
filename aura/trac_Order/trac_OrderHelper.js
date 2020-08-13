@@ -40,6 +40,8 @@
         }
         component.set("v.validSpaBusinessUnit", validSpaBusinessUnit);
     },
+
+
     setBody : function (component, event, helper, newCmp, status, errorMessage)
     {
         if (status === "SUCCESS")
@@ -55,31 +57,16 @@
         else if (status === "ERROR")
         {
             console.log("Error: " + errorMessage);
-        }
+  		}
     },
     setChannel : function(component, event, helper, order) {
-        var action = component.get("c.getOrderNumberRange");
-        component.set("v.isLoading", true);
-        action.setParams({
-            "label": 'Digital Blue Martini'
-        });
-        action.setCallback(this, function(response) {
-            if (response.getState() == "SUCCESS") {
-                var rangeStr = response.getReturnValue();
-                var ranges = rangeStr.split("-");
-                if( helper.isBetweenRange(rangeStr, order.OrderNo) ) {
-                    component.set("v.channel", "Digital Blue Martini");
-                } else {
-                    component.set("v.channel", "Digital");
-                }
-            }
-            component.set("v.isLoading", false);
-        });
-        $A.enqueueAction(action);
+        if(order.EntryType === 'POS') {
+            component.set("v.channel", 'Saks CNCT');
+        } else {
+            helper.setRange(component, event, helper)
+        }
     },
-
     setCancelabilityMap: function(component, event, helper) {
-        console.log('Inside setCancelabilityMap');
         var businessUnit = component.get('v.businessUnit');
         var action = component.get("c.getOrderLineCancelabilityByStatus");
         action.setParams({
@@ -93,17 +80,14 @@
         });
         $A.enqueueAction(action);
     },
-
     isBetweenRange : function (rangeStr, number) {
         var ranges = rangeStr.split("-");
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
     },
-
     setActiveHold: function(component, event, helper)
     {
         let order = component.get("v.order");
         component.set("v.showActiveBadge", false);
-
         if(order.OrderHoldTypes.OrderHoldType)
         {
             for (let orderHoldType of order.OrderHoldTypes.OrderHoldType)
@@ -112,10 +96,30 @@
                 if(orderHoldType.StatusDescription === 'Created')
                 {
                     component.set("v.showActiveBadge", true);
-
                 }
             }
         }
-
-    }
+    },
+    setRange : function(component, event, helper) {
+        let action = component.get("c.getOrderNumberRange");
+        component.set("v.isLoading", true);
+        action.setParams({
+            "label": 'Digital Blue Martini'
+        });
+        action.setCallback(this, function(response) {
+            if (response.getState() == "SUCCESS") {
+                let range = response.getReturnValue();
+                var order = component.get('v.order');
+                order.BMRange = range
+                component.set("v.order", order);
+                if( helper.isBetweenRange(order.BMRange, order.OrderNo) ) {
+                    component.set("v.channel", "Digital Blue Martini");
+                } else {
+                    component.set("v.channel", "Digital");
+                }
+            }
+            component.set("v.isLoading", false);
+        });
+        $A.enqueueAction(action);
+    },
 })

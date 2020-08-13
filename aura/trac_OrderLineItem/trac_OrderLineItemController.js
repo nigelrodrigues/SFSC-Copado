@@ -4,9 +4,7 @@
 ({
 
     doInit: function(component, event, helper) {
-
         helper.setDisabled(component);
-
         // Set Preorder status
         let orderlineItem = component.get('v.orderLineItem');
 
@@ -17,8 +15,8 @@
             orderlineItem.Extn.ExtnEstimatedShipDate
         )
         {
-            const months = ["Jan", "Feb", "Mar","April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+            const months = ["Jan", "Feb", "Mar","April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
             if ( orderlineItem.Status === 'Shipped' ||
                  orderlineItem.Status === 'Cancelled' ||
                  orderlineItem.Status === 'Returned' )
@@ -40,29 +38,27 @@
                     component.set('v.showExpectedDate', true);
                 }
         }
-
         component.set("v.lineItemActiveHold", false);
-
         if( orderlineItem.OrderHoldTypes &&
             orderlineItem.OrderHoldTypes.OrderHoldType &&
             orderlineItem.LineType
         )
         {
             let isActive = component.get("v.lineItemActiveHold");
-
             for (let orderlineItemHoldType of orderlineItem.OrderHoldTypes.OrderHoldType)
             {
                 let lineType = component.get('v.orderLineItem.LineType');
-
                 if(orderlineItemHoldType.StatusDescription === 'Created' &&
                     !isActive &&
                     lineType === 'PREORDER')
                 {
                     component.set("v.lineItemActiveHold", true);
+
                 }
             }
         }
     },
+
 
     openModel: function(component, event, helper) {
         component.set("v.isModalOpen", true);
