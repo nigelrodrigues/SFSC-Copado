@@ -211,7 +211,33 @@
           "UnitCost": "99.99"
         },
         "Instructions": {
-          "Instruction": []
+            "Instruction": [
+              {
+                "InstructionType": "GIFT_MSG1",
+                "InstructionText": "gift option4:",
+                "InstructionUsage": "",
+                "SequenceNo": "1"
+              },
+              {
+                "InstructionType": "PS_RET_FLG",
+                "InstructionText": "Y",
+                "InstructionUsage": "",
+                "SequenceNo": "2"
+              },
+              {
+                "InstructionType": "PS_COLUMN",
+                "InstructionText": "N",
+                "InstructionUsage": "",
+                "SequenceNo": "3"
+              },
+              {
+                "InstructionType": "WRAP_TYPE",
+                "InstructionText": "C-BLACK WRAP WITH RIBBON ($6.50 PER GIFT BOX)",
+                "InstructionUsage": "",
+                "SequenceNo": "4"
+              }
+            ],
+            "NumberOfInstructions": "4"
         },
         "LineOverallTotals": {
           "LineTotal": "103.98",
@@ -510,7 +536,7 @@
                   {
                      "ItemID":"306001",
                      "Quantity":"1",
-                     "PrimeLineNo":"2",
+                     "PrimeLineNo":"1",
                      "OrderNo":"5114456334",
                      "ReleaseNo":"1",
                      "ShipmentTagSerials":{
@@ -530,7 +556,7 @@
                   {
                      "ItemID":"306001",
                      "Quantity":"3",
-                     "PrimeLineNo":"2",
+                     "PrimeLineNo":"1",
                      "OrderNo":"5114456334",
                      "ReleaseNo":"1",
                      "ShipmentTagSerials":{

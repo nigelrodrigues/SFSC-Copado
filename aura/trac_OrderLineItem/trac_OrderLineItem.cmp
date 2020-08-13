@@ -15,10 +15,8 @@
     <aura:attribute name="lineItemActiveHold" type="Boolean" default="false" />
     <aura:attribute name="cancelabilityMap"   type="Map" />
     <aura:attribute name="showExpectedDate"   type="Boolean" />
-
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.cancelabilityMap}" action="{!c.resetDisabled}"/>
-
     <div class="slds-box slds-box_small slds-theme_shade">
         <aura:if isTrue="{!not(empty(v.orderLineItem))}">
             <div>
@@ -44,7 +42,6 @@
                                 <aura:if isTrue="{!v.orderLineItem.LineType == 'PREORDER'}">
                                     <p><lightning:badge label="{!v.preorderBadge}"/></p>
                                 </aura:if>
-
                                 <aura:if isTrue="{!v.orderLineItem.Status == 'Backordered'}">
                                     <p><lightning:badge  label="{!v.orderLineItem.Status}"/></p>
                                 </aura:if>
@@ -438,6 +435,9 @@
                                         businessUnit="{!v.businessUnit}"
                                         order="{!v.order}"
                                         orderLineItem="{!v.orderLineItem}"/>
+                            </lightning:tab>
+                            <lightning:tab label="Gift Options" id="gift">
+                                <c:trac_OrderLineItemGift orderLineItem="{!v.orderLineItem}" order="{!v.order}"/>
                             </lightning:tab>
                             <lightning:tab label="Instructions" iconName="{!not(empty(v.orderLineItem.Instructions.Instruction)) ? 'utility:task' : ''}" id="instructions">
                                 <c:trac_OrderLineItemInstructions orderLineItem="{!v.orderLineItem}"/>
