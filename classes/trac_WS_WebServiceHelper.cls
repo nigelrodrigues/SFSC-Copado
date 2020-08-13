@@ -156,12 +156,15 @@ public with sharing class trac_WS_WebServiceHelper {
         if (parameters != null) {
             Boolean isFirstParameter = true;
             for (String key : parameters.keySet()) {
+                String encodedValue = String.isNotBlank(parameters.get(key)) ? EncodingUtil.urlEncode(parameters.get(key), 'UTF-8') : '';
                 if (isFirstParameter) {
-                    endpoint = endpoint + '?' + key + '=' + EncodingUtil.urlEncode(parameters.get(key), 'UTF-8');
+
+                    endpoint = endpoint + '?' + key + '=' + encodedValue;
                     isFirstParameter = false;
                 }
                 else {
-                    endpoint = endpoint + '&' + key + '=' + EncodingUtil.urlEncode(parameters.get(key), 'UTF-8');
+                    endpoint = endpoint + '&' + key + '=' + encodedValue;
+
                 }
             }
         }

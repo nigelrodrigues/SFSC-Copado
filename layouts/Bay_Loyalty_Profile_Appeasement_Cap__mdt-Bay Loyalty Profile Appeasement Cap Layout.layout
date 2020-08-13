@@ -8,6 +8,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
+
                 <field>MasterLabel</field>
             </layoutItems>
             <layoutItems>
@@ -17,6 +18,7 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Max_Appeasement__c</field>
+
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -55,10 +57,12 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <layoutColumns/>
+
         <layoutColumns/>
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

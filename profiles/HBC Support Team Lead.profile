@@ -12581,6 +12581,9 @@
         <layout>AuthorizationForm-Authorization Form Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Bay_Loyalty_Profile_Appeasement_Cap__mdt-Bay Loyalty Profile Appeasement Cap Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Business_Unit_Business_Hours_Setting__mdt-Business Unit Business Hours Setting Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
