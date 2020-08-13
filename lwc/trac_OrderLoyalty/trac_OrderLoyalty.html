@@ -69,14 +69,14 @@
                                     <lightning-layout-item padding="around-small">
                                         <div class="header-column">
                                             <p class="field-title slds-form-element__label slds-no-flex">Loyalty No</p>
-                                            <p>{shipment.Extn.displayExtnLoyaltyNo}</p>
+                                            <p><template if:true={shipment.Extn}>{shipment.Extn.displayExtnLoyaltyNo}</template></p>
                                         </div>
                                     </lightning-layout-item>
 
                                     <lightning-layout-item padding="around-small">
                                         <div class="header-column">
-                                            <p class="field-title slds-form-element__label slds-no-flex">{shipment.Extn.displayExtnPointsLabel}</p>
-                                            <p>{shipment.Extn.displayExtnPointsValue}</p>
+                                            <p class="field-title slds-form-element__label slds-no-flex"><template if:true={shipment.Extn}>{shipment.Extn.displayExtnPointsLabel}</template></p>
+                                            <p><template if:true={shipment.Extn}>{shipment.Extn.displayExtnPointsValue}</template></p>
                                         </div>
                                     </lightning-layout-item>
                                 </lightning-layout>
