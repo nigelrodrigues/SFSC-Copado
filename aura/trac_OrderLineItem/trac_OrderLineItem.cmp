@@ -436,10 +436,11 @@
                                         order="{!v.order}"
                                         orderLineItem="{!v.orderLineItem}"/>
                             </lightning:tab>
-                            <lightning:tab label="Gift Options" id="gift">
-
-                                <c:trac_OrderLineItemGift orderLineItem="{!v.orderLineItem}" order="{!v.order}"/>
-                            </lightning:tab>
+                            <aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">
+                                <lightning:tab label="Gift Options" id="gift">
+                                    <c:trac_OrderLineItemGift orderLineItem="{!v.orderLineItem}" order="{!v.order}"/>
+                                </lightning:tab>
+                            </aura:if>
                             <lightning:tab label="Instructions" iconName="{!not(empty(v.orderLineItem.Instructions.Instruction)) ? 'utility:task' : ''}" id="instructions">
                                 <c:trac_OrderLineItemInstructions orderLineItem="{!v.orderLineItem}"/>
                             </lightning:tab>
