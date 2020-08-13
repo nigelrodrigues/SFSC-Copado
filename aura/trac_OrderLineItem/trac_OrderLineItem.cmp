@@ -96,6 +96,7 @@
                                         </figure>
                                     </aura:set>
                                 </aura:if>
+
                             </div>
                         </lightning:layoutItem>
                         <lightning:layoutItem class="slds-size_1-of-7 slds-p-right--medium">
@@ -166,6 +167,7 @@
                                                                  class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
                                 </p>
                             </div>
+
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">UPC</p>
                                 <p>
@@ -436,9 +438,13 @@
                                         order="{!v.order}"
                                         orderLineItem="{!v.orderLineItem}"/>
                             </lightning:tab>
-                            <lightning:tab label="Gift Options" id="gift">
-                                <c:trac_OrderLineItemGift orderLineItem="{!v.orderLineItem}" order="{!v.order}"/>
-                            </lightning:tab>
+
+                            <aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">
+                                <lightning:tab label="Gift Options" id="gift">
+                                    <c:trac_OrderLineItemGift orderLineItem="{!v.orderLineItem}" order="{!v.order}"/>
+                                </lightning:tab>
+                            </aura:if>
+
                             <lightning:tab label="Instructions" iconName="{!not(empty(v.orderLineItem.Instructions.Instruction)) ? 'utility:task' : ''}" id="instructions">
                                 <c:trac_OrderLineItemInstructions orderLineItem="{!v.orderLineItem}"/>
                             </lightning:tab>
