@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Badge__c</field>
-        <value xsi:type="xsd:string">Fraud Cancel</value>
+        <value xsi:type="xsd:string">CUSTOMER CANCELLED</value>
     </values>
     <values>
         <field>Reason_Code__c</field>
