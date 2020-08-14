@@ -90,6 +90,10 @@
             <translation><!-- On Hold --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>POS Gift Card Processing</masterLabel>
             <translation><!-- POS Gift Card Processing --></translation>
         </picklistValues>
@@ -246,6 +250,10 @@
             <translation><!-- Rewards --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Rewards Escalation</masterLabel>
+            <translation><!-- Rewards Escalation --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Special Projects</masterLabel>
             <translation><!-- Special Projects --></translation>
         </picklistValues>
@@ -294,12 +302,20 @@
             <translation><!-- Allowance Request --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Appeasement Amount Requires Approval</masterLabel>
+            <translation><!-- Appeasement Amount Requires Approval --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Appliance Claim</masterLabel>
             <translation><!-- Appliance Claim --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Archived Accounts</masterLabel>
             <translation><!-- Archived Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Associate Loyalty Issue</masterLabel>
+            <translation><!-- Associate Loyalty Issue --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>BTO</masterLabel>
@@ -320,6 +336,10 @@
         <picklistValues>
             <masterLabel>CA - Cancellation</masterLabel>
             <translation><!-- CA - Cancellation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CASL Issue</masterLabel>
+            <translation><!-- CASL Issue --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CS - Customer Service</masterLabel>
@@ -426,6 +446,10 @@
             <translation><!-- Employee Discount --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Enrollment Issue</masterLabel>
+            <translation><!-- Enrollment Issue --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Estimated delivery date inquiry</masterLabel>
             <translation><!-- Estimated delivery date inquiry --></translation>
         </picklistValues>
@@ -472,6 +496,10 @@
         <picklistValues>
             <masterLabel>Have you received my return?</masterLabel>
             <translation><!-- Have you received my return? --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High-Value Transaction</masterLabel>
+            <translation><!-- High-Value Transaction --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>How do I return my order?</masterLabel>
@@ -590,8 +618,16 @@
             <translation><!-- Merchandise Not Received (MNR) --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Missing Bonus Points</masterLabel>
+            <translation><!-- Missing Bonus Points --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Missing Items</masterLabel>
             <translation><!-- Missing Items --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing Partner Points</masterLabel>
+            <translation><!-- Missing Partner Points --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Missing Points from Online Order</masterLabel>
@@ -690,6 +726,14 @@
             <translation><!-- Place New Order --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Point Conversion Issue</masterLabel>
+            <translation><!-- Point Conversion Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Point Redemption Fraud</masterLabel>
+            <translation><!-- Point Redemption Fraud --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Points Inquire</masterLabel>
             <translation><!-- Points Inquire --></translation>
         </picklistValues>
@@ -748,6 +792,14 @@
         <picklistValues>
             <masterLabel>Product</masterLabel>
             <translation><!-- Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promo Opt In</masterLabel>
+            <translation><!-- Promo Opt In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promo Opt Out</masterLabel>
+            <translation><!-- Promo Opt Out --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Promo Questions/Problem</masterLabel>
@@ -810,6 +862,10 @@
             <translation><!-- Rewards Points --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Rewards Promo Not Working</masterLabel>
+            <translation><!-- Rewards Promo Not Working --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Rewards not applied properly after purchase</masterLabel>
             <translation><!-- Rewards not applied properly after purchase --></translation>
         </picklistValues>
@@ -858,12 +914,20 @@
             <translation><!-- Store Associate called for assistance on customer&apos;s gift card --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Suspected Fraudulent Activity</masterLabel>
+            <translation><!-- Suspected Fraudulent Activity --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>TIME STOP Alert</masterLabel>
             <translation><!-- TIME STOP Alert --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Tax Exclusion</masterLabel>
             <translation><!-- Tax Exclusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier Change</masterLabel>
+            <translation><!-- Tier Change --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Tracking number inquiry</masterLabel>
@@ -1406,6 +1470,10 @@
         <picklistValues>
             <masterLabel>Request for smaller delivery window</masterLabel>
             <translation><!-- Request for smaller delivery window --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requires Approval</masterLabel>
+            <translation><!-- Requires Approval --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Reschedule Delivery</masterLabel>

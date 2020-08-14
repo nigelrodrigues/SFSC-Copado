@@ -414,6 +414,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>MockHttpResponseLoyalty</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>MockHttpResponseOrderDetails</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -431,6 +435,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>MockOrderResponsesError</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MockResponseLoyaltyEvent</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3194,6 +3202,22 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_CaseLoyaltyController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyEscalation</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CaseLoyaltyEscalationTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_CasePopController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3239,6 +3263,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_CaseTriggerHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CloseLoyaltyAccountController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_CloseLoyaltyAccountControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3334,6 +3366,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_EventController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_EventControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_GetCustomerDetailsResource</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3362,6 +3402,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_IssueAppeasementController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_IssueAppeasementControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_LiveChatAuraCtlr</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3375,6 +3423,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_LiveChatTranscriptHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltyController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltyControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltySearchController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_LoyaltySearchControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3483,6 +3547,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_QuickLinksControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_RecordTransactionController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_RecordTransactionControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3598,6 +3670,18 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_GetLoyalty</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_GetLoyaltyTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_GetLoyaltyUAD</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_GetOrderAdjustments</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3642,6 +3726,38 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_LoyaltyEvent</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyEventTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyPointValue</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyPointValueTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyUtils</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LoyaltyUtilsTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LsUpdateProfile</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_LsUpdateProfileTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_OrderLineHistory</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3670,11 +3786,27 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_PauseLoyalty</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_PauseLoyaltyTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_PurchaseOrder</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>trac_WS_PurchaseOrderTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_RecordLoyaltyEvent</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_RecordLoyaltyEventTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -3710,6 +3842,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>trac_WS_UpdateLoyaltyEvent</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_UpdateLoyaltyEventTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>trac_WS_UpdateOrder</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -3723,6 +3863,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>trac_WS_WebServiceHelperTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>trac_WS_getLoyaltyUADTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>

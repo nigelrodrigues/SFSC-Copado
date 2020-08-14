@@ -876,4 +876,26 @@
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Case_Send_Reminder_when_Awaiting_Internal_Response_2_days</template>
     </alerts>
+    <alerts>
+        <fullName>Send_Email_to_loyalty_Operations_Team</fullName>
+        <description>Send Email to loyalty Operations Team</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>customer.service@hbc.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/SUPPORTNewassignmentnotificationSAMPLE</template>
+    </alerts>
+    <rules>
+        <fullName>Send Escalation Email</fullName>
+        <actions>
+            <name>Send_Email_to_loyalty_Operations_Team</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Sends out email to queue email id when case is assigned to Loyalty Operations Team</description>
+        <formula>AND (  ISCHANGED(OwnerId),  Owner:Queue.Name =&quot;Loyalty Operations Team&quot; )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
 </Workflow>
