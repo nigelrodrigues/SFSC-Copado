@@ -364,6 +364,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>POS Team</fullName>
             <default>false</default>
         </values>
@@ -907,7 +911,7 @@
                 <value>
                     <fullName>Off 5th</fullName>
                     <default>false</default>
-                    <label>Saks OFF 5TH</label>
+                    <label>Off 5th</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1644,6 +1648,11 @@
                     <default>false</default>
                     <label>Order System Error</label>
                 </value>
+                <value>
+                    <fullName>Rewards Escalation</fullName>
+                    <default>false</default>
+                    <label>Rewards Escalation</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
@@ -1773,6 +1782,11 @@
                 <valueName>Executive Escalation Only</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Hudson&apos;s Bay</controllingFieldValue>
+                <controllingFieldValue>MHF</controllingFieldValue>
+                <valueName>Rewards Escalation</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>MHF</controllingFieldValue>
                 <valueName>BTO - Big Ticket Order (New Purchases)</valueName>
             </valueSettings>
@@ -1867,6 +1881,11 @@
                     <label>Allowance Request</label>
                 </value>
                 <value>
+                    <fullName>Appeasement Amount Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Appeasement Amount Requires Approval</label>
+                </value>
+                <value>
                     <fullName>Appliance Claim</fullName>
                     <default>false</default>
                     <label>Appliance Claim</label>
@@ -1875,6 +1894,11 @@
                     <fullName>Archived Accounts</fullName>
                     <default>false</default>
                     <label>Archived Accounts</label>
+                </value>
+                <value>
+                    <fullName>Associate Loyalty Issue</fullName>
+                    <default>false</default>
+                    <label>Associate Loyalty Issue</label>
                 </value>
                 <value>
                     <fullName>Back Ordered Report</fullName>
@@ -1925,6 +1949,11 @@
                     <fullName>Can you reactivate my gift card?</fullName>
                     <default>false</default>
                     <label>Can you reactivate my gift card?</label>
+                </value>
+                <value>
+                    <fullName>CASL Issue</fullName>
+                    <default>false</default>
+                    <label>CASL Issue</label>
                 </value>
                 <value>
                     <fullName>Casper Mattress</fullName>
@@ -2037,6 +2066,11 @@
                     <label>Employee Discount</label>
                 </value>
                 <value>
+                    <fullName>Enrollment Issue</fullName>
+                    <default>false</default>
+                    <label>Enrollment Issue</label>
+                </value>
+                <value>
                     <fullName>ERA Request - In Policy</fullName>
                     <default>false</default>
                     <label>ERA Request - In Policy</label>
@@ -2120,6 +2154,11 @@
                     <fullName>Have you received my return?</fullName>
                     <default>false</default>
                     <label>Have you received my return?</label>
+                </value>
+                <value>
+                    <fullName>High-Value Transaction</fullName>
+                    <default>false</default>
+                    <label>High-Value Transaction</label>
                 </value>
                 <value>
                     <fullName>Hold Batch</fullName>
@@ -2267,9 +2306,19 @@
                     <label>MHF_Ret_Exch_Diff Report</label>
                 </value>
                 <value>
+                    <fullName>Missing Bonus Points</fullName>
+                    <default>false</default>
+                    <label>Missing Bonus Points</label>
+                </value>
+                <value>
                     <fullName>Missing Items</fullName>
                     <default>false</default>
                     <label>Missing Items</label>
+                </value>
+                <value>
+                    <fullName>Missing Partner Points</fullName>
+                    <default>false</default>
+                    <label>Missing Partner Points</label>
                 </value>
                 <value>
                     <fullName>Missing Points from Online Order</fullName>
@@ -2387,6 +2436,16 @@
                     <label>POD POST Call Queue</label>
                 </value>
                 <value>
+                    <fullName>Point Conversion Issue</fullName>
+                    <default>false</default>
+                    <label>Point Conversion Issue</label>
+                </value>
+                <value>
+                    <fullName>Point Redemption Fraud</fullName>
+                    <default>false</default>
+                    <label>Point Redemption Fraud</label>
+                </value>
+                <value>
                     <fullName>Points Inquire</fullName>
                     <default>false</default>
                     <label>Points Inquire</label>
@@ -2487,6 +2546,16 @@
                     <label>Promo code technical error</label>
                 </value>
                 <value>
+                    <fullName>Promo Opt In</fullName>
+                    <default>false</default>
+                    <label>Promo Opt In</label>
+                </value>
+                <value>
+                    <fullName>Promo Opt Out</fullName>
+                    <default>false</default>
+                    <label>Promo Opt Out</label>
+                </value>
+                <value>
                     <fullName>Promo Questions/Problem</fullName>
                     <default>false</default>
                     <label>Promo Questions/Problem</label>
@@ -2550,6 +2619,11 @@
                     <fullName>Rewards Points</fullName>
                     <default>false</default>
                     <label>Rewards Points</label>
+                </value>
+                <value>
+                    <fullName>Rewards Promo Not Working</fullName>
+                    <default>false</default>
+                    <label>Rewards Promo Not Working</label>
                 </value>
                 <value>
                     <fullName>RI - Risk</fullName>
@@ -2622,9 +2696,19 @@
                     <label>Store Locator</label>
                 </value>
                 <value>
+                    <fullName>Suspected Fraudulent Activity</fullName>
+                    <default>false</default>
+                    <label>Suspected Fraudulent Activity</label>
+                </value>
+                <value>
                     <fullName>Tax Exclusion</fullName>
                     <default>false</default>
                     <label>Tax Exclusion</label>
+                </value>
+                <value>
+                    <fullName>Tier Change</fullName>
+                    <default>false</default>
+                    <label>Tier Change</label>
                 </value>
                 <value>
                     <fullName>TIME STOP Alert</fullName>
@@ -2893,6 +2977,51 @@
             <valueSettings>
                 <controllingFieldValue>Order System Error</controllingFieldValue>
                 <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Associate Loyalty Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>CASL Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Enrollment Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Missing Bonus Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Missing Partner Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Point Conversion Issue</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Point Redemption Fraud</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Promo Opt In</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Promo Opt Out</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <valueName>Rewards Promo Not Working</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards Escalation</controllingFieldValue>
+                <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Tier Change</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Major Home Fashion</controllingFieldValue>
@@ -3171,7 +3300,15 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Appeasement Amount Requires Approval</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Credit Points Dispute</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>High-Value Transaction</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
@@ -3212,6 +3349,10 @@
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
                 <valueName>Rewards Points</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Rewards</controllingFieldValue>
+                <valueName>Suspected Fraudulent Activity</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Rewards</controllingFieldValue>
@@ -5503,6 +5644,11 @@
                     <label>Request for smaller delivery window</label>
                 </value>
                 <value>
+                    <fullName>Requires Approval</fullName>
+                    <default>false</default>
+                    <label>Requires Approval</label>
+                </value>
+                <value>
                     <fullName>Reschedule Delivery</fullName>
                     <default>false</default>
                     <label>Reschedule Delivery</label>
@@ -5880,7 +6026,6 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Didn&apos;t receive when expected</controllingFieldValue>
-                <controllingFieldValue>Estimated delivery date inquiry</controllingFieldValue>
                 <valueName>Vendor drop-ship</valueName>
             </valueSettings>
             <valueSettings>
@@ -7159,6 +7304,24 @@
         </filters>
         <label>La Baie Cases Backlog</label>
         <queue>La_Baie</queue>
+    </listViews>
+    <listViews>
+        <fullName>Loyalty_Escalations_Team_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Loyalty Escalations Team</label>
+        <queue>Loyalty_Escalations_Team</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Loyalty_Operations_Team_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Loyalty Operations Team</label>
+        <queue>Loyalty_Operations_Team</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>MHF_Case</fullName>
@@ -14680,6 +14843,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Place an order</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Product Information</fullName>
                 <default>false</default>
             </values>
@@ -14693,6 +14860,10 @@
             </values>
             <values>
                 <fullName>Rewards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rewards Escalation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14751,6 +14922,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Associate Loyalty Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>BTO</fullName>
                 <default>false</default>
             </values>
@@ -14768,6 +14943,10 @@
             </values>
             <values>
                 <fullName>CA - Cancellation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CASL Issue</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14868,6 +15047,10 @@
             </values>
             <values>
                 <fullName>Employee Discount</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enrollment Issue</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15035,7 +15218,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Missing Bonus Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Missing Items</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Missing Partner Points</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15135,6 +15326,14 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Point Conversion Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Point Redemption Fraud</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Points Inquire</fullName>
                 <default>false</default>
             </values>
@@ -15192,6 +15391,14 @@
             </values>
             <values>
                 <fullName>Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Opt In</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Promo Opt Out</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15255,6 +15462,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Rewards Promo Not Working</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Rewards not applied properly after purchase</fullName>
                 <default>false</default>
             </values>
@@ -15308,6 +15519,10 @@
             </values>
             <values>
                 <fullName>Tax Exclusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tier Change</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15982,6 +16197,10 @@
             </values>
             <values>
                 <fullName>Request for smaller delivery window</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Requires Approval</fullName>
                 <default>false</default>
             </values>
             <values>

@@ -1,0 +1,9 @@
+<!--
+ - Created by macuser on 6/22/20.
+ -->
+
+<aura:event type="APPLICATION" description="trac_EditLoyaltyApplicationEvent">
+    <aura:attribute name="firstName" type="String" />
+    <aura:attribute name="lastName" type="String" />
+    <aura:attribute name="email" type="String" />
+</aura:event>

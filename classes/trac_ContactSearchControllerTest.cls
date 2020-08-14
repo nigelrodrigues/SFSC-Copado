@@ -31,6 +31,30 @@ private class trac_ContactSearchControllerTest {
     }
 
     @IsTest
+    static void testGetContactsOCAPI() {
+        Contact cnt = (Contact)factory.createSObject(new Contact(Business_Unit__c = 'MHF'), true);
+        Case cs = (Case)factory.createSObject(new Case(), false);
+        cs.ContactId = cnt.Id;
+        insert cs;
+
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator('sfcc-search'));
+
+        Test.startTest();
+        List<Contact> contacts = new List<Contact>();
+        Contact con = new Contact(Email='testtest@testtest.com', LastName = 'Test',Order_Number__c='1234',Business_Unit__c='MHF');
+        contacts = trac_ContactSearchController.getContacts(con, true);
+        System.assert(contacts.size() > 0, 'Contacts not found.');
+
+        // now stamp the data
+        trac_ContactSearchController.stampSFCCCustomerNoAndId(cs.Id, contacts[0]);
+        Test.stopTest();
+
+        cnt = [SELECT Id, SFCC_Customer_Id__c, SFCC_Customer_Number__c FROM Contact WHERE Id =: cnt.Id];
+        System.assertEquals('00028505', cnt.SFCC_Customer_Number__c);
+        System.assertEquals('ab5FILqqom62TqbekXe7HXUbGn', cnt.SFCC_Customer_Id__c);
+    }
+
+    @IsTest
     static void testUpsertContact() {
         Contact con = (Contact)factory.createSObject(new Contact(UCID_Number__c = 'UCID123455', Business_Unit__c = 'MHF'), false);
         Test.startTest();
