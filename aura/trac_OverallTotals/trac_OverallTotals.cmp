@@ -15,42 +15,42 @@
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">Subtotal</p>
-                                <p><lightning:formattedNumber style="currency" value="{!v.overallTotal.LineSubTotal}"/></p>
+                                <p>$<lightning:formattedNumber style="decimal" minimumFractionDigits="2" maximumFractionDigits="2" value="{!v.overallTotal.LineSubTotal}"/></p>
                             </div>
                         </lightning:layoutItem>
 
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">Discounts</p>
-                                <p><lightning:formattedNumber style="currency" value="{!v.overallTotal.GrandDiscount}"/></p>
+                                <p>$<lightning:formattedNumber style="decimal" minimumFractionDigits="2" maximumFractionDigits="2" value="{!v.overallTotal.GrandDiscount}"/></p>
                             </div>
                         </lightning:layoutItem>
 
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">Adjustments</p>
-                                <p><lightning:formattedNumber style="currency" value="{!v.overallTotal.GrandAdjustmentsWithoutTotalShipping}"/></p>
+                                <p>$<lightning:formattedNumber style="decimal" minimumFractionDigits="2" maximumFractionDigits="2" value="{!v.overallTotal.GrandAdjustmentsWithoutTotalShipping}"/></p>
                             </div>
                         </lightning:layoutItem>
 
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">Shipping</p>
-                                <p><lightning:formattedNumber style="currency" value="{!v.overallTotal.GrandShippingTotal}"/></p>
+                                <p>$<lightning:formattedNumber style="decimal" minimumFractionDigits="2" maximumFractionDigits="2" value="{!v.overallTotal.GrandShippingTotal}"/></p>
                             </div>
                         </lightning:layoutItem>
 
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">Taxes</p>
-                                <p><lightning:formattedNumber style="currency" value="{!v.overallTotal.GrandTax}"/></p>
+                                <p>$<lightning:formattedNumber style="decimal" minimumFractionDigits="2" maximumFractionDigits="2" value="{!v.overallTotal.GrandTax}"/></p>
                             </div>
                         </lightning:layoutItem>
 
                         <lightning:layoutItem padding="around-small">
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex">Total</p>
-                                <p><lightning:formattedNumber style="currency" value="{!v.overallTotal.GrandTotal}"/></p>
+                                <p>$<lightning:formattedNumber style="decimal" minimumFractionDigits="2" maximumFractionDigits="2" value="{!v.overallTotal.GrandTotal}"/></p>
                             </div>
                         </lightning:layoutItem>
 
