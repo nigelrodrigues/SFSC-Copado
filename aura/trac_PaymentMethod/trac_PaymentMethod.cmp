@@ -101,9 +101,11 @@
                                     <div class="header-column">
                                         <p class="field-title slds-form-element__label slds-no-flex">Amount To Be Charged</p>
                                         <p>
-                                            <lightning:formattedNumber
+                                            $<lightning:formattedNumber
                                                     value="{! empty(v.paymentMethod.RequestAmount) ? '0.00' : v.paymentMethod.RequestAmount}"
-                                                    style="currency" />
+                                                    style="decimal"
+                                                    minimumFractionDigits="2"
+                                                    maximumFractionDigits="2"/>
                                         </p>
                                     </div>
                                 </lightning:layoutItem>
@@ -112,8 +114,11 @@
                                     <div class="header-column">
                                         <p class="field-title slds-form-element__label slds-no-flex">Total Authorized</p>
                                         <p>
-                                            <lightning:formattedNumber
-                                                    value="{!v.paymentMethod.TotalAuthorized}" style="currency" />
+                                            $<lightning:formattedNumber
+                                                    value="{!v.paymentMethod.TotalAuthorized}"
+                                                    style="decimal"
+                                                    minimumFractionDigits="2"
+                                                    maximumFractionDigits="2"/>
                                         </p>
                                     </div>
                                 </lightning:layoutItem>
@@ -122,8 +127,11 @@
                                     <div class="header-column">
                                         <p class="field-title slds-form-element__label slds-no-flex">Total Charged</p>
                                         <p>
-                                            <lightning:formattedNumber
-                                                    value="{!v.paymentMethod.TotalCharged}" style="currency"/>
+                                            $<lightning:formattedNumber
+                                                    value="{!v.paymentMethod.TotalCharged}"
+                                                    style="decimal"
+                                                    minimumFractionDigits="2"
+                                                    maximumFractionDigits="2"/>
                                         </p>
                                     </div>
                                 </lightning:layoutItem>
