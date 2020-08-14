@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Badge__c</field>
-        <value xsi:type="xsd:string">Generic Cancel</value>
+        <value xsi:type="xsd:string">SYSTEM ISSUE -- REPLACE</value>
     </values>
     <values>
         <field>Reason_Code__c</field>
