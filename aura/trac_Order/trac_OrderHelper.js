@@ -57,10 +57,11 @@
         else if (status === "ERROR")
         {
             console.log("Error: " + errorMessage);
+
+
   		}
     },
     setChannel : function(component, event, helper, order) {
-
         if(order.EntryType === 'POS') {
             component.set("v.channel", 'Saks CNCT');
         } else {
@@ -68,7 +69,6 @@
         }
     },
     setCancelabilityMap: function(component, event, helper) {
-
         var businessUnit = component.get('v.businessUnit');
         var action = component.get("c.getOrderLineCancelabilityByStatus");
         action.setParams({
@@ -82,18 +82,14 @@
         });
         $A.enqueueAction(action);
     },
-
-
     isBetweenRange : function (rangeStr, number) {
         var ranges = rangeStr.split("-");
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
     },
-
     setActiveHold: function(component, event, helper)
     {
         let order = component.get("v.order");
         component.set("v.showActiveBadge", false);
-
         if(order.OrderHoldTypes.OrderHoldType)
         {
             for (let orderHoldType of order.OrderHoldTypes.OrderHoldType)
@@ -109,13 +105,10 @@
                 )
                 {
                     component.set("v.showActiveBadge", true);
-
                 }
             }
         }
-
     },
-    
     setRange : function(component, event, helper) {
         let action = component.get("c.getOrderNumberRange");
         component.set("v.isLoading", true);

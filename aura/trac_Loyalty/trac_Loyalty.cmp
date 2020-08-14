@@ -167,7 +167,7 @@
                 <p class="field-title slds-form-element__label slds-no-flex">Points Available for Redemption</p>
                 <aura:if isTrue="{!not(empty(v.loyalty.balance))}">
                     <p><lightning:formattedNumber value="{!v.loyalty.balance}"/>
-                        (<lightning:formattedNumber value="{!v.loyalty.balance_in_dollars}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>)
+                        ($<lightning:formattedNumber value="{!v.loyalty.balance_in_dollars}" style="decimal" minimumFractionDigits="2" maximumFractionDigits="2"/>)
                         </p>
                     <aura:set attribute="else">
                         <p>N/A</p>
@@ -225,11 +225,11 @@
                         <p class="field-title slds-form-element__label slds-no-flex">Current Year Spend</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.member_attributes.ytd_spend))}">
                             <p>
-                                <lightning:formattedNumber
+                                $<lightning:formattedNumber
                                         value="{!v.loyalty.member_attributes.ytd_spend}"
-                                        style="currency"
-                                        currencyCode="CAD"
-                                        currencyDisplayAs="symbol"/>
+                                        style="decimal"
+                                        minimumFractionDigits="2"
+                                        maximumFractionDigits="2"/>
                             </p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
@@ -275,7 +275,7 @@
                     <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Spend To Qualify for Next Tier</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.actions_needed_for_next_tier))}">
-                            <p><lightning:formattedNumber value="{!v.loyalty.actions_needed_for_next_tier}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/></p>
+                            <p>$<lightning:formattedNumber value="{!v.loyalty.actions_needed_for_next_tier}" style="decimal" minimumFractionDigits="2" maximumFractionDigits="2"/></p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
                             </aura:set>
@@ -287,7 +287,7 @@
                         <p class="field-title slds-form-element__label slds-no-flex">Lifetime Points Earned</p>
                         <aura:if isTrue="{!not(empty(v.loyalty.lifetime_balance))}">
                             <p><lightning:formattedNumber value="{!v.loyalty.lifetime_balance}"/>
-                                &nbsp;(<lightning:formattedNumber value="{!v.loyalty.lifetime_balance_in_dollars}" style="currency" currencyCode="CAD" currencyDisplayAs="symbol"/>)</p>
+                                &nbsp;($<lightning:formattedNumber value="{!v.loyalty.lifetime_balance_in_dollars}" style="decimal" minimumFractionDigits="2" maximumFractionDigits="2"/>)</p>
                             <aura:set attribute="else">
                                 <p>N/A</p>
                             </aura:set>
