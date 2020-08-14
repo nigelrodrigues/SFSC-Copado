@@ -43,20 +43,16 @@
         }
     },
     handleImport : function (component, event, helper) {
-
         let action = component.get("c.updateCase");
         let caseRecord = component.get("v.caseRecord");
         let order = component.get("v.order");
-
         action.setParams({
             "caseId": caseRecord.Id,
             "orderNo": order.OrderNo,
             "orderZipCode": (order.PersonInfoBillTo) ? order.PersonInfoBillTo.ZipCode : null
         });
         action.setCallback(this, function (response) {
-
             let state = response.getState();
-
             if (component.isValid() && state === "SUCCESS") {
                 $A.get('e.force:refreshView').fire();
             }
@@ -74,12 +70,16 @@
             component.set("v.showAdditionalInfo", true);
         }
     },
+
     handleActions : function (component, event, helper) {
+
         let selectedAction = event.getParam("value");
         let order = component.get("v.order");
         let caseRecord = component.get("v.caseRecord");
         let businessUnit = component.get("v.businessUnit");
         let recordId = component.get("v.caseRecord.Id");
+
+
         switch(selectedAction)
         {
             case "cancelOrder":
@@ -98,6 +98,8 @@
                     }
                 );
                 break;
+
+
             case "addNote":
                 $A.createComponent(
                     "c:trac_AddNote",
@@ -111,27 +113,30 @@
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
+
                     }
                 );
                 break;
             case "salesPriceAdjustment":
                 $A.createComponent(
                     "c:trac_SalesPriceAdjustmentButton",
+
                     {
                         "isModalOpen": true,
                         "order": order,
                         "caseRecord": caseRecord,
+
                         "recordId": recordId,
+
                         "showButton": false
                     },
                     function(newCmp, status, errorMessage)
                     {
                         helper.setBody(component, event, helper, newCmp, status, errorMessage);
-
-
                     }
                 );
                 break;
+
             case "orderRefundCredit":
                 let action = component.find("componentORC");
                 component.find('componentORC').set('v.caseRecord', caseRecord);
@@ -170,6 +175,7 @@
                     }
                 );
                 break;
+
             case "linkToCase":
                 let linkOrderToCase = component.get('c.handleImport');
                 $A.enqueueAction(linkOrderToCase);
