@@ -67,7 +67,7 @@
                                             <div class="header-column">
                                                 <p class="field-title slds-form-element__label slds-no-flex">Item
                                                     Name</p>
-                                                <p>{!containerDetail.customItemName}</p>
+                                                <p><aura:unescapedHtml value="{!containerDetail.customItemName}"/></p>
                                             </div>
                                         </lightning:layoutItem>
 
