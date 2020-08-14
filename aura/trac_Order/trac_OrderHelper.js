@@ -89,19 +89,16 @@
         return (ranges[0] <= number && ranges[1] >= number ) ? true : false
     },
 
-
     setActiveHold: function(component, event, helper)
     {
         let order = component.get("v.order");
         component.set("v.showActiveBadge", false);
 
-
         if(order.OrderHoldTypes.OrderHoldType)
         {
             for (let orderHoldType of order.OrderHoldTypes.OrderHoldType)
             {
-               
-
+                console.log('orderHoldType.StatusDescription: ' + orderHoldType.StatusDescription);
                 if(orderHoldType.StatusDescription === 'Created' &&
                     ( orderHoldType.HoldType !== 'RO_NOT_PUBLISHED' &&
                         orderHoldType.HoldType !== 'CSR_CANCEL_HOLD'  &&
@@ -112,12 +109,13 @@
                 )
                 {
                     component.set("v.showActiveBadge", true);
+
                 }
             }
         }
 
-        }
     },
+    
     setRange : function(component, event, helper) {
         let action = component.get("c.getOrderNumberRange");
         component.set("v.isLoading", true);
