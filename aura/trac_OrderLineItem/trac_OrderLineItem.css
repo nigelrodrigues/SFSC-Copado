@@ -2,16 +2,20 @@
  * Created by jhoran on 7/26/2019.
  */
 .THIS img {
-    height: 120px;
+    max-height:120px;
+    height: auto;
     width: auto;
 }
 
 .THIS .trac-img {
-    height: 108px;
+    height: auto;
     width: auto;
 }
 
 .THIS .slds-size_1-of-12 {
+    height: 12em;
+}
+.THIS .slds-size_1-of-11 {
     height: 12em;
 }
 
@@ -23,7 +27,19 @@
     height: 12em;
 }
 
+.THIS .slds-size_1-of-7 {
+    height: 12em;
+}
+
 .THIS .slds-size_1-of-6 {
+    height: 12em;
+}
+
+.THIS .slds-size_1-of-10 {
+    height: 12em;
+}
+
+.THIS .slds-size_1-of-5 {
     height: 12em;
 }
 
