@@ -1,0 +1,52 @@
+<!--
+ - Created by akong on 8/13/2020.
+ -->
+
+<aura:component description="trac_ApplyHold" extends="c:trac_BaseComponent" controller="trac_AddNoteCtlr">
+    <aura:attribute name="order" type="Object"/>
+    <aura:attribute name="orderLineItem" type="Object"/>
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="notes" type="String"/>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="showButton" type="boolean" default="true"/>
+    <aura:attribute name="businessUnit" type="String" />
+
+    <aura:registerEvent name="refreshOrderEvent" type="c:trac_RefreshOrderEvent"/>
+
+    <aura:if isTrue="{!v.showButton}">
+        <lightning:button onclick="{!c.handleOpenModal}"
+                          variant="brand"
+                          label="Apply Hold"
+                          iconName="utility:note"/>
+    </aura:if>
+
+    <aura:if isTrue="{!v.isModalOpen}">
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                 aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Apply Hold</h2>
+
+                    <lightning:textarea name="notes" value="{!v.notes}"
+                                        label="Notes:" />
+
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium sldsCustomWidth" id="modal-content-id-1">
+
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="brand"
+                                      label="Apply Hold"
+                                      onclick="{! c.handleAddNote }"/>
+                    <lightning:button label="Close"
+                                      onclick="{! c.handleCloseModal }"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

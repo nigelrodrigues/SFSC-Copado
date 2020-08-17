@@ -50,6 +50,49 @@ public with sharing class trac_AddNoteCtlr {
         return response;
     }
 
+    @AuraEnabled
+    public static TLAuraResponse applyReviewNotesHold(String businessUnit, String orderNumber, String notes) {
+        TLAuraResponse response = new TLAuraResponse(true);
+
+        try {
+            trac_WS_UpdateOrder updateOrder = new trac_WS_UpdateOrder();
+
+            updateOrder.updateOrderRequest.Order.Action = trac_WS_OrderUtils.getModifyAction();
+            updateOrder.updateOrderRequest.Order.OrderNo = orderNumber;
+            updateOrder.updateOrderRequest.Order.EnterpriseCode = trac_WS_OrderUtils.getEnterpriseCodeFromBusinessUnit(businessUnit);
+            updateOrder.updateOrderRequest.Order.DocumentType = trac_WS_OrderUtils.getOrderType();
+            updateOrder.updateOrderRequest.Order.ModificationReasonCode = 'Adding Review Notes Hold';
+            updateOrder.updateOrderRequest.Order.ModificationReasonText = 'Adding Review Notes Hold';
+            updateOrder.updateOrderRequest.Order.OrderLines = null;
+            updateOrder.updateOrderRequest.Order.Notes = getNotesWrapperFromString(notes);
+
+            updateOrder.updateOrderRequest.Order.OrderHoldTypes = new trac_WS_UpdateOrder.req_OrderHoldTypesWrapper();
+            updateOrder.updateOrderRequest.Order.OrderHoldTypes.OrderHoldType = new trac_WS_UpdateOrder.req_OrderHoldTypeWrapper();
+            updateOrder.updateOrderRequest.Order.OrderHoldTypes.OrderHoldType.HoldType = 'REVIEW_NOTES';
+            updateOrder.updateOrderRequest.Order.OrderHoldTypes.OrderHoldType.Status = '1100';
+            updateOrder.updateOrderRequest.Order.OrderHoldTypes.OrderHoldType.ReasonText = 'Adding Review Notes Hold';
+
+            Boolean success = updateOrder.send();
+
+            if (!success) {
+                Integration_Error__c integrationError = trac_IntegrationError.addError(new Integration_Error__c(
+                        Description__c = updateOrder.jsonError,
+                        Endpoint__c = updateOrder.ENDPOINT,
+                        Request__c = JSON.serializePretty(updateOrder.updateOrderRequest),
+                        Service__c = 'Apply Review Notes Hold'
+                ));
+                insert integrationError;
+
+                response = new TLAuraResponse(false, 'Looks like there\'s a problem with OMS, give your admin this  error ID: ' + integrationError.Id);
+            }
+
+        } catch (Exception e) {
+            response = new TLAuraResponse(false, e.getMessage() + '\n' + e.getStackTraceString());
+        }
+
+        return response;
+    }
+
     private static trac_WS_UpdateOrder.req_NotesWrapper getNotesWrapperFromString(String notesString) {
         trac_WS_UpdateOrder.req_NotesWrapper notesWrapper = new trac_WS_UpdateOrder.req_NotesWrapper();
 

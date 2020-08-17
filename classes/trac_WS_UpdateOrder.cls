@@ -71,8 +71,11 @@ public with sharing class trac_WS_UpdateOrder {
         public String OrderNo;
         public String EnterpriseCode;
         public String DocumentType;
+        public String ModificationReasonCode;
+        public String ModificationReasonText;
         public req_OrderLinesWrapper OrderLines;
         public req_NotesWrapper Notes;
+        public req_OrderHoldTypesWrapper OrderHoldTypes;
 
         public req_OrderWrapper() {
             OrderLines = new req_OrderLinesWrapper();
@@ -110,6 +113,16 @@ public with sharing class trac_WS_UpdateOrder {
     public class req_NoteWrapper {
         public String NoteText;
         public String ContactUser;
+    }
+
+    public class req_OrderHoldTypesWrapper {
+        public req_OrderHoldTypeWrapper OrderHoldType;
+    }
+
+    public class req_OrderHoldTypeWrapper {
+        public String HoldType;
+        public String Status;
+        public String ReasonText;
     }
 
     public class res_OrderLinesWrapper {
