@@ -17,12 +17,14 @@
     <aura:attribute name="showExpectedDate"   type="Boolean" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.cancelabilityMap}" action="{!c.resetDisabled}"/>
-    <div class="slds-box slds-box_small slds-theme_shade">
+
+    <div class="slds-box slds-box_x-small slds-theme_shade">
         <aura:if isTrue="{!not(empty(v.orderLineItem))}">
             <div>
                 <div>
-                    <lightning:layout class="slds-grid slds-text-body_small slds-align_absolute-center ">
-                        <lightning:layoutItem class="slds-size_1-of-5 slds-p-left--medium">
+                    <lightning:layout class="slds-grid slds-text-body_small" horizontalAlign="space" verticalAlign="center">
+                        <lightning:layoutItem class="slds-size_1-of-5 slds-p-top--large">
+
                             <div class="header-column">
                                 <aura:if isTrue="{!and(v.orderLineItem.Shipnode.NodeType == 'DC', v.orderLineItem.Shipnode.ShipNode == 'DC-689-585')}">
                                     <p><lightning:badge class="slds-badge_lightest" label="Ship from DC: TNDC SwissLog" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
@@ -30,12 +32,8 @@
                                 <aura:if isTrue="{!and(v.orderLineItem.Shipnode.NodeType == 'DC', v.orderLineItem.Shipnode.ShipNode == 'DC-LVG-689')}">
                                     <p><lightning:badge class="slds-badge_lightest" label="Ship from DC: TNDC Kiva" title="{!v.orderLineItem.CarrierServiceCode + ' Shipping'}"/></p>
                                 </aura:if>
-<!--                                <aura:if isTrue="{!or(v.orderLineItem.Shipnode.NodeType != 'DC',-->
-<!--                                and(v.orderLineItem.Shipnode.ShipNode != 'DC-LVG-689', v.orderLineItem.Shipnode.ShipNode != 'DC-689-585'))}">-->
-<!--                                    <aura:if isTrue="{!v.orderLineItem.LineType == 'REGULAR'}">-->
-<!--                                        <p><lightning:badge class="slds-badge_lightest slds-text-title_caps" label="{!v.orderLineItem.LineType}"/></p>-->
-<!--                                    </aura:if>-->
-<!--                                </aura:if>-->
+
+
                                 <aura:if isTrue="{!v.orderLineItem.LineType == 'DROPSHIP'}">
                                     <p><lightning:badge class="slds-badge_lightest" label="{!v.orderLineItem.LineType}"/></p>
                                 </aura:if>
@@ -83,8 +81,10 @@
                                 </aura:if>
                             </div>
                         </lightning:layoutItem>
-                        <lightning:layoutItem class="slds-size_2-of-12 slds-p-horizontal--x-large">
-                            <div class="header-column slds-box slds-theme_default slds-p-horizontal--large slds-align_absolute-center" style="height:12em;overflow:hidden;">
+
+                        <lightning:layoutItem class="slds-size_1-of-6 slds-p-horizontal--x-small">
+                            <div class="header-column slds-box slds-box_x-small slds-theme_default slds-align_absolute-center" style="height:12em;overflow:hidden;">
+
                                 <aura:if isTrue="{!v.businessUnit == 'Saks'}">
                                     <figure>
                                         <img src="{!v.orderLineItem.ItemDetails.PrimaryInformation.ImageLocation +'/'+ v.orderLineItem.ItemDetails.PrimaryInformation.ImageID}" onclick="{!c.openModel}"
@@ -99,10 +99,14 @@
 
                             </div>
                         </lightning:layoutItem>
-                        <lightning:layoutItem class="slds-size_1-of-7 slds-p-right--medium">
-                            <div class="header-column" style="height:11em">
+                        <lightning:layoutItem class="slds-size_1-of-5 slds-p-right--x-small">
+                            <div class="header-column">
                                 <div>
                                     <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Item</p>
+                                    <p>
+                                        <lightning:formattedRichText value="{!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}"
+                                                                     class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
+                                    </p>
                                     <p>
                                         <lightning:formattedRichText value="{!v.orderLineItem.ItemDetails.PrimaryInformation.ShortDescription}"
                                                                      class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
@@ -115,10 +119,7 @@
                                             <aura:iteration
                                                     items="{!v.orderLineItem.ItemDetails.AdditionalAttributeList.AdditionalAttribute}"
                                                     var="attribute">
-                                                <!--<p class="field-title slds-form-element__label slds-no-flex">{!attribute.Name}</p>-->
                                                 <p class="slds-item" style="text-transform:lowercase">{!attribute.Name}: {!attribute.Value}</p>
-<!--                                                <li class="slds-item" style="text-transform:lowercase">{!attribute.Name}</li>
-                                                <li class="slds-item" style="text-transform:lowercase">{!attribute.Value}</li>-->
                                             </aura:iteration>
                                         </ul>
                                     </aura:if>
@@ -126,16 +127,8 @@
                                 </div>
                             </div>
                         </lightning:layoutItem>
-                        <lightning:layoutItem class="slds-size_1-of-8 slds-p-right--small">
-                            <div class="header-column">
-                                <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Designer</p>
-                                <p>
-                                    <lightning:formattedRichText value="{!v.orderLineItem.ItemDetails.PrimaryInformation.ManufacturerName}"
-                                                                 class="slds-text-title_caps item-description" style="font-size:10px" disableLinkify="true"/>
-                                </p>
-                            </div>
-                        </lightning:layoutItem>
-                        <lightning:layoutItem class="slds-size_1-of-12 slds-p-left--small">
+                        <lightning:layoutItem class="slds-size_1-of-12">
+
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Status</p>
                                 <p>
@@ -143,7 +136,9 @@
                                 </p>
                             </div>
                         </lightning:layoutItem>
-                        <lightning:layoutItem class="slds-size_1-of-12 slds-p-left--medium">
+
+                        <lightning:layoutItem class="slds-size_1-of-12">
+
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Line Total</p>
                                 <p>
@@ -152,7 +147,9 @@
                                 </p>
                             </div>
                         </lightning:layoutItem>
-                        <lightning:layoutItem class="slds-size_1-of-8">
+
+                        <lightning:layoutItem class="slds-size_1-of-7">
+
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">Style Code</p>
                                 <p>
@@ -168,6 +165,7 @@
                                 </p>
                             </div>
 
+
                             <div class="header-column">
                                 <p class="field-title slds-form-element__label slds-no-flex" style="font-size:10.5px;">UPC</p>
                                 <p>
@@ -176,34 +174,9 @@
                                 </p>
                             </div>
                         </lightning:layoutItem>
-                        <!--<aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniStatus))}">-->
-                        <!--<lightning:layoutItem class="slds-size_1-of-12">-->
-                        <!--<div class="header-column">-->
-                        <!--<p class="field-title slds-form-element__label slds-no-flex">Blue Martini Status</p>-->
-                        <!--<p class="slds-text-title_caps">{!v.orderLineItem.customBlueMartiniStatus}</p>-->
-                        <!--</div>-->
-                        <!--</lightning:layoutItem>-->
-                        <!--</aura:if>-->
-                        <!--<aura:if isTrue="{!not(empty(v.orderLineItem.customBlueMartiniCancelCode))}">-->
-                        <!--<lightning:layoutItem class="slds-size_1-of-12">-->
-                        <!--<div class="header-column">-->
-                        <!--<p class="field-title slds-form-element__label slds-no-flex">Blue Martini-->
-                        <!--Cancellation Code</p>-->
-                        <!--<p class="slds-text-title_caps">{!v.orderLineItem.customBlueMartiniCancelCode}</p>-->
-                        <!--</div>-->
-                        <!--</lightning:layoutItem>-->
-                        <!--</aura:if>-->
-                        <!--<lightning:layoutItem class="slds-size_1-of-12">-->
-                        <!--<div class="header-column">-->
-                        <!--<aura:if isTrue="{!not(empty(v.orderLineItem.Notes.Note))}">-->
-                        <!--<lightning:icon iconName="utility:note" alternativeText="Notes" size="small"/>-->
-                        <!--</aura:if>-->
-                        <!--<aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">-->
-                        <!--<lightning:icon iconName="standard:thanks" alternativeText="Gift" size="small"/>-->
-                        <!--</aura:if>-->
-                        <!--</div>-->
-                        <!--</lightning:layoutItem>-->
-                        <lightning:layoutItem class="slds-size_1-of-12 slds-p-top--x-small">
+
+                        <lightning:layoutItem class="slds-size_1-of-8 slds-p-top--x-small">
+
                             <div>
                                 <lightning:buttonMenu label="ACTIONS" title="Order Actions"
                                                       variant="border-filled" onselect="{!c.handleMenuSelect}"
@@ -439,11 +412,13 @@
                                         orderLineItem="{!v.orderLineItem}"/>
                             </lightning:tab>
 
+
                             <aura:if isTrue="{!v.orderLineItem.GiftFlag == 'Y'}">
                                 <lightning:tab label="Gift Options" id="gift">
                                     <c:trac_OrderLineItemGift orderLineItem="{!v.orderLineItem}" order="{!v.order}"/>
                                 </lightning:tab>
                             </aura:if>
+
 
                             <lightning:tab label="Instructions" iconName="{!not(empty(v.orderLineItem.Instructions.Instruction)) ? 'utility:task' : ''}" id="instructions">
                                 <c:trac_OrderLineItemInstructions orderLineItem="{!v.orderLineItem}"/>
