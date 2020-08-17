@@ -91,27 +91,27 @@
                 </div>
             </lightning:layoutItem>
                 <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
+
                 <div class="header-column">
                         <p class="field-title slds-form-element__label slds-no-flex">Amount</p>
                         <p class="slds-text-title_caps">
-
                             $<lightning:formattedNumber value="{!v.order.OverallTotals.GrandTotal}" style="decimal"
                                                        minimumFractionDigits="2" maximumFractionDigits="2"/>
-
                         </p>
                     </div>
                 </lightning:layoutItem>
                <!-- BU codition for SAKS -->
-               <aura:if isTrue="{!and(not(empty(v.order.COMXdata)), v.businessUnit == 'SAKS')}">
+               <aura:if isTrue="{!and(not(empty(v.order.COMXdata)), v.businessUnit == 'Saks')}">
                     <lightning:layoutItem padding="around-small" class="slds-size_2-of-8">
                         <div class="header-column">
-                            <p class="field-title slds-form-element__label slds-no-flex">Placed By</p>
-                            <p class="field-title slds-form-element__label slds-no-flex">Associate#  (from Store#)</p>
-                            <aura:iteration var="{!v.order.COMXdata}" items="comXData" >
-                                <p> {!comXdata.associateNo} (from {!comxData.storeNo})</p>
+                            <p class="field-title slds-form-element__label slds-no-flex">Placed By</p><br/>
+                            <p class="field-title slds-form-element__label slds-text-title_caps">Associate#  (from Store#)</p><br/>
+                            <aura:iteration items="{!v.order.COMXdata}" var="placedBy" >
+                                <p class="slds-form-element__label"> {!placedBy.associateNo}    ( FROM {!placedBy.storeNo})</p>
                             </aura:iteration>
                         </div>
                     </lightning:layoutItem>
+
                     <aura:set attribute="else">
                             <lightning:layoutItem padding="around-small" class="slds-size_1-of-8">
                                 <div class="header-column">
@@ -143,9 +143,7 @@
                                 <lightning:menuItem label="Update Payment" value="paymentCapture" />
                             </aura:if>
                             <lightning:menuItem label="Refund Options" value="orderReturnFee" />
-
                             <lightning:menuItem label="Link To Case"   value="linkToCase" disabled="{!v.order.OrderNo == v.caseRecord.Order_Number__c}"/>
-
                         </lightning:buttonMenu>
                     </div>
                     {!v.body}

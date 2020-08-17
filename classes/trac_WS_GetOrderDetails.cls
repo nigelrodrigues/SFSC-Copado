@@ -67,12 +67,31 @@ public with sharing class trac_WS_GetOrderDetails {
             linkItemsToShipmentLines();
             sortItems();
             setShipmentLoyaltyFields();
+
             setCustomFields();
         } catch (Exception e)
         {
             throw new CustomException(e.getMessage());
+
         }
     }
+                    }
+                }
+
+
+                // check for badges at order-line level
+                if ( getOrderDetailsResponse.OrderLines != null && !getOrderDetailsResponse.OrderLines.OrderLine.isEmpty())
+                {
+                    for ( res_OrderLineWrapper orderline :  getOrderDetailsResponse.OrderLines.OrderLine)
+                    {
+                        if( orderline.OrderHoldTypes!=null && orderLine.OrderHoldTypes.OrderHoldType!=null )
+                        {
+                            for (res_OrderLineHoldType_Wrapper holdType : orderline.OrderHoldTypes.OrderHoldType)
+                            {
+                                if (!orderHoldTypeMap.isEmpty() && orderHoldTypeMap.get(holdType.HoldType) != null)
+                                {
+                                    OrderHoldWrapper orderHold = orderHoldTypeMap.get(holdType.HoldType);
+
 
     private void setCustomFields() {
         if (getOrderDetailsResponse == null) {
@@ -131,6 +150,7 @@ public with sharing class trac_WS_GetOrderDetails {
                                 {
                                     OrderHoldWrapper orderHold = orderHoldTypeMap.get(holdType.HoldType);
 
+
                                     if (orderHold.statusDesc.equals(holdType.StatusDescription)) {
                                         getOrderDetailsResponse.Badges.add(orderHold.badge);
                                     }
@@ -165,6 +185,8 @@ public with sharing class trac_WS_GetOrderDetails {
                         }
                     }
                 }
+
+
             }
 
             if (getOrderDetailsResponse.Badges != null && !getOrderDetailsResponse.Badges.isEmpty()) {
@@ -191,20 +213,28 @@ public with sharing class trac_WS_GetOrderDetails {
                 res_OrderLineWrapper orderline = getOrderDetailsResponse.OrderLines.OrderLine.get(0);
                 // Checks to find the COMX data
                 if (orderline.Instructions != null &&
-                        Integer.valueOf(orderline.Instructions.NumberOfInstructions) > 0 &&
-                        orderline.Instructions.Instruction.get(0) != null) {
-                    res_InstructionWrapper instruction = orderline.Instructions.Instruction.get(0);
-                    if (instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionUsage.equals('COMX')) {
-                        // Get the store and associate IDs (Max 2)
-                        List<String> comxDataList = new List<String>();
-                        String[] comxData = orderline.Createuserid.split(',');
-                        for (String data : comxData) {
-                            comxDataList.add(data);
-                        }
 
-                        if (!comxDataList.isEmpty()) {
-                            getOrderDetailsResponse.COMXdata = new List<COMXdataWrapper>();
-                            for (String comXValues : comxDataList) {
+                        orderline.Instructions.Instruction != null)
+                {
+                    for ( res_InstructionWrapper instruction : orderline.Instructions.Instruction)
+                    {
+                        if ( instruction.InstructionType.equals('SITE_REFER') && instruction.InstructionUsage.equals('COMX'))
+                        {
+                            // Get the store and associate IDs (Max 2)
+                            List<String> comxDataList = new List<String>();
+                            String[] comxData = orderline.Createuserid.split(',');
+
+                            for (String data : comxData)
+                            {
+                                comxDataList.add(data);
+                            }
+
+                            if ( !comxDataList.isEmpty() )
+                            {
+                                getOrderDetailsResponse.COMXdata = new List<COMXdataWrapper>();
+                                for (String comXValues : comxDataList)
+                                {
+
                                 getOrderDetailsResponse.COMXdata.add(new COMXdataWrapper(comXValues.substring(0, 4), comXValues.substring(4, comXValues.length())));
                             }
                         }
@@ -212,11 +242,16 @@ public with sharing class trac_WS_GetOrderDetails {
                 }
             }
         }
+
+        }
+
         catch(Exception e)
         {
             throw new CustomException('Error in setting COMX Data ' + e.getMessage() + '' + e.getStackTraceString());
         }
     }
+
+
 
 
     private void sortItems()
@@ -347,9 +382,11 @@ public with sharing class trac_WS_GetOrderDetails {
     }
 
 
+
     private void setPreOrderDateFields(res_OrderLineWrapper orderLineWrapper)
     {
         try {
+
             if (orderLineWrapper.OrderDates != null && orderLineWrapper.OrderDates.OrderDate != null) {
                 for (res_OrderDateWrapper orderDateWrapper : orderLineWrapper.OrderDates.OrderDate) {
                     if (orderDateWrapper.DateTypeId == PRE_ORDER_DATE_TYPE) {
@@ -364,10 +401,18 @@ public with sharing class trac_WS_GetOrderDetails {
             throw new CustomException('Error in setPreOrderDateFields ' + e.getMessage() + '' + e.getStackTraceString());
         }
     }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setPreOrderDateFields ' + e.getMessage() + '' + e.getStackTraceString());
+        }
+
+    }
+
 
 
     private void setBlueMartiniStatus(res_OrderLineWrapper orderLineWrapper) {
         try {
+
             if (orderLineWrapper.Extn != null) {
                 orderLineWrapper.customBlueMartiniStatus = getBlueMartiniDisplayStatusFromCode(orderLineWrapper.Extn.ExtnBlueMartiniStatus);
                 orderLineWrapper.customBlueMartiniCancelCode = getBlueMartiniDisplayCancelCode(orderLineWrapper.Extn.ExtnBlueMartiniCancellationCode);
@@ -378,11 +423,18 @@ public with sharing class trac_WS_GetOrderDetails {
             throw new CustomException('Error in setBlueMartiniStatus ' + e.getMessage() + '' + e.getStackTraceString());
         }
     }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setBlueMartiniStatus ' + e.getMessage() + '' + e.getStackTraceString());
+        }
+    }
+
 
     private void setItemUPCs(res_OrderLineWrapper orderLineWrapper)
     {
         try
         {
+
             if (orderLineWrapper.ItemDetails != null && orderLineWrapper.ItemDetails.ItemAliasList != null && orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias != null) {
 
                 for (res_ItemAliasWrapper itemAliasWrapper : orderLineWrapper.ItemDetails.ItemAliasList.ItemAlias) {
@@ -392,6 +444,11 @@ public with sharing class trac_WS_GetOrderDetails {
                 }
             }
         }
+        catch(Exception e)
+        {
+            throw new CustomException('Error in setItemUPCs ' + e.getMessage() + '' + e.getStackTraceString());
+        }
+    }
         catch(Exception e)
         {
             throw new CustomException('Error in setItemUPCs ' + e.getMessage() + '' + e.getStackTraceString());

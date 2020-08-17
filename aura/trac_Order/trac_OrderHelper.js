@@ -58,7 +58,6 @@
         {
             console.log("Error: " + errorMessage);
 
-
   		}
     },
     setChannel : function(component, event, helper, order) {
@@ -69,6 +68,7 @@
         }
     },
     setCancelabilityMap: function(component, event, helper) {
+
         var businessUnit = component.get('v.businessUnit');
         var action = component.get("c.getOrderLineCancelabilityByStatus");
         action.setParams({
@@ -92,9 +92,8 @@
         component.set("v.showActiveBadge", false);
         if(order.OrderHoldTypes.OrderHoldType)
         {
-            for (let orderHoldType of order.OrderHoldTypes.OrderHoldType)
+           for (let orderHoldType of order.OrderHoldTypes.OrderHoldType)
             {
-                console.log('orderHoldType.StatusDescription: ' + orderHoldType.StatusDescription);
                 if(orderHoldType.StatusDescription === 'Created' &&
                     ( orderHoldType.HoldType !== 'RO_NOT_PUBLISHED' &&
                         orderHoldType.HoldType !== 'CSR_CANCEL_HOLD'  &&
